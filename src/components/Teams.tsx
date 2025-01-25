@@ -1,30 +1,42 @@
-import { User } from "lucide-react";
+import { User, Linkedin, Mail } from "lucide-react";
 
 const Teams = () => {
   const teamMembers = [
     {
-      name: "Sarah Johnson",
-      role: "CEO & Founder",
-      image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
-      description: "Visionary leader with 15+ years in tech innovation"
-    },
-    {
-      name: "Michael Chen",
-      role: "CTO",
-      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81",
-      description: "Expert in AI and cloud architecture"
-    },
-    {
-      name: "Emily Rodriguez",
-      role: "Lead Designer",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
-      description: "Creative mind behind our user experiences"
-    },
-    {
-      name: "David Kim",
+      name: "Ibrahim Rahmani",
       role: "Senior Developer",
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
-      description: "Full-stack expert specializing in scalable solutions"
+      description: "Full-stack Developer | Microsoft Certified | MSc in Information Systems with extensive experience in system development, software architecture, and implementing scalable solutions for complex business needs.",
+      image: "/lovable-uploads/bcb33ba6-0562-4857-818f-e29b4f66b4de.png"
+    },
+    {
+      name: "Wahid Rahmani",
+      role: "Developer",
+      description: "Master's in Informatics | Experienced Software Engineer with expertise in Machine Learning, Cloud Computing, IT Management, and developing innovative, scalable software solutions for diverse industries.",
+      image: "/lovable-uploads/bcb33ba6-0562-4857-818f-e29b4f66b4de.png"
+    },
+    {
+      name: "Hamid Rahmani",
+      role: "Project Manager",
+      description: "Experienced Project Manager | Master's degree in Computer Science with expertise in project management, system development, and digital transformation.",
+      image: "/lovable-uploads/bcb33ba6-0562-4857-818f-e29b4f66b4de.png"
+    },
+    {
+      name: "Muhammad Nadeem",
+      role: "Fullstack Developer",
+      description: "Master in Applied Computer Science | Full-stack Consultant with focus on C#, Web, React, and Data Analysis",
+      image: "/lovable-uploads/bcb33ba6-0562-4857-818f-e29b4f66b4de.png"
+    },
+    {
+      name: "Ibtissam Ezzaheri",
+      role: "UI/UX Designer",
+      description: "Experienced UI/UX Designer | Specialist in user experience and interface design, focused on creating intuitive, functional, and aesthetically pleasing solutions that enhance user engagement and efficiency.",
+      image: "/lovable-uploads/bcb33ba6-0562-4857-818f-e29b4f66b4de.png"
+    },
+    {
+      name: "Helena Grønvold",
+      role: "Advisor",
+      description: "Experienced Advisor | Specialist in strategic guidance and problem-solving, focused on providing tailored advice and solutions that help businesses achieve their goals and improve efficiency.",
+      image: "/lovable-uploads/bcb33ba6-0562-4857-818f-e29b4f66b4de.png"
     }
   ];
 
@@ -39,34 +51,41 @@ const Teams = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-xala-accent mb-4">Our Team</h2>
           <p className="text-xala-text/80 max-w-2xl mx-auto">
-            Meet the innovative minds behind our success. Together, we're pushing the boundaries of what's possible.
+            Meet our exceptional team of innovators and problem solvers, dedicated to transforming ideas into powerful solutions.
           </p>
         </div>
 
         {/* Team grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 p-6 transition-all duration-300 hover:border-xala-accent/50"
+              className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 p-6 transition-all duration-300 hover:border-xala-accent/50 hover:shadow-lg hover:shadow-xala-accent/5"
             >
-              <div className="relative aspect-square mb-6 overflow-hidden rounded-lg">
+              <div className="relative aspect-square mb-6 overflow-hidden rounded-lg bg-gradient-to-br from-xala-secondary to-xala-primary">
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="object-cover w-full h-full transform transition-transform duration-300 group-hover:scale-110"
+                  className="object-cover w-full h-full transform transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-xala-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
               
               <div className="text-center">
                 <h3 className="text-xl font-semibold text-xala-accent mb-2">{member.name}</h3>
-                <p className="text-xala-text/90 font-medium mb-2">{member.role}</p>
-                <p className="text-sm text-xala-text/70">{member.description}</p>
+                <p className="text-xala-text/90 font-medium mb-3">{member.role}</p>
+                <p className="text-sm text-xala-text/70 line-clamp-4 hover:line-clamp-none transition-all duration-300">
+                  {member.description}
+                </p>
               </div>
 
-              <div className="absolute top-4 right-4">
-                <User className="w-6 h-6 text-xala-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute top-4 right-4 flex space-x-2">
+                <button className="p-2 rounded-full bg-xala-secondary/50 hover:bg-xala-accent/20 transition-colors duration-300">
+                  <Linkedin className="w-5 h-5 text-xala-accent" />
+                </button>
+                <button className="p-2 rounded-full bg-xala-secondary/50 hover:bg-xala-accent/20 transition-colors duration-300">
+                  <Mail className="w-5 h-5 text-xala-accent" />
+                </button>
               </div>
             </div>
           ))}
