@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Brain, CircuitBoard, Cpu, Database, Network, Server, ArrowRight } from 'lucide-react';
+import { Brain, CircuitBoard, Cpu, Database, Network, Server, ArrowRight, Cloud as CloudIcon, BarChart as ChartIcon } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Hero = () => {
@@ -69,7 +69,7 @@ const Hero = () => {
             <div className="group p-6 rounded-xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 hover:border-xala-accent/50 transition-all duration-300">
               <div className="flex flex-col items-center gap-3">
                 <div className="p-3 rounded-lg bg-xala-accent/10 group-hover:bg-xala-accent/20 transition-colors">
-                  <Cloud className="w-8 h-8 text-xala-accent" />
+                  <CloudIcon className="w-8 h-8 text-xala-accent" />
                 </div>
                 <h3 className="text-lg font-semibold text-xala-accent">Cloud Integration</h3>
                 <p className="text-sm text-xala-text/80">Seamless cloud solutions for scalable and secure operations</p>
@@ -78,7 +78,7 @@ const Hero = () => {
             <div className="group p-6 rounded-xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 hover:border-xala-accent/50 transition-all duration-300">
               <div className="flex flex-col items-center gap-3">
                 <div className="p-3 rounded-lg bg-xala-accent/10 group-hover:bg-xala-accent/20 transition-colors">
-                  <BarChart className="w-8 h-8 text-xala-accent" />
+                  <ChartIcon className="w-8 h-8 text-xala-accent" />
                 </div>
                 <h3 className="text-lg font-semibold text-xala-accent">Data Analytics</h3>
                 <p className="text-sm text-xala-text/80">Transform raw data into actionable business insights</p>
