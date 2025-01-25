@@ -6,19 +6,19 @@ const Teams = () => {
       name: "Ibrahim Rahmani",
       role: "Senior Developer",
       description: "Full-stack Developer | Microsoft Certified | MSc in Information Systems with extensive experience in system development, software architecture, and implementing scalable solutions for complex business needs.",
-      image: "/lovable-uploads/6f1758b7-5d86-4778-bb7f-c619930b9d56.png"
+      image: "/lovable-uploads/57d981d8-9e47-4404-8f30-3436767048b7.png"
     },
     {
       name: "Wahid Rahmani",
       role: "Developer",
       description: "Master's in Informatics | Experienced Software Engineer with expertise in Machine Learning, Cloud Computing, IT Management, and developing innovative, scalable software solutions for diverse industries.",
-      image: "/lovable-uploads/dd06a11f-80af-4780-a3eb-d6211b88ba5e.png"
+      image: "/lovable-uploads/15911dad-c74d-4cf8-be38-9b9f27b94649.png"
     },
     {
       name: "Hamid Rahmani",
       role: "Project Manager",
       description: "Experienced Project Manager | Master's degree in Computer Science with expertise in project management, system development, and digital transformation.",
-      image: "/lovable-uploads/8d2f448c-b059-4f5b-84cd-633eab629206.png"
+      image: "/lovable-uploads/c700956f-8871-4608-bdd4-64d966038aea.png"
     },
     {
       name: "Muhammad Nadeem",
@@ -30,13 +30,13 @@ const Teams = () => {
       name: "Ibtissam Ezzaheri",
       role: "UI/UX Designer",
       description: "Experienced UI/UX Designer | Specialist in user experience and interface design, focused on creating intuitive, functional, and aesthetically pleasing solutions that enhance user engagement and efficiency.",
-      image: "/lovable-uploads/fd28caf6-8552-4d12-86e4-3f3c6d533ccb.png"
+      image: "/lovable-uploads/92252a14-97d7-47a9-90e2-5a291b94b99f.png"
     },
     {
       name: "Helena Grønvold",
       role: "Advisor",
       description: "Experienced Advisor | Specialist in strategic guidance and problem-solving, focused on providing tailored advice and solutions that help businesses achieve their goals and improve efficiency.",
-      image: "/lovable-uploads/205ebdc3-a943-442d-9e0e-6a50abbd35b8.png"
+      image: "/lovable-uploads/46fa4e5c-328f-4f2b-83b5-fb81751cf336.png"
     }
   ];
 
