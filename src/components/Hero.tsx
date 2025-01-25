@@ -9,6 +9,16 @@ const Hero = () => {
     setMounted(true);
   }, []);
 
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden py-20 sm:py-32">
       {/* Enhanced gradient background with multiple layers */}
@@ -95,30 +105,26 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Enhanced CTA buttons */}
+          {/* Updated CTA buttons with smooth scroll */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Button
-              asChild
+              onClick={() => scrollToSection('contact')}
               className="group px-8 py-6 bg-xala-accent text-white rounded-lg font-medium 
                        hover:bg-opacity-90 transition-all transform hover:scale-105
                        shadow-lg shadow-xala-accent/20"
             >
-              <a href="#contact">
-                Get Started
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
+              Get Started
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button
-              asChild
+              onClick={() => scrollToSection('about')}
               variant="outline"
               className="group px-8 py-6 bg-white/5 text-white rounded-lg font-medium 
                        hover:bg-white/10 transition-all backdrop-blur-sm
                        border border-white/20"
             >
-              <a href="#services">
-                Learn More
-                <ArrowRight className="ml-2 w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-              </a>
+              Learn More
+              <ArrowRight className="ml-2 w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
             </Button>
           </div>
         </div>
