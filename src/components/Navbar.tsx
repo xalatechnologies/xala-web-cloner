@@ -9,12 +9,15 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
-            <a href="#home" className="flex items-center">
+            <a href="#home" className="flex items-center gap-2">
               <img 
-                src="/lovable-uploads/9b91e49d-aca0-47e2-afa3-2544f823e714.png" 
-                alt="Xala Logo" 
-                className="h-10 w-auto"
+                src="/lovable-uploads/ea66315b-13e9-4a09-a8cb-c851dc16edff.png" 
+                alt="Xala Icon" 
+                className="h-10 w-10"
               />
+              <span className="text-2xl font-bold bg-gradient-to-r from-xala-accent to-[#D946EF] text-transparent bg-clip-text">
+                Xala
+              </span>
             </a>
           </div>
           
