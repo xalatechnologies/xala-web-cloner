@@ -60,10 +60,10 @@ const clients = [
 const Clients = () => {
   const plugin = useRef(
     Autoplay({ 
-      delay: 2000, 
+      delay: 0, // Set to 0 for continuous movement
       stopOnInteraction: false, 
-      stopOnMouseEnter: true, 
-      rootNode: (emblaRoot) => emblaRoot.parentElement 
+      stopOnMouseEnter: true,
+      rootNode: (emblaRoot) => emblaRoot.parentElement,
     })
   );
 
