@@ -6,7 +6,7 @@ const Teams = () => {
       name: "Ibrahim Rahmani",
       role: "Senior Developer",
       description: "Full-stack Developer | Microsoft Certified | MSc in Information Systems with extensive experience in system development, software architecture, and implementing scalable solutions for complex business needs.",
-      image: "/lovable-uploads/bcb33ba6-0562-4857-818f-e29b4f66b4de.png"
+      image: "/lovable-uploads/6f1758b7-5d86-4778-bb7f-c619930b9d56.png"
     },
     {
       name: "Wahid Rahmani",
