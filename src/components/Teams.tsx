@@ -6,7 +6,7 @@ const Teams = () => {
       name: "Ibrahim Rahmani",
       role: "Senior Developer",
       description: "Full-stack Developer | Microsoft Certified | MSc in Information Systems with extensive experience in system development, software architecture, and implementing scalable solutions for complex business needs.",
-      image: "/lovable-uploads/eb143cd9-14a3-4492-be53-8216b3d5a605.png",
+      image: "/lovable-uploads/54dff2fe-2407-411e-9d96-afe8fbed9cbc.png",
       linkedin: "https://linkedin.com",
       email: "ibrahim@example.com"
     },
@@ -14,7 +14,7 @@ const Teams = () => {
       name: "Wahid Rahmani",
       role: "Developer",
       description: "Master's in Informatics | Experienced Software Engineer with expertise in Machine Learning, Cloud Computing, IT Management, and developing innovative, scalable software solutions for diverse industries.",
-      image: "/lovable-uploads/54dff2fe-2407-411e-9d96-afe8fbed9cbc.png",
+      image: "/lovable-uploads/eb143cd9-14a3-4492-be53-8216b3d5a605.png",
       linkedin: "https://linkedin.com",
       email: "wahid@example.com"
     },
