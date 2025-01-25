@@ -7,6 +7,7 @@ import Clients from '../components/Clients';
 import Technologies from '../components/Technologies';
 import Teams from '../components/Teams';
 import WorkProcess from '../components/WorkProcess';
+import CaseStudies from '../components/CaseStudies';
 
 const Index = () => {
   return (
@@ -17,6 +18,7 @@ const Index = () => {
       <Clients />
       <Technologies />
       <WorkProcess />
+      <CaseStudies />
       <Teams />
       <About />
       <Contact />
