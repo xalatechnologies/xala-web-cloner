@@ -19,6 +19,7 @@ export default {
     },
     extend: {
       fontFamily: {
+        sans: ["Chakra Petch", "sans-serif"], // Set as default font
         chakra: ["Chakra Petch", "sans-serif"],
       },
       colors: {
