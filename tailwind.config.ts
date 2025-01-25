@@ -31,11 +31,11 @@ export default {
         },
       },
       animation: {
-        "gradient-x": "gradient-x 15s ease infinite",
-        "fade-in": "fade-in 1s ease-out",
-        "float-1": "float1 20s ease infinite",
-        "float-2": "float2 25s ease infinite",
-        "float-3": "float3 30s ease infinite",
+        "gradient-x": "gradient-x 30s ease-in-out infinite",
+        "fade-in": "fade-in 1.5s ease-in-out",
+        "float-1": "float1 30s ease-in-out infinite",
+        "float-2": "float2 35s ease-in-out infinite",
+        "float-3": "float3 40s ease-in-out infinite",
       },
       keyframes: {
         "gradient-x": {
@@ -51,7 +51,7 @@ export default {
         "fade-in": {
           "0%": {
             opacity: "0",
-            transform: "translateY(10px)",
+            transform: "translateY(20px)",
           },
           "100%": {
             opacity: "1",

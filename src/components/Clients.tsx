@@ -59,7 +59,12 @@ const clients = [
 
 const Clients = () => {
   const plugin = useRef(
-    Autoplay({ delay: 0, stopOnInteraction: false, stopOnMouseEnter: false, rootNode: (emblaRoot) => emblaRoot.parentElement })
+    Autoplay({ 
+      delay: 2000, 
+      stopOnInteraction: false, 
+      stopOnMouseEnter: true, 
+      rootNode: (emblaRoot) => emblaRoot.parentElement 
+    })
   );
 
   return (
@@ -88,13 +93,13 @@ const Clients = () => {
             {[...clients, ...clients].map((client, index) => (
               <CarouselItem 
                 key={index} 
-                className="pl-2 md:pl-4 md:basis-1/4 lg:basis-1/6 transition-opacity duration-500"
+                className="pl-2 md:pl-4 md:basis-1/4 lg:basis-1/6"
               >
                 <div className="h-32 flex items-center justify-center p-4">
                   <img
                     src={client.logo}
                     alt={client.name}
-                    className="max-w-[100px] max-h-[50px] object-contain opacity-80 transition-opacity duration-300"
+                    className="max-w-[100px] max-h-[50px] object-contain opacity-80 hover:opacity-100 transition-all duration-700 ease-in-out transform hover:scale-110"
                   />
                 </div>
               </CarouselItem>

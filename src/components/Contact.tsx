@@ -56,11 +56,11 @@ const Contact = () => {
             <div
               key={index}
               className="group p-8 rounded-2xl bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 
-                         hover:border-white/20 transition-all duration-300 animate-fade-in"
-              style={{ animationDelay: `${index * 100}ms` }}
+                         hover:border-white/20 transition-all duration-700 animate-fade-in"
+              style={{ animationDelay: `${index * 200}ms` }}
             >
               <div className="flex flex-col items-center text-center">
-                <div className="p-4 rounded-xl bg-white/5 group-hover:scale-110 transition-transform duration-300">
+                <div className="p-4 rounded-xl bg-white/5 transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:bg-white/10">
                   {info.icon}
                 </div>
                 <h3 className="text-xl font-semibold mt-4 mb-2 text-white">{info.title}</h3>
@@ -77,14 +77,14 @@ const Contact = () => {
                 <Input
                   type="text"
                   placeholder="Your Name"
-                  className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-colors"
+                  className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500"
                 />
               </div>
               <div className="space-y-2">
                 <Input
                   type="email"
                   placeholder="Your Email"
-                  className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#D946EF] transition-colors"
+                  className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#D946EF] transition-all duration-500"
                 />
               </div>
             </div>
@@ -92,19 +92,19 @@ const Contact = () => {
               <Input
                 type="text"
                 placeholder="Subject"
-                className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#0EA5E9] transition-colors"
+                className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#0EA5E9] transition-all duration-500"
               />
             </div>
             <div className="space-y-2">
               <Textarea
                 placeholder="Your Message"
                 rows={6}
-                className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-colors resize-none"
+                className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 resize-none"
               />
             </div>
             <Button
               type="submit"
-              className="w-full bg-gradient-to-r from-[#8B5CF6] via-[#D946EF] to-[#0EA5E9] hover:opacity-90 text-white font-medium py-6 rounded-xl transition-all duration-300 animate-gradient-x"
+              className="w-full bg-gradient-to-r from-[#8B5CF6] via-[#D946EF] to-[#0EA5E9] hover:opacity-90 text-white font-medium py-6 rounded-xl transition-all duration-700 animate-gradient-x"
             >
               Send Message
             </Button>
