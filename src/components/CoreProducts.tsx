@@ -1,27 +1,27 @@
-import { ArrowRight, Cloud, Shield, Database, Cpu } from "lucide-react";
+import { ArrowRight, Stethoscope, FormInput, Building2 } from "lucide-react";
 import { Button } from "./ui/button";
 
 const CoreProducts = () => {
   const products = [
     {
-      title: "AI Analytics Platform",
-      description: "Advanced analytics powered by artificial intelligence to transform your data into actionable insights.",
-      icon: <Cpu className="w-12 h-12 text-xala-accent" />,
-      metrics: "500+ Active Users",
+      title: "DoctorAI.no",
+      description: "AI-powered medical consultation platform that helps healthcare professionals make more informed decisions and improve patient care.",
+      icon: <Stethoscope className="w-12 h-12 text-xala-accent" />,
+      metrics: "10,000+ Consultations",
       image: "/lovable-uploads/ea66315b-13e9-4a09-a8cb-c851dc16edff.png"
     },
     {
-      title: "Cloud Infrastructure",
-      description: "Scalable and secure cloud solutions designed for enterprise-level performance and reliability.",
-      icon: <Cloud className="w-12 h-12 text-xala-accent" />,
-      metrics: "99.9% Uptime",
+      title: "FylleUt.no",
+      description: "Advanced AI-driven form builder that simplifies document creation and automation, making form filling effortless and intelligent.",
+      icon: <FormInput className="w-12 h-12 text-xala-accent" />,
+      metrics: "50,000+ Forms Generated",
       image: "/lovable-uploads/9b91e49d-aca0-47e2-afa3-2544f823e714.png"
     },
     {
-      title: "Secure Data Platform",
-      description: "Enterprise-grade data management platform with advanced security and compliance features.",
-      icon: <Database className="w-12 h-12 text-xala-accent" />,
-      metrics: "ISO 27001 Certified",
+      title: "Prinsipro",
+      description: "AI-powered architecture principles management system that streamlines design decisions and ensures consistency across projects.",
+      icon: <Building2 className="w-12 h-12 text-xala-accent" />,
+      metrics: "1,000+ Projects Managed",
       image: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png"
     }
   ];
@@ -34,10 +34,10 @@ const CoreProducts = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-xala-accent mb-4">
-            Core Products
+            Our Products
           </h2>
           <p className="text-xala-text text-lg max-w-2xl mx-auto">
-            Innovative SaaS solutions designed to transform your business operations
+            Innovative AI-powered solutions transforming healthcare, documentation, and architecture
           </p>
         </div>
 
