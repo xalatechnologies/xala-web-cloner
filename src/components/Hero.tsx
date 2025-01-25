@@ -21,7 +21,6 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden py-20 sm:py-32">
-      {/* Enhanced gradient background with multiple layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary animate-gradient-x"></div>
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-5"></div>
       
@@ -34,7 +33,7 @@ const Hero = () => {
         <Server className="absolute w-12 h-12 text-[#8B5CF6]/20 animate-float-1" style={{ bottom: '30%', right: '10%' }} />
         <Brain className="absolute w-14 h-14 text-[#F97316]/20 animate-float-3" style={{ top: '35%', left: '30%' }} />
       </div>
-
+      
       {/* Main content with enhanced visual hierarchy */}
       <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 ${mounted ? 'animate-fade-in' : 'opacity-0'}`}>
         <div className="space-y-8 text-center">
@@ -109,11 +108,14 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Button
               onClick={() => scrollToSection('contact')}
-              className="group px-8 py-6 bg-xala-accent text-white rounded-lg font-medium 
-                       hover:bg-opacity-90 transition-all transform hover:scale-105
-                       shadow-lg shadow-xala-accent/20"
+              className="group px-8 py-6 rounded-lg font-medium 
+                       transition-all transform hover:scale-105
+                       shadow-lg shadow-xala-accent/20
+                       bg-gradient-to-r from-[#9b87f5] via-[#8B5CF6] to-[#7E69AB]
+                       hover:from-[#8B5CF6] hover:via-[#7E69AB] hover:to-[#9b87f5]
+                       text-white"
             >
-              Get Started
+              Get in touch
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button
@@ -123,7 +125,7 @@ const Hero = () => {
                        hover:bg-white/10 transition-all backdrop-blur-sm
                        border border-white/20"
             >
-              Learn More
+              About us
               <ArrowRight className="ml-2 w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
             </Button>
           </div>
