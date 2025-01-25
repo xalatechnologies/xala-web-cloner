@@ -9,7 +9,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <span className="text-2xl font-bold text-xala-accent">XALA</span>
+            <a href="#home" className="flex items-center">
+              <img 
+                src="/lovable-uploads/9b91e49d-aca0-47e2-afa3-2544f823e714.png" 
+                alt="Xala Logo" 
+                className="h-8 w-auto"
+              />
+            </a>
           </div>
           
           {/* Desktop menu */}
