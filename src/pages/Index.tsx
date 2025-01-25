@@ -4,6 +4,7 @@ import Services from '../components/Services';
 import About from '../components/About';
 import Contact from '../components/Contact';
 import Clients from '../components/Clients';
+import Technologies from '../components/Technologies';
 
 const Index = () => {
   return (
@@ -12,6 +13,7 @@ const Index = () => {
       <Hero />
       <Services />
       <Clients />
+      <Technologies />
       <About />
       <Contact />
     </div>
