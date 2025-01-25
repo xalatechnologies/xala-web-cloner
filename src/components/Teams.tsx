@@ -6,7 +6,7 @@ const Teams = () => {
       name: "Ibrahim Rahmani",
       role: "Senior Developer",
       description: "Full-stack Developer | Microsoft Certified | MSc in Information Systems with extensive experience in system development, software architecture, and implementing scalable solutions for complex business needs.",
-      image: "/lovable-uploads/57d981d8-9e47-4404-8f30-3436767048b7.png",
+      image: "/lovable-uploads/eb143cd9-14a3-4492-be53-8216b3d5a605.png",
       linkedin: "https://linkedin.com",
       email: "ibrahim@example.com"
     },
@@ -14,7 +14,7 @@ const Teams = () => {
       name: "Wahid Rahmani",
       role: "Developer",
       description: "Master's in Informatics | Experienced Software Engineer with expertise in Machine Learning, Cloud Computing, IT Management, and developing innovative, scalable software solutions for diverse industries.",
-      image: "/lovable-uploads/15911dad-c74d-4cf8-be38-9b9f27b94649.png",
+      image: "/lovable-uploads/bc788751-2e92-4ae8-b6a4-7a175fbc524c.png",
       linkedin: "https://linkedin.com",
       email: "wahid@example.com"
     },
@@ -22,7 +22,7 @@ const Teams = () => {
       name: "Hamid Rahmani",
       role: "Project Manager",
       description: "Experienced Project Manager | Master's degree in Computer Science with expertise in project management, system development, and digital transformation.",
-      image: "/lovable-uploads/c700956f-8871-4608-bdd4-64d966038aea.png",
+      image: "/lovable-uploads/54dff2fe-2407-411e-9d96-afe8fbed9cbc.png",
       linkedin: "https://linkedin.com",
       email: "hamid@example.com"
     },
@@ -30,7 +30,7 @@ const Teams = () => {
       name: "Muhammad Nadeem",
       role: "Fullstack Developer",
       description: "Master in Applied Computer Science | Full-stack Consultant with focus on C#, Web, React, and Data Analysis",
-      image: "/lovable-uploads/bcb33ba6-0562-4857-818f-e29b4f66b4de.png",
+      image: "/lovable-uploads/d980b78a-797e-4476-8ec9-594300df0ee9.png",
       linkedin: "https://linkedin.com",
       email: "muhammad@example.com"
     },
@@ -38,7 +38,7 @@ const Teams = () => {
       name: "Ibtissam Ezzaheri",
       role: "UI/UX Designer",
       description: "Experienced UI/UX Designer | Specialist in user experience and interface design, focused on creating intuitive, functional, and aesthetically pleasing solutions that enhance user engagement and efficiency.",
-      image: "/lovable-uploads/92252a14-97d7-47a9-90e2-5a291b94b99f.png",
+      image: "/lovable-uploads/94726c81-955d-46ad-9968-825b4e908817.png",
       linkedin: "https://linkedin.com",
       email: "ibtissam@example.com"
     },
@@ -46,7 +46,7 @@ const Teams = () => {
       name: "Helena Grønvold",
       role: "Advisor",
       description: "Experienced Advisor | Specialist in strategic guidance and problem-solving, focused on providing tailored advice and solutions that help businesses achieve their goals and improve efficiency.",
-      image: "/lovable-uploads/46fa4e5c-328f-4f2b-83b5-fb81751cf336.png",
+      image: "/lovable-uploads/c48882ae-197a-439d-9406-c6f62200e111.png",
       linkedin: "https://linkedin.com",
       email: "helena@example.com"
     }
