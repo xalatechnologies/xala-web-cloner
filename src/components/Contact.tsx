@@ -110,7 +110,7 @@ const Contact = () => {
 
           {/* Contact Form Column */}
           <div className="backdrop-blur-sm rounded-2xl p-8 bg-gradient-to-br from-white/5 to-transparent border border-white/10">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <Input
@@ -137,8 +137,8 @@ const Contact = () => {
               <div>
                 <Textarea
                   placeholder="Your Message"
-                  rows={6}
-                  className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 resize-none"
+                  rows={12}
+                  className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 resize-none min-h-[300px] p-4"
                 />
               </div>
               <Button
