@@ -2,10 +2,9 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
-import { cn } from "@/lib/utils";
+import Autoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
 
 const clients = [
   {
@@ -59,6 +58,10 @@ const clients = [
 ];
 
 const Clients = () => {
+  const plugin = useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: false })
+  );
+
   return (
     <section className="py-20 bg-gradient-to-b from-xala-primary to-xala-secondary">
       <div className="container mx-auto px-4">
@@ -76,20 +79,13 @@ const Clients = () => {
             align: "start",
             loop: true,
           }}
+          plugins={[plugin.current]}
           className="w-full max-w-6xl mx-auto"
         >
           <CarouselContent className="-ml-2 md:-ml-4">
             {clients.map((client, index) => (
               <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/3 lg:basis-1/4">
-                <div
-                  className={cn(
-                    "relative group h-40 bg-xala-secondary/50 backdrop-blur-sm rounded-xl p-6",
-                    "border border-gray-800 hover:border-cyan-500/50",
-                    "transition-all duration-300 ease-out",
-                    "hover:shadow-lg hover:shadow-cyan-500/20",
-                    `animate-float-${(index % 3) + 1}`
-                  )}
-                >
+                <div className="relative group h-40 bg-xala-secondary/50 backdrop-blur-sm rounded-xl p-6 border border-gray-800 transition-all duration-300 ease-out">
                   <div className="h-full flex items-center justify-center">
                     <img
                       src={client.logo}
@@ -97,13 +93,10 @@ const Clients = () => {
                       className="max-w-[120px] max-h-[60px] object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
                     />
                   </div>
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden md:flex -left-4 bg-xala-secondary border-gray-800 hover:bg-xala-secondary/80 hover:border-cyan-500/50" />
-          <CarouselNext className="hidden md:flex -right-4 bg-xala-secondary border-gray-800 hover:bg-xala-secondary/80 hover:border-cyan-500/50" />
         </Carousel>
       </div>
     </section>
