@@ -11,10 +11,10 @@ const Hero = () => {
     <section id="home" className="min-h-screen flex items-center justify-center gradient-bg">
       <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center ${mounted ? 'animate-fade-in' : 'opacity-0'}`}>
         <h1 className="text-4xl sm:text-6xl font-bold text-white mb-6">
-          Welcome to <span className="text-xala-accent">Xala Technologies</span>
+          Building Digital <span className="text-xala-accent">Excellence</span>
         </h1>
         <p className="text-xl sm:text-2xl text-xala-text mb-8 max-w-2xl mx-auto">
-          Empowering businesses with innovative technology solutions
+          We create innovative software solutions that drive business growth
         </p>
         <a
           href="#contact"

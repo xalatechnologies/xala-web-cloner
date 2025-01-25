@@ -1,26 +1,26 @@
-import { Code, Laptop, LineChart, Shield } from 'lucide-react';
+import { Code, Shield, LineChart, Laptop } from 'lucide-react';
 
 const Services = () => {
   const services = [
     {
       icon: <Code className="w-12 h-12 text-xala-accent mb-4" />,
-      title: "Custom Software Development",
-      description: "Tailored solutions built with cutting-edge technologies to meet your specific business needs."
+      title: "Software Development",
+      description: "Custom software solutions tailored to your business needs, from web applications to enterprise systems."
     },
     {
       icon: <Shield className="w-12 h-12 text-xala-accent mb-4" />,
-      title: "Cybersecurity Solutions",
-      description: "Comprehensive security measures to protect your digital assets and maintain data integrity."
+      title: "Cloud Solutions",
+      description: "Secure and scalable cloud infrastructure setup and management for optimal performance."
     },
     {
       icon: <LineChart className="w-12 h-12 text-xala-accent mb-4" />,
-      title: "Data Analytics",
-      description: "Transform your raw data into actionable insights with our advanced analytics solutions."
+      title: "Digital Strategy",
+      description: "Strategic consulting to help you navigate digital transformation and achieve your business goals."
     },
     {
       icon: <Laptop className="w-12 h-12 text-xala-accent mb-4" />,
-      title: "IT Consulting",
-      description: "Expert guidance to help you navigate the complex landscape of modern technology."
+      title: "Technical Consulting",
+      description: "Expert guidance on technology choices and implementation strategies for your projects."
     }
   ];
 
@@ -30,7 +30,7 @@ const Services = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-xala-accent mb-4">Our Services</h2>
           <p className="text-xala-text text-lg max-w-2xl mx-auto">
-            We offer a comprehensive range of technology solutions to help your business thrive in the digital age.
+            We deliver comprehensive technology solutions to help your business succeed in the digital age
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

@@ -6,17 +6,17 @@ const Contact = () => {
     {
       icon: <Phone className="w-6 h-6 text-xala-accent" />,
       title: "Phone",
-      details: "+1 (555) 123-4567"
+      details: "+47 406 19 465"
     },
     {
       icon: <Mail className="w-6 h-6 text-xala-accent" />,
       title: "Email",
-      details: "contact@xalatechnologies.com"
+      details: "post@xala.no"
     },
     {
       icon: <MapPin className="w-6 h-6 text-xala-accent" />,
       title: "Address",
-      details: "123 Tech Street, Silicon Valley, CA"
+      details: "Oslo, Norway"
     }
   ];
 
@@ -24,9 +24,9 @@ const Contact = () => {
     <section id="contact" className="py-20 bg-xala-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-xala-accent mb-4">Get in Touch</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-xala-accent mb-4">Contact Us</h2>
           <p className="text-xala-text text-lg max-w-2xl mx-auto">
-            Ready to transform your business? Contact us today to discuss how we can help you achieve your goals.
+            Ready to start your next project? Get in touch with us to discuss how we can help.
           </p>
         </div>
         
