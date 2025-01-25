@@ -136,7 +136,7 @@ const Contact = () => {
               </div>
               <div>
                 <Textarea
-                  placeholder="Your Message"
+                  placeholder="Share your thoughts, project ideas, or specific requirements... We're excited to hear from you!"
                   rows={12}
                   className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 resize-none min-h-[300px] p-4"
                 />
