@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Brain, CircuitBoard, Cpu, Database, Network, Server, ArrowRight, Cloud as CloudIcon, BarChart as ChartIcon } from 'lucide-react';
+import { Brain, CircuitBoard, Cpu, Database, Network, Server, ArrowRight, CloudIcon, ChartIcon } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Hero = () => {
