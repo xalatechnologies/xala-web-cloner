@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X, Hexagon } from 'lucide-react';
+import { Menu, X, Brain } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,9 +11,9 @@ const Navbar = () => {
           <div className="flex-shrink-0">
             <a href="#home" className="flex items-center gap-3">
               <div className="relative">
-                <Hexagon size={48} className="text-xala-accent rotate-90" strokeWidth={1.5} />
-                <Hexagon size={48} className="absolute top-0 left-0 text-[#D946EF] rotate-[60deg] opacity-50" strokeWidth={1.5} />
-                <Hexagon size={48} className="absolute top-0 left-0 text-white/10 rotate-[30deg]" strokeWidth={1.5} />
+                <Brain size={48} className="text-xala-accent rotate-3 transition-transform hover:rotate-6" strokeWidth={1.5} />
+                <Brain size={48} className="absolute top-0 left-0 text-[#D946EF] rotate-[-3deg] opacity-50 transition-transform hover:rotate-[-6deg]" strokeWidth={1.5} />
+                <Brain size={48} className="absolute top-0 left-0 text-white/10 rotate-[6deg] transition-transform hover:rotate-[9deg]" strokeWidth={1.5} />
               </div>
               <span className="text-3xl font-bold bg-gradient-to-r from-xala-accent to-[#D946EF] text-transparent bg-clip-text">
                 Xala
