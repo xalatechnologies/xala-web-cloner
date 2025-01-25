@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Brain, CircuitBoard, Cpu, Database, Network, Server, ArrowRight, Cloud as CloudIcon, BarChart as ChartIcon } from 'lucide-react';
+import { Brain, CircuitBoard, Cpu, Database, Network, Server, ArrowRight, Cloud as CloudIcon, Code, BarChart as ChartIcon } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Hero = () => {
@@ -56,14 +56,14 @@ const Hero = () => {
           </p>
           
           {/* Enhanced feature cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto my-12">
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 max-w-5xl mx-auto my-12">
             <div className="group p-6 rounded-xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 hover:border-xala-accent/50 transition-all duration-300">
               <div className="flex flex-col items-center gap-3">
                 <div className="p-3 rounded-lg bg-xala-accent/10 group-hover:bg-xala-accent/20 transition-colors">
                   <Brain className="w-8 h-8 text-xala-accent" />
                 </div>
-                <h3 className="text-lg font-semibold text-xala-accent">AI-Powered Solutions</h3>
-                <p className="text-sm text-xala-text/80">Harness the power of artificial intelligence for smarter business decisions</p>
+                <h3 className="text-lg font-semibold text-xala-accent">AI Solutions</h3>
+                <p className="text-sm text-xala-text/80">Intelligent systems for smarter decisions</p>
               </div>
             </div>
             <div className="group p-6 rounded-xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 hover:border-xala-accent/50 transition-all duration-300">
@@ -72,7 +72,16 @@ const Hero = () => {
                   <CloudIcon className="w-8 h-8 text-xala-accent" />
                 </div>
                 <h3 className="text-lg font-semibold text-xala-accent">Cloud Integration</h3>
-                <p className="text-sm text-xala-text/80">Seamless cloud solutions for scalable and secure operations</p>
+                <p className="text-sm text-xala-text/80">Scalable cloud infrastructure solutions</p>
+              </div>
+            </div>
+            <div className="group p-6 rounded-xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 hover:border-xala-accent/50 transition-all duration-300">
+              <div className="flex flex-col items-center gap-3">
+                <div className="p-3 rounded-lg bg-xala-accent/10 group-hover:bg-xala-accent/20 transition-colors">
+                  <Code className="w-8 h-8 text-xala-accent" />
+                </div>
+                <h3 className="text-lg font-semibold text-xala-accent">Custom Development</h3>
+                <p className="text-sm text-xala-text/80">Tailored applications for your needs</p>
               </div>
             </div>
             <div className="group p-6 rounded-xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 hover:border-xala-accent/50 transition-all duration-300">
@@ -81,7 +90,7 @@ const Hero = () => {
                   <ChartIcon className="w-8 h-8 text-xala-accent" />
                 </div>
                 <h3 className="text-lg font-semibold text-xala-accent">Data Analytics</h3>
-                <p className="text-sm text-xala-text/80">Transform raw data into actionable business insights</p>
+                <p className="text-sm text-xala-text/80">Transform data into insights</p>
               </div>
             </div>
           </div>

@@ -1,6 +1,5 @@
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
-import Services from '../components/Services';
 import CoreProducts from '../components/CoreProducts';
 import About from '../components/About';
 import Contact from '../components/Contact';
@@ -15,7 +14,6 @@ const Index = () => {
     <div className="min-h-screen bg-xala-primary">
       <Navbar />
       <Hero />
-      <Services />
       <CoreProducts />
       <Clients />
       <Technologies />
