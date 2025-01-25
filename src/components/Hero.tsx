@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Brain, CircuitBoard, Cpu, Database, Network, Server, ArrowRight, CloudIcon, ChartIcon } from 'lucide-react';
+import { Brain, CircuitBoard, Cpu, Database, Network, Server, ArrowRight, Cloud, BarChart } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Hero = () => {
@@ -11,7 +11,6 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden py-20 sm:py-32">
-      {/* Enhanced gradient background with curved lines */}
       <div className="absolute inset-0 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary animate-gradient-x">
         <div className="absolute inset-0 opacity-20">
           {/* Curved lines background */}
@@ -23,7 +22,6 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Main content */}
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left column - Text content */}
@@ -96,12 +94,12 @@ const Hero = () => {
               description: "Harness the power of artificial intelligence for smarter business decisions"
             },
             {
-              icon: <CloudIcon className="w-8 h-8" />,
+              icon: <Cloud className="w-8 h-8" />,
               title: "Cloud Integration",
               description: "Seamless cloud solutions for scalable and secure operations"
             },
             {
-              icon: <ChartIcon className="w-8 h-8" />,
+              icon: <BarChart className="w-8 h-8" />,
               title: "Data Analytics",
               description: "Transform raw data into actionable business insights"
             }
