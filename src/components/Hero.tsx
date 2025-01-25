@@ -11,6 +11,7 @@ const Hero = () => {
 
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
+    console.log('Scrolling to section:', sectionId, 'Element found:', !!section);
     if (section) {
       section.scrollIntoView({ 
         behavior: 'smooth',
@@ -34,10 +35,8 @@ const Hero = () => {
         <Brain className="absolute w-14 h-14 text-[#F97316]/20 animate-float-3" style={{ top: '35%', left: '30%' }} />
       </div>
       
-      {/* Main content with enhanced visual hierarchy */}
       <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 ${mounted ? 'animate-fade-in' : 'opacity-0'}`}>
         <div className="space-y-8 text-center">
-          {/* Enhanced badge/label */}
           <div className="inline-block">
             <span className="inline-flex items-center px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 text-sm font-medium text-xala-accent">
               Welcome to the Future of Technology
