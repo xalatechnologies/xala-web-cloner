@@ -59,11 +59,11 @@ const clients = [
 
 const Clients = () => {
   const plugin = useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: false })
+    Autoplay({ delay: 0, stopOnInteraction: false, stopOnMouseEnter: false, rootNode: (emblaRoot) => emblaRoot.parentElement })
   );
 
   return (
-    <section className="py-20 bg-gradient-to-b from-xala-primary to-xala-secondary">
+    <section className="py-20 bg-gradient-to-b from-xala-primary to-xala-secondary overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
@@ -78,21 +78,24 @@ const Clients = () => {
           opts={{
             align: "start",
             loop: true,
+            skipSnaps: true,
+            dragFree: true,
           }}
           plugins={[plugin.current]}
           className="w-full max-w-6xl mx-auto"
         >
           <CarouselContent className="-ml-2 md:-ml-4">
-            {clients.map((client, index) => (
-              <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/3 lg:basis-1/4">
-                <div className="relative group h-40 bg-xala-secondary/50 backdrop-blur-sm rounded-xl p-6 border border-gray-800 transition-all duration-500">
-                  <div className="h-full flex items-center justify-center opacity-0 animate-fade-in" style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}>
-                    <img
-                      src={client.logo}
-                      alt={client.name}
-                      className="max-w-[120px] max-h-[60px] object-contain transition-all duration-500"
-                    />
-                  </div>
+            {[...clients, ...clients].map((client, index) => (
+              <CarouselItem 
+                key={index} 
+                className="pl-2 md:pl-4 md:basis-1/4 lg:basis-1/6 transition-opacity duration-500"
+              >
+                <div className="h-32 flex items-center justify-center p-4">
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="max-w-[100px] max-h-[50px] object-contain opacity-80 transition-opacity duration-300"
+                  />
                 </div>
               </CarouselItem>
             ))}
