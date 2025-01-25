@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { CircuitBoard, Cpu, Database, Network, Server } from 'lucide-react';
+import { Brain, CircuitBoard, Cpu, Database, Network, Server } from 'lucide-react';
 
 const Hero = () => {
   const [mounted, setMounted] = useState(false);
@@ -12,11 +12,12 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center gradient-bg overflow-hidden">
       {/* Floating Icons */}
       <div className="absolute inset-0 pointer-events-none">
-        <CircuitBoard className="absolute text-xala-accent/20 w-24 h-24 animate-float-1" style={{ top: '15%', left: '10%' }} />
-        <Cpu className="absolute text-xala-accent/20 w-16 h-16 animate-float-2" style={{ top: '40%', right: '15%' }} />
-        <Database className="absolute text-xala-accent/20 w-20 h-20 animate-float-3" style={{ bottom: '20%', left: '20%' }} />
-        <Network className="absolute text-xala-accent/20 w-28 h-28 animate-float-2" style={{ top: '25%', right: '25%' }} />
-        <Server className="absolute text-xala-accent/20 w-24 h-24 animate-float-1" style={{ bottom: '30%', right: '10%' }} />
+        <CircuitBoard className="absolute w-16 h-16 text-[#9b87f5] animate-float-1" style={{ top: '15%', left: '10%' }} />
+        <Cpu className="absolute w-12 h-12 text-[#F97316] animate-float-2" style={{ top: '40%', right: '15%' }} />
+        <Database className="absolute w-14 h-14 text-[#0EA5E9] animate-float-3" style={{ bottom: '20%', left: '20%' }} />
+        <Network className="absolute w-16 h-16 text-[#D946EF] animate-float-2" style={{ top: '25%', right: '25%' }} />
+        <Server className="absolute w-14 h-14 text-[#8B5CF6] animate-float-1" style={{ bottom: '30%', right: '10%' }} />
+        <Brain className="absolute w-16 h-16 text-[#F97316] animate-float-3" style={{ top: '35%', left: '30%' }} />
       </div>
 
       <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 ${mounted ? 'animate-fade-in' : 'opacity-0'}`}>
