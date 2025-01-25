@@ -1,0 +1,113 @@
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
+
+const clients = [
+  {
+    name: "NOV",
+    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
+  },
+  {
+    name: "Statistics Norway",
+    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
+  },
+  {
+    name: "Altinn",
+    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
+  },
+  {
+    name: "FURST",
+    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
+  },
+  {
+    name: "Sykehuspartner",
+    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
+  },
+  {
+    name: "Norwegian",
+    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
+  },
+  {
+    name: "UNICEF",
+    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
+  },
+  {
+    name: "OCHA",
+    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
+  },
+  {
+    name: "TDS",
+    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
+  },
+  {
+    name: "Telia",
+    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
+  },
+  {
+    name: "SpareBank 1",
+    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
+  },
+  {
+    name: "Ruter",
+    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
+  },
+];
+
+const Clients = () => {
+  return (
+    <section className="py-20 bg-gradient-to-b from-xala-primary to-xala-secondary">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+            Our Clients
+          </h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            Partnering with visionary clients to drive innovation, efficiency, and sustainable growth.
+          </p>
+        </div>
+
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full max-w-6xl mx-auto"
+        >
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {clients.map((client, index) => (
+              <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/3 lg:basis-1/4">
+                <div
+                  className={cn(
+                    "relative group h-40 bg-xala-secondary/50 backdrop-blur-sm rounded-xl p-6",
+                    "border border-gray-800 hover:border-cyan-500/50",
+                    "transition-all duration-300 ease-out",
+                    "hover:shadow-lg hover:shadow-cyan-500/20",
+                    `animate-float-${(index % 3) + 1}`
+                  )}
+                >
+                  <div className="h-full flex items-center justify-center">
+                    <img
+                      src={client.logo}
+                      alt={client.name}
+                      className="max-w-[120px] max-h-[60px] object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                    />
+                  </div>
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="hidden md:flex -left-4 bg-xala-secondary border-gray-800 hover:bg-xala-secondary/80 hover:border-cyan-500/50" />
+          <CarouselNext className="hidden md:flex -right-4 bg-xala-secondary border-gray-800 hover:bg-xala-secondary/80 hover:border-cyan-500/50" />
+        </Carousel>
+      </div>
+    </section>
+  );
+};
+
+export default Clients;
