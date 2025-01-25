@@ -1,0 +1,71 @@
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
+
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <nav className="fixed w-full bg-xala-primary/90 backdrop-blur-sm z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex-shrink-0">
+            <span className="text-2xl font-bold text-xala-accent">XALA</span>
+          </div>
+          
+          {/* Desktop menu */}
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-8">
+              <NavLink href="#home">Home</NavLink>
+              <NavLink href="#services">Services</NavLink>
+              <NavLink href="#about">About</NavLink>
+              <NavLink href="#contact">Contact</NavLink>
+            </div>
+          </div>
+          
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-xala-text hover:text-xala-accent focus:outline-none"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="md:hidden">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <MobileNavLink href="#home" onClick={() => setIsOpen(false)}>Home</MobileNavLink>
+            <MobileNavLink href="#services" onClick={() => setIsOpen(false)}>Services</MobileNavLink>
+            <MobileNavLink href="#about" onClick={() => setIsOpen(false)}>About</MobileNavLink>
+            <MobileNavLink href="#contact" onClick={() => setIsOpen(false)}>Contact</MobileNavLink>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
+  <a
+    href={href}
+    className="text-xala-text hover:text-xala-accent px-3 py-2 rounded-md text-sm font-medium transition-colors"
+  >
+    {children}
+  </a>
+);
+
+const MobileNavLink = ({ href, children, onClick }: { href: string; children: React.ReactNode; onClick: () => void }) => (
+  <a
+    href={href}
+    onClick={onClick}
+    className="text-xala-text hover:text-xala-accent block px-3 py-2 rounded-md text-base font-medium"
+  >
+    {children}
+  </a>
+);
+
+export default Navbar;
