@@ -18,6 +18,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        chakra: ["Chakra Petch", "sans-serif"],
+      },
       colors: {
         xala: {
           primary: "#0F172A",
