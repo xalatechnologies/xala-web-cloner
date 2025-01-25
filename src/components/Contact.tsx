@@ -51,64 +51,70 @@ const Contact = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {contactInfo.map((info, index) => (
-            <div
-              key={index}
-              className="group p-8 rounded-2xl bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Contact Info Column */}
+          <div className="space-y-8">
+            {contactInfo.map((info, index) => (
+              <div
+                key={index}
+                className="group p-8 rounded-2xl bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 
                          hover:border-white/20 transition-all duration-700 animate-fade-in"
-              style={{ animationDelay: `${index * 200}ms` }}
-            >
-              <div className="flex flex-col items-center text-center">
-                <div className="p-4 rounded-xl bg-white/5 transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:bg-white/10">
-                  {info.icon}
+                style={{ animationDelay: `${index * 200}ms` }}
+              >
+                <div className="flex items-center space-x-6">
+                  <div className="p-4 rounded-xl bg-white/5 transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:bg-white/10">
+                    {info.icon}
+                  </div>
+                  <div className="text-left">
+                    <h3 className="text-xl font-semibold text-white mb-2">{info.title}</h3>
+                    <p className="text-xala-text/80">{info.details}</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold mt-4 mb-2 text-white">{info.title}</h3>
-                <p className="text-xala-text/80">{info.details}</p>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <div className="max-w-2xl mx-auto backdrop-blur-sm rounded-2xl p-8 bg-gradient-to-br from-white/5 to-transparent border border-white/10">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
+          {/* Contact Form Column */}
+          <div className="backdrop-blur-sm rounded-2xl p-8 bg-gradient-to-br from-white/5 to-transparent border border-white/10">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <Input
+                    type="text"
+                    placeholder="Your Name"
+                    className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 h-12"
+                  />
+                </div>
+                <div>
+                  <Input
+                    type="email"
+                    placeholder="Your Email"
+                    className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#D946EF] transition-all duration-500 h-12"
+                  />
+                </div>
+              </div>
+              <div>
                 <Input
                   type="text"
-                  placeholder="Your Name"
-                  className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500"
+                  placeholder="Subject"
+                  className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#0EA5E9] transition-all duration-500 h-12"
                 />
               </div>
-              <div className="space-y-2">
-                <Input
-                  type="email"
-                  placeholder="Your Email"
-                  className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#D946EF] transition-all duration-500"
+              <div>
+                <Textarea
+                  placeholder="Your Message"
+                  rows={6}
+                  className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 resize-none"
                 />
               </div>
-            </div>
-            <div className="space-y-2">
-              <Input
-                type="text"
-                placeholder="Subject"
-                className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#0EA5E9] transition-all duration-500"
-              />
-            </div>
-            <div className="space-y-2">
-              <Textarea
-                placeholder="Your Message"
-                rows={6}
-                className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 resize-none"
-              />
-            </div>
-            <Button
-              type="submit"
-              className="w-full bg-gradient-to-r from-[#8B5CF6] via-[#D946EF] to-[#0EA5E9] hover:opacity-90 text-white font-medium py-6 rounded-xl transition-all duration-700 animate-gradient-x"
-            >
-              Send Message
-            </Button>
-          </form>
+              <Button
+                type="submit"
+                className="w-full bg-[#8B5CF6] hover:bg-[#7C3AED] text-white font-medium py-6 rounded-xl transition-all duration-300"
+              >
+                Send Message
+              </Button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
