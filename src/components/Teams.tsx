@@ -14,7 +14,7 @@ const Teams = () => {
       name: "Wahid Rahmani",
       role: "Developer",
       description: "Master's in Informatics | Experienced Software Engineer with expertise in Machine Learning, Cloud Computing, IT Management, and developing innovative, scalable software solutions for diverse industries.",
-      image: "/lovable-uploads/bc788751-2e92-4ae8-b6a4-7a175fbc524c.png",
+      image: "/lovable-uploads/54dff2fe-2407-411e-9d96-afe8fbed9cbc.png",
       linkedin: "https://linkedin.com",
       email: "wahid@example.com"
     },
@@ -22,7 +22,7 @@ const Teams = () => {
       name: "Hamid Rahmani",
       role: "Project Manager",
       description: "Experienced Project Manager | Master's degree in Computer Science with expertise in project management, system development, and digital transformation.",
-      image: "/lovable-uploads/54dff2fe-2407-411e-9d96-afe8fbed9cbc.png",
+      image: "/lovable-uploads/bc788751-2e92-4ae8-b6a4-7a175fbc524c.png",
       linkedin: "https://linkedin.com",
       email: "hamid@example.com"
     },
