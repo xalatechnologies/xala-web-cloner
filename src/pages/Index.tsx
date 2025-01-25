@@ -6,6 +6,7 @@ import Contact from '../components/Contact';
 import Clients from '../components/Clients';
 import Technologies from '../components/Technologies';
 import Teams from '../components/Teams';
+import WorkProcess from '../components/WorkProcess';
 
 const Index = () => {
   return (
@@ -15,6 +16,7 @@ const Index = () => {
       <Services />
       <Clients />
       <Technologies />
+      <WorkProcess />
       <Teams />
       <About />
       <Contact />
