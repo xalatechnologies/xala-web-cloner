@@ -1,4 +1,4 @@
-import { Code2, Database, Layout, Palette, Server, Terminal } from 'lucide-react';
+import { Code2, Brain, Layout, Palette, Server, Terminal } from 'lucide-react';
 
 const Technologies = () => {
   const technologies = [
@@ -13,9 +13,9 @@ const Technologies = () => {
       tools: ["Node.js", "RESTful APIs", "GraphQL"]
     },
     {
-      icon: <Database className="w-8 h-8 text-xala-accent mb-4" />,
-      name: "Database Management",
-      tools: ["PostgreSQL", "MongoDB", "Redis"]
+      icon: <Brain className="w-8 h-8 text-xala-accent mb-4" />,
+      name: "AI Solutions",
+      tools: ["GPT-4", "LangChain", "Eleven Labs"]
     },
     {
       icon: <Layout className="w-8 h-8 text-xala-accent mb-4" />,
