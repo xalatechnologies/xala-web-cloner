@@ -59,7 +59,7 @@ const clients = [
 
 const Clients = () => {
   const plugin = useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: false })
+    Autoplay({ delay: 3000, stopOnInteraction: false })
   );
 
   return (
@@ -85,12 +85,12 @@ const Clients = () => {
           <CarouselContent className="-ml-2 md:-ml-4">
             {clients.map((client, index) => (
               <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/3 lg:basis-1/4">
-                <div className="relative group h-40 bg-xala-secondary/50 backdrop-blur-sm rounded-xl p-6 border border-gray-800 transition-all duration-300 ease-out">
-                  <div className="h-full flex items-center justify-center">
+                <div className="relative group h-40 bg-xala-secondary/50 backdrop-blur-sm rounded-xl p-6 border border-gray-800 transition-all duration-500">
+                  <div className="h-full flex items-center justify-center opacity-0 animate-fade-in" style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}>
                     <img
                       src={client.logo}
                       alt={client.name}
-                      className="max-w-[120px] max-h-[60px] object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                      className="max-w-[120px] max-h-[60px] object-contain transition-all duration-500"
                     />
                   </div>
                 </div>
