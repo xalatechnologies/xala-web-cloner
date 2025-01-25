@@ -12,13 +12,13 @@ const Teams = () => {
       name: "Wahid Rahmani",
       role: "Developer",
       description: "Master's in Informatics | Experienced Software Engineer with expertise in Machine Learning, Cloud Computing, IT Management, and developing innovative, scalable software solutions for diverse industries.",
-      image: "/lovable-uploads/bcb33ba6-0562-4857-818f-e29b4f66b4de.png"
+      image: "/lovable-uploads/dd06a11f-80af-4780-a3eb-d6211b88ba5e.png"
     },
     {
       name: "Hamid Rahmani",
       role: "Project Manager",
       description: "Experienced Project Manager | Master's degree in Computer Science with expertise in project management, system development, and digital transformation.",
-      image: "/lovable-uploads/bcb33ba6-0562-4857-818f-e29b4f66b4de.png"
+      image: "/lovable-uploads/8d2f448c-b059-4f5b-84cd-633eab629206.png"
     },
     {
       name: "Muhammad Nadeem",
@@ -30,13 +30,13 @@ const Teams = () => {
       name: "Ibtissam Ezzaheri",
       role: "UI/UX Designer",
       description: "Experienced UI/UX Designer | Specialist in user experience and interface design, focused on creating intuitive, functional, and aesthetically pleasing solutions that enhance user engagement and efficiency.",
-      image: "/lovable-uploads/bcb33ba6-0562-4857-818f-e29b4f66b4de.png"
+      image: "/lovable-uploads/fd28caf6-8552-4d12-86e4-3f3c6d533ccb.png"
     },
     {
       name: "Helena Grønvold",
       role: "Advisor",
       description: "Experienced Advisor | Specialist in strategic guidance and problem-solving, focused on providing tailored advice and solutions that help businesses achieve their goals and improve efficiency.",
-      image: "/lovable-uploads/bcb33ba6-0562-4857-818f-e29b4f66b4de.png"
+      image: "/lovable-uploads/205ebdc3-a943-442d-9e0e-6a50abbd35b8.png"
     }
   ];
 
