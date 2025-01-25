@@ -15,8 +15,8 @@ const Index = () => {
     <div className="min-h-screen bg-xala-primary">
       <Navbar />
       <Hero />
-      <CoreProducts />
       <Clients />
+      <CoreProducts />
       <Technologies />
       <WorkProcess />
       <CaseStudies />
