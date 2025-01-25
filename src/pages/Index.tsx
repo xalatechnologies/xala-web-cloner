@@ -8,6 +8,7 @@ import Technologies from '../components/Technologies';
 import Teams from '../components/Teams';
 import WorkProcess from '../components/WorkProcess';
 import CaseStudies from '../components/CaseStudies';
+import Footer from '../components/Footer';
 
 const Index = () => {
   return (
@@ -22,6 +23,7 @@ const Index = () => {
       <Teams />
       <About />
       <Contact />
+      <Footer />
     </div>
   );
 };
