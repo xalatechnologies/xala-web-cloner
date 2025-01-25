@@ -1,77 +1,110 @@
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Textarea } from './ui/textarea';
+import { useToast } from './ui/use-toast';
 
 const Contact = () => {
+  const { toast } = useToast();
+  
   const contactInfo = [
     {
-      icon: <Phone className="w-6 h-6 text-xala-accent" />,
+      icon: <Phone className="w-6 h-6 text-[#8B5CF6]" />,
       title: "Phone",
       details: "+47 406 19 465"
     },
     {
-      icon: <Mail className="w-6 h-6 text-xala-accent" />,
+      icon: <Mail className="w-6 h-6 text-[#D946EF]" />,
       title: "Email",
       details: "post@xala.no"
     },
     {
-      icon: <MapPin className="w-6 h-6 text-xala-accent" />,
+      icon: <MapPin className="w-6 h-6 text-[#0EA5E9]" />,
       title: "Address",
       details: "Oslo, Norway"
     }
   ];
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: "Message sent!",
+      description: "We'll get back to you as soon as possible.",
+    });
+  };
+
   return (
-    <section id="contact" className="py-20 bg-xala-secondary">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-xala-accent mb-4">Contact Us</h2>
-          <p className="text-xala-text text-lg max-w-2xl mx-auto">
-            Ready to start your next project? Get in touch with us to discuss how we can help.
+    <section id="contact" className="relative py-24 overflow-hidden bg-gradient-to-b from-xala-primary to-xala-secondary">
+      {/* Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -left-1/4 -top-1/4 w-1/2 h-1/2 bg-[#8B5CF6]/10 rounded-full blur-3xl animate-float-1"></div>
+        <div className="absolute -right-1/4 -bottom-1/4 w-1/2 h-1/2 bg-[#D946EF]/10 rounded-full blur-3xl animate-float-2"></div>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-[#8B5CF6] via-[#D946EF] to-[#0EA5E9] text-transparent bg-clip-text mb-4">
+            Let's Build Something Amazing
+          </h2>
+          <p className="text-xala-text/80 text-lg max-w-2xl mx-auto">
+            Ready to transform your ideas into reality? Get in touch with our team of experts.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {contactInfo.map((info, index) => (
             <div
               key={index}
-              className="p-6 bg-xala-primary rounded-lg text-center hover:transform hover:scale-105 transition-all duration-300"
+              className="group p-8 rounded-2xl bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 
+                         hover:border-white/20 transition-all duration-300 animate-fade-in"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="flex flex-col items-center">
-                {info.icon}
-                <h3 className="text-xl font-semibold my-3 text-xala-accent">{info.title}</h3>
-                <p className="text-xala-text">{info.details}</p>
+              <div className="flex flex-col items-center text-center">
+                <div className="p-4 rounded-xl bg-white/5 group-hover:scale-110 transition-transform duration-300">
+                  {info.icon}
+                </div>
+                <h3 className="text-xl font-semibold mt-4 mb-2 text-white">{info.title}</h3>
+                <p className="text-xala-text/80">{info.details}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="max-w-2xl mx-auto">
-          <form className="space-y-6">
+        <div className="max-w-2xl mx-auto backdrop-blur-sm rounded-2xl p-8 bg-gradient-to-br from-white/5 to-transparent border border-white/10">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <input
+              <div className="space-y-2">
+                <Input
+                  type="text"
+                  placeholder="Your Name"
+                  className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-colors"
+                />
+              </div>
+              <div className="space-y-2">
+                <Input
+                  type="email"
+                  placeholder="Your Email"
+                  className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#D946EF] transition-colors"
+                />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <Input
                 type="text"
-                placeholder="Your Name"
-                className="w-full p-3 rounded-lg bg-xala-primary text-xala-text border border-xala-accent/20 focus:border-xala-accent outline-none"
-              />
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="w-full p-3 rounded-lg bg-xala-primary text-xala-text border border-xala-accent/20 focus:border-xala-accent outline-none"
+                placeholder="Subject"
+                className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#0EA5E9] transition-colors"
               />
             </div>
-            <input
-              type="text"
-              placeholder="Subject"
-              className="w-full p-3 rounded-lg bg-xala-primary text-xala-text border border-xala-accent/20 focus:border-xala-accent outline-none"
-            />
-            <textarea
-              placeholder="Your Message"
-              rows={6}
-              className="w-full p-3 rounded-lg bg-xala-primary text-xala-text border border-xala-accent/20 focus:border-xala-accent outline-none resize-none"
-            ></textarea>
+            <div className="space-y-2">
+              <Textarea
+                placeholder="Your Message"
+                rows={6}
+                className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-colors resize-none"
+              />
+            </div>
             <Button
               type="submit"
-              className="w-full bg-xala-accent hover:bg-opacity-90 text-white font-medium py-3 rounded-lg transition-all"
+              className="w-full bg-gradient-to-r from-[#8B5CF6] via-[#D946EF] to-[#0EA5E9] hover:opacity-90 text-white font-medium py-6 rounded-xl transition-all duration-300 animate-gradient-x"
             >
               Send Message
             </Button>
