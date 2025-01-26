@@ -61,81 +61,76 @@ const Navbar = () => {
             </a>
           </div>
           
-          {/* Desktop menu */}
-          <div className="hidden md:flex md:items-center md:space-x-8">
-            <div className="flex space-x-8">
-              {sections.map((section) => (
-                <a
-                  key={section.name}
-                  href={section.href}
-                  className="text-xala-text hover:text-xala-accent px-3 py-2 text-sm font-medium transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:-bottom-1 after:left-0 after:bg-xala-accent after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
-                >
-                  {section.name}
-                </a>
-              ))}
-            </div>
-            
-            {/* Social Icons */}
-            <div className="flex items-center space-x-4 pl-8 border-l border-xala-accent/20">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xala-text hover:text-xala-accent transition-colors duration-300 hover:scale-110 transform"
-                  aria-label={link.label}
-                >
-                  {link.icon}
-                </a>
-              ))}
-            </div>
+          {/* Social Icons - Always visible */}
+          <div className="hidden md:flex items-center space-x-4 pl-8">
+            {socialLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xala-text hover:text-xala-accent transition-colors duration-300 hover:scale-110 transform"
+                aria-label={link.label}
+              >
+                {link.icon}
+              </a>
+            ))}
           </div>
           
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-xala-text hover:text-xala-accent focus:outline-none transition-colors"
-              aria-expanded="false"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+          {/* Hamburger Menu Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="inline-flex items-center justify-center p-2 rounded-md text-xala-text hover:text-xala-accent focus:outline-none transition-colors relative group"
+            aria-expanded="false"
+          >
+            <div className="relative">
+              {isOpen ? (
+                <X size={24} className="transform transition-transform duration-300 rotate-90 group-hover:rotate-180" />
+              ) : (
+                <Menu size={24} className="transform transition-transform duration-300 group-hover:rotate-90" />
+              )}
+              <div className="absolute inset-0 bg-xala-accent/10 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
+          </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {isOpen && (
-        <div className="md:hidden absolute w-full bg-xala-primary/95 backdrop-blur-md border-b border-xala-accent/20 animate-fade-in">
-          <div className="px-4 pt-2 pb-3 space-y-1">
-            {sections.map((section) => (
+      {/* Fullscreen Menu Overlay */}
+      <div 
+        className={`fixed inset-0 bg-gradient-to-br from-xala-primary/95 via-xala-secondary/95 to-xala-primary/95 backdrop-blur-lg transform transition-transform duration-300 ease-in-out ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex flex-col h-full justify-center items-center space-y-8 p-4">
+          {sections.map((section) => (
+            <a
+              key={section.name}
+              href={section.href}
+              onClick={() => setIsOpen(false)}
+              className="text-4xl font-bold text-xala-text hover:text-xala-accent transform transition-all duration-300 hover:scale-110 hover:translate-x-2 relative group"
+            >
+              {section.name}
+              <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-xala-accent transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+            </a>
+          ))}
+          
+          {/* Mobile Social Icons */}
+          <div className="flex items-center space-x-6 mt-12 md:hidden">
+            {socialLinks.map((link) => (
               <a
-                key={section.name}
-                href={section.href}
-                onClick={() => setIsOpen(false)}
-                className="text-xala-text hover:text-xala-accent block px-3 py-2 text-base font-medium transition-colors"
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xala-text hover:text-xala-accent transition-colors duration-300 hover:scale-125 transform p-2"
+                aria-label={link.label}
               >
-                {section.name}
+                {link.icon}
               </a>
             ))}
-            <div className="flex items-center space-x-4 px-3 py-4 border-t border-xala-accent/20 mt-4">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xala-text hover:text-xala-accent transition-colors duration-300"
-                  aria-label={link.label}
-                >
-                  {link.icon}
-                </a>
-              ))}
-            </div>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 };
