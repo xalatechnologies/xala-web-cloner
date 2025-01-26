@@ -73,7 +73,7 @@ const FeatureCards = () => {
         return (
           <FeatureCard
             key={feature.id}
-            icon={<IconComponent className="w-[200%] h-[200%] text-xala-accent/5 group-hover:text-white/5 transition-all duration-700" />}
+            icon={<IconComponent className="w-12 h-12 text-xala-accent group-hover:scale-110 transition-transform duration-500" />}
             title={feature.title}
             description={feature.description}
             index={index}
@@ -102,11 +102,6 @@ const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => (
       transform: `perspective(1000px) rotateY(${index * 5}deg)`
     }}
   >
-    {/* Background icon */}
-    <div className="absolute -right-1/4 -bottom-1/4 transform scale-100 transition-all duration-700 group-hover:scale-125 group-hover:rotate-12">
-      {icon}
-    </div>
-    
     {/* Animated background gradient */}
     <div className="absolute inset-0 bg-gradient-to-br from-xala-accent/0 via-[#9b87f5]/0 to-[#D946EF]/0 
                     group-hover:from-xala-accent/20 group-hover:via-[#9b87f5]/10 group-hover:to-[#D946EF]/5 
@@ -121,13 +116,16 @@ const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => (
                     transition-all duration-700" />
 
     <div className="relative flex flex-col h-full z-10">
+      <div className="flex justify-center mb-6">
+        {icon}
+      </div>
       <h3 className="text-2xl font-bold bg-gradient-to-r from-white via-white to-xala-accent/80 
                      bg-clip-text text-transparent group-hover:from-xala-accent group-hover:via-white group-hover:to-[#D946EF]
-                     transition-all duration-700 tracking-tight mb-6">
+                     transition-all duration-700 tracking-tight mb-4">
         {title}
       </h3>
       <p className="text-lg text-xala-text/70 group-hover:text-white/90 transition-colors duration-700 leading-relaxed">
-        {description}
+        {description.length > 100 ? `${description.substring(0, 100)}...` : description}
       </p>
     </div>
   </div>
