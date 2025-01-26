@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useSection } from '@/hooks/use-section';
+import { useQuery } from '@tanstack/react-query';
+import { supabase } from '@/integrations/supabase/client';
 import {
   Carousel,
   CarouselContent,
@@ -7,6 +9,12 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
+
+interface Product {
+  id: string;
+  title: string;
+  description: string;
+}
 
 const CoreProducts = () => {
   const { t } = useTranslation();
@@ -18,6 +26,19 @@ const CoreProducts = () => {
       stopOnMouseEnter: true,
     })
   );
+
+  const { data: products = [] } = useQuery({
+    queryKey: ['products'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('products')
+        .select('id, title, description')
+        .order('sort_order', { ascending: true });
+      
+      if (error) throw error;
+      return data as Product[];
+    },
+  });
 
   const renderContent = () => {
     if (section?.carousel) {
@@ -33,8 +54,8 @@ const CoreProducts = () => {
           className="w-full max-w-6xl mx-auto"
         >
           <CarouselContent className="-ml-2 md:-ml-4">
-            {section.products.map((product, index) => (
-              <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/3">
+            {products.map((product) => (
+              <CarouselItem key={product.id} className="pl-2 md:pl-4 basis-full md:basis-1/3">
                 <div className="group p-8 rounded-xl bg-white/5 border border-white/10 hover:border-[#9b87f5]/50 
                              backdrop-blur-sm transition-all duration-500 hover:transform hover:-translate-y-1
                              hover:shadow-lg hover:shadow-[#9b87f5]/10">
@@ -54,8 +75,8 @@ const CoreProducts = () => {
 
     return (
       <div className={`grid grid-cols-1 md:grid-cols-${section?.columns || 3} gap-8`}>
-        {section.products.map((product, index) => (
-          <div key={index} className="group p-8 rounded-xl bg-white/5 border border-white/10 hover:border-[#9b87f5]/50 
+        {products.map((product) => (
+          <div key={product.id} className="group p-8 rounded-xl bg-white/5 border border-white/10 hover:border-[#9b87f5]/50 
                      backdrop-blur-sm transition-all duration-500 hover:transform hover:-translate-y-1
                      hover:shadow-lg hover:shadow-[#9b87f5]/10">
             <h3 className="text-xl font-semibold text-white group-hover:text-[#9b87f5] transition-colors">
