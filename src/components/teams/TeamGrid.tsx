@@ -11,13 +11,7 @@ interface TeamGridProps {
 
 const TeamGrid = ({ members, columns, rows }: TeamGridProps) => {
   return (
-    <div 
-      className="grid gap-8"
-      style={{
-        gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
-        gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`
-      }}
-    >
+    <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {members.map((member) => (
         <TeamMemberCard
           key={member.id}
