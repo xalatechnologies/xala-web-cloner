@@ -19,8 +19,7 @@ i18n
     },
     fallbackLng: 'no',
     detection: {
-      order: ['navigator'],
-      lookupNavigator: true,
+      order: ['navigator']
     },
     interpolation: {
       escapeValue: false
