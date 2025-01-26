@@ -9,29 +9,35 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      about_sections: {
+      about_features: {
         Row: {
           created_at: string | null
-          icon: string | null
+          description: string
+          icon: string
           id: string
-          section_key: string
+          language: Database["public"]["Enums"]["supported_language"]
           sort_order: number
+          title: string
           updated_at: string | null
         }
         Insert: {
           created_at?: string | null
-          icon?: string | null
+          description: string
+          icon: string
           id?: string
-          section_key: string
+          language?: Database["public"]["Enums"]["supported_language"]
           sort_order?: number
+          title: string
           updated_at?: string | null
         }
         Update: {
           created_at?: string | null
-          icon?: string | null
+          description?: string
+          icon?: string
           id?: string
-          section_key?: string
+          language?: Database["public"]["Enums"]["supported_language"]
           sort_order?: number
+          title?: string
           updated_at?: string | null
         }
         Relationships: []
@@ -39,26 +45,38 @@ export type Database = {
       case_studies: {
         Row: {
           created_at: string | null
+          description: string
           icon: string
           id: string
           image_url: string
+          language: Database["public"]["Enums"]["supported_language"]
+          metrics: string | null
           sort_order: number
+          title: string
           updated_at: string | null
         }
         Insert: {
           created_at?: string | null
+          description: string
           icon: string
           id?: string
           image_url: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          metrics?: string | null
           sort_order?: number
+          title: string
           updated_at?: string | null
         }
         Update: {
           created_at?: string | null
+          description?: string
           icon?: string
           id?: string
           image_url?: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          metrics?: string | null
           sort_order?: number
+          title?: string
           updated_at?: string | null
         }
         Relationships: []
@@ -66,7 +84,9 @@ export type Database = {
       clients: {
         Row: {
           created_at: string | null
+          description: string | null
           id: string
+          language: Database["public"]["Enums"]["supported_language"]
           logo_url: string
           name: string
           sort_order: number
@@ -75,7 +95,9 @@ export type Database = {
         }
         Insert: {
           created_at?: string | null
+          description?: string | null
           id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
           logo_url: string
           name: string
           sort_order?: number
@@ -84,7 +106,9 @@ export type Database = {
         }
         Update: {
           created_at?: string | null
+          description?: string | null
           id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
           logo_url?: string
           name?: string
           sort_order?: number
@@ -93,47 +117,12 @@ export type Database = {
         }
         Relationships: []
       }
-      contact_information: {
-        Row: {
-          address: string
-          created_at: string | null
-          email: string
-          github_url: string | null
-          id: string
-          linkedin_url: string | null
-          phone: string
-          twitter_url: string | null
-          updated_at: string | null
-        }
-        Insert: {
-          address: string
-          created_at?: string | null
-          email: string
-          github_url?: string | null
-          id?: string
-          linkedin_url?: string | null
-          phone: string
-          twitter_url?: string | null
-          updated_at?: string | null
-        }
-        Update: {
-          address?: string
-          created_at?: string | null
-          email?: string
-          github_url?: string | null
-          id?: string
-          linkedin_url?: string | null
-          phone?: string
-          twitter_url?: string | null
-          updated_at?: string | null
-        }
-        Relationships: []
-      }
       contact_submissions: {
         Row: {
           created_at: string | null
           email: string
           id: string
+          language: Database["public"]["Enums"]["supported_language"]
           message: string
           name: string
           status: string | null
@@ -144,6 +133,7 @@ export type Database = {
           created_at?: string | null
           email: string
           id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
           message: string
           name: string
           status?: string | null
@@ -154,6 +144,7 @@ export type Database = {
           created_at?: string | null
           email?: string
           id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
           message?: string
           name?: string
           status?: string | null
@@ -162,80 +153,77 @@ export type Database = {
         }
         Relationships: []
       }
-      processes: {
-        Row: {
-          created_at: string | null
-          icon: string
-          id: string
-          sort_order: number
-          step_number: number
-          updated_at: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          icon: string
-          id?: string
-          sort_order?: number
-          step_number: number
-          updated_at?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          icon?: string
-          id?: string
-          sort_order?: number
-          step_number?: number
-          updated_at?: string | null
-        }
-        Relationships: []
-      }
       products: {
         Row: {
           created_at: string | null
-          icon: string
+          description: string
+          icon: string | null
           id: string
           image_url: string
+          language: Database["public"]["Enums"]["supported_language"]
+          metrics: string | null
           sort_order: number
+          title: string
           updated_at: string | null
         }
         Insert: {
           created_at?: string | null
-          icon: string
+          description: string
+          icon?: string | null
           id?: string
           image_url: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          metrics?: string | null
           sort_order?: number
+          title: string
           updated_at?: string | null
         }
         Update: {
           created_at?: string | null
-          icon?: string
+          description?: string
+          icon?: string | null
           id?: string
           image_url?: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          metrics?: string | null
           sort_order?: number
+          title?: string
           updated_at?: string | null
         }
         Relationships: []
       }
-      services: {
+      sections: {
         Row: {
+          background: string | null
           created_at: string | null
-          icon: string
+          description: string | null
           id: string
+          language: Database["public"]["Enums"]["supported_language"]
+          section_name: string
           sort_order: number
+          title: string
           updated_at: string | null
         }
         Insert: {
+          background?: string | null
           created_at?: string | null
-          icon: string
+          description?: string | null
           id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          section_name: string
           sort_order?: number
+          title: string
           updated_at?: string | null
         }
         Update: {
+          background?: string | null
           created_at?: string | null
-          icon?: string
+          description?: string | null
           id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          section_name?: string
           sort_order?: number
+          title?: string
           updated_at?: string | null
         }
         Relationships: []
@@ -243,9 +231,11 @@ export type Database = {
       team_members: {
         Row: {
           created_at: string | null
+          description: string | null
           email: string
           id: string
           image_url: string
+          language: Database["public"]["Enums"]["supported_language"]
           linkedin_url: string | null
           name: string
           role: string
@@ -254,9 +244,11 @@ export type Database = {
         }
         Insert: {
           created_at?: string | null
+          description?: string | null
           email: string
           id?: string
           image_url: string
+          language?: Database["public"]["Enums"]["supported_language"]
           linkedin_url?: string | null
           name: string
           role: string
@@ -265,9 +257,11 @@ export type Database = {
         }
         Update: {
           created_at?: string | null
+          description?: string | null
           email?: string
           id?: string
           image_url?: string
+          language?: Database["public"]["Enums"]["supported_language"]
           linkedin_url?: string | null
           name?: string
           role?: string
@@ -280,25 +274,34 @@ export type Database = {
         Row: {
           category: string
           created_at: string | null
+          description: string | null
           icon: string
           id: string
+          language: Database["public"]["Enums"]["supported_language"]
           sort_order: number
+          title: string
           updated_at: string | null
         }
         Insert: {
           category: string
           created_at?: string | null
+          description?: string | null
           icon: string
           id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
           sort_order?: number
+          title: string
           updated_at?: string | null
         }
         Update: {
           category?: string
           created_at?: string | null
+          description?: string | null
           icon?: string
           id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
           sort_order?: number
+          title?: string
           updated_at?: string | null
         }
         Relationships: []
@@ -306,7 +309,9 @@ export type Database = {
       technology_tools: {
         Row: {
           created_at: string | null
+          description: string | null
           id: string
+          language: Database["public"]["Enums"]["supported_language"]
           name: string
           sort_order: number
           technology_id: string | null
@@ -314,7 +319,9 @@ export type Database = {
         }
         Insert: {
           created_at?: string | null
+          description?: string | null
           id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
           name: string
           sort_order?: number
           technology_id?: string | null
@@ -322,7 +329,9 @@ export type Database = {
         }
         Update: {
           created_at?: string | null
+          description?: string | null
           id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
           name?: string
           sort_order?: number
           technology_id?: string | null
@@ -338,30 +347,39 @@ export type Database = {
           },
         ]
       }
-      translations: {
+      work_processes: {
         Row: {
           created_at: string | null
+          description: string
+          icon: string
           id: string
-          key: string
           language: Database["public"]["Enums"]["supported_language"]
+          sort_order: number
+          step_number: number
+          title: string
           updated_at: string | null
-          value: string
         }
         Insert: {
           created_at?: string | null
+          description: string
+          icon: string
           id?: string
-          key: string
-          language: Database["public"]["Enums"]["supported_language"]
+          language?: Database["public"]["Enums"]["supported_language"]
+          sort_order?: number
+          step_number: number
+          title: string
           updated_at?: string | null
-          value: string
         }
         Update: {
           created_at?: string | null
+          description?: string
+          icon?: string
           id?: string
-          key?: string
           language?: Database["public"]["Enums"]["supported_language"]
+          sort_order?: number
+          step_number?: number
+          title?: string
           updated_at?: string | null
-          value?: string
         }
         Relationships: []
       }

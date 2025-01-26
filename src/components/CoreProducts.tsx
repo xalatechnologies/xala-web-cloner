@@ -48,42 +48,39 @@ const CoreProducts = () => {
           {products.map((product, index) => (
             <div
               key={index}
-              className="group relative bg-xala-secondary rounded-xl p-6 hover:transform hover:scale-105 transition-all duration-300 overflow-hidden"
+              className="group flex flex-col h-full bg-xala-secondary rounded-xl p-6 hover:transform hover:scale-105 transition-all duration-300"
             >
-              {/* Product image as background with overlay */}
-              <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
+              <div className="flex items-center justify-between mb-4">
+                {product.icon}
+                <span className="text-sm text-xala-accent font-semibold">
+                  {product.metrics}
+                </span>
+              </div>
+              
+              <h3 className="text-xl font-semibold mb-3 text-xala-accent">
+                {product.title}
+              </h3>
+              
+              <p className="text-xala-text mb-6">
+                {product.description}
+              </p>
+
+              {/* Product image */}
+              <div className="flex-grow mb-6">
                 <img
                   src={product.image}
                   alt={product.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-48 object-cover rounded-lg"
                 />
               </div>
               
-              {/* Content */}
-              <div className="relative z-10">
-                <div className="flex items-center justify-between mb-4">
-                  {product.icon}
-                  <span className="text-sm text-xala-accent font-semibold">
-                    {product.metrics}
-                  </span>
-                </div>
-                
-                <h3 className="text-xl font-semibold mb-3 text-xala-accent">
-                  {product.title}
-                </h3>
-                
-                <p className="text-xala-text mb-6">
-                  {product.description}
-                </p>
-                
-                <Button
-                  variant="outline"
-                  className="group w-full bg-transparent border border-xala-accent text-xala-accent hover:bg-xala-accent hover:text-white transition-all duration-300"
-                >
-                  {t('coreProducts.learnMore')}
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </div>
+              <Button
+                variant="outline"
+                className="group w-full bg-transparent border border-xala-accent text-xala-accent hover:bg-xala-accent hover:text-white transition-all duration-300 mt-auto"
+              >
+                {t('coreProducts.learnMore')}
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
             </div>
           ))}
         </div>
