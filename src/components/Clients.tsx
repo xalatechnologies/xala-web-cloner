@@ -3,6 +3,8 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
 
 const clients = [
   {
@@ -38,6 +40,14 @@ const clients = [
 ];
 
 const Clients = () => {
+  const plugin = useRef(
+    Autoplay({
+      delay: 4000,
+      stopOnInteraction: false,
+      stopOnMouseEnter: true,
+    })
+  );
+
   return (
     <section className="py-20 relative overflow-hidden">
       {/* Background using site's color scheme */}
@@ -56,9 +66,11 @@ const Clients = () => {
         <Carousel
           opts={{
             align: "center",
-            loop: false,
+            loop: true,
             dragFree: true,
+            skipSnaps: true,
           }}
+          plugins={[plugin.current]}
           className="w-full max-w-6xl mx-auto"
         >
           <CarouselContent className="-ml-2 md:-ml-4">
