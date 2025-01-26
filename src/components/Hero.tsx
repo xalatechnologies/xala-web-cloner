@@ -21,18 +21,44 @@ const Hero = () => {
     }
   };
 
+  // Galaxy background component
+  const GalaxyBackground = () => (
+    <div className="absolute inset-0 overflow-hidden">
+      {/* Star field layer */}
+      <div className="absolute inset-0">
+        {[...Array(50)].map((_, i) => (
+          <div
+            key={i}
+            className={`absolute w-1 h-1 bg-white rounded-full
+              ${i % 3 === 0 ? 'animate-twinkle-1' : i % 3 === 1 ? 'animate-twinkle-2' : 'animate-twinkle-3'}`}
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              opacity: Math.random() * 0.7 + 0.3,
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* Nebula effects */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute w-[800px] h-[800px] rounded-full bg-purple-500/20 blur-3xl -top-[400px] -left-[400px] animate-galaxy-spin" />
+        <div className="absolute w-[600px] h-[600px] rounded-full bg-blue-500/20 blur-3xl -bottom-[300px] -right-[300px] animate-galaxy-spin" style={{ animationDelay: '-20s' }} />
+        <div className="absolute w-[400px] h-[400px] rounded-full bg-cyan-500/20 blur-3xl top-[20%] right-[10%] animate-galaxy-spin" style={{ animationDelay: '-40s' }} />
+      </div>
+    </div>
+  );
+
   // Floating icons component
   const FloatingIcons = () => (
     <>
-      {/* Top left cluster */}
+      {/* Tech icons */}
       <div className="absolute top-20 left-20 animate-float-1">
         <Brain className="w-8 h-8 text-xala-accent/30" />
       </div>
       <div className="absolute top-40 left-40 animate-float-2">
         <CircuitBoard className="w-6 h-6 text-xala-accent/20" />
       </div>
-      
-      {/* Top right cluster */}
       <div className="absolute top-32 right-24 animate-float-3">
         <Cpu className="w-10 h-10 text-xala-accent/25" />
       </div>
@@ -40,19 +66,25 @@ const Hero = () => {
         <Database className="w-7 h-7 text-xala-accent/30" />
       </div>
 
-      {/* Sparkling stars */}
-      <div className="absolute top-1/4 left-1/3 animate-float-2">
-        <Sparkles className="w-5 h-5 text-yellow-400/40" />
-      </div>
-      <div className="absolute bottom-1/3 right-1/4 animate-float-3">
-        <Star className="w-4 h-4 text-yellow-400/30" />
-      </div>
-      <div className="absolute top-1/3 right-1/3 animate-float-1">
-        <StarHalf className="w-6 h-6 text-yellow-400/35" />
-      </div>
-      <div className="absolute bottom-1/4 left-1/4 animate-float-2">
-        <Sparkles className="w-5 h-5 text-yellow-400/40" />
-      </div>
+      {/* Enhanced sparkling stars */}
+      {[...Array(12)].map((_, i) => (
+        <div
+          key={i}
+          className={`absolute ${i % 3 === 0 ? 'animate-twinkle-1' : i % 3 === 1 ? 'animate-twinkle-2' : 'animate-twinkle-3'}`}
+          style={{
+            left: `${Math.random() * 80 + 10}%`,
+            top: `${Math.random() * 80 + 10}%`,
+          }}
+        >
+          {i % 3 === 0 ? (
+            <Sparkles className="w-5 h-5 text-yellow-400/40" />
+          ) : i % 3 === 1 ? (
+            <Star className="w-4 h-4 text-yellow-400/30" />
+          ) : (
+            <StarHalf className="w-6 h-6 text-yellow-400/35" />
+          )}
+        </div>
+      ))}
 
       {/* Bottom clusters */}
       <div className="absolute bottom-32 left-1/4 animate-float-3">
@@ -68,6 +100,9 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden py-20 sm:py-32">
       <div className="absolute inset-0 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary animate-gradient-x"></div>
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-5"></div>
+      
+      {/* Add galaxy background */}
+      <GalaxyBackground />
       
       {/* Add floating icons */}
       <FloatingIcons />

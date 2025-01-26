@@ -19,7 +19,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Chakra Petch", "sans-serif"], // Set as default font
+        sans: ["Chakra Petch", "sans-serif"],
         chakra: ["Chakra Petch", "sans-serif"],
       },
       colors: {
@@ -36,6 +36,10 @@ export default {
         "float-1": "float1 30s ease-in-out infinite",
         "float-2": "float2 35s ease-in-out infinite",
         "float-3": "float3 40s ease-in-out infinite",
+        "twinkle-1": "twinkle 4s ease-in-out infinite",
+        "twinkle-2": "twinkle 6s ease-in-out infinite",
+        "twinkle-3": "twinkle 8s ease-in-out infinite",
+        "galaxy-spin": "galaxy-spin 100s linear infinite",
       },
       keyframes: {
         "gradient-x": {
@@ -89,6 +93,24 @@ export default {
           },
           "50%": {
             transform: "translate(10px, -20px) rotate(5deg)",
+          },
+        },
+        twinkle: {
+          "0%, 100%": {
+            opacity: "0.2",
+            transform: "scale(0.8)",
+          },
+          "50%": {
+            opacity: "1",
+            transform: "scale(1.2)",
+          },
+        },
+        "galaxy-spin": {
+          "0%": {
+            transform: "rotate(0deg)",
+          },
+          "100%": {
+            transform: "rotate(360deg)",
           },
         },
       },
