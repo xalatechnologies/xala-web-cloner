@@ -16,7 +16,7 @@ const Navbar = () => {
                 <Brain size={48} className="absolute top-0 left-0 text-white/10 rotate-[6deg] transition-transform hover:rotate-[9deg]" strokeWidth={1.5} />
               </div>
               <span className="text-3xl font-bold bg-gradient-to-r from-xala-accent to-[#D946EF] text-transparent bg-clip-text">
-                Xala
+                Xala Technologies
               </span>
             </a>
           </div>
