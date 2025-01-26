@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import type { Database } from '@/integrations/supabase/types';
+import { Wand2 } from 'lucide-react';
 
 type SupportedLanguage = Database['public']['Enums']['supported_language'];
 
@@ -13,26 +14,57 @@ export const ContactForm = () => {
   const { toast } = useToast();
   const { t, i18n } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isEnhancing, setIsEnhancing] = useState<{[key: string]: boolean}>({});
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const enhanceText = async (field: string) => {
+    setIsEnhancing(prev => ({ ...prev, [field]: true }));
+    try {
+      const { data, error } = await supabase.functions.invoke('enhance-text', {
+        body: { text: formData[field as keyof typeof formData], type: field }
+      });
+
+      if (error) throw error;
+
+      if (data.enhancedText) {
+        setFormData(prev => ({ ...prev, [field]: data.enhancedText }));
+        toast({
+          title: t('contact.form.enhance.success'),
+          description: t('contact.form.enhance.description'),
+        });
+      }
+    } catch (error) {
+      console.error('Error enhancing text:', error);
+      toast({
+        title: t('contact.form.enhance.error'),
+        description: t('contact.form.enhance.errorDescription'),
+        variant: "destructive",
+      });
+    } finally {
+      setIsEnhancing(prev => ({ ...prev, [field]: false }));
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const formData = new FormData(e.currentTarget);
     const currentLang = i18n.language.toLowerCase() as SupportedLanguage;
     
-    const submission = {
-      name: formData.get('name') as string,
-      email: formData.get('email') as string,
-      subject: formData.get('subject') as string,
-      message: formData.get('message') as string,
-      language: currentLang,
-    };
-
     try {
       const { error } = await supabase
         .from('contact_submissions')
-        .insert([submission]);
+        .insert([{ ...formData, language: currentLang }]);
 
       if (error) throw error;
 
@@ -41,8 +73,12 @@ export const ContactForm = () => {
         description: t('contact.form.success.description'),
       });
 
-      // Reset form
-      (e.target as HTMLFormElement).reset();
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
     } catch (error) {
       console.error('Error submitting form:', error);
       toast({
@@ -59,42 +95,79 @@ export const ContactForm = () => {
     <div className="backdrop-blur-sm rounded-2xl p-8 bg-gradient-to-br from-white/5 to-transparent border border-white/10">
       <form onSubmit={handleSubmit} className="space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <Input
-              name="name"
-              type="text"
-              placeholder={t('contact.form.name')}
-              required
-              className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 h-12"
-            />
+          <div className="relative">
+            <div className="flex gap-2">
+              <Input
+                name="name"
+                type="text"
+                value={formData.name}
+                onChange={handleInputChange}
+                placeholder={t('contact.form.name')}
+                required
+                className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 h-12"
+              />
+              <Button
+                type="button"
+                onClick={() => enhanceText('name')}
+                disabled={isEnhancing.name || !formData.name}
+                className="bg-white/10 hover:bg-white/20 text-white"
+                size="icon"
+              >
+                <Wand2 className={`h-4 w-4 ${isEnhancing.name ? 'animate-spin' : ''}`} />
+              </Button>
+            </div>
           </div>
           <div>
             <Input
               name="email"
               type="email"
+              value={formData.email}
+              onChange={handleInputChange}
               placeholder={t('contact.form.email')}
               required
               className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#D946EF] transition-all duration-500 h-12"
             />
           </div>
         </div>
-        <div>
+        <div className="flex gap-2">
           <Input
             name="subject"
             type="text"
+            value={formData.subject}
+            onChange={handleInputChange}
             placeholder={t('contact.form.subject')}
             required
             className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#0EA5E9] transition-all duration-500 h-12"
           />
+          <Button
+            type="button"
+            onClick={() => enhanceText('subject')}
+            disabled={isEnhancing.subject || !formData.subject}
+            className="bg-white/10 hover:bg-white/20 text-white"
+            size="icon"
+          >
+            <Wand2 className={`h-4 w-4 ${isEnhancing.subject ? 'animate-spin' : ''}`} />
+          </Button>
         </div>
-        <div>
+        <div className="flex gap-2">
           <Textarea
             name="message"
+            value={formData.message}
+            onChange={handleInputChange}
             placeholder={t('contact.form.message')}
             required
             rows={12}
             className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 resize-none min-h-[300px] p-4"
           />
+          <Button
+            type="button"
+            onClick={() => enhanceText('message')}
+            disabled={isEnhancing.message || !formData.message}
+            className="bg-white/10 hover:bg-white/20 text-white self-start"
+            size="icon"
+          >
+            <Wand2 className={`h-4 w-4 ${isEnhancing.message ? 'animate-spin' : ''}`} />
+          </Button>
         </div>
         <Button
           type="submit"
