@@ -926,6 +926,10 @@ export type Database = {
         }
         Returns: undefined
       }
+      create_initial_admin: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
     }
     Enums: {
       admin_role: "super_admin" | "content_editor"
