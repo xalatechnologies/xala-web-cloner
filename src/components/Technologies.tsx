@@ -10,9 +10,9 @@ type SupportedLanguage = Database['public']['Enums']['supported_language'];
 
 const Technologies = () => {
   const { t, i18n } = useTranslation();
-  const { data: section } = useSection('technologies');
+  const { data: section, isLoading: isSectionLoading } = useSection('technologies');
   
-  const { data: technologies = [] } = useQuery({
+  const { data: technologies = [], isLoading: isTechnologiesLoading } = useQuery({
     queryKey: ['technologies', i18n.language],
     queryFn: async () => {
       const currentLanguage = i18n.language.toLowerCase() as SupportedLanguage;
@@ -36,20 +36,42 @@ const Technologies = () => {
     },
   });
 
-  const renderContent = () => {
-    if (!technologies) return null;
+  const isLoading = isSectionLoading || isTechnologiesLoading;
 
-    return section?.carousel ? (
+  const renderContent = () => {
+    if (isLoading) {
+      return (
+        <div className="flex justify-center items-center min-h-[200px]">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-400"></div>
+        </div>
+      );
+    }
+
+    if (!technologies.length) {
+      return (
+        <div className="text-center text-xala-text">
+          {t('technologies.noData')}
+        </div>
+      );
+    }
+
+    // Default values if section is not loaded yet
+    const useCarousel = section?.carousel ?? false;
+    const columns = section?.columns ?? 3;
+    const rows = section?.rows ?? 1;
+    const autoscroll = section?.autoscroll ?? false;
+
+    return useCarousel ? (
       <TechnologyCarousel 
         technologies={technologies}
-        columns={section.columns || 3}
-        autoscroll={section.autoscroll || false}
+        columns={columns}
+        autoscroll={autoscroll}
       />
     ) : (
       <TechnologyGrid 
         technologies={technologies}
-        columns={section.columns || 3}
-        rows={section.rows || 1}
+        columns={columns}
+        rows={rows}
       />
     );
   };
