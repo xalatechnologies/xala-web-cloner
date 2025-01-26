@@ -40,7 +40,7 @@ const clients = [
 const Clients = () => {
   return (
     <section className="py-20 relative overflow-hidden">
-      {/* Futuristic background with gradient mesh */}
+      {/* Background using site's color scheme */}
       <div className="absolute inset-0 bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary">
         <div className="absolute inset-0">
           <div className="absolute w-full h-full bg-[radial-gradient(circle_500px_at_50%_50%,#38bdf8,transparent)]" />
@@ -50,10 +50,10 @@ const Clients = () => {
 
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold mb-6 text-xala-accent">
             Our Clients
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-xl text-xala-text max-w-3xl mx-auto">
             Partnering with industry leaders to drive innovation and create impactful solutions.
           </p>
         </div>
@@ -75,8 +75,8 @@ const Clients = () => {
                 <div 
                   className="group relative h-40 flex items-center justify-center p-2 rounded-xl"
                 >
-                  {/* Card background */}
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/25 to-white/15 backdrop-blur-sm border border-white/20" />
+                  {/* Card background using site's color scheme */}
+                  <div className="absolute inset-0 rounded-xl bg-xala-secondary/50 backdrop-blur-sm border border-xala-accent/20" />
                   
                   {/* Logo */}
                   <img
@@ -90,7 +90,7 @@ const Clients = () => {
 
                   {/* Hover text */}
                   <div className="absolute bottom-1 left-0 w-full text-center opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                    <span className="text-sm text-blue-300 font-medium">
+                    <span className="text-sm text-xala-accent font-medium">
                       {client.name}
                     </span>
                   </div>
