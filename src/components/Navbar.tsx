@@ -93,13 +93,13 @@ const Navbar = () => {
           </a>
           
           {/* Right side controls group */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center">
             {/* Theme Toggle */}
             <Toggle
               aria-label="Toggle theme"
               pressed={isDarkMode}
               onPressedChange={toggleTheme}
-              className="hover:bg-xala-secondary/50"
+              className="hover:bg-xala-secondary/50 mr-4"
             >
               {isDarkMode ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
             </Toggle>
@@ -109,14 +109,14 @@ const Navbar = () => {
               aria-label="Toggle language"
               pressed={language === 'NO'}
               onPressedChange={toggleLanguage}
-              className="hover:bg-xala-secondary/50"
+              className="hover:bg-xala-secondary/50 mr-6"
             >
               <Globe className="w-5 h-5" />
               <span className="ml-1 text-sm">{language}</span>
             </Toggle>
 
             {/* Social Icons */}
-            <div className="hidden md:flex items-center space-x-4">
+            <div className="hidden md:flex items-center space-x-6 mr-6">
               {socialLinks.map((link) => (
                 <a
                   key={link.label}
