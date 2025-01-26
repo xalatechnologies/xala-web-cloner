@@ -1,61 +1,34 @@
 import { User, Linkedin, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useSection } from "@/hooks/use-section";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import type { Database } from "@/integrations/supabase/types";
+
+type TeamMember = Database['public']['Tables']['team_members']['Row'];
 
 const Teams = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { data: section } = useSection('team');
+  const currentLanguage = i18n.language.toLowerCase() as Database['public']['Enums']['supported_language'];
 
-  const teamMembers = [
-    {
-      name: t('team.members.ibrahim.name'),
-      role: t('team.members.ibrahim.role'),
-      description: t('team.members.ibrahim.description'),
-      image: "/lovable-uploads/54dff2fe-2407-411e-9d96-afe8fbed9cbc.png",
-      linkedin: "https://linkedin.com",
-      email: "ibrahim@example.com"
-    },
-    {
-      name: t('team.members.wahid.name'),
-      role: t('team.members.wahid.role'),
-      description: t('team.members.wahid.description'),
-      image: "/lovable-uploads/eb143cd9-14a3-4492-be53-8216b3d5a605.png",
-      linkedin: "https://linkedin.com",
-      email: "wahid@example.com"
-    },
-    {
-      name: t('team.members.hamid.name'),
-      role: t('team.members.hamid.role'),
-      description: t('team.members.hamid.description'),
-      image: "/lovable-uploads/bc788751-2e92-4ae8-b6a4-7a175fbc524c.png",
-      linkedin: "https://linkedin.com",
-      email: "hamid@example.com"
-    },
-    {
-      name: t('team.members.muhammad.name'),
-      role: t('team.members.muhammad.role'),
-      description: t('team.members.muhammad.description'),
-      image: "/lovable-uploads/d980b78a-797e-4476-8ec9-594300df0ee9.png",
-      linkedin: "https://linkedin.com",
-      email: "muhammad@example.com"
-    },
-    {
-      name: t('team.members.ibtissam.name'),
-      role: t('team.members.ibtissam.role'),
-      description: t('team.members.ibtissam.description'),
-      image: "/lovable-uploads/94726c81-955d-46ad-9968-825b4e908817.png",
-      linkedin: "https://linkedin.com",
-      email: "ibtissam@example.com"
-    },
-    {
-      name: t('team.members.helena.name'),
-      role: t('team.members.helena.role'),
-      description: t('team.members.helena.description'),
-      image: "/lovable-uploads/c48882ae-197a-439d-9406-c6f62200e111.png",
-      linkedin: "https://linkedin.com",
-      email: "helena@example.com"
+  const { data: teamMembers, isLoading } = useQuery({
+    queryKey: ['team-members', currentLanguage],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('team_members')
+        .select('*')
+        .eq('language', currentLanguage)
+        .order('sort_order', { ascending: true });
+
+      if (error) {
+        console.error('Error fetching team members:', error);
+        throw error;
+      }
+
+      return data as TeamMember[];
     }
-  ];
+  });
 
   return (
     <section id="team" className="py-24 bg-xala-primary relative overflow-hidden">
@@ -72,48 +45,58 @@ const Teams = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {teamMembers.map((member, index) => (
-            <div
-              key={index}
-              className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 p-8 transition-all duration-500 hover:border-xala-accent/50 hover:shadow-2xl hover:shadow-xala-accent/10"
-            >
-              <div className="relative aspect-square mb-8 overflow-hidden rounded-xl bg-gradient-to-br from-xala-secondary to-xala-primary">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-xala-primary/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              </div>
-              
-              <div className="text-center">
-                <h3 className="text-2xl font-bold text-xala-accent mb-3">{member.name}</h3>
-                <p className="text-xala-text/90 font-semibold mb-4 text-lg">{member.role}</p>
-                <p className="text-sm text-xala-text/70 line-clamp-4 group-hover:line-clamp-none transition-all duration-500">
-                  {member.description}
-                </p>
-              </div>
+        {isLoading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {[1, 2, 3].map((n) => (
+              <div key={n} className="animate-pulse bg-white/5 rounded-2xl h-96"></div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {teamMembers?.map((member) => (
+              <div
+                key={member.id}
+                className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 p-8 transition-all duration-500 hover:border-xala-accent/50 hover:shadow-2xl hover:shadow-xala-accent/10"
+              >
+                <div className="relative aspect-square mb-8 overflow-hidden rounded-xl bg-gradient-to-br from-xala-secondary to-xala-primary">
+                  <img
+                    src={member.image_url}
+                    alt={member.name}
+                    className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-xala-primary/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+                
+                <div className="text-center">
+                  <h3 className="text-2xl font-bold text-xala-accent mb-3">{member.name}</h3>
+                  <p className="text-xala-text/90 font-semibold mb-4 text-lg">{member.role}</p>
+                  <p className="text-sm text-xala-text/70 line-clamp-4 group-hover:line-clamp-none transition-all duration-500">
+                    {member.description}
+                  </p>
+                </div>
 
-              <div className="absolute top-6 right-6 flex space-x-3">
-                <a 
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2.5 rounded-full bg-xala-secondary/50 hover:bg-xala-accent/20 transition-colors duration-300"
-                >
-                  <Linkedin className="w-5 h-5 text-xala-accent" />
-                </a>
-                <a 
-                  href={`mailto:${member.email}`}
-                  className="p-2.5 rounded-full bg-xala-secondary/50 hover:bg-xala-accent/20 transition-colors duration-300"
-                >
-                  <Mail className="w-5 h-5 text-xala-accent" />
-                </a>
+                <div className="absolute top-6 right-6 flex space-x-3">
+                  {member.linkedin_url && (
+                    <a 
+                      href={member.linkedin_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2.5 rounded-full bg-xala-secondary/50 hover:bg-xala-accent/20 transition-colors duration-300"
+                    >
+                      <Linkedin className="w-5 h-5 text-xala-accent" />
+                    </a>
+                  )}
+                  <a 
+                    href={`mailto:${member.email}`}
+                    className="p-2.5 rounded-full bg-xala-secondary/50 hover:bg-xala-accent/20 transition-colors duration-300"
+                  >
+                    <Mail className="w-5 h-5 text-xala-accent" />
+                  </a>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
