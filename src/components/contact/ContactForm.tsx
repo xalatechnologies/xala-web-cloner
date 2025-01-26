@@ -96,7 +96,7 @@ export const ContactForm = () => {
       <form onSubmit={handleSubmit} className="space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="relative">
-            <div className="flex gap-2">
+            <div className="relative">
               <Input
                 name="name"
                 type="text"
@@ -104,32 +104,30 @@ export const ContactForm = () => {
                 onChange={handleInputChange}
                 placeholder={t('contact.form.name')}
                 required
-                className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 h-12"
+                className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 h-12 pr-12"
               />
               <Button
                 type="button"
                 onClick={() => enhanceText('name')}
                 disabled={isEnhancing.name || !formData.name}
-                className="bg-white/10 hover:bg-white/20 text-white"
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 p-0 bg-gradient-to-r from-[#8B5CF6] via-[#D946EF] to-[#0EA5E9] hover:opacity-80"
                 size="icon"
               >
                 <Wand2 className={`h-4 w-4 ${isEnhancing.name ? 'animate-spin' : ''}`} />
               </Button>
             </div>
           </div>
-          <div>
-            <Input
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              placeholder={t('contact.form.email')}
-              required
-              className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#D946EF] transition-all duration-500 h-12"
-            />
-          </div>
+          <Input
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder={t('contact.form.email')}
+            required
+            className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#D946EF] transition-all duration-500 h-12"
+          />
         </div>
-        <div className="flex gap-2">
+        <div className="relative">
           <Input
             name="subject"
             type="text"
@@ -137,19 +135,19 @@ export const ContactForm = () => {
             onChange={handleInputChange}
             placeholder={t('contact.form.subject')}
             required
-            className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#0EA5E9] transition-all duration-500 h-12"
+            className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#0EA5E9] transition-all duration-500 h-12 pr-12"
           />
           <Button
             type="button"
             onClick={() => enhanceText('subject')}
             disabled={isEnhancing.subject || !formData.subject}
-            className="bg-white/10 hover:bg-white/20 text-white"
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 p-0 bg-gradient-to-r from-[#8B5CF6] via-[#D946EF] to-[#0EA5E9] hover:opacity-80"
             size="icon"
           >
             <Wand2 className={`h-4 w-4 ${isEnhancing.subject ? 'animate-spin' : ''}`} />
           </Button>
         </div>
-        <div className="flex gap-2">
+        <div className="relative">
           <Textarea
             name="message"
             value={formData.message}
@@ -157,13 +155,13 @@ export const ContactForm = () => {
             placeholder={t('contact.form.message')}
             required
             rows={12}
-            className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 resize-none min-h-[300px] p-4"
+            className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 resize-none min-h-[300px] p-4 pr-12"
           />
           <Button
             type="button"
             onClick={() => enhanceText('message')}
             disabled={isEnhancing.message || !formData.message}
-            className="bg-white/10 hover:bg-white/20 text-white self-start"
+            className="absolute right-2 top-4 w-8 h-8 p-0 bg-gradient-to-r from-[#8B5CF6] via-[#D946EF] to-[#0EA5E9] hover:opacity-80"
             size="icon"
           >
             <Wand2 className={`h-4 w-4 ${isEnhancing.message ? 'animate-spin' : ''}`} />
