@@ -89,14 +89,17 @@ interface FeatureCardProps {
 }
 
 const FeatureCard = ({ icon, title, description }: FeatureCardProps) => (
-  <div className="group p-6 rounded-xl bg-gradient-to-br from-white/5 via-white/[0.02] to-transparent 
-                  backdrop-blur-sm border border-white/10 hover:border-xala-accent/50 
-                  transition-all duration-500 hover:transform hover:-translate-y-1
-                  hover:shadow-lg hover:shadow-xala-accent/10">
+  <div 
+    className="group p-6 rounded-xl bg-gradient-to-br from-white/[0.075] via-white/[0.035] to-transparent 
+                backdrop-blur-sm border border-white/10 hover:border-xala-accent/50 
+                transition-all duration-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-xala-accent/10"
+  >
     <div className="flex flex-col items-center gap-4">
-      <div className="p-3 rounded-lg bg-gradient-to-br from-xala-accent/20 to-transparent 
-                    group-hover:from-xala-accent group-hover:to-[#D946EF]/80 
-                    transition-all duration-500">
+      <div 
+        className="p-3 rounded-lg bg-gradient-to-br from-xala-accent/20 via-xala-accent/10 to-transparent 
+                   group-hover:from-xala-accent/80 group-hover:via-xala-accent/60 group-hover:to-[#D946EF]/40 
+                   transition-all duration-500"
+      >
         {icon}
       </div>
       <h3 className="text-lg font-semibold text-xala-accent group-hover:text-white transition-colors">
