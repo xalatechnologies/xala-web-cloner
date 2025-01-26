@@ -14,15 +14,9 @@ const Controls = ({ isDarkMode, language, onThemeToggle, onLanguageToggle }: Con
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    // Get browser language
-    const browserLang = navigator.language.toLowerCase().startsWith('nb') || 
-                       navigator.language.toLowerCase().startsWith('nn') || 
-                       navigator.language.toLowerCase().startsWith('no') 
-                       ? 'no' : 'en';
-    
-    // Set initial language based on browser preference
-    i18n.changeLanguage(browserLang);
-  }, [i18n]);
+    // Set initial language to Norwegian
+    i18n.changeLanguage('no');
+  }, []);
 
   const handleLanguageToggle = () => {
     const newLang = i18n.language === 'en' ? 'no' : 'en';
