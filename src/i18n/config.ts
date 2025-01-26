@@ -90,6 +90,20 @@ i18n
           contact: {
             title: "Let's Build Something Amazing",
             description: "Ready to transform your ideas into reality? Get in touch with our team of experts.",
+            info: {
+              phone: {
+                title: "Phone",
+                description: "Give us a call"
+              },
+              email: {
+                title: "Email",
+                description: "Write to us"
+              },
+              address: {
+                title: "Location",
+                description: "Visit our office"
+              }
+            },
             form: {
               name: "Your Name",
               email: "Your Email",
@@ -127,34 +141,6 @@ i18n
           clients: {
             title: "Our Clients",
             description: "Partnering with industry leaders to drive innovation and create impactful solutions."
-          },
-          technologies: {
-            title: "Our Technologies",
-            description: "We leverage cutting-edge technologies to deliver innovative solutions",
-            frontend: {
-              title: "Frontend Development",
-              tools: ["React", "TypeScript", "Next.js", "Vue.js", "Angular"]
-            },
-            backend: {
-              title: "Backend Development",
-              tools: ["Node.js", "Python", "Java", "Go", "PostgreSQL"]
-            },
-            ai: {
-              title: "AI & Machine Learning",
-              tools: ["TensorFlow", "PyTorch", "OpenAI", "Scikit-learn", "Keras"]
-            },
-            uiux: {
-              title: "UI/UX Design",
-              tools: ["Figma", "Adobe XD", "Sketch", "InVision", "Zeplin"]
-            },
-            devops: {
-              title: "DevOps & Cloud",
-              tools: ["AWS", "Docker", "Kubernetes", "Jenkins", "Terraform"]
-            },
-            design: {
-              title: "Design Tools",
-              tools: ["Photoshop", "Illustrator", "After Effects", "Blender", "Cinema 4D"]
-            }
           }
         }
       },
@@ -240,6 +226,20 @@ i18n
           contact: {
             title: "La oss bygge noe fantastisk",
             description: "Klar for å transformere ideene dine til virkelighet? Ta kontakt med vårt ekspertteam.",
+            info: {
+              phone: {
+                title: "Telefon",
+                description: "Ring oss"
+              },
+              email: {
+                title: "E-post",
+                description: "Skriv til oss"
+              },
+              address: {
+                title: "Plassering",
+                description: "Besøk vårt kontor"
+              }
+            },
             form: {
               name: "Ditt navn",
               email: "Din e-post",
