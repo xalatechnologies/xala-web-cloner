@@ -27,7 +27,7 @@ export function DashboardContent() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [searchTerm, setSearchTerm] = useState("");
-  const [filterLanguage, setFilterLanguage] = useState<string>("all");
+  const [filterLanguage, setFilterLanguage] = useState<SupportedLanguage | "all">("all");
   const [sortConfig, setSortConfig] = useState<{
     key: string;
     direction: 'asc' | 'desc';
@@ -201,7 +201,10 @@ export function DashboardContent() {
                   className="pl-10 bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-400 w-[200px]"
                 />
               </div>
-              <Select value={filterLanguage} onValueChange={setFilterLanguage}>
+              <Select 
+                value={filterLanguage} 
+                onValueChange={(value: SupportedLanguage | "all") => setFilterLanguage(value)}
+              >
                 <SelectTrigger className="w-[120px] bg-gray-800 border-gray-700 text-white">
                   <SelectValue placeholder="Language" />
                 </SelectTrigger>
