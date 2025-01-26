@@ -42,6 +42,45 @@ export type Database = {
         }
         Relationships: []
       }
+      bottom_sections: {
+        Row: {
+          content: string
+          created_at: string | null
+          icon: string | null
+          id: string
+          language: Database["public"]["Enums"]["supported_language"]
+          link: string | null
+          sort_order: number
+          title: string
+          type: Database["public"]["Enums"]["bottom_section_type"]
+          updated_at: string | null
+        }
+        Insert: {
+          content: string
+          created_at?: string | null
+          icon?: string | null
+          id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          link?: string | null
+          sort_order?: number
+          title: string
+          type: Database["public"]["Enums"]["bottom_section_type"]
+          updated_at?: string | null
+        }
+        Update: {
+          content?: string
+          created_at?: string | null
+          icon?: string | null
+          id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          link?: string | null
+          sort_order?: number
+          title?: string
+          type?: Database["public"]["Enums"]["bottom_section_type"]
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       case_studies: {
         Row: {
           architecture_overview: string | null
@@ -832,6 +871,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
+      bottom_section_type: "address" | "social" | "contact" | "newsletter"
       case_study_status: "draft" | "published" | "archived"
       feature_category: "ai" | "cloud" | "development" | "analytics"
       product_status: "draft" | "published" | "archived"
