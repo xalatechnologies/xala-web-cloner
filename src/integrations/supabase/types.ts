@@ -44,42 +44,243 @@ export type Database = {
       }
       case_studies: {
         Row: {
+          architecture_overview: string | null
+          background: string | null
+          challenges: string[] | null
+          company_name: string | null
           created_at: string | null
+          deployment_strategy: string | null
           description: string
+          executive_summary: string | null
+          featured: boolean | null
+          future_roadmap: string | null
           icon: string
           id: string
           image_url: string
+          industry: string | null
+          key_features: string[] | null
           language: Database["public"]["Enums"]["supported_language"]
-          metrics: string | null
+          lessons_learned: string[] | null
+          methodology: string | null
+          objectives: string[] | null
+          project_duration: string | null
+          published_at: string | null
+          results: string | null
+          security_measures: string[] | null
+          slug: string | null
+          solution_overview: string | null
           sort_order: number
+          status: Database["public"]["Enums"]["case_study_status"] | null
+          team_composition: string[] | null
+          team_size: number | null
+          testimonials: string[] | null
+          testing_approach: string | null
           title: string
           updated_at: string | null
         }
         Insert: {
+          architecture_overview?: string | null
+          background?: string | null
+          challenges?: string[] | null
+          company_name?: string | null
           created_at?: string | null
+          deployment_strategy?: string | null
           description: string
+          executive_summary?: string | null
+          featured?: boolean | null
+          future_roadmap?: string | null
           icon: string
           id?: string
           image_url: string
+          industry?: string | null
+          key_features?: string[] | null
           language?: Database["public"]["Enums"]["supported_language"]
-          metrics?: string | null
+          lessons_learned?: string[] | null
+          methodology?: string | null
+          objectives?: string[] | null
+          project_duration?: string | null
+          published_at?: string | null
+          results?: string | null
+          security_measures?: string[] | null
+          slug?: string | null
+          solution_overview?: string | null
           sort_order?: number
+          status?: Database["public"]["Enums"]["case_study_status"] | null
+          team_composition?: string[] | null
+          team_size?: number | null
+          testimonials?: string[] | null
+          testing_approach?: string | null
           title: string
           updated_at?: string | null
         }
         Update: {
+          architecture_overview?: string | null
+          background?: string | null
+          challenges?: string[] | null
+          company_name?: string | null
           created_at?: string | null
+          deployment_strategy?: string | null
           description?: string
+          executive_summary?: string | null
+          featured?: boolean | null
+          future_roadmap?: string | null
           icon?: string
           id?: string
           image_url?: string
+          industry?: string | null
+          key_features?: string[] | null
           language?: Database["public"]["Enums"]["supported_language"]
-          metrics?: string | null
+          lessons_learned?: string[] | null
+          methodology?: string | null
+          objectives?: string[] | null
+          project_duration?: string | null
+          published_at?: string | null
+          results?: string | null
+          security_measures?: string[] | null
+          slug?: string | null
+          solution_overview?: string | null
           sort_order?: number
+          status?: Database["public"]["Enums"]["case_study_status"] | null
+          team_composition?: string[] | null
+          team_size?: number | null
+          testimonials?: string[] | null
+          testing_approach?: string | null
           title?: string
           updated_at?: string | null
         }
         Relationships: []
+      }
+      case_study_metrics: {
+        Row: {
+          case_study_id: string
+          category: string
+          created_at: string | null
+          description: string | null
+          id: string
+          name: string
+          updated_at: string | null
+          value: string
+        }
+        Insert: {
+          case_study_id: string
+          category: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          name: string
+          updated_at?: string | null
+          value: string
+        }
+        Update: {
+          case_study_id?: string
+          category?: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          name?: string
+          updated_at?: string | null
+          value?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "case_study_metrics_case_study_id_fkey"
+            columns: ["case_study_id"]
+            isOneToOne: false
+            referencedRelation: "case_studies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      case_study_screenshots: {
+        Row: {
+          alt_text: string
+          case_study_id: string
+          category: string
+          created_at: string | null
+          description: string | null
+          id: string
+          image_url: string
+          language: string
+          sort_order: number | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          alt_text: string
+          case_study_id: string
+          category: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          image_url: string
+          language?: string
+          sort_order?: number | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          alt_text?: string
+          case_study_id?: string
+          category?: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          image_url?: string
+          language?: string
+          sort_order?: number | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "case_study_screenshots_case_study_id_fkey"
+            columns: ["case_study_id"]
+            isOneToOne: false
+            referencedRelation: "case_studies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      case_study_tech_stack: {
+        Row: {
+          case_study_id: string
+          category: string
+          created_at: string | null
+          description: string | null
+          id: string
+          name: string
+          updated_at: string | null
+          version: string | null
+        }
+        Insert: {
+          case_study_id: string
+          category: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          name: string
+          updated_at?: string | null
+          version?: string | null
+        }
+        Update: {
+          case_study_id?: string
+          category?: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          name?: string
+          updated_at?: string | null
+          version?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "case_study_tech_stack_case_study_id_fkey"
+            columns: ["case_study_id"]
+            isOneToOne: false
+            referencedRelation: "case_studies"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       clients: {
         Row: {
@@ -432,6 +633,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
+      case_study_status: "draft" | "published" | "archived"
       supported_language: "en" | "no"
     }
     CompositeTypes: {
