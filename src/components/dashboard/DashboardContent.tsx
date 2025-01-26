@@ -3,13 +3,18 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Plus, Eye, Pencil, Trash2 } from "lucide-react";
+import { Plus, Eye, Pencil, Trash2, ArrowUpDown, Filter } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useState } from "react";
+import { Input } from "@/components/ui/input";
 
 export function DashboardContent() {
   const { toast } = useToast();
-  const [selectedSection, setSelectedSection] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [sortConfig, setSortConfig] = useState<{
+    key: string;
+    direction: 'asc' | 'desc';
+  }>({ key: 'sort_order', direction: 'asc' });
 
   const { data: stats } = useQuery({
     queryKey: ['dashboard-stats'],
@@ -36,12 +41,14 @@ export function DashboardContent() {
   });
 
   const { data: sections, isLoading: sectionsLoading } = useQuery({
-    queryKey: ['sections'],
+    queryKey: ['sections', sortConfig],
     queryFn: async () => {
-      const { data, error } = await supabase
+      const query = supabase
         .from('sections')
         .select('*')
-        .order('sort_order', { ascending: true });
+        .order(sortConfig.key, { ascending: sortConfig.direction === 'asc' });
+
+      const { data, error } = await query;
 
       if (error) {
         toast({
@@ -56,6 +63,22 @@ export function DashboardContent() {
     },
   });
 
+  const handleSort = (key: string) => {
+    setSortConfig(current => ({
+      key,
+      direction: current.key === key && current.direction === 'asc' ? 'desc' : 'asc'
+    }));
+  };
+
+  const filteredSections = sections?.filter(section => {
+    const searchLower = searchTerm.toLowerCase();
+    return (
+      section.section_name.toLowerCase().includes(searchLower) ||
+      section.title.toLowerCase().includes(searchLower) ||
+      section.language.toLowerCase().includes(searchLower)
+    );
+  });
+
   const handleCreate = () => {
     toast({
       title: "Create Section",
@@ -63,21 +86,21 @@ export function DashboardContent() {
     });
   };
 
-  const handleView = (section) => {
+  const handleView = (section: any) => {
     toast({
       title: "View Section",
       description: `Viewing section: ${section.title}`,
     });
   };
 
-  const handleEdit = (section) => {
+  const handleEdit = (section: any) => {
     toast({
       title: "Edit Section",
       description: `Editing section: ${section.title}`,
     });
   };
 
-  const handleDelete = (section) => {
+  const handleDelete = (section: any) => {
     toast({
       title: "Delete Section",
       description: `Deleting section: ${section.title}`,
@@ -131,25 +154,56 @@ export function DashboardContent() {
       <Card className="border-none bg-gradient-to-br from-gray-900/50 to-gray-800/50">
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="text-xl font-bold text-white font-chakra">Sections</CardTitle>
-          <Button onClick={handleCreate} className="bg-blue-500 hover:bg-blue-600">
-            <Plus className="w-4 h-4 mr-2" />
-            Add Section
-          </Button>
+          <div className="flex items-center gap-4">
+            <div className="relative">
+              <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <Input
+                placeholder="Search sections..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-400"
+              />
+            </div>
+            <Button onClick={handleCreate} className="bg-blue-500 hover:bg-blue-600">
+              <Plus className="w-4 h-4 mr-2" />
+              Add Section
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
           <div className="rounded-md border border-gray-700">
             <Table>
               <TableHeader>
                 <TableRow className="border-gray-700 hover:bg-gray-800/50">
-                  <TableHead className="text-white/70">Name</TableHead>
-                  <TableHead className="text-white/70">Title</TableHead>
-                  <TableHead className="text-white/70">Language</TableHead>
-                  <TableHead className="text-white/70">Order</TableHead>
+                  <TableHead className="text-white/70 cursor-pointer" onClick={() => handleSort('section_name')}>
+                    <div className="flex items-center">
+                      Name
+                      <ArrowUpDown className="ml-2 h-4 w-4" />
+                    </div>
+                  </TableHead>
+                  <TableHead className="text-white/70 cursor-pointer" onClick={() => handleSort('title')}>
+                    <div className="flex items-center">
+                      Title
+                      <ArrowUpDown className="ml-2 h-4 w-4" />
+                    </div>
+                  </TableHead>
+                  <TableHead className="text-white/70 cursor-pointer" onClick={() => handleSort('language')}>
+                    <div className="flex items-center">
+                      Language
+                      <ArrowUpDown className="ml-2 h-4 w-4" />
+                    </div>
+                  </TableHead>
+                  <TableHead className="text-white/70 cursor-pointer" onClick={() => handleSort('sort_order')}>
+                    <div className="flex items-center">
+                      Order
+                      <ArrowUpDown className="ml-2 h-4 w-4" />
+                    </div>
+                  </TableHead>
                   <TableHead className="text-right text-white/70">Actions</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {sections?.map((section) => (
+                {filteredSections?.map((section) => (
                   <TableRow key={section.id} className="border-gray-700 hover:bg-gray-800/50">
                     <TableCell className="font-chakra text-white">{section.section_name}</TableCell>
                     <TableCell className="font-chakra text-white">{section.title}</TableCell>
