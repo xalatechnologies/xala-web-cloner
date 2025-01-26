@@ -69,6 +69,9 @@ const Technologies = () => {
                     {IconComponent && <IconComponent className="w-8 h-8 text-xala-accent" />}
                     <h3 className="text-xl font-semibold text-xala-accent">{tech.title}</h3>
                   </div>
+                  {tech.description && (
+                    <p className="text-xala-text mb-6">{tech.description}</p>
+                  )}
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {tech.technology_tools?.map((tool) => (
                       <span
