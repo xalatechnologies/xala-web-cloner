@@ -2,13 +2,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { LayoutDashboard, Users, FileText, Wrench, Pencil, Trash2, Plus, Search, Filter } from "lucide-react";
+import { LayoutDashboard, Users, FileText, Wrench, Pencil, Trash2, Plus, Search, Filter, ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
+// ... keep existing code (imports and type definitions)
 
 export function DashboardContent() {
   const { toast } = useToast();
@@ -201,7 +203,7 @@ export function DashboardContent() {
         {stats.map((stat, index) => (
           <Card 
             key={index} 
-            className={`border-none bg-gradient-to-br ${stat.color} hover:scale-105 transition-transform duration-200`}
+            className={`border-none bg-gradient-to-br ${stat.color} backdrop-blur-sm hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl`}
           >
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-lg font-bold text-white font-chakra">
@@ -216,7 +218,7 @@ export function DashboardContent() {
         ))}
       </div>
 
-      <Card className="border-none bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm">
+      <Card className="border-none bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm shadow-xl">
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="text-xl font-bold text-white font-chakra">
             Website Sections
@@ -228,11 +230,11 @@ export function DashboardContent() {
                 placeholder="Search sections..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 bg-gray-800 border-gray-700 text-white w-64"
+                className="pl-10 bg-gray-800/50 border-gray-700 text-white w-64 focus:ring-2 focus:ring-blue-500 transition-all"
               />
             </div>
             <Select value={filterLanguage} onValueChange={setFilterLanguage}>
-              <SelectTrigger className="w-32 bg-gray-800 border-gray-700 text-white">
+              <SelectTrigger className="w-32 bg-gray-800/50 border-gray-700 text-white focus:ring-2 focus:ring-blue-500">
                 <SelectValue placeholder="Language" />
               </SelectTrigger>
               <SelectContent className="bg-gray-800 border-gray-700">
@@ -248,15 +250,18 @@ export function DashboardContent() {
                     resetForm();
                     setIsDialogOpen(true);
                   }}
-                  className="bg-blue-500 hover:bg-blue-600"
+                  className="bg-blue-500 hover:bg-blue-600 transition-colors"
                 >
                   <Plus className="w-4 h-4 mr-2" />
                   Add Section
                 </Button>
               </DialogTrigger>
-              <DialogContent className="bg-gray-900 text-white">
+              <DialogContent className="bg-gray-900 text-white border-gray-700">
                 <DialogHeader>
                   <DialogTitle>{editingSection ? 'Edit Section' : 'Add New Section'}</DialogTitle>
+                  <DialogDescription className="text-gray-400">
+                    {editingSection ? 'Update the section details below.' : 'Fill in the section details below.'}
+                  </DialogDescription>
                 </DialogHeader>
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
@@ -264,7 +269,7 @@ export function DashboardContent() {
                     <Input
                       value={formData.section_name}
                       onChange={(e) => setFormData({ ...formData, section_name: e.target.value })}
-                      className="bg-gray-800 border-gray-700 text-white"
+                      className="bg-gray-800/50 border-gray-700 text-white focus:ring-2 focus:ring-blue-500"
                       required
                     />
                   </div>
@@ -273,7 +278,7 @@ export function DashboardContent() {
                     <Input
                       value={formData.title}
                       onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                      className="bg-gray-800 border-gray-700 text-white"
+                      className="bg-gray-800/50 border-gray-700 text-white focus:ring-2 focus:ring-blue-500"
                       required
                     />
                   </div>
@@ -282,7 +287,7 @@ export function DashboardContent() {
                     <select
                       value={formData.language}
                       onChange={(e) => setFormData({ ...formData, language: e.target.value })}
-                      className="w-full bg-gray-800 border border-gray-700 text-white rounded-md p-2"
+                      className="w-full bg-gray-800/50 border border-gray-700 text-white rounded-md p-2 focus:ring-2 focus:ring-blue-500"
                       required
                     >
                       <option value="en">English</option>
@@ -295,7 +300,7 @@ export function DashboardContent() {
                       type="number"
                       value={formData.sort_order}
                       onChange={(e) => setFormData({ ...formData, sort_order: parseInt(e.target.value) })}
-                      className="bg-gray-800 border-gray-700 text-white"
+                      className="bg-gray-800/50 border-gray-700 text-white focus:ring-2 focus:ring-blue-500"
                       required
                     />
                   </div>
@@ -307,6 +312,7 @@ export function DashboardContent() {
                         setIsDialogOpen(false);
                         resetForm();
                       }}
+                      className="border-gray-600 hover:bg-gray-800"
                     >
                       Cancel
                     </Button>
@@ -328,30 +334,62 @@ export function DashboardContent() {
             <div className="overflow-x-auto">
               <Table>
                 <TableHeader>
-                  <TableRow className="border-gray-700">
+                  <TableRow className="border-gray-700 hover:bg-gray-800/30">
                     <TableHead 
-                      className="text-white cursor-pointer hover:text-blue-400 transition-colors"
+                      className="text-white cursor-pointer hover:text-blue-400 transition-colors group"
                       onClick={() => handleSort('section_name')}
                     >
-                      Section Name {sortConfig.key === 'section_name' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
+                      <div className="flex items-center">
+                        Section Name
+                        <ArrowUpDown className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        {sortConfig.key === 'section_name' && (
+                          <span className="ml-1 text-blue-400">
+                            {sortConfig.direction === 'asc' ? '↑' : '↓'}
+                          </span>
+                        )}
+                      </div>
                     </TableHead>
                     <TableHead 
-                      className="text-white cursor-pointer hover:text-blue-400 transition-colors"
+                      className="text-white cursor-pointer hover:text-blue-400 transition-colors group"
                       onClick={() => handleSort('title')}
                     >
-                      Title {sortConfig.key === 'title' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
+                      <div className="flex items-center">
+                        Title
+                        <ArrowUpDown className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        {sortConfig.key === 'title' && (
+                          <span className="ml-1 text-blue-400">
+                            {sortConfig.direction === 'asc' ? '↑' : '↓'}
+                          </span>
+                        )}
+                      </div>
                     </TableHead>
                     <TableHead 
-                      className="text-white cursor-pointer hover:text-blue-400 transition-colors"
+                      className="text-white cursor-pointer hover:text-blue-400 transition-colors group"
                       onClick={() => handleSort('language')}
                     >
-                      Language {sortConfig.key === 'language' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
+                      <div className="flex items-center">
+                        Language
+                        <ArrowUpDown className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        {sortConfig.key === 'language' && (
+                          <span className="ml-1 text-blue-400">
+                            {sortConfig.direction === 'asc' ? '↑' : '↓'}
+                          </span>
+                        )}
+                      </div>
                     </TableHead>
                     <TableHead 
-                      className="text-white cursor-pointer hover:text-blue-400 transition-colors"
+                      className="text-white cursor-pointer hover:text-blue-400 transition-colors group"
                       onClick={() => handleSort('sort_order')}
                     >
-                      Sort Order {sortConfig.key === 'sort_order' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
+                      <div className="flex items-center">
+                        Sort Order
+                        <ArrowUpDown className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        {sortConfig.key === 'sort_order' && (
+                          <span className="ml-1 text-blue-400">
+                            {sortConfig.direction === 'asc' ? '↑' : '↓'}
+                          </span>
+                        )}
+                      </div>
                     </TableHead>
                     <TableHead className="text-white text-right">Actions</TableHead>
                   </TableRow>
@@ -360,19 +398,23 @@ export function DashboardContent() {
                   {filteredAndSortedSections?.map((section) => (
                     <TableRow 
                       key={section.id}
-                      className="border-gray-700 hover:bg-gray-800/50 transition-colors"
+                      className="border-gray-700 hover:bg-gray-800/30 transition-colors group"
                     >
-                      <TableCell className="text-white/70">{section.section_name}</TableCell>
-                      <TableCell className="text-white/70">{section.title}</TableCell>
-                      <TableCell className="text-white/70">{section.language}</TableCell>
-                      <TableCell className="text-white/70">{section.sort_order}</TableCell>
+                      <TableCell className="text-white/90 font-medium">{section.section_name}</TableCell>
+                      <TableCell className="text-white/90">{section.title}</TableCell>
+                      <TableCell className="text-white/90">
+                        <span className="px-2 py-1 rounded-full text-xs font-medium bg-gray-700">
+                          {section.language === 'en' ? 'English' : 'Norwegian'}
+                        </span>
+                      </TableCell>
+                      <TableCell className="text-white/90">{section.sort_order}</TableCell>
                       <TableCell className="text-right">
-                        <div className="flex justify-end gap-2">
+                        <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                           <Button
                             size="sm"
                             variant="ghost"
                             onClick={() => handleEdit(section)}
-                            className="hover:bg-gray-700"
+                            className="hover:bg-gray-700 text-blue-400 hover:text-blue-300"
                           >
                             <Pencil className="w-4 h-4" />
                           </Button>
