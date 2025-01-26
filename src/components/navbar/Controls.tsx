@@ -22,7 +22,7 @@ const Controls = ({ isDarkMode, language, onThemeToggle, onLanguageToggle }: Con
     
     // Set initial language based on browser preference
     i18n.changeLanguage(browserLang);
-  }, []);
+  }, [i18n]);
 
   const handleLanguageToggle = () => {
     const newLang = i18n.language === 'en' ? 'no' : 'en';
