@@ -50,12 +50,14 @@ const CoreProducts = () => {
     return section?.carousel ? (
       <ProductCarousel 
         products={products}
-        autoscroll={section.autoscroll}
+        columns={section?.columns || 3}
+        autoscroll={section?.autoscroll || false}
       />
     ) : (
       <ProductGrid 
         products={products}
         columns={section?.columns || 3}
+        rows={section?.rows || 1}
       />
     );
   };
