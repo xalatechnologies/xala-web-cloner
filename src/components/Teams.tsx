@@ -17,7 +17,9 @@ type TeamMember = Database['public']['Tables']['team_members']['Row'];
 const Teams = () => {
   const { t, i18n } = useTranslation();
   const { data: section } = useSection('team');
-  const currentLanguage = i18n.language.toLowerCase() as Database['public']['Enums']['supported_language'];
+  // Convert the language code to match the supported_language enum
+  const currentLanguage = i18n.language.toLowerCase().split('-')[0] as Database['public']['Enums']['supported_language'];
+  
   const plugin = useRef(
     Autoplay({
       delay: 4000,
@@ -29,6 +31,8 @@ const Teams = () => {
   const { data: teamMembers, isLoading } = useQuery({
     queryKey: ['team-members', currentLanguage],
     queryFn: async () => {
+      console.log('Fetching team members for language:', currentLanguage);
+      
       const { data, error } = await supabase
         .from('team_members')
         .select('*')
