@@ -9,6 +9,7 @@ import Teams from '../components/Teams';
 import WorkProcess from '../components/WorkProcess';
 import CaseStudies from '../components/CaseStudies';
 import Footer from '../components/Footer';
+import Services from '../components/Services';
 
 const Index = () => {
   return (
@@ -16,6 +17,7 @@ const Index = () => {
       <Navbar />
       <Hero />
       <Clients />
+      <Services />
       <CoreProducts />
       <Technologies />
       <WorkProcess />
