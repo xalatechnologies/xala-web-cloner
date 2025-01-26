@@ -10,6 +10,9 @@ import { useRef } from "react";
 import { Code2, Cpu, Database, Globe2, Layout, Shield } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
+import type { Database } from '@/integrations/supabase/types';
+
+type SupportedLanguage = Database['public']['Enums']['supported_language'];
 
 const iconMap: Record<string, React.ReactNode> = {
   Layout: <Layout className="w-8 h-8" />,
@@ -32,12 +35,12 @@ const Services = () => {
   );
 
   const { data: services = [] } = useQuery({
-    queryKey: ['services', i18n.language],
+    queryKey: ['services', i18n.language as SupportedLanguage],
     queryFn: async () => {
       const { data, error } = await supabase
         .from('services')
         .select('*')
-        .eq('language', i18n.language)
+        .eq('language', i18n.language as SupportedLanguage)
         .order('sort_order');
 
       if (error) {
