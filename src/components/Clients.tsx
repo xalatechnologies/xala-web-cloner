@@ -60,7 +60,7 @@ const clients = [
 const Clients = () => {
   const plugin = useRef(
     Autoplay({ 
-      delay: 2000, // Changed from 0 to 2000ms (2 seconds) between slides
+      delay: 4000, // Increased to 4 seconds for smoother transitions
       stopOnInteraction: false, 
       stopOnMouseEnter: true,
       rootNode: (emblaRoot) => emblaRoot.parentElement,
@@ -81,10 +81,11 @@ const Clients = () => {
 
         <Carousel
           opts={{
-            align: "start",
+            align: "center",
             loop: true,
-            skipSnaps: true,
-            dragFree: true,
+            skipSnaps: false,
+            dragFree: false,
+            containScroll: "trimSnaps",
           }}
           plugins={[plugin.current]}
           className="w-full max-w-6xl mx-auto"
@@ -93,13 +94,13 @@ const Clients = () => {
             {[...clients, ...clients].map((client, index) => (
               <CarouselItem 
                 key={index} 
-                className="pl-2 md:pl-4 md:basis-1/4 lg:basis-1/6"
+                className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4"
               >
-                <div className="h-32 flex items-center justify-center p-4">
+                <div className="group h-32 flex items-center justify-center p-4 rounded-lg bg-white/5 backdrop-blur-sm transition-all duration-300 hover:bg-white/10">
                   <img
                     src={client.logo}
                     alt={client.name}
-                    className="max-w-[100px] max-h-[50px] object-contain opacity-80 hover:opacity-100 transition-all duration-700 ease-in-out transform hover:scale-110"
+                    className="max-w-[120px] max-h-[60px] object-contain opacity-60 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
                   />
                 </div>
               </CarouselItem>
