@@ -37,10 +37,10 @@ const CoreProducts = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-xala-accent mb-4">
-            Our Products
+            {t('coreProducts.title')}
           </h2>
           <p className="text-xala-text text-lg max-w-2xl mx-auto">
-            Innovative AI-powered solutions transforming healthcare, documentation, and architecture
+            {t('coreProducts.description')}
           </p>
         </div>
 
@@ -80,7 +80,7 @@ const CoreProducts = () => {
                   variant="outline"
                   className="group w-full bg-transparent border border-xala-accent text-xala-accent hover:bg-xala-accent hover:text-white transition-all duration-300"
                 >
-                  Learn More
+                  {t('coreProducts.learnMore')}
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </div>

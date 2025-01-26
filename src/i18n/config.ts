@@ -105,6 +105,9 @@ i18n
             cookies: "Cookie Policy"
           },
           coreProducts: {
+            title: "Our Products",
+            description: "Innovative AI-powered solutions transforming healthcare, documentation, and architecture",
+            learnMore: "Learn More",
             doctorAI: {
               title: "DoctorAI.no",
               description: "AI-powered medical consultation platform that helps healthcare professionals make more informed decisions and improve patient care.",
@@ -121,97 +124,9 @@ i18n
               metrics: "1,000+ Projects Managed"
             }
           },
-          technologies: {
-            title: "Technologies & Tools",
-            description: "We leverage cutting-edge technologies and industry-standard tools to deliver exceptional solutions",
-            frontend: {
-              title: "Frontend Development",
-              tools: ["React", "TypeScript", "Tailwind CSS"]
-            },
-            backend: {
-              title: "Backend Solutions",
-              tools: ["Node.js", "RESTful APIs", "GraphQL"]
-            },
-            ai: {
-              title: "AI Solutions",
-              tools: ["GPT-4", "LangChain", "Eleven Labs"]
-            },
-            uiux: {
-              title: "UI/UX Design",
-              tools: ["Figma", "Adobe XD", "Sketch"]
-            },
-            devops: {
-              title: "DevOps",
-              tools: ["Docker", "Kubernetes", "CI/CD"]
-            },
-            design: {
-              title: "Design Systems",
-              tools: ["Material UI", "Shadcn/UI", "Storybook"]
-            }
-          },
-          workProcess: {
-            title: "Our Work Process Model",
-            description: "A streamlined approach to delivering exceptional results",
-            discovery: {
-              title: "Discovery Call",
-              description: "Initial consultation to understand your vision and requirements"
-            },
-            design: {
-              title: "Design Process",
-              description: "Creating intuitive and engaging user experiences"
-            },
-            development: {
-              title: "Development",
-              description: "Building robust and scalable solutions"
-            },
-            testing: {
-              title: "Testing Process",
-              description: "Ensuring quality and performance"
-            },
-            deployment: {
-              title: "Deployment",
-              description: "Launching your solution to the world"
-            },
-            support: {
-              title: "Support",
-              description: "Ongoing maintenance and assistance"
-            }
-          },
-          team: {
-            title: "Meet Our Team",
-            description: "Our exceptional team of innovators and problem solvers is dedicated to transforming ideas into powerful solutions.",
-            members: {
-              ibrahim: {
-                name: "Ibrahim Rahmani",
-                role: "Senior Developer",
-                description: "Full-stack Developer | Microsoft Certified | MSc in Information Systems with extensive experience in system development, software architecture, and implementing scalable solutions for complex business needs."
-              },
-              wahid: {
-                name: "Wahid Rahmani",
-                role: "Developer",
-                description: "Master's in Informatics | Experienced Software Engineer with expertise in Machine Learning, Cloud Computing, IT Management, and developing innovative, scalable software solutions for diverse industries."
-              },
-              hamid: {
-                name: "Hamid Rahmani",
-                role: "Project Manager",
-                description: "Experienced Project Manager | Master's degree in Computer Science with expertise in project management, system development, and digital transformation."
-              },
-              muhammad: {
-                name: "Muhammad Nadeem",
-                role: "Fullstack Developer",
-                description: "Master in Applied Computer Science | Full-stack Consultant with focus on C#, Web, React, and Data Analysis"
-              },
-              ibtissam: {
-                name: "Ibtissam Ezzaheri",
-                role: "UI/UX Designer",
-                description: "Experienced UI/UX Designer | Specialist in user experience and interface design, focused on creating intuitive, functional, and aesthetically pleasing solutions that enhance user engagement and efficiency."
-              },
-              helena: {
-                name: "Helena Grønvold",
-                role: "Advisor",
-                description: "Experienced Advisor | Specialist in strategic guidance and problem-solving, focused on providing tailored advice and solutions that help businesses achieve their goals and improve efficiency."
-              }
-            }
+          clients: {
+            title: "Our Clients",
+            description: "Partnering with industry leaders to drive innovation and create impactful solutions."
           }
         }
       },
@@ -312,6 +227,9 @@ i18n
             cookies: "Cookie-policy"
           },
           coreProducts: {
+            title: "Våre Produkter",
+            description: "Innovative AI-drevne løsninger som transformerer helsevesen, dokumentasjon og arkitektur",
+            learnMore: "Lær Mer",
             doctorAI: {
               title: "DoctorAI.no",
               description: "AI-drevet medisinsk konsultasjonsplattform som hjelper helsepersonell med å ta mer informerte beslutninger og forbedre pasientbehandlingen.",
@@ -328,97 +246,9 @@ i18n
               metrics: "1,000+ Prosjekter Håndtert"
             }
           },
-          technologies: {
-            title: "Teknologier og Verktøy",
-            description: "Vi bruker banebrytende teknologier og bransjestandardverktøy for å levere eksepsjonelle løsninger",
-            frontend: {
-              title: "Frontend-utvikling",
-              tools: ["React", "TypeScript", "Tailwind CSS"]
-            },
-            backend: {
-              title: "Backend-løsninger",
-              tools: ["Node.js", "RESTful APIs", "GraphQL"]
-            },
-            ai: {
-              title: "AI-løsninger",
-              tools: ["GPT-4", "LangChain", "Eleven Labs"]
-            },
-            uiux: {
-              title: "UI/UX Design",
-              tools: ["Figma", "Adobe XD", "Sketch"]
-            },
-            devops: {
-              title: "DevOps",
-              tools: ["Docker", "Kubernetes", "CI/CD"]
-            },
-            design: {
-              title: "Designsystemer",
-              tools: ["Material UI", "Shadcn/UI", "Storybook"]
-            }
-          },
-          workProcess: {
-            title: "Vår Arbeidsprosessmodell",
-            description: "En strømlinjeformet tilnærming til å levere eksepsjonelle resultater",
-            discovery: {
-              title: "Oppdagelsessamtale",
-              description: "Innledende konsultasjon for å forstå din visjon og krav"
-            },
-            design: {
-              title: "Designprosess",
-              description: "Skaper intuitive og engasjerende brukeropplevelser"
-            },
-            development: {
-              title: "Utvikling",
-              description: "Bygger robuste og skalerbare løsninger"
-            },
-            testing: {
-              title: "Testingprosess",
-              description: "Sikrer kvalitet og ytelse"
-            },
-            deployment: {
-              title: "Implementering",
-              description: "Lanserer din løsning til verden"
-            },
-            support: {
-              title: "Support",
-              description: "Løpende vedlikehold og assistanse"
-            }
-          },
-          team: {
-            title: "Møt Vårt Team",
-            description: "Vårt eksepsjonelle team av innovatører og problemløsere er dedikert til å transformere ideer til kraftfulle løsninger.",
-            members: {
-              ibrahim: {
-                name: "Ibrahim Rahmani",
-                role: "Senior Utvikler",
-                description: "Fullstack-utvikler | Microsoft-sertifisert | MSc i informasjonssystemer med omfattende erfaring innen systemutvikling, programvarearkitektur og implementering av skalerbare løsninger for komplekse forretningsbehov."
-              },
-              wahid: {
-                name: "Wahid Rahmani",
-                role: "Utvikler",
-                description: "Master i informatikk | Erfaren programvareingeniør med ekspertise innen maskinlæring, cloud computing, IT-ledelse og utvikling av innovative, skalerbare programvareløsninger for ulike bransjer."
-              },
-              hamid: {
-                name: "Hamid Rahmani",
-                role: "Prosjektleder",
-                description: "Erfaren prosjektleder | Mastergrad i informatikk med ekspertise innen prosjektledelse, systemutvikling og digital transformasjon."
-              },
-              muhammad: {
-                name: "Muhammad Nadeem",
-                role: "Fullstack Utvikler",
-                description: "Master i anvendt informatikk | Fullstack-konsulent med fokus på C#, Web, React og dataanalyse"
-              },
-              ibtissam: {
-                name: "Ibtissam Ezzaheri",
-                role: "UI/UX Designer",
-                description: "Erfaren UI/UX-designer | Spesialist på brukeropplevelse og grensesnittdesign, fokusert på å skape intuitive, funksjonelle og estetisk tiltalende løsninger som forbedrer brukerengasjement og effektivitet."
-              },
-              helena: {
-                name: "Helena Grønvold",
-                role: "Rådgiver",
-                description: "Erfaren rådgiver | Spesialist på strategisk veiledning og problemløsning, fokusert på å gi skreddersydde råd og løsninger som hjelper virksomheter med å nå sine mål og forbedre effektiviteten."
-              }
-            }
+          clients: {
+            title: "Våre Kunder",
+            description: "Samarbeider med bransjens ledere for å drive innovasjon og skape virkningsfulle løsninger."
           }
         }
       }
