@@ -73,7 +73,7 @@ const FeatureCards = () => {
         return (
           <FeatureCard
             key={feature.id}
-            icon={<IconComponent className="w-12 h-12 text-xala-accent group-hover:text-white transition-all duration-500" />}
+            icon={<IconComponent className="w-14 h-14 text-xala-accent group-hover:text-white transition-all duration-500" />}
             title={feature.title}
             description={feature.description}
             index={index}
@@ -93,39 +93,46 @@ interface FeatureCardProps {
 
 const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => (
   <div 
-    className={`group relative h-full p-6 rounded-2xl bg-gradient-to-br from-white/[0.075] via-white/[0.035] to-transparent 
+    className={`group relative h-full p-6 rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-transparent 
                 backdrop-blur-sm border border-white/10 hover:border-xala-accent/50 
-                transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-xala-accent/20
-                animate-fade-in`}
+                transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl hover:shadow-xala-accent/20
+                animate-fade-in cursor-pointer overflow-hidden`}
     style={{ 
       animationDelay: `${index * 200}ms`,
       transform: `perspective(1000px) rotateY(${index * 5}deg)`
     }}
   >
-    {/* Glow effect */}
-    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-xala-accent/0 to-transparent opacity-0 
-                    group-hover:opacity-10 transition-opacity duration-500" />
+    {/* Animated background gradient */}
+    <div className="absolute inset-0 bg-gradient-to-br from-xala-accent/0 via-[#9b87f5]/0 to-[#D946EF]/0 
+                    group-hover:from-xala-accent/20 group-hover:via-[#9b87f5]/10 group-hover:to-[#D946EF]/5 
+                    transition-all duration-700 rounded-3xl opacity-0 group-hover:opacity-100" />
+    
+    {/* Glowing orb effect */}
+    <div className="absolute -top-20 -right-20 w-40 h-40 bg-xala-accent/30 rounded-full blur-3xl 
+                    group-hover:bg-xala-accent/40 transform group-hover:scale-150 transition-all duration-700 opacity-0 group-hover:opacity-100" />
     
     {/* Animated border */}
-    <div className="absolute inset-0 rounded-2xl border border-xala-accent/0 group-hover:border-xala-accent/30 
-                    transition-all duration-500" />
+    <div className="absolute inset-0 rounded-3xl border border-xala-accent/0 group-hover:border-xala-accent/30 
+                    transition-all duration-700" />
 
     <div className="relative flex flex-col h-full z-10">
-      <div className="flex items-start gap-4 mb-6">
+      <div className="flex items-start gap-5 mb-6">
         <div 
-          className="p-3 rounded-2xl bg-gradient-to-br from-xala-accent/20 via-xala-accent/10 to-transparent 
+          className="p-4 rounded-2xl bg-gradient-to-br from-xala-accent/20 via-xala-accent/10 to-transparent 
                      group-hover:from-xala-accent/80 group-hover:via-xala-accent/60 group-hover:to-[#D946EF]/40 
-                     transition-all duration-500 shadow-lg shadow-xala-accent/5 group-hover:shadow-xala-accent/30"
+                     transition-all duration-700 shadow-lg shadow-xala-accent/5 group-hover:shadow-xala-accent/30
+                     transform group-hover:scale-110"
         >
           {icon}
         </div>
-        <h3 className="text-2xl font-semibold bg-gradient-to-r from-white via-white to-xala-accent/80 
-                       bg-clip-text text-transparent group-hover:from-xala-accent group-hover:to-white 
-                       transition-all duration-500 mt-2">
+        <h3 className="text-2xl font-bold bg-gradient-to-r from-white via-white to-xala-accent/80 
+                       bg-clip-text text-transparent group-hover:from-xala-accent group-hover:via-white group-hover:to-[#D946EF]
+                       transition-all duration-700 mt-3 tracking-tight">
           {title}
         </h3>
       </div>
-      <p className="text-lg text-left text-xala-text/80 group-hover:text-white/90 transition-colors leading-relaxed">
+      <p className="text-lg text-left text-xala-text/70 group-hover:text-white/90 transition-colors duration-700 leading-relaxed
+                    transform group-hover:translate-x-1">
         {description}
       </p>
     </div>
