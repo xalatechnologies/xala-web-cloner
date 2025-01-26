@@ -122,6 +122,7 @@ export function DashboardContent() {
         <h1 className="text-4xl font-bold text-white font-chakra">Dashboard</h1>
       </div>
 
+      {/* Stats Cards Grid */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
         <Card className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 border-none">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -175,13 +176,13 @@ export function DashboardContent() {
                 />
               </div>
               <Select value={filterLanguage} onValueChange={setFilterLanguage}>
-                <SelectTrigger className="w-[120px] bg-gray-800/50 border-gray-700 text-white">
+                <SelectTrigger className="w-[120px] bg-gray-800 border-gray-700 text-white">
                   <SelectValue placeholder="Language" />
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Languages</SelectItem>
-                  <SelectItem value="en">English</SelectItem>
-                  <SelectItem value="no">Norwegian</SelectItem>
+                <SelectContent className="bg-gray-800 border-gray-700">
+                  <SelectItem value="all" className="text-white hover:bg-gray-700">All Languages</SelectItem>
+                  <SelectItem value="en" className="text-white hover:bg-gray-700">English</SelectItem>
+                  <SelectItem value="no" className="text-white hover:bg-gray-700">Norwegian</SelectItem>
                 </SelectContent>
               </Select>
             </div>
