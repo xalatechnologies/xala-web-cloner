@@ -75,11 +75,11 @@ const Clients = () => {
                 <div 
                   className="group relative h-48 flex items-center justify-center p-6 rounded-xl"
                 >
-                  {/* Futuristic card background */}
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] backdrop-blur-sm border border-white/10 transition-all duration-500 group-hover:border-white/20 group-hover:from-white/[0.12] group-hover:to-white/[0.06]" />
+                  {/* Futuristic card background with whitish gradient */}
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/25 to-white/15 backdrop-blur-sm border border-white/20 transition-all duration-500 group-hover:border-white/40 group-hover:from-white/30 group-hover:to-white/20" />
                   
                   {/* Animated glow effect */}
-                  <div className="absolute -inset-[1px] rounded-xl bg-gradient-to-r from-transparent via-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
+                  <div className="absolute -inset-[1px] rounded-xl bg-gradient-to-r from-transparent via-blue-500/20 to-transparent opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
 
                   {/* Logo */}
                   <img
