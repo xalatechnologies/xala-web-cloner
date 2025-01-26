@@ -37,6 +37,11 @@ const clients = [
     logo: "/clients/nov2.svg",
     color: "#fff"
   },
+  {
+    name: "Nordre Follo",
+    logo: "/clients/nordre-follo.svg",
+    color: "#fff"
+  },
 ];
 
 const Clients = () => {
