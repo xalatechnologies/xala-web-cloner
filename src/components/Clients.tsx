@@ -73,7 +73,7 @@ const Clients = () => {
                 className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4"
               >
                 <div 
-                  className="group relative h-40 flex items-center justify-center p-6 rounded-xl"
+                  className="group relative h-48 flex items-center justify-center p-6 rounded-xl"
                 >
                   {/* Futuristic card background */}
                   <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] backdrop-blur-sm border border-white/10 transition-all duration-500 group-hover:border-white/20 group-hover:from-white/[0.12] group-hover:to-white/[0.06]" />
@@ -85,9 +85,9 @@ const Clients = () => {
                   <img
                     src={client.logo}
                     alt={client.name}
-                    className="relative max-w-[140px] max-h-[70px] object-contain transition-all duration-500 group-hover:scale-110"
+                    className="relative max-w-[180px] max-h-[90px] w-full h-full object-contain transition-all duration-500 group-hover:scale-110"
                     style={{ 
-                      filter: 'brightness(1.2) contrast(1.1)',
+                      filter: 'brightness(1.5) contrast(1.2)',
                       fill: client.color
                     }}
                   />
