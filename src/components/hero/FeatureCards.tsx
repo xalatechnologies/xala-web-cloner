@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
-import { Brain, CloudIcon, Code, BarChart } from 'lucide-react';
+import { Brain, CloudIcon, Code, BarChart, Shield, Laptop, LineChart } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import type { Database } from '@/integrations/supabase/types';
 
@@ -10,6 +10,9 @@ const iconMap = {
   CloudIcon,
   Code,
   BarChart,
+  Shield,
+  Laptop,
+  LineChart,
 };
 
 type IconName = keyof typeof iconMap;
@@ -18,16 +21,17 @@ const FeatureCards = () => {
   const { i18n } = useTranslation();
   
   const { data: features, isLoading } = useQuery({
-    queryKey: ['hero-features', i18n.language],
+    queryKey: ['featured-services', i18n.language],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from('hero_features')
+        .from('services')
         .select('*')
         .eq('language', i18n.language as Database['public']['Enums']['supported_language'])
+        .eq('featured', true)
         .order('sort_order');
       
       if (error) {
-        console.error('Error fetching hero features:', error);
+        console.error('Error fetching featured services:', error);
         throw error;
       }
       

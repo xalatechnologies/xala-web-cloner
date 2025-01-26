@@ -661,6 +661,7 @@ export type Database = {
         Row: {
           created_at: string | null
           description: string
+          featured: boolean | null
           icon: string
           id: string
           language: Database["public"]["Enums"]["supported_language"]
@@ -671,6 +672,7 @@ export type Database = {
         Insert: {
           created_at?: string | null
           description: string
+          featured?: boolean | null
           icon: string
           id?: string
           language?: Database["public"]["Enums"]["supported_language"]
@@ -681,6 +683,7 @@ export type Database = {
         Update: {
           created_at?: string | null
           description?: string
+          featured?: boolean | null
           icon?: string
           id?: string
           language?: Database["public"]["Enums"]["supported_language"]
