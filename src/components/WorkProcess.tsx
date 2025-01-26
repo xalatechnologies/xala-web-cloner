@@ -119,11 +119,8 @@ const WorkProcess = () => {
         
         {/* Add arrow if not the last item in the row */}
         {index < totalProcesses - 1 && (index + 1) % columns !== 0 && (
-          <div className="flex-shrink-0 px-8 text-xala-accent">
-            <div className="relative">
-              <div className="absolute inset-0 bg-xala-accent/20 filter blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <ArrowRight className="w-8 h-8 animate-pulse group-hover:scale-110 transition-transform duration-300" />
-            </div>
+          <div className="flex-shrink-0 px-4 text-xala-accent">
+            <ArrowRight className="w-6 h-6 animate-pulse" />
           </div>
         )}
       </div>
