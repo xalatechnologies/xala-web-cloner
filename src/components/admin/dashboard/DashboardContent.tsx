@@ -2,18 +2,22 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { LayoutDashboard, Users, FileText, Wrench, Pencil, Trash2, Plus } from "lucide-react";
+import { LayoutDashboard, Users, FileText, Wrench, Pencil, Trash2, Plus, Search, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export function DashboardContent() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingSection, setEditingSection] = useState<any>(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterLanguage, setFilterLanguage] = useState<string>('all');
+  const [sortConfig, setSortConfig] = useState({ key: 'sort_order', direction: 'asc' });
   const [formData, setFormData] = useState({
     section_name: '',
     title: '',
@@ -139,6 +143,27 @@ export function DashboardContent() {
     setIsDialogOpen(true);
   };
 
+  const handleSort = (key: string) => {
+    setSortConfig({
+      key,
+      direction: sortConfig.key === key && sortConfig.direction === 'asc' ? 'desc' : 'asc'
+    });
+  };
+
+  const filteredAndSortedSections = sections
+    ?.filter(section => {
+      const matchesSearch = section.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          section.section_name.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesLanguage = filterLanguage === 'all' || section.language === filterLanguage;
+      return matchesSearch && matchesLanguage;
+    })
+    .sort((a, b) => {
+      const direction = sortConfig.direction === 'asc' ? 1 : -1;
+      if (a[sortConfig.key] < b[sortConfig.key]) return -1 * direction;
+      if (a[sortConfig.key] > b[sortConfig.key]) return 1 * direction;
+      return 0;
+    });
+
   const stats = [
     {
       title: "Total Sections",
@@ -196,82 +221,103 @@ export function DashboardContent() {
           <CardTitle className="text-xl font-bold text-white font-chakra">
             Website Sections
           </CardTitle>
-          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-            <DialogTrigger asChild>
-              <Button 
-                onClick={() => {
-                  resetForm();
-                  setIsDialogOpen(true);
-                }}
-                className="bg-blue-500 hover:bg-blue-600"
-              >
-                <Plus className="w-4 h-4 mr-2" />
-                Add Section
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="bg-gray-900 text-white">
-              <DialogHeader>
-                <DialogTitle>{editingSection ? 'Edit Section' : 'Add New Section'}</DialogTitle>
-              </DialogHeader>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label className="text-sm font-medium">Section Name</label>
-                  <Input
-                    value={formData.section_name}
-                    onChange={(e) => setFormData({ ...formData, section_name: e.target.value })}
-                    className="bg-gray-800 border-gray-700 text-white"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="text-sm font-medium">Title</label>
-                  <Input
-                    value={formData.title}
-                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                    className="bg-gray-800 border-gray-700 text-white"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="text-sm font-medium">Language</label>
-                  <select
-                    value={formData.language}
-                    onChange={(e) => setFormData({ ...formData, language: e.target.value })}
-                    className="w-full bg-gray-800 border border-gray-700 text-white rounded-md p-2"
-                    required
-                  >
-                    <option value="en">English</option>
-                    <option value="no">Norwegian</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="text-sm font-medium">Sort Order</label>
-                  <Input
-                    type="number"
-                    value={formData.sort_order}
-                    onChange={(e) => setFormData({ ...formData, sort_order: parseInt(e.target.value) })}
-                    className="bg-gray-800 border-gray-700 text-white"
-                    required
-                  />
-                </div>
-                <div className="flex justify-end gap-2">
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => {
-                      setIsDialogOpen(false);
-                      resetForm();
-                    }}
-                  >
-                    Cancel
-                  </Button>
-                  <Button type="submit" className="bg-blue-500 hover:bg-blue-600">
-                    {editingSection ? 'Update' : 'Create'}
-                  </Button>
-                </div>
-              </form>
-            </DialogContent>
-          </Dialog>
+          <div className="flex items-center space-x-4">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+              <Input
+                placeholder="Search sections..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 bg-gray-800 border-gray-700 text-white w-64"
+              />
+            </div>
+            <Select value={filterLanguage} onValueChange={setFilterLanguage}>
+              <SelectTrigger className="w-32 bg-gray-800 border-gray-700 text-white">
+                <SelectValue placeholder="Language" />
+              </SelectTrigger>
+              <SelectContent className="bg-gray-800 border-gray-700">
+                <SelectItem value="all">All</SelectItem>
+                <SelectItem value="en">English</SelectItem>
+                <SelectItem value="no">Norwegian</SelectItem>
+              </SelectContent>
+            </Select>
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button 
+                  onClick={() => {
+                    resetForm();
+                    setIsDialogOpen(true);
+                  }}
+                  className="bg-blue-500 hover:bg-blue-600"
+                >
+                  <Plus className="w-4 h-4 mr-2" />
+                  Add Section
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="bg-gray-900 text-white">
+                <DialogHeader>
+                  <DialogTitle>{editingSection ? 'Edit Section' : 'Add New Section'}</DialogTitle>
+                </DialogHeader>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label className="text-sm font-medium">Section Name</label>
+                    <Input
+                      value={formData.section_name}
+                      onChange={(e) => setFormData({ ...formData, section_name: e.target.value })}
+                      className="bg-gray-800 border-gray-700 text-white"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium">Title</label>
+                    <Input
+                      value={formData.title}
+                      onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                      className="bg-gray-800 border-gray-700 text-white"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium">Language</label>
+                    <select
+                      value={formData.language}
+                      onChange={(e) => setFormData({ ...formData, language: e.target.value })}
+                      className="w-full bg-gray-800 border border-gray-700 text-white rounded-md p-2"
+                      required
+                    >
+                      <option value="en">English</option>
+                      <option value="no">Norwegian</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium">Sort Order</label>
+                    <Input
+                      type="number"
+                      value={formData.sort_order}
+                      onChange={(e) => setFormData({ ...formData, sort_order: parseInt(e.target.value) })}
+                      className="bg-gray-800 border-gray-700 text-white"
+                      required
+                    />
+                  </div>
+                  <div className="flex justify-end gap-2">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={() => {
+                        setIsDialogOpen(false);
+                        resetForm();
+                      }}
+                    >
+                      Cancel
+                    </Button>
+                    <Button type="submit" className="bg-blue-500 hover:bg-blue-600">
+                      {editingSection ? 'Update' : 'Create'}
+                    </Button>
+                  </div>
+                </form>
+              </DialogContent>
+            </Dialog>
+          </div>
         </CardHeader>
         <CardContent>
           {sectionsLoading ? (
@@ -283,15 +329,35 @@ export function DashboardContent() {
               <Table>
                 <TableHeader>
                   <TableRow className="border-gray-700">
-                    <TableHead className="text-white">Section Name</TableHead>
-                    <TableHead className="text-white">Title</TableHead>
-                    <TableHead className="text-white">Language</TableHead>
-                    <TableHead className="text-white">Sort Order</TableHead>
+                    <TableHead 
+                      className="text-white cursor-pointer hover:text-blue-400 transition-colors"
+                      onClick={() => handleSort('section_name')}
+                    >
+                      Section Name {sortConfig.key === 'section_name' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
+                    </TableHead>
+                    <TableHead 
+                      className="text-white cursor-pointer hover:text-blue-400 transition-colors"
+                      onClick={() => handleSort('title')}
+                    >
+                      Title {sortConfig.key === 'title' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
+                    </TableHead>
+                    <TableHead 
+                      className="text-white cursor-pointer hover:text-blue-400 transition-colors"
+                      onClick={() => handleSort('language')}
+                    >
+                      Language {sortConfig.key === 'language' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
+                    </TableHead>
+                    <TableHead 
+                      className="text-white cursor-pointer hover:text-blue-400 transition-colors"
+                      onClick={() => handleSort('sort_order')}
+                    >
+                      Sort Order {sortConfig.key === 'sort_order' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
+                    </TableHead>
                     <TableHead className="text-white text-right">Actions</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {sections?.map((section) => (
+                  {filteredAndSortedSections?.map((section) => (
                     <TableRow 
                       key={section.id}
                       className="border-gray-700 hover:bg-gray-800/50 transition-colors"
