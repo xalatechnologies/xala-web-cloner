@@ -96,7 +96,7 @@ const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => (
     className={`group relative h-full p-6 rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-transparent 
                 backdrop-blur-sm border border-white/10 hover:border-xala-accent/50 
                 transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl hover:shadow-xala-accent/20
-                animate-fade-in cursor-pointer overflow-hidden`}
+                animate-fade-in cursor-pointer overflow-hidden text-left`}
     style={{ 
       animationDelay: `${index * 200}ms`,
       transform: `perspective(1000px) rotateY(${index * 5}deg)`
@@ -121,15 +121,12 @@ const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => (
                     transition-all duration-700" />
 
     <div className="relative flex flex-col h-full z-10">
-      <div className="flex items-start gap-5 mb-6">
-        <h3 className="text-2xl font-bold bg-gradient-to-r from-white via-white to-xala-accent/80 
-                       bg-clip-text text-transparent group-hover:from-xala-accent group-hover:via-white group-hover:to-[#D946EF]
-                       transition-all duration-700 tracking-tight">
-          {title}
-        </h3>
-      </div>
-      <p className="text-lg text-left text-xala-text/70 group-hover:text-white/90 transition-colors duration-700 leading-relaxed
-                    transform group-hover:translate-x-1">
+      <h3 className="text-2xl font-bold bg-gradient-to-r from-white via-white to-xala-accent/80 
+                     bg-clip-text text-transparent group-hover:from-xala-accent group-hover:via-white group-hover:to-[#D946EF]
+                     transition-all duration-700 tracking-tight mb-6">
+        {title}
+      </h3>
+      <p className="text-lg text-xala-text/70 group-hover:text-white/90 transition-colors duration-700 leading-relaxed">
         {description}
       </p>
     </div>
