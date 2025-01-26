@@ -29,6 +29,25 @@ const Hero = () => {
     }
   };
 
+  const renderGradientTitle = (title: string) => {
+    // Split the title by spaces to get individual words
+    const words = title.split(' ');
+    
+    // Apply gradient to the last word (or you can choose any specific word index)
+    return (
+      <>
+        {words.map((word, index) => (
+          <span key={index} className={index === words.length - 1 ? 
+            "bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text bg-[size:400%] animate-gradient-x" : 
+            "text-white"
+          }>
+            {word}{index < words.length - 1 ? ' ' : ''}
+          </span>
+        ))}
+      </>
+    );
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden py-20 sm:py-32">
       <div className="absolute inset-0 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary animate-gradient-x"></div>
@@ -54,9 +73,7 @@ const Hero = () => {
           ) : (
             <>
               <h1 className="text-5xl sm:text-7xl font-bold leading-tight">
-                <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text bg-[size:400%] animate-gradient-x">
-                  {heroSection?.title}
-                </span>
+                {heroSection?.title && renderGradientTitle(heroSection.title)}
               </h1>
 
               <p className="text-xl sm:text-2xl text-xala-text/90 max-w-3xl mx-auto leading-relaxed font-light">
