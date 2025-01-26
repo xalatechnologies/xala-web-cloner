@@ -32,7 +32,7 @@ const CoreProducts = () => {
           {[...Array(3)].map((_, index) => (
             <Skeleton 
               key={index}
-              className="h-48 rounded-xl bg-white/5"
+              className="h-[400px] rounded-xl bg-white/5"
             />
           ))}
         </div>

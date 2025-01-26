@@ -19,6 +19,8 @@ const ProductGrid = ({ products, columns }: ProductGridProps) => {
           key={product.id}
           title={product.title}
           description={product.description}
+          icon={product.icon}
+          image_url={product.image_url}
         />
       ))}
     </div>
