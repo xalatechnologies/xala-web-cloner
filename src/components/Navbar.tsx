@@ -8,9 +8,11 @@ const Navbar = () => {
 
   const sections = [
     { name: "Home", href: "#home" },
-    { name: "Services", href: "#services" },
+    { name: "About", href: "#about" },
+    { name: "Core Products", href: "#core-products" },
     { name: "Technologies", href: "#technologies" },
     { name: "Work Process", href: "#work-process" },
+    { name: "Case Studies", href: "#case-studies" },
     { name: "Team", href: "#team" },
     { name: "Contact", href: "#contact" }
   ];
