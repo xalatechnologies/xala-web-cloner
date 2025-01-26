@@ -1,6 +1,5 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { useTranslation } from 'react-i18next';
 import { Brain, CloudCog, Code2, BarChart2, Shield, Laptop, LineChart } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import type { Tables, Enums } from '@/integrations/supabase/types';
@@ -21,15 +20,12 @@ const iconMap = {
 type IconName = keyof typeof iconMap;
 
 const FeatureCards = () => {
-  const { i18n } = useTranslation();
-  
   const { data: features, isLoading } = useQuery({
-    queryKey: ['featured-services', i18n.language],
+    queryKey: ['featured-services'],
     queryFn: async () => {
       const { data, error } = await supabase
         .from('services')
         .select('*')
-        .eq('language', i18n.language as SupportedLanguage)
         .eq('featured', true)
         .order('sort_order')
         .limit(4);
