@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X, Brain, Github, Linkedin, Twitter } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const sections = [
     { name: "Home", href: "#home" },
@@ -30,6 +32,22 @@ const Navbar = () => {
       label: "Twitter"
     }
   ];
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        menuRef.current && 
+        buttonRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <nav className="fixed w-full z-50 backdrop-blur-md bg-gradient-to-r from-xala-primary/80 via-xala-secondary/80 to-xala-primary/80 border-b border-xala-accent/20">
@@ -79,6 +97,7 @@ const Navbar = () => {
           
           {/* Hamburger Menu Button */}
           <button
+            ref={buttonRef}
             onClick={() => setIsOpen(!isOpen)}
             className="inline-flex items-center justify-center p-2 rounded-md text-xala-text hover:text-xala-accent focus:outline-none transition-colors relative group"
             aria-expanded="false"
@@ -95,33 +114,36 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Fullscreen Menu Overlay */}
+      {/* Menu Dropdown */}
       <div 
-        className={`fixed inset-0 bg-gradient-to-br from-xala-primary/95 via-xala-secondary/95 to-xala-primary/95 backdrop-blur-lg transform transition-all duration-500 ease-in-out ${
-          isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+        ref={menuRef}
+        className={`absolute top-full left-0 w-full bg-gradient-to-br from-xala-primary/95 via-xala-secondary/95 to-xala-primary/95 backdrop-blur-lg transform transition-all duration-500 ease-in-out ${
+          isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
         }`}
       >
-        <div className="flex flex-col h-full justify-center items-center space-y-8 p-4">
-          {sections.map((section, index) => (
-            <a
-              key={section.name}
-              href={section.href}
-              onClick={() => setIsOpen(false)}
-              className="text-4xl font-bold text-xala-text hover:text-xala-accent transform transition-all duration-300 hover:scale-110 hover:translate-x-2 relative group"
-              style={{ 
-                animationDelay: `${index * 100}ms`,
-                opacity: isOpen ? 1 : 0,
-                transform: isOpen ? 'translateX(0)' : 'translateX(20px)',
-                transition: `opacity 500ms ease ${index * 100}ms, transform 500ms ease ${index * 100}ms`
-              }}
-            >
-              {section.name}
-              <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-xala-accent transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
-            </a>
-          ))}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="grid gap-6">
+            {sections.map((section, index) => (
+              <a
+                key={section.name}
+                href={section.href}
+                onClick={() => setIsOpen(false)}
+                className="text-2xl font-bold text-xala-text hover:text-xala-accent transform transition-all duration-300 hover:translate-x-2 relative group"
+                style={{ 
+                  animationDelay: `${index * 100}ms`,
+                  opacity: isOpen ? 1 : 0,
+                  transform: isOpen ? 'translateX(0)' : 'translateX(20px)',
+                  transition: `opacity 500ms ease ${index * 100}ms, transform 500ms ease ${index * 100}ms`
+                }}
+              >
+                {section.name}
+                <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-xala-accent transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+              </a>
+            ))}
+          </div>
           
           {/* Mobile Social Icons */}
-          <div className="flex items-center space-x-6 mt-12 md:hidden">
+          <div className="flex items-center space-x-6 mt-8 md:hidden">
             {socialLinks.map((link) => (
               <a
                 key={link.label}
