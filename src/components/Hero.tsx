@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Brain, CircuitBoard, Cpu, Database, Network, Server, ArrowRight, Cloud as CloudIcon, Code, BarChart as ChartIcon } from 'lucide-react';
+import { Brain, CircuitBoard, Cpu, Database, Network, Server, ArrowRight, Cloud as CloudIcon, Code, BarChart as ChartIcon, Sparkles, Star, StarHalf } from 'lucide-react';
 import { Button } from './ui/button';
 import { useTranslation } from 'react-i18next';
 
@@ -21,10 +21,56 @@ const Hero = () => {
     }
   };
 
+  // Floating icons component
+  const FloatingIcons = () => (
+    <>
+      {/* Top left cluster */}
+      <div className="absolute top-20 left-20 animate-float-1">
+        <Brain className="w-8 h-8 text-xala-accent/30" />
+      </div>
+      <div className="absolute top-40 left-40 animate-float-2">
+        <CircuitBoard className="w-6 h-6 text-xala-accent/20" />
+      </div>
+      
+      {/* Top right cluster */}
+      <div className="absolute top-32 right-24 animate-float-3">
+        <Cpu className="w-10 h-10 text-xala-accent/25" />
+      </div>
+      <div className="absolute top-60 right-40 animate-float-1">
+        <Database className="w-7 h-7 text-xala-accent/30" />
+      </div>
+
+      {/* Sparkling stars */}
+      <div className="absolute top-1/4 left-1/3 animate-float-2">
+        <Sparkles className="w-5 h-5 text-yellow-400/40" />
+      </div>
+      <div className="absolute bottom-1/3 right-1/4 animate-float-3">
+        <Star className="w-4 h-4 text-yellow-400/30" />
+      </div>
+      <div className="absolute top-1/3 right-1/3 animate-float-1">
+        <StarHalf className="w-6 h-6 text-yellow-400/35" />
+      </div>
+      <div className="absolute bottom-1/4 left-1/4 animate-float-2">
+        <Sparkles className="w-5 h-5 text-yellow-400/40" />
+      </div>
+
+      {/* Bottom clusters */}
+      <div className="absolute bottom-32 left-1/4 animate-float-3">
+        <Network className="w-9 h-9 text-xala-accent/25" />
+      </div>
+      <div className="absolute bottom-40 right-1/3 animate-float-2">
+        <Server className="w-8 h-8 text-xala-accent/30" />
+      </div>
+    </>
+  );
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden py-20 sm:py-32">
       <div className="absolute inset-0 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary animate-gradient-x"></div>
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-5"></div>
+      
+      {/* Add floating icons */}
+      <FloatingIcons />
       
       <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 ${mounted ? 'animate-fade-in' : 'opacity-0'}`}>
         <div className="space-y-8 text-center">
