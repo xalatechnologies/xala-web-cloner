@@ -11,7 +11,8 @@ import GradientText from './ui/gradient-text';
 const Hero = () => {
   const [mounted, setMounted] = useState(false);
   const { i18n } = useTranslation();
-  const { data: heroSection, isLoading } = useSection('hero');
+  const { data: heroSection, isLoading: heroLoading } = useSection('hero');
+  const { data: welcomeSection, isLoading: welcomeLoading } = useSection('hero_welcome');
 
   useEffect(() => {
     setMounted(true);
@@ -48,6 +49,8 @@ const Hero = () => {
     );
   };
 
+  const isLoading = heroLoading || welcomeLoading;
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden py-20 sm:py-32">
       <div className="absolute inset-0 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary animate-gradient-x"></div>
@@ -60,7 +63,7 @@ const Hero = () => {
         <div className="space-y-8 text-center">
           <div className="inline-block">
             <span className="inline-flex items-center px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 text-sm font-medium text-xala-accent">
-              {i18n.language === 'no' ? 'Velkommen' : 'Welcome'}
+              {welcomeSection?.title || (i18n.language === 'no' ? 'Velkommen' : 'Welcome')}
               <span className="ml-2 text-white/50">✨</span>
             </span>
           </div>
