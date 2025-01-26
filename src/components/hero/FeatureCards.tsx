@@ -73,7 +73,7 @@ const FeatureCards = () => {
         return (
           <FeatureCard
             key={feature.id}
-            icon={<IconComponent className="w-14 h-14 text-xala-accent group-hover:text-white transition-all duration-500" />}
+            icon={<IconComponent className="w-40 h-40 text-xala-accent/10 group-hover:text-white/10 transition-all duration-700" />}
             title={feature.title}
             description={feature.description}
             index={index}
@@ -102,6 +102,11 @@ const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => (
       transform: `perspective(1000px) rotateY(${index * 5}deg)`
     }}
   >
+    {/* Background icon */}
+    <div className="absolute top-1/2 right-0 -translate-y-1/2 opacity-10 transform scale-150 transition-all duration-700 group-hover:scale-175 group-hover:opacity-20">
+      {icon}
+    </div>
+    
     {/* Animated background gradient */}
     <div className="absolute inset-0 bg-gradient-to-br from-xala-accent/0 via-[#9b87f5]/0 to-[#D946EF]/0 
                     group-hover:from-xala-accent/20 group-hover:via-[#9b87f5]/10 group-hover:to-[#D946EF]/5 
@@ -116,15 +121,7 @@ const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => (
                     transition-all duration-700" />
 
     <div className="relative flex flex-col h-full z-10">
-      <div className="flex flex-col items-start gap-5 mb-6">
-        <div 
-          className="p-4 rounded-2xl bg-gradient-to-br from-xala-accent/20 via-xala-accent/10 to-transparent 
-                     group-hover:from-xala-accent/80 group-hover:via-xala-accent/60 group-hover:to-[#D946EF]/40 
-                     transition-all duration-700 shadow-lg shadow-xala-accent/5 group-hover:shadow-xala-accent/30
-                     transform group-hover:scale-110"
-        >
-          {icon}
-        </div>
+      <div className="flex items-start gap-5 mb-6">
         <h3 className="text-2xl font-bold bg-gradient-to-r from-white via-white to-xala-accent/80 
                        bg-clip-text text-transparent group-hover:from-xala-accent group-hover:via-white group-hover:to-[#D946EF]
                        transition-all duration-700 tracking-tight">
