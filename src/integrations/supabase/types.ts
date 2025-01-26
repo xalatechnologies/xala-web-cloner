@@ -397,40 +397,85 @@ export type Database = {
       }
       products: {
         Row: {
+          call_to_action: Json | null
+          contact_info: Json | null
           created_at: string | null
           description: string
+          documentation_url: string | null
           icon: string | null
           id: string
           image_url: string
+          integrations: string[] | null
+          key_features: string[] | null
           language: Database["public"]["Enums"]["supported_language"]
           metrics: string | null
+          pricing_model: Json | null
+          published_at: string | null
           sort_order: number
+          status: Database["public"]["Enums"]["product_status"] | null
+          support_info: Json | null
+          target_audience: string[] | null
+          tech_stack: string[] | null
+          testimonials: Json[] | null
           title: string
+          unique_selling_points: string[] | null
           updated_at: string | null
+          value_proposition: string | null
+          website_url: string | null
         }
         Insert: {
+          call_to_action?: Json | null
+          contact_info?: Json | null
           created_at?: string | null
           description: string
+          documentation_url?: string | null
           icon?: string | null
           id?: string
           image_url: string
+          integrations?: string[] | null
+          key_features?: string[] | null
           language?: Database["public"]["Enums"]["supported_language"]
           metrics?: string | null
+          pricing_model?: Json | null
+          published_at?: string | null
           sort_order?: number
+          status?: Database["public"]["Enums"]["product_status"] | null
+          support_info?: Json | null
+          target_audience?: string[] | null
+          tech_stack?: string[] | null
+          testimonials?: Json[] | null
           title: string
+          unique_selling_points?: string[] | null
           updated_at?: string | null
+          value_proposition?: string | null
+          website_url?: string | null
         }
         Update: {
+          call_to_action?: Json | null
+          contact_info?: Json | null
           created_at?: string | null
           description?: string
+          documentation_url?: string | null
           icon?: string | null
           id?: string
           image_url?: string
+          integrations?: string[] | null
+          key_features?: string[] | null
           language?: Database["public"]["Enums"]["supported_language"]
           metrics?: string | null
+          pricing_model?: Json | null
+          published_at?: string | null
           sort_order?: number
+          status?: Database["public"]["Enums"]["product_status"] | null
+          support_info?: Json | null
+          target_audience?: string[] | null
+          tech_stack?: string[] | null
+          testimonials?: Json[] | null
           title?: string
+          unique_selling_points?: string[] | null
           updated_at?: string | null
+          value_proposition?: string | null
+          website_url?: string | null
         }
         Relationships: []
       }
@@ -634,6 +679,7 @@ export type Database = {
     }
     Enums: {
       case_study_status: "draft" | "published" | "archived"
+      product_status: "draft" | "published" | "archived"
       supported_language: "en" | "no"
     }
     CompositeTypes: {
