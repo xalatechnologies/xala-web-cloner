@@ -47,7 +47,7 @@ const FeatureCards = () => {
         {[...Array(3)].map((_, i) => (
           <div 
             key={i} 
-            className="h-full p-8 rounded-2xl bg-white/5 animate-pulse backdrop-blur-sm border border-white/5"
+            className="h-full p-6 rounded-2xl bg-white/5 animate-pulse backdrop-blur-sm border border-white/5"
           >
             <div className="flex flex-col items-start gap-4">
               <div className="flex items-center gap-4">
@@ -63,7 +63,7 @@ const FeatureCards = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto my-16 perspective-1000">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto my-12 perspective-1000">
       {features?.map((feature, index) => {
         const IconComponent = iconMap[feature.icon as IconName];
         if (!IconComponent) {
@@ -93,7 +93,7 @@ interface FeatureCardProps {
 
 const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => (
   <div 
-    className={`group relative h-full p-8 rounded-2xl bg-gradient-to-br from-white/[0.075] via-white/[0.035] to-transparent 
+    className={`group relative h-full p-6 rounded-2xl bg-gradient-to-br from-white/[0.075] via-white/[0.035] to-transparent 
                 backdrop-blur-sm border border-white/10 hover:border-xala-accent/50 
                 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-xala-accent/20
                 animate-fade-in`}
@@ -111,9 +111,9 @@ const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => (
                     transition-all duration-500" />
 
     <div className="relative flex flex-col h-full z-10">
-      <div className="flex items-start gap-6 mb-8">
+      <div className="flex items-start gap-4 mb-6">
         <div 
-          className="p-4 rounded-2xl bg-gradient-to-br from-xala-accent/20 via-xala-accent/10 to-transparent 
+          className="p-3 rounded-2xl bg-gradient-to-br from-xala-accent/20 via-xala-accent/10 to-transparent 
                      group-hover:from-xala-accent/80 group-hover:via-xala-accent/60 group-hover:to-[#D946EF]/40 
                      transition-all duration-500 shadow-lg shadow-xala-accent/5 group-hover:shadow-xala-accent/30"
         >
@@ -121,11 +121,11 @@ const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => (
         </div>
         <h3 className="text-2xl font-semibold bg-gradient-to-r from-white via-white to-xala-accent/80 
                        bg-clip-text text-transparent group-hover:from-xala-accent group-hover:to-white 
-                       transition-all duration-500 mt-4">
+                       transition-all duration-500 mt-2">
           {title}
         </h3>
       </div>
-      <p className="text-lg text-xala-text/80 group-hover:text-white/90 transition-colors leading-relaxed">
+      <p className="text-lg text-left text-xala-text/80 group-hover:text-white/90 transition-colors leading-relaxed">
         {description}
       </p>
     </div>
