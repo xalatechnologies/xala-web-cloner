@@ -1,0 +1,83 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "coreProducts": "Core Products",
+    "technologies": "Technologies",
+    "workProcess": "Work Process",
+    "caseStudies": "Case Studies",
+    "team": "Team",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Transforming Ideas into Digital Reality",
+    "subtitle": "We create innovative solutions that drive business growth"
+  },
+  "about": {
+    "title": "Shaping Tomorrow's Technology",
+    "subtitle": "We're not just building software; we're crafting digital experiences that define the future.",
+    "features": {
+      "innovation": {
+        "title": "Innovation First",
+        "description": "Pioneering solutions that push the boundaries of what's possible in technology"
+      },
+      "futureReady": {
+        "title": "Future-Ready",
+        "description": "Building scalable systems that evolve with your business needs"
+      },
+      "clientCentric": {
+        "title": "Client-Centric",
+        "description": "Your success is our priority - we transform ideas into impactful solutions"
+      },
+      "technical": {
+        "title": "Technical Excellence",
+        "description": "Leveraging cutting-edge technologies to deliver robust solutions"
+      }
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be at the forefront of technological innovation, creating solutions that not only meet today's challenges but anticipate tomorrow's needs. We believe in technology that empowers, connects, and transforms businesses for the digital future."
+    }
+  },
+  "coreProducts": {
+    "title": "Our Products",
+    "subtitle": "Innovative AI-powered solutions transforming healthcare, documentation, and architecture",
+    "learnMore": "Learn More",
+    "products": {
+      "doctorAI": {
+        "title": "DoctorAI.no",
+        "description": "AI-powered medical consultation platform that helps healthcare professionals make more informed decisions and improve patient care.",
+        "metrics": "10,000+ Consultations"
+      },
+      "fylleUt": {
+        "title": "FylleUt.no",
+        "description": "Advanced AI-driven form builder that simplifies document creation and automation, making form filling effortless and intelligent.",
+        "metrics": "50,000+ Forms Generated"
+      },
+      "prinsipro": {
+        "title": "Prinsipro",
+        "description": "AI-powered architecture principles management system that streamlines design decisions and ensures consistency across projects.",
+        "metrics": "1,000+ Projects Managed"
+      }
+    }
+  },
+  "contact": {
+    "title": "Let's Build Something Amazing",
+    "subtitle": "Ready to transform your ideas into reality? Get in touch with our team of experts.",
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "subject": "Subject",
+      "message": "Share your thoughts, project ideas, or specific requirements... We're excited to hear from you!",
+      "submit": "Send Message"
+    },
+    "success": "Message sent!",
+    "successDetail": "We'll get back to you as soon as possible."
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Policy"
+  }
+}

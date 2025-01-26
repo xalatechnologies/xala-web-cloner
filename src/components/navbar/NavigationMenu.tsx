@@ -1,5 +1,5 @@
 import { Menu, X } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface NavigationMenuProps {
   isOpen: boolean;
@@ -8,71 +8,52 @@ interface NavigationMenuProps {
 }
 
 const NavigationMenu = ({ isOpen, setIsOpen, sections }: NavigationMenuProps) => {
-  const menuRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        menuRef.current && 
-        buttonRef.current &&
-        !menuRef.current.contains(event.target as Node) &&
-        !buttonRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [setIsOpen]);
-
+  const { t } = useTranslation();
+  
   return (
     <>
+      {/* Mobile menu button */}
       <button
-        ref={buttonRef}
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center justify-center p-2 rounded-md text-xala-text hover:text-xala-accent focus:outline-none transition-colors relative group"
-        aria-expanded="false"
+        className="lg:hidden p-2 rounded-md text-xala-text hover:text-xala-accent"
       >
-        <div className="relative">
-          {isOpen ? (
-            <X size={24} className="transform transition-transform duration-300 rotate-90 group-hover:rotate-180" />
-          ) : (
-            <Menu size={24} className="transform transition-transform duration-300 group-hover:rotate-90" />
-          )}
-          <div className="absolute inset-0 bg-xala-accent/10 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-        </div>
+        {isOpen ? (
+          <X className="h-6 w-6" />
+        ) : (
+          <Menu className="h-6 w-6" />
+        )}
       </button>
 
-      <div 
-        ref={menuRef}
-        className={`absolute top-full left-0 w-full bg-gradient-to-br from-xala-primary/95 via-xala-secondary/95 to-xala-primary/95 backdrop-blur-lg transform transition-all duration-500 ease-in-out ${
-          isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid gap-6">
+      {/* Desktop navigation */}
+      <div className="hidden lg:flex lg:gap-x-8">
+        {sections.map((section, index) => (
+          <a
+            key={index}
+            href={section.href}
+            className="text-xala-text hover:text-xala-accent transition-colors duration-300"
+          >
+            {t(section.name)}
+          </a>
+        ))}
+      </div>
+
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="lg:hidden absolute top-full left-0 w-full bg-xala-primary border-b border-xala-accent/20">
+          <div className="px-2 pt-2 pb-3 space-y-1">
             {sections.map((section, index) => (
               <a
-                key={section.name}
+                key={index}
                 href={section.href}
+                className="block px-3 py-2 text-xala-text hover:text-xala-accent transition-colors duration-300"
                 onClick={() => setIsOpen(false)}
-                className="text-2xl font-bold text-xala-text hover:text-xala-accent transform transition-all duration-300 hover:translate-x-2 relative group"
-                style={{ 
-                  animationDelay: `${index * 100}ms`,
-                  opacity: isOpen ? 1 : 0,
-                  transform: isOpen ? 'translateX(0)' : 'translateX(20px)',
-                  transition: `opacity 500ms ease ${index * 100}ms, transform 500ms ease ${index * 100}ms`
-                }}
               >
-                {section.name}
-                <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-xala-accent transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+                {t(section.name)}
               </a>
             ))}
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
