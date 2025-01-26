@@ -24,6 +24,17 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { useQueryClient } from "@tanstack/react-query";
+import { type Database } from "@/integrations/supabase/types";
+
+type SupportedLanguage = Database['public']['Enums']['supported_language'];
+
+interface FormData {
+  section_name: string;
+  title: string;
+  description: string;
+  language: SupportedLanguage;
+  sort_order: number;
+}
 
 export function DashboardContent() {
   const { toast } = useToast();
@@ -40,7 +51,7 @@ export function DashboardContent() {
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const [selectedSection, setSelectedSection] = useState<any>(null);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     section_name: '',
     title: '',
     description: '',
@@ -115,7 +126,7 @@ export function DashboardContent() {
   const handleCreate = async () => {
     const { error } = await supabase
       .from('sections')
-      .insert([formData]);
+      .insert(formData);
 
     if (error) {
       toast({
@@ -387,7 +398,7 @@ export function DashboardContent() {
               <Label htmlFor="language">Language</Label>
               <Select
                 value={formData.language}
-                onValueChange={(value) => setFormData({ ...formData, language: value })}
+                onValueChange={(value: SupportedLanguage) => setFormData({ ...formData, language: value })}
               >
                 <SelectTrigger className="bg-gray-700 border-gray-600">
                   <SelectValue />
