@@ -1,26 +1,29 @@
 import { Brain, Rocket, Users, Code2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const About = () => {
+  const { t } = useTranslation();
+
   const features = [
     {
       icon: <Brain className="w-8 h-8" />,
-      title: "Innovation First",
-      description: "Pioneering solutions that push the boundaries of what's possible in technology"
+      title: t('about.features.innovation.title'),
+      description: t('about.features.innovation.description')
     },
     {
       icon: <Rocket className="w-8 h-8" />,
-      title: "Future-Ready",
-      description: "Building scalable systems that evolve with your business needs"
+      title: t('about.features.future.title'),
+      description: t('about.features.future.description')
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: "Client-Centric",
-      description: "Your success is our priority - we transform ideas into impactful solutions"
+      title: t('about.features.client.title'),
+      description: t('about.features.client.description')
     },
     {
       icon: <Code2 className="w-8 h-8" />,
-      title: "Technical Excellence",
-      description: "Leveraging cutting-edge technologies to deliver robust solutions"
+      title: t('about.features.technical.title'),
+      description: t('about.features.technical.description')
     }
   ];
 
@@ -36,11 +39,10 @@ const About = () => {
         {/* Header Section */}
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#9b87f5] via-[#D946EF] to-[#0EA5E9] text-transparent bg-clip-text">
-            Shaping Tomorrow's Technology
+            {t('about.title')}
           </h2>
           <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
-            We're not just building software; we're crafting digital experiences that define the future. 
-            Our passion for innovation drives us to create solutions that empower businesses in the digital age.
+            {t('about.description')}
           </p>
         </div>
 
@@ -75,12 +77,10 @@ const About = () => {
                         border border-white/10 backdrop-blur-sm">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h3 className="text-2xl md:text-3xl font-semibold text-white">
-              Our Vision
+              {t('about.vision.title')}
             </h3>
             <p className="text-lg text-white/80 leading-relaxed">
-              To be at the forefront of technological innovation, creating solutions that not only meet today's challenges 
-              but anticipate tomorrow's needs. We believe in technology that empowers, connects, and transforms businesses 
-              for the digital future.
+              {t('about.vision.description')}
             </p>
           </div>
         </div>

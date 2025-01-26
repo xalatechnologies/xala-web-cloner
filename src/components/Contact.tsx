@@ -6,6 +6,7 @@ import { useToast } from './ui/use-toast';
 
 const Contact = () => {
   const { toast } = useToast();
+  const { t } = useTranslation();
   
   const contactInfo = [
     {
@@ -62,10 +63,10 @@ const Contact = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-[#8B5CF6] via-[#D946EF] to-[#0EA5E9] text-transparent bg-clip-text mb-4">
-            Let's Build Something Amazing
+            {t('contact.title')}
           </h2>
           <p className="text-xala-text/80 text-lg max-w-2xl mx-auto">
-            Ready to transform your ideas into reality? Get in touch with our team of experts.
+            {t('contact.description')}
           </p>
         </div>
         
@@ -115,14 +116,14 @@ const Contact = () => {
                 <div>
                   <Input
                     type="text"
-                    placeholder="Your Name"
+                    placeholder={t('contact.form.name')}
                     className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 h-12"
                   />
                 </div>
                 <div>
                   <Input
                     type="email"
-                    placeholder="Your Email"
+                    placeholder={t('contact.form.email')}
                     className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#D946EF] transition-all duration-500 h-12"
                   />
                 </div>
@@ -130,13 +131,13 @@ const Contact = () => {
               <div>
                 <Input
                   type="text"
-                  placeholder="Subject"
+                  placeholder={t('contact.form.subject')}
                   className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#0EA5E9] transition-all duration-500 h-12"
                 />
               </div>
               <div>
                 <Textarea
-                  placeholder="Share your thoughts, project ideas, or specific requirements... We're excited to hear from you!"
+                  placeholder={t('contact.form.message')}
                   rows={12}
                   className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 resize-none min-h-[300px] p-4"
                 />
@@ -145,7 +146,7 @@ const Contact = () => {
                 type="submit"
                 className="w-full bg-white/10 hover:bg-white/20 text-white font-medium h-12 rounded-xl transition-all duration-300 border border-white/10 hover:border-white/20"
               >
-                Send Message
+                {t('contact.form.send')}
               </Button>
             </form>
           </div>

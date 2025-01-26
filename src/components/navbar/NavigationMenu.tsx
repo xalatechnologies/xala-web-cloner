@@ -1,5 +1,6 @@
 import { Menu, X } from 'lucide-react';
 import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface NavigationMenuProps {
   isOpen: boolean;
@@ -10,6 +11,7 @@ interface NavigationMenuProps {
 const NavigationMenu = ({ isOpen, setIsOpen, sections }: NavigationMenuProps) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -26,6 +28,11 @@ const NavigationMenu = ({ isOpen, setIsOpen, sections }: NavigationMenuProps) =>
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [setIsOpen]);
+
+  const getTranslationKey = (name: string) => {
+    const key = name.toLowerCase().replace(/\s+/g, '');
+    return `nav.${key}`;
+  };
 
   return (
     <>
@@ -66,7 +73,7 @@ const NavigationMenu = ({ isOpen, setIsOpen, sections }: NavigationMenuProps) =>
                   transition: `opacity 500ms ease ${index * 100}ms, transform 500ms ease ${index * 100}ms`
                 }}
               >
-                {section.name}
+                {t(getTranslationKey(section.name))}
                 <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-xala-accent transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
               </a>
             ))}
