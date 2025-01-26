@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Loader } from 'lucide-react';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
@@ -87,6 +88,7 @@ const AdminLogin = () => {
               onChange={(e) => setEmail(e.target.value)}
               className="w-full bg-white/10 border-white/20 text-white placeholder:text-gray-400"
               required
+              disabled={isLoading}
             />
           </div>
           <div>
@@ -97,6 +99,7 @@ const AdminLogin = () => {
               onChange={(e) => setPassword(e.target.value)}
               className="w-full bg-white/10 border-white/20 text-white placeholder:text-gray-400"
               required
+              disabled={isLoading}
             />
           </div>
           <Button
@@ -104,7 +107,14 @@ const AdminLogin = () => {
             className="w-full bg-blue-600 hover:bg-blue-700 text-white"
             disabled={isLoading}
           >
-            {isLoading ? 'Signing in...' : 'Sign In'}
+            {isLoading ? (
+              <div className="flex items-center justify-center">
+                <Loader className="w-4 h-4 mr-2 animate-spin" />
+                Signing in...
+              </div>
+            ) : (
+              'Sign In'
+            )}
           </Button>
           <div className="text-center">
             <Link
