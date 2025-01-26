@@ -45,7 +45,7 @@ const ProductCarousel = ({ products, columns, autoscroll }: ProductCarouselProps
             <ProductCard
               title={product.title}
               description={product.description}
-              imageUrl={product.image_url}
+              image_url={product.image_url}
               icon={product.icon}
             />
           </CarouselItem>
