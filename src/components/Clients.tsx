@@ -3,42 +3,31 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import { useRef } from "react";
 
 const clients = [
   {
-    name: "Altinn",
-    logo: "/lovable-uploads/54dff2fe-2407-411e-9d96-afe8fbed9cbc.png",
+    name: "Client 1",
+    logo: "/clients/placeholder.svg", // Will be replaced once logos are uploaded to /clients folder
   },
   {
-    name: "OCHA",
-    logo: "/lovable-uploads/8d2f448c-b059-4f5b-84cd-633eab629206.png",
+    name: "Client 2",
+    logo: "/clients/placeholder.svg",
   },
   {
-    name: "TDS",
-    logo: "/lovable-uploads/bcb33ba6-0562-4857-818f-e29b4f66b4de.png",
+    name: "Client 3",
+    logo: "/clients/placeholder.svg",
   },
   {
-    name: "Telia",
-    logo: "/lovable-uploads/c700956f-8871-4608-bdd4-64d966038aea.png",
+    name: "Client 4",
+    logo: "/clients/placeholder.svg",
   },
   {
-    name: "UNICEF",
-    logo: "/lovable-uploads/c48882ae-197a-439d-9406-c6f62200e111.png",
+    name: "Client 5",
+    logo: "/clients/placeholder.svg",
   },
 ];
 
 const Clients = () => {
-  const plugin = useRef(
-    Autoplay({ 
-      delay: 6000,
-      stopOnInteraction: false, 
-      stopOnMouseEnter: true,
-      rootNode: (emblaRoot) => emblaRoot.parentElement,
-    })
-  );
-
   return (
     <section className="py-20 relative overflow-hidden">
       {/* Futuristic background with gradient mesh */}
@@ -62,15 +51,13 @@ const Clients = () => {
         <Carousel
           opts={{
             align: "center",
-            loop: true,
-            skipSnaps: false,
-            dragFree: false,
+            loop: false,
+            dragFree: true,
           }}
-          plugins={[plugin.current]}
           className="w-full max-w-6xl mx-auto"
         >
           <CarouselContent className="-ml-2 md:-ml-4">
-            {[...clients, ...clients].map((client, index) => (
+            {clients.map((client, index) => (
               <CarouselItem 
                 key={index} 
                 className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4"
