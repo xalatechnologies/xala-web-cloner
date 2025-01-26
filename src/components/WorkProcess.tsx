@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "./ui/skeleton";
 import * as Icons from "lucide-react";
+import { LucideIcon } from "lucide-react";
 
 const WorkProcess = () => {
   const { t, i18n } = useTranslation();
@@ -40,8 +41,8 @@ const WorkProcess = () => {
   });
 
   // Function to dynamically get icon component
-  const getIconComponent = (iconName: string) => {
-    const IconComponent = Icons[iconName as keyof typeof Icons];
+  const getIconComponent = (iconName: string): LucideIcon => {
+    const IconComponent = Icons[iconName as keyof typeof Icons] as LucideIcon;
     return IconComponent || Icons.HelpCircle;
   };
 
@@ -78,7 +79,7 @@ const WorkProcess = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
             {processes?.map((process, index) => {
-              const IconComponent = getIconComponent(process.icon);
+              const Icon = getIconComponent(process.icon);
               
               return (
                 <div
@@ -106,7 +107,7 @@ const WorkProcess = () => {
                       <div className="text-xala-accent relative">
                         <div className="absolute inset-0 bg-xala-accent/20 filter blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div className="relative transform group-hover:scale-110 transition-transform duration-300">
-                          <IconComponent className="w-8 h-8" />
+                          <Icon className="w-8 h-8" />
                         </div>
                       </div>
                       <h3 className="text-xl font-semibold text-xala-accent">{process.title}</h3>
