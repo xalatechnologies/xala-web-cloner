@@ -8,26 +8,32 @@ const clients = [
   {
     name: "SSB",
     logo: "/clients/ssb.svg",
+    color: "#274247" // Original dark blue-gray
   },
   {
     name: "Sykehuspartner",
     logo: "/clients/sykehuspartner.svg",
+    color: "#003087" // Original blue
   },
   {
     name: "Norwegian",
     logo: "/clients/norwegian.svg",
+    color: "#b12a0b" // Original red
   },
   {
     name: "Altinn",
     logo: "/clients/altinn.svg",
+    color: "#0062BA" // Original blue
   },
   {
     name: "NHN",
     logo: "/clients/nhn.svg",
+    color: "#003087" // Original blue
   },
   {
     name: "NOV",
     logo: "/clients/nov2.svg",
+    color: "#ED3124" // Original red
   },
 ];
 
@@ -79,7 +85,11 @@ const Clients = () => {
                   <img
                     src={client.logo}
                     alt={client.name}
-                    className="relative max-w-[140px] max-h-[70px] object-contain opacity-60 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110"
+                    className="relative max-w-[140px] max-h-[70px] object-contain transition-all duration-500 group-hover:scale-110"
+                    style={{ 
+                      filter: 'brightness(1.2) contrast(1.1)',
+                      fill: client.color
+                    }}
                   />
 
                   {/* Hover text */}
