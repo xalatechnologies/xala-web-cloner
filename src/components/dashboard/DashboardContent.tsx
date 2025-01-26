@@ -205,7 +205,7 @@ export function DashboardContent() {
       section_name: section.section_name,
       title: section.title,
       description: section.description || '',
-      language: section.language,
+      language: section.language as SupportedLanguage,
       sort_order: section.sort_order
     });
     setIsEditDialogOpen(true);
