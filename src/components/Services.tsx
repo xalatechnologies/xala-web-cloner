@@ -50,19 +50,25 @@ const Services = () => {
       );
     }
 
-    if (!services) return null;
+    if (!services?.length) {
+      return (
+        <div className="text-center text-white/70">
+          {t('services.noServices')}
+        </div>
+      );
+    }
 
     return section?.carousel ? (
       <ServiceCarousel 
         services={services} 
-        columns={section.columns || 3}
-        autoscroll={section.autoscroll || false}
+        columns={section?.columns || 3}
+        autoscroll={section?.autoscroll || false}
       />
     ) : (
       <ServiceGrid 
         services={services}
-        columns={section.columns || 3}
-        rows={section.rows || 1}
+        columns={section?.columns || 3}
+        rows={section?.rows || 1}
       />
     );
   };
