@@ -47,10 +47,16 @@ const About = () => {
           </p>
         </div>
 
-        <AboutFeatureGrid
-          features={features}
-          initialRows={section?.rows || 1}
-        />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map((feature, index) => (
+            <AboutFeatureCard
+              key={index}
+              icon={feature.icon}
+              title={feature.title}
+              description={feature.description}
+            />
+          ))}
+        </div>
 
         <div className="mt-20 p-8 rounded-2xl bg-gradient-to-r from-[#9b87f5]/10 via-[#D946EF]/10 to-[#0EA5E9]/10 
                       border border-white/10 backdrop-blur-sm">
