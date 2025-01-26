@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Code, Shield, LineChart, Laptop } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
+import { type Database } from '@/integrations/supabase/types';
 
 const iconMap: { [key: string]: React.ReactNode } = {
   Code: <Code className="w-12 h-12 text-xala-accent mb-4" />,
@@ -15,10 +16,12 @@ const Services = () => {
   const { data: services, isLoading } = useQuery({
     queryKey: ['services', i18n.language],
     queryFn: async () => {
+      const currentLanguage = i18n.language.toLowerCase() as Database['public']['Enums']['supported_language'];
+      
       const { data, error } = await supabase
         .from('services')
         .select('*')
-        .eq('language', i18n.language.toLowerCase())
+        .eq('language', currentLanguage)
         .order('sort_order');
 
       if (error) throw error;
