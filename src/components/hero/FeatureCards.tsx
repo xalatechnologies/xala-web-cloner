@@ -1,32 +1,64 @@
 import React from 'react';
-import { Brain, CloudIcon, Code, BarChart as ChartIcon } from 'lucide-react';
+import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
+import { Brain, CloudIcon, Code, BarChart } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+
+const iconMap = {
+  Brain,
+  CloudIcon,
+  Code,
+  BarChart,
+};
+
+type IconName = keyof typeof iconMap;
 
 const FeatureCards = () => {
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
   
+  const { data: features, isLoading } = useQuery({
+    queryKey: ['hero-features', i18n.language],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('hero_features')
+        .select('*')
+        .eq('language', i18n.language)
+        .order('sort_order');
+      
+      if (error) {
+        console.error('Error fetching hero features:', error);
+        throw error;
+      }
+      
+      return data;
+    },
+  });
+
+  if (isLoading) {
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 max-w-5xl mx-auto my-12">
+        {[...Array(4)].map((_, i) => (
+          <div key={i} className="p-6 rounded-xl bg-white/5 animate-pulse">
+            <div className="h-32"></div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 max-w-5xl mx-auto my-12">
-      <FeatureCard
-        icon={<Brain />}
-        title={t('hero.features.aiSolutions')}
-        description={t('hero.features.aiDesc')}
-      />
-      <FeatureCard
-        icon={<CloudIcon />}
-        title={t('hero.features.cloudIntegration')}
-        description={t('hero.features.cloudDesc')}
-      />
-      <FeatureCard
-        icon={<Code />}
-        title={t('hero.features.customDev')}
-        description={t('hero.features.customDevDesc')}
-      />
-      <FeatureCard
-        icon={<ChartIcon />}
-        title={t('hero.features.dataAnalytics')}
-        description={t('hero.features.dataDesc')}
-      />
+      {features?.map((feature) => {
+        const IconComponent = iconMap[feature.icon as IconName];
+        return (
+          <FeatureCard
+            key={feature.id}
+            icon={<IconComponent />}
+            title={feature.title}
+            description={feature.description}
+          />
+        );
+      })}
     </div>
   );
 };

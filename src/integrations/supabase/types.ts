@@ -354,6 +354,42 @@ export type Database = {
         }
         Relationships: []
       }
+      hero_features: {
+        Row: {
+          category: Database["public"]["Enums"]["feature_category"]
+          created_at: string | null
+          description: string
+          icon: string
+          id: string
+          language: Database["public"]["Enums"]["supported_language"]
+          sort_order: number
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          category: Database["public"]["Enums"]["feature_category"]
+          created_at?: string | null
+          description: string
+          icon: string
+          id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          sort_order?: number
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          category?: Database["public"]["Enums"]["feature_category"]
+          created_at?: string | null
+          description?: string
+          icon?: string
+          id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          sort_order?: number
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       menu_items: {
         Row: {
           created_at: string | null
@@ -779,6 +815,7 @@ export type Database = {
     }
     Enums: {
       case_study_status: "draft" | "published" | "archived"
+      feature_category: "ai" | "cloud" | "development" | "analytics"
       product_status: "draft" | "published" | "archived"
       supported_language: "en" | "no"
     }
