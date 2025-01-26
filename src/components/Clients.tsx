@@ -80,7 +80,7 @@ const Clients = () => {
                 className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4"
               >
                 <div 
-                  className="group relative h-40 flex items-center justify-center p-2 rounded-xl"
+                  className="group relative h-40 flex items-center justify-center p-4 rounded-xl"
                 >
                   {/* Card background using site's color scheme */}
                   <div className="absolute inset-0 rounded-xl bg-xala-secondary border border-xala-accent/20" />
