@@ -26,7 +26,7 @@ export const useSection = (sectionName: string) => {
     queryKey: ['section', sectionName, i18n.language],
     queryFn: async () => {
       const currentLanguage = i18n.language.toLowerCase() as Database['public']['Enums']['supported_language'];
-      console.log('Fetching section for language:', currentLanguage);
+      console.log(`Fetching section "${sectionName}" for language:`, currentLanguage);
       
       const { data, error } = await supabase
         .from('sections')
@@ -36,9 +36,16 @@ export const useSection = (sectionName: string) => {
         .single();
 
       if (error) {
-        console.error('Error fetching section:', error);
+        console.error(`Error fetching section "${sectionName}":`, error);
         throw error;
       }
+
+      console.log(`Section "${sectionName}" data:`, {
+        columns: data?.columns,
+        rows: data?.rows,
+        carousel: data?.carousel,
+        autoscroll: data?.autoscroll
+      });
 
       return data as Section;
     },
