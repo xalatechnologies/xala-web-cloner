@@ -1,5 +1,4 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.38.4'
 import { Configuration, OpenAIApi } from 'https://esm.sh/openai@3.3.0'
 
 const corsHeaders = {
@@ -8,12 +7,19 @@ const corsHeaders = {
 }
 
 serve(async (req) => {
+  // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
 
   try {
     const { text, type, language } = await req.json()
+
+    // Validate input
+    if (!text || !type || !language) {
+      console.error('Missing required parameters:', { text, type, language })
+      throw new Error('Missing required parameters')
+    }
 
     const openai = new OpenAIApi(new Configuration({
       apiKey: Deno.env.get('OPENAI_API_KEY')
@@ -33,6 +39,8 @@ serve(async (req) => {
     
     Enhanced version:`
 
+    console.log('Sending request to OpenAI with prompt:', prompt)
+
     const completion = await openai.createChatCompletion({
       model: 'gpt-4',
       messages: [{ role: 'user', content: prompt }],
@@ -42,6 +50,8 @@ serve(async (req) => {
 
     const enhancedText = completion.data.choices[0].message?.content?.trim()
 
+    console.log('Received enhanced text:', enhancedText)
+
     return new Response(
       JSON.stringify({ enhancedText }),
       {
@@ -49,6 +59,8 @@ serve(async (req) => {
       },
     )
   } catch (error) {
+    console.error('Error in enhance-text function:', error)
+    
     return new Response(
       JSON.stringify({ error: error.message }),
       {
