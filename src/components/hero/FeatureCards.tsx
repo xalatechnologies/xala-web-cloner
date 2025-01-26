@@ -47,7 +47,7 @@ const FeatureCards = () => {
         {[...Array(3)].map((_, i) => (
           <div 
             key={i} 
-            className="h-full p-8 rounded-xl bg-white/5 animate-pulse"
+            className="h-full p-8 rounded-2xl bg-white/5 animate-pulse backdrop-blur-sm border border-white/5"
           >
             <div className="flex flex-col items-start gap-4">
               <div className="flex items-center gap-4">
@@ -63,8 +63,8 @@ const FeatureCards = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto my-16">
-      {features?.map((feature) => {
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto my-16 perspective-1000">
+      {features?.map((feature, index) => {
         const IconComponent = iconMap[feature.icon as IconName];
         if (!IconComponent) {
           console.warn(`Icon ${feature.icon} not found in iconMap`);
@@ -73,9 +73,10 @@ const FeatureCards = () => {
         return (
           <FeatureCard
             key={feature.id}
-            icon={<IconComponent className="w-10 h-10 text-xala-accent group-hover:text-white transition-colors" />}
+            icon={<IconComponent className="w-12 h-12 text-xala-accent group-hover:text-white transition-all duration-500" />}
             title={feature.title}
             description={feature.description}
+            index={index}
           />
         );
       })}
@@ -87,24 +88,40 @@ interface FeatureCardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
+  index: number;
 }
 
-const FeatureCard = ({ icon, title, description }: FeatureCardProps) => (
+const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => (
   <div 
-    className="group h-full p-8 rounded-xl bg-gradient-to-br from-white/[0.075] via-white/[0.035] to-transparent 
+    className={`group relative h-full p-8 rounded-2xl bg-gradient-to-br from-white/[0.075] via-white/[0.035] to-transparent 
                 backdrop-blur-sm border border-white/10 hover:border-xala-accent/50 
-                transition-all duration-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-xala-accent/10"
+                transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-xala-accent/20
+                animate-fade-in`}
+    style={{ 
+      animationDelay: `${index * 200}ms`,
+      transform: `perspective(1000px) rotateY(${index * 5}deg)`
+    }}
   >
-    <div className="flex flex-col h-full">
-      <div className="flex items-start gap-4 mb-6">
+    {/* Glow effect */}
+    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-xala-accent/0 to-transparent opacity-0 
+                    group-hover:opacity-10 transition-opacity duration-500" />
+    
+    {/* Animated border */}
+    <div className="absolute inset-0 rounded-2xl border border-xala-accent/0 group-hover:border-xala-accent/30 
+                    transition-all duration-500" />
+
+    <div className="relative flex flex-col h-full z-10">
+      <div className="flex items-start gap-6 mb-8">
         <div 
-          className="p-4 rounded-xl bg-gradient-to-br from-xala-accent/20 via-xala-accent/10 to-transparent 
+          className="p-4 rounded-2xl bg-gradient-to-br from-xala-accent/20 via-xala-accent/10 to-transparent 
                      group-hover:from-xala-accent/80 group-hover:via-xala-accent/60 group-hover:to-[#D946EF]/40 
-                     transition-all duration-500"
+                     transition-all duration-500 shadow-lg shadow-xala-accent/5 group-hover:shadow-xala-accent/30"
         >
           {icon}
         </div>
-        <h3 className="text-2xl font-semibold text-xala-accent group-hover:text-white transition-colors mt-2">
+        <h3 className="text-2xl font-semibold bg-gradient-to-r from-white via-white to-xala-accent/80 
+                       bg-clip-text text-transparent group-hover:from-xala-accent group-hover:to-white 
+                       transition-all duration-500 mt-4">
           {title}
         </h3>
       </div>
