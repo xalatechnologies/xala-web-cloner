@@ -37,7 +37,7 @@ const ActionButtons = ({ onSectionClick }: ActionButtonsProps) => {
   if (isLoading) {
     return (
       <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-pulse">
-        {[1, 2, 3].map((i) => (
+        {[1, 2].map((i) => (
           <div
             key={i}
             className="h-14 w-40 bg-white/5 rounded-lg"

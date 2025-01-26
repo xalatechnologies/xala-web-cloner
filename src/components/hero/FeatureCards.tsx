@@ -30,7 +30,8 @@ const FeatureCards = () => {
         .select('*')
         .eq('language', i18n.language as SupportedLanguage)
         .eq('featured', true)
-        .order('sort_order');
+        .order('sort_order')
+        .limit(4);
       
       if (error) {
         console.error('Error fetching featured services:', error);
