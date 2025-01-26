@@ -6,6 +6,7 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { useSection } from "@/hooks/use-section";
 
 const clients = [
   {
@@ -47,6 +48,7 @@ const clients = [
 
 const Clients = () => {
   const { t } = useTranslation();
+  const { data: section } = useSection('clients');
   const plugin = useRef(
     Autoplay({
       delay: 4000,
@@ -63,10 +65,10 @@ const Clients = () => {
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-5xl font-bold mb-6 text-white">
-            {t('clients.title')}
+            {section?.title || t('clients.title')}
           </h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            {t('clients.description')}
+            {section?.description || t('clients.description')}
           </p>
         </div>
 

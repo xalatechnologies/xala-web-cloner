@@ -1,8 +1,10 @@
 import { Code2, Brain, Layout, Palette, Server, Terminal } from 'lucide-react';
 import { useTranslation } from "react-i18next";
+import { useSection } from "@/hooks/use-section";
 
 const Technologies = () => {
   const { t } = useTranslation();
+  const { data: section } = useSection('technologies');
 
   const technologies = [
     {
@@ -42,10 +44,10 @@ const Technologies = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-            {t('technologies.title')}
+            {section?.title || t('technologies.title')}
           </h2>
           <p className="text-xala-text text-lg max-w-2xl mx-auto">
-            {t('technologies.description')}
+            {section?.description || t('technologies.description')}
           </p>
         </div>
         

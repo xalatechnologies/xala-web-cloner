@@ -1,8 +1,10 @@
 import { User, Linkedin, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useSection } from "@/hooks/use-section";
 
 const Teams = () => {
   const { t } = useTranslation();
+  const { data: section } = useSection('team');
 
   const teamMembers = [
     {
@@ -62,9 +64,11 @@ const Teams = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-20">
-          <h2 className="text-5xl font-bold text-xala-accent mb-6">{t('team.title')}</h2>
+          <h2 className="text-5xl font-bold text-xala-accent mb-6">
+            {section?.title || t('team.title')}
+          </h2>
           <p className="text-xala-text/80 max-w-2xl mx-auto text-lg">
-            {t('team.description')}
+            {section?.description || t('team.description')}
           </p>
         </div>
 

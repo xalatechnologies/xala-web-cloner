@@ -1,8 +1,10 @@
 import { PhoneCall, Palette, Code2, TestTube2, Rocket, HeartHandshake } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useSection } from "@/hooks/use-section";
 
 const WorkProcess = () => {
   const { t } = useTranslation();
+  const { data: section } = useSection('work-process');
 
   const processes = [
     {
@@ -62,10 +64,10 @@ const WorkProcess = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-20 animate-fade-in">
           <h2 className="text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-6">
-            {t('workProcess.title')}
+            {section?.title || t('workProcess.title')}
           </h2>
           <p className="text-xala-text/80 max-w-2xl mx-auto text-lg">
-            {t('workProcess.description')}
+            {section?.description || t('workProcess.description')}
           </p>
         </div>
 

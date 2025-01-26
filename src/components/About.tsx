@@ -1,8 +1,10 @@
 import { Brain, Rocket, Users, Code2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useSection } from '@/hooks/use-section';
 
 const About = () => {
   const { t } = useTranslation();
+  const { data: section } = useSection('about');
 
   const features = [
     {
@@ -39,10 +41,10 @@ const About = () => {
         {/* Header Section */}
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#9b87f5] via-[#D946EF] to-[#0EA5E9] text-transparent bg-clip-text">
-            {t('about.title')}
+            {section?.title || t('about.title')}
           </h2>
           <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
-            {t('about.description')}
+            {section?.description || t('about.description')}
           </p>
         </div>
 
