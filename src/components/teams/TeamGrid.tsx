@@ -6,9 +6,10 @@ type TeamMember = Database['public']['Tables']['team_members']['Row'];
 
 interface TeamGridProps {
   members: TeamMember[];
+  initialRows?: number;
 }
 
-const TeamGrid = ({ members }: TeamGridProps) => {
+const TeamGrid = ({ members, initialRows }: TeamGridProps) => {
   const memberCards = members.map((member) => (
     <TeamMemberCard
       key={member.id}
@@ -24,7 +25,7 @@ const TeamGrid = ({ members }: TeamGridProps) => {
   return (
     <ExpandableGrid 
       items={memberCards}
-      initialRows={1}
+      initialRows={initialRows}
     />
   );
 };

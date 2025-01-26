@@ -52,6 +52,7 @@ const Clients = () => {
     return (
       <ClientGrid 
         clients={clients}
+        initialRows={section?.rows || 1}
       />
     );
   };

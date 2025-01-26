@@ -54,6 +54,7 @@ const Services = () => {
     return (
       <ServiceGrid 
         services={services}
+        initialRows={section?.rows || 1}
       />
     );
   };

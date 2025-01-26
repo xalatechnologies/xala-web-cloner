@@ -6,9 +6,10 @@ type Client = Database['public']['Tables']['clients']['Row'];
 
 interface ClientGridProps {
   clients: Client[];
+  initialRows?: number;
 }
 
-const ClientGrid = ({ clients }: ClientGridProps) => {
+const ClientGrid = ({ clients, initialRows }: ClientGridProps) => {
   const clientCards = clients.map((client) => (
     <ClientCard
       key={client.id}
@@ -20,7 +21,7 @@ const ClientGrid = ({ clients }: ClientGridProps) => {
   return (
     <ExpandableGrid 
       items={clientCards}
-      initialRows={1}
+      initialRows={initialRows}
     />
   );
 };

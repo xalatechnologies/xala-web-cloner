@@ -8,9 +8,10 @@ type CaseStudy = Database['public']['Tables']['case_studies']['Row'] & {
 
 interface CaseStudyGridProps {
   caseStudies: CaseStudy[];
+  initialRows?: number;
 }
 
-const CaseStudyGrid = ({ caseStudies }: CaseStudyGridProps) => {
+const CaseStudyGrid = ({ caseStudies, initialRows }: CaseStudyGridProps) => {
   const studyCards = caseStudies.map((study) => (
     <CaseStudyCard
       key={study.id}
@@ -24,7 +25,7 @@ const CaseStudyGrid = ({ caseStudies }: CaseStudyGridProps) => {
   return (
     <ExpandableGrid 
       items={studyCards}
-      initialRows={1}
+      initialRows={initialRows}
     />
   );
 };
