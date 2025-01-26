@@ -6,6 +6,7 @@ import FeatureCards from './hero/FeatureCards';
 import ActionButtons from './hero/ActionButtons';
 import { useSection } from '@/hooks/use-section';
 import { Skeleton } from './ui/skeleton';
+import GradientText from './ui/gradient-text';
 
 const Hero = () => {
   const [mounted, setMounted] = useState(false);
@@ -16,32 +17,18 @@ const Hero = () => {
     setMounted(true);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    console.log('Scrolling to section:', sectionId);
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    } else {
-      console.warn('Section not found:', sectionId);
-    }
-  };
-
   const renderGradientTitle = (title: string) => {
-    // Split the title by spaces to get individual words
     const words = title.split(' ');
     
-    // Apply gradient to the last word (or you can choose any specific word index)
     return (
       <>
         {words.map((word, index) => (
-          <span key={index} className={index === words.length - 1 ? 
-            "bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text bg-[size:400%] animate-gradient-x" : 
-            "text-white"
-          }>
-            {word}{index < words.length - 1 ? ' ' : ''}
+          <span key={index}>
+            {index === words.length - 1 ? (
+              <GradientText>{word}</GradientText>
+            ) : (
+              <span className="text-white">{word}{' '}</span>
+            )}
           </span>
         ))}
       </>
