@@ -9,10 +9,11 @@ type SupportedLanguage = Database['public']['Enums']['supported_language'];
 type ContactInfoProps = {
   icon: React.ReactNode;
   title: string;
+  subtitle: string;
   details: string;
 };
 
-const ContactInfoItem = ({ icon, title, details }: ContactInfoProps) => (
+const ContactInfoItem = ({ icon, title, subtitle, details }: ContactInfoProps) => (
   <div className="group p-8 rounded-2xl bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 
                 hover:border-white/20 transition-all duration-700 animate-fade-in">
     <div className="flex items-center space-x-6">
@@ -20,7 +21,8 @@ const ContactInfoItem = ({ icon, title, details }: ContactInfoProps) => (
         {icon}
       </div>
       <div className="text-left">
-        <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
+        <h3 className="text-xl font-semibold text-white mb-1">{title}</h3>
+        <p className="text-sm text-xala-text/60 mb-2">{subtitle}</p>
         <p className="text-xala-text/80">{details}</p>
       </div>
     </div>
@@ -28,7 +30,7 @@ const ContactInfoItem = ({ icon, title, details }: ContactInfoProps) => (
 );
 
 export const ContactInfo = () => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const { data: contactInfoData } = useQuery({
     queryKey: ['contact-info', i18n.language],
@@ -51,17 +53,20 @@ export const ContactInfo = () => {
   const contactInfo = [
     {
       icon: <Phone className="w-6 h-6 text-[#8B5CF6]" />,
-      title: t('contact.info.phone.title'),
+      title: getContactValue('phone_label'),
+      subtitle: getContactValue('phone_description'),
       details: getContactValue('phone')
     },
     {
       icon: <Mail className="w-6 h-6 text-[#D946EF]" />,
-      title: t('contact.info.email.title'),
+      title: getContactValue('email_label'),
+      subtitle: getContactValue('email_description'),
       details: getContactValue('email')
     },
     {
       icon: <MapPin className="w-6 h-6 text-[#0EA5E9]" />,
-      title: t('contact.info.address.title'),
+      title: getContactValue('address_label'),
+      subtitle: getContactValue('address_description'),
       details: getContactValue('address')
     }
   ];
