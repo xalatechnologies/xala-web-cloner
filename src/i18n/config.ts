@@ -7,6 +7,12 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'no',
+    supportedLngs: ['en', 'no'],
+    detection: {
+      order: ['navigator', 'htmlTag', 'path', 'subdomain'],
+      caches: ['localStorage'],
+      lookupLocalStorage: 'i18nextLng',
+    },
     resources: {
       en: {
         translation: {
