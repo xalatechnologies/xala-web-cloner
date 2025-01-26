@@ -10,9 +10,9 @@ import { useRef } from "react";
 import { Code2, Cpu, Database, Globe2, Layout, Shield } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
-import { type Database } from '@/integrations/supabase/types';
+import type { Tables, Enums } from '@/integrations/supabase/types';
 
-type SupportedLanguage = Database['public']['Enums']['supported_language'];
+type SupportedLanguage = Enums<'supported_language'>;
 
 const iconMap: Record<string, React.ReactNode> = {
   Layout: <Layout className="w-8 h-8" />,
