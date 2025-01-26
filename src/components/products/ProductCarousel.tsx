@@ -26,20 +26,19 @@ const ProductCarousel = ({ products, autoscroll = false, columns = 3 }: ProductC
   return (
     <Carousel
       opts={{
-        align: "center",
+        align: "start",
         loop: true,
-        dragFree: true,
-        skipSnaps: true,
+        skipSnaps: false,
+        slidesToScroll: columns,
       }}
       plugins={autoscroll ? [plugin.current] : []}
-      className="w-full max-w-6xl mx-auto"
+      className="w-full max-w-7xl mx-auto"
     >
-      <CarouselContent className="-ml-2 md:-ml-4">
+      <CarouselContent className="-ml-4">
         {products.map((product) => (
           <CarouselItem 
             key={product.id} 
-            className="pl-2 md:pl-4"
-            style={{ flex: `0 0 ${100 / columns}%` }}
+            className={`pl-4 basis-full md:basis-1/${columns}`}
           >
             <ProductCard
               title={product.title}
