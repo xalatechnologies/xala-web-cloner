@@ -38,8 +38,10 @@ const ActionButtons = ({ onSectionClick }: ActionButtonsProps) => {
   });
 
   const handleClick = (href: string) => {
+    console.log('Button clicked with href:', href);
     // Remove the '#' if present at the start of the href
     const sectionId = href.startsWith('#') ? href.substring(1) : href;
+    console.log('Navigating to section:', sectionId);
     onSectionClick(sectionId);
   };
 

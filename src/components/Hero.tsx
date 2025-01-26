@@ -14,12 +14,15 @@ const Hero = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
+    console.log('Scrolling to section:', sectionId);
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ 
         behavior: 'smooth',
         block: 'start'
       });
+    } else {
+      console.warn('Section not found:', sectionId);
     }
   };
 
