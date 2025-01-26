@@ -1,10 +1,16 @@
 import { Copyright } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  // Force a re-render when language changes
+  useEffect(() => {
+    console.log('Footer component language:', i18n.language);
+  }, [i18n.language]);
 
   return (
     <footer className="w-full relative overflow-hidden bg-xala-primary border-t border-white/5">

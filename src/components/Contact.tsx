@@ -4,28 +4,33 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { useToast } from './ui/use-toast';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
   const { toast } = useToast();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Force a re-render when language changes
+  useEffect(() => {
+    console.log('Contact component language:', i18n.language);
+  }, [i18n.language]);
   
   const contactInfo = [
     {
       icon: <Phone className="w-6 h-6 text-[#8B5CF6]" />,
-      title: "Phone",
+      title: t('contact.info.phone.title'),
       details: "+47 406 19 465"
     },
     {
       icon: <Mail className="w-6 h-6 text-[#D946EF]" />,
-      title: "Email",
+      title: t('contact.info.email.title'),
       details: "post@xala.no"
     },
     {
       icon: <MapPin className="w-6 h-6 text-[#0EA5E9]" />,
-      title: "Address",
+      title: t('contact.info.address.title'),
       details: "Oslo, Norway"
     }
   ];
@@ -58,6 +63,7 @@ const Contact = () => {
       email: formData.get('email') as string,
       subject: formData.get('subject') as string,
       message: formData.get('message') as string,
+      language: i18n.language.toLowerCase() as 'en' | 'no', // Add language to submission
     };
 
     try {
