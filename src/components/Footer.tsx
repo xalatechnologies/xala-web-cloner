@@ -46,19 +46,7 @@ const Footer = () => {
               >
                 {item.name}
               </Link>
-            )) || (
-              <>
-                <Link to="/privacy" className="hover:text-xala-accent transition-colors duration-300">
-                  {t('footer.privacy')}
-                </Link>
-                <Link to="/terms" className="hover:text-xala-accent transition-colors duration-300">
-                  {t('footer.terms')}
-                </Link>
-                <Link to="/cookies" className="hover:text-xala-accent transition-colors duration-300">
-                  {t('footer.cookies')}
-                </Link>
-              </>
-            )}
+            ))}
           </div>
         </div>
       </div>

@@ -32,22 +32,41 @@ const Contact = () => {
       return data;
     },
   });
+
+  // Fetch contact info from database
+  const { data: contactInfoData } = useQuery({
+    queryKey: ['contact-info', i18n.language],
+    queryFn: async () => {
+      const currentLang = i18n.language.toLowerCase() as SupportedLanguage;
+      const { data, error } = await supabase
+        .from('contact_info')
+        .select('*')
+        .eq('language', currentLang);
+
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  const getContactValue = (type: string) => {
+    return contactInfoData?.find(info => info.type === type)?.value || '';
+  };
   
   const contactInfo = [
     {
       icon: <Phone className="w-6 h-6 text-[#8B5CF6]" />,
       title: t('contact.info.phone.title'),
-      details: "+47 406 19 465"
+      details: getContactValue('phone')
     },
     {
       icon: <Mail className="w-6 h-6 text-[#D946EF]" />,
       title: t('contact.info.email.title'),
-      details: "post@xala.no"
+      details: getContactValue('email')
     },
     {
       icon: <MapPin className="w-6 h-6 text-[#0EA5E9]" />,
       title: t('contact.info.address.title'),
-      details: "Oslo, Norway"
+      details: getContactValue('address')
     }
   ];
 
