@@ -1,8 +1,16 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { Plus, Eye, Pencil, Trash2 } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
+import { useState } from "react";
 
 export function DashboardContent() {
+  const { toast } = useToast();
+  const [selectedSection, setSelectedSection] = useState(null);
+
   const { data: stats } = useQuery({
     queryKey: ['dashboard-stats'],
     queryFn: async () => {
@@ -27,49 +35,159 @@ export function DashboardContent() {
     }
   });
 
+  const { data: sections, isLoading: sectionsLoading } = useQuery({
+    queryKey: ['sections'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('sections')
+        .select('*')
+        .order('sort_order', { ascending: true });
+
+      if (error) {
+        toast({
+          title: "Error fetching sections",
+          description: error.message,
+          variant: "destructive",
+        });
+        throw error;
+      }
+
+      return data;
+    },
+  });
+
+  const handleCreate = () => {
+    toast({
+      title: "Create Section",
+      description: "This feature will be implemented soon.",
+    });
+  };
+
+  const handleView = (section) => {
+    toast({
+      title: "View Section",
+      description: `Viewing section: ${section.title}`,
+    });
+  };
+
+  const handleEdit = (section) => {
+    toast({
+      title: "Edit Section",
+      description: `Editing section: ${section.title}`,
+    });
+  };
+
+  const handleDelete = (section) => {
+    toast({
+      title: "Delete Section",
+      description: `Deleting section: ${section.title}`,
+    });
+  };
+
   return (
     <main className="flex-1 overflow-y-auto p-8">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Dashboard</h1>
+      <div className="flex items-center justify-between mb-8">
+        <h1 className="text-4xl font-bold text-white font-chakra">Dashboard</h1>
       </div>
 
-      <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
+        <Card className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 border-none">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Products</CardTitle>
+            <CardTitle className="text-sm font-medium text-white/80">Products</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats?.products || 0}</div>
+            <div className="text-3xl font-bold text-white font-chakra">{stats?.products || 0}</div>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-gradient-to-br from-purple-500/20 to-purple-600/20 border-none">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Case Studies</CardTitle>
+            <CardTitle className="text-sm font-medium text-white/80">Case Studies</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats?.caseStudies || 0}</div>
+            <div className="text-3xl font-bold text-white font-chakra">{stats?.caseStudies || 0}</div>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 border-none">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Team Members</CardTitle>
+            <CardTitle className="text-sm font-medium text-white/80">Team Members</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats?.teamMembers || 0}</div>
+            <div className="text-3xl font-bold text-white font-chakra">{stats?.teamMembers || 0}</div>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-gradient-to-br from-amber-500/20 to-amber-600/20 border-none">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Contact Forms</CardTitle>
+            <CardTitle className="text-sm font-medium text-white/80">Contact Forms</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{stats?.contactForms || 0}</div>
+            <div className="text-3xl font-bold text-white font-chakra">{stats?.contactForms || 0}</div>
           </CardContent>
         </Card>
       </div>
+
+      <Card className="border-none bg-gradient-to-br from-gray-900/50 to-gray-800/50">
+        <CardHeader className="flex flex-row items-center justify-between">
+          <CardTitle className="text-xl font-bold text-white font-chakra">Sections</CardTitle>
+          <Button onClick={handleCreate} className="bg-blue-500 hover:bg-blue-600">
+            <Plus className="w-4 h-4 mr-2" />
+            Add Section
+          </Button>
+        </CardHeader>
+        <CardContent>
+          <div className="rounded-md border border-gray-700">
+            <Table>
+              <TableHeader>
+                <TableRow className="border-gray-700 hover:bg-gray-800/50">
+                  <TableHead className="text-white/70">Name</TableHead>
+                  <TableHead className="text-white/70">Title</TableHead>
+                  <TableHead className="text-white/70">Language</TableHead>
+                  <TableHead className="text-white/70">Order</TableHead>
+                  <TableHead className="text-right text-white/70">Actions</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {sections?.map((section) => (
+                  <TableRow key={section.id} className="border-gray-700 hover:bg-gray-800/50">
+                    <TableCell className="font-chakra text-white">{section.section_name}</TableCell>
+                    <TableCell className="font-chakra text-white">{section.title}</TableCell>
+                    <TableCell className="font-chakra text-white">{section.language}</TableCell>
+                    <TableCell className="font-chakra text-white">{section.sort_order}</TableCell>
+                    <TableCell className="text-right space-x-2">
+                      <Button
+                        onClick={() => handleView(section)}
+                        variant="ghost"
+                        size="icon"
+                        className="hover:bg-gray-700"
+                      >
+                        <Eye className="w-4 h-4 text-blue-400" />
+                      </Button>
+                      <Button
+                        onClick={() => handleEdit(section)}
+                        variant="ghost"
+                        size="icon"
+                        className="hover:bg-gray-700"
+                      >
+                        <Pencil className="w-4 h-4 text-amber-400" />
+                      </Button>
+                      <Button
+                        onClick={() => handleDelete(section)}
+                        variant="ghost"
+                        size="icon"
+                        className="hover:bg-gray-700"
+                      >
+                        <Trash2 className="w-4 h-4 text-red-400" />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+        </CardContent>
+      </Card>
     </main>
   );
 }
