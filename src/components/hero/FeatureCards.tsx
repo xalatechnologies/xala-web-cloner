@@ -1,5 +1,5 @@
 import React from 'react';
-import { Brain, CloudCog, Code2, BarChart2, Shield, Laptop, LineChart } from 'lucide-react';
+import { Brain, CloudCog, Code2, BarChart2, Shield, Laptop, LineChart, Globe2, Cpu, Layout, Code } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import type { Tables, Enums } from '@/integrations/supabase/types';
@@ -16,6 +16,10 @@ const iconMap = {
   Shield,
   Laptop,
   LineChart,
+  Globe2,
+  Cpu,
+  Layout,
+  Code
 };
 
 type IconName = keyof typeof iconMap;
