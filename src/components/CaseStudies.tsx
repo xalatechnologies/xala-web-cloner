@@ -1,25 +1,28 @@
-import { ArrowRight, BookOpen, ChartBar, Award } from "lucide-react";
+import { ArrowRight, ChartBar, Award, BookOpen } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
+import { useTranslation } from "react-i18next";
 
 const CaseStudies = () => {
+  const { t } = useTranslation();
+
   const cases = [
     {
-      title: "AI-Driven Analytics Platform",
-      description: "Developed a cutting-edge analytics platform using machine learning algorithms that increased client efficiency by 300%",
+      title: t('caseStudies.cases.ai.title'),
+      description: t('caseStudies.cases.ai.description'),
       metrics: "300% Efficiency Increase",
       image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
       icon: <ChartBar className="w-6 h-6" />
     },
     {
-      title: "Neural Network Integration",
-      description: "Implemented advanced neural networks for real-time data processing, reducing response time by 85%",
+      title: t('caseStudies.cases.neural.title'),
+      description: t('caseStudies.cases.neural.description'),
       metrics: "85% Faster Processing",
       image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7",
       icon: <Award className="w-6 h-6" />
     },
     {
-      title: "Quantum Computing Solution",
-      description: "Pioneered quantum computing applications for complex calculations, achieving unprecedented accuracy rates",
+      title: t('caseStudies.cases.quantum.title'),
+      description: t('caseStudies.cases.quantum.description'),
       metrics: "99.9% Accuracy Rate",
       image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
       icon: <BookOpen className="w-6 h-6" />
@@ -35,9 +38,9 @@ const CaseStudies = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl font-bold text-xala-accent mb-4">Case Studies</h2>
+          <h2 className="text-4xl font-bold text-xala-accent mb-4">{t('caseStudies.title')}</h2>
           <p className="text-xala-text/80 max-w-2xl mx-auto">
-            Explore how our innovative solutions have transformed businesses and redefined possibilities
+            {t('caseStudies.subtitle')}
           </p>
         </div>
 
@@ -71,7 +74,7 @@ const CaseStudies = () => {
                   
                   {/* Read more link */}
                   <div className="flex items-center gap-2 text-xala-accent group/link cursor-pointer">
-                    <span className="font-medium">Read Case Study</span>
+                    <span className="font-medium">{t('caseStudies.readMore')}</span>
                     <ArrowRight className="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" />
                   </div>
                 </div>

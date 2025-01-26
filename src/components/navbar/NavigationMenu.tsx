@@ -16,6 +16,7 @@ const NavigationMenu = ({ isOpen, setIsOpen, sections }: NavigationMenuProps) =>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="lg:hidden p-2 rounded-md text-xala-text hover:text-xala-accent"
+        aria-label={isOpen ? "Close menu" : "Open menu"}
       >
         {isOpen ? (
           <X className="h-6 w-6" />

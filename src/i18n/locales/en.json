@@ -2,7 +2,7 @@
   "navigation": {
     "home": "Home",
     "about": "About",
-    "coreProducts": "Core Products",
+    "coreProducts": "Products",
     "technologies": "Technologies",
     "workProcess": "Work Process",
     "caseStudies": "Case Studies",
@@ -10,22 +10,22 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "Transforming Ideas into Digital Reality",
-    "subtitle": "We create innovative solutions that drive business growth"
+    "title": "Innovative Technology for the Future",
+    "subtitle": "We create digital solutions that drive businesses forward"
   },
   "about": {
     "title": "Shaping Tomorrow's Technology",
-    "subtitle": "We're not just building software; we're crafting digital experiences that define the future.",
+    "subtitle": "We're not just building software; we're crafting digital experiences that define the future. Our passion for innovation drives us to create solutions that empower businesses in the digital age.",
     "features": {
       "innovation": {
         "title": "Innovation First",
         "description": "Pioneering solutions that push the boundaries of what's possible in technology"
       },
-      "futureReady": {
+      "future": {
         "title": "Future-Ready",
         "description": "Building scalable systems that evolve with your business needs"
       },
-      "clientCentric": {
+      "client": {
         "title": "Client-Centric",
         "description": "Your success is our priority - we transform ideas into impactful solutions"
       },
@@ -39,45 +39,27 @@
       "description": "To be at the forefront of technological innovation, creating solutions that not only meet today's challenges but anticipate tomorrow's needs. We believe in technology that empowers, connects, and transforms businesses for the digital future."
     }
   },
-  "coreProducts": {
-    "title": "Our Products",
-    "subtitle": "Innovative AI-powered solutions transforming healthcare, documentation, and architecture",
-    "learnMore": "Learn More",
-    "products": {
-      "doctorAI": {
-        "title": "DoctorAI.no",
-        "description": "AI-powered medical consultation platform that helps healthcare professionals make more informed decisions and improve patient care.",
-        "metrics": "10,000+ Consultations"
+  "caseStudies": {
+    "title": "Case Studies",
+    "subtitle": "Explore how our innovative solutions have transformed businesses and redefined possibilities",
+    "readMore": "Read More",
+    "cases": {
+      "ai": {
+        "title": "AI-Driven Analytics Platform",
+        "description": "Developed a cutting-edge analytics platform using machine learning algorithms that increased client efficiency by 300%"
       },
-      "fylleUt": {
-        "title": "FylleUt.no",
-        "description": "Advanced AI-driven form builder that simplifies document creation and automation, making form filling effortless and intelligent.",
-        "metrics": "50,000+ Forms Generated"
+      "neural": {
+        "title": "Neural Network Integration",
+        "description": "Implemented advanced neural networks for real-time data processing, reducing response time by 85%"
       },
-      "prinsipro": {
-        "title": "Prinsipro",
-        "description": "AI-powered architecture principles management system that streamlines design decisions and ensures consistency across projects.",
-        "metrics": "1,000+ Projects Managed"
+      "quantum": {
+        "title": "Quantum Computing Solution",
+        "description": "Pioneered quantum computing applications for complex calculations, achieving unprecedented accuracy rates"
       }
     }
   },
-  "contact": {
-    "title": "Let's Build Something Amazing",
-    "subtitle": "Ready to transform your ideas into reality? Get in touch with our team of experts.",
-    "form": {
-      "name": "Your Name",
-      "email": "Your Email",
-      "subject": "Subject",
-      "message": "Share your thoughts, project ideas, or specific requirements... We're excited to hear from you!",
-      "submit": "Send Message"
-    },
-    "success": "Message sent!",
-    "successDetail": "We'll get back to you as soon as possible."
-  },
-  "footer": {
-    "rights": "All rights reserved.",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
-    "cookies": "Cookie Policy"
+  "clients": {
+    "title": "Our Clients",
+    "subtitle": "Partnering with industry leaders to drive innovation and create impactful solutions"
   }
 }

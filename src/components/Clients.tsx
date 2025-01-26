@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import {
   Carousel,
   CarouselContent,
@@ -45,6 +46,7 @@ const clients = [
 ];
 
 const Clients = () => {
+  const { t } = useTranslation();
   const plugin = useRef(
     Autoplay({
       delay: 4000,
@@ -61,10 +63,10 @@ const Clients = () => {
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-5xl font-bold mb-6 text-white">
-            Our Clients
+            {t('clients.title')}
           </h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            Partnering with industry leaders to drive innovation and create impactful solutions.
+            {t('clients.subtitle')}
           </p>
         </div>
 

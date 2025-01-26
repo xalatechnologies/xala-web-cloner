@@ -2,7 +2,7 @@
   "navigation": {
     "home": "Hjem",
     "about": "Om oss",
-    "coreProducts": "Kjerneprodukter",
+    "coreProducts": "Produkter",
     "technologies": "Teknologier",
     "workProcess": "Arbeidsprosess",
     "caseStudies": "Prosjekter",
@@ -10,23 +10,23 @@
     "contact": "Kontakt"
   },
   "hero": {
-    "title": "Vi Gjør Ideer til Digital Virkelighet",
-    "subtitle": "Vi skaper innovative løsninger som driver forretningsvekst"
+    "title": "Innovativ Teknologi for Fremtiden",
+    "subtitle": "Vi skaper digitale løsninger som driver virksomheter fremover"
   },
   "about": {
     "title": "Vi Former Morgendagens Teknologi",
-    "subtitle": "Vi bygger ikke bare programvare; vi skaper digitale opplevelser som definerer fremtiden.",
+    "subtitle": "Vi bygger ikke bare programvare; vi skaper digitale opplevelser som definerer fremtiden. Vår lidenskap for innovasjon driver oss til å skape løsninger som styrker bedrifter i den digitale tidsalderen.",
     "features": {
       "innovation": {
         "title": "Innovasjon Først",
-        "description": "Banebrytende løsninger som flytter grensene for hva som er mulig med teknologi"
+        "description": "Banebrytende løsninger som flytter grensene for hva som er mulig innen teknologi"
       },
-      "futureReady": {
+      "future": {
         "title": "Fremtidsklar",
         "description": "Bygger skalerbare systemer som utvikler seg med dine forretningsbehov"
       },
-      "clientCentric": {
-        "title": "Kundefokusert",
+      "client": {
+        "title": "Klientfokusert",
         "description": "Din suksess er vår prioritet - vi transformerer ideer til virkningsfulle løsninger"
       },
       "technical": {
@@ -36,48 +36,30 @@
     },
     "vision": {
       "title": "Vår Visjon",
-      "description": "Å være i forkant av teknologisk innovasjon, skape løsninger som ikke bare møter dagens utfordringer, men også foregriper morgendagens behov. Vi tror på teknologi som styrker, forbinder og transformerer virksomheter for den digitale fremtiden."
+      "description": "Å være i forkant av teknologisk innovasjon, skape løsninger som ikke bare møter dagens utfordringer, men forutser morgendagens behov. Vi tror på teknologi som styrker, forbinder og transformerer virksomheter for den digitale fremtiden."
     }
   },
-  "coreProducts": {
-    "title": "Våre Produkter",
-    "subtitle": "Innovative AI-drevne løsninger som transformerer helsevesen, dokumentasjon og arkitektur",
-    "learnMore": "Les mer",
-    "products": {
-      "doctorAI": {
-        "title": "DoctorAI.no",
-        "description": "AI-drevet medisinsk konsultasjonsplattform som hjelper helsepersonell med å ta mer informerte beslutninger og forbedre pasientbehandlingen.",
-        "metrics": "10,000+ Konsultasjoner"
+  "caseStudies": {
+    "title": "Prosjekter",
+    "subtitle": "Utforsk hvordan våre innovative løsninger har transformert virksomheter og redefinert muligheter",
+    "readMore": "Les mer",
+    "cases": {
+      "ai": {
+        "title": "AI-Drevet Analyseplattform",
+        "description": "Utviklet en banebrytende analyseplattform ved hjelp av maskinlæringsalgoritmer som økte klienteffektiviteten med 300%"
       },
-      "fylleUt": {
-        "title": "FylleUt.no",
-        "description": "Avansert AI-drevet skjemabygger som forenkler dokumentoppretting og automatisering, og gjør skjemautfylling enkel og intelligent.",
-        "metrics": "50,000+ Skjemaer Generert"
+      "neural": {
+        "title": "Nevrale Nettverk Integrasjon",
+        "description": "Implementerte avanserte nevrale nettverk for sanntids databehandling, reduserte responstiden med 85%"
       },
-      "prinsipro": {
-        "title": "Prinsipro",
-        "description": "AI-drevet system for arkitekturprinsipper som strømlinjeformer designbeslutninger og sikrer konsistens på tvers av prosjekter.",
-        "metrics": "1,000+ Prosjekter Administrert"
+      "quantum": {
+        "title": "Kvantedataløsning",
+        "description": "Pionerte kvanteberegningsapplikasjoner for komplekse beregninger, oppnådde enestående nøyaktighetsgrad"
       }
     }
   },
-  "contact": {
-    "title": "La oss Bygge noe Fantastisk",
-    "subtitle": "Klar for å gjøre ideene dine til virkelighet? Ta kontakt med vårt ekspertteam.",
-    "form": {
-      "name": "Ditt Navn",
-      "email": "Din E-post",
-      "subject": "Emne",
-      "message": "Del dine tanker, prosjektideer eller spesifikke krav... Vi er spent på å høre fra deg!",
-      "submit": "Send Melding"
-    },
-    "success": "Melding sendt!",
-    "successDetail": "Vi kommer tilbake til deg så snart som mulig."
-  },
-  "footer": {
-    "rights": "Alle rettigheter reservert.",
-    "privacy": "Personvern",
-    "terms": "Vilkår for bruk",
-    "cookies": "Informasjonskapsler"
+  "clients": {
+    "title": "Våre Klienter",
+    "subtitle": "Samarbeid med bransjens ledere for å drive innovasjon og skape virkningsfulle løsninger"
   }
 }
