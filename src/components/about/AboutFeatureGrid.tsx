@@ -1,4 +1,5 @@
 import AboutFeatureCard from './AboutFeatureCard';
+import SectionGrid from '../ui/section-grid';
 
 interface AboutFeatureGridProps {
   features: {
@@ -12,7 +13,7 @@ interface AboutFeatureGridProps {
 
 const AboutFeatureGrid = ({ features, columns, rows }: AboutFeatureGridProps) => {
   return (
-    <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+    <SectionGrid columns={columns} rows={rows}>
       {features.map((feature, index) => (
         <AboutFeatureCard
           key={index}
@@ -21,7 +22,7 @@ const AboutFeatureGrid = ({ features, columns, rows }: AboutFeatureGridProps) =>
           description={feature.description}
         />
       ))}
-    </div>
+    </SectionGrid>
   );
 };
 

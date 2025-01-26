@@ -1,4 +1,5 @@
 import TeamMemberCard from './TeamMemberCard';
+import SectionGrid from '../ui/section-grid';
 import type { Database } from '@/integrations/supabase/types';
 
 type TeamMember = Database['public']['Tables']['team_members']['Row'];
@@ -11,7 +12,7 @@ interface TeamGridProps {
 
 const TeamGrid = ({ members, columns, rows }: TeamGridProps) => {
   return (
-    <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <SectionGrid columns={columns} rows={rows}>
       {members.map((member) => (
         <TeamMemberCard
           key={member.id}
@@ -23,7 +24,7 @@ const TeamGrid = ({ members, columns, rows }: TeamGridProps) => {
           email={member.email}
         />
       ))}
-    </div>
+    </SectionGrid>
   );
 };
 

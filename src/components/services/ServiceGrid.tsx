@@ -1,4 +1,5 @@
 import ServiceCard from "./ServiceCard";
+import SectionGrid from '../ui/section-grid';
 import { Tables } from "@/integrations/supabase/types";
 
 interface ServiceGridProps {
@@ -9,7 +10,7 @@ interface ServiceGridProps {
 
 const ServiceGrid = ({ services, columns, rows }: ServiceGridProps) => {
   return (
-    <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <SectionGrid columns={columns} rows={rows}>
       {services.map((service) => (
         <ServiceCard
           key={service.id}
@@ -18,7 +19,7 @@ const ServiceGrid = ({ services, columns, rows }: ServiceGridProps) => {
           description={service.description}
         />
       ))}
-    </div>
+    </SectionGrid>
   );
 };
 

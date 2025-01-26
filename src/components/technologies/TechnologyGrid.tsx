@@ -1,4 +1,5 @@
 import TechnologyCard from './TechnologyCard';
+import SectionGrid from '../ui/section-grid';
 import { Database } from '@/integrations/supabase/types';
 
 type Technology = Database['public']['Tables']['technologies']['Row'] & {
@@ -13,7 +14,7 @@ interface TechnologyGridProps {
 
 const TechnologyGrid = ({ technologies, columns, rows }: TechnologyGridProps) => {
   return (
-    <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <SectionGrid columns={columns} rows={rows}>
       {technologies.map((tech) => (
         <TechnologyCard
           key={tech.id}
@@ -23,7 +24,7 @@ const TechnologyGrid = ({ technologies, columns, rows }: TechnologyGridProps) =>
           tools={tech.technology_tools}
         />
       ))}
-    </div>
+    </SectionGrid>
   );
 };
 
