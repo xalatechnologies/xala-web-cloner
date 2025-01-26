@@ -8,32 +8,8 @@ import { useRef } from "react";
 
 const clients = [
   {
-    name: "NOV",
-    logo: "/lovable-uploads/dd06a11f-80af-4780-a3eb-d6211b88ba5e.png",
-  },
-  {
-    name: "Statistics Norway",
-    logo: "/lovable-uploads/ea66315b-13e9-4a09-a8cb-c851dc16edff.png",
-  },
-  {
     name: "Altinn",
     logo: "/lovable-uploads/54dff2fe-2407-411e-9d96-afe8fbed9cbc.png",
-  },
-  {
-    name: "FURST",
-    logo: "/lovable-uploads/6f1758b7-5d86-4778-bb7f-c619930b9d56.png",
-  },
-  {
-    name: "Sykehuspartner",
-    logo: "/lovable-uploads/fd28caf6-8552-4d12-86e4-3f3c6d533ccb.png",
-  },
-  {
-    name: "Norwegian",
-    logo: "/lovable-uploads/94726c81-955d-46ad-9968-825b4e908817.png",
-  },
-  {
-    name: "UNICEF",
-    logo: "/lovable-uploads/c48882ae-197a-439d-9406-c6f62200e111.png",
   },
   {
     name: "OCHA",
@@ -48,19 +24,15 @@ const clients = [
     logo: "/lovable-uploads/c700956f-8871-4608-bdd4-64d966038aea.png",
   },
   {
-    name: "SpareBank 1",
-    logo: "/lovable-uploads/9b91e49d-aca0-47e2-afa3-2544f823e714.png",
-  },
-  {
-    name: "Ruter",
-    logo: "/lovable-uploads/92252a14-97d7-47a9-90e2-5a291b94b99f.png",
+    name: "UNICEF",
+    logo: "/lovable-uploads/c48882ae-197a-439d-9406-c6f62200e111.png",
   },
 ];
 
 const Clients = () => {
   const plugin = useRef(
     Autoplay({ 
-      delay: 4000, // Increased to 4 seconds for smoother transitions
+      delay: 6000,
       stopOnInteraction: false, 
       stopOnMouseEnter: true,
       rootNode: (emblaRoot) => emblaRoot.parentElement,
@@ -68,14 +40,22 @@ const Clients = () => {
   );
 
   return (
-    <section className="py-20 bg-gradient-to-b from-xala-primary to-xala-secondary overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section className="py-20 relative overflow-hidden">
+      {/* Futuristic background with gradient mesh */}
+      <div className="absolute inset-0 bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary">
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute w-full h-full bg-[radial-gradient(circle_500px_at_50%_50%,#38bdf8,transparent)]" />
+          <div className="absolute w-full h-full bg-[radial-gradient(circle_400px_at_80%_20%,#38bdf8,transparent)]" />
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
             Our Clients
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Partnering with visionary clients to drive innovation, efficiency, and sustainable growth.
+            Partnering with industry leaders to drive innovation and create impactful solutions.
           </p>
         </div>
 
@@ -85,7 +65,6 @@ const Clients = () => {
             loop: true,
             skipSnaps: false,
             dragFree: false,
-            containScroll: "trimSnaps",
           }}
           plugins={[plugin.current]}
           className="w-full max-w-6xl mx-auto"
@@ -96,12 +75,28 @@ const Clients = () => {
                 key={index} 
                 className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4"
               >
-                <div className="group h-32 flex items-center justify-center p-4 rounded-lg bg-white/5 backdrop-blur-sm transition-all duration-300 hover:bg-white/10">
+                <div 
+                  className="group relative h-40 flex items-center justify-center p-6 rounded-xl"
+                >
+                  {/* Futuristic card background */}
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] backdrop-blur-sm border border-white/10 transition-all duration-500 group-hover:border-white/20 group-hover:from-white/[0.12] group-hover:to-white/[0.06]" />
+                  
+                  {/* Animated glow effect */}
+                  <div className="absolute -inset-[1px] rounded-xl bg-gradient-to-r from-transparent via-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
+
+                  {/* Logo */}
                   <img
                     src={client.logo}
                     alt={client.name}
-                    className="max-w-[120px] max-h-[60px] object-contain opacity-60 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
+                    className="relative max-w-[140px] max-h-[70px] object-contain opacity-60 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110"
                   />
+
+                  {/* Hover text */}
+                  <div className="absolute bottom-2 left-0 w-full text-center opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                    <span className="text-sm text-blue-300 font-medium">
+                      {client.name}
+                    </span>
+                  </div>
                 </div>
               </CarouselItem>
             ))}
