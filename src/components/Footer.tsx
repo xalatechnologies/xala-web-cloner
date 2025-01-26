@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import type { Database } from "@/integrations/supabase/types";
+
+type SupportedLanguage = Database['public']['Enums']['supported_language'];
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,10 +14,13 @@ const Footer = () => {
   const { data: menuItems } = useQuery({
     queryKey: ['footer-menu', i18n.language],
     queryFn: async () => {
+      const currentLang = i18n.language.toLowerCase() as SupportedLanguage;
+      console.log('Fetching footer menu items for language:', currentLang);
+      
       const { data, error } = await supabase
         .from('menu_items')
         .select('*')
-        .eq('language', i18n.language.toLowerCase())
+        .eq('language', currentLang)
         .eq('location', 'footer')
         .order('sort_order', { ascending: true });
 
