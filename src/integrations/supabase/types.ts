@@ -657,6 +657,39 @@ export type Database = {
         }
         Relationships: []
       }
+      services: {
+        Row: {
+          created_at: string | null
+          description: string
+          icon: string
+          id: string
+          language: Database["public"]["Enums"]["supported_language"]
+          sort_order: number
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          description: string
+          icon: string
+          id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          sort_order?: number
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string
+          icon?: string
+          id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          sort_order?: number
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       team_members: {
         Row: {
           created_at: string | null
