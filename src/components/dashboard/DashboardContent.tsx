@@ -1,30 +1,17 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Plus, Eye, Pencil, Trash2, ArrowUpDown, Filter, Search } from "lucide-react";
+import { Plus, Search } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useQueryClient } from "@tanstack/react-query";
 import { type Database } from "@/integrations/supabase/types";
+import { DashboardStats } from "./DashboardStats";
+import { SectionDialogs } from "./SectionDialogs";
+import { SectionsTable } from "./SectionsTable";
 
 type SupportedLanguage = Database['public']['Enums']['supported_language'];
 
@@ -57,30 +44,6 @@ export function DashboardContent() {
     description: '',
     language: 'en',
     sort_order: 0
-  });
-
-  const { data: stats } = useQuery({
-    queryKey: ['dashboard-stats'],
-    queryFn: async () => {
-      const [
-        { count: productsCount },
-        { count: caseStudiesCount },
-        { count: teamMembersCount },
-        { count: contactFormsCount }
-      ] = await Promise.all([
-        supabase.from('products').select('*', { count: 'exact', head: true }),
-        supabase.from('case_studies').select('*', { count: 'exact', head: true }),
-        supabase.from('team_members').select('*', { count: 'exact', head: true }),
-        supabase.from('contact_submissions').select('*', { count: 'exact', head: true })
-      ]);
-
-      return {
-        products: productsCount || 0,
-        caseStudies: caseStudiesCount || 0,
-        teamMembers: teamMembersCount || 0,
-        contactForms: contactFormsCount || 0
-      };
-    }
   });
 
   const { data: sections, isLoading: sectionsLoading } = useQuery({
@@ -222,44 +185,7 @@ export function DashboardContent() {
         <h1 className="text-4xl font-bold text-white font-chakra">Dashboard</h1>
       </div>
 
-      {/* Stats Cards Grid */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
-        <Card className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 border-none">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-white/80">Products</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold text-white font-chakra">{stats?.products || 0}</div>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-gradient-to-br from-purple-500/20 to-purple-600/20 border-none">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-white/80">Case Studies</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold text-white font-chakra">{stats?.caseStudies || 0}</div>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 border-none">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-white/80">Team Members</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold text-white font-chakra">{stats?.teamMembers || 0}</div>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-gradient-to-br from-amber-500/20 to-amber-600/20 border-none">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-white/80">Contact Forms</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold text-white font-chakra">{stats?.contactForms || 0}</div>
-          </CardContent>
-        </Card>
-      </div>
+      <DashboardStats />
 
       <Card className="border-none bg-gradient-to-br from-gray-900/50 to-gray-800/50">
         <CardHeader className="flex flex-row items-center justify-between">
@@ -293,233 +219,28 @@ export function DashboardContent() {
           </div>
         </CardHeader>
         <CardContent>
-          <div className="rounded-md border border-gray-700">
-            <Table>
-              <TableHeader>
-                <TableRow className="border-gray-700 hover:bg-gray-800/50">
-                  <TableHead className="text-white/70 cursor-pointer" onClick={() => handleSort('section_name')}>
-                    <div className="flex items-center">
-                      Name
-                      <ArrowUpDown className="ml-2 h-4 w-4" />
-                    </div>
-                  </TableHead>
-                  <TableHead className="text-white/70 cursor-pointer" onClick={() => handleSort('title')}>
-                    <div className="flex items-center">
-                      Title
-                      <ArrowUpDown className="ml-2 h-4 w-4" />
-                    </div>
-                  </TableHead>
-                  <TableHead className="text-white/70 cursor-pointer" onClick={() => handleSort('language')}>
-                    <div className="flex items-center">
-                      Language
-                      <ArrowUpDown className="ml-2 h-4 w-4" />
-                    </div>
-                  </TableHead>
-                  <TableHead className="text-white/70 cursor-pointer" onClick={() => handleSort('sort_order')}>
-                    <div className="flex items-center">
-                      Order
-                      <ArrowUpDown className="ml-2 h-4 w-4" />
-                    </div>
-                  </TableHead>
-                  <TableHead className="text-right text-white/70">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {filteredSections?.map((section) => (
-                  <TableRow key={section.id} className="border-gray-700 hover:bg-gray-800/50">
-                    <TableCell className="font-chakra text-white">{section.section_name}</TableCell>
-                    <TableCell className="font-chakra text-white">{section.title}</TableCell>
-                    <TableCell className="font-chakra text-white">{section.language}</TableCell>
-                    <TableCell className="font-chakra text-white">{section.sort_order}</TableCell>
-                    <TableCell className="text-right space-x-2">
-                      <Button
-                        onClick={() => openEditDialog(section)}
-                        variant="ghost"
-                        size="icon"
-                        className="hover:bg-gray-700"
-                      >
-                        <Pencil className="w-4 h-4 text-amber-400" />
-                      </Button>
-                      <Button
-                        onClick={() => openDeleteDialog(section)}
-                        variant="ghost"
-                        size="icon"
-                        className="hover:bg-gray-700"
-                      >
-                        <Trash2 className="w-4 h-4 text-red-400" />
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
+          <SectionsTable
+            sections={filteredSections}
+            handleSort={handleSort}
+            openEditDialog={openEditDialog}
+            openDeleteDialog={openDeleteDialog}
+          />
         </CardContent>
       </Card>
 
-      {/* Create Dialog */}
-      <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
-        <DialogContent className="bg-gray-800 text-white">
-          <DialogHeader>
-            <DialogTitle>Create New Section</DialogTitle>
-            <DialogDescription className="text-gray-400">
-              Add a new section to your website
-            </DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid gap-2">
-              <Label htmlFor="section_name">Section Name</Label>
-              <Input
-                id="section_name"
-                value={formData.section_name}
-                onChange={(e) => setFormData({ ...formData, section_name: e.target.value })}
-                className="bg-gray-700 border-gray-600"
-              />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="title">Title</Label>
-              <Input
-                id="title"
-                value={formData.title}
-                onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                className="bg-gray-700 border-gray-600"
-              />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="description">Description</Label>
-              <Input
-                id="description"
-                value={formData.description}
-                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                className="bg-gray-700 border-gray-600"
-              />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="language">Language</Label>
-              <Select
-                value={formData.language}
-                onValueChange={(value: SupportedLanguage) => setFormData({ ...formData, language: value })}
-              >
-                <SelectTrigger className="bg-gray-700 border-gray-600">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent className="bg-gray-800 border-gray-700">
-                  <SelectItem value="en" className="text-white hover:bg-gray-700">English</SelectItem>
-                  <SelectItem value="no" className="text-white hover:bg-gray-700">Norwegian</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="sort_order">Sort Order</Label>
-              <Input
-                id="sort_order"
-                type="number"
-                value={formData.sort_order}
-                onChange={(e) => setFormData({ ...formData, sort_order: parseInt(e.target.value) })}
-                className="bg-gray-700 border-gray-600"
-              />
-            </div>
-          </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setIsCreateDialogOpen(false)}>
-              Cancel
-            </Button>
-            <Button onClick={handleCreate}>Create</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* Edit Dialog */}
-      <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
-        <DialogContent className="bg-gray-800 text-white">
-          <DialogHeader>
-            <DialogTitle>Edit Section</DialogTitle>
-            <DialogDescription className="text-gray-400">
-              Make changes to the section
-            </DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid gap-2">
-              <Label htmlFor="section_name">Section Name</Label>
-              <Input
-                id="section_name"
-                value={formData.section_name}
-                onChange={(e) => setFormData({ ...formData, section_name: e.target.value })}
-                className="bg-gray-700 border-gray-600"
-              />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="title">Title</Label>
-              <Input
-                id="title"
-                value={formData.title}
-                onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                className="bg-gray-700 border-gray-600"
-              />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="description">Description</Label>
-              <Input
-                id="description"
-                value={formData.description}
-                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                className="bg-gray-700 border-gray-600"
-              />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="language">Language</Label>
-              <Select
-                value={formData.language}
-                onValueChange={(value) => setFormData({ ...formData, language: value })}
-              >
-                <SelectTrigger className="bg-gray-700 border-gray-600">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent className="bg-gray-800 border-gray-700">
-                  <SelectItem value="en" className="text-white hover:bg-gray-700">English</SelectItem>
-                  <SelectItem value="no" className="text-white hover:bg-gray-700">Norwegian</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="sort_order">Sort Order</Label>
-              <Input
-                id="sort_order"
-                type="number"
-                value={formData.sort_order}
-                onChange={(e) => setFormData({ ...formData, sort_order: parseInt(e.target.value) })}
-                className="bg-gray-700 border-gray-600"
-              />
-            </div>
-          </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setIsEditDialogOpen(false)}>
-              Cancel
-            </Button>
-            <Button onClick={handleEdit}>Save changes</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* Delete Dialog */}
-      <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <DialogContent className="bg-gray-800 text-white">
-          <DialogHeader>
-            <DialogTitle>Delete Section</DialogTitle>
-            <DialogDescription className="text-gray-400">
-              Are you sure you want to delete this section? This action cannot be undone.
-            </DialogDescription>
-          </DialogHeader>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setIsDeleteDialogOpen(false)}>
-              Cancel
-            </Button>
-            <Button variant="destructive" onClick={handleDelete}>
-              Delete
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <SectionDialogs
+        isCreateDialogOpen={isCreateDialogOpen}
+        setIsCreateDialogOpen={setIsCreateDialogOpen}
+        isEditDialogOpen={isEditDialogOpen}
+        setIsEditDialogOpen={setIsEditDialogOpen}
+        isDeleteDialogOpen={isDeleteDialogOpen}
+        setIsDeleteDialogOpen={setIsDeleteDialogOpen}
+        formData={formData}
+        setFormData={setFormData}
+        handleCreate={handleCreate}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
     </main>
   );
 }
