@@ -3,6 +3,7 @@ import { Code, Shield, LineChart, Laptop } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
 import { type Database } from '@/integrations/supabase/types';
+import ServiceBackground from './services/ServiceBackground';
 
 const iconMap: { [key: string]: React.ReactNode } = {
   Code: <Code className="w-12 h-12 text-xala-accent mb-4" />,
@@ -31,8 +32,9 @@ const Services = () => {
 
   if (isLoading) {
     return (
-      <section id="services" className="py-20 bg-xala-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="services" className="py-20 bg-xala-secondary relative">
+        <ServiceBackground />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center mb-16">
             <div className="h-8 w-64 bg-xala-primary/20 rounded mx-auto mb-4 animate-pulse" />
             <div className="h-4 w-96 bg-xala-primary/20 rounded mx-auto animate-pulse" />
@@ -41,7 +43,7 @@ const Services = () => {
             {[1, 2, 3, 4].map((index) => (
               <div
                 key={index}
-                className="p-6 bg-xala-primary rounded-lg animate-pulse"
+                className="p-6 bg-xala-primary/80 backdrop-blur-sm rounded-lg animate-pulse"
               >
                 <div className="flex flex-col items-center text-center">
                   <div className="w-12 h-12 bg-xala-accent/20 rounded-lg mb-4" />
@@ -57,8 +59,9 @@ const Services = () => {
   }
 
   return (
-    <section id="services" className="py-20 bg-xala-secondary">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-20 bg-xala-secondary relative">
+      <ServiceBackground />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-xala-accent mb-4">Our Services</h2>
           <p className="text-xala-text text-lg max-w-2xl mx-auto">
@@ -69,7 +72,7 @@ const Services = () => {
           {services?.map((service) => (
             <div
               key={service.id}
-              className="p-6 bg-xala-primary rounded-lg hover:transform hover:scale-105 transition-all duration-300"
+              className="p-6 bg-xala-primary/80 backdrop-blur-sm rounded-lg hover:transform hover:scale-105 transition-all duration-300"
             >
               <div className="flex flex-col items-center text-center">
                 {iconMap[service.icon]}
