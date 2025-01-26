@@ -11,10 +11,10 @@ interface CaseStudyCardProps {
 const CaseStudyCard = ({ title, description, imageUrl, icon }: CaseStudyCardProps) => {
   return (
     <Card 
-      className="group relative overflow-hidden bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm 
+      className="group h-full relative overflow-hidden bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm 
                  border border-white/10 hover:border-xala-accent/50 transition-all duration-300"
     >
-      <CardContent className="p-0">
+      <CardContent className="p-0 flex flex-col h-full">
         <div className="relative h-48 overflow-hidden">
           <img
             src={imageUrl}
@@ -33,15 +33,17 @@ const CaseStudyCard = ({ title, description, imageUrl, icon }: CaseStudyCardProp
           </div>
         </div>
 
-        <div className="p-6">
-          <h3 className="text-xl font-semibold text-xala-accent mb-3">
-            {title}
-          </h3>
-          <p className="text-xala-text/70 mb-4">
-            {description}
-          </p>
+        <div className="p-6 flex flex-col flex-grow">
+          <div className="flex-grow">
+            <h3 className="text-xl font-semibold text-xala-accent mb-3">
+              {title}
+            </h3>
+            <p className="text-xala-text/70 mb-4">
+              {description}
+            </p>
+          </div>
           
-          <div className="flex items-center gap-2 text-xala-accent group/link cursor-pointer">
+          <div className="flex items-center gap-2 text-xala-accent group/link cursor-pointer mt-auto">
             <span className="font-medium">Read More</span>
             <ArrowRight className="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" />
           </div>
