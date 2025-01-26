@@ -1,31 +1,26 @@
 import ProductCard from './ProductCard';
+import SectionGrid from '../ui/section-grid';
 import type { Tables } from '@/integrations/supabase/types';
 
 interface ProductGridProps {
   products: Tables<'products'>[];
   columns: number;
-  rows?: number;
+  rows: number;
 }
 
-const ProductGrid = ({ products, columns, rows = 1 }: ProductGridProps) => {
+const ProductGrid = ({ products, columns, rows }: ProductGridProps) => {
   return (
-    <div 
-      className="grid gap-8"
-      style={{
-        gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
-        gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`
-      }}
-    >
+    <SectionGrid columns={columns} rows={rows}>
       {products.map((product) => (
         <ProductCard
           key={product.id}
           title={product.title}
           description={product.description}
-          icon={product.icon}
           image_url={product.image_url}
+          icon={product.icon}
         />
       ))}
-    </div>
+    </SectionGrid>
   );
 };
 

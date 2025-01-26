@@ -3,7 +3,6 @@ import { useSection } from '@/hooks/use-section';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import ProductGrid from './products/ProductGrid';
-import ProductCarousel from './products/ProductCarousel';
 import { Skeleton } from './ui/skeleton';
 
 const CoreProducts = () => {
@@ -47,13 +46,7 @@ const CoreProducts = () => {
       );
     }
 
-    return section?.carousel ? (
-      <ProductCarousel 
-        products={products}
-        columns={section?.columns || 3}
-        autoscroll={section?.autoscroll || false}
-      />
-    ) : (
+    return (
       <ProductGrid 
         products={products}
         columns={section?.columns || 3}

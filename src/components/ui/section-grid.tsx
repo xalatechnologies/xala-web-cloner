@@ -7,9 +7,11 @@ interface SectionGridProps {
 const SectionGrid = ({ children, columns = 3, rows = 1 }: SectionGridProps) => {
   return (
     <div 
-      className={`grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-${columns}`}
+      className="grid gap-8"
       style={{
-        gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`
+        gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
+        gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`,
+        gridAutoRows: 'auto'
       }}
     >
       {children}

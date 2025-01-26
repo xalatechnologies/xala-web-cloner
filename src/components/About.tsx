@@ -2,7 +2,6 @@ import { Brain, Rocket, Users, Code2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useSection } from '@/hooks/use-section';
 import AboutFeatureGrid from './about/AboutFeatureGrid';
-import AboutFeatureCarousel from './about/AboutFeatureCarousel';
 
 const About = () => {
   const { t } = useTranslation();
@@ -31,26 +30,6 @@ const About = () => {
     }
   ];
 
-  const renderContent = () => {
-    if (section?.carousel) {
-      return (
-        <AboutFeatureCarousel
-          features={features}
-          columns={section?.columns || 3}
-          autoscroll={section?.autoscroll || false}
-        />
-      );
-    }
-
-    return (
-      <AboutFeatureGrid
-        features={features}
-        columns={section?.columns || 3}
-        rows={section?.rows || 1}
-      />
-    );
-  };
-
   return (
     <section id="about" className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-xala-primary via-[#1a1f3d] to-xala-primary opacity-90" />
@@ -68,7 +47,11 @@ const About = () => {
           </p>
         </div>
 
-        {renderContent()}
+        <AboutFeatureGrid
+          features={features}
+          columns={section?.columns || 3}
+          rows={section?.rows || 1}
+        />
 
         <div className="mt-20 p-8 rounded-2xl bg-gradient-to-r from-[#9b87f5]/10 via-[#D946EF]/10 to-[#0EA5E9]/10 
                       border border-white/10 backdrop-blur-sm">
