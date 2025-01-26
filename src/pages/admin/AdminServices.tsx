@@ -1,4 +1,4 @@
-import { ServicesContent } from "@/components/dashboard/services/ServicesContent";
+import { ServicesContent } from "@/components/admin/services/ServicesContent";
 
 const AdminServices = () => {
   return <ServicesContent />;
