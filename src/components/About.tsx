@@ -49,8 +49,7 @@ const About = () => {
 
         <AboutFeatureGrid
           features={features}
-          columns={section?.columns || 3}
-          rows={section?.rows || 1}
+          initialRows={section?.rows || 1}
         />
 
         <div className="mt-20 p-8 rounded-2xl bg-gradient-to-r from-[#9b87f5]/10 via-[#D946EF]/10 to-[#0EA5E9]/10 

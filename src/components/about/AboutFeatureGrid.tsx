@@ -1,5 +1,5 @@
 import AboutFeatureCard from './AboutFeatureCard';
-import SectionGrid from '../ui/section-grid';
+import ExpandableGrid from '../ui/expandable-grid';
 
 interface AboutFeatureGridProps {
   features: {
@@ -7,14 +7,13 @@ interface AboutFeatureGridProps {
     title: string;
     description: string;
   }[];
-  columns: number;
-  rows: number;
+  initialRows?: number;
 }
 
-const AboutFeatureGrid = ({ features, columns, rows }: AboutFeatureGridProps) => {
+const AboutFeatureGrid = ({ features, initialRows = 1 }: AboutFeatureGridProps) => {
   return (
-    <SectionGrid columns={columns} rows={rows}>
-      {features.map((feature, index) => (
+    <ExpandableGrid
+      items={features.map((feature, index) => (
         <AboutFeatureCard
           key={index}
           icon={feature.icon}
@@ -22,7 +21,8 @@ const AboutFeatureGrid = ({ features, columns, rows }: AboutFeatureGridProps) =>
           description={feature.description}
         />
       ))}
-    </SectionGrid>
+      initialRows={initialRows}
+    />
   );
 };
 
