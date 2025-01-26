@@ -117,10 +117,18 @@ const WorkProcess = () => {
           </div>
         </div>
         
-        {/* Add arrow if not the last item in the row */}
+        {/* Enhanced futuristic arrow */}
         {index < totalProcesses - 1 && (index + 1) % columns !== 0 && (
-          <div className="flex-shrink-0 px-4 text-xala-accent">
-            <ArrowRight className="w-6 h-6 animate-pulse" />
+          <div className="flex-shrink-0 px-6 text-xala-accent relative group/arrow">
+            <div className="absolute inset-0 bg-xala-accent/10 filter blur-xl opacity-0 group-hover/arrow:opacity-100 transition-all duration-500"></div>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-xala-accent/0 via-xala-accent/20 to-xala-accent/0 
+                            animate-gradient-x opacity-0 group-hover/arrow:opacity-100 transition-all duration-500"></div>
+              <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-[2px] bg-gradient-to-r from-xala-accent/0 via-xala-accent to-xala-accent/0 
+                            transform scale-x-0 group-hover/arrow:scale-x-100 transition-transform duration-700"></div>
+              <ArrowRight className="w-8 h-8 animate-pulse transform group-hover/arrow:scale-110 group-hover/arrow:translate-x-1 
+                                   transition-all duration-300 relative z-10" />
+            </div>
           </div>
         )}
       </div>
