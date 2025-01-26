@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Brain, CircuitBoard, Cpu, Database, Network, Server, ArrowRight, Cloud as CloudIcon, Code, BarChart as ChartIcon } from 'lucide-react';
+import { Brain, CircuitBoard, Cpu, Database, Network, Server, ArrowRight, Cloud as CloudIcon, Code, BarChart as ChartIcon, Twitter, Linkedin, Github } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Hero = () => {
@@ -10,9 +10,9 @@ const Hero = () => {
   }, []);
 
   const socialLinks = [
-    { href: 'https://twitter.com', label: 'Twitter', icon: 'X' },
-    { href: 'https://linkedin.com', label: 'LinkedIn', icon: 'in' },
-    { href: 'https://github.com', label: 'GitHub', icon: 'GH' },
+    { href: 'https://twitter.com', label: 'Twitter', icon: Twitter },
+    { href: 'https://linkedin.com', label: 'LinkedIn', icon: Linkedin },
+    { href: 'https://github.com', label: 'GitHub', icon: Github },
   ];
 
   const scrollToSection = (sectionId: string) => {
@@ -34,22 +34,23 @@ const Hero = () => {
       {/* Social Icons */}
       <div className="absolute top-8 right-8 z-20">
         <div className="flex items-center gap-6">
-          {socialLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-xala-accent/20 to-[#9b87f5]/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:border-xala-accent/50 transition-all duration-300">
-                <span className="text-xala-accent font-semibold text-sm">
-                  {link.icon}
-                </span>
-              </div>
-            </a>
-          ))}
+          {socialLinks.map((link) => {
+            const IconComponent = link.icon;
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-xala-accent/20 to-[#9b87f5]/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:border-xala-accent/50 transition-all duration-300">
+                  <IconComponent className="w-5 h-5 text-xala-accent" />
+                </div>
+              </a>
+            );
+          })}
         </div>
       </div>
 
