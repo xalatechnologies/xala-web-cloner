@@ -1,10 +1,24 @@
 import { Brain, Rocket, Users, Code2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useSection } from '@/hooks/use-section';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
 
 const About = () => {
   const { t } = useTranslation();
   const { data: section } = useSection('about');
+  const plugin = useRef(
+    Autoplay({
+      delay: 4000,
+      stopOnInteraction: false,
+      stopOnMouseEnter: true,
+    })
+  );
 
   const features = [
     {
@@ -29,6 +43,79 @@ const About = () => {
     }
   ];
 
+  const renderContent = () => {
+    if (section?.carousel) {
+      return (
+        <Carousel
+          opts={{
+            align: "center",
+            loop: true,
+            dragFree: true,
+            skipSnaps: true,
+          }}
+          plugins={section.autoscroll ? [plugin.current] : []}
+          className="w-full max-w-6xl mx-auto"
+        >
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {features.map((feature, index) => (
+              <CarouselItem 
+                key={index}
+                className={`pl-2 md:pl-4 basis-full md:basis-1/${section?.columns || 4}`}
+              >
+                <div 
+                  className="group p-8 rounded-xl bg-white/5 border border-white/10 hover:border-[#9b87f5]/50 
+                           backdrop-blur-sm transition-all duration-500 hover:transform hover:-translate-y-1
+                           hover:shadow-lg hover:shadow-[#9b87f5]/10"
+                >
+                  <div className="space-y-4">
+                    <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-[#9b87f5]/20 to-transparent 
+                                flex items-center justify-center text-[#9b87f5] group-hover:text-white
+                                group-hover:from-[#9b87f5] group-hover:to-[#D946EF] transition-all duration-500">
+                      {feature.icon}
+                    </div>
+                    <h3 className="text-xl font-semibold text-white group-hover:text-[#9b87f5] transition-colors">
+                      {feature.title}
+                    </h3>
+                    <p className="text-white/70 group-hover:text-white/90 transition-colors">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      );
+    }
+
+    return (
+      <div className={`grid grid-cols-1 md:grid-cols-${section?.columns || 4} gap-8`}>
+        {features.map((feature, index) => (
+          <div 
+            key={index}
+            className="group p-8 rounded-xl bg-white/5 border border-white/10 hover:border-[#9b87f5]/50 
+                     backdrop-blur-sm transition-all duration-500 hover:transform hover:-translate-y-1
+                     hover:shadow-lg hover:shadow-[#9b87f5]/10"
+          >
+            <div className="space-y-4">
+              <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-[#9b87f5]/20 to-transparent 
+                          flex items-center justify-center text-[#9b87f5] group-hover:text-white
+                          group-hover:from-[#9b87f5] group-hover:to-[#D946EF] transition-all duration-500">
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-semibold text-white group-hover:text-[#9b87f5] transition-colors">
+                {feature.title}
+              </h3>
+              <p className="text-white/70 group-hover:text-white/90 transition-colors">
+                {feature.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <section id="about" className="py-24 relative overflow-hidden">
       {/* Gradient Background */}
@@ -48,31 +135,8 @@ const About = () => {
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, index) => (
-            <div 
-              key={index}
-              className="group p-8 rounded-xl bg-white/5 border border-white/10 hover:border-[#9b87f5]/50 
-                         backdrop-blur-sm transition-all duration-500 hover:transform hover:-translate-y-1
-                         hover:shadow-lg hover:shadow-[#9b87f5]/10"
-            >
-              <div className="space-y-4">
-                <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-[#9b87f5]/20 to-transparent 
-                              flex items-center justify-center text-[#9b87f5] group-hover:text-white
-                              group-hover:from-[#9b87f5] group-hover:to-[#D946EF] transition-all duration-500">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-white group-hover:text-[#9b87f5] transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-white/70 group-hover:text-white/90 transition-colors">
-                  {feature.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Features Grid or Carousel */}
+        {renderContent()}
 
         {/* Vision Statement */}
         <div className="mt-20 p-8 rounded-2xl bg-gradient-to-r from-[#9b87f5]/10 via-[#D946EF]/10 to-[#0EA5E9]/10 

@@ -587,33 +587,45 @@ export type Database = {
       }
       sections: {
         Row: {
+          autoscroll: boolean | null
           background: string | null
+          carousel: boolean | null
+          columns: number | null
           created_at: string | null
           description: string | null
           id: string
           language: Database["public"]["Enums"]["supported_language"]
+          rows: number | null
           section_name: string
           sort_order: number
           title: string
           updated_at: string | null
         }
         Insert: {
+          autoscroll?: boolean | null
           background?: string | null
+          carousel?: boolean | null
+          columns?: number | null
           created_at?: string | null
           description?: string | null
           id?: string
           language?: Database["public"]["Enums"]["supported_language"]
+          rows?: number | null
           section_name: string
           sort_order?: number
           title: string
           updated_at?: string | null
         }
         Update: {
+          autoscroll?: boolean | null
           background?: string | null
+          carousel?: boolean | null
+          columns?: number | null
           created_at?: string | null
           description?: string | null
           id?: string
           language?: Database["public"]["Enums"]["supported_language"]
+          rows?: number | null
           section_name?: string
           sort_order?: number
           title?: string

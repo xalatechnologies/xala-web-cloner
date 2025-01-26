@@ -3,6 +3,22 @@ import { supabase } from "@/integrations/supabase/client";
 import { useTranslation } from "react-i18next";
 import { type Database } from "@/integrations/supabase/types";
 
+export interface Section {
+  id: string;
+  section_name: string;
+  title: string;
+  description: string | null;
+  language: Database['public']['Enums']['supported_language'];
+  sort_order: number;
+  background: string | null;
+  carousel: boolean;
+  autoscroll: boolean;
+  rows: number;
+  columns: number;
+  created_at: string | null;
+  updated_at: string | null;
+}
+
 export const useSection = (sectionName: string) => {
   const { i18n } = useTranslation();
 
@@ -24,7 +40,7 @@ export const useSection = (sectionName: string) => {
         throw error;
       }
 
-      return data;
+      return data as Section;
     },
   });
 };
