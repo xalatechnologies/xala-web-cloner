@@ -40,6 +40,7 @@ export default {
         "twinkle-2": "twinkle 6s ease-in-out infinite",
         "twinkle-3": "twinkle 8s ease-in-out infinite",
         "galaxy-spin": "galaxy-spin 100s linear infinite",
+        "bounce": "bounce 1s infinite",
       },
       keyframes: {
         "gradient-x": {
@@ -111,6 +112,16 @@ export default {
           },
           "100%": {
             transform: "rotate(360deg)",
+          },
+        },
+        bounce: {
+          "0%, 100%": {
+            transform: "translateY(-25%)",
+            "animation-timing-function": "cubic-bezier(0.8, 0, 1, 1)",
+          },
+          "50%": {
+            transform: "translateY(0)",
+            "animation-timing-function": "cubic-bezier(0, 0, 0.2, 1)",
           },
         },
       },

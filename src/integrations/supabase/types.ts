@@ -394,6 +394,7 @@ export type Database = {
         Row: {
           created_at: string | null
           href: string
+          icon: string | null
           id: string
           language: Database["public"]["Enums"]["supported_language"]
           location: string
@@ -405,6 +406,7 @@ export type Database = {
         Insert: {
           created_at?: string | null
           href: string
+          icon?: string | null
           id?: string
           language?: Database["public"]["Enums"]["supported_language"]
           location?: string
@@ -416,6 +418,7 @@ export type Database = {
         Update: {
           created_at?: string | null
           href?: string
+          icon?: string | null
           id?: string
           language?: Database["public"]["Enums"]["supported_language"]
           location?: string
