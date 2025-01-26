@@ -5,7 +5,9 @@ import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { Skeleton } from '../ui/skeleton';
 import { useTranslation } from 'react-i18next';
-import type { Tables } from '@/integrations/supabase/types';
+import type { Tables, Enums } from '@/integrations/supabase/types';
+
+type SupportedLanguage = Enums<'supported_language'>;
 
 interface ActionButtonsProps {
   onSectionClick: (sectionId: string) => void;
@@ -23,7 +25,7 @@ const ActionButtons = ({ onSectionClick }: ActionButtonsProps) => {
         .from('menu_items')
         .select('*')
         .eq('location', 'hero')
-        .eq('language', i18n.language.toLowerCase())
+        .eq('language', i18n.language.toLowerCase() as SupportedLanguage)
         .order('sort_order');
 
       if (error) {

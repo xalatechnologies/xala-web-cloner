@@ -1,6 +1,6 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { Brain, CloudCog, Code2, BarChart2, Shield, Laptop, LineChart } from 'lucide-react';
+import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import type { Tables, Enums } from '@/integrations/supabase/types';
 import { Skeleton } from '../ui/skeleton';
@@ -32,7 +32,7 @@ const FeatureCards = () => {
         .from('services')
         .select('*')
         .eq('featured', true)
-        .eq('language', i18n.language.toLowerCase())
+        .eq('language', i18n.language.toLowerCase() as SupportedLanguage)
         .order('sort_order')
         .limit(4);
       
