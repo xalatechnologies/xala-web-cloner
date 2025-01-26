@@ -8,13 +8,13 @@ import type { Tables, Enums } from '@/integrations/supabase/types';
 type SupportedLanguage = Enums<'supported_language'>;
 
 const iconMap = {
-  Brain: Brain,
-  CloudCog: CloudCog,
-  Code2: Code2,
-  BarChart2: BarChart2,
-  Shield: Shield,
-  Laptop: Laptop,
-  LineChart: LineChart,
+  Brain,
+  CloudCog,
+  Code2,
+  BarChart2,
+  Shield,
+  Laptop,
+  LineChart,
 };
 
 type IconName = keyof typeof iconMap;
@@ -44,10 +44,17 @@ const FeatureCards = () => {
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 max-w-5xl mx-auto my-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto my-12">
         {[...Array(4)].map((_, i) => (
-          <div key={i} className="p-6 rounded-xl bg-white/5 animate-pulse">
-            <div className="h-32"></div>
+          <div 
+            key={i} 
+            className="p-6 rounded-xl bg-white/5 animate-pulse"
+          >
+            <div className="flex flex-col items-center gap-4">
+              <div className="w-12 h-12 rounded-lg bg-white/10" />
+              <div className="h-4 w-24 bg-white/10 rounded" />
+              <div className="h-12 w-full bg-white/10 rounded" />
+            </div>
           </div>
         ))}
       </div>
@@ -55,7 +62,7 @@ const FeatureCards = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 max-w-5xl mx-auto my-12">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto my-12">
       {features?.map((feature) => {
         const IconComponent = iconMap[feature.icon as IconName];
         if (!IconComponent) {
@@ -65,7 +72,7 @@ const FeatureCards = () => {
         return (
           <FeatureCard
             key={feature.id}
-            icon={<IconComponent className="w-8 h-8 text-xala-accent" />}
+            icon={<IconComponent className="w-8 h-8 text-xala-accent group-hover:text-white transition-colors" />}
             title={feature.title}
             description={feature.description}
           />
@@ -82,13 +89,22 @@ interface FeatureCardProps {
 }
 
 const FeatureCard = ({ icon, title, description }: FeatureCardProps) => (
-  <div className="group p-6 rounded-xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 hover:border-xala-accent/50 transition-all duration-300">
-    <div className="flex flex-col items-center gap-3">
-      <div className="p-3 rounded-lg bg-xala-accent/10 group-hover:bg-xala-accent/20 transition-colors">
+  <div className="group p-6 rounded-xl bg-gradient-to-br from-white/5 via-white/[0.02] to-transparent 
+                  backdrop-blur-sm border border-white/10 hover:border-xala-accent/50 
+                  transition-all duration-500 hover:transform hover:-translate-y-1
+                  hover:shadow-lg hover:shadow-xala-accent/10">
+    <div className="flex flex-col items-center gap-4">
+      <div className="p-3 rounded-lg bg-gradient-to-br from-xala-accent/20 to-transparent 
+                    group-hover:from-xala-accent group-hover:to-[#D946EF]/80 
+                    transition-all duration-500">
         {icon}
       </div>
-      <h3 className="text-lg font-semibold text-xala-accent">{title}</h3>
-      <p className="text-sm text-xala-text/80">{description}</p>
+      <h3 className="text-lg font-semibold text-xala-accent group-hover:text-white transition-colors">
+        {title}
+      </h3>
+      <p className="text-sm text-center text-xala-text/80 group-hover:text-white/90 transition-colors">
+        {description}
+      </p>
     </div>
   </div>
 );
