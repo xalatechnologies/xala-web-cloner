@@ -61,7 +61,7 @@ serve(async (req) => {
     const data = await response.json()
     console.log('OpenAI API response:', data)
 
-    if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+    if (!data.choices?.[0]?.message?.content) {
       throw new Error('Invalid response from OpenAI API: ' + JSON.stringify(data))
     }
 
