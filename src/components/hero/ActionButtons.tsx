@@ -37,6 +37,12 @@ const ActionButtons = ({ onSectionClick }: ActionButtonsProps) => {
     }
   });
 
+  const handleClick = (href: string) => {
+    // Remove the '#' if present at the start of the href
+    const sectionId = href.startsWith('#') ? href.substring(1) : href;
+    onSectionClick(sectionId);
+  };
+
   if (isLoading) {
     return (
       <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
@@ -52,7 +58,7 @@ const ActionButtons = ({ onSectionClick }: ActionButtonsProps) => {
       {buttons?.map((button, index) => (
         <Button
           key={button.id}
-          onClick={() => onSectionClick(button.href)}
+          onClick={() => handleClick(button.href)}
           className={`group px-8 py-6 rounded-lg font-medium transition-all transform hover:scale-105
             ${index === 0 
               ? 'shadow-lg shadow-xala-accent/20 bg-gradient-to-r from-[#9b87f5] via-[#8B5CF6] to-[#7E69AB] hover:from-[#8B5CF6] hover:via-[#7E69AB] hover:to-[#9b87f5] text-white'
