@@ -8,32 +8,32 @@ const Technologies = () => {
     {
       icon: <Code2 className="w-8 h-8 text-xala-accent mb-4" />,
       name: t('technologies.frontend.title'),
-      tools: t('technologies.frontend.tools', { returnObjects: true }) as string[]
+      tools: t('technologies.frontend.tools', { returnObjects: true }) || []
     },
     {
       icon: <Server className="w-8 h-8 text-xala-accent mb-4" />,
       name: t('technologies.backend.title'),
-      tools: t('technologies.backend.tools', { returnObjects: true }) as string[]
+      tools: t('technologies.backend.tools', { returnObjects: true }) || []
     },
     {
       icon: <Brain className="w-8 h-8 text-xala-accent mb-4" />,
       name: t('technologies.ai.title'),
-      tools: t('technologies.ai.tools', { returnObjects: true }) as string[]
+      tools: t('technologies.ai.tools', { returnObjects: true }) || []
     },
     {
       icon: <Layout className="w-8 h-8 text-xala-accent mb-4" />,
       name: t('technologies.uiux.title'),
-      tools: t('technologies.uiux.tools', { returnObjects: true }) as string[]
+      tools: t('technologies.uiux.tools', { returnObjects: true }) || []
     },
     {
       icon: <Terminal className="w-8 h-8 text-xala-accent mb-4" />,
       name: t('technologies.devops.title'),
-      tools: t('technologies.devops.tools', { returnObjects: true }) as string[]
+      tools: t('technologies.devops.tools', { returnObjects: true }) || []
     },
     {
       icon: <Palette className="w-8 h-8 text-xala-accent mb-4" />,
       name: t('technologies.design.title'),
-      tools: t('technologies.design.tools', { returnObjects: true }) as string[]
+      tools: t('technologies.design.tools', { returnObjects: true }) || []
     }
   ];
 
@@ -59,7 +59,7 @@ const Technologies = () => {
                 {tech.icon}
                 <h3 className="text-xl font-semibold mb-4 text-xala-accent">{tech.name}</h3>
                 <div className="flex flex-wrap justify-center gap-2">
-                  {tech.tools.map((tool, toolIndex) => (
+                  {Array.isArray(tech.tools) && tech.tools.map((tool, toolIndex) => (
                     <span
                       key={toolIndex}
                       className="px-3 py-1 bg-xala-primary rounded-full text-sm text-xala-text"
