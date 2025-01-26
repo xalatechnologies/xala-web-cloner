@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import type { Database } from '@/integrations/supabase/types';
 import * as LucideIcons from 'lucide-react';
-import { LucideIcon } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 
 interface ActionButtonsProps {
   onSectionClick: (sectionId: string) => void;
@@ -50,7 +50,7 @@ const ActionButtons = ({ onSectionClick }: ActionButtonsProps) => {
   return (
     <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
       {menuItems?.map((item, index) => {
-        const IconComponent = item.icon ? (LucideIcons[item.icon as keyof typeof LucideIcons] as LucideIcon) : null;
+        const IconComponent = item.icon ? (LucideIcons[item.icon as keyof typeof LucideIcons] as LucideIcon) : ArrowDown;
         
         return (
           <Button
@@ -63,7 +63,7 @@ const ActionButtons = ({ onSectionClick }: ActionButtonsProps) => {
               }`}
           >
             <span className="flex items-center gap-2">
-              {IconComponent && React.createElement(IconComponent, { className: "w-5 h-5" })}
+              {IconComponent && <IconComponent className="w-5 h-5" />}
               {item.name}
               <ArrowDown className="w-5 h-5 animate-bounce" />
             </span>
