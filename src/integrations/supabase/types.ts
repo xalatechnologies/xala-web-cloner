@@ -42,6 +42,30 @@ export type Database = {
         }
         Relationships: []
       }
+      admin_users: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+          role: Database["public"]["Enums"]["admin_role"]
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id: string
+          role?: Database["public"]["Enums"]["admin_role"]
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+          role?: Database["public"]["Enums"]["admin_role"]
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       bottom_sections: {
         Row: {
           content: string
@@ -895,9 +919,16 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      create_admin_user: {
+        Args: {
+          admin_email: string
+          admin_role: Database["public"]["Enums"]["admin_role"]
+        }
+        Returns: undefined
+      }
     }
     Enums: {
+      admin_role: "super_admin" | "content_editor"
       bottom_section_type: "address" | "social" | "contact" | "newsletter"
       case_study_status: "draft" | "published" | "archived"
       feature_category: "ai" | "cloud" | "development" | "analytics"
