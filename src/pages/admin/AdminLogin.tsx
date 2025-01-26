@@ -4,49 +4,61 @@ import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
   const { toast } = useToast();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setError(null);
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      console.log('Attempting login with email:', email);
+      const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
 
-      if (error) throw error;
+      if (signInError) {
+        console.error('Sign in error:', signInError);
+        throw signInError;
+      }
 
-      if (data.user) {
-        const { data: adminUser } = await supabase
+      if (signInData.user) {
+        console.log('User signed in:', signInData.user.id);
+        const { data: adminUser, error: adminError } = await supabase
           .from('admin_users')
           .select('*')
-          .eq('id', data.user.id)
+          .eq('id', signInData.user.id)
           .maybeSingle();
 
+        if (adminError) {
+          console.error('Admin check error:', adminError);
+          throw new Error('Error checking admin status');
+        }
+
         if (adminUser) {
+          console.log('Admin user found:', adminUser);
           toast({
             title: "Success",
             description: "Welcome back!",
           });
           navigate('/admin/dashboard');
         } else {
+          console.error('No admin user found for ID:', signInData.user.id);
           throw new Error('Unauthorized access');
         }
       }
     } catch (error) {
-      toast({
-        title: "Error",
-        description: "Invalid credentials or unauthorized access",
-        variant: "destructive",
-      });
+      console.error('Login error:', error);
+      setError(error instanceof Error ? error.message : "Invalid credentials or unauthorized access");
     } finally {
       setIsLoading(false);
     }
@@ -60,6 +72,12 @@ const AdminLogin = () => {
           <p className="text-gray-400">Sign in to access the dashboard</p>
         </div>
         
+        {error && (
+          <Alert variant="destructive">
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
+
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
             <Input
