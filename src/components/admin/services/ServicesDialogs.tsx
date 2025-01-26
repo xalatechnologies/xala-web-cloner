@@ -80,7 +80,7 @@ export function ServicesDialogs({
           </SelectTrigger>
           <SelectContent className="bg-gray-800 border-gray-700 max-h-[300px]">
             {iconNames.map((name) => {
-              const IconComponent = LucideIcons[name as keyof typeof LucideIcons] as React.FC;
+              const IconComponent = LucideIcons[name as keyof typeof LucideIcons] as React.FC<{ className?: string }>;
               return (
                 <SelectItem key={name} value={name} className="text-white hover:bg-white/10">
                   <div className="flex items-center gap-2">
