@@ -73,7 +73,7 @@ const FeatureCards = () => {
         return (
           <FeatureCard
             key={feature.id}
-            icon={<IconComponent className="w-40 h-40 text-xala-accent/10 group-hover:text-white/10 transition-all duration-700" />}
+            icon={<IconComponent className="w-[200%] h-[200%] text-xala-accent/5 group-hover:text-white/5 transition-all duration-700" />}
             title={feature.title}
             description={feature.description}
             index={index}
@@ -103,7 +103,7 @@ const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => (
     }}
   >
     {/* Background icon */}
-    <div className="absolute top-1/2 right-0 -translate-y-1/2 opacity-10 transform scale-150 transition-all duration-700 group-hover:scale-175 group-hover:opacity-20">
+    <div className="absolute -right-1/4 -bottom-1/4 transform scale-100 transition-all duration-700 group-hover:scale-125 group-hover:rotate-12">
       {icon}
     </div>
     
