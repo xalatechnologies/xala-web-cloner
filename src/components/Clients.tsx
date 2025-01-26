@@ -76,7 +76,7 @@ const Clients = () => {
                   className="group relative h-48 flex items-center justify-center p-2 rounded-xl"
                 >
                   {/* Card background */}
-                  <div className="absolute inset-0 rounded-xl bg-white/90 border border-white/20" />
+                  <div className="absolute inset-0 rounded-xl bg-xala-secondary border border-blue-500/20" />
                   
                   {/* Logo */}
                   <img
@@ -84,13 +84,13 @@ const Clients = () => {
                     alt={client.name}
                     className="relative w-[90%] h-[90%] object-contain transition-all duration-500 group-hover:scale-105"
                     style={{ 
-                      filter: 'brightness(1) contrast(1.2)',
+                      filter: 'brightness(1.5) contrast(1.2)',
                     }}
                   />
 
                   {/* Hover text */}
                   <div className="absolute bottom-1 left-0 w-full text-center opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                    <span className="text-sm text-gray-600 font-medium">
+                    <span className="text-sm text-blue-300 font-medium">
                       {client.name}
                     </span>
                   </div>
