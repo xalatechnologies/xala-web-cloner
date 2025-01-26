@@ -4,6 +4,7 @@ import { Brain, CloudCog, Code2, BarChart2, Shield, Laptop, LineChart } from 'lu
 import { supabase } from '@/integrations/supabase/client';
 import type { Tables, Enums } from '@/integrations/supabase/types';
 import { Skeleton } from '../ui/skeleton';
+import { useTranslation } from 'react-i18next';
 
 type SupportedLanguage = Enums<'supported_language'>;
 
@@ -20,13 +21,18 @@ const iconMap = {
 type IconName = keyof typeof iconMap;
 
 const FeatureCards = () => {
+  const { i18n } = useTranslation();
+
   const { data: features, isLoading } = useQuery({
-    queryKey: ['featured-services'],
+    queryKey: ['featured-services', i18n.language],
     queryFn: async () => {
+      console.log('Fetching featured services for language:', i18n.language);
+      
       const { data, error } = await supabase
         .from('services')
         .select('*')
         .eq('featured', true)
+        .eq('language', i18n.language.toLowerCase())
         .order('sort_order')
         .limit(4);
       

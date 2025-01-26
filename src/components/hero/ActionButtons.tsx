@@ -4,6 +4,7 @@ import { Button } from '../ui/button';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { Skeleton } from '../ui/skeleton';
+import { useTranslation } from 'react-i18next';
 import type { Tables } from '@/integrations/supabase/types';
 
 interface ActionButtonsProps {
@@ -11,13 +12,18 @@ interface ActionButtonsProps {
 }
 
 const ActionButtons = ({ onSectionClick }: ActionButtonsProps) => {
+  const { i18n } = useTranslation();
+  
   const { data: buttons, isLoading } = useQuery({
-    queryKey: ['hero-buttons'],
+    queryKey: ['hero-buttons', i18n.language],
     queryFn: async () => {
+      console.log('Fetching hero buttons for language:', i18n.language);
+      
       const { data, error } = await supabase
         .from('menu_items')
         .select('*')
         .eq('location', 'hero')
+        .eq('language', i18n.language.toLowerCase())
         .order('sort_order');
 
       if (error) {
