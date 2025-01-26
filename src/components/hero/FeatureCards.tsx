@@ -23,10 +23,11 @@ type IconName = keyof typeof iconMap;
 const FeatureCards = () => {
   const { i18n } = useTranslation();
 
-  const { data: features, isLoading } = useQuery({
+  const { data: features, isLoading, error } = useQuery({
     queryKey: ['featured-services', i18n.language],
     queryFn: async () => {
-      console.log('Fetching featured services for language:', i18n.language);
+      console.log('Starting to fetch featured services...');
+      console.log('Current language:', i18n.language);
       
       const { data, error } = await supabase
         .from('services')
@@ -41,9 +42,14 @@ const FeatureCards = () => {
         return [];
       }
       
+      console.log('Fetched featured services:', data);
       return data;
     },
   });
+
+  if (error) {
+    console.error('Query error:', error);
+  }
 
   if (isLoading) {
     return (
