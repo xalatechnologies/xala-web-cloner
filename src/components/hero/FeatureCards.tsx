@@ -112,7 +112,7 @@ const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => (
                     group-hover:bg-xala-accent/40 transform group-hover:scale-150 transition-all duration-700 opacity-0 group-hover:opacity-100" />
     
     {/* Animated border */}
-    <div className="absolute inset-0 rounded-3xl border border-xala-accent/0 group-hover:border-xala-accent/30 
+    <div className="absolute inset-0 rounded-[2rem_0.5rem_2rem_2rem] border border-xala-accent/0 group-hover:border-xala-accent/30 
                     transition-all duration-700" />
 
     <div className="relative flex flex-col h-full z-10">
