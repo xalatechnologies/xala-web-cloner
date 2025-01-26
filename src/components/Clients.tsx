@@ -8,32 +8,32 @@ const clients = [
   {
     name: "SSB",
     logo: "/clients/ssb.svg",
-    color: "#274247"
+    color: "#fff"
   },
   {
     name: "Sykehuspartner",
     logo: "/clients/sykehuspartner.svg",
-    color: "#003087"
+    color: "#fff"
   },
   {
     name: "Norwegian",
     logo: "/clients/norwegian.svg",
-    color: "#b12a0b"
+    color: "#fff"
   },
   {
     name: "Altinn",
     logo: "/clients/altinn.svg",
-    color: "#0062BA"
+    color: "#fff"
   },
   {
     name: "NHN",
     logo: "/clients/nhn.svg",
-    color: "#003087"
+    color: "#fff"
   },
   {
     name: "NOV",
     logo: "/clients/nov2.svg",
-    color: "#ED3124"
+    color: "#fff"
   },
 ];
 
@@ -45,10 +45,10 @@ const Clients = () => {
 
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-5xl font-bold mb-6 text-xala-accent">
+          <h2 className="text-5xl font-bold mb-6 text-white">
             Our Clients
           </h2>
-          <p className="text-xl text-xala-text max-w-3xl mx-auto">
+          <p className="text-xl text-white/80 max-w-3xl mx-auto">
             Partnering with industry leaders to drive innovation and create impactful solutions.
           </p>
         </div>
@@ -79,13 +79,13 @@ const Clients = () => {
                     alt={client.name}
                     className="relative w-full h-full object-contain transition-all duration-500 group-hover:scale-110"
                     style={{ 
-                      filter: 'brightness(1.2) contrast(1.2)',
+                      filter: 'brightness(0) invert(1)',
                     }}
                   />
 
                   {/* Hover text */}
                   <div className="absolute bottom-1 left-0 w-full text-center opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                    <span className="text-sm text-xala-accent font-medium">
+                    <span className="text-sm text-white font-medium">
                       {client.name}
                     </span>
                   </div>
