@@ -57,6 +57,7 @@ const Technologies = () => {
     return (
       <TechnologyGrid 
         technologies={technologies}
+        initialRows={2}
       />
     );
   };
