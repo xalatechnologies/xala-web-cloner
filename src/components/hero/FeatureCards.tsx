@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Brain, CloudCog, Code2, BarChart2, Shield, Laptop, LineChart } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import type { Tables, Enums } from '@/integrations/supabase/types';
+import { Skeleton } from '../ui/skeleton';
 
 type SupportedLanguage = Enums<'supported_language'>;
 
@@ -35,7 +36,7 @@ const FeatureCards = () => {
       
       if (error) {
         console.error('Error fetching featured services:', error);
-        throw error;
+        return [];
       }
       
       return data;
@@ -48,11 +49,13 @@ const FeatureCards = () => {
         {[...Array(4)].map((_, i) => (
           <div 
             key={i} 
-            className="p-6 rounded-xl bg-white/5 animate-pulse"
+            className="h-full p-6 rounded-xl bg-white/5 animate-pulse"
           >
-            <div className="flex flex-col items-center gap-4">
-              <div className="w-12 h-12 rounded-lg bg-white/10" />
-              <div className="h-4 w-24 bg-white/10 rounded" />
+            <div className="flex flex-col items-start gap-4">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-lg bg-white/10" />
+                <div className="h-4 w-24 bg-white/10 rounded" />
+              </div>
               <div className="h-12 w-full bg-white/10 rounded" />
             </div>
           </div>
