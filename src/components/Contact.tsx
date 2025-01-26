@@ -4,9 +4,12 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { useToast } from './ui/use-toast';
 import { useTranslation } from 'react-i18next';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useQuery } from '@tanstack/react-query';
+import type { Database } from '@/integrations/supabase/types';
+
+type SupportedLanguage = Database['public']['Enums']['supported_language'];
 
 const Contact = () => {
   const { toast } = useToast();
@@ -17,12 +20,13 @@ const Contact = () => {
   const { data: section } = useQuery({
     queryKey: ['contact-section', i18n.language],
     queryFn: async () => {
+      const currentLang = i18n.language.toLowerCase() as SupportedLanguage;
       const { data, error } = await supabase
         .from('sections')
         .select('*')
         .eq('section_name', 'contact')
-        .eq('language', i18n.language.toLowerCase())
-        .single();
+        .eq('language', currentLang)
+        .maybeSingle();
 
       if (error) throw error;
       return data;
@@ -70,12 +74,14 @@ const Contact = () => {
     setIsSubmitting(true);
 
     const formData = new FormData(e.currentTarget);
+    const currentLang = i18n.language.toLowerCase() as SupportedLanguage;
+    
     const submission = {
       name: formData.get('name') as string,
       email: formData.get('email') as string,
       subject: formData.get('subject') as string,
       message: formData.get('message') as string,
-      language: i18n.language.toLowerCase() as 'en' | 'no',
+      language: currentLang,
     };
 
     try {
@@ -103,6 +109,8 @@ const Contact = () => {
       setIsSubmitting(false);
     }
   };
+
+  // ... keep existing code (JSX for the contact form and layout)
 
   return (
     <section id="contact" className="relative py-24 overflow-hidden bg-gradient-to-b from-xala-primary to-xala-secondary">
