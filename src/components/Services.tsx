@@ -8,9 +8,20 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
 import { Code2, Cpu, Database, Globe2, Layout, Shield } from 'lucide-react';
+import { useQuery } from '@tanstack/react-query';
+import { supabase } from '@/integrations/supabase/client';
+
+const iconMap: Record<string, React.ReactNode> = {
+  Layout: <Layout className="w-8 h-8" />,
+  Shield: <Shield className="w-8 h-8" />,
+  Database: <Database className="w-8 h-8" />,
+  Code2: <Code2 className="w-8 h-8" />,
+  Globe2: <Globe2 className="w-8 h-8" />,
+  Cpu: <Cpu className="w-8 h-8" />
+};
 
 const Services = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { data: section } = useSection('services');
   const plugin = useRef(
     Autoplay({
@@ -20,38 +31,23 @@ const Services = () => {
     })
   );
 
-  const services = [
-    {
-      icon: <Layout className="w-8 h-8" />,
-      title: t('services.web.title'),
-      description: t('services.web.description')
-    },
-    {
-      icon: <Shield className="w-8 h-8" />,
-      title: t('services.security.title'),
-      description: t('services.security.description')
-    },
-    {
-      icon: <Database className="w-8 h-8" />,
-      title: t('services.data.title'),
-      description: t('services.data.description')
-    },
-    {
-      icon: <Code2 className="w-8 h-8" />,
-      title: t('services.development.title'),
-      description: t('services.development.description')
-    },
-    {
-      icon: <Globe2 className="w-8 h-8" />,
-      title: t('services.cloud.title'),
-      description: t('services.cloud.description')
-    },
-    {
-      icon: <Cpu className="w-8 h-8" />,
-      title: t('services.ai.title'),
-      description: t('services.ai.description')
+  const { data: services = [] } = useQuery({
+    queryKey: ['services', i18n.language],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('services')
+        .select('*')
+        .eq('language', i18n.language)
+        .order('sort_order');
+
+      if (error) {
+        console.error('Error fetching services:', error);
+        return [];
+      }
+
+      return data;
     }
-  ];
+  });
 
   const renderContent = () => {
     if (section?.carousel) {
@@ -67,9 +63,9 @@ const Services = () => {
           className="w-full max-w-6xl mx-auto"
         >
           <CarouselContent className="-ml-2 md:-ml-4">
-            {services.map((service, index) => (
+            {services.map((service) => (
               <CarouselItem 
-                key={index}
+                key={service.id}
                 className={`pl-2 md:pl-4 basis-full md:basis-1/${section?.columns || 3}`}
               >
                 <div 
@@ -81,7 +77,7 @@ const Services = () => {
                     <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-[#9b87f5]/20 to-transparent 
                                 flex items-center justify-center text-[#9b87f5] group-hover:text-white
                                 group-hover:from-[#9b87f5] group-hover:to-[#D946EF] transition-all duration-500">
-                      {service.icon}
+                      {iconMap[service.icon]}
                     </div>
                     <h3 className="text-xl font-semibold text-white group-hover:text-[#9b87f5] transition-colors">
                       {service.title}
@@ -100,9 +96,9 @@ const Services = () => {
 
     return (
       <div className={`grid grid-cols-1 md:grid-cols-${section?.columns || 3} gap-8`}>
-        {services.map((service, index) => (
+        {services.map((service) => (
           <div 
-            key={index}
+            key={service.id}
             className="group p-8 rounded-xl bg-white/5 border border-white/10 hover:border-[#9b87f5]/50 
                      backdrop-blur-sm transition-all duration-500 hover:transform hover:-translate-y-1
                      hover:shadow-lg hover:shadow-[#9b87f5]/10"
@@ -111,7 +107,7 @@ const Services = () => {
               <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-[#9b87f5]/20 to-transparent 
                           flex items-center justify-center text-[#9b87f5] group-hover:text-white
                           group-hover:from-[#9b87f5] group-hover:to-[#D946EF] transition-all duration-500">
-                {service.icon}
+                {iconMap[service.icon]}
               </div>
               <h3 className="text-xl font-semibold text-white group-hover:text-[#9b87f5] transition-colors">
                 {service.title}
