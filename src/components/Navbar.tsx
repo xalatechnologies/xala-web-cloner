@@ -26,15 +26,19 @@ const Navbar = () => {
   const { data: menuItems, isLoading } = useQuery({
     queryKey: ['menuItems', language.toLowerCase() as SupportedLanguage],
     queryFn: async () => {
+      const currentLanguage = language.toLowerCase() as SupportedLanguage;
+      console.log('Fetching menu items for language:', currentLanguage);
+      
       const { data, error } = await supabase
         .from('menu_items')
         .select('*')
-        .eq('language', language.toLowerCase() as SupportedLanguage)
+        .eq('language', currentLanguage)
         .order('sort_order', { ascending: true });
 
       if (error) throw error;
       return data as MenuItem[];
-    }
+    },
+    enabled: !!language // Only run query when language is available
   });
 
   const toggleTheme = () => {
