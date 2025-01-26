@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import type { Database } from '@/integrations/supabase/types';
 import TechnologyGrid from './technologies/TechnologyGrid';
-import TechnologyCarousel from './technologies/TechnologyCarousel';
 
 type SupportedLanguage = Database['public']['Enums']['supported_language'];
 
@@ -55,13 +54,7 @@ const Technologies = () => {
       );
     }
 
-    return section?.carousel ? (
-      <TechnologyCarousel 
-        technologies={technologies}
-        columns={section?.columns || 3}
-        autoscroll={section?.autoscroll || false}
-      />
-    ) : (
+    return (
       <TechnologyGrid 
         technologies={technologies}
         columns={section?.columns || 3}

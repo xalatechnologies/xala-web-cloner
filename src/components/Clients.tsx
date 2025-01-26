@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
 import ClientGrid from './clients/ClientGrid';
-import ClientCarousel from './clients/ClientCarousel';
 
 const Clients = () => {
   const { t } = useTranslation();
@@ -50,23 +49,11 @@ const Clients = () => {
       );
     }
 
-    // Default values if section is not loaded yet
-    const useCarousel = section?.carousel ?? false;
-    const columns = section?.columns ?? 4;
-    const rows = section?.rows ?? 2;
-    const autoscroll = section?.autoscroll ?? false;
-
-    return useCarousel ? (
-      <ClientCarousel 
-        clients={clients}
-        columns={columns}
-        autoscroll={autoscroll}
-      />
-    ) : (
+    return (
       <ClientGrid 
         clients={clients}
-        columns={columns}
-        rows={rows}
+        columns={section?.columns || 4}
+        rows={section?.rows || 2}
       />
     );
   };

@@ -3,7 +3,6 @@ import { useSection } from '@/hooks/use-section';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import ServiceGrid from './services/ServiceGrid';
-import ServiceCarousel from './services/ServiceCarousel';
 import { Skeleton } from './ui/skeleton';
 import type { Tables, Enums } from '@/integrations/supabase/types';
 
@@ -58,13 +57,7 @@ const Services = () => {
       );
     }
 
-    return section?.carousel ? (
-      <ServiceCarousel 
-        services={services} 
-        columns={section?.columns || 3}
-        autoscroll={section?.autoscroll || false}
-      />
-    ) : (
+    return (
       <ServiceGrid 
         services={services}
         columns={section?.columns || 3}

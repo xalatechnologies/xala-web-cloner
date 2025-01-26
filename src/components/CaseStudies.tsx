@@ -5,7 +5,6 @@ import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "./ui/skeleton";
 import { type Database }  from "@/integrations/supabase/types";
 import CaseStudyGrid from './case-studies/CaseStudyGrid';
-import CaseStudyCarousel from './case-studies/CaseStudyCarousel';
 
 type CaseStudy = Database['public']['Tables']['case_studies']['Row'] & {
   case_study_metrics: Database['public']['Tables']['case_study_metrics']['Row'][];
@@ -72,19 +71,11 @@ const CaseStudies = () => {
           </p>
         </div>
 
-        {section?.carousel ? (
-          <CaseStudyCarousel 
-            caseStudies={caseStudies}
-            columns={section?.columns || 3}
-            autoscroll={section?.autoscroll || false}
-          />
-        ) : (
-          <CaseStudyGrid 
-            caseStudies={caseStudies}
-            columns={section?.columns || 3}
-            rows={section?.rows || 1}
-          />
-        )}
+        <CaseStudyGrid 
+          caseStudies={caseStudies}
+          columns={section?.columns || 3}
+          rows={section?.rows || 1}
+        />
       </div>
     </section>
   );

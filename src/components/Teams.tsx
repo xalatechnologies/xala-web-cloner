@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import type { Database } from '@/integrations/supabase/types';
 import TeamGrid from './teams/TeamGrid';
-import TeamCarousel from './teams/TeamCarousel';
 
 type TeamMember = Database['public']['Tables']['team_members']['Row'];
 type SupportedLanguage = Database['public']['Enums']['supported_language'];
@@ -13,7 +12,6 @@ const Teams = () => {
   const { t, i18n } = useTranslation();
   const { data: section, isLoading: isSectionLoading } = useSection('team');
   
-  // Normalize language code to match supported_language enum
   const normalizeLanguage = (lang: string): SupportedLanguage => {
     return lang.toLowerCase().split('-')[0] as SupportedLanguage;
   };
@@ -61,23 +59,11 @@ const Teams = () => {
       );
     }
 
-    // Default values if section is not loaded yet
-    const useCarousel = section?.carousel ?? false;
-    const columns = section?.columns ?? 3;
-    const rows = section?.rows ?? 1;
-    const autoscroll = section?.autoscroll ?? false;
-
-    return useCarousel ? (
-      <TeamCarousel 
-        members={teamMembers}
-        columns={columns}
-        autoscroll={autoscroll}
-      />
-    ) : (
+    return (
       <TeamGrid 
         members={teamMembers}
-        columns={columns}
-        rows={rows}
+        columns={section?.columns || 3}
+        rows={section?.rows || 1}
       />
     );
   };
