@@ -1,7 +1,7 @@
 import { Brain, Rocket, Users, Code2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useSection } from '@/hooks/use-section';
-import AboutFeatureGrid from './about/AboutFeatureGrid';
+import AboutFeatureCard from './about/AboutFeatureCard';
 
 const About = () => {
   const { t } = useTranslation();
