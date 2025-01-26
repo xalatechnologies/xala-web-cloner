@@ -7,13 +7,20 @@ import TeamGrid from './teams/TeamGrid';
 import TeamCarousel from './teams/TeamCarousel';
 
 type TeamMember = Database['public']['Tables']['team_members']['Row'];
+type SupportedLanguage = Database['public']['Enums']['supported_language'];
 
 const Teams = () => {
   const { t, i18n } = useTranslation();
-  const { data: section } = useSection('team');
-  const currentLanguage = i18n.language.toLowerCase() as Database['public']['Enums']['supported_language'];
+  const { data: section, isLoading: isSectionLoading } = useSection('team');
   
-  const { data: teamMembers, isLoading } = useQuery({
+  // Normalize language code to match supported_language enum
+  const normalizeLanguage = (lang: string): SupportedLanguage => {
+    return lang.toLowerCase().split('-')[0] as SupportedLanguage;
+  };
+  
+  const currentLanguage = normalizeLanguage(i18n.language);
+  
+  const { data: teamMembers, isLoading: isTeamLoading } = useQuery({
     queryKey: ['team-members', currentLanguage],
     queryFn: async () => {
       console.log('Fetching team members for language:', currentLanguage);
@@ -33,6 +40,8 @@ const Teams = () => {
     }
   });
 
+  const isLoading = isSectionLoading || isTeamLoading;
+
   const renderContent = () => {
     if (isLoading) {
       return (
@@ -44,19 +53,31 @@ const Teams = () => {
       );
     }
 
-    if (!teamMembers) return null;
+    if (!teamMembers?.length) {
+      return (
+        <div className="text-center text-xala-text">
+          {t('team.noMembers')}
+        </div>
+      );
+    }
 
-    return section?.carousel ? (
+    // Default values if section is not loaded yet
+    const useCarousel = section?.carousel ?? false;
+    const columns = section?.columns ?? 3;
+    const rows = section?.rows ?? 1;
+    const autoscroll = section?.autoscroll ?? false;
+
+    return useCarousel ? (
       <TeamCarousel 
         members={teamMembers}
-        columns={section.columns || 3}
-        autoscroll={section.autoscroll || false}
+        columns={columns}
+        autoscroll={autoscroll}
       />
     ) : (
       <TeamGrid 
         members={teamMembers}
-        columns={section.columns || 3}
-        rows={section.rows || 1}
+        columns={columns}
+        rows={rows}
       />
     );
   };

@@ -8,9 +8,9 @@ import ClientCarousel from './clients/ClientCarousel';
 
 const Clients = () => {
   const { t } = useTranslation();
-  const { data: section } = useSection('clients');
+  const { data: section, isLoading: isSectionLoading } = useSection('clients');
 
-  const { data: clients, isLoading } = useQuery({
+  const { data: clients, isLoading: isClientsLoading } = useQuery({
     queryKey: ['clients'],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -27,16 +27,12 @@ const Clients = () => {
     }
   });
 
+  const isLoading = isSectionLoading || isClientsLoading;
+
   const renderContent = () => {
     if (isLoading) {
       return (
-        <div 
-          className="grid gap-4"
-          style={{
-            gridTemplateColumns: `repeat(${section?.columns || 4}, minmax(0, 1fr))`,
-            gridTemplateRows: `repeat(${section?.rows || 2}, minmax(0, 1fr))`
-          }}
-        >
+        <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {[...Array(8)].map((_, index) => (
             <div key={index} className="h-40">
               <Skeleton className="w-full h-full rounded-xl bg-xala-secondary/50" />
@@ -46,19 +42,31 @@ const Clients = () => {
       );
     }
 
-    if (!clients) return null;
+    if (!clients?.length) {
+      return (
+        <div className="text-center text-xala-text">
+          {t('clients.noClients')}
+        </div>
+      );
+    }
 
-    return section?.carousel ? (
+    // Default values if section is not loaded yet
+    const useCarousel = section?.carousel ?? false;
+    const columns = section?.columns ?? 4;
+    const rows = section?.rows ?? 2;
+    const autoscroll = section?.autoscroll ?? false;
+
+    return useCarousel ? (
       <ClientCarousel 
         clients={clients}
-        columns={section.columns || 4}
-        autoscroll={section.autoscroll || false}
+        columns={columns}
+        autoscroll={autoscroll}
       />
     ) : (
       <ClientGrid 
         clients={clients}
-        columns={section.columns || 4}
-        rows={section.rows || 2}
+        columns={columns}
+        rows={rows}
       />
     );
   };
