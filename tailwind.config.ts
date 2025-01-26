@@ -31,7 +31,7 @@ export default {
         },
       },
       animation: {
-        "gradient-x": "gradient-x 30s ease-in-out infinite",
+        "gradient-x": "gradient-x 15s ease infinite",
         "fade-in": "fade-in 1.5s ease-in-out",
         "float-1": "float1 30s ease-in-out infinite",
         "float-2": "float2 35s ease-in-out infinite",
@@ -45,12 +45,10 @@ export default {
       keyframes: {
         "gradient-x": {
           "0%, 100%": {
-            "background-size": "200% 200%",
-            "background-position": "left center",
+            "background-position": "0% 50%",
           },
           "50%": {
-            "background-size": "200% 200%",
-            "background-position": "right center",
+            "background-position": "100% 50%",
           },
         },
         "fade-in": {

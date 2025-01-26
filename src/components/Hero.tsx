@@ -53,8 +53,10 @@ const Hero = () => {
             </div>
           ) : (
             <>
-              <h1 className="text-5xl sm:text-7xl font-bold text-white leading-tight">
-                {heroSection?.title}
+              <h1 className="text-5xl sm:text-7xl font-bold leading-tight">
+                <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text bg-[size:400%] animate-gradient-x">
+                  {heroSection?.title}
+                </span>
               </h1>
 
               <p className="text-xl sm:text-2xl text-xala-text/90 max-w-3xl mx-auto leading-relaxed font-light">
