@@ -9,6 +9,12 @@ const Hero = () => {
     setMounted(true);
   }, []);
 
+  const socialLinks = [
+    { href: 'https://twitter.com', label: 'Twitter', icon: 'X' },
+    { href: 'https://linkedin.com', label: 'LinkedIn', icon: 'in' },
+    { href: 'https://github.com', label: 'GitHub', icon: 'GH' },
+  ];
+
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     console.log('Scrolling to section:', sectionId, 'Element found:', !!section);
@@ -25,6 +31,28 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary animate-gradient-x"></div>
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-5"></div>
       
+      {/* Social Icons */}
+      <div className="absolute top-8 right-8 z-20">
+        <div className="flex items-center gap-6">
+          {socialLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-xala-accent/20 to-[#9b87f5]/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:border-xala-accent/50 transition-all duration-300">
+                <span className="text-xala-accent font-semibold text-sm">
+                  {link.icon}
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
       {/* Floating Icons with enhanced animations */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <CircuitBoard className="absolute w-12 h-12 text-[#9b87f5]/20 animate-float-1" style={{ top: '15%', left: '10%' }} />
