@@ -18,7 +18,7 @@ import {
 export function DashboardContent() {
   const { toast } = useToast();
   const [searchTerm, setSearchTerm] = useState("");
-  const [filterLanguage, setFilterLanguage] = useState<string>("");
+  const [filterLanguage, setFilterLanguage] = useState<string>("all");
   const [sortConfig, setSortConfig] = useState<{
     key: string;
     direction: 'asc' | 'desc';
@@ -83,7 +83,7 @@ export function DashboardContent() {
       section.section_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       section.title.toLowerCase().includes(searchTerm.toLowerCase());
     
-    const matchesLanguage = !filterLanguage || section.language === filterLanguage;
+    const matchesLanguage = filterLanguage === 'all' || section.language === filterLanguage;
 
     return matchesSearch && matchesLanguage;
   });
@@ -179,7 +179,7 @@ export function DashboardContent() {
                   <SelectValue placeholder="Language" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Languages</SelectItem>
+                  <SelectItem value="all">All Languages</SelectItem>
                   <SelectItem value="en">English</SelectItem>
                   <SelectItem value="no">Norwegian</SelectItem>
                 </SelectContent>
