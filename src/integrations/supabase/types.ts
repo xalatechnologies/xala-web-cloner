@@ -98,24 +98,33 @@ export type Database = {
           address: string
           created_at: string | null
           email: string
+          github_url: string | null
           id: string
+          linkedin_url: string | null
           phone: string
+          twitter_url: string | null
           updated_at: string | null
         }
         Insert: {
           address: string
           created_at?: string | null
           email: string
+          github_url?: string | null
           id?: string
+          linkedin_url?: string | null
           phone: string
+          twitter_url?: string | null
           updated_at?: string | null
         }
         Update: {
           address?: string
           created_at?: string | null
           email?: string
+          github_url?: string | null
           id?: string
+          linkedin_url?: string | null
           phone?: string
+          twitter_url?: string | null
           updated_at?: string | null
         }
         Relationships: []
