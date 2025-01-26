@@ -8,32 +8,32 @@ const clients = [
   {
     name: "SSB",
     logo: "/clients/ssb.svg",
-    color: "#274247" // Original dark blue-gray
+    color: "#274247"
   },
   {
     name: "Sykehuspartner",
     logo: "/clients/sykehuspartner.svg",
-    color: "#003087" // Original blue
+    color: "#003087"
   },
   {
     name: "Norwegian",
     logo: "/clients/norwegian.svg",
-    color: "#b12a0b" // Original red
+    color: "#b12a0b"
   },
   {
     name: "Altinn",
     logo: "/clients/altinn.svg",
-    color: "#0062BA" // Original blue
+    color: "#0062BA"
   },
   {
     name: "NHN",
     logo: "/clients/nhn.svg",
-    color: "#003087" // Original blue
+    color: "#003087"
   },
   {
     name: "NOV",
     logo: "/clients/nov2.svg",
-    color: "#ED3124" // Original red
+    color: "#ED3124"
   },
 ];
 
@@ -42,7 +42,7 @@ const Clients = () => {
     <section className="py-20 relative overflow-hidden">
       {/* Futuristic background with gradient mesh */}
       <div className="absolute inset-0 bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary">
-        <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0">
           <div className="absolute w-full h-full bg-[radial-gradient(circle_500px_at_50%_50%,#38bdf8,transparent)]" />
           <div className="absolute w-full h-full bg-[radial-gradient(circle_400px_at_80%_20%,#38bdf8,transparent)]" />
         </div>
@@ -73,27 +73,23 @@ const Clients = () => {
                 className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4"
               >
                 <div 
-                  className="group relative h-48 flex items-center justify-center p-6 rounded-xl"
+                  className="group relative h-40 flex items-center justify-center p-2 rounded-xl"
                 >
-                  {/* Futuristic card background with whitish gradient */}
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/25 to-white/15 backdrop-blur-sm border border-white/20 transition-all duration-500 group-hover:border-white/40 group-hover:from-white/30 group-hover:to-white/20" />
+                  {/* Card background */}
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/25 to-white/15 backdrop-blur-sm border border-white/20" />
                   
-                  {/* Animated glow effect */}
-                  <div className="absolute -inset-[1px] rounded-xl bg-gradient-to-r from-transparent via-blue-500/20 to-transparent opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
-
                   {/* Logo */}
                   <img
                     src={client.logo}
                     alt={client.name}
-                    className="relative max-w-[180px] max-h-[90px] w-full h-full object-contain transition-all duration-500 group-hover:scale-110"
+                    className="relative w-full h-full object-contain transition-all duration-500 group-hover:scale-110"
                     style={{ 
-                      filter: 'brightness(1.5) contrast(1.2)',
-                      fill: client.color
+                      filter: 'brightness(1.2) contrast(1.2)',
                     }}
                   />
 
                   {/* Hover text */}
-                  <div className="absolute bottom-2 left-0 w-full text-center opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                  <div className="absolute bottom-1 left-0 w-full text-center opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
                     <span className="text-sm text-blue-300 font-medium">
                       {client.name}
                     </span>
