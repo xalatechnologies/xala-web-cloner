@@ -22,13 +22,28 @@ const Services = () => {
       const currentLanguage = i18n.language.toLowerCase() as Database['public']['Enums']['supported_language'];
       console.log('Fetching services section data for language:', currentLanguage);
       
-      const { data, error } = await supabase
+      // First try current language
+      let { data, error } = await supabase
         .from('sections')
         .select('*')
         .eq('language', currentLanguage)
         .eq('section_name', 'services')
-        .single();
+        .maybeSingle();
       
+      // If no data found and current language is not English, try English as fallback
+      if (!data && currentLanguage !== 'en') {
+        console.log('No data found in current language, trying English fallback');
+        const fallbackResult = await supabase
+          .from('sections')
+          .select('*')
+          .eq('language', 'en')
+          .eq('section_name', 'services')
+          .maybeSingle();
+          
+        data = fallbackResult.data;
+        error = fallbackResult.error;
+      }
+
       if (error) throw error;
       return data;
     }
@@ -41,11 +56,25 @@ const Services = () => {
       const currentLanguage = i18n.language.toLowerCase() as Database['public']['Enums']['supported_language'];
       console.log('Fetching services data for language:', currentLanguage);
       
-      const { data, error } = await supabase
+      // First try current language
+      let { data, error } = await supabase
         .from('services')
         .select('*')
         .eq('language', currentLanguage)
         .order('sort_order');
+
+      // If no data found and current language is not English, try English as fallback
+      if ((!data || data.length === 0) && currentLanguage !== 'en') {
+        console.log('No services found in current language, trying English fallback');
+        const fallbackResult = await supabase
+          .from('services')
+          .select('*')
+          .eq('language', 'en')
+          .order('sort_order');
+          
+        data = fallbackResult.data;
+        error = fallbackResult.error;
+      }
 
       if (error) throw error;
       return data;
@@ -80,16 +109,20 @@ const Services = () => {
     );
   }
 
+  // Default content if no data is found
+  const defaultTitle = "Our Services";
+  const defaultDescription = "We deliver comprehensive technology solutions to help your business succeed in the digital age";
+
   return (
     <section id="services" className="py-20 bg-xala-secondary relative">
       <ServiceBackground />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-xala-accent mb-4">
-            {sectionData?.title}
+            {sectionData?.title || defaultTitle}
           </h2>
           <p className="text-xala-text text-lg max-w-2xl mx-auto">
-            {sectionData?.description}
+            {sectionData?.description || defaultDescription}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
