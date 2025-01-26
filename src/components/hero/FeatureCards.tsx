@@ -39,7 +39,7 @@ const FeatureCards = () => {
         .eq('featured', true)
         .eq('language', i18n.language.toLowerCase() as SupportedLanguage)
         .order('sort_order')
-        .limit(4);
+        .limit(3);
       
       if (error) {
         console.error('Error fetching featured services:', error);
@@ -57,8 +57,8 @@ const FeatureCards = () => {
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto my-12">
-        {[...Array(4)].map((_, i) => (
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto my-12">
+        {[...Array(3)].map((_, i) => (
           <div 
             key={i} 
             className="h-full p-6 rounded-xl bg-white/5 animate-pulse"
@@ -77,7 +77,7 @@ const FeatureCards = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto my-12">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto my-12">
       {features?.map((feature) => {
         const IconComponent = iconMap[feature.icon as IconName];
         if (!IconComponent) {
@@ -105,24 +105,24 @@ interface FeatureCardProps {
 
 const FeatureCard = ({ icon, title, description }: FeatureCardProps) => (
   <div 
-    className="group h-full p-6 rounded-xl bg-gradient-to-br from-white/[0.075] via-white/[0.035] to-transparent 
+    className="group h-full p-8 rounded-xl bg-gradient-to-br from-white/[0.075] via-white/[0.035] to-transparent 
                 backdrop-blur-sm border border-white/10 hover:border-xala-accent/50 
                 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-xala-accent/10"
   >
     <div className="flex flex-col h-full">
-      <div className="flex items-center gap-4 mb-4">
+      <div className="flex items-center gap-4 mb-6">
         <div 
-          className="p-3 rounded-lg bg-gradient-to-br from-xala-accent/20 via-xala-accent/10 to-transparent 
+          className="p-4 rounded-lg bg-gradient-to-br from-xala-accent/20 via-xala-accent/10 to-transparent 
                      group-hover:from-xala-accent/80 group-hover:via-xala-accent/60 group-hover:to-[#D946EF]/40 
                      transition-all duration-500"
         >
           {icon}
         </div>
-        <h3 className="text-lg font-semibold text-xala-accent group-hover:text-white transition-colors">
+        <h3 className="text-xl font-semibold text-xala-accent group-hover:text-white transition-colors">
           {title}
         </h3>
       </div>
-      <p className="text-sm text-xala-text/80 group-hover:text-white/90 transition-colors flex-grow">
+      <p className="text-base text-xala-text/80 group-hover:text-white/90 transition-colors leading-relaxed">
         {description}
       </p>
     </div>
