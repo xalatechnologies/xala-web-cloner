@@ -1,16 +1,27 @@
 import { Copyright } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { t, i18n } = useTranslation();
 
-  // Force a re-render when language changes
-  useEffect(() => {
-    console.log('Footer component language:', i18n.language);
-  }, [i18n.language]);
+  const { data: menuItems } = useQuery({
+    queryKey: ['footer-menu', i18n.language],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('menu_items')
+        .select('*')
+        .eq('language', i18n.language.toLowerCase())
+        .eq('location', 'footer')
+        .order('sort_order', { ascending: true });
+
+      if (error) throw error;
+      return data;
+    },
+  });
 
   return (
     <footer className="w-full relative overflow-hidden bg-xala-primary border-t border-white/5">
@@ -21,15 +32,27 @@ const Footer = () => {
             <span>{currentYear} Xala. {t('footer.rights')}</span>
           </div>
           <div className="flex space-x-6 text-sm text-xala-text/60">
-            <Link to="/privacy" className="hover:text-xala-accent transition-colors duration-300">
-              {t('footer.privacy')}
-            </Link>
-            <Link to="/terms" className="hover:text-xala-accent transition-colors duration-300">
-              {t('footer.terms')}
-            </Link>
-            <Link to="/cookies" className="hover:text-xala-accent transition-colors duration-300">
-              {t('footer.cookies')}
-            </Link>
+            {menuItems?.map((item) => (
+              <Link 
+                key={item.id}
+                to={item.href} 
+                className="hover:text-xala-accent transition-colors duration-300"
+              >
+                {item.name}
+              </Link>
+            )) || (
+              <>
+                <Link to="/privacy" className="hover:text-xala-accent transition-colors duration-300">
+                  {t('footer.privacy')}
+                </Link>
+                <Link to="/terms" className="hover:text-xala-accent transition-colors duration-300">
+                  {t('footer.terms')}
+                </Link>
+                <Link to="/cookies" className="hover:text-xala-accent transition-colors duration-300">
+                  {t('footer.cookies')}
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>

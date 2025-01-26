@@ -6,16 +6,28 @@ import { useToast } from './ui/use-toast';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
+import { useQuery } from '@tanstack/react-query';
 
 const Contact = () => {
   const { toast } = useToast();
   const { t, i18n } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
-  // Force a re-render when language changes
-  useEffect(() => {
-    console.log('Contact component language:', i18n.language);
-  }, [i18n.language]);
+
+  // Fetch section data based on current language
+  const { data: section } = useQuery({
+    queryKey: ['contact-section', i18n.language],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('sections')
+        .select('*')
+        .eq('section_name', 'contact')
+        .eq('language', i18n.language.toLowerCase())
+        .single();
+
+      if (error) throw error;
+      return data;
+    },
+  });
   
   const contactInfo = [
     {
@@ -63,7 +75,7 @@ const Contact = () => {
       email: formData.get('email') as string,
       subject: formData.get('subject') as string,
       message: formData.get('message') as string,
-      language: i18n.language.toLowerCase() as 'en' | 'no', // Add language to submission
+      language: i18n.language.toLowerCase() as 'en' | 'no',
     };
 
     try {
@@ -94,7 +106,6 @@ const Contact = () => {
 
   return (
     <section id="contact" className="relative py-24 overflow-hidden bg-gradient-to-b from-xala-primary to-xala-secondary">
-      {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -left-1/4 -top-1/4 w-1/2 h-1/2 bg-[#8B5CF6]/10 rounded-full blur-3xl animate-float-1"></div>
         <div className="absolute -right-1/4 -bottom-1/4 w-1/2 h-1/2 bg-[#D946EF]/10 rounded-full blur-3xl animate-float-2"></div>
@@ -103,10 +114,10 @@ const Contact = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-[#8B5CF6] via-[#D946EF] to-[#0EA5E9] text-transparent bg-clip-text mb-4">
-            {t('contact.title')}
+            {section?.title || t('contact.title')}
           </h2>
           <p className="text-xala-text/80 text-lg max-w-2xl mx-auto">
-            {t('contact.description')}
+            {section?.description || t('contact.description')}
           </p>
         </div>
         
