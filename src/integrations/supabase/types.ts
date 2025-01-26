@@ -9,7 +9,320 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      about_sections: {
+        Row: {
+          created_at: string | null
+          icon: string | null
+          id: string
+          section_key: string
+          sort_order: number
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          icon?: string | null
+          id?: string
+          section_key: string
+          sort_order?: number
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          icon?: string | null
+          id?: string
+          section_key?: string
+          sort_order?: number
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      case_studies: {
+        Row: {
+          created_at: string | null
+          icon: string
+          id: string
+          image_url: string
+          sort_order: number
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          icon: string
+          id?: string
+          image_url: string
+          sort_order?: number
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          icon?: string
+          id?: string
+          image_url?: string
+          sort_order?: number
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      clients: {
+        Row: {
+          created_at: string | null
+          id: string
+          logo_url: string
+          name: string
+          sort_order: number
+          updated_at: string | null
+          website_url: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          logo_url: string
+          name: string
+          sort_order?: number
+          updated_at?: string | null
+          website_url?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          logo_url?: string
+          name?: string
+          sort_order?: number
+          updated_at?: string | null
+          website_url?: string | null
+        }
+        Relationships: []
+      }
+      contact_information: {
+        Row: {
+          address: string
+          created_at: string | null
+          email: string
+          id: string
+          phone: string
+          updated_at: string | null
+        }
+        Insert: {
+          address: string
+          created_at?: string | null
+          email: string
+          id?: string
+          phone: string
+          updated_at?: string | null
+        }
+        Update: {
+          address?: string
+          created_at?: string | null
+          email?: string
+          id?: string
+          phone?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      processes: {
+        Row: {
+          created_at: string | null
+          icon: string
+          id: string
+          sort_order: number
+          step_number: number
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          icon: string
+          id?: string
+          sort_order?: number
+          step_number: number
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          icon?: string
+          id?: string
+          sort_order?: number
+          step_number?: number
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          created_at: string | null
+          icon: string
+          id: string
+          image_url: string
+          sort_order: number
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          icon: string
+          id?: string
+          image_url: string
+          sort_order?: number
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          icon?: string
+          id?: string
+          image_url?: string
+          sort_order?: number
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      services: {
+        Row: {
+          created_at: string | null
+          icon: string
+          id: string
+          sort_order: number
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          icon: string
+          id?: string
+          sort_order?: number
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          icon?: string
+          id?: string
+          sort_order?: number
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      team_members: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+          image_url: string
+          linkedin_url: string | null
+          name: string
+          role: string
+          sort_order: number
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id?: string
+          image_url: string
+          linkedin_url?: string | null
+          name: string
+          role: string
+          sort_order?: number
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+          image_url?: string
+          linkedin_url?: string | null
+          name?: string
+          role?: string
+          sort_order?: number
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      technologies: {
+        Row: {
+          category: string
+          created_at: string | null
+          icon: string
+          id: string
+          sort_order: number
+          updated_at: string | null
+        }
+        Insert: {
+          category: string
+          created_at?: string | null
+          icon: string
+          id?: string
+          sort_order?: number
+          updated_at?: string | null
+        }
+        Update: {
+          category?: string
+          created_at?: string | null
+          icon?: string
+          id?: string
+          sort_order?: number
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      technology_tools: {
+        Row: {
+          created_at: string | null
+          id: string
+          name: string
+          sort_order: number
+          technology_id: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          name: string
+          sort_order?: number
+          technology_id?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          name?: string
+          sort_order?: number
+          technology_id?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "technology_tools_technology_id_fkey"
+            columns: ["technology_id"]
+            isOneToOne: false
+            referencedRelation: "technologies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      translations: {
+        Row: {
+          created_at: string | null
+          id: string
+          key: string
+          language: Database["public"]["Enums"]["supported_language"]
+          updated_at: string | null
+          value: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          key: string
+          language: Database["public"]["Enums"]["supported_language"]
+          updated_at?: string | null
+          value: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          key?: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          updated_at?: string | null
+          value?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -18,7 +331,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      supported_language: "en" | "no"
     }
     CompositeTypes: {
       [_ in never]: never
