@@ -17,7 +17,6 @@ type TeamMember = Database['public']['Tables']['team_members']['Row'];
 const Teams = () => {
   const { t, i18n } = useTranslation();
   const { data: section } = useSection('team');
-  // Convert the language code to match the supported_language enum
   const currentLanguage = i18n.language.toLowerCase().split('-')[0] as Database['public']['Enums']['supported_language'];
   
   const plugin = useRef(
@@ -48,6 +47,133 @@ const Teams = () => {
     }
   });
 
+  const renderContent = () => {
+    if (isLoading) {
+      return (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {[1, 2, 3].map((n) => (
+            <div key={n} className="animate-pulse bg-white/5 rounded-2xl h-96"></div>
+          ))}
+        </div>
+      );
+    }
+
+    if (section?.carousel) {
+      return (
+        <Carousel
+          opts={{
+            align: "center",
+            loop: true,
+            dragFree: true,
+            skipSnaps: true,
+          }}
+          plugins={section.autoscroll ? [plugin.current] : []}
+          className="w-full max-w-6xl mx-auto"
+        >
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {teamMembers?.map((member) => (
+              <CarouselItem 
+                key={member.id}
+                className={`pl-2 md:pl-4 basis-full md:basis-1/${section?.columns || 3}`}
+              >
+                <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 p-8 transition-all duration-500 hover:border-xala-accent/50 hover:shadow-2xl hover:shadow-xala-accent/10">
+                  <div className="relative aspect-square mb-8 overflow-hidden rounded-xl bg-gradient-to-br from-xala-secondary to-xala-primary">
+                    <img
+                      src={member.image_url}
+                      alt={member.name}
+                      className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-xala-primary/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  </div>
+                  
+                  <div className="text-center">
+                    <h3 className="text-2xl font-bold text-xala-accent mb-3">{member.name}</h3>
+                    <p className="text-xala-text/90 font-semibold mb-4 text-lg">{member.role}</p>
+                    <p className="text-sm text-xala-text/70 line-clamp-4 group-hover:line-clamp-none transition-all duration-500">
+                      {member.description}
+                    </p>
+                  </div>
+
+                  <div className="absolute top-6 right-6 flex space-x-3">
+                    {member.linkedin_url && (
+                      <a 
+                        href={member.linkedin_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2.5 rounded-full bg-xala-secondary/50 hover:bg-xala-accent/20 transition-colors duration-300"
+                      >
+                        <Linkedin className="w-5 h-5 text-xala-accent" />
+                      </a>
+                    )}
+                    <a 
+                      href={`mailto:${member.email}`}
+                      className="p-2.5 rounded-full bg-xala-secondary/50 hover:bg-xala-accent/20 transition-colors duration-300"
+                    >
+                      <Mail className="w-5 h-5 text-xala-accent" />
+                    </a>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      );
+    }
+
+    return (
+      <div 
+        className="grid gap-8"
+        style={{
+          gridTemplateColumns: `repeat(${section?.columns || 3}, minmax(0, 1fr))`,
+          gridTemplateRows: `repeat(${section?.rows || 1}, minmax(0, 1fr))`
+        }}
+      >
+        {teamMembers?.map((member) => (
+          <div 
+            key={member.id}
+            className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 p-8 transition-all duration-500 hover:border-xala-accent/50 hover:shadow-2xl hover:shadow-xala-accent/10"
+          >
+            <div className="relative aspect-square mb-8 overflow-hidden rounded-xl bg-gradient-to-br from-xala-secondary to-xala-primary">
+              <img
+                src={member.image_url}
+                alt={member.name}
+                className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-xala-primary/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+            
+            <div className="text-center">
+              <h3 className="text-2xl font-bold text-xala-accent mb-3">{member.name}</h3>
+              <p className="text-xala-text/90 font-semibold mb-4 text-lg">{member.role}</p>
+              <p className="text-sm text-xala-text/70 line-clamp-4 group-hover:line-clamp-none transition-all duration-500">
+                {member.description}
+              </p>
+            </div>
+
+            <div className="absolute top-6 right-6 flex space-x-3">
+              {member.linkedin_url && (
+                <a 
+                  href={member.linkedin_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-full bg-xala-secondary/50 hover:bg-xala-accent/20 transition-colors duration-300"
+                >
+                  <Linkedin className="w-5 h-5 text-xala-accent" />
+                </a>
+              )}
+              <a 
+                href={`mailto:${member.email}`}
+                className="p-2.5 rounded-full bg-xala-secondary/50 hover:bg-xala-accent/20 transition-colors duration-300"
+              >
+                <Mail className="w-5 h-5 text-xala-accent" />
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <section id="team" className="py-24 bg-xala-primary relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary opacity-60"></div>
@@ -63,71 +189,7 @@ const Teams = () => {
           </p>
         </div>
 
-        {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {[1, 2, 3].map((n) => (
-              <div key={n} className="animate-pulse bg-white/5 rounded-2xl h-96"></div>
-            ))}
-          </div>
-        ) : (
-          <Carousel
-            opts={{
-              align: "center",
-              loop: true,
-              dragFree: true,
-              skipSnaps: true,
-            }}
-            plugins={[plugin.current]}
-            className="w-full max-w-6xl mx-auto"
-          >
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {teamMembers?.map((member) => (
-                <CarouselItem 
-                  key={member.id}
-                  className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3"
-                >
-                  <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 p-8 transition-all duration-500 hover:border-xala-accent/50 hover:shadow-2xl hover:shadow-xala-accent/10">
-                    <div className="relative aspect-square mb-8 overflow-hidden rounded-xl bg-gradient-to-br from-xala-secondary to-xala-primary">
-                      <img
-                        src={member.image_url}
-                        alt={member.name}
-                        className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-xala-primary/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    </div>
-                    
-                    <div className="text-center">
-                      <h3 className="text-2xl font-bold text-xala-accent mb-3">{member.name}</h3>
-                      <p className="text-xala-text/90 font-semibold mb-4 text-lg">{member.role}</p>
-                      <p className="text-sm text-xala-text/70 line-clamp-4 group-hover:line-clamp-none transition-all duration-500">
-                        {member.description}
-                      </p>
-                    </div>
-
-                    <div className="absolute top-6 right-6 flex space-x-3">
-                      {member.linkedin_url && (
-                        <a 
-                          href={member.linkedin_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-2.5 rounded-full bg-xala-secondary/50 hover:bg-xala-accent/20 transition-colors duration-300"
-                        >
-                          <Linkedin className="w-5 h-5 text-xala-accent" />
-                        </a>
-                      )}
-                      <a 
-                        href={`mailto:${member.email}`}
-                        className="p-2.5 rounded-full bg-xala-secondary/50 hover:bg-xala-accent/20 transition-colors duration-300"
-                      >
-                        <Mail className="w-5 h-5 text-xala-accent" />
-                      </a>
-                    </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
-        )}
+        {renderContent()}
       </div>
     </section>
   );

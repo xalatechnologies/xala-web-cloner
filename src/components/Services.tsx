@@ -98,7 +98,13 @@ const Services = () => {
     }
 
     return (
-      <div className={`grid grid-cols-1 md:grid-cols-${section?.columns || 3} gap-8`}>
+      <div 
+        className="grid gap-8"
+        style={{
+          gridTemplateColumns: `repeat(${section?.columns || 3}, minmax(0, 1fr))`,
+          gridTemplateRows: `repeat(${section?.rows || 1}, minmax(0, 1fr))`
+        }}
+      >
         {services.map((service) => (
           <div 
             key={service.id}

@@ -39,9 +39,107 @@ const Clients = () => {
     }
   });
 
+  const renderContent = () => {
+    if (isLoading) {
+      return (
+        <div 
+          className="grid gap-4"
+          style={{
+            gridTemplateColumns: `repeat(${section?.columns || 4}, minmax(0, 1fr))`,
+            gridTemplateRows: `repeat(${section?.rows || 2}, minmax(0, 1fr))`
+          }}
+        >
+          {[...Array(8)].map((_, index) => (
+            <div key={index} className="h-40">
+              <Skeleton className="w-full h-full rounded-xl bg-xala-secondary/50" />
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    if (section?.carousel) {
+      return (
+        <Carousel
+          opts={{
+            align: "center",
+            loop: true,
+            dragFree: true,
+            skipSnaps: true,
+          }}
+          plugins={section.autoscroll ? [plugin.current] : []}
+          className="w-full max-w-6xl mx-auto"
+        >
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {clients?.map((client) => (
+              <CarouselItem 
+                key={client.id} 
+                className={`pl-2 md:pl-4 basis-full md:basis-1/${section?.columns || 4}`}
+              >
+                <div 
+                  className="group relative h-40 flex items-center justify-center p-4 rounded-xl"
+                >
+                  <div className="absolute inset-0 rounded-xl bg-xala-secondary border border-xala-accent/20" />
+                  
+                  <img
+                    src={client.logo_url}
+                    alt={client.name}
+                    className="relative w-full h-full object-contain transition-all duration-500 group-hover:scale-110"
+                    style={{ 
+                      filter: 'brightness(0) invert(1)',
+                    }}
+                  />
+
+                  <div className="absolute bottom-1 left-0 w-full text-center opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                    <span className="text-sm text-white font-medium">
+                      {client.name}
+                    </span>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      );
+    }
+
+    return (
+      <div 
+        className="grid gap-4"
+        style={{
+          gridTemplateColumns: `repeat(${section?.columns || 4}, minmax(0, 1fr))`,
+          gridTemplateRows: `repeat(${section?.rows || 2}, minmax(0, 1fr))`
+        }}
+      >
+        {clients?.map((client) => (
+          <div 
+            key={client.id}
+            className="group relative h-40 flex items-center justify-center p-4 rounded-xl"
+          >
+            <div className="absolute inset-0 rounded-xl bg-xala-secondary border border-xala-accent/20" />
+            
+            <img
+              src={client.logo_url}
+              alt={client.name}
+              className="relative w-full h-full object-contain transition-all duration-500 group-hover:scale-110"
+              style={{ 
+                filter: 'brightness(0) invert(1)',
+              }}
+            />
+
+            <div className="absolute bottom-1 left-0 w-full text-center opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+              <span className="text-sm text-white font-medium">
+                {client.name}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <section className="py-20 relative overflow-hidden">
-      {/* Background using site's color scheme */}
       <div className="absolute inset-0 bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary" />
 
       <div className="container mx-auto px-4 relative">
@@ -54,59 +152,7 @@ const Clients = () => {
           </p>
         </div>
 
-        {isLoading ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[...Array(8)].map((_, index) => (
-              <div key={index} className="h-40">
-                <Skeleton className="w-full h-full rounded-xl bg-xala-secondary/50" />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <Carousel
-            opts={{
-              align: "center",
-              loop: true,
-              dragFree: true,
-              skipSnaps: true,
-            }}
-            plugins={[plugin.current]}
-            className="w-full max-w-6xl mx-auto"
-          >
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {clients?.map((client) => (
-                <CarouselItem 
-                  key={client.id} 
-                  className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4"
-                >
-                  <div 
-                    className="group relative h-40 flex items-center justify-center p-4 rounded-xl"
-                  >
-                    {/* Card background using site's color scheme */}
-                    <div className="absolute inset-0 rounded-xl bg-xala-secondary border border-xala-accent/20" />
-                    
-                    {/* Logo */}
-                    <img
-                      src={client.logo_url}
-                      alt={client.name}
-                      className="relative w-full h-full object-contain transition-all duration-500 group-hover:scale-110"
-                      style={{ 
-                        filter: 'brightness(0) invert(1)',
-                      }}
-                    />
-
-                    {/* Hover text */}
-                    <div className="absolute bottom-1 left-0 w-full text-center opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                      <span className="text-sm text-white font-medium">
-                        {client.name}
-                      </span>
-                    </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
-        )}
+        {renderContent()}
       </div>
     </section>
   );
