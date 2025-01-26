@@ -4,10 +4,13 @@ import GalaxyBackground from './hero/GalaxyBackground';
 import FloatingIcons from './hero/FloatingIcons';
 import FeatureCards from './hero/FeatureCards';
 import ActionButtons from './hero/ActionButtons';
+import { useSection } from '@/hooks/use-section';
+import { Skeleton } from './ui/skeleton';
 
 const Hero = () => {
   const [mounted, setMounted] = useState(false);
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
+  const { data: heroSection, isLoading } = useSection('hero');
 
   useEffect(() => {
     setMounted(true);
@@ -38,26 +41,27 @@ const Hero = () => {
         <div className="space-y-8 text-center">
           <div className="inline-block">
             <span className="inline-flex items-center px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 text-sm font-medium text-xala-accent">
-              {t('hero.welcome')}
+              {i18n.language === 'no' ? 'Velkommen' : 'Welcome'}
               <span className="ml-2 text-white/50">✨</span>
             </span>
           </div>
 
-          <h1 className="text-5xl sm:text-7xl font-bold text-white leading-tight">
-            {t('hero.title')}{' '}
-            <span className="relative">
-              <span className="bg-gradient-to-r from-xala-accent via-[#9b87f5] to-[#D946EF] text-transparent bg-clip-text">
-                {t('hero.excellence')}
-              </span>
-              <svg className="absolute -bottom-2 left-0 w-full h-2 text-xala-accent/20" viewBox="0 0 100 10" preserveAspectRatio="none">
-                <path d="M0 5 Q 25 0, 50 5 T 100 5" stroke="currentColor" strokeWidth="2" fill="none"/>
-              </svg>
-            </span>
-          </h1>
+          {isLoading ? (
+            <div className="space-y-4">
+              <Skeleton className="h-16 w-3/4 mx-auto" />
+              <Skeleton className="h-24 w-2/3 mx-auto" />
+            </div>
+          ) : (
+            <>
+              <h1 className="text-5xl sm:text-7xl font-bold text-white leading-tight">
+                {heroSection?.title}
+              </h1>
 
-          <p className="text-xl sm:text-2xl text-xala-text/90 max-w-3xl mx-auto leading-relaxed font-light">
-            {t('hero.description')}
-          </p>
+              <p className="text-xl sm:text-2xl text-xala-text/90 max-w-3xl mx-auto leading-relaxed font-light">
+                {heroSection?.description}
+              </p>
+            </>
+          )}
           
           <FeatureCards />
           <ActionButtons onSectionClick={scrollToSection} />
