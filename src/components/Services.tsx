@@ -14,10 +14,32 @@ const iconMap: { [key: string]: React.ReactNode } = {
 
 const Services = () => {
   const { i18n } = useTranslation();
-  const { data: services, isLoading } = useQuery({
+
+  // Fetch section data
+  const { data: sectionData, isLoading: isSectionLoading } = useQuery({
+    queryKey: ['sections', 'services', i18n.language],
+    queryFn: async () => {
+      const currentLanguage = i18n.language.toLowerCase() as Database['public']['Enums']['supported_language'];
+      console.log('Fetching services section data for language:', currentLanguage);
+      
+      const { data, error } = await supabase
+        .from('sections')
+        .select('*')
+        .eq('language', currentLanguage)
+        .eq('section_name', 'services')
+        .single();
+      
+      if (error) throw error;
+      return data;
+    }
+  });
+
+  // Fetch services data
+  const { data: services, isLoading: isServicesLoading } = useQuery({
     queryKey: ['services', i18n.language],
     queryFn: async () => {
       const currentLanguage = i18n.language.toLowerCase() as Database['public']['Enums']['supported_language'];
+      console.log('Fetching services data for language:', currentLanguage);
       
       const { data, error } = await supabase
         .from('services')
@@ -30,7 +52,7 @@ const Services = () => {
     }
   });
 
-  if (isLoading) {
+  if (isServicesLoading || isSectionLoading) {
     return (
       <section id="services" className="py-20 bg-xala-secondary relative">
         <ServiceBackground />
@@ -63,9 +85,11 @@ const Services = () => {
       <ServiceBackground />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-xala-accent mb-4">Our Services</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-xala-accent mb-4">
+            {sectionData?.title}
+          </h2>
           <p className="text-xala-text text-lg max-w-2xl mx-auto">
-            We deliver comprehensive technology solutions to help your business succeed in the digital age
+            {sectionData?.description}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
