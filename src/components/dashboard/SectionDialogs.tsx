@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { type Database } from "@/integrations/supabase/types";
 import { Wand2 } from "lucide-react";
 import { useState } from "react";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
 type SupportedLanguage = Database['public']['Enums']['supported_language'];
@@ -59,7 +59,13 @@ export function SectionDialogs({
       if (error) throw error;
 
       if (data.enhancedText) {
-        setFormData(prev => ({ ...prev, [field]: data.enhancedText }));
+        // Create a new FormData object with the updated field
+        const updatedFormData: FormData = {
+          ...formData,
+          [field]: data.enhancedText
+        };
+        setFormData(updatedFormData);
+        
         toast({
           title: "Text Enhanced",
           description: "The text has been professionally enhanced.",
