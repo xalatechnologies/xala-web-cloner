@@ -1,6 +1,7 @@
 import { Moon, Sun, Globe } from 'lucide-react';
 import { Toggle } from '../ui/toggle';
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
 
 interface ControlsProps {
   isDarkMode: boolean;
@@ -11,6 +12,11 @@ interface ControlsProps {
 
 const Controls = ({ isDarkMode, language, onThemeToggle, onLanguageToggle }: ControlsProps) => {
   const { i18n } = useTranslation();
+
+  useEffect(() => {
+    // Set initial language to Norwegian
+    i18n.changeLanguage('no');
+  }, []);
 
   const handleLanguageToggle = () => {
     const newLang = i18n.language === 'en' ? 'no' : 'en';
