@@ -3,7 +3,7 @@ import { useSection } from "@/hooks/use-section";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "./ui/skeleton";
-import { Icon } from "lucide-react";
+import * as Icons from "lucide-react";
 
 const WorkProcess = () => {
   const { t, i18n } = useTranslation();
@@ -12,7 +12,8 @@ const WorkProcess = () => {
   const { data: processes, isLoading } = useQuery({
     queryKey: ['work-processes', i18n.language],
     queryFn: async () => {
-      const currentLanguage = i18n.language.toLowerCase();
+      // Explicitly type the language as "en" | "no"
+      const currentLanguage = i18n.language.toLowerCase() as "en" | "no";
       console.log('Fetching work processes for language:', currentLanguage);
       
       let query = await supabase
@@ -38,6 +39,12 @@ const WorkProcess = () => {
       return query.data || [];
     },
   });
+
+  // Function to dynamically get icon component
+  const getIconComponent = (iconName: string) => {
+    const IconComponent = Icons[iconName as keyof typeof Icons];
+    return IconComponent || Icons.HelpCircle; // Fallback icon if not found
+  };
 
   return (
     <section id="work-process" className="py-24 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary relative overflow-hidden">
@@ -71,40 +78,44 @@ const WorkProcess = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
-            {processes?.map((process, index) => (
-              <div
-                key={process.id}
-                className="relative group"
-                style={{
-                  animation: 'fade-in 0.5s ease-out forwards',
-                  animationDelay: `${index * 200}ms`,
-                  opacity: 0
-                }}
-              >
-                {index < (processes?.length || 0) - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-xala-accent to-transparent transform -translate-y-1/2 z-10"></div>
-                )}
+            {processes?.map((process, index) => {
+              const IconComponent = getIconComponent(process.icon);
+              
+              return (
+                <div
+                  key={process.id}
+                  className="relative group"
+                  style={{
+                    animation: 'fade-in 0.5s ease-out forwards',
+                    animationDelay: `${index * 200}ms`,
+                    opacity: 0
+                  }}
+                >
+                  {index < (processes?.length || 0) - 1 && (
+                    <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-xala-accent to-transparent transform -translate-y-1/2 z-10"></div>
+                  )}
 
-                <div className="relative p-8 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 
-                              hover:border-xala-accent/50 transition-all duration-500 group-hover:transform group-hover:scale-105
-                              group-hover:shadow-2xl group-hover:shadow-xala-accent/20">
-                  <div className="absolute -top-4 -right-4 w-12 h-12 bg-xala-accent rounded-full flex items-center justify-center
-                                transform group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-white font-bold">{String(process.step_number).padStart(2, '0')}</span>
-                  </div>
-
-                  <div className="mb-6 text-xala-accent relative">
-                    <div className="absolute inset-0 bg-xala-accent/20 filter blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="relative transform group-hover:scale-110 transition-transform duration-300">
-                      <Icon name={process.icon} className="w-8 h-8" />
+                  <div className="relative p-8 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 
+                                hover:border-xala-accent/50 transition-all duration-500 group-hover:transform group-hover:scale-105
+                                group-hover:shadow-2xl group-hover:shadow-xala-accent/20">
+                    <div className="absolute -top-4 -right-4 w-12 h-12 bg-xala-accent rounded-full flex items-center justify-center
+                                  transform group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-white font-bold">{String(process.step_number).padStart(2, '0')}</span>
                     </div>
-                  </div>
 
-                  <h3 className="text-xl font-semibold text-xala-accent mb-3">{process.title}</h3>
-                  <p className="text-xala-text/70">{process.description}</p>
+                    <div className="mb-6 text-xala-accent relative">
+                      <div className="absolute inset-0 bg-xala-accent/20 filter blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="relative transform group-hover:scale-110 transition-transform duration-300">
+                        <IconComponent className="w-8 h-8" />
+                      </div>
+                    </div>
+
+                    <h3 className="text-xl font-semibold text-xala-accent mb-3">{process.title}</h3>
+                    <p className="text-xala-text/70">{process.description}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
