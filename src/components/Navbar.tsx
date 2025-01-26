@@ -6,7 +6,7 @@ import NavigationMenu from './navbar/NavigationMenu';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [language, setLanguage] = useState<'EN' | 'NO'>('EN');
+  const [language, setLanguage] = useState<'EN' | 'NO'>('NO');
 
   const sections = [
     { name: "Home", href: "#home" },
