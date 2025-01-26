@@ -41,12 +41,7 @@ const Clients = () => {
   return (
     <section className="py-20 relative overflow-hidden">
       {/* Background using site's color scheme */}
-      <div className="absolute inset-0 bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary">
-        <div className="absolute inset-0">
-          <div className="absolute w-full h-full bg-[radial-gradient(circle_500px_at_50%_50%,#38bdf8,transparent)]" />
-          <div className="absolute w-full h-full bg-[radial-gradient(circle_400px_at_80%_20%,#38bdf8,transparent)]" />
-        </div>
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary" />
 
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16 animate-fade-in">
@@ -76,7 +71,7 @@ const Clients = () => {
                   className="group relative h-40 flex items-center justify-center p-2 rounded-xl"
                 >
                   {/* Card background using site's color scheme */}
-                  <div className="absolute inset-0 rounded-xl bg-xala-secondary/50 backdrop-blur-sm border border-xala-accent/20" />
+                  <div className="absolute inset-0 rounded-xl bg-xala-secondary border border-xala-accent/20" />
                   
                   {/* Logo */}
                   <img
