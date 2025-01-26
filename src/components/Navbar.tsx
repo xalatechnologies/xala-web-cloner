@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import Logo from './navbar/Logo';
 import Controls from './navbar/Controls';
 import NavigationMenu from './navbar/NavigationMenu';
@@ -7,18 +6,17 @@ import NavigationMenu from './navbar/NavigationMenu';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const { i18n } = useTranslation();
-  const [language, setLanguage] = useState<'EN' | 'NO'>(i18n.language === 'en' ? 'EN' : 'NO');
+  const [language, setLanguage] = useState<'EN' | 'NO'>('EN');
 
   const sections = [
-    { name: "navigation.home", href: "#home" },
-    { name: "navigation.about", href: "#about" },
-    { name: "navigation.coreProducts", href: "#core-products" },
-    { name: "navigation.technologies", href: "#technologies" },
-    { name: "navigation.workProcess", href: "#work-process" },
-    { name: "navigation.caseStudies", href: "#case-studies" },
-    { name: "navigation.team", href: "#team" },
-    { name: "navigation.contact", href: "#contact" }
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Core Products", href: "#core-products" },
+    { name: "Technologies", href: "#technologies" },
+    { name: "Work Process", href: "#work-process" },
+    { name: "Case Studies", href: "#case-studies" },
+    { name: "Team", href: "#team" },
+    { name: "Contact", href: "#contact" }
   ];
 
   const toggleTheme = () => {
@@ -26,9 +24,7 @@ const Navbar = () => {
   };
 
   const toggleLanguage = () => {
-    const newLang = language === 'EN' ? 'NO' : 'EN';
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang.toLowerCase());
+    setLanguage(prev => prev === 'EN' ? 'NO' : 'EN');
   };
 
   return (
