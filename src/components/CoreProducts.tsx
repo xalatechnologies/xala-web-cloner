@@ -4,24 +4,46 @@ import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "./ui/skeleton";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
+import { type Database } from "@/integrations/supabase/types";
+
+type Product = Database['public']['Tables']['products']['Row'];
 
 const CoreProducts = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const plugin = useRef(
+    Autoplay({
+      delay: 4000,
+      stopOnInteraction: false,
+      stopOnMouseEnter: true,
+    })
+  );
 
   const { data: products, isLoading } = useQuery({
-    queryKey: ['products'],
+    queryKey: ['products', i18n.language],
     queryFn: async () => {
+      const currentLanguage = i18n.language.toLowerCase() as Database['public']['Enums']['supported_language'];
+      console.log('Fetching products for language:', currentLanguage);
+      
       const { data, error } = await supabase
         .from('products')
         .select(`
           *,
           product_screenshots(*)
         `)
+        .eq('language', currentLanguage)
         .order('sort_order', { ascending: true });
       
       if (error) throw error;
-      return data;
-    }
+      return data as (Product & { product_screenshots: any[] })[];
+    },
+    enabled: !!i18n.language
   });
 
   if (isLoading) {
@@ -63,58 +85,71 @@ const CoreProducts = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products?.map((product) => (
-            <div
-              key={product.id}
-              className="group flex flex-col h-full bg-xala-secondary rounded-xl p-6 hover:transform hover:scale-105 transition-all duration-300"
-            >
-              <div className="flex items-center justify-between mb-4">
-                {product.icon && (
-                  <div className="w-12 h-12 text-xala-accent">
-                    <img src={product.icon} alt={product.title} className="w-full h-full object-contain" />
-                  </div>
-                )}
-                <span className="text-sm text-xala-accent font-semibold">
-                  {product.metrics}
-                </span>
-              </div>
-              
-              <h3 className="text-xl font-semibold mb-3 text-xala-accent">
-                {product.title}
-              </h3>
-              
-              <p className="text-xala-text mb-6">
-                {product.description}
-              </p>
-
-              {/* Product image */}
-              <div className="flex-grow mb-6">
-                {product.product_screenshots?.[0] ? (
-                  <img
-                    src={product.product_screenshots[0].image_url}
-                    alt={product.product_screenshots[0].alt_text}
-                    className="w-full h-48 object-cover rounded-lg"
-                  />
-                ) : (
-                  <img
-                    src={product.image_url}
-                    alt={product.title}
-                    className="w-full h-48 object-cover rounded-lg"
-                  />
-                )}
-              </div>
-              
-              <Button
-                variant="outline"
-                className="group w-full bg-transparent border border-xala-accent text-xala-accent hover:bg-xala-accent hover:text-white transition-all duration-300 mt-auto"
+        <Carousel
+          opts={{
+            align: "center",
+            loop: true,
+            dragFree: true,
+            skipSnaps: true,
+          }}
+          plugins={[plugin.current]}
+          className="w-full max-w-6xl mx-auto"
+        >
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {products?.map((product) => (
+              <CarouselItem 
+                key={product.id}
+                className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3"
               >
-                {t('coreProducts.learnMore')}
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </div>
-          ))}
-        </div>
+                <div className="group flex flex-col h-full bg-xala-secondary rounded-xl p-6 hover:transform hover:scale-105 transition-all duration-300">
+                  <div className="flex items-center justify-between mb-4">
+                    {product.icon && (
+                      <div className="w-12 h-12 text-xala-accent">
+                        <img src={product.icon} alt={product.title} className="w-full h-full object-contain" />
+                      </div>
+                    )}
+                    <span className="text-sm text-xala-accent font-semibold">
+                      {product.metrics}
+                    </span>
+                  </div>
+                  
+                  <h3 className="text-xl font-semibold mb-3 text-xala-accent">
+                    {product.title}
+                  </h3>
+                  
+                  <p className="text-xala-text mb-6">
+                    {product.description}
+                  </p>
+
+                  {/* Product image */}
+                  <div className="flex-grow mb-6">
+                    {product.product_screenshots?.[0] ? (
+                      <img
+                        src={product.product_screenshots[0].image_url}
+                        alt={product.product_screenshots[0].alt_text}
+                        className="w-full h-48 object-cover rounded-lg"
+                      />
+                    ) : (
+                      <img
+                        src={product.image_url}
+                        alt={product.title}
+                        className="w-full h-48 object-cover rounded-lg"
+                      />
+                    )}
+                  </div>
+                  
+                  <Button
+                    variant="outline"
+                    className="group w-full bg-transparent border border-xala-accent text-xala-accent hover:bg-xala-accent hover:text-white transition-all duration-300 mt-auto"
+                  >
+                    {t('coreProducts.learnMore')}
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
       </div>
     </section>
   );
