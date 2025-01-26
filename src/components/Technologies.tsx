@@ -55,23 +55,17 @@ const Technologies = () => {
       );
     }
 
-    // Default values if section is not loaded yet
-    const useCarousel = section?.carousel ?? false;
-    const columns = section?.columns ?? 3;
-    const rows = section?.rows ?? 1;
-    const autoscroll = section?.autoscroll ?? false;
-
-    return useCarousel ? (
+    return section?.carousel ? (
       <TechnologyCarousel 
         technologies={technologies}
-        columns={columns}
-        autoscroll={autoscroll}
+        columns={section?.columns || 3}
+        autoscroll={section?.autoscroll || false}
       />
     ) : (
       <TechnologyGrid 
         technologies={technologies}
-        columns={columns}
-        rows={rows}
+        columns={section?.columns || 3}
+        rows={section?.rows || 1}
       />
     );
   };
