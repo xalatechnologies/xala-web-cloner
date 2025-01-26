@@ -3,14 +3,22 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Plus, Eye, Pencil, Trash2, ArrowUpDown, Filter } from "lucide-react";
+import { Plus, Eye, Pencil, Trash2, ArrowUpDown, Filter, Search } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export function DashboardContent() {
   const { toast } = useToast();
   const [searchTerm, setSearchTerm] = useState("");
+  const [filterLanguage, setFilterLanguage] = useState<string>("");
   const [sortConfig, setSortConfig] = useState<{
     key: string;
     direction: 'asc' | 'desc';
@@ -71,12 +79,13 @@ export function DashboardContent() {
   };
 
   const filteredSections = sections?.filter(section => {
-    const searchLower = searchTerm.toLowerCase();
-    return (
-      section.section_name.toLowerCase().includes(searchLower) ||
-      section.title.toLowerCase().includes(searchLower) ||
-      section.language.toLowerCase().includes(searchLower)
-    );
+    const matchesSearch = searchTerm.toLowerCase() === '' || 
+      section.section_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      section.title.toLowerCase().includes(searchTerm.toLowerCase());
+    
+    const matchesLanguage = !filterLanguage || section.language === filterLanguage;
+
+    return matchesSearch && matchesLanguage;
   });
 
   const handleCreate = () => {
@@ -155,14 +164,26 @@ export function DashboardContent() {
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="text-xl font-bold text-white font-chakra">Sections</CardTitle>
           <div className="flex items-center gap-4">
-            <div className="relative">
-              <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-              <Input
-                placeholder="Search sections..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-400"
-              />
+            <div className="flex items-center gap-2">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                <Input
+                  placeholder="Search sections..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10 bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-400 w-[200px]"
+                />
+              </div>
+              <Select value={filterLanguage} onValueChange={setFilterLanguage}>
+                <SelectTrigger className="w-[120px] bg-gray-800/50 border-gray-700 text-white">
+                  <SelectValue placeholder="Language" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="">All Languages</SelectItem>
+                  <SelectItem value="en">English</SelectItem>
+                  <SelectItem value="no">Norwegian</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
             <Button onClick={handleCreate} className="bg-blue-500 hover:bg-blue-600">
               <Plus className="w-4 h-4 mr-2" />
