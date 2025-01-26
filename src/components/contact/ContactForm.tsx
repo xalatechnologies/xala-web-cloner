@@ -137,7 +137,7 @@ export const ContactForm = () => {
             type="button"
             onClick={() => enhanceText('message')}
             disabled={isEnhancing.message || !formData.message}
-            className="absolute right-4 bottom-4 w-8 h-8 p-0 bg-gradient-to-r from-[#8B5CF6] via-[#D946EF] to-[#0EA5E9] hover:opacity-80"
+            className="absolute right-4 bottom-4 w-8 h-8 p-0 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:border-white/40 transition-all duration-300"
             size="icon"
           >
             <Wand2 className={`h-4 w-4 ${isEnhancing.message ? 'animate-spin' : ''}`} />
