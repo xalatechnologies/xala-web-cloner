@@ -1,18 +1,18 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
-import { Brain, CloudIcon, Code, BarChart, Shield, Laptop, LineChart } from 'lucide-react';
+import { Brain, CloudCog, Code, BarChart2, Shield, Laptop, LineChart } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import type { Database } from '@/integrations/supabase/types';
 
 const iconMap = {
-  Brain,
-  CloudIcon,
-  Code,
-  BarChart,
-  Shield,
-  Laptop,
-  LineChart,
+  Brain: Brain,
+  CloudIcon: CloudCog,
+  Code: Code,
+  BarChart: BarChart2,
+  Shield: Shield,
+  Laptop: Laptop,
+  LineChart: LineChart,
 };
 
 type IconName = keyof typeof iconMap;
@@ -58,7 +58,7 @@ const FeatureCards = () => {
         return (
           <FeatureCard
             key={feature.id}
-            icon={<IconComponent />}
+            icon={<IconComponent className="w-8 h-8" />}
             title={feature.title}
             description={feature.description}
           />
@@ -72,7 +72,7 @@ const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode; titl
   <div className="group p-6 rounded-xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 hover:border-xala-accent/50 transition-all duration-300">
     <div className="flex flex-col items-center gap-3">
       <div className="p-3 rounded-lg bg-xala-accent/10 group-hover:bg-xala-accent/20 transition-colors">
-        {React.cloneElement(icon as React.ReactElement, { className: "w-8 h-8 text-xala-accent" })}
+        {icon}
       </div>
       <h3 className="text-lg font-semibold text-xala-accent">{title}</h3>
       <p className="text-sm text-xala-text/80">{description}</p>
