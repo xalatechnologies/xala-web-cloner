@@ -39,12 +39,14 @@ const ExpandableGrid = ({ items, initialRows = 1 }: ExpandableGridProps) => {
         <div className="flex justify-center mt-12">
           <Button
             onClick={handleShowMore}
-            className="group relative overflow-hidden rounded-full px-8 py-2 transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_20px_rgba(0,118,255,0.4)] bg-gradient-to-r from-blue-600 to-violet-600 text-white"
+            className="group px-8 py-6 rounded-lg font-medium transition-all transform hover:scale-105
+              shadow-lg shadow-xala-accent/20 bg-gradient-to-r from-[#9b87f5] via-[#8B5CF6] to-[#7E69AB] 
+              hover:from-[#8B5CF6] hover:via-[#7E69AB] hover:to-[#9b87f5] text-white"
           >
-            <span className="relative z-10 flex items-center gap-2">
-              Show More <ChevronDown className="h-4 w-4 transition-transform group-hover:translate-y-1" />
+            <span className="flex items-center gap-2">
+              Show More
+              <ChevronDown className="w-5 h-5 animate-bounce" />
             </span>
-            <div className="absolute inset-0 z-0 bg-gradient-to-r from-blue-400 to-violet-400 opacity-0 transition-opacity group-hover:opacity-100" />
           </Button>
         </div>
       )}
