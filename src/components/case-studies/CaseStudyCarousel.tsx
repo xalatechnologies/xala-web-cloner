@@ -30,19 +30,19 @@ const CaseStudyCarousel = ({ caseStudies, columns, autoscroll }: CaseStudyCarous
   return (
     <Carousel
       opts={{
-        align: "center",
+        align: "start",
         loop: true,
-        dragFree: true,
-        skipSnaps: true,
+        skipSnaps: false,
+        slidesToScroll: columns,
       }}
       plugins={autoscroll ? [plugin.current] : []}
-      className="w-full max-w-6xl mx-auto"
+      className="w-full max-w-7xl mx-auto"
     >
-      <CarouselContent className="-ml-2 md:-ml-4">
+      <CarouselContent className="-ml-4">
         {caseStudies.map((study) => (
           <CarouselItem 
             key={study.id}
-            className={`pl-2 md:pl-4 basis-full md:basis-1/${columns}`}
+            className={`pl-4 basis-full md:basis-1/${columns}`}
           >
             <CaseStudyCard
               title={study.title}

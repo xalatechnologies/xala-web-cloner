@@ -30,19 +30,19 @@ const TechnologyCarousel = ({ technologies, columns, autoscroll }: TechnologyCar
   return (
     <Carousel
       opts={{
-        align: "center",
+        align: "start",
         loop: true,
-        dragFree: true,
-        skipSnaps: true,
+        skipSnaps: false,
+        slidesToScroll: columns,
       }}
       plugins={autoscroll ? [plugin.current] : []}
-      className="w-full max-w-6xl mx-auto"
+      className="w-full max-w-7xl mx-auto"
     >
-      <CarouselContent className="-ml-2 md:-ml-4">
+      <CarouselContent className="-ml-4">
         {technologies.map((tech) => (
           <CarouselItem 
             key={tech.id}
-            className={`pl-2 md:pl-4 basis-full md:basis-1/${columns}`}
+            className={`pl-4 basis-full md:basis-1/${columns}`}
           >
             <TechnologyCard
               icon={tech.icon}

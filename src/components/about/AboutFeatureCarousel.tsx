@@ -29,19 +29,19 @@ const AboutFeatureCarousel = ({ features, columns, autoscroll }: AboutFeatureCar
   return (
     <Carousel
       opts={{
-        align: "center",
+        align: "start",
         loop: true,
-        dragFree: true,
-        skipSnaps: true,
+        skipSnaps: false,
+        slidesToScroll: columns,
       }}
       plugins={autoscroll ? [plugin.current] : []}
-      className="w-full max-w-6xl mx-auto"
+      className="w-full max-w-7xl mx-auto"
     >
-      <CarouselContent className="-ml-2 md:-ml-4">
+      <CarouselContent className="-ml-4">
         {features.map((feature, index) => (
           <CarouselItem 
             key={index}
-            className={`pl-2 md:pl-4 basis-full md:basis-1/${columns}`}
+            className={`pl-4 basis-full md:basis-1/${columns}`}
           >
             <AboutFeatureCard
               icon={feature.icon}
