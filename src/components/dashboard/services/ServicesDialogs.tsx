@@ -75,7 +75,7 @@ export function ServicesDialogs({
           value={formData.icon}
           onValueChange={(value) => setFormData({ ...formData, icon: value })}
         >
-          <SelectTrigger className="bg-white/5 border-white/10 text-white">
+          <SelectTrigger id="icon" className="bg-white/5 border-white/10 text-white">
             <SelectValue />
           </SelectTrigger>
           <SelectContent className="bg-gray-800 border-gray-700 max-h-[300px]">
@@ -99,7 +99,7 @@ export function ServicesDialogs({
           value={formData.language}
           onValueChange={(value: SupportedLanguage) => setFormData({ ...formData, language: value })}
         >
-          <SelectTrigger className="bg-white/5 border-white/10 text-white">
+          <SelectTrigger id="language" className="bg-white/5 border-white/10 text-white">
             <SelectValue />
           </SelectTrigger>
           <SelectContent className="bg-gray-800 border-gray-700">
@@ -120,10 +120,11 @@ export function ServicesDialogs({
       </div>
       <div className="flex items-center gap-2">
         <Switch
+          id="featured"
           checked={formData.featured}
           onCheckedChange={(checked) => setFormData({ ...formData, featured: checked })}
         />
-        <Label>Featured Service</Label>
+        <Label htmlFor="featured">Featured Service</Label>
       </div>
       <DialogFooter>
         <Button
