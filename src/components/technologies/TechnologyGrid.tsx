@@ -1,5 +1,5 @@
 import TechnologyCard from './TechnologyCard';
-import SectionGrid from '../ui/section-grid';
+import ExpandableGrid from '../ui/expandable-grid';
 import { Database } from '@/integrations/supabase/types';
 
 type Technology = Database['public']['Tables']['technologies']['Row'] & {
@@ -8,23 +8,24 @@ type Technology = Database['public']['Tables']['technologies']['Row'] & {
 
 interface TechnologyGridProps {
   technologies: Technology[];
-  columns: number;
-  rows: number;
 }
 
-const TechnologyGrid = ({ technologies, columns, rows }: TechnologyGridProps) => {
+const TechnologyGrid = ({ technologies }: TechnologyGridProps) => {
+  const technologyCards = technologies.map((tech) => (
+    <TechnologyCard
+      key={tech.id}
+      icon={tech.icon}
+      title={tech.title}
+      description={tech.description || undefined}
+      tools={tech.technology_tools}
+    />
+  ));
+
   return (
-    <SectionGrid columns={columns} rows={rows}>
-      {technologies.map((tech) => (
-        <TechnologyCard
-          key={tech.id}
-          icon={tech.icon}
-          title={tech.title}
-          description={tech.description || undefined}
-          tools={tech.technology_tools}
-        />
-      ))}
-    </SectionGrid>
+    <ExpandableGrid 
+      items={technologyCards}
+      initialRows={1}
+    />
   );
 };
 

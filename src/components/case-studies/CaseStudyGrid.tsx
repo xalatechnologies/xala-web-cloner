@@ -1,4 +1,5 @@
 import CaseStudyCard from './CaseStudyCard';
+import ExpandableGrid from '../ui/expandable-grid';
 import type { Database } from '@/integrations/supabase/types';
 
 type CaseStudy = Database['public']['Tables']['case_studies']['Row'] & {
@@ -7,29 +8,24 @@ type CaseStudy = Database['public']['Tables']['case_studies']['Row'] & {
 
 interface CaseStudyGridProps {
   caseStudies: CaseStudy[];
-  columns: number;
-  rows: number;
 }
 
-const CaseStudyGrid = ({ caseStudies, columns, rows }: CaseStudyGridProps) => {
+const CaseStudyGrid = ({ caseStudies }: CaseStudyGridProps) => {
+  const studyCards = caseStudies.map((study) => (
+    <CaseStudyCard
+      key={study.id}
+      title={study.title}
+      description={study.description}
+      imageUrl={study.image_url}
+      icon={study.icon}
+    />
+  ));
+
   return (
-    <div 
-      className="grid gap-8"
-      style={{
-        gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
-        gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`
-      }}
-    >
-      {caseStudies.map((study) => (
-        <CaseStudyCard
-          key={study.id}
-          title={study.title}
-          description={study.description}
-          imageUrl={study.image_url}
-          icon={study.icon}
-        />
-      ))}
-    </div>
+    <ExpandableGrid 
+      items={studyCards}
+      initialRows={1}
+    />
   );
 };
 

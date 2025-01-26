@@ -73,8 +73,6 @@ const CaseStudies = () => {
 
         <CaseStudyGrid 
           caseStudies={caseStudies}
-          columns={section?.columns || 3}
-          rows={section?.rows || 1}
         />
       </div>
     </section>

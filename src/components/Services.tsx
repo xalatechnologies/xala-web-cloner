@@ -33,14 +33,8 @@ const Services = () => {
   const renderContent = () => {
     if (isLoading) {
       return (
-        <div 
-          className="grid gap-8"
-          style={{
-            gridTemplateColumns: `repeat(${section?.columns || 3}, minmax(0, 1fr))`,
-            gridTemplateRows: `repeat(${section?.rows || 1}, minmax(0, 1fr))`
-          }}
-        >
-          {[...Array(section?.columns || 3)].map((_, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[...Array(3)].map((_, index) => (
             <div key={index} className="h-64">
               <Skeleton className="w-full h-full rounded-xl bg-white/5" />
             </div>
@@ -60,8 +54,6 @@ const Services = () => {
     return (
       <ServiceGrid 
         services={services}
-        columns={section?.columns || 3}
-        rows={section?.rows || 1}
       />
     );
   };

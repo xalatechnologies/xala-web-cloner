@@ -27,7 +27,7 @@ const CoreProducts = () => {
   const renderContent = () => {
     if (isLoading) {
       return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[...Array(3)].map((_, index) => (
             <Skeleton 
               key={index}
@@ -49,8 +49,6 @@ const CoreProducts = () => {
     return (
       <ProductGrid 
         products={products}
-        columns={section?.columns || 3}
-        rows={section?.rows || 1}
       />
     );
   };

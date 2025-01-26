@@ -1,25 +1,26 @@
-import ServiceCard from "./ServiceCard";
-import SectionGrid from '../ui/section-grid';
+import ServiceCard from './ServiceCard';
+import ExpandableGrid from '../ui/expandable-grid';
 import { Tables } from "@/integrations/supabase/types";
 
 interface ServiceGridProps {
   services: Tables<'services'>[];
-  columns: number;
-  rows: number;
 }
 
-const ServiceGrid = ({ services, columns, rows }: ServiceGridProps) => {
+const ServiceGrid = ({ services }: ServiceGridProps) => {
+  const serviceCards = services.map((service) => (
+    <ServiceCard
+      key={service.id}
+      icon={service.icon}
+      title={service.title}
+      description={service.description}
+    />
+  ));
+
   return (
-    <SectionGrid columns={columns} rows={rows}>
-      {services.map((service) => (
-        <ServiceCard
-          key={service.id}
-          icon={service.icon}
-          title={service.title}
-          description={service.description}
-        />
-      ))}
-    </SectionGrid>
+    <ExpandableGrid 
+      items={serviceCards}
+      initialRows={1}
+    />
   );
 };
 

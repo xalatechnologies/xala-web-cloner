@@ -62,8 +62,6 @@ const Teams = () => {
     return (
       <TeamGrid 
         members={teamMembers}
-        columns={section?.columns || 3}
-        rows={section?.rows || 1}
       />
     );
   };

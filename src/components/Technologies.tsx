@@ -57,8 +57,6 @@ const Technologies = () => {
     return (
       <TechnologyGrid 
         technologies={technologies}
-        columns={section?.columns || 3}
-        rows={section?.rows || 1}
       />
     );
   };
