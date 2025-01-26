@@ -53,18 +53,20 @@ export function SectionDialogs({
     setIsEnhancing(prev => ({ ...prev, [field]: true }));
     try {
       const { data, error } = await supabase.functions.invoke('enhance-text', {
-        body: { text: formData[field], type: field }
+        body: { 
+          text: formData[field], 
+          type: field,
+          language: formData.language // Pass the current language
+        }
       });
 
       if (error) throw error;
 
       if (data.enhancedText) {
-        // Create a new FormData object with the updated field
-        const updatedFormData: FormData = {
+        setFormData({
           ...formData,
           [field]: data.enhancedText
-        };
-        setFormData(updatedFormData);
+        });
         
         toast({
           title: "Text Enhanced",
