@@ -57,6 +57,12 @@ const CaseStudies = () => {
 
   if (!caseStudies) return null;
 
+  // Default values if section is undefined
+  const displayCarousel = section?.carousel ?? false;
+  const columns = section?.columns ?? 3;
+  const rows = section?.rows ?? 1;
+  const autoscroll = section?.autoscroll ?? false;
+
   return (
     <section className="py-20 bg-xala-secondary relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary opacity-50" />
@@ -72,17 +78,17 @@ const CaseStudies = () => {
           </p>
         </div>
 
-        {section?.carousel ? (
+        {displayCarousel ? (
           <CaseStudyCarousel 
             caseStudies={caseStudies}
-            columns={section.columns || 3}
-            autoscroll={section.autoscroll || false}
+            columns={columns}
+            autoscroll={autoscroll}
           />
         ) : (
           <CaseStudyGrid 
             caseStudies={caseStudies}
-            columns={section.columns || 3}
-            rows={section.rows || 1}
+            columns={columns}
+            rows={rows}
           />
         )}
       </div>
