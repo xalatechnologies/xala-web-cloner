@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "./ui/skeleton";
 import * as Icons from "lucide-react";
-import { LucideIcon } from "lucide-react";
+import { LucideIcon, ArrowRight } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -47,7 +47,6 @@ const WorkProcess = () => {
     },
   });
 
-  // Function to dynamically get icon component
   const getIconComponent = (iconName: string): LucideIcon => {
     const IconComponent = Icons[iconName as keyof typeof Icons] as LucideIcon;
     return IconComponent || Icons.HelpCircle;
@@ -84,38 +83,46 @@ const WorkProcess = () => {
   const shouldUseCarousel = section?.carousel || false;
   const enableAutoscroll = section?.autoscroll || false;
 
-  const renderProcessCard = (process: any) => {
+  const renderProcessCard = (process: any, index: number, totalProcesses: number) => {
     const Icon = getIconComponent(process.icon);
     
     return (
-      <div
-        key={process.id}
-        className="relative group h-full"
-        style={{
-          animation: 'fade-in 0.5s ease-out forwards',
-          opacity: 0
-        }}
-      >
-        <div className="h-full relative p-8 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 
-                      hover:border-xala-accent/50 transition-all duration-500 group-hover:transform group-hover:scale-105
-                      group-hover:shadow-2xl group-hover:shadow-xala-accent/20">
-          <div className="absolute -top-4 -right-4 w-12 h-12 bg-xala-accent rounded-full flex items-center justify-center
-                        transform group-hover:scale-110 transition-transform duration-300">
-            <span className="text-white font-bold">{String(process.step_number).padStart(2, '0')}</span>
-          </div>
-
-          <div className="flex items-center gap-4 mb-4">
-            <div className="text-xala-accent relative">
-              <div className="absolute inset-0 bg-xala-accent/20 filter blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative transform group-hover:scale-110 transition-transform duration-300">
-                <Icon className="w-8 h-8" />
-              </div>
+      <div key={process.id} className="relative group flex items-center">
+        <div
+          className="flex-1 relative h-full"
+          style={{
+            animation: 'fade-in 0.5s ease-out forwards',
+            opacity: 0
+          }}
+        >
+          <div className="h-full relative p-8 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 
+                        hover:border-xala-accent/50 transition-all duration-500 group-hover:transform group-hover:scale-105
+                        group-hover:shadow-2xl group-hover:shadow-xala-accent/20">
+            <div className="absolute -top-4 -right-4 w-12 h-12 bg-xala-accent rounded-full flex items-center justify-center
+                          transform group-hover:scale-110 transition-transform duration-300">
+              <span className="text-white font-bold">{String(process.step_number).padStart(2, '0')}</span>
             </div>
-            <h3 className="text-xl font-semibold text-xala-accent">{process.title}</h3>
-          </div>
 
-          <p className="text-xala-text/70">{process.description}</p>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="text-xala-accent relative">
+                <div className="absolute inset-0 bg-xala-accent/20 filter blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative transform group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-8 h-8" />
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold text-xala-accent">{process.title}</h3>
+            </div>
+
+            <p className="text-xala-text/70">{process.description}</p>
+          </div>
         </div>
+        
+        {/* Add arrow if not the last item in the row */}
+        {index < totalProcesses - 1 && (index + 1) % columns !== 0 && (
+          <div className="flex-shrink-0 px-4 text-xala-accent animate-pulse">
+            <ArrowRight className="w-6 h-6" />
+          </div>
+        )}
       </div>
     );
   };
@@ -150,13 +157,13 @@ const WorkProcess = () => {
             }}
           >
             <CarouselContent className="-ml-2 md:-ml-4">
-              {processes?.map((process) => (
+              {processes?.map((process, index) => (
                 <CarouselItem 
                   key={process.id}
                   className="pl-2 md:pl-4"
                   style={{ flex: `0 0 ${100 / columns}%` }}
                 >
-                  {renderProcessCard(process)}
+                  {renderProcessCard(process, index, processes.length)}
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -169,7 +176,7 @@ const WorkProcess = () => {
               gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`
             }}
           >
-            {processes?.map((process) => renderProcessCard(process))}
+            {processes?.map((process, index) => renderProcessCard(process, index, processes.length))}
           </div>
         )}
       </div>
