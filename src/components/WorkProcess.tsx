@@ -8,9 +8,9 @@ import { LucideIcon } from "lucide-react";
 
 const WorkProcess = () => {
   const { t, i18n } = useTranslation();
-  const { data: section } = useSection('work-process');
+  const { data: section, isLoading: isSectionLoading } = useSection('work-process');
   
-  const { data: processes, isLoading } = useQuery({
+  const { data: processes, isLoading: isProcessesLoading } = useQuery({
     queryKey: ['work-processes', i18n.language],
     queryFn: async () => {
       const currentLanguage = i18n.language.toLowerCase() as "en" | "no";
@@ -46,6 +46,31 @@ const WorkProcess = () => {
     return IconComponent || Icons.HelpCircle;
   };
 
+  const isLoading = isSectionLoading || isProcessesLoading;
+
+  if (isLoading) {
+    return (
+      <section className="py-24 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="p-8 rounded-2xl bg-white/10">
+                <Skeleton className="h-8 w-8 mb-6" />
+                <Skeleton className="h-6 w-3/4 mb-3" />
+                <Skeleton className="h-20 w-full" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const columns = section?.columns || 3;
+  const rows = section?.rows || 1;
+  const shouldUseCarousel = section?.carousel || false;
+  const enableAutoscroll = section?.autoscroll || false;
+
   return (
     <section id="work-process" className="py-24 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-5 animate-pulse"></div>
@@ -66,60 +91,55 @@ const WorkProcess = () => {
           </p>
         </div>
 
-        {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="p-8 rounded-2xl bg-white/10">
-                <Skeleton className="h-8 w-8 mb-6" />
-                <Skeleton className="h-6 w-3/4 mb-3" />
-                <Skeleton className="h-20 w-full" />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
-            {processes?.map((process, index) => {
-              const Icon = getIconComponent(process.icon);
-              
-              return (
-                <div
-                  key={process.id}
-                  className="relative group h-full"
-                  style={{
-                    animation: 'fade-in 0.5s ease-out forwards',
-                    animationDelay: `${index * 200}ms`,
-                    opacity: 0
-                  }}
-                >
-                  {index < (processes?.length || 0) - 1 && (
-                    <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-xala-accent to-transparent transform -translate-y-1/2 z-10"></div>
-                  )}
+        <div 
+          className={`grid gap-8 relative ${
+            shouldUseCarousel ? '' : `grid-cols-1 md:grid-cols-2 lg:grid-cols-${columns}`
+          }`}
+          style={{
+            gridTemplateRows: shouldUseCarousel ? undefined : `repeat(${rows}, minmax(0, 1fr))`
+          }}
+        >
+          {processes?.map((process, index) => {
+            const Icon = getIconComponent(process.icon);
+            
+            return (
+              <div
+                key={process.id}
+                className="relative group h-full"
+                style={{
+                  animation: 'fade-in 0.5s ease-out forwards',
+                  animationDelay: `${index * 200}ms`,
+                  opacity: 0
+                }}
+              >
+                {index < (processes?.length || 0) - 1 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-xala-accent to-transparent transform -translate-y-1/2 z-10"></div>
+                )}
 
-                  <div className="h-full relative p-8 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 
-                                hover:border-xala-accent/50 transition-all duration-500 group-hover:transform group-hover:scale-105
-                                group-hover:shadow-2xl group-hover:shadow-xala-accent/20">
-                    <div className="absolute -top-4 -right-4 w-12 h-12 bg-xala-accent rounded-full flex items-center justify-center
-                                  transform group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-white font-bold">{String(process.step_number).padStart(2, '0')}</span>
-                    </div>
-
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="text-xala-accent relative">
-                        <div className="absolute inset-0 bg-xala-accent/20 filter blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div className="relative transform group-hover:scale-110 transition-transform duration-300">
-                          <Icon className="w-8 h-8" />
-                        </div>
-                      </div>
-                      <h3 className="text-xl font-semibold text-xala-accent">{process.title}</h3>
-                    </div>
-
-                    <p className="text-xala-text/70">{process.description}</p>
+                <div className="h-full relative p-8 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 
+                              hover:border-xala-accent/50 transition-all duration-500 group-hover:transform group-hover:scale-105
+                              group-hover:shadow-2xl group-hover:shadow-xala-accent/20">
+                  <div className="absolute -top-4 -right-4 w-12 h-12 bg-xala-accent rounded-full flex items-center justify-center
+                                transform group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-white font-bold">{String(process.step_number).padStart(2, '0')}</span>
                   </div>
+
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="text-xala-accent relative">
+                      <div className="absolute inset-0 bg-xala-accent/20 filter blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="relative transform group-hover:scale-110 transition-transform duration-300">
+                        <Icon className="w-8 h-8" />
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-semibold text-xala-accent">{process.title}</h3>
+                  </div>
+
+                  <p className="text-xala-text/70">{process.description}</p>
                 </div>
-              );
-            })}
-          </div>
-        )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
