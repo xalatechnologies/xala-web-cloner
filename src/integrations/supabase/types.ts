@@ -395,6 +395,106 @@ export type Database = {
           },
         ]
       }
+      product_illustrations: {
+        Row: {
+          alt_text: string
+          created_at: string | null
+          description: string | null
+          id: string
+          language: Database["public"]["Enums"]["supported_language"]
+          media_type: string
+          media_url: string
+          product_id: string
+          sort_order: number | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          alt_text: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          media_type: string
+          media_url: string
+          product_id: string
+          sort_order?: number | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          alt_text?: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          media_type?: string
+          media_url?: string
+          product_id?: string
+          sort_order?: number | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_illustrations_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      product_screenshots: {
+        Row: {
+          alt_text: string
+          category: string
+          created_at: string | null
+          description: string | null
+          id: string
+          image_url: string
+          language: Database["public"]["Enums"]["supported_language"]
+          product_id: string
+          sort_order: number | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          alt_text: string
+          category: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          image_url: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          product_id: string
+          sort_order?: number | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          alt_text?: string
+          category?: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          image_url?: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          product_id?: string
+          sort_order?: number | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_screenshots_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       products: {
         Row: {
           call_to_action: Json | null
