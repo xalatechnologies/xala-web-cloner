@@ -14,15 +14,39 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { useQueryClient } from "@tanstack/react-query";
 
 export function DashboardContent() {
   const { toast } = useToast();
+  const queryClient = useQueryClient();
   const [searchTerm, setSearchTerm] = useState("");
   const [filterLanguage, setFilterLanguage] = useState<string>("all");
   const [sortConfig, setSortConfig] = useState<{
     key: string;
     direction: 'asc' | 'desc';
   }>({ key: 'sort_order', direction: 'asc' });
+
+  // Dialog states
+  const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
+  const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+  const [selectedSection, setSelectedSection] = useState<any>(null);
+  const [formData, setFormData] = useState({
+    section_name: '',
+    title: '',
+    description: '',
+    language: 'en',
+    sort_order: 0
+  });
 
   const { data: stats } = useQuery({
     queryKey: ['dashboard-stats'],
@@ -88,32 +112,97 @@ export function DashboardContent() {
     return matchesSearch && matchesLanguage;
   });
 
-  const handleCreate = () => {
-    toast({
-      title: "Create Section",
-      description: "This feature will be implemented soon.",
-    });
+  const handleCreate = async () => {
+    const { error } = await supabase
+      .from('sections')
+      .insert([formData]);
+
+    if (error) {
+      toast({
+        title: "Error creating section",
+        description: error.message,
+        variant: "destructive",
+      });
+    } else {
+      toast({
+        title: "Success",
+        description: "Section created successfully",
+      });
+      setIsCreateDialogOpen(false);
+      queryClient.invalidateQueries({ queryKey: ['sections'] });
+      setFormData({
+        section_name: '',
+        title: '',
+        description: '',
+        language: 'en',
+        sort_order: 0
+      });
+    }
   };
 
-  const handleView = (section: any) => {
-    toast({
-      title: "View Section",
-      description: `Viewing section: ${section.title}`,
-    });
+  const handleEdit = async () => {
+    if (!selectedSection) return;
+
+    const { error } = await supabase
+      .from('sections')
+      .update(formData)
+      .eq('id', selectedSection.id);
+
+    if (error) {
+      toast({
+        title: "Error updating section",
+        description: error.message,
+        variant: "destructive",
+      });
+    } else {
+      toast({
+        title: "Success",
+        description: "Section updated successfully",
+      });
+      setIsEditDialogOpen(false);
+      queryClient.invalidateQueries({ queryKey: ['sections'] });
+    }
   };
 
-  const handleEdit = (section: any) => {
-    toast({
-      title: "Edit Section",
-      description: `Editing section: ${section.title}`,
-    });
+  const handleDelete = async () => {
+    if (!selectedSection) return;
+
+    const { error } = await supabase
+      .from('sections')
+      .delete()
+      .eq('id', selectedSection.id);
+
+    if (error) {
+      toast({
+        title: "Error deleting section",
+        description: error.message,
+        variant: "destructive",
+      });
+    } else {
+      toast({
+        title: "Success",
+        description: "Section deleted successfully",
+      });
+      setIsDeleteDialogOpen(false);
+      queryClient.invalidateQueries({ queryKey: ['sections'] });
+    }
   };
 
-  const handleDelete = (section: any) => {
-    toast({
-      title: "Delete Section",
-      description: `Deleting section: ${section.title}`,
+  const openEditDialog = (section: any) => {
+    setSelectedSection(section);
+    setFormData({
+      section_name: section.section_name,
+      title: section.title,
+      description: section.description || '',
+      language: section.language,
+      sort_order: section.sort_order
     });
+    setIsEditDialogOpen(true);
+  };
+
+  const openDeleteDialog = (section: any) => {
+    setSelectedSection(section);
+    setIsDeleteDialogOpen(true);
   };
 
   return (
@@ -186,7 +275,7 @@ export function DashboardContent() {
                 </SelectContent>
               </Select>
             </div>
-            <Button onClick={handleCreate} className="bg-blue-500 hover:bg-blue-600">
+            <Button onClick={() => setIsCreateDialogOpen(true)} className="bg-blue-500 hover:bg-blue-600">
               <Plus className="w-4 h-4 mr-2" />
               Add Section
             </Button>
@@ -233,15 +322,7 @@ export function DashboardContent() {
                     <TableCell className="font-chakra text-white">{section.sort_order}</TableCell>
                     <TableCell className="text-right space-x-2">
                       <Button
-                        onClick={() => handleView(section)}
-                        variant="ghost"
-                        size="icon"
-                        className="hover:bg-gray-700"
-                      >
-                        <Eye className="w-4 h-4 text-blue-400" />
-                      </Button>
-                      <Button
-                        onClick={() => handleEdit(section)}
+                        onClick={() => openEditDialog(section)}
                         variant="ghost"
                         size="icon"
                         className="hover:bg-gray-700"
@@ -249,7 +330,7 @@ export function DashboardContent() {
                         <Pencil className="w-4 h-4 text-amber-400" />
                       </Button>
                       <Button
-                        onClick={() => handleDelete(section)}
+                        onClick={() => openDeleteDialog(section)}
                         variant="ghost"
                         size="icon"
                         className="hover:bg-gray-700"
@@ -264,6 +345,170 @@ export function DashboardContent() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Create Dialog */}
+      <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
+        <DialogContent className="bg-gray-800 text-white">
+          <DialogHeader>
+            <DialogTitle>Create New Section</DialogTitle>
+            <DialogDescription className="text-gray-400">
+              Add a new section to your website
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <div className="grid gap-2">
+              <Label htmlFor="section_name">Section Name</Label>
+              <Input
+                id="section_name"
+                value={formData.section_name}
+                onChange={(e) => setFormData({ ...formData, section_name: e.target.value })}
+                className="bg-gray-700 border-gray-600"
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="title">Title</Label>
+              <Input
+                id="title"
+                value={formData.title}
+                onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                className="bg-gray-700 border-gray-600"
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="description">Description</Label>
+              <Input
+                id="description"
+                value={formData.description}
+                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                className="bg-gray-700 border-gray-600"
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="language">Language</Label>
+              <Select
+                value={formData.language}
+                onValueChange={(value) => setFormData({ ...formData, language: value })}
+              >
+                <SelectTrigger className="bg-gray-700 border-gray-600">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="bg-gray-800 border-gray-700">
+                  <SelectItem value="en" className="text-white hover:bg-gray-700">English</SelectItem>
+                  <SelectItem value="no" className="text-white hover:bg-gray-700">Norwegian</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="sort_order">Sort Order</Label>
+              <Input
+                id="sort_order"
+                type="number"
+                value={formData.sort_order}
+                onChange={(e) => setFormData({ ...formData, sort_order: parseInt(e.target.value) })}
+                className="bg-gray-700 border-gray-600"
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setIsCreateDialogOpen(false)}>
+              Cancel
+            </Button>
+            <Button onClick={handleCreate}>Create</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Edit Dialog */}
+      <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
+        <DialogContent className="bg-gray-800 text-white">
+          <DialogHeader>
+            <DialogTitle>Edit Section</DialogTitle>
+            <DialogDescription className="text-gray-400">
+              Make changes to the section
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <div className="grid gap-2">
+              <Label htmlFor="section_name">Section Name</Label>
+              <Input
+                id="section_name"
+                value={formData.section_name}
+                onChange={(e) => setFormData({ ...formData, section_name: e.target.value })}
+                className="bg-gray-700 border-gray-600"
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="title">Title</Label>
+              <Input
+                id="title"
+                value={formData.title}
+                onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                className="bg-gray-700 border-gray-600"
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="description">Description</Label>
+              <Input
+                id="description"
+                value={formData.description}
+                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                className="bg-gray-700 border-gray-600"
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="language">Language</Label>
+              <Select
+                value={formData.language}
+                onValueChange={(value) => setFormData({ ...formData, language: value })}
+              >
+                <SelectTrigger className="bg-gray-700 border-gray-600">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="bg-gray-800 border-gray-700">
+                  <SelectItem value="en" className="text-white hover:bg-gray-700">English</SelectItem>
+                  <SelectItem value="no" className="text-white hover:bg-gray-700">Norwegian</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="sort_order">Sort Order</Label>
+              <Input
+                id="sort_order"
+                type="number"
+                value={formData.sort_order}
+                onChange={(e) => setFormData({ ...formData, sort_order: parseInt(e.target.value) })}
+                className="bg-gray-700 border-gray-600"
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setIsEditDialogOpen(false)}>
+              Cancel
+            </Button>
+            <Button onClick={handleEdit}>Save changes</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Delete Dialog */}
+      <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
+        <DialogContent className="bg-gray-800 text-white">
+          <DialogHeader>
+            <DialogTitle>Delete Section</DialogTitle>
+            <DialogDescription className="text-gray-400">
+              Are you sure you want to delete this section? This action cannot be undone.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setIsDeleteDialogOpen(false)}>
+              Cancel
+            </Button>
+            <Button variant="destructive" onClick={handleDelete}>
+              Delete
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </main>
   );
 }
