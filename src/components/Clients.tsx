@@ -52,8 +52,6 @@ const Clients = () => {
     return (
       <ClientGrid 
         clients={clients}
-        columns={section?.columns || 4}
-        rows={section?.rows || 2}
       />
     );
   };
