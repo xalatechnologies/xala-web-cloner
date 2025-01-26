@@ -5,12 +5,15 @@ import Logo from './navbar/Logo';
 import Controls from './navbar/Controls';
 import NavigationMenu from './navbar/NavigationMenu';
 import { Skeleton } from './ui/skeleton';
+import type { Database } from '@/integrations/supabase/types';
+
+type SupportedLanguage = Database['public']['Enums']['supported_language'];
 
 interface MenuItem {
   id: string;
   name: string;
   href: string;
-  language: string;
+  language: SupportedLanguage;
   sort_order: number;
   parent_id: string | null;
 }
@@ -21,12 +24,12 @@ const Navbar = () => {
   const [language, setLanguage] = useState<'EN' | 'NO'>('NO');
 
   const { data: menuItems, isLoading } = useQuery({
-    queryKey: ['menuItems', language.toLowerCase()],
+    queryKey: ['menuItems', language.toLowerCase() as SupportedLanguage],
     queryFn: async () => {
       const { data, error } = await supabase
         .from('menu_items')
         .select('*')
-        .eq('language', language.toLowerCase())
+        .eq('language', language.toLowerCase() as SupportedLanguage)
         .order('sort_order', { ascending: true });
 
       if (error) throw error;
