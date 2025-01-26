@@ -6,14 +6,14 @@ interface ClientCardProps {
 const ClientCard = ({ name, logoUrl }: ClientCardProps) => {
   return (
     <div 
-      className="group relative h-40 flex items-center justify-center p-4 rounded-xl"
+      className="group relative h-24 flex items-center justify-center p-4 rounded-xl"
     >
       <div className="absolute inset-0 rounded-xl bg-xala-secondary border border-xala-accent/20" />
       
       <img
         src={logoUrl}
         alt={name}
-        className="relative w-full h-full object-contain transition-all duration-500 group-hover:scale-110"
+        className="relative w-full h-full object-contain p-2 transition-all duration-500 group-hover:scale-110"
         style={{ 
           filter: 'brightness(0) invert(1)',
         }}

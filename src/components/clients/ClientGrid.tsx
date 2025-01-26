@@ -19,10 +19,9 @@ const ClientGrid = ({ clients, initialRows }: ClientGridProps) => {
   ));
 
   return (
-    <ExpandableGrid 
-      items={clientCards}
-      initialRows={initialRows}
-    />
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
+      {clientCards}
+    </div>
   );
 };
 
