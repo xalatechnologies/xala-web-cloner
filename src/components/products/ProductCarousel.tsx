@@ -11,9 +11,10 @@ import type { Tables } from '@/integrations/supabase/types';
 interface ProductCarouselProps {
   products: Tables<'products'>[];
   autoscroll?: boolean;
+  columns?: number;
 }
 
-const ProductCarousel = ({ products, autoscroll = false }: ProductCarouselProps) => {
+const ProductCarousel = ({ products, autoscroll = false, columns = 3 }: ProductCarouselProps) => {
   const plugin = useRef(
     Autoplay({
       delay: 4000,
@@ -35,7 +36,11 @@ const ProductCarousel = ({ products, autoscroll = false }: ProductCarouselProps)
     >
       <CarouselContent className="-ml-2 md:-ml-4">
         {products.map((product) => (
-          <CarouselItem key={product.id} className="pl-2 md:pl-4 basis-full md:basis-1/3">
+          <CarouselItem 
+            key={product.id} 
+            className="pl-2 md:pl-4"
+            style={{ flex: `0 0 ${100 / columns}%` }}
+          >
             <ProductCard
               title={product.title}
               description={product.description}
