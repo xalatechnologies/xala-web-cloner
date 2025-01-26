@@ -1,36 +1,39 @@
 import { Code2, Brain, Layout, Palette, Server, Terminal } from 'lucide-react';
+import { useTranslation } from "react-i18next";
 
 const Technologies = () => {
+  const { t } = useTranslation();
+
   const technologies = [
     {
       icon: <Code2 className="w-8 h-8 text-xala-accent mb-4" />,
-      name: "Frontend Development",
-      tools: ["React", "TypeScript", "Tailwind CSS"]
+      name: t('technologies.frontend.title'),
+      tools: t('technologies.frontend.tools', { returnObjects: true }) as string[]
     },
     {
       icon: <Server className="w-8 h-8 text-xala-accent mb-4" />,
-      name: "Backend Solutions",
-      tools: ["Node.js", "RESTful APIs", "GraphQL"]
+      name: t('technologies.backend.title'),
+      tools: t('technologies.backend.tools', { returnObjects: true }) as string[]
     },
     {
       icon: <Brain className="w-8 h-8 text-xala-accent mb-4" />,
-      name: "AI Solutions",
-      tools: ["GPT-4", "LangChain", "Eleven Labs"]
+      name: t('technologies.ai.title'),
+      tools: t('technologies.ai.tools', { returnObjects: true }) as string[]
     },
     {
       icon: <Layout className="w-8 h-8 text-xala-accent mb-4" />,
-      name: "UI/UX Design",
-      tools: ["Figma", "Adobe XD", "Sketch"]
+      name: t('technologies.uiux.title'),
+      tools: t('technologies.uiux.tools', { returnObjects: true }) as string[]
     },
     {
       icon: <Terminal className="w-8 h-8 text-xala-accent mb-4" />,
-      name: "DevOps",
-      tools: ["Docker", "Kubernetes", "CI/CD"]
+      name: t('technologies.devops.title'),
+      tools: t('technologies.devops.tools', { returnObjects: true }) as string[]
     },
     {
       icon: <Palette className="w-8 h-8 text-xala-accent mb-4" />,
-      name: "Design Systems",
-      tools: ["Material UI", "Shadcn/UI", "Storybook"]
+      name: t('technologies.design.title'),
+      tools: t('technologies.design.tools', { returnObjects: true }) as string[]
     }
   ];
 
@@ -39,10 +42,10 @@ const Technologies = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-            Technologies & Tools
+            {t('technologies.title')}
           </h2>
           <p className="text-xala-text text-lg max-w-2xl mx-auto">
-            We leverage cutting-edge technologies and industry-standard tools to deliver exceptional solutions
+            {t('technologies.description')}
           </p>
         </div>
         

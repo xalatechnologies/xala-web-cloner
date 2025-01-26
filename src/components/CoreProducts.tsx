@@ -1,27 +1,30 @@
 import { ArrowRight, Stethoscope, FormInput, Building2 } from "lucide-react";
 import { Button } from "./ui/button";
+import { useTranslation } from "react-i18next";
 
 const CoreProducts = () => {
+  const { t } = useTranslation();
+
   const products = [
     {
-      title: "DoctorAI.no",
-      description: "AI-powered medical consultation platform that helps healthcare professionals make more informed decisions and improve patient care.",
+      title: t('coreProducts.doctorAI.title'),
+      description: t('coreProducts.doctorAI.description'),
       icon: <Stethoscope className="w-12 h-12 text-xala-accent" />,
-      metrics: "10,000+ Consultations",
+      metrics: t('coreProducts.doctorAI.metrics'),
       image: "/lovable-uploads/ea66315b-13e9-4a09-a8cb-c851dc16edff.png"
     },
     {
-      title: "FylleUt.no",
-      description: "Advanced AI-driven form builder that simplifies document creation and automation, making form filling effortless and intelligent.",
+      title: t('coreProducts.fylleUt.title'),
+      description: t('coreProducts.fylleUt.description'),
       icon: <FormInput className="w-12 h-12 text-xala-accent" />,
-      metrics: "50,000+ Forms Generated",
+      metrics: t('coreProducts.fylleUt.metrics'),
       image: "/lovable-uploads/9b91e49d-aca0-47e2-afa3-2544f823e714.png"
     },
     {
-      title: "Prinsipro",
-      description: "AI-powered architecture principles management system that streamlines design decisions and ensures consistency across projects.",
+      title: t('coreProducts.prinsipro.title'),
+      description: t('coreProducts.prinsipro.description'),
       icon: <Building2 className="w-12 h-12 text-xala-accent" />,
-      metrics: "1,000+ Projects Managed",
+      metrics: t('coreProducts.prinsipro.metrics'),
       image: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png"
     }
   ];
