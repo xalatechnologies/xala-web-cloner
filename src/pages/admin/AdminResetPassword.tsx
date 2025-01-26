@@ -4,23 +4,23 @@ import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const AdminResetPassword = () => {
   const [email, setEmail] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
   const { toast } = useToast();
   const [accessToken, setAccessToken] = useState<string | null>(null);
 
   useEffect(() => {
-    // Parse the hash fragment to get the access token
     const hashFragment = window.location.hash.substring(1);
     const params = new URLSearchParams(hashFragment);
     const token = params.get('access_token');
     if (token) {
       setAccessToken(token);
-      // Set the session with the access token
       supabase.auth.setSession({
         access_token: token,
         refresh_token: '',
@@ -31,15 +31,18 @@ const AdminResetPassword = () => {
   const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setError(null);
 
     try {
       if (accessToken) {
-        // Update password using the access token
         const { error } = await supabase.auth.updateUser({
           password: newPassword,
         });
 
-        if (error) throw error;
+        if (error) {
+          setError(error.message);
+          return;
+        }
 
         toast({
           title: "Success",
@@ -47,7 +50,6 @@ const AdminResetPassword = () => {
         });
         navigate('/admin');
       } else {
-        // Send reset password email
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
           redirectTo: `${window.location.origin}/admin/reset-password`,
         });
@@ -60,11 +62,7 @@ const AdminResetPassword = () => {
         });
       }
     } catch (error) {
-      toast({
-        title: "Error",
-        description: error instanceof Error ? error.message : "An error occurred",
-        variant: "destructive",
-      });
+      setError(error instanceof Error ? error.message : "An error occurred");
     } finally {
       setIsLoading(false);
     }
@@ -82,6 +80,12 @@ const AdminResetPassword = () => {
           </p>
         </div>
         
+        {error && (
+          <Alert variant="destructive">
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
+
         <form onSubmit={handleResetPassword} className="space-y-4">
           {accessToken ? (
             <div>
