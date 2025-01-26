@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useToast } from '@/components/ui/use-toast';
+import { useToast } from '@/hooks/use-toast';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
@@ -88,6 +88,14 @@ const AdminLogin = () => {
           >
             {isLoading ? 'Signing in...' : 'Sign In'}
           </Button>
+          <div className="text-center">
+            <Link
+              to="/admin/reset-password"
+              className="text-sm text-gray-400 hover:text-white transition-colors"
+            >
+              Forgot your password?
+            </Link>
+          </div>
         </form>
       </div>
     </div>
