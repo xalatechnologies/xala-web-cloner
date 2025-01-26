@@ -595,6 +595,7 @@ export type Database = {
           description: string | null
           id: string
           language: Database["public"]["Enums"]["supported_language"]
+          products: Json[] | null
           rows: number | null
           section_name: string
           sort_order: number
@@ -610,6 +611,7 @@ export type Database = {
           description?: string | null
           id?: string
           language?: Database["public"]["Enums"]["supported_language"]
+          products?: Json[] | null
           rows?: number | null
           section_name: string
           sort_order?: number
@@ -625,6 +627,7 @@ export type Database = {
           description?: string | null
           id?: string
           language?: Database["public"]["Enums"]["supported_language"]
+          products?: Json[] | null
           rows?: number | null
           section_name?: string
           sort_order?: number
