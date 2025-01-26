@@ -6,24 +6,28 @@ import {
 
 const clients = [
   {
-    name: "Client 1",
-    logo: "/clients/placeholder.svg", // Will be replaced once logos are uploaded to /clients folder
+    name: "SSB",
+    logo: "/clients/ssb.svg",
   },
   {
-    name: "Client 2",
-    logo: "/clients/placeholder.svg",
+    name: "Sykehuspartner",
+    logo: "/clients/sykehuspartner.svg",
   },
   {
-    name: "Client 3",
-    logo: "/clients/placeholder.svg",
+    name: "Norwegian",
+    logo: "/clients/norwegian.svg",
   },
   {
-    name: "Client 4",
-    logo: "/clients/placeholder.svg",
+    name: "Altinn",
+    logo: "/clients/altinn.svg",
   },
   {
-    name: "Client 5",
-    logo: "/clients/placeholder.svg",
+    name: "NHN",
+    logo: "/clients/nhn.svg",
+  },
+  {
+    name: "NOV",
+    logo: "/clients/nov2.svg",
   },
 ];
 
