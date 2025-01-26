@@ -1,0 +1,32 @@
+import ClientCard from './ClientCard';
+import type { Database } from '@/integrations/supabase/types';
+
+type Client = Database['public']['Tables']['clients']['Row'];
+
+interface ClientGridProps {
+  clients: Client[];
+  columns: number;
+  rows: number;
+}
+
+const ClientGrid = ({ clients, columns, rows }: ClientGridProps) => {
+  return (
+    <div 
+      className="grid gap-4"
+      style={{
+        gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
+        gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`
+      }}
+    >
+      {clients.map((client) => (
+        <ClientCard
+          key={client.id}
+          name={client.name}
+          logoUrl={client.logo_url}
+        />
+      ))}
+    </div>
+  );
+};
+
+export default ClientGrid;
