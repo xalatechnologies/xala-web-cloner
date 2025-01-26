@@ -1,5 +1,5 @@
-import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
-import { Configuration, OpenAIApi } from 'https://esm.sh/openai@3.3.0'
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+import "https://deno.land/x/xhr@0.1.0/mod.ts"
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -21,10 +21,6 @@ serve(async (req) => {
       throw new Error('Missing required parameters')
     }
 
-    const openai = new OpenAIApi(new Configuration({
-      apiKey: Deno.env.get('OPENAI_API_KEY')
-    }))
-
     const languageContext = language === 'no' ? 
       "Respond in Norwegian (Bokmål). Use a professional and modern tone suitable for a technology company website." :
       "Respond in English. Use a professional and modern tone suitable for a technology company website."
@@ -41,14 +37,30 @@ serve(async (req) => {
 
     console.log('Sending request to OpenAI with prompt:', prompt)
 
-    const completion = await openai.createChatCompletion({
-      model: 'gpt-4',
-      messages: [{ role: 'user', content: prompt }],
-      temperature: 0.7,
-      max_tokens: 200,
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${Deno.env.get('OPENAI_API_KEY')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o-mini',
+        messages: [
+          { role: 'user', content: prompt }
+        ],
+        temperature: 0.7,
+        max_tokens: 200,
+      }),
     })
 
-    const enhancedText = completion.data.choices[0].message?.content?.trim()
+    if (!response.ok) {
+      const error = await response.text()
+      console.error('OpenAI API error:', error)
+      throw new Error(`OpenAI API error: ${error}`)
+    }
+
+    const data = await response.json()
+    const enhancedText = data.choices[0].message.content.trim()
 
     console.log('Received enhanced text:', enhancedText)
 
