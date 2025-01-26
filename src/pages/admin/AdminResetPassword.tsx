@@ -12,7 +12,7 @@ const AdminResetPassword = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const accessToken = searchParams.get('token');
+  const accessToken = searchParams.get('access_token');
 
   const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
