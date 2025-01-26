@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -9,10 +9,19 @@ const AdminResetPassword = () => {
   const [email, setEmail] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const accessToken = searchParams.get('access_token');
+  const [accessToken, setAccessToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Parse the hash fragment to get the access token
+    const hashFragment = window.location.hash.substring(1); // Remove the # character
+    const params = new URLSearchParams(hashFragment);
+    const token = params.get('access_token');
+    if (token) {
+      setAccessToken(token);
+    }
+  }, []);
 
   const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
