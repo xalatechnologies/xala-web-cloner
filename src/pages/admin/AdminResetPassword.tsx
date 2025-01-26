@@ -15,11 +15,16 @@ const AdminResetPassword = () => {
 
   useEffect(() => {
     // Parse the hash fragment to get the access token
-    const hashFragment = window.location.hash.substring(1); // Remove the # character
+    const hashFragment = window.location.hash.substring(1);
     const params = new URLSearchParams(hashFragment);
     const token = params.get('access_token');
     if (token) {
       setAccessToken(token);
+      // Set the session with the access token
+      supabase.auth.setSession({
+        access_token: token,
+        refresh_token: '',
+      });
     }
   }, []);
 
@@ -29,9 +34,9 @@ const AdminResetPassword = () => {
 
     try {
       if (accessToken) {
-        // Update password if we have an access token
+        // Update password using the access token
         const { error } = await supabase.auth.updateUser({
-          password: newPassword
+          password: newPassword,
         });
 
         if (error) throw error;
