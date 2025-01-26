@@ -97,17 +97,23 @@ const Navbar = () => {
 
       {/* Fullscreen Menu Overlay */}
       <div 
-        className={`fixed inset-0 bg-gradient-to-br from-xala-primary/95 via-xala-secondary/95 to-xala-primary/95 backdrop-blur-lg transform transition-transform duration-300 ease-in-out ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed inset-0 bg-gradient-to-br from-xala-primary/95 via-xala-secondary/95 to-xala-primary/95 backdrop-blur-lg transform transition-all duration-500 ease-in-out ${
+          isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
         }`}
       >
         <div className="flex flex-col h-full justify-center items-center space-y-8 p-4">
-          {sections.map((section) => (
+          {sections.map((section, index) => (
             <a
               key={section.name}
               href={section.href}
               onClick={() => setIsOpen(false)}
               className="text-4xl font-bold text-xala-text hover:text-xala-accent transform transition-all duration-300 hover:scale-110 hover:translate-x-2 relative group"
+              style={{ 
+                animationDelay: `${index * 100}ms`,
+                opacity: isOpen ? 1 : 0,
+                transform: isOpen ? 'translateX(0)' : 'translateX(20px)',
+                transition: `opacity 500ms ease ${index * 100}ms, transform 500ms ease ${index * 100}ms`
+              }}
             >
               {section.name}
               <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-xala-accent transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
