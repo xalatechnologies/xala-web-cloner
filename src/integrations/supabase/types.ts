@@ -396,6 +396,7 @@ export type Database = {
           href: string
           id: string
           language: Database["public"]["Enums"]["supported_language"]
+          location: string
           name: string
           parent_id: string | null
           sort_order: number
@@ -406,6 +407,7 @@ export type Database = {
           href: string
           id?: string
           language?: Database["public"]["Enums"]["supported_language"]
+          location?: string
           name: string
           parent_id?: string | null
           sort_order?: number
@@ -416,6 +418,7 @@ export type Database = {
           href?: string
           id?: string
           language?: Database["public"]["Enums"]["supported_language"]
+          location?: string
           name?: string
           parent_id?: string | null
           sort_order?: number

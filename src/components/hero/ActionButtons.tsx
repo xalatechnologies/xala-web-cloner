@@ -20,7 +20,7 @@ const ActionButtons = ({ onSectionClick }: ActionButtonsProps) => {
         .from('menu_items')
         .select('*')
         .eq('language', i18n.language as Database['public']['Enums']['supported_language'])
-        .in('href', ['/contact', '/work-process', '/about'])
+        .eq('location', 'hero')
         .order('sort_order');
       
       if (error) {
