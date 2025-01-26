@@ -3,6 +3,9 @@ import { useTranslation } from "react-i18next";
 import { useSection } from "@/hooks/use-section";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import type { Database } from '@/integrations/supabase/types';
+
+type SupportedLanguage = Database['public']['Enums']['supported_language'];
 
 const iconMap = {
   Code2,
@@ -20,13 +23,16 @@ const Technologies = () => {
   const { data: technologies = [] } = useQuery({
     queryKey: ['technologies', i18n.language],
     queryFn: async () => {
+      const currentLanguage = i18n.language.toLowerCase() as SupportedLanguage;
+      console.log('Fetching technologies for language:', currentLanguage);
+      
       const { data: techData, error } = await supabase
         .from('technologies')
         .select(`
           *,
           technology_tools(*)
         `)
-        .eq('language', i18n.language.toLowerCase())
+        .eq('language', currentLanguage)
         .order('sort_order', { ascending: true });
 
       if (error) {
