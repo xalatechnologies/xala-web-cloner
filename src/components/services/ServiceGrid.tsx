@@ -5,9 +5,10 @@ import { Tables } from "@/integrations/supabase/types";
 interface ServiceGridProps {
   services: Tables<'services'>[];
   initialRows?: number;
+  cols?: number;
 }
 
-const ServiceGrid = ({ services, initialRows }: ServiceGridProps) => {
+const ServiceGrid = ({ services, initialRows, cols }: ServiceGridProps) => {
   const serviceCards = services.map((service) => (
     <ServiceCard
       key={service.id}
@@ -21,6 +22,7 @@ const ServiceGrid = ({ services, initialRows }: ServiceGridProps) => {
     <ExpandableGrid 
       items={serviceCards}
       initialRows={initialRows}
+      cols={cols}
     />
   );
 };

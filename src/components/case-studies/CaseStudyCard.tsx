@@ -6,9 +6,11 @@ interface CaseStudyCardProps {
   description: string;
   imageUrl: string;
   icon?: string;
+  link?: string;
+  metrics?: any[];
 }
 
-const CaseStudyCard = ({ title, description, imageUrl, icon }: CaseStudyCardProps) => {
+const CaseStudyCard = ({ title, description, imageUrl, icon, link, metrics }: CaseStudyCardProps) => {
   return (
     <Card 
       className="group h-full relative overflow-hidden bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm 

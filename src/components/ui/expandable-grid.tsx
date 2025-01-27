@@ -5,13 +5,14 @@ import { ChevronDown } from 'lucide-react';
 interface ExpandableGridProps {
   items: React.ReactNode[];
   initialRows?: number;
+  cols?: number;
 }
 
-const ExpandableGrid = ({ items, initialRows = 1 }: ExpandableGridProps) => {
+const ExpandableGrid = ({ items, initialRows = 1, cols = 3 }: ExpandableGridProps) => {
   const itemsPerRow = {
     sm: 1,  // Mobile: 1 item per row
     md: 2,  // Tablet: 2 items per row
-    lg: 3,  // Desktop: 3 items per row
+    lg: cols,  // Desktop: 3 items per row
   };
 
   const maxItemsPerRow = Math.max(...Object.values(itemsPerRow));
@@ -25,7 +26,7 @@ const ExpandableGrid = ({ items, initialRows = 1 }: ExpandableGridProps) => {
 
   return (
     <div className="space-y-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-${cols} gap-8`}>
         {visibleItems.map((item, index) => (
           <div key={index} className="animate-fade-in" style={{
             animationDelay: `${index * 0.1}s`

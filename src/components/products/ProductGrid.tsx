@@ -4,9 +4,11 @@ import type { Tables } from '@/integrations/supabase/types';
 
 interface ProductGridProps {
   products: Tables<'products'>[];
+  initialRows?: number;
+  cols?: number;
 }
 
-const ProductGrid = ({ products }: ProductGridProps) => {
+const ProductGrid = ({ products, initialRows = 1, cols = 3 }: ProductGridProps) => {
   const productCards = products.map((product) => (
     <ProductCard
       key={product.id}
@@ -20,7 +22,8 @@ const ProductGrid = ({ products }: ProductGridProps) => {
   return (
     <ExpandableGrid 
       items={productCards}
-      initialRows={1}
+      initialRows={initialRows}
+      cols={cols}
     />
   );
 };

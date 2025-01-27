@@ -9,9 +9,10 @@ type Technology = Database['public']['Tables']['technologies']['Row'] & {
 interface TechnologyGridProps {
   technologies: Technology[];
   initialRows?: number;
+  cols?: number;
 }
 
-const TechnologyGrid = ({ technologies, initialRows }: TechnologyGridProps) => {
+const TechnologyGrid = ({ technologies, initialRows = 1, cols = 3 }: TechnologyGridProps) => {
   const technologyCards = technologies.map((tech) => (
     <TechnologyCard
       key={tech.id}
@@ -26,6 +27,7 @@ const TechnologyGrid = ({ technologies, initialRows }: TechnologyGridProps) => {
     <ExpandableGrid 
       items={technologyCards}
       initialRows={initialRows}
+      cols={cols}
     />
   );
 };

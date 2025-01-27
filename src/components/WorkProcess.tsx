@@ -146,29 +146,6 @@ const WorkProcess = () => {
             {section?.description || t('workProcess.description')}
           </p>
         </div>
-
-        {shouldUseCarousel ? (
-          <Carousel
-            plugins={enableAutoscroll ? [plugin.current] : []}
-            className="w-full"
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-          >
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {processes?.map((process, index) => (
-                <CarouselItem 
-                  key={process.id}
-                  className="pl-2 md:pl-4"
-                  style={{ flex: `0 0 ${100 / columns}%` }}
-                >
-                  {renderProcessCard(process, index, processes.length)}
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
-        ) : (
           <div 
             className="grid gap-8"
             style={{
@@ -178,7 +155,6 @@ const WorkProcess = () => {
           >
             {processes?.map((process, index) => renderProcessCard(process, index, processes.length))}
           </div>
-        )}
       </div>
     </section>
   );

@@ -3,17 +3,17 @@ import { Github, Twitter, Linkedin } from 'lucide-react';
 const socialLinks = [
   {
     icon: <Github className="w-5 h-5" />,
-    href: "https://github.com",
+    href: "https://github.com/xalatechnologies",
     color: "hover:text-[#8B5CF6]"
   },
   {
     icon: <Twitter className="w-5 h-5" />,
-    href: "https://twitter.com",
+    href: "https://twitter.com/xalatechnologies",
     color: "hover:text-[#D946EF]"
   },
   {
     icon: <Linkedin className="w-5 h-5" />,
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/company/2558426",
     color: "hover:text-[#0EA5E9]"
   }
 ];

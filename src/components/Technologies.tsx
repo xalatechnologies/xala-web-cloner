@@ -56,14 +56,15 @@ const Technologies = () => {
 
     return (
       <TechnologyGrid 
-        technologies={technologies}
-        initialRows={2}
+        technologies={technologies} 
+        initialRows={section?.rows || 2}
+        cols={section?.columns || 3}
       />
     );
   };
 
   return (
-    <section className="py-20 bg-xala-primary">
+    <section className="py-20 bg-gradient-to-b from-xala-secondary via-xala-primary to-xala-secondary">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
