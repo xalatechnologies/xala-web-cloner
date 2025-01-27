@@ -11,12 +11,11 @@ const Services = () => {
   const { t, i18n } = useTranslation();
   const { data: section, isLoading: isSectionLoading } = useSection('services');
 
+  const currentLanguage = i18n.language.toLowerCase() as SupportedLanguage;
+
   const { data: services = [], isLoading: isServicesLoading } = useQuery({
-    queryKey: ['services', i18n.language],
+    queryKey: ['services', currentLanguage],
     queryFn: async () => {
-      const currentLanguage = i18n.language.toLowerCase() as SupportedLanguage;
-      console.log('Fetching services for language:', currentLanguage);
-      
       const { data, error } = await supabase
         .from('services')
         .select('*')
@@ -24,12 +23,11 @@ const Services = () => {
         .order('sort_order', { ascending: true });
 
       if (error) {
-        console.error('Error fetching services:', error);
-        throw error;
+        throw new Error('Failed to fetch services');
       }
 
       return data || [];
-    },
+    }
   });
 
   const isLoading = isSectionLoading || isServicesLoading;

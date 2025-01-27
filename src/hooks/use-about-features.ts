@@ -9,10 +9,9 @@ export function useAboutFeatures() {
   const { i18n } = useTranslation();
 
   return useQuery({
-    queryKey: ['aboutFeatures', i18n.language],
+    queryKey: ['about-features', i18n.language],
     queryFn: async () => {
       const currentLanguage = i18n.language.toLowerCase() as SupportedLanguage;
-      console.log('Fetching about features for language:', currentLanguage);
       
       const { data, error } = await supabase
         .from('about_features')
@@ -21,8 +20,7 @@ export function useAboutFeatures() {
         .order('sort_order', { ascending: true });
 
       if (error) {
-        console.error('Error fetching about features:', error);
-        throw error;
+        throw new Error('Failed to fetch about features');
       }
 
       return data || [];

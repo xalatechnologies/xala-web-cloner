@@ -1,5 +1,5 @@
 import React from 'react';
-import { Brain, CloudCog, Code2 } from 'lucide-react';
+import { Brain, CloudCog, Code2, QuestionMarkCircle } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import type { Tables, Enums } from '@/integrations/supabase/types';
@@ -17,29 +17,34 @@ type IconName = keyof typeof iconMap;
 
 const FeatureCards = () => {
   const { i18n } = useTranslation();
+  const currentLanguage = i18n.language;
 
-  const { data: features, isLoading } = useQuery({
-    queryKey: ['featured-services', i18n.language],
+  const { data: features = [], isLoading } = useQuery({
+    queryKey: ['featured-services', currentLanguage],
     queryFn: async () => {
-      console.log('Fetching featured services...');
-      
       const { data, error } = await supabase
         .from('services')
         .select('*')
         .eq('featured', true)
-        .eq('language', i18n.language.toLowerCase() as SupportedLanguage)
+        .eq('language', currentLanguage.toLowerCase() as SupportedLanguage)
         .order('sort_order')
         .limit(3);
-      
+
       if (error) {
-        console.error('Error fetching featured services:', error);
-        return [];
+        throw new Error('Failed to fetch featured services');
       }
-      
-      console.log('Fetched featured services:', data);
-      return data;
-    },
+
+      return data || [];
+    }
   });
+
+  const getIconComponent = (iconName: string) => {
+    const IconComponent = iconMap[iconName];
+    if (!IconComponent) {
+      return <QuestionMarkCircle className="w-6 h-6" />;
+    }
+    return <IconComponent className="w-6 h-6" />;
+  };
 
   if (isLoading) {
     return (
@@ -65,15 +70,10 @@ const FeatureCards = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto my-12 perspective-1000">
       {features?.map((feature, index) => {
-        const IconComponent = iconMap[feature.icon as IconName];
-        if (!IconComponent) {
-          console.warn(`Icon ${feature.icon} not found in iconMap`);
-          return null;
-        }
         return (
           <FeatureCard
             key={feature.id}
-            icon={<IconComponent className="w-12 h-12 text-xala-accent group-hover:scale-110 transition-transform duration-500" />}
+            icon={getIconComponent(feature.icon as IconName)}
             title={feature.title}
             description={feature.description}
             index={index}

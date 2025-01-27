@@ -14,23 +14,20 @@ const CoreProducts = () => {
   const currentLanguage = i18n.language.toLowerCase() as SupportedLanguage;
 
   const { data: products = [], isLoading: isProductsLoading } = useQuery({
-    queryKey: ['products', i18n.language],
+    queryKey: ['products', currentLanguage],
     queryFn: async () => {
-      console.log('Fetching products for language:', currentLanguage);
-      
       const { data, error } = await supabase
         .from('products')
         .select('*')
         .eq('language', currentLanguage)
         .order('sort_order', { ascending: true });
-      
+
       if (error) {
-        console.error('Error fetching products:', error);
-        throw error;
+        throw new Error('Failed to fetch products');
       }
 
       return data || [];
-    },
+    }
   });
 
   const isLoading = isSectionLoading || isProductsLoading;

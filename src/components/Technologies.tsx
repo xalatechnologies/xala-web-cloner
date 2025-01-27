@@ -15,23 +15,18 @@ const Technologies = () => {
     queryKey: ['technologies', i18n.language],
     queryFn: async () => {
       const currentLanguage = i18n.language.toLowerCase() as SupportedLanguage;
-      console.log('Fetching technologies for language:', currentLanguage);
       
-      const { data: techData, error } = await supabase
+      const { data, error } = await supabase
         .from('technologies')
-        .select(`
-          *,
-          technology_tools(*)
-        `)
+        .select('*')
         .eq('language', currentLanguage)
         .order('sort_order', { ascending: true });
 
       if (error) {
-        console.error('Error fetching technologies:', error);
-        throw error;
+        throw new Error('Failed to fetch technologies');
       }
 
-      return techData || [];
+      return data || [];
     },
   });
 

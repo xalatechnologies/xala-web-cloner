@@ -17,49 +17,44 @@ const AdminLogin = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
     setIsLoading(true);
-    setError(null);
 
     try {
-      console.log('Attempting login with email:', email);
       const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
 
       if (signInError) {
-        console.error('Sign in error:', signInError);
-        throw signInError;
+        setError('Invalid email or password');
+        return;
       }
 
-      if (signInData.user) {
-        console.log('User signed in:', signInData.user.id);
+      if (signInData?.user) {
         const { data: adminUser, error: adminError } = await supabase
-          .from('admin_users')
+          .from('admins')
           .select('*')
-          .eq('id', signInData.user.id)
-          .maybeSingle();
+          .eq('user_id', signInData.user.id)
+          .single();
 
         if (adminError) {
-          console.error('Admin check error:', adminError);
-          throw new Error('Error checking admin status');
+          setError('Error verifying admin status');
+          return;
         }
 
         if (adminUser) {
-          console.log('Admin user found:', adminUser);
           toast({
             title: "Success",
             description: "Welcome back!",
           });
           navigate('/admin/dashboard');
         } else {
-          console.error('No admin user found for ID:', signInData.user.id);
-          throw new Error('Unauthorized access');
+          setError('Access denied: Not an admin user');
         }
       }
     } catch (error) {
-      console.error('Login error:', error);
-      setError(error instanceof Error ? error.message : "Invalid credentials or unauthorized access");
+      setError('An unexpected error occurred');
     } finally {
       setIsLoading(false);
     }

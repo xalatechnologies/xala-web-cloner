@@ -26,8 +26,6 @@ export function useLocalizedData<T>({
   return useQuery<T[], Error>({
     queryKey: [queryKey, currentLanguage],
     queryFn: async (): Promise<T[]> => {
-      console.log(`Fetching ${table} for language:`, currentLanguage);
-      
       const query = supabase
         .from(table)
         .select(relationships ? `${select}, ${relationships}` : select)
@@ -37,8 +35,7 @@ export function useLocalizedData<T>({
       const { data, error } = await query;
 
       if (error) {
-        console.error(`Error fetching ${table}:`, error);
-        throw error;
+        throw new Error(`Failed to fetch ${table}`);
       }
 
       return (data || []) as T[];

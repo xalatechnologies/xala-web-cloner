@@ -13,7 +13,6 @@ export function useMenuItems() {
     queryKey: ['menuItems', i18n.language],
     queryFn: async () => {
       const currentLanguage = i18n.language.toLowerCase() as SupportedLanguage;
-      console.log('Fetching menu items for language:', currentLanguage);
       
       const { data, error } = await supabase
         .from('menu_items')
@@ -22,8 +21,7 @@ export function useMenuItems() {
         .order('sort_order', { ascending: true });
 
       if (error) {
-        console.error('Error fetching menu items:', error);
-        throw error;
+        throw new Error('Failed to fetch menu items');
       }
 
       return (data || []) as MenuItem[];

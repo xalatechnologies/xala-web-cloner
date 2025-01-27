@@ -15,7 +15,6 @@ const Footer = () => {
     queryKey: ['footer-menu', i18n.language],
     queryFn: async () => {
       const currentLang = i18n.language.toLowerCase() as SupportedLanguage;
-      console.log('Fetching footer menu items for language:', currentLang);
       
       const { data, error } = await supabase
         .from('menu_items')

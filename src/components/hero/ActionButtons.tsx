@@ -19,8 +19,6 @@ const ActionButtons = ({ onSectionClick }: ActionButtonsProps) => {
   const { data: buttons, isLoading } = useQuery({
     queryKey: ['hero-buttons', i18n.language],
     queryFn: async () => {
-      console.log('Fetching hero buttons for language:', i18n.language);
-      
       const { data, error } = await supabase
         .from('menu_items')
         .select('*')
@@ -29,7 +27,6 @@ const ActionButtons = ({ onSectionClick }: ActionButtonsProps) => {
         .order('sort_order');
 
       if (error) {
-        console.error('Error fetching hero buttons:', error);
         return [];
       }
 
@@ -38,11 +35,15 @@ const ActionButtons = ({ onSectionClick }: ActionButtonsProps) => {
   });
 
   const handleClick = (href: string) => {
-    console.log('Button clicked with href:', href);
-    // Remove the '#' if present at the start of the href
-    const sectionId = href.startsWith('#') ? href.substring(1) : href;
-    console.log('Navigating to section:', sectionId);
-    onSectionClick(sectionId);
+    if (href.startsWith('#')) {
+      const sectionId = href.substring(1);
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.open(href, '_blank');
+    }
   };
 
   if (isLoading) {

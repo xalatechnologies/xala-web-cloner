@@ -21,8 +21,6 @@ const Teams = () => {
   const { data: teamMembers = [], isLoading: isTeamLoading } = useQuery({
     queryKey: ['team-members', currentLanguage],
     queryFn: async () => {
-      console.log('Fetching team members for language:', currentLanguage);
-      
       const { data, error } = await supabase
         .from('team_members')
         .select('*')
@@ -30,8 +28,7 @@ const Teams = () => {
         .order('sort_order', { ascending: true });
 
       if (error) {
-        console.error('Error fetching team members:', error);
-        throw error;
+        throw new Error('Failed to fetch team members');
       }
 
       return data || [];

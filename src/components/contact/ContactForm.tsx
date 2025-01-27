@@ -30,26 +30,24 @@ export const ContactForm = () => {
   const enhanceText = async (field: string) => {
     setIsEnhancing(prev => ({ ...prev, [field]: true }));
     try {
-      const { data, error } = await supabase.functions.invoke('enhance-text', {
-        body: { text: formData[field as keyof typeof formData], type: field }
+      const response = await fetch('/api/enhance-text', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: formData[field as keyof typeof formData] }),
       });
 
-      if (error) throw error;
-
-      if (data.enhancedText) {
-        setFormData(prev => ({ ...prev, [field]: data.enhancedText }));
-        toast({
-          title: t('contact.form.enhance.success'),
-          description: t('contact.form.enhance.description'),
-        });
+      if (!response.ok) {
+        throw new Error('Failed to enhance text');
       }
-    } catch (error) {
-      console.error('Error enhancing text:', error);
+
+      const data = await response.json();
+      setFormData(prev => ({ ...prev, [field]: data.enhancedText }));
       toast({
-        title: t('contact.form.enhance.error'),
-        description: t('contact.form.enhance.errorDescription'),
-        variant: "destructive",
+        title: t('contact.form.enhance.success'),
+        description: t('contact.form.enhance.description'),
       });
+    } catch (error) {
+      throw new Error('Failed to enhance text');
     } finally {
       setIsEnhancing(prev => ({ ...prev, [field]: false }));
     }
@@ -62,6 +60,8 @@ export const ContactForm = () => {
     const currentLang = i18n.language.toLowerCase() as SupportedLanguage;
     
     try {
+      const enhancedMessage = await enhanceText('message');
+
       const { error } = await supabase
         .from('contact_submissions')
         .insert([{ ...formData, language: currentLang }]);
@@ -80,7 +80,6 @@ export const ContactForm = () => {
         message: ''
       });
     } catch (error) {
-      console.error('Error submitting form:', error);
       toast({
         title: t('contact.form.error.title'),
         description: t('contact.form.error.description'),

@@ -26,14 +26,14 @@ const Controls = ({ isDarkMode, language, onThemeToggle, onLanguageToggle }: Con
 
   return (
     <div className="flex items-center gap-4">
-      <Toggle
+     {/*  <Toggle
         aria-label="Toggle theme"
         pressed={isDarkMode}
         onPressedChange={onThemeToggle}
         className="hover:bg-xala-secondary/50"
       >
         {isDarkMode ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
-      </Toggle>
+      </Toggle> */}
 
       <Toggle
         aria-label="Toggle language"

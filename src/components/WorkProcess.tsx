@@ -21,7 +21,6 @@ const WorkProcess = () => {
     queryKey: ['work-processes', i18n.language],
     queryFn: async () => {
       const currentLanguage = i18n.language.toLowerCase() as "en" | "no";
-      console.log('Fetching work processes for language:', currentLanguage);
       
       let query = await supabase
         .from('work_processes')
@@ -30,7 +29,6 @@ const WorkProcess = () => {
         .order('step_number', { ascending: true });
 
       if (query.error || !query.data?.length) {
-        console.log('Falling back to English for work processes');
         query = await supabase
           .from('work_processes')
           .select('*')
@@ -39,7 +37,6 @@ const WorkProcess = () => {
       }
 
       if (query.error) {
-        console.error('Error fetching work processes:', query.error);
         throw query.error;
       }
 

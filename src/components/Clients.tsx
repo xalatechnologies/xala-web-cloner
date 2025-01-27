@@ -9,20 +9,19 @@ const Clients = () => {
   const { t } = useTranslation();
   const { data: section, isLoading: isSectionLoading } = useSection('clients');
 
-  const { data: clients, isLoading: isClientsLoading } = useQuery({
+  const { data: clients = [], isLoading: isClientsLoading } = useQuery({
     queryKey: ['clients'],
     queryFn: async () => {
       const { data, error } = await supabase
         .from('clients')
         .select('*')
         .order('sort_order', { ascending: true });
-      
+
       if (error) {
-        console.error('Error fetching clients:', error);
-        throw error;
+        throw new Error('Failed to fetch clients');
       }
-      
-      return data;
+
+      return data || [];
     }
   });
 
