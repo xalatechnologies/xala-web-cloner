@@ -12,7 +12,7 @@ interface TeamMemberProps {
 const TeamMemberCard = ({ name, role, description, imageUrl, linkedinUrl, email }: TeamMemberProps) => {
   return (
     <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 p-8 transition-all duration-500 hover:border-xala-accent/50 hover:shadow-2xl hover:shadow-xala-accent/10">
-      <div className="relative aspect-square mb-8 overflow-hidden rounded-xl bg-gradient-to-br from-xala-secondary to-xala-primary">
+      <div className="relative h-[272px] w-[272px] mx-auto mb-8 overflow-hidden rounded-xl bg-gradient-to-br from-xala-secondary to-xala-primary">
         <img
           src={imageUrl}
           alt={name}
@@ -25,7 +25,7 @@ const TeamMemberCard = ({ name, role, description, imageUrl, linkedinUrl, email 
         <h3 className="text-2xl font-bold text-xala-accent mb-3">{name}</h3>
         <p className="text-xala-text/90 font-semibold mb-4 text-lg">{role}</p>
         {description && (
-          <p className="text-sm text-xala-text/70 line-clamp-4 group-hover:line-clamp-none transition-all duration-500">
+          <p className="text-sm text-xala-text/70 line-clamp-3 group-hover:line-clamp-none transition-all duration-500">
             {description}
           </p>
         )}

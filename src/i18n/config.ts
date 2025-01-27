@@ -152,7 +152,17 @@ i18n
             somethingWentWrong: "Something went wrong",
             pageNotFound: "Page Not Found",
             pageNotFoundDescription: "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
-          }
+          },
+          cookies: {
+            title: "Cookie-policy",
+          },
+          privacy: {
+            title: "Privacy-policy",
+          },
+          terms: {
+            title: "Terms-of-Service",
+          },
+          lastUpdated: "last-updated"
         }
       },
       no: {
@@ -299,7 +309,17 @@ i18n
             somethingWentWrong: "Noe gikk galt",
             pageNotFound: "Siden ikke funnet",
             pageNotFoundDescription: "Siden du leter etter kan være fjernet, navnet er endret eller er midlertidig utilgjengelig."
-          }
+          },
+          cookies: {
+            title: "Cookie-policy",
+          },
+          privacy: {
+            title: "Personvernpolicy",
+          },
+          terms: {
+            title: "Brukervilkår",
+          },
+          lastUpdated: "Sist oppdatert"
         }
       }
     },
