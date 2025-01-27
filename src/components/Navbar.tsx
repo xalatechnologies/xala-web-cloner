@@ -6,10 +6,11 @@ import Controls from './navbar/Controls';
 import NavigationMenu from './navbar/NavigationMenu';
 import { Skeleton } from './ui/skeleton';
 import type { Database } from '@/integrations/supabase/types';
+import { useMenuItems } from '@/hooks/use-menu-items';
 
 type SupportedLanguage = Database['public']['Enums']['supported_language'];
 
-interface MenuItem {
+export interface MenuItem {
   id: string;
   name: string;
   href: string;
@@ -23,23 +24,7 @@ const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [language, setLanguage] = useState<'EN' | 'NO'>('NO');
 
-  const { data: menuItems, isLoading } = useQuery({
-    queryKey: ['menuItems', language.toLowerCase() as SupportedLanguage],
-    queryFn: async () => {
-      const currentLanguage = language.toLowerCase() as SupportedLanguage;
-      console.log('Fetching menu items for language:', currentLanguage);
-      
-      const { data, error } = await supabase
-        .from('menu_items')
-        .select('*')
-        .eq('language', currentLanguage)
-        .order('sort_order', { ascending: true });
-
-      if (error) throw error;
-      return data as MenuItem[];
-    },
-    enabled: !!language // Only run query when language is available
-  });
+  const { data: menuItems, isLoading } = useMenuItems();
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -91,10 +76,7 @@ const Navbar = () => {
             <NavigationMenu 
               isOpen={isOpen}
               setIsOpen={setIsOpen}
-              sections={menuItems?.map(item => ({
-                name: item.name,
-                href: item.href
-              })) || []}
+              items={menuItems || []}
             />
           </div>
         </div>

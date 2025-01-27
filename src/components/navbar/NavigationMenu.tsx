@@ -1,14 +1,16 @@
+import { Database } from '@/integrations/supabase/types';
 import { Menu, X } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { MenuItem } from '../Navbar';
 
 interface NavigationMenuProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-  sections: Array<{ name: string; href: string; }>;
+  items: MenuItem[];
 }
 
-const NavigationMenu = ({ isOpen, setIsOpen, sections }: NavigationMenuProps) => {
+const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const { t } = useTranslation();
@@ -60,10 +62,10 @@ const NavigationMenu = ({ isOpen, setIsOpen, sections }: NavigationMenuProps) =>
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid gap-6">
-            {sections.map((section, index) => (
+            {items.map((item, index) => (
               <a
-                key={section.name}
-                href={section.href}
+                key={item.name}
+                href={item.href}
                 onClick={() => setIsOpen(false)}
                 className="text-2xl font-bold text-xala-text hover:text-xala-accent transform transition-all duration-300 hover:translate-x-2 relative group"
                 style={{ 
@@ -73,7 +75,7 @@ const NavigationMenu = ({ isOpen, setIsOpen, sections }: NavigationMenuProps) =>
                   transition: `opacity 500ms ease ${index * 100}ms, transform 500ms ease ${index * 100}ms`
                 }}
               >
-                {t(getTranslationKey(section.name))}
+                {item.name}
                 <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-xala-accent transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
               </a>
             ))}

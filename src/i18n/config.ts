@@ -141,6 +141,17 @@ i18n
           clients: {
             title: "Our Clients",
             description: "Partnering with industry leaders to drive innovation and create impactful solutions."
+          },
+          common: {
+            goBack: "Go Back",
+            tryAgain: "Try Again",
+            goHome: "Go Home"
+          },
+          error: {
+            oops: "Oops!",
+            somethingWentWrong: "Something went wrong",
+            pageNotFound: "Page Not Found",
+            pageNotFoundDescription: "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
           }
         }
       },
@@ -277,6 +288,17 @@ i18n
           clients: {
             title: "Våre Kunder",
             description: "Samarbeider med bransjens ledere for å drive innovasjon og skape virkningsfulle løsninger."
+          },
+          common: {
+            goBack: "Tilbake",
+            tryAgain: "Prøv igjen",
+            goHome: "Hjem"
+          },
+          error: {
+            oops: "Oops!",
+            somethingWentWrong: "Noe gikk galt",
+            pageNotFound: "Siden ikke funnet",
+            pageNotFoundDescription: "Siden du leter etter kan være fjernet, navnet er endret eller er midlertidig utilgjengelig."
           }
         }
       }
