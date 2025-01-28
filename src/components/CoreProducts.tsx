@@ -11,7 +11,9 @@ type SupportedLanguage = Database['public']['Enums']['supported_language'];
 const CoreProducts = () => {
   const { t, i18n } = useTranslation();
   const { data: section, isLoading: isSectionLoading } = useSection('core-products');
-  const currentLanguage = i18n.language.toLowerCase() as SupportedLanguage;
+  
+  // Convert any English variant to 'en', otherwise use 'no'
+  const currentLanguage = i18n.language.toLowerCase().startsWith('en') ? 'en' : 'no' as SupportedLanguage;
 
   const { data: products = [], isLoading: isProductsLoading } = useQuery({
     queryKey: ['products', currentLanguage],
