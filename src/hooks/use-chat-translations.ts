@@ -10,6 +10,15 @@ export type ChatTranslations = {
   'chat.errors.failed_to_send': string;
 };
 
+const defaultTranslations: ChatTranslations = {
+  'chat.title': 'Chat',
+  'chat.status.thinking': 'Thinking...',
+  'chat.status.online': 'Online',
+  'chat.input.placeholder': 'Type a message...',
+  'chat.input.button': 'Chat',
+  'chat.errors.failed_to_send': 'Failed to send message'
+};
+
 export function useChatTranslations() {
   const { data, isLoading } = useQuery({
     queryKey: ['chat-translations'],
@@ -23,20 +32,13 @@ export function useChatTranslations() {
       if (error) throw error;
 
       return {
-        translations: data?.translations as ChatTranslations || {
-          'chat.title': 'Chat',
-          'chat.status.thinking': 'Thinking...',
-          'chat.status.online': 'Online',
-          'chat.input.placeholder': 'Type a message...',
-          'chat.input.button': 'Chat',
-          'chat.errors.failed_to_send': 'Failed to send message'
-        }
+        translations: (data?.translations || defaultTranslations) as ChatTranslations
       };
     }
   });
 
   return {
-    translations: data?.translations || {},
+    translations: data?.translations || defaultTranslations,
     isLoading
   };
 }

@@ -24,7 +24,8 @@ export function useChatMessages() {
 
   const sendMessageMutation = useMutation({
     mutationFn: async (message: Message) => {
-      const { data, error } = await supabase
+      // First save the user message
+      const { error: saveError } = await supabase
         .from('chat_messages')
         .insert([{
           id: message.id,
@@ -32,12 +33,48 @@ export function useChatMessages() {
           type: message.type,
           status: message.status,
           language: message.language,
-          sources: message.sources ? JSON.stringify(message.sources) : null,
           created_at: message.created_at
         }]);
 
-      if (error) throw error;
-      return data;
+      if (saveError) throw saveError;
+
+      // Then get AI response
+      const { data: aiResponse, error: aiError } = await supabase.functions.invoke('chat-ai', {
+        body: {
+          message: message.content,
+          language: message.language,
+          context: 'Xala Technologies is a technology consulting company specializing in custom software development, AI solutions, and digital transformation.'
+        }
+      });
+
+      if (aiError) throw aiError;
+
+      console.log('AI Response:', aiResponse);
+
+      // Save AI response
+      const aiMessage: Message = {
+        id: crypto.randomUUID(),
+        content: aiResponse.message,
+        type: 'assistant',
+        status: 'sent',
+        language: message.language,
+        created_at: new Date().toISOString()
+      };
+
+      const { error: saveAiError } = await supabase
+        .from('chat_messages')
+        .insert([{
+          id: aiMessage.id,
+          content: aiMessage.content,
+          type: aiMessage.type,
+          status: aiMessage.status,
+          language: aiMessage.language,
+          created_at: aiMessage.created_at
+        }]);
+
+      if (saveAiError) throw saveAiError;
+
+      return null;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['chat-messages'] });
@@ -47,7 +84,7 @@ export function useChatMessages() {
   return {
     messages: messagesQuery.data || [],
     isLoading: messagesQuery.isLoading,
-    error: messagesQuery.error,
+    error: messagesQuery.error as Error,
     sendMessage: sendMessageMutation.mutate,
   };
 }
