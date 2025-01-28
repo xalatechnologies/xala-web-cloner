@@ -1,5 +1,5 @@
 import { Message } from '@/types/chat';
-import { supabase } from './supabase';
+import { supabase } from '@/integrations/supabase/client';
 
 export async function saveMessage(message: Message) {
   const { data, error } = await supabase

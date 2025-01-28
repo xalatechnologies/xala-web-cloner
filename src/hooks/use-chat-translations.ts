@@ -15,7 +15,7 @@ export function useChatTranslations() {
   const { i18n, t } = useTranslation();
   const currentLanguage = i18n.language.toLowerCase().startsWith('en') ? 'en' : 'no';
 
-  const { data: sections } = useQuery({
+  const { data: translationsData } = useQuery({
     queryKey: ['chat-translations', currentLanguage],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -30,11 +30,11 @@ export function useChatTranslations() {
         return null;
       }
 
-      return data;
+      return data?.translations as ChatTranslations;
     },
   });
 
-  const translations: ChatTranslations = sections?.translations as ChatTranslations || {
+  const translations: ChatTranslations = translationsData || {
     'chat.title': t('chat.title'),
     'chat.status.thinking': t('chat.status.thinking'),
     'chat.status.online': t('chat.status.online'),
@@ -45,6 +45,6 @@ export function useChatTranslations() {
 
   return {
     translations,
-    isLoading: !sections,
+    isLoading: !translationsData,
   };
 }

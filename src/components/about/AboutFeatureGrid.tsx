@@ -13,14 +13,16 @@ interface AboutFeatureGridProps {
 const AboutFeatureGrid = ({ features, initialRows = 1 }: AboutFeatureGridProps) => {
   return (
     <ExpandableGrid
-      items={features.map((feature, index) => (
-        <AboutFeatureCard
-          key={index}
-          icon={feature.icon}
-          title={feature.title}
-          description={feature.description}
-        />
-      ))}
+      items={features.map((feature, index) => ({
+        key: index.toString(),
+        content: (
+          <AboutFeatureCard
+            icon={feature.icon}
+            title={feature.title}
+            description={feature.description}
+          />
+        )
+      }))}
       initialRows={initialRows}
     />
   );

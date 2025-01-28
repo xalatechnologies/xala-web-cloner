@@ -35,7 +35,7 @@ export const ChatWidget = () => {
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.marginRight = sidebarWidth;
+      document.body.style.marginRight = `${sidebarWidth}px`;
     } else {
       document.body.style.marginRight = '0';
     }

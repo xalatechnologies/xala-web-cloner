@@ -1,7 +1,8 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
-import { Message, Language } from '@/types/chat';
+import { Message, Language, Source } from '@/types/chat';
+import { Json } from '@/integrations/supabase/types';
 
 export function useChatMessages() {
   const { i18n } = useTranslation();
@@ -38,7 +39,7 @@ export function useChatMessages() {
           type: message.type,
           status: message.status,
           language: currentLanguage,
-          sources: message.sources || null,
+          sources: message.sources as Json,
           created_at: message.created_at
         }]);
 
