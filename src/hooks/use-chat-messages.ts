@@ -17,7 +17,7 @@ export function useChatMessages() {
 
       return data.map(msg => ({
         ...msg,
-        sources: (msg.sources as Source[]) || []
+        sources: msg.sources ? (msg.sources as Source[]) : []
       })) as Message[];
     }
   });
