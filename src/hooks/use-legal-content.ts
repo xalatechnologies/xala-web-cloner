@@ -1,51 +1,37 @@
 import { useQuery } from '@tanstack/react-query';
-import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
-import type { Database } from '@/integrations/supabase/types';
+import type { Language } from '@/types/chat';
 
-export type LegalSection = Database['public']['Tables']['legal_sections']['Row'];
-export type LegalContent = Database['public']['Tables']['legal_content']['Row'];
-
-interface UseLegalContentProps {
-  type: 'privacy' | 'terms' | 'cookies';
-}
-
-export const useLegalContent = ({ type }: UseLegalContentProps) => {
-  const { i18n } = useTranslation();
-
-  return useQuery({
-    queryKey: ['legal', type, i18n.language],
+export function useLegalContent(type: string) {
+  const { data: sections } = useQuery({
+    queryKey: ['legal-sections', type],
     queryFn: async () => {
-      // First get all sections for this legal type
-      const { data: sections, error: sectionsError } = await supabase
+      const { data: sectionsData, error: sectionsError } = await supabase
         .from('legal_sections')
         .select('*')
         .eq('type', type)
-        .eq('language', i18n.language)
+        .eq('language', 'en' as Language)
         .order('sort_order', { ascending: true });
 
       if (sectionsError) throw sectionsError;
+      return sectionsData;
+    },
+  });
 
-      // Then get all content for these sections
-      const { data: content, error: contentError } = await supabase
+  const { data: content } = useQuery({
+    queryKey: ['legal-content', type],
+    queryFn: async () => {
+      const { data: contentData, error: contentError } = await supabase
         .from('legal_content')
         .select('*')
         .eq('type', type)
-        .eq('language', i18n.language)
+        .eq('language', 'en' as Language)
         .order('sort_order', { ascending: true });
 
       if (contentError) throw contentError;
-
-      // Organize content by section
-      const organizedContent = sections?.map(section => ({
-        ...section,
-        items: content?.filter(item => item.section_id === section.id) || []
-      }));
-
-      return {
-        sections: organizedContent || [],
-        lastUpdated: sections?.[0]?.updated_at || new Date().toISOString()
-      };
-    }
+      return contentData;
+    },
   });
-};
+
+  return { sections, content };
+}

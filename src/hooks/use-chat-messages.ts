@@ -33,14 +33,14 @@ export function useChatMessages() {
     mutationFn: async (message: Omit<Message, 'id' | 'updated_at'>) => {
       const { error } = await supabase
         .from('chat_messages')
-        .insert([{
+        .insert({
           content: message.content,
           type: message.type,
           status: message.status,
           language: message.language,
           sources: message.sources as unknown as Json,
           created_at: message.created_at
-        }]);
+        });
 
       if (error) throw error;
     },

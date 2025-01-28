@@ -4,7 +4,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { supabase } from '@/integrations/supabase/client';
-import type { Database } from '@/integrations/supabase/types';
 import { Loader2 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -16,13 +15,20 @@ import {
   FormField,
   FormItem,
   FormMessage,
-  FormLabel,
 } from "@/components/ui/form";
 import { useTranslation } from 'react-i18next';
+import type { Language } from '@/types/chat';
 
-type SupportedLanguage = Database['public']['Enums']['supported_language'];
+const RECAPTCHA_SITE_KEY = "6Leou8UqAAAAACFBWCzoatGrdSbZIIFwqKWStlWN";
 
-const RECAPTCHA_SITE_KEY = "6Leou8UqAAAAACFBWCzoatGrdSbZIIFwqKWStlWN"; // Replace with your actual site key
+const formSchema = z.object({
+  name: z.string().min(2),
+  email: z.string().email(),
+  subject: z.string().min(2),
+  message: z.string().min(10),
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 export const ContactForm = () => {
   const { toast } = useToast();
@@ -30,15 +36,6 @@ export const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-
-  const formSchema = z.object({
-    name: z.string().min(2, ({ minimum }) => t('contact.form.validation.name_min', { minimum })),
-    email: z.string().email(t('contact.form.validation.email_invalid')),
-    subject: z.string().min(2, ({ minimum }) => t('contact.form.validation.subject_min', { minimum })),
-    message: z.string().min(10, ({ minimum }) => t('contact.form.validation.message_min', { minimum })),
-  });
-
-  type FormValues = z.infer<typeof formSchema>;
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -53,7 +50,7 @@ export const ContactForm = () => {
   const onSubmit = async (values: FormValues) => {
     if (!captchaToken) {
       toast({
-        title: t('contact.form.error'),
+        title: t('contact.form.error.title'),
         description: t('contact.form.validation.captcha_required'),
         variant: "destructive",
       });
@@ -61,22 +58,19 @@ export const ContactForm = () => {
     }
 
     setIsSubmitting(true);
-    const languageCode = i18n.language.split('-')[0].toLowerCase();
+    const currentLang = i18n.language.split('-')[0].toLowerCase() as Language;
     
     try {
       const { error } = await supabase
         .from('contact_submissions')
-        .insert([{ 
-          ...values, 
-          language: languageCode,
-          captcha_token: captchaToken,
+        .insert({
+          ...values,
+          language: currentLang,
+          status: 'pending',
           created_at: new Date().toISOString()
-        }]);
+        });
 
-      if (error) {
-        console.error('Form submission error:', error);
-        throw error;
-      }
+      if (error) throw error;
 
       toast({
         title: t('contact.form.success.title'),
