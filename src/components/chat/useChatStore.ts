@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Message } from '@/types/chat';
+import { Message, MessageType, MessageStatus, Language } from '@/types/chat';
 import { v4 as uuidv4 } from 'uuid';
 import { AI_CONSULTANT_CONFIG } from '@/config/ai-consultant';
 
@@ -9,8 +9,8 @@ interface ChatStore {
   isOpen: boolean;
   thinking: boolean;
   context: string;
-  addMessage: (content: string, type: Message['type'], sources?: Message['sources']) => string;
-  updateMessageStatus: (id: string, status: Message['status']) => void;
+  addMessage: (content: string, type: MessageType) => string;
+  updateMessageStatus: (id: string, status: MessageStatus) => void;
   setLoading: (loading: boolean) => void;
   setOpen: (open: boolean) => void;
   setThinking: (thinking: boolean) => void;
@@ -23,34 +23,35 @@ export const useChatStore = create<ChatStore>((set) => ({
       id: uuidv4(),
       type: 'assistant',
       content: AI_CONSULTANT_CONFIG.quickResponses.greeting,
-      timestamp: new Date(),
+      status: 'sent',
+      language: 'en',
+      created_at: new Date().toISOString(),
     },
   ],
   isLoading: false,
   isOpen: false,
   thinking: false,
   context: AI_CONSULTANT_CONFIG.defaultContext,
-  addMessage: (content, type, sources) => {
+  addMessage: (content, type) => {
     const id = uuidv4();
+    const message: Message = {
+      id,
+      type,
+      content,
+      status: type === 'user' ? 'sending' : 'sent',
+      language: 'en',
+      created_at: new Date().toISOString(),
+    };
+    
     set((state) => ({
-      messages: [
-        ...state.messages,
-        {
-          id,
-          type,
-          content,
-          timestamp: new Date(),
-          ...(type === 'user' ? { status: 'sending' as const } : {}),
-          ...(type === 'assistant' ? { thinking: true, sources } : {}),
-        },
-      ],
+      messages: [...state.messages, message],
     }));
     return id;
   },
   updateMessageStatus: (id, status) =>
     set((state) => ({
       messages: state.messages.map((msg) =>
-        msg.id === id ? { ...msg, status, thinking: false } : msg
+        msg.id === id ? { ...msg, status } : msg
       ),
     })),
   setLoading: (loading) => set({ isLoading: loading }),
