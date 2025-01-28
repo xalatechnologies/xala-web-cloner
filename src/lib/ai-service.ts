@@ -61,135 +61,95 @@ function analyzeUserIntent(messages: Message[]): { intent: string; techStack: st
 
   // Determine primary intent
   let intent = 'general';
-  if (lastMessage.includes('how') || lastMessage.includes('implement')) {
-    intent = 'implementation';
-  } else if (lastMessage.includes('architecture') || lastMessage.includes('design')) {
-    intent = 'architecture';
-  } else if (lastMessage.includes('cost') || lastMessage.includes('price')) {
-    intent = 'pricing';
-  } else if (lastMessage.includes('time') || lastMessage.includes('long')) {
-    intent = 'timeline';
+  if (lastMessage.includes('website')) {
+    intent = 'website';
+  } else if (lastMessage.includes('app') || lastMessage.includes('application')) {
+    intent = 'application';
+  } else if (lastMessage.includes('ai') || lastMessage.includes('machine learning')) {
+    intent = 'ai';
+  } else if (lastMessage.includes('cloud') || lastMessage.includes('infrastructure')) {
+    intent = 'cloud';
+  } else if (lastMessage.includes('data') || lastMessage.includes('analytics')) {
+    intent = 'data';
   }
 
   return { intent, techStack, features };
 }
 
-function generateTechnicalResponse(intent: string, techStack: string[], features: string[]): string {
+function generateResponse(intent: string, techStack: string[], features: string[]): string {
   switch (intent) {
-    case 'implementation':
-      return `### Implementation Approach
+    case 'website':
+      return `I'd be happy to help you with your website project! To provide the best solution, could you tell me more about:
 
-#### Frontend Architecture
-${techStack.includes('react') ? '✓ React.js with Next.js for optimal performance and SEO' : '**Recommended: React.js with Next.js for:**'}
-- Server-side rendering for better performance
-- Static site generation for marketing pages
-- API routes for backend functionality
-${features.includes('real-time-updates') ? '- WebSocket integration for real-time features' : ''}
+1. What type of website are you looking to build? (e.g., corporate, e-commerce, portfolio)
+2. What are the key features you need? (e.g., content management, user authentication, payment processing)
+3. Do you have any specific design preferences or requirements?
 
-#### Backend Services
-${techStack.includes('node.js') ? '✓ Node.js with Express for:' : '**Recommended: Node.js with Express for:**'}
-- RESTful API development
-- GraphQL support for flexible data querying
-- Microservices architecture
-${features.includes('machine-learning') ? '- Python microservice for ML functionality' : ''}
+We specialize in creating modern, responsive websites using cutting-edge technologies like React and Next.js, ensuring excellent performance and user experience.`;
 
-#### Data Layer
-${techStack.includes('postgresql') ? '✓ PostgreSQL for:' : '**Recommended: PostgreSQL for:**'}
-- Relational data storage
-- ACID compliance
-- Complex queries
-${features.includes('caching') ? '- Redis for caching and performance' : ''}
+    case 'application':
+      return `Great! We can help you develop a custom application. To better understand your needs:
 
-Would you like me to elaborate on any of these components?`;
+1. Is this a web, mobile, or desktop application?
+2. What are the core functionalities you're looking for?
+3. Do you have any specific technology preferences?
 
-    case 'architecture':
-      return `### System Architecture
+We have extensive experience in building scalable applications using modern tech stacks and best practices.`;
 
-#### Infrastructure Layer
-\`\`\`mermaid
-graph TD
-    A[Client] --> B[CDN]
-    B --> C[Load Balancer]
-    C --> D[API Gateway]
-    D --> E[Services]
-    E --> F[Database]
-    E --> G[Cache]
-\`\`\`
+    case 'ai':
+      return `Excellent! We specialize in AI and machine learning solutions. To help you better:
 
-#### Key Components
-1. **Containerization**
-   - Docker for consistent deployment
-   - Kubernetes for orchestration
-   - ${features.includes('cloud-scaling') ? '✓ Auto-scaling configuration' : 'Manual scaling'}
+1. What specific AI capabilities are you looking for?
+2. Do you have existing data that needs to be processed?
+3. What are your expected outcomes?
 
-2. **Application Structure**
-   - Microservices architecture
-   - API Gateway pattern
-   - CDN integration
-   ${features.includes('caching') ? '- Distributed caching layer' : ''}
-
-3. **Security Measures**
-   - JWT authentication
-   - Role-based access control
-   ${features.includes('encryption') ? '- End-to-end encryption' : ''}
-   - Regular security audits
-
-Would you like to dive deeper into any of these areas?`;
+We can help with everything from custom model development to AI integration in your existing systems.`;
 
     default:
-      return `### Project Requirements Analysis
+      return `I understand you're interested in our services. To provide the most relevant assistance, could you tell me more about:
 
-To provide the most relevant technical recommendations, please share more details about:
+1. What specific challenge or need are you trying to address?
+2. Are there any particular technologies you're interested in?
+3. What are your timeline and budget considerations?
 
-1. **Scalability Requirements**
-   - Expected user load
-   - Growth projections
-   - Geographic distribution
-
-2. **Performance Expectations**
-   - Response time targets
-   - Concurrent user goals
-   - Data processing needs
-
-3. **Security Needs**
-   - Authentication requirements
-   - Data protection standards
-   - Compliance requirements
-
-4. **Integration Requirements**
-   - External systems
-   - APIs needed
-   - Data formats
-
-This will help me suggest the optimal technical approach using our stack.`;
+We offer a wide range of services including custom software development, AI solutions, cloud integration, and data analytics.`;
   }
 }
 
 export async function getAIResponse({ messages, context }: ConversationContext): Promise<AIResponse> {
   try {
-    const lastMessage = messages[messages.length - 1];
-    const sessionId = lastMessage.id.split('-')[0];
-    const { intent, techStack, features } = analyzeUserIntent(messages);
-    
-    // Update conversation memory with technical context
-    const memory = conversationMemory.get(sessionId) || {};
-    conversationMemory.set(sessionId, {
-      ...memory,
-      lastIntent: intent,
-      technicalContext: {
-        frontend: [...(memory.technicalContext?.frontend || []), ...techStack.filter(t => ['react', 'next.js'].includes(t))],
-        backend: [...(memory.technicalContext?.backend || []), ...techStack.filter(t => ['node.js', 'express', 'python'].includes(t))],
-        infrastructure: [...(memory.technicalContext?.infrastructure || []), ...techStack.filter(t => ['postgresql', 'mongodb'].includes(t))],
-        features: [...(memory.technicalContext?.features || []), ...features]
-      }
-    });
+    // Don't respond with greeting if it's not the first message
+    if (messages.length > 1) {
+      const lastMessage = messages[messages.length - 1];
+      const sessionId = lastMessage.id.split('-')[0];
+      const { intent, techStack, features } = analyzeUserIntent(messages);
+      
+      // Update conversation memory with technical context
+      const memory = conversationMemory.get(sessionId) || {};
+      conversationMemory.set(sessionId, {
+        ...memory,
+        lastIntent: intent,
+        technicalContext: {
+          frontend: [...(memory.technicalContext?.frontend || []), ...techStack.filter(t => ['react', 'next.js'].includes(t))],
+          backend: [...(memory.technicalContext?.backend || []), ...techStack.filter(t => ['node.js', 'express', 'python'].includes(t))],
+          infrastructure: [...(memory.technicalContext?.infrastructure || []), ...techStack.filter(t => ['postgresql', 'mongodb'].includes(t))],
+          features: [...(memory.technicalContext?.features || []), ...features]
+        }
+      });
 
-    // Generate contextual response
-    const response = generateTechnicalResponse(intent, techStack, features);
+      // Generate contextual response
+      const response = generateResponse(intent, techStack, features);
 
+      return {
+        content: response,
+        shouldStopThinking: intent !== 'general'
+      };
+    }
+
+    // Return greeting for first message
     return {
-      content: response,
-      shouldStopThinking: intent !== 'general'
+      content: AI_CONSULTANT_CONFIG.quickResponses.greeting,
+      shouldStopThinking: true
     };
 
   } catch (error) {
