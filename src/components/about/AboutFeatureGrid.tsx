@@ -3,7 +3,7 @@ import ExpandableGrid from '../ui/expandable-grid';
 
 interface AboutFeatureGridProps {
   features: {
-    icon: React.ReactNode;
+    icon: string;
     title: string;
     description: string;
   }[];

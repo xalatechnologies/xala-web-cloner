@@ -23,10 +23,12 @@ export const ChatWidget: FC = () => {
         content,
         type: 'user' as const,
         status: 'sending' as const,
+        language: 'en' as const,
+        created_at: new Date().toISOString(),
       };
 
       await sendMessage(message);
-      await updateMessageStatus({ id: message.id, status: 'sent' });
+      await updateMessageStatus(message.id, 'sent');
     } catch (error) {
       console.error(translations['chat.errors.failed_to_send'], error);
     }
@@ -34,7 +36,7 @@ export const ChatWidget: FC = () => {
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.marginRight = sidebarWidth;
+      document.body.style.marginRight = `${sidebarWidth}px`;
     } else {
       document.body.style.marginRight = '0';
     }
@@ -49,7 +51,6 @@ export const ChatWidget: FC = () => {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Gradient Border */}
             <div className="fixed top-0 right-[480px] z-50 h-screen w-1 bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary lg:block hidden" />
             
             <motion.div
