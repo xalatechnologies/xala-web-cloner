@@ -1,0 +1,134 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Bot, User } from 'lucide-react';
+import { Message } from '@/types/chat';
+import { cn } from '@/lib/utils';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
+interface ChatMessageProps {
+  message: Message;
+  isLastMessage?: boolean;
+}
+
+export function ChatMessage({ message, isLastMessage }: ChatMessageProps) {
+  const isUser = message.type === 'user';
+
+  const formatContent = (content: string) => {
+    // Replace \n with actual line breaks for markdown
+    return content.replace(/\\n/g, '\n');
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      className={cn(
+        'group flex w-full items-start gap-3',
+        isUser ? 'flex-row-reverse' : 'flex-row'
+      )}
+    >
+      {/* Avatar */}
+      <div
+        className={cn(
+          'flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-full',
+          isUser
+            ? 'bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary'
+            : 'bg-gray-100'
+        )}
+      >
+        {isUser ? (
+          <User className="h-4 w-4 text-white" />
+        ) : (
+          <Bot className="h-4 w-4 text-gray-600" />
+        )}
+      </div>
+
+      {/* Message Content */}
+      <div
+        className={cn(
+          'flex min-h-[40px] max-w-[80%] flex-col gap-1',
+          isUser ? 'items-end' : 'items-start'
+        )}
+      >
+        <div
+          className={cn(
+            'rounded-2xl px-4 py-3',
+            isUser
+              ? 'bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary text-white'
+              : 'bg-white border border-gray-200 text-black shadow-sm'
+          )}
+        >
+          {isUser ? (
+            <div className="text-sm whitespace-pre-line">{message.content}</div>
+          ) : (
+            <ReactMarkdown
+              className="prose prose-sm max-w-none text-black [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
+              remarkPlugins={[remarkGfm]}
+              components={{
+                p: ({ children }) => (
+                  <p className="mb-3 last:mb-0 leading-relaxed">{children}</p>
+                ),
+                ul: ({ children }) => (
+                  <ul className="mb-3 last:mb-0 pl-4 list-disc space-y-1.5">{children}</ul>
+                ),
+                ol: ({ children }) => (
+                  <ol className="mb-3 last:mb-0 pl-4 list-decimal space-y-1.5">{children}</ol>
+                ),
+                li: ({ children, ordered }) => (
+                  <li className="pl-1 marker:text-gray-500">
+                    <div className="inline">{children}</div>
+                  </li>
+                ),
+                a: ({ children, href }) => (
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline"
+                  >
+                    {children}
+                  </a>
+                ),
+              }}
+            >
+              {formatContent(message.content)}
+            </ReactMarkdown>
+          )}
+        </div>
+
+        {/* Sources if available */}
+        {message.sources && message.sources.length > 0 && (
+          <div className="flex flex-col space-y-1 mt-2">
+            <p className="text-xs text-gray-500">Sources:</p>
+            {message.sources.map((source, index) => (
+              <a
+                key={index}
+                href={source.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-blue-600 hover:underline"
+              >
+                {source.title}
+              </a>
+            ))}
+          </div>
+        )}
+
+        {/* Message Status */}
+        {message.status && (
+          <span
+            className={cn(
+              'text-xs',
+              message.status === 'error' ? 'text-red-500' : 'text-gray-400'
+            )}
+          >
+            {message.status === 'sending' && 'Sending...'}
+            {message.status === 'sent' && 'Sent'}
+            {message.status === 'error' && 'Failed to send'}
+          </span>
+        )}
+      </div>
+    </motion.div>
+  );
+}

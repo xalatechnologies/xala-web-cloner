@@ -1,5 +1,5 @@
 import React from 'react';
-import { Brain, CloudCog, Code2, QuestionMarkCircle } from 'lucide-react';
+import { Brain, CloudCog, Code2, HelpCircle } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import type { Tables, Enums } from '@/integrations/supabase/types';
@@ -41,7 +41,7 @@ const FeatureCards = () => {
   const getIconComponent = (iconName: string) => {
     const IconComponent = iconMap[iconName];
     if (!IconComponent) {
-      return <QuestionMarkCircle className="w-6 h-6" />;
+      return <HelpCircle className="w-6 h-6" />;
     }
     return <IconComponent className="w-6 h-6" />;
   };

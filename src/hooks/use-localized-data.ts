@@ -21,7 +21,8 @@ export function useLocalizedData<T>({
   enabled = true
 }: UseLocalizedDataOptions) {
   const { i18n } = useTranslation();
-  const currentLanguage = i18n.language.toLowerCase() as SupportedLanguage;
+  // Map any English variant to 'en', otherwise use 'no'
+  const currentLanguage = (i18n.language.toLowerCase().startsWith('en') ? 'en' : 'no') as SupportedLanguage;
 
   return useQuery<T[], Error>({
     queryKey: [queryKey, currentLanguage],

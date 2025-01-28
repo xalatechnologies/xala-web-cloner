@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AppProviders from './components/providers/AppProviders';
+import { GDPRNotification } from './components/gdpr/GDPRNotification';
+import { ChatWidget } from './components/chat/ChatWidget';
 import Home from './pages/Index';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Terms from './pages/Terms';
@@ -15,6 +17,8 @@ const App = () => {
           <Route path="/terms" element={<Terms />} />
           <Route path="/cookies" element={<CookiesPolicy />} />
         </Routes>
+        <GDPRNotification />
+        <ChatWidget />
       </Router>
     </AppProviders>
   );
