@@ -17,7 +17,7 @@ export function useChatMessages() {
 
       return data.map(msg => ({
         ...msg,
-        sources: msg.sources as Source[] || undefined
+        sources: msg.sources ? (msg.sources as Source[]) : undefined
       })) as Message[];
     },
   });
@@ -81,10 +81,21 @@ export function useChatMessages() {
     },
   });
 
+  const updateMessageStatus = async (params: { id: string; status: Message['status'] }) => {
+    const { error } = await supabase
+      .from('chat_messages')
+      .update({ status: params.status })
+      .eq('id', params.id);
+
+    if (error) throw error;
+    await queryClient.invalidateQueries({ queryKey: ['chat-messages'] });
+  };
+
   return {
     messages: messagesQuery.data || [],
     isLoading: messagesQuery.isLoading,
     error: messagesQuery.error as Error,
     sendMessage: sendMessageMutation.mutate,
+    updateMessageStatus
   };
 }
