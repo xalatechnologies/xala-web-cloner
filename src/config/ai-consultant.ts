@@ -20,6 +20,8 @@ Remember to:
     max_tokens: 1000,
   },
 
+  defaultContext: 'general',
+
   quickResponses: {
     greeting: `Hi! I'm your AI assistant. How can I help you today?`,
     
