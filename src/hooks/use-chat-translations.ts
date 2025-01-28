@@ -3,27 +3,27 @@ import { supabase } from '@/integrations/supabase/client';
 import type { ChatTranslations } from '@/types/chat';
 
 const defaultTranslations: ChatTranslations = {
-  'chat.title': 'Chat with AI',
-  'chat.status.thinking': 'AI is thinking...',
+  'chat.title': 'Chat with us',
+  'chat.status.thinking': 'Thinking...',
   'chat.status.online': 'Online',
   'chat.input.placeholder': 'Type your message...',
-  'chat.input.button': 'Send',
-  'chat.errors.failed_to_send': 'Failed to send message'
+  'chat.button.send': 'Send',
+  'chat.button.retry': 'Retry'
 };
 
-export function useChatTranslations() {
-  const { data } = useQuery({
-    queryKey: ['chat-translations'],
+export function useChatTranslations(language: string = 'en') {
+  return useQuery({
+    queryKey: ['chat-translations', language],
     queryFn: async () => {
       const { data: translations, error } = await supabase
-        .from('sections')
+        .from('content')
         .select('translations')
-        .eq('section_name', 'chat')
-        .eq('language', 'en')
-        .maybeSingle();
+        .eq('language', language)
+        .eq('type', 'chat')
+        .single();
 
       if (error) {
-        console.error('Error fetching translations:', error);
+        console.error('Error fetching chat translations:', error);
         return defaultTranslations;
       }
 
@@ -32,8 +32,4 @@ export function useChatTranslations() {
         : defaultTranslations;
     }
   });
-
-  return data || defaultTranslations;
 }
-
-export type { ChatTranslations };

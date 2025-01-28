@@ -6,7 +6,7 @@ import type { Json } from '@/integrations/supabase/types';
 export function useChatMessages() {
   const queryClient = useQueryClient();
 
-  const { data: messages = [] } = useQuery({
+  const { data: messages = [], isLoading } = useQuery({
     queryKey: ['chat-messages'],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -23,8 +23,8 @@ export function useChatMessages() {
     }
   });
 
-  const { mutate: sendMessage } = useMutation({
-    mutationFn: async (message: Omit<Message, 'id'>) => {
+  const { mutateAsync: addMessage } = useMutation({
+    mutationFn: async (message: Message) => {
       const { data, error } = await supabase
         .from('chat_messages')
         .insert([{
@@ -35,16 +35,19 @@ export function useChatMessages() {
           sources: message.sources as unknown as Json,
           created_at: message.created_at
         }])
-        .select()
-        .single();
+        .select();
 
       if (error) throw error;
-      return data;
+      return data[0];
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['chat-messages'] });
     }
   });
 
-  return { messages, sendMessage };
+  return {
+    messages,
+    isLoading,
+    addMessage
+  };
 }
