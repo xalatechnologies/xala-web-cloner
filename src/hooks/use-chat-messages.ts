@@ -1,6 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import type { Message, Source } from '@/types/chat';
+import type { Json } from '@/integrations/supabase/types';
 
 export function useChatMessages() {
   const queryClient = useQueryClient();
@@ -17,7 +18,7 @@ export function useChatMessages() {
 
       return data.map(msg => ({
         ...msg,
-        sources: msg.sources ? (msg.sources as Source[]) : []
+        sources: msg.sources ? (msg.sources as unknown as Source[]) : []
       })) as Message[];
     }
   });
@@ -31,7 +32,7 @@ export function useChatMessages() {
           type: message.type,
           status: message.status,
           language: message.language,
-          sources: message.sources || [],
+          sources: message.sources as unknown as Json,
           created_at: message.created_at
         }])
         .select()

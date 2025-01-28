@@ -27,7 +27,9 @@ export function useChatTranslations() {
         return defaultTranslations;
       }
 
-      return (translations?.translations as ChatTranslations) || defaultTranslations;
+      return translations?.translations 
+        ? (translations.translations as unknown as ChatTranslations) 
+        : defaultTranslations;
     }
   });
 
