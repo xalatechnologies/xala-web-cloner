@@ -8,7 +8,7 @@ export interface Message {
   content: string;
   type: 'user' | 'assistant';
   status: 'sending' | 'sent' | 'error';
-  language: string;
+  language: 'en' | 'no';
   sources?: Source[];
   created_at: string;
   updated_at?: string;

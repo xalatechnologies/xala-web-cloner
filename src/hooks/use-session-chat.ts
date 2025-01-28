@@ -1,21 +1,12 @@
 import { useState, useCallback } from 'react';
 import { generateResponse } from '@/api/llm/chat';
 import { useChatStore } from '@/components/chat/useChatStore';
-import { useTranslation } from 'react-i18next';
-
-interface Message {
-  id: string;
-  content: string;
-  type: 'user' | 'assistant';
-  status: 'sending' | 'sent' | 'error';
-  timestamp: Date;
-}
+import type { Message } from '@/types/chat';
 
 export function useSessionChat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const { setThinking } = useChatStore();
-  const { i18n } = useTranslation();
 
   const updateMessageStatus = useCallback((messageId: string, status: Message['status']) => {
     setMessages(prev => prev.map(msg => 
@@ -23,34 +14,38 @@ export function useSessionChat() {
     ));
   }, []);
 
-  const sendMessage = useCallback(async (message: Omit<Message, 'status' | 'timestamp'>) => {
-    const timestamp = new Date();
-    const messageId = `${timestamp.getTime()}-${Math.random()}`;
+  const sendMessage = useCallback(async (content: string) => {
+    const messageId = crypto.randomUUID();
+    const timestamp = new Date().toISOString();
 
     // Add user message
-    setMessages(prev => [...prev, { 
-      ...message, 
+    const userMessage: Message = {
       id: messageId,
+      content,
+      type: 'user',
       status: 'sending',
-      timestamp 
-    }]);
+      language: 'en',
+      created_at: timestamp
+    };
 
+    setMessages(prev => [...prev, userMessage]);
     setThinking(true);
     setIsLoading(true);
 
     try {
-      const response = await generateResponse(message.content, i18n.language);
+      const response = await generateResponse(content);
       
       // Add assistant response
-      setMessages(prev => [...prev, {
-        id: `${messageId}-response`,
+      const assistantMessage: Message = {
+        id: crypto.randomUUID(),
         content: response.message,
         type: 'assistant',
         status: 'sent',
-        timestamp: new Date()
-      }]);
+        language: 'en',
+        created_at: new Date().toISOString()
+      };
 
-      // Update original message status
+      setMessages(prev => [...prev, assistantMessage]);
       updateMessageStatus(messageId, 'sent');
     } catch (error) {
       console.error('Failed to send message:', error);
@@ -59,12 +54,11 @@ export function useSessionChat() {
       setThinking(false);
       setIsLoading(false);
     }
-  }, [i18n.language, setThinking, updateMessageStatus]);
+  }, [setThinking, updateMessageStatus]);
 
   return {
     messages,
     isLoading,
-    sendMessage,
-    updateMessageStatus
+    sendMessage
   };
 }

@@ -1,46 +1,34 @@
-import { useQuery } from "@tanstack/react-query";
-import { useTranslation } from "react-i18next";
-import { supabase } from "@/integrations/supabase/client";
-import type { SupportedLanguage } from "@/types/section";
+import { useQuery } from '@tanstack/react-query';
+import { supabase } from '@/integrations/supabase/client';
+import type { Language } from '@/types/chat';
 
-interface UseLocalizedDataOptions {
-  queryKey: string;
-  table: string;
-  select?: string;
-  relationships?: string;
-  orderBy?: string;
-  enabled?: boolean;
-}
+export function useLocalizedData<T>(
+  tableName: string,
+  language: Language = 'en',
+  options: {
+    select?: string;
+    orderBy?: string;
+    orderDirection?: 'asc' | 'desc';
+  } = {}
+) {
+  const { select = '*', orderBy = 'sort_order', orderDirection = 'asc' } = options;
 
-export function useLocalizedData<T>({
-  queryKey,
-  table,
-  select = '*',
-  relationships,
-  orderBy = 'sort_order',
-  enabled = true
-}: UseLocalizedDataOptions) {
-  const { i18n } = useTranslation();
-  // Map any English variant to 'en', otherwise use 'no'
-  const currentLanguage = (i18n.language.toLowerCase().startsWith('en') ? 'en' : 'no') as SupportedLanguage;
-
-  return useQuery<T[], Error>({
-    queryKey: [queryKey, currentLanguage],
-    queryFn: async (): Promise<T[]> => {
+  return useQuery({
+    queryKey: ['localized-data', tableName, language, select, orderBy, orderDirection],
+    queryFn: async () => {
       const query = supabase
-        .from(table)
-        .select(relationships ? `${select}, ${relationships}` : select)
-        .eq('language', currentLanguage)
-        .order(orderBy, { ascending: true });
+        .from(tableName)
+        .select(select)
+        .eq('language', language)
+        .order(orderBy, { ascending: orderDirection === 'asc' });
 
       const { data, error } = await query;
 
       if (error) {
-        throw new Error(`Failed to fetch ${table}`);
+        throw error;
       }
 
-      return (data || []) as T[];
-    },
-    enabled: enabled && !!i18n.language
+      return data as T[];
+    }
   });
 }
