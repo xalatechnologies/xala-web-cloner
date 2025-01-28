@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useChatStore } from './useChatStore';
-import { useChatMessages } from '@/hooks/use-chat-messages';
+import { useSessionChat } from '@/hooks/use-session-chat';
 import { useChatTranslations } from '@/hooks/use-chat-translations';
 import { useChatSidebar } from '@/hooks/use-chat-sidebar';
 import { Chat } from './Chat';
@@ -12,7 +12,7 @@ import type { FC } from 'react';
 
 export const ChatWidget: FC = () => {
   const { isOpen, thinking, setOpen } = useChatStore();
-  const { messages, isLoading, sendMessage, updateMessageStatus } = useChatMessages();
+  const { messages, isLoading, sendMessage, updateMessageStatus } = useSessionChat();
   const { translations } = useChatTranslations();
   const { sidebarWidth } = useChatSidebar();
 

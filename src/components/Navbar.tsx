@@ -36,10 +36,15 @@ const Navbar = () => {
 
   if (isLoading) {
     return (
-      <nav className="fixed w-full z-50 backdrop-blur-md bg-gradient-to-r from-xala-primary/80 via-xala-secondary/80 to-xala-primary/80 border-b border-xala-accent/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="fixed top-0 inset-x-0 z-50">
+        <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
-            <Logo />
+            <a href="#home" className="flex items-center gap-3 group">
+              <Logo className="w-10 h-10 text-white transition-all duration-300 group-hover:text-xala-accent" />
+              <span className="text-3xl font-bold bg-gradient-to-r from-xala-accent via-[#9b87f5] to-[#D946EF] bg-clip-text text-transparent transition-all duration-300 group-hover:bg-[length:200%_200%] group-hover:animate-gradient-x">
+                Xala
+              </span>
+            </a>
             <div className="flex items-center gap-4">
               <Controls 
                 isDarkMode={isDarkMode}
@@ -60,11 +65,15 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="fixed w-full z-50 backdrop-blur-md bg-gradient-to-r from-xala-primary/80 via-xala-secondary/80 to-xala-primary/80 border-b border-xala-accent/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-0 inset-x-0 z-50">
+      <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <Logo />
-          
+          <a href="#home" className="flex items-center gap-3 group">
+            <Logo className="w-10 h-10 text-white transition-all duration-300 group-hover:text-xala-accent" />
+            <span className="text-3xl font-bold bg-gradient-to-r from-xala-accent via-[#9b87f5] to-[#D946EF] bg-clip-text text-transparent transition-all duration-300 group-hover:bg-[length:200%_200%] group-hover:animate-gradient-x">
+              Xala
+            </span>
+          </a>
           <div className="flex items-center gap-4">
             <Controls 
               isDarkMode={isDarkMode}
@@ -72,7 +81,6 @@ const Navbar = () => {
               onThemeToggle={toggleTheme}
               onLanguageToggle={toggleLanguage}
             />
-            
             <NavigationMenu 
               isOpen={isOpen}
               setIsOpen={setIsOpen}

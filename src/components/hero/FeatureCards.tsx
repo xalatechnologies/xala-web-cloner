@@ -22,16 +22,19 @@ const FeatureCards = () => {
   const { data: features = [], isLoading } = useQuery({
     queryKey: ['featured-services', currentLanguage],
     queryFn: async () => {
+      const languageCode = currentLanguage.split('-')[0].toLowerCase();
+
       const { data, error } = await supabase
         .from('services')
         .select('*')
         .eq('featured', true)
-        .eq('language', currentLanguage.toLowerCase() as SupportedLanguage)
+        .eq('language', languageCode)
         .order('sort_order')
         .limit(3);
 
       if (error) {
-        throw new Error('Failed to fetch featured services');
+        console.error('Error fetching featured services:', error);
+        return [];
       }
 
       return data || [];

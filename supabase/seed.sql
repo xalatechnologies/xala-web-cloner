@@ -1,3 +1,33 @@
+-- Create API keys table first
+create table if not exists api_keys (
+  id uuid default uuid_generate_v4() primary key,
+  name text not null,
+  key_value text not null,
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null,
+  updated_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+
+-- Create a secure key for encryption
+create table if not exists encryption_keys (
+  id uuid default uuid_generate_v4() primary key,
+  key_value text not null,
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+
+-- Enable RLS
+alter table api_keys enable row level security;
+
+-- Create policy for secure access
+create policy "Allow authenticated read access to api_keys"
+  on api_keys for select
+  to authenticated
+  using (true);
+
+-- Insert default encryption key if not exists
+insert into encryption_keys (key_value)
+select 'xala-secure-encryption-key-2025'
+where not exists (select 1 from encryption_keys);
+
 -- Insert GDPR notifications for different languages
 INSERT INTO public.gdpr_notifications (title, content, button_text, language)
 VALUES 

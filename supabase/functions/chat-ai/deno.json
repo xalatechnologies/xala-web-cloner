@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "dev": "deno run --allow-net --allow-env --watch index.ts",
+    "deploy": "supabase functions deploy chat-ai"
+  },
+  "imports": {
+    "std/": "https://deno.land/std@0.168.0/",
+    "openai": "https://esm.sh/openai@4.26.0"
+  }
+}

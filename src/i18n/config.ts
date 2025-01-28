@@ -98,18 +98,32 @@ i18n
               email: {
                 title: "Email",
                 description: "Write to us"
-              },
-              address: {
-                title: "Location",
-                description: "Visit our office"
               }
             },
             form: {
               name: "Your Name",
-              email: "Your Email",
+              email: "Email Address",
               subject: "Subject",
-              message: "Share your thoughts, project ideas, or specific requirements... We're excited to hear from you!",
-              send: "Send Message"
+              message: "Your Message",
+              status: {
+                send: "Send Message",
+                sending: "Sending..."
+              },
+              validation: {
+                name_min: "Name must be at least {{minimum}} characters",
+                email_invalid: "Please enter a valid email address",
+                subject_min: "Subject must be at least {{minimum}} characters",
+                message_min: "Message must be at least {{minimum}} characters",
+                captcha_required: "Please complete the captcha verification"
+              },
+              success: {
+                title: "Message Sent",
+                description: "Thank you for your message. We will get back to you soon!"
+              },
+              error: {
+                title: "Error",
+                description: "There was a problem sending your message. Please try again."
+              }
             }
           },
           footer: {
@@ -246,7 +260,7 @@ i18n
           },
           contact: {
             title: "La oss bygge noe fantastisk",
-            description: "Klar for å transformere ideene dine til virkelighet? Ta kontakt med vårt ekspertteam.",
+            description: "Klar til å gjøre ideer til virkelighet? Ta kontakt med vårt ekspertteam.",
             info: {
               phone: {
                 title: "Telefon",
@@ -255,18 +269,32 @@ i18n
               email: {
                 title: "E-post",
                 description: "Skriv til oss"
-              },
-              address: {
-                title: "Plassering",
-                description: "Besøk vårt kontor"
               }
             },
             form: {
               name: "Ditt navn",
-              email: "Din e-post",
+              email: "E-postadresse",
               subject: "Emne",
-              message: "Del dine tanker, prosjektideer eller spesifikke krav... Vi er spent på å høre fra deg!",
-              send: "Send melding"
+              message: "Din melding",
+              status: {
+                send: "Send melding",
+                sending: "Sender..."
+              },
+              validation: {
+                name_min: "Navnet må være minst {{minimum}} tegn",
+                email_invalid: "Vennligst skriv inn en gyldig e-postadresse",
+                subject_min: "Emnet må være minst {{minimum}} tegn",
+                message_min: "Meldingen må være minst {{minimum}} tegn",
+                captcha_required: "Vennligst fullfør captcha-verifiseringen"
+              },
+              success: {
+                title: "Melding sendt",
+                description: "Takk for din melding. Vi kommer tilbake til deg snart!"
+              },
+              error: {
+                title: "Feil",
+                description: "Det oppstod et problem med å sende meldingen din. Vennligst prøv igjen."
+              }
             }
           },
           footer: {
