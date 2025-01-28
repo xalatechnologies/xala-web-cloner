@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useChatStore } from './useChatStore';
@@ -13,7 +12,7 @@ import type { Message } from '@/types/chat';
 export const ChatWidget = () => {
   const { isOpen, thinking, setOpen } = useChatStore();
   const { messages, isLoading, sendMessage } = useSessionChat();
-  const { translations } = useChatTranslations();
+  const translations = useChatTranslations();
   const { sidebarWidth } = useChatSidebar();
 
   const handleSendMessage = async (content: string) => {
