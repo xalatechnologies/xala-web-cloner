@@ -64,7 +64,10 @@ export const ContactForm = () => {
       const { error } = await supabase
         .from('contact_submissions')
         .insert({
-          ...values,
+          name: values.name,
+          email: values.email,
+          subject: values.subject,
+          message: values.message,
           language: currentLang,
           status: 'pending',
           created_at: new Date().toISOString()

@@ -5,7 +5,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 const CookiesPolicy = () => {
   const { t } = useTranslation();
-  const { sections, content, isLoading } = useLegalContent('cookies');
+  const { sections, isLoading } = useLegalContent('cookies');
 
   if (isLoading) {
     return (
@@ -37,7 +37,7 @@ const CookiesPolicy = () => {
   return (
     <LegalLayout
       title={t('cookies.title')}
-      lastUpdated={data?.lastUpdated || ''}
+      lastUpdated={sections[0]?.updated_at || new Date().toISOString()}
     >
       {sections.map((section) => (
         <section key={section.id} className="space-y-6">
@@ -45,7 +45,7 @@ const CookiesPolicy = () => {
           {section.description && (
             <p className="text-xala-text/80 leading-relaxed">{section.description}</p>
           )}
-          {section.items.length > 0 && (
+          {section.items?.length > 0 && (
             <ul className="space-y-4 pl-6 list-disc marker:text-xala-accent">
               {section.items.map((item) => (
                 <li key={item.id} className="text-xala-text/90">

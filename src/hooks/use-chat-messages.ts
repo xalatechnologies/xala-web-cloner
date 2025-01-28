@@ -17,7 +17,7 @@ export function useChatMessages() {
 
       return data.map(msg => ({
         ...msg,
-        sources: msg.sources as Source[] || []
+        sources: (msg.sources as Source[]) || []
       })) as Message[];
     }
   });
@@ -26,7 +26,14 @@ export function useChatMessages() {
     mutationFn: async (message: Omit<Message, 'id'>) => {
       const { data, error } = await supabase
         .from('chat_messages')
-        .insert([message])
+        .insert([{
+          content: message.content,
+          type: message.type,
+          status: message.status,
+          language: message.language,
+          sources: message.sources || [],
+          created_at: message.created_at
+        }])
         .select()
         .single();
 

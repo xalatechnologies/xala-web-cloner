@@ -27,3 +27,21 @@ export interface ChatTranslations {
   'chat.input.button': string;
   'chat.errors.failed_to_send': string;
 }
+
+export interface LegalSection {
+  id: string;
+  type: LegalType;
+  title: string;
+  description?: string;
+  items: LegalItem[];
+  language: Language;
+  sort_order: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface LegalItem {
+  id: string;
+  title?: string;
+  content: string;
+}

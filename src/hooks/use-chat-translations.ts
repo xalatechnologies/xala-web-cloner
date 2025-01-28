@@ -2,37 +2,34 @@ import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import type { ChatTranslations, Language } from '@/types/chat';
 
+const defaultTranslations: ChatTranslations = {
+  'chat.title': 'Chat with AI',
+  'chat.status.thinking': 'AI is thinking...',
+  'chat.status.online': 'Online',
+  'chat.input.placeholder': 'Type your message...',
+  'chat.input.button': 'Send',
+  'chat.errors.failed_to_send': 'Failed to send message'
+};
+
 export function useChatTranslations() {
   const { data } = useQuery({
     queryKey: ['chat-translations'],
     queryFn: async () => {
       const { data: translations, error } = await supabase
-        .from('chat_translations')
+        .from('sections')
         .select('*')
+        .eq('section_name', 'chat')
         .eq('language', 'en' as Language)
-        .single();
+        .maybeSingle();
 
       if (error) {
-        return {
-          'chat.title': 'Chat with AI',
-          'chat.status.thinking': 'AI is thinking...',
-          'chat.status.online': 'Online',
-          'chat.input.placeholder': 'Type your message...',
-          'chat.input.button': 'Send',
-          'chat.errors.failed_to_send': 'Failed to send message'
-        } as ChatTranslations;
+        console.error('Error fetching translations:', error);
+        return defaultTranslations;
       }
 
-      return translations as ChatTranslations;
+      return translations?.translations as ChatTranslations || defaultTranslations;
     }
   });
 
-  return data || {
-    'chat.title': 'Chat with AI',
-    'chat.status.thinking': 'AI is thinking...',
-    'chat.status.online': 'Online',
-    'chat.input.placeholder': 'Type your message...',
-    'chat.input.button': 'Send',
-    'chat.errors.failed_to_send': 'Failed to send message'
-  };
+  return data || defaultTranslations;
 }
