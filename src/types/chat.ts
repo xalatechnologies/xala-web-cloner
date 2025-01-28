@@ -6,6 +6,7 @@ export interface Source {
 export type MessageType = 'user' | 'assistant';
 export type MessageStatus = 'sending' | 'sent' | 'error';
 export type Language = 'en' | 'no';
+export type LegalType = 'privacy' | 'terms' | 'cookies';
 
 export interface Message {
   id: string;

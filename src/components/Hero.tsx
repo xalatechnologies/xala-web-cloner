@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import GalaxyBackground from './hero/GalaxyBackground';
 import FloatingIcons from './hero/FloatingIcons';
-import FeatureCards from './hero/FeatureCards';
+import { FeatureCards } from './hero/FeatureCards';
 import ActionButtons from './hero/ActionButtons';
 import { useSection } from '@/hooks/use-section';
 import { Skeleton } from './ui/skeleton';

@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
-import type { Language } from '@/types/chat';
+import type { Language, LegalType } from '@/types/chat';
 
-export function useLegalContent(type: string) {
-  const { data: sections } = useQuery({
+export function useLegalContent(type: LegalType) {
+  const { data: sections, isLoading: sectionsLoading } = useQuery({
     queryKey: ['legal-sections', type],
     queryFn: async () => {
       const { data: sectionsData, error: sectionsError } = await supabase
@@ -18,7 +18,7 @@ export function useLegalContent(type: string) {
     },
   });
 
-  const { data: content } = useQuery({
+  const { data: content, isLoading: contentLoading } = useQuery({
     queryKey: ['legal-content', type],
     queryFn: async () => {
       const { data: contentData, error: contentError } = await supabase
@@ -33,5 +33,9 @@ export function useLegalContent(type: string) {
     },
   });
 
-  return { sections, content };
+  return { 
+    sections: sections || [], 
+    content: content || [],
+    isLoading: sectionsLoading || contentLoading 
+  };
 }

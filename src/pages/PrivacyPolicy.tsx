@@ -5,7 +5,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 const PrivacyPolicy = () => {
   const { t } = useTranslation();
-  const { data, isLoading } = useLegalContent({ type: 'privacy' });
+  const { sections, content, isLoading } = useLegalContent('privacy');
 
   if (isLoading) {
     return (
@@ -39,7 +39,7 @@ const PrivacyPolicy = () => {
       title={t('privacy.title')}
       lastUpdated={data?.lastUpdated || ''}
     >
-      {data?.sections.map((section) => (
+      {sections.map((section) => (
         <section key={section.id} className="space-y-6">
           <h2 className="text-2xl font-bold text-xala-accent">{section.title}</h2>
           {section.description && (

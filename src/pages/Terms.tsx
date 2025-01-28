@@ -5,7 +5,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 const Terms = () => {
   const { t } = useTranslation();
-  const { data, isLoading } = useLegalContent({ type: 'terms' });
+  const { sections, content, isLoading } = useLegalContent('terms');
 
   if (isLoading) {
     return (
@@ -39,7 +39,7 @@ const Terms = () => {
       title={t('terms.title')}
       lastUpdated={data?.lastUpdated || ''}
     >
-      {data?.sections.map((section) => (
+      {sections.map((section) => (
         <section key={section.id} className="space-y-6">
           <h2 className="text-2xl font-bold text-xala-accent">{section.title}</h2>
           {section.description && (
