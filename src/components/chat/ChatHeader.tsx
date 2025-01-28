@@ -1,6 +1,6 @@
 import React from 'react';
 import { Brain, X } from 'lucide-react';
-import type { ChatTranslations } from '@/hooks/use-chat-translations';
+import type { ChatTranslations } from '@/types/chat';
 import { useChatStore } from './useChatStore';
 
 interface ChatHeaderProps {

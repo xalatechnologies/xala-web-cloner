@@ -7,29 +7,32 @@ const defaultTranslations: ChatTranslations = {
   'chat.status.thinking': 'Thinking...',
   'chat.status.online': 'Online',
   'chat.input.placeholder': 'Type your message...',
-  'chat.button.send': 'Send',
-  'chat.button.retry': 'Retry'
+  'chat.input.button': 'Send',
+  'chat.errors.failed_to_send': 'Failed to send message'
 };
 
 export function useChatTranslations(language: string = 'en') {
   return useQuery({
     queryKey: ['chat-translations', language],
     queryFn: async () => {
-      const { data: translations, error } = await supabase
-        .from('content')
+      const { data, error } = await supabase
+        .from('sections')
         .select('translations')
+        .eq('section_name', 'chat')
         .eq('language', language)
-        .eq('type', 'chat')
-        .single();
+        .maybeSingle();
 
       if (error) {
         console.error('Error fetching chat translations:', error);
         return defaultTranslations;
       }
 
-      return translations?.translations 
-        ? (translations.translations as unknown as ChatTranslations) 
+      return data?.translations 
+        ? (data.translations as unknown as ChatTranslations) 
         : defaultTranslations;
-    }
+    },
+    initialData: defaultTranslations
   });
 }
+
+export type { ChatTranslations };

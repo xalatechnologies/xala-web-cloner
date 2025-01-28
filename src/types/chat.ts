@@ -1,7 +1,6 @@
 export type MessageType = 'user' | 'assistant';
 export type MessageStatus = 'sending' | 'sent' | 'error';
 export type Language = 'en' | 'no';
-export type LegalType = 'privacy' | 'terms' | 'cookies';
 
 export interface Source {
   title: string;
@@ -26,22 +25,4 @@ export interface ChatTranslations {
   'chat.input.placeholder': string;
   'chat.input.button': string;
   'chat.errors.failed_to_send': string;
-}
-
-export interface LegalSection {
-  id: string;
-  type: LegalType;
-  title: string;
-  description?: string;
-  language: Language;
-  sort_order: number;
-  updated_at?: string;
-  created_at?: string;
-  items: LegalItem[];
-}
-
-export interface LegalItem {
-  id: string;
-  title?: string;
-  content: string;
 }

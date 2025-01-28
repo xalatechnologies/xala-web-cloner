@@ -2,8 +2,7 @@ import { useEffect, useRef, type FC } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChatInput } from './ChatInput';
 import { ChatMessage } from './ChatMessage';
-import type { Message } from '@/types/chat';
-import type { ChatTranslations } from '@/hooks/use-chat-translations';
+import type { Message, ChatTranslations } from '@/types/chat';
 import { cn } from '@/lib/utils';
 
 interface ChatProps {
