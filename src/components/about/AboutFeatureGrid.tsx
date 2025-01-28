@@ -1,9 +1,9 @@
 import React from 'react';
-import { AboutFeatureCard } from './AboutFeatureCard';
+import AboutFeatureCard from './AboutFeatureCard';
 import { useAboutFeatures } from '@/hooks/use-about-features';
 
 export function AboutFeatureGrid() {
-  const { features, isLoading } = useAboutFeatures();
+  const { data: features, isLoading } = useAboutFeatures();
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -11,7 +11,7 @@ export function AboutFeatureGrid() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {features.map((feature) => (
+      {features?.map((feature) => (
         <AboutFeatureCard
           key={feature.id}
           title={feature.title}

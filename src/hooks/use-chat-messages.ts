@@ -32,24 +32,9 @@ export function useChatMessages() {
           type: message.type,
           status: message.status,
           language: message.language,
-          sources: message.sources || null,
+          sources: message.sources ? JSON.stringify(message.sources) : null,
           created_at: message.created_at
         }]);
-
-      if (error) throw error;
-      return data;
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['chat-messages'] });
-    },
-  });
-
-  const updateMessageMutation = useMutation({
-    mutationFn: async ({ id, status }: { id: string; status: Message['status'] }) => {
-      const { data, error } = await supabase
-        .from('chat_messages')
-        .update({ status })
-        .eq('id', id);
 
       if (error) throw error;
       return data;
@@ -64,6 +49,5 @@ export function useChatMessages() {
     isLoading: messagesQuery.isLoading,
     error: messagesQuery.error,
     sendMessage: sendMessageMutation.mutate,
-    updateMessageStatus: updateMessageMutation.mutate,
   };
 }
