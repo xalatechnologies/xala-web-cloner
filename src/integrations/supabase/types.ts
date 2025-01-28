@@ -66,6 +66,30 @@ export type Database = {
         }
         Relationships: []
       }
+      api_keys: {
+        Row: {
+          created_at: string
+          id: string
+          key_value: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          key_value: string
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          key_value?: string
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       bottom_sections: {
         Row: {
           content: string
@@ -345,6 +369,39 @@ export type Database = {
           },
         ]
       }
+      chat_messages: {
+        Row: {
+          content: string
+          created_at: string | null
+          id: string
+          language: string
+          sources: Json | null
+          status: Database["public"]["Enums"]["message_status"]
+          type: Database["public"]["Enums"]["message_type"]
+          updated_at: string | null
+        }
+        Insert: {
+          content: string
+          created_at?: string | null
+          id?: string
+          language?: string
+          sources?: Json | null
+          status?: Database["public"]["Enums"]["message_status"]
+          type: Database["public"]["Enums"]["message_type"]
+          updated_at?: string | null
+        }
+        Update: {
+          content?: string
+          created_at?: string | null
+          id?: string
+          language?: string
+          sources?: Json | null
+          status?: Database["public"]["Enums"]["message_status"]
+          type?: Database["public"]["Enums"]["message_type"]
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       clients: {
         Row: {
           created_at: string | null
@@ -440,6 +497,155 @@ export type Database = {
           name?: string
           status?: string | null
           subject?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      content: {
+        Row: {
+          content: string
+          content_vector: unknown | null
+          created_at: string
+          id: string
+          language: string
+        }
+        Insert: {
+          content: string
+          content_vector?: unknown | null
+          created_at?: string
+          id?: string
+          language: string
+        }
+        Update: {
+          content?: string
+          content_vector?: unknown | null
+          created_at?: string
+          id?: string
+          language?: string
+        }
+        Relationships: []
+      }
+      encryption_keys: {
+        Row: {
+          created_at: string
+          id: string
+          key_value: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          key_value: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          key_value?: string
+        }
+        Relationships: []
+      }
+      gdpr_notifications: {
+        Row: {
+          button_text: string
+          content: string
+          created_at: string
+          id: string
+          is_active: boolean | null
+          language: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          button_text: string
+          content: string
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          language: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          button_text?: string
+          content?: string
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          language?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      legal_content: {
+        Row: {
+          content: string
+          created_at: string | null
+          id: string
+          language: Database["public"]["Enums"]["supported_language"]
+          section_id: string | null
+          sort_order: number
+          title: string | null
+          type: Database["public"]["Enums"]["legal_content_type"]
+        }
+        Insert: {
+          content: string
+          created_at?: string | null
+          id?: string
+          language: Database["public"]["Enums"]["supported_language"]
+          section_id?: string | null
+          sort_order: number
+          title?: string | null
+          type: Database["public"]["Enums"]["legal_content_type"]
+        }
+        Update: {
+          content?: string
+          created_at?: string | null
+          id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          section_id?: string | null
+          sort_order?: number
+          title?: string | null
+          type?: Database["public"]["Enums"]["legal_content_type"]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "legal_content_section_id_fkey"
+            columns: ["section_id"]
+            isOneToOne: false
+            referencedRelation: "legal_sections"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      legal_sections: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          id: string
+          language: Database["public"]["Enums"]["supported_language"]
+          sort_order: number
+          title: string
+          type: Database["public"]["Enums"]["legal_content_type"]
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          language: Database["public"]["Enums"]["supported_language"]
+          sort_order: number
+          title: string
+          type: Database["public"]["Enums"]["legal_content_type"]
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          sort_order?: number
+          title?: string
+          type?: Database["public"]["Enums"]["legal_content_type"]
           updated_at?: string | null
         }
         Relationships: []
@@ -689,6 +895,7 @@ export type Database = {
           section_name: string
           sort_order: number
           title: string
+          translations: Json | null
           updated_at: string | null
         }
         Insert: {
@@ -704,6 +911,7 @@ export type Database = {
           section_name: string
           sort_order?: number
           title: string
+          translations?: Json | null
           updated_at?: string | null
         }
         Update: {
@@ -719,6 +927,7 @@ export type Database = {
           section_name?: string
           sort_order?: number
           title?: string
+          translations?: Json | null
           updated_at?: string | null
         }
         Relationships: []
@@ -936,12 +1145,27 @@ export type Database = {
         Args: Record<PropertyKey, never>
         Returns: undefined
       }
+      decrypt_api_key: {
+        Args: {
+          encrypted_value: string
+        }
+        Returns: string
+      }
+      encrypt_api_key: {
+        Args: {
+          key_value: string
+        }
+        Returns: string
+      }
     }
     Enums: {
       admin_role: "super_admin" | "content_editor"
       bottom_section_type: "address" | "social" | "contact" | "newsletter"
       case_study_status: "draft" | "published" | "archived"
       feature_category: "ai" | "cloud" | "development" | "analytics"
+      legal_content_type: "privacy" | "terms" | "cookies"
+      message_status: "sending" | "sent" | "error"
+      message_type: "user" | "assistant"
       product_status: "draft" | "published" | "archived"
       supported_language: "en" | "no"
     }
