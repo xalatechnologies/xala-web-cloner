@@ -7,26 +7,50 @@ import TechnologyGrid from './technologies/TechnologyGrid';
 
 type SupportedLanguage = Database['public']['Enums']['supported_language'];
 
+interface Technology {
+  id: string;
+  title: string;
+  description: string | null;
+  language: SupportedLanguage;
+  category: string;
+  sort_order: number;
+  icon: string;
+  created_at: string | null;
+  updated_at: string | null;
+  technology_tools: {
+    id: string;
+    name: string;
+    description: string | null;
+    language: SupportedLanguage;
+    sort_order: number;
+    technology_id: string;
+    created_at: string | null;
+    updated_at: string | null;
+  }[];
+}
+
 const Technologies = () => {
   const { t, i18n } = useTranslation();
   const { data: section, isLoading: isSectionLoading } = useSection('technologies');
-  
+  const currentLanguage = i18n.language.toLowerCase().startsWith('en') ? 'en' : 'no' as SupportedLanguage;
+
   const { data: technologies = [], isLoading: isTechnologiesLoading } = useQuery({
-    queryKey: ['technologies', i18n.language],
+    queryKey: ['technologies', currentLanguage],
     queryFn: async () => {
-      const currentLanguage = i18n.language.toLowerCase() as SupportedLanguage;
-      
-      const { data, error } = await supabase
+      const { data: techData, error: techError } = await supabase
         .from('technologies')
-        .select('*')
+        .select(`
+          *,
+          technology_tools (*)
+        `)
         .eq('language', currentLanguage)
         .order('sort_order', { ascending: true });
 
-      if (error) {
+      if (techError) {
         throw new Error('Failed to fetch technologies');
       }
 
-      return data || [];
+      return (techData || []) as Technology[];
     },
   });
 

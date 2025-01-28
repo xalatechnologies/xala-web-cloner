@@ -5,13 +5,12 @@ export type Language = 'en' | 'no';
 export interface Source {
   title: string;
   url: string;
-  content?: string;
 }
 
 export interface Message {
   id: string;
-  content: string;
   type: MessageType;
+  content: string;
   status: MessageStatus;
   language: Language;
   sources?: Source[];
