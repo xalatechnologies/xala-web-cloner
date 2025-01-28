@@ -32,16 +32,10 @@ When responding:
 3. Ask clarifying questions when needed
 4. Provide specific, actionable information
 5. Break down complex topics into simple explanations
-6. Reference our services when relevant to the user's needs
-
-Remember to:
-- Stay focused on the user's needs
-- Be concise but thorough
-- Use examples when helpful
-- Acknowledge when you need more information`,
+6. Reference our services when relevant to the user's needs`,
 
   modelConfig: {
-    model: 'gpt-4o',
+    model: 'gpt-4',
     temperature: 0.7,
     max_tokens: 1000,
   },
