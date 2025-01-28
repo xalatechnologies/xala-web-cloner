@@ -5,7 +5,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 const Terms = () => {
   const { t } = useTranslation();
-  const { sections, content, isLoading } = useLegalContent('terms');
+  const { sections, isLoading } = useLegalContent('terms');
 
   if (isLoading) {
     return (
@@ -37,23 +37,13 @@ const Terms = () => {
   return (
     <LegalLayout
       title={t('terms.title')}
-      lastUpdated={data?.lastUpdated || ''}
+      lastUpdated={sections[0]?.updated_at || new Date().toISOString()}
     >
       {sections.map((section) => (
         <section key={section.id} className="space-y-6">
           <h2 className="text-2xl font-bold text-xala-accent">{section.title}</h2>
           {section.description && (
             <p className="text-xala-text/80 leading-relaxed">{section.description}</p>
-          )}
-          {section.items.length > 0 && (
-            <ul className="space-y-4 pl-6 list-disc marker:text-xala-accent">
-              {section.items.map((item) => (
-                <li key={item.id} className="text-xala-text/90">
-                  {item.title && <strong className="text-xala-accent">{item.title}: </strong>}
-                  {item.content}
-                </li>
-              ))}
-            </ul>
           )}
         </section>
       ))}

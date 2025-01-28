@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
-import type { ChatTranslations, Language } from '@/types/chat';
+import type { ChatTranslations } from '@/types/chat';
 
 const defaultTranslations: ChatTranslations = {
   'chat.title': 'Chat with AI',
@@ -17,9 +17,9 @@ export function useChatTranslations() {
     queryFn: async () => {
       const { data: translations, error } = await supabase
         .from('sections')
-        .select('*')
+        .select('translations')
         .eq('section_name', 'chat')
-        .eq('language', 'en' as Language)
+        .eq('language', 'en')
         .maybeSingle();
 
       if (error) {
@@ -33,3 +33,5 @@ export function useChatTranslations() {
 
   return data || defaultTranslations;
 }
+
+export type { ChatTranslations };

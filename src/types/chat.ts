@@ -1,12 +1,11 @@
+export type MessageType = 'user' | 'assistant';
+export type MessageStatus = 'sending' | 'sent' | 'error';
+export type Language = 'en' | 'no';
+
 export interface Source {
   title: string;
   url: string;
 }
-
-export type MessageType = 'user' | 'assistant';
-export type MessageStatus = 'sending' | 'sent' | 'error';
-export type Language = 'en' | 'no';
-export type LegalType = 'privacy' | 'terms' | 'cookies';
 
 export interface Message {
   id: string;
@@ -30,18 +29,11 @@ export interface ChatTranslations {
 
 export interface LegalSection {
   id: string;
-  type: LegalType;
+  type: 'privacy' | 'terms' | 'cookies';
   title: string;
   description?: string;
-  items: LegalItem[];
   language: Language;
   sort_order: number;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface LegalItem {
-  id: string;
-  title?: string;
-  content: string;
+  updated_at?: string;
+  created_at?: string;
 }
