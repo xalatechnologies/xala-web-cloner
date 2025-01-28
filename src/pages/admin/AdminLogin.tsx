@@ -1,123 +1,113 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { supabase } from '@/integrations/supabase/client';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useToast } from '@/hooks/use-toast';
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Loader } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { useTranslation } from 'react-i18next';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
-  const { toast } = useToast();
+  const { t } = useTranslation();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
-    setIsLoading(true);
-
     try {
-      const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+      setIsLoading(true);
+      const { data: adminData, error: adminError } = await supabase
+        .from('admin_users')
+        .select('*')
+        .eq('email', email)
+        .single();
+
+      if (adminError || !adminData) {
+        toast.error('Invalid credentials');
+        return;
+      }
+
+      const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
 
-      if (signInError) {
-        setError('Invalid email or password');
+      if (authError) {
+        toast.error(authError.message);
         return;
       }
 
-      if (signInData?.user) {
-        const { data: adminUser, error: adminError } = await supabase
-          .from('admins')
-          .select('*')
-          .eq('user_id', signInData.user.id)
-          .single();
-
-        if (adminError) {
-          setError('Error verifying admin status');
-          return;
-        }
-
-        if (adminUser) {
-          toast({
-            title: "Success",
-            description: "Welcome back!",
-          });
-          navigate('/admin/dashboard');
-        } else {
-          setError('Access denied: Not an admin user');
-        }
+      if (authData) {
+        toast.success('Login successful');
+        navigate('/admin/dashboard');
       }
     } catch (error) {
-      setError('An unexpected error occurred');
+      console.error('Login error:', error);
+      toast.error('Failed to log in');
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-xala-primary to-xala-secondary">
-      <div className="w-full max-w-md p-8 space-y-6 bg-white/5 backdrop-blur-xl rounded-2xl shadow-xl">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold text-white mb-2">Admin Portal</h1>
-          <p className="text-gray-400">Sign in to access the dashboard</p>
+    <div className="min-h-screen flex items-center justify-center bg-xala-primary">
+      <div className="max-w-md w-full space-y-8 p-8 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
+        <div>
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
+            Admin Login
+          </h2>
         </div>
-        
-        {error && (
-          <Alert variant="destructive">
-            <AlertDescription>{error}</AlertDescription>
-          </Alert>
-        )}
+        <form className="mt-8 space-y-6" onSubmit={handleLogin}>
+          <div className="rounded-md shadow-sm space-y-4">
+            <div>
+              <label htmlFor="email-address" className="sr-only">
+                Email address
+              </label>
+              <Input
+                id="email-address"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="appearance-none relative block w-full px-3 py-2 border border-white/10 
+                          placeholder-gray-400 text-white rounded-lg bg-white/5 
+                          focus:outline-none focus:ring-2 focus:ring-xala-accent focus:border-transparent"
+                placeholder="Email address"
+              />
+            </div>
+            <div>
+              <label htmlFor="password" className="sr-only">
+                Password
+              </label>
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="current-password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="appearance-none relative block w-full px-3 py-2 border border-white/10 
+                          placeholder-gray-400 text-white rounded-lg bg-white/5 
+                          focus:outline-none focus:ring-2 focus:ring-xala-accent focus:border-transparent"
+                placeholder="Password"
+              />
+            </div>
+          </div>
 
-        <form onSubmit={handleLogin} className="space-y-4">
           <div>
-            <Input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full bg-white/10 border-white/20 text-white placeholder:text-gray-400"
-              required
+            <Button
+              type="submit"
               disabled={isLoading}
-            />
-          </div>
-          <div>
-            <Input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full bg-white/10 border-white/20 text-white placeholder:text-gray-400"
-              required
-              disabled={isLoading}
-            />
-          </div>
-          <Button
-            type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-            disabled={isLoading}
-          >
-            {isLoading ? (
-              <div className="flex items-center justify-center">
-                <Loader className="w-4 h-4 mr-2 animate-spin" />
-                Signing in...
-              </div>
-            ) : (
-              'Sign In'
-            )}
-          </Button>
-          <div className="text-center">
-            <Link
-              to="/admin/reset-password"
-              className="text-sm text-gray-400 hover:text-white transition-colors"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent 
+                        text-sm font-medium rounded-lg text-white bg-xala-accent hover:bg-xala-accent/90 
+                        focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-xala-accent"
             >
-              Forgot your password?
-            </Link>
+              {isLoading ? 'Signing in...' : 'Sign in'}
+            </Button>
           </div>
         </form>
       </div>

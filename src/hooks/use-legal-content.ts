@@ -12,16 +12,17 @@ interface UseLegalContentProps {
 
 export const useLegalContent = ({ type }: UseLegalContentProps) => {
   const { i18n } = useTranslation();
+  const currentLanguage = i18n.language.toLowerCase().startsWith('en') ? 'en' : 'no';
 
   return useQuery({
-    queryKey: ['legal', type, i18n.language],
+    queryKey: ['legal', type, currentLanguage],
     queryFn: async () => {
       // First get all sections for this legal type
       const { data: sections, error: sectionsError } = await supabase
         .from('legal_sections')
         .select('*')
         .eq('type', type)
-        .eq('language', i18n.language)
+        .eq('language', currentLanguage)
         .order('sort_order', { ascending: true });
 
       if (sectionsError) throw sectionsError;
@@ -31,7 +32,7 @@ export const useLegalContent = ({ type }: UseLegalContentProps) => {
         .from('legal_content')
         .select('*')
         .eq('type', type)
-        .eq('language', i18n.language)
+        .eq('language', currentLanguage)
         .order('sort_order', { ascending: true });
 
       if (contentError) throw contentError;

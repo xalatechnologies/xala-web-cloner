@@ -3,7 +3,7 @@ import { supabase } from '@/integrations/supabase/client';
 
 export async function saveMessage(message: Message) {
   const { data, error } = await supabase
-    .from('messages')
+    .from('chat_messages')
     .insert([{
       id: message.id,
       content: message.content,
@@ -19,7 +19,7 @@ export async function saveMessage(message: Message) {
 
 export async function loadMessages(limit = 50) {
   const { data, error } = await supabase
-    .from('messages')
+    .from('chat_messages')
     .select('*')
     .order('created_at', { ascending: true })
     .limit(limit);
@@ -30,7 +30,7 @@ export async function loadMessages(limit = 50) {
 
 export async function updateMessageStatus(id: string, status: Message['status']) {
   const { data, error } = await supabase
-    .from('messages')
+    .from('chat_messages')
     .update({ status })
     .match({ id });
 

@@ -39,7 +39,7 @@ export function useChatMessages() {
           type: message.type,
           status: message.status,
           language: currentLanguage,
-          sources: message.sources as Json,
+          sources: message.sources as unknown as Json,
           created_at: message.created_at
         }]);
 
