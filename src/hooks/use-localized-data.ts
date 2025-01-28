@@ -1,11 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/integrations/supabase/client";
-import type { SupportedLanguage } from "@/types/section";
+import type { Database } from "@/integrations/supabase/types";
+
+type TableNames = keyof Database['public']['Tables'];
+type SupportedLanguage = Database['public']['Enums']['supported_language'];
 
 interface UseLocalizedDataOptions {
   queryKey: string;
-  table: string;
+  table: TableNames;
   select?: string;
   relationships?: string;
   orderBy?: string;
