@@ -1,20 +1,28 @@
-import React, { useEffect, useRef } from 'react';
-import { Message } from '@/types/chat';
-import { ChatMessage } from './ChatMessage';
+import { useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ChatInput } from './ChatInput';
-import { useTranslation } from 'react-i18next';
+import { ChatMessage } from './ChatMessage';
+import { Message } from '@/types/chat';
 import type { ChatTranslations } from '@/hooks/use-chat-translations';
 import { cn } from '@/lib/utils';
 
 interface ChatProps {
   messages: Message[];
-  onSendMessage: (content: string) => void;
-  isLoading?: boolean;
-  className?: string;
+  onSendMessage: (message: string) => void;
+  disabled?: boolean;
+  thinking?: boolean;
   translations: ChatTranslations;
+  className?: string;
 }
 
-export function Chat({ messages, onSendMessage, isLoading, className, translations }: ChatProps) {
+export const Chat: React.FC<ChatProps> = ({
+  messages,
+  onSendMessage,
+  disabled,
+  thinking,
+  translations,
+  className
+}) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -23,25 +31,34 @@ export function Chat({ messages, onSendMessage, isLoading, className, translatio
 
   return (
     <div className={cn('flex h-full flex-col', className)}>
-      <div className="flex-1 space-y-4 overflow-y-auto px-4 py-4 bg-gray-50/50">
-        {messages.map((message, index) => (
-          <ChatMessage
-            key={message.id}
-            message={message}
-            isLastMessage={index === messages.length - 1}
-          />
-        ))}
+      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 bg-gray-50/50">
+        <AnimatePresence initial={false}>
+          {messages.map((message, index) => (
+            <motion.div
+              key={message.id || index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+            >
+              <ChatMessage
+                message={message}
+                isLastMessage={index === messages.length - 1}
+              />
+            </motion.div>
+          ))}
+        </AnimatePresence>
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="border-t border-gray-100 bg-white p-4">
+      <div className="border-t border-gray-100/50 bg-white/50 backdrop-blur-sm p-4 flex-shrink-0">
         <ChatInput
           onSendMessage={onSendMessage}
-          disabled={isLoading}
-          thinking={isLoading}
+          disabled={disabled}
+          thinking={thinking}
           placeholder={translations['chat.input.placeholder']}
         />
       </div>
     </div>
   );
-}
+};

@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Bot, User } from 'lucide-react';
 import { Message } from '@/types/chat';
 import { cn } from '@/lib/utils';
@@ -20,9 +19,7 @@ export function ChatMessage({ message, isLastMessage }: ChatMessageProps) {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
+    <div
       className={cn(
         'group flex w-full items-start gap-3',
         isUser ? 'flex-row-reverse' : 'flex-row'
@@ -34,7 +31,7 @@ export function ChatMessage({ message, isLastMessage }: ChatMessageProps) {
           'flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-full',
           isUser
             ? 'bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary'
-            : 'bg-gray-100'
+            : 'bg-gray-100 backdrop-blur-sm'
         )}
       >
         {isUser ? (
@@ -53,10 +50,10 @@ export function ChatMessage({ message, isLastMessage }: ChatMessageProps) {
       >
         <div
           className={cn(
-            'rounded-2xl px-4 py-3',
+            'rounded-2xl px-4 py-3 shadow-sm',
             isUser
-              ? 'bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary text-white'
-              : 'bg-white border border-gray-200 text-black shadow-sm'
+              ? 'bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary text-white backdrop-blur-sm'
+              : 'bg-white/80 backdrop-blur-sm border border-gray-200/50 text-black'
           )}
         >
           {isUser ? (
@@ -129,6 +126,6 @@ export function ChatMessage({ message, isLastMessage }: ChatMessageProps) {
           </span>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 }
