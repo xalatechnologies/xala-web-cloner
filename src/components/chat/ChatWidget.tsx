@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -22,6 +22,8 @@ export const ChatWidget = () => {
         content,
         type: 'user' as const,
         status: 'sending' as const,
+        language: 'en' as const,
+        created_at: new Date().toISOString(),
       };
 
       await sendMessage(message);
@@ -48,7 +50,6 @@ export const ChatWidget = () => {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Gradient Border */}
             <div className="fixed top-0 right-[480px] z-50 h-screen w-1 bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary lg:block hidden" />
             
             <motion.div

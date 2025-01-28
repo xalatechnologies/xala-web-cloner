@@ -1,15 +1,14 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
-import { Message } from '@/types/chat';
+import { Message, Language } from '@/types/chat';
 
 export function useChatMessages() {
   const { i18n } = useTranslation();
   const queryClient = useQueryClient();
-  // Map language code to 'en' or 'no'
-  const currentLanguage = i18n.language.toLowerCase().startsWith('en') ? 'en' : 'no';
+  const currentLanguage = i18n.language.toLowerCase().startsWith('en') ? 'en' : 'no' as Language;
 
-  const messagesQuery = useQuery<Message[]>({
+  const messagesQuery = useQuery({
     queryKey: ['chat-messages', currentLanguage],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -22,7 +21,7 @@ export function useChatMessages() {
         throw new Error('Failed to fetch chat messages');
       }
 
-      return data || [];
+      return (data || []) as Message[];
     },
   });
 

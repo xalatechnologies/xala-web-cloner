@@ -5,6 +5,7 @@ export type Language = 'en' | 'no';
 export interface Source {
   title: string;
   url: string;
+  content?: string; // Made optional to support existing code
 }
 
 export interface Message {
@@ -15,6 +16,8 @@ export interface Message {
   language: Language;
   sources?: Source[];
   created_at: string;
+  updated_at?: string;
+  thinking?: boolean; // Added to support existing functionality
 }
 
 export interface ChatState {
