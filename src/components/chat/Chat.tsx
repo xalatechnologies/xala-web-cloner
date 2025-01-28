@@ -1,8 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type FC } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChatInput } from './ChatInput';
 import { ChatMessage } from './ChatMessage';
-import { Message } from '@/types/chat';
+import type { Message } from '@/types/chat';
 import type { ChatTranslations } from '@/hooks/use-chat-translations';
 import { cn } from '@/lib/utils';
 
@@ -15,7 +15,7 @@ interface ChatProps {
   className?: string;
 }
 
-export const Chat: React.FC<ChatProps> = ({
+export const Chat: FC<ChatProps> = ({
   messages,
   onSendMessage,
   disabled,

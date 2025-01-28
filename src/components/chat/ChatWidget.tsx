@@ -8,14 +8,15 @@ import { useChatTranslations } from '@/hooks/use-chat-translations';
 import { useChatSidebar } from '@/hooks/use-chat-sidebar';
 import { Chat } from './Chat';
 import { ChatHeader } from './ChatHeader';
+import type { FC } from 'react';
 
-export const ChatWidget = () => {
+export const ChatWidget: FC = () => {
   const { isOpen, thinking, setOpen } = useChatStore();
   const { messages, isLoading, sendMessage, updateMessageStatus } = useChatMessages();
   const { translations } = useChatTranslations();
   const { sidebarWidth } = useChatSidebar();
 
-  const handleSendMessage = async (content: string) => {
+  const handleSendMessage = async (content: string): Promise<void> => {
     try {
       const message = {
         id: crypto.randomUUID(),
