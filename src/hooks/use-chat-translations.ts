@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
-import type { ChatTranslations } from '@/types/chat';
+import type { ChatTranslations, Language } from '@/types/chat';
 
 const defaultTranslations: ChatTranslations = {
   'chat.title': 'Chat with us',
@@ -11,8 +11,8 @@ const defaultTranslations: ChatTranslations = {
   'chat.errors.failed_to_send': 'Failed to send message'
 };
 
-export function useChatTranslations(language: string = 'en') {
-  return useQuery({
+export function useChatTranslations(language: Language = 'en') {
+  const { data: translations } = useQuery({
     queryKey: ['chat-translations', language],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -33,6 +33,6 @@ export function useChatTranslations(language: string = 'en') {
     },
     initialData: defaultTranslations
   });
-}
 
-export type { ChatTranslations };
+  return translations;
+}
