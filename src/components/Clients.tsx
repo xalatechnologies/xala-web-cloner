@@ -57,15 +57,15 @@ const Clients = () => {
   };
 
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section id="clients" className="py-12 sm:py-16 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary" />
 
       <div className="container mx-auto px-4 relative">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-5xl font-bold mb-6 text-white">
+        <div className="text-center mb-10 sm:mb-12 animate-fade-in">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 sm:mb-6 text-white">
             {section?.title || t('clients.title')}
           </h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto">
             {section?.description || t('clients.description')}
           </p>
         </div>

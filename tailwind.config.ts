@@ -31,78 +31,59 @@ export default {
         },
       },
       animation: {
-        "gradient-x": "gradient-x 15s ease infinite",
-        "fade-in": "fade-in 1.5s ease-in-out",
-        "float-1": "float1 30s ease-in-out infinite",
-        "float-2": "float2 35s ease-in-out infinite",
-        "float-3": "float3 40s ease-in-out infinite",
+        "fade-in": "fade-in 0.5s ease-out forwards",
+        "slide-in": "slide-in 0.5s ease-out forwards",
+        "slide-out": "slide-out 0.5s ease-out forwards",
+        "gradient-x": "gradient-x 3s ease infinite",
+        "float": "float 3s ease-in-out infinite",
+        "float-1": "float-1 8s ease-in-out infinite",
+        "float-2": "float-2 8s ease-in-out infinite",
+        "float-3": "float-3 8s ease-in-out infinite",
+        "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "galaxy-spin": "galaxy-spin 100s linear infinite",
+        "bounce": "bounce 1s infinite",
         "twinkle-1": "twinkle 4s ease-in-out infinite",
         "twinkle-2": "twinkle 6s ease-in-out infinite",
         "twinkle-3": "twinkle 8s ease-in-out infinite",
-        "galaxy-spin": "galaxy-spin 100s linear infinite",
-        "bounce": "bounce 1s infinite",
       },
       keyframes: {
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        "slide-in": {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+        "slide-out": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(100%)" },
+        },
         "gradient-x": {
           "0%, 100%": {
-            "background-position": "0% 50%",
+            "background-size": "200% 200%",
+            "background-position": "left center",
           },
           "50%": {
-            "background-position": "100% 50%",
+            "background-size": "200% 200%",
+            "background-position": "right center",
           },
         },
-        "fade-in": {
-          "0%": {
-            opacity: "0",
-            transform: "translateY(20px)",
-          },
-          "100%": {
-            opacity: "1",
-            transform: "translateY(0)",
-          },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
         },
-        float1: {
-          "0%, 100%": {
-            transform: "translate(0, 0) rotate(0deg)",
-          },
-          "25%": {
-            transform: "translate(20px, -20px) rotate(5deg)",
-          },
-          "50%": {
-            transform: "translate(-10px, 20px) rotate(-5deg)",
-          },
-          "75%": {
-            transform: "translate(-20px, -10px) rotate(3deg)",
-          },
+        "float-1": {
+          "0%, 100%": { transform: "translate(0, 0)" },
+          "50%": { transform: "translate(-20px, 20px)" },
         },
-        float2: {
-          "0%, 100%": {
-            transform: "translate(0, 0) rotate(0deg)",
-          },
-          "33%": {
-            transform: "translate(-15px, 15px) rotate(-3deg)",
-          },
-          "66%": {
-            transform: "translate(15px, -15px) rotate(3deg)",
-          },
+        "float-2": {
+          "0%, 100%": { transform: "translate(0, 0)" },
+          "50%": { transform: "translate(20px, -20px)" },
         },
-        float3: {
-          "0%, 100%": {
-            transform: "translate(0, 0) rotate(0deg)",
-          },
-          "50%": {
-            transform: "translate(10px, -20px) rotate(5deg)",
-          },
-        },
-        twinkle: {
-          "0%, 100%": {
-            opacity: "0.2",
-            transform: "scale(0.8)",
-          },
-          "50%": {
-            opacity: "1",
-            transform: "scale(1.2)",
-          },
+        "float-3": {
+          "0%, 100%": { transform: "translate(0, 0)" },
+          "50%": { transform: "translate(-20px, -20px)" },
         },
         "galaxy-spin": {
           "0%": {
@@ -112,7 +93,7 @@ export default {
             transform: "rotate(360deg)",
           },
         },
-        bounce: {
+        "bounce": {
           "0%, 100%": {
             transform: "translateY(-25%)",
             "animation-timing-function": "cubic-bezier(0.8, 0, 1, 1)",
@@ -120,6 +101,16 @@ export default {
           "50%": {
             transform: "translateY(0)",
             "animation-timing-function": "cubic-bezier(0, 0, 0.2, 1)",
+          },
+        },
+        "twinkle": {
+          "0%, 100%": {
+            opacity: "0.2",
+            transform: "scale(0.8)",
+          },
+          "50%": {
+            opacity: "1",
+            transform: "scale(1.2)",
           },
         },
       },

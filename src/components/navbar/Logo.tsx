@@ -20,7 +20,7 @@ const Logo = () => (
       />
     </div>
     <span className="text-3xl font-bold bg-gradient-to-r from-xala-accent via-[#9b87f5] to-[#D946EF] bg-clip-text text-transparent transition-all duration-300 group-hover:bg-[length:200%_200%] group-hover:animate-gradient-x">
-      Xala Technologies
+      Xala
     </span>
   </a>
 );

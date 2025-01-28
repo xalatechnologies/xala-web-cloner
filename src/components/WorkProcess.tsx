@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "./ui/skeleton";
 import * as Icons from "lucide-react";
-import { LucideIcon, ArrowRight } from "lucide-react";
+import { LucideIcon, ArrowRight, ArrowDown } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -59,9 +59,9 @@ const WorkProcess = () => {
 
   if (isLoading) {
     return (
-      <section className="py-24 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary">
+      <section className="py-12 md:py-24 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8">
             {[1, 2, 3].map((i) => (
               <div key={i} className="p-8 rounded-2xl bg-white/10">
                 <Skeleton className="h-8 w-8 mb-6" />
@@ -75,83 +75,99 @@ const WorkProcess = () => {
     );
   }
 
-  const columns = section?.columns || 3;
-  const rows = section?.rows || 1;
-  const shouldUseCarousel = section?.carousel || false;
-  const enableAutoscroll = section?.autoscroll || false;
-
   const renderProcessCard = (process: any, index: number, totalProcesses: number) => {
     const Icon = getIconComponent(process.icon);
     
     return (
-      <div key={process.id} className="relative group flex items-center">
+      <div key={process.id} className="relative group">
         <div
-          className="flex-1 relative h-full"
+          className="relative h-full"
           style={{
             animation: 'fade-in 0.5s ease-out forwards',
             opacity: 0
           }}
         >
-          <div className="h-full relative p-8 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 
-                        hover:border-xala-accent/50 transition-all duration-500 group-hover:transform group-hover:scale-105
+          <div className="h-full relative p-6 md:p-8 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 
+                        hover:border-xala-accent/50 transition-all duration-500 group-hover:transform group-hover:scale-[1.02]
                         group-hover:shadow-2xl group-hover:shadow-xala-accent/20">
-            <div className="absolute -top-4 -right-4 w-12 h-12 bg-xala-accent rounded-full flex items-center justify-center
+            <div className="absolute -top-4 -right-4 w-10 h-10 md:w-12 md:h-12 bg-xala-accent rounded-full flex items-center justify-center
                           transform group-hover:scale-110 transition-transform duration-300">
-              <span className="text-white font-bold">{String(process.step_number).padStart(2, '0')}</span>
+              <span className="text-white font-bold text-sm md:text-base">{String(process.step_number).padStart(2, '0')}</span>
             </div>
 
-            <div className="flex items-center gap-4 mb-4">
+            <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4 mb-4">
               <div className="text-xala-accent relative">
                 <div className="absolute inset-0 bg-xala-accent/20 filter blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative transform group-hover:scale-110 transition-transform duration-300">
-                  <Icon className="w-8 h-8" />
+                  <Icon className="w-6 h-6 md:w-8 md:h-8" />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-xala-accent">{process.title}</h3>
+              <h3 className="text-lg md:text-xl font-semibold text-xala-accent">{process.title}</h3>
             </div>
 
-            <p className="text-xala-text/70">{process.description}</p>
+            <p className="text-sm md:text-base text-xala-text/70">{process.description}</p>
           </div>
         </div>
         
-        {/* Add arrow if not the last item in the row */}
-        {index < totalProcesses - 1 && (index + 1) % columns !== 0 && (
-          <div className="flex-shrink-0 px-4 text-xala-accent">
-            <ArrowRight className="w-6 h-6 animate-pulse" />
-          </div>
+        {/* Add arrow based on screen size and position */}
+        {index < totalProcesses - 1 && process.step_number !== 3 && (
+          <>
+            {/* Down arrow for mobile */}
+            <div className="flex flex-col items-center md:hidden py-4 text-xala-accent">
+              <div className="relative">
+                <div className="absolute inset-0 bg-xala-accent/20 blur-lg transform scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative">
+                  <ArrowDown className="w-6 h-6 animate-float" />
+                </div>
+              </div>
+              <div className="w-px h-8 bg-gradient-to-b from-xala-accent/50 to-transparent"></div>
+            </div>
+
+            {/* Right arrow for desktop */}
+            <div className="hidden md:block absolute top-1/2 -right-12 transform -translate-y-1/2">
+              <div className="relative px-3">
+                <div className="absolute inset-0 bg-xala-accent/20 blur-lg transform scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative">
+                  <ArrowRight className="w-6 h-6 text-xala-accent animate-pulse-slow" />
+                </div>
+                <div className="absolute top-1/2 right-0 h-px w-8 bg-gradient-to-r from-xala-accent/50 to-transparent transform -translate-y-1/2"></div>
+              </div>
+            </div>
+          </>
         )}
       </div>
     );
   };
 
   return (
-    <section id="work-process" className="py-24 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary relative overflow-hidden">
+    <section id="work-process" className="py-12 md:py-24 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-5 animate-pulse"></div>
 
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/30 rounded-full filter blur-3xl animate-float-1"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-500/30 rounded-full filter blur-3xl animate-float-2"></div>
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-cyan-500/30 rounded-full filter blur-3xl animate-float-3"></div>
+        <div className="absolute top-1/4 left-1/4 w-48 md:w-64 h-48 md:h-64 bg-purple-500/30 rounded-full filter blur-3xl animate-float-1"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-48 md:w-64 h-48 md:h-64 bg-blue-500/30 rounded-full filter blur-3xl animate-float-2"></div>
+        <div className="absolute top-1/2 left-1/2 w-48 md:w-64 h-48 md:h-64 bg-cyan-500/30 rounded-full filter blur-3xl animate-float-3"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="text-center mb-20 animate-fade-in">
-          <h2 className="text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-6">
+        <div className="text-center mb-12 md:mb-20 animate-fade-in">
+          <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-4 md:mb-6">
             {section?.title || t('workProcess.title')}
           </h2>
-          <p className="text-xala-text/80 max-w-2xl mx-auto text-lg">
+          <p className="text-xala-text/80 max-w-2xl mx-auto text-base md:text-lg px-4">
             {section?.description || t('workProcess.description')}
           </p>
         </div>
-          <div 
-            className="grid gap-8"
-            style={{
-              gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
-              gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`
-            }}
-          >
-            {processes?.map((process, index) => renderProcessCard(process, index, processes.length))}
-          </div>
+
+        {/* Mobile view: Single column */}
+        <div className="md:hidden space-y-8">
+          {processes?.map((process, index) => renderProcessCard(process, index, processes.length))}
+        </div>
+
+        {/* Desktop view: Grid */}
+        <div className="hidden md:grid md:grid-cols-3 gap-8">
+          {processes?.map((process, index) => renderProcessCard(process, index, processes.length))}
+        </div>
       </div>
     </section>
   );
