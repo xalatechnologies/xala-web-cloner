@@ -2,7 +2,10 @@ import { Message } from '@/types/chat';
 
 export interface AIResponse {
   content: string;
-  sources?: Message['sources'];
+  sources?: Array<{
+    title: string;
+    url: string;
+  }>;
 }
 
 export async function getAIResponse(messages: Message[], context: string): Promise<AIResponse> {
@@ -19,13 +22,11 @@ export async function getAIResponse(messages: Message[], context: string): Promi
         sources: [
           {
             title: "RESTful API Design Guide",
-            url: "https://restfulapi.net/",
-            content: "Best practices and principles for designing REST APIs."
+            url: "https://restfulapi.net/"
           },
           {
             title: "GraphQL vs REST",
-            url: "https://www.apollographql.com/blog/graphql-vs-rest/",
-            content: "A comprehensive comparison of GraphQL and REST APIs."
+            url: "https://www.apollographql.com/blog/graphql-vs-rest/"
           }
         ]
       };
@@ -37,26 +38,11 @@ export async function getAIResponse(messages: Message[], context: string): Promi
         sources: [
           {
             title: "Microservices Architecture Guide",
-            url: "https://microservices.io/patterns/microservices.html",
-            content: "A detailed guide to microservices architecture patterns and best practices."
+            url: "https://microservices.io/patterns/microservices.html"
           },
           {
             title: "Scaling with Microservices",
-            url: "https://docs.microsoft.com/en-us/azure/architecture/guide/architecture-styles/microservices",
-            content: "Microsoft's comprehensive guide to microservices architecture and scaling strategies."
-          }
-        ]
-      };
-    }
-
-    if (query.includes('database') || query.includes('data')) {
-      return {
-        content: "For your data requirements, I suggest considering these options:\n\n1. PostgreSQL: For robust relational data\n2. MongoDB: For flexible document storage\n3. Redis: For caching and real-time features\n\nWould you like to know more about any of these options?",
-        sources: [
-          {
-            title: "Database Selection Guide",
-            url: "https://www.digitalocean.com/community/tutorials/how-to-choose-a-database-for-your-application",
-            content: "A comprehensive guide to selecting the right database for your needs."
+            url: "https://docs.microsoft.com/en-us/azure/architecture/guide/architecture-styles/microservices"
           }
         ]
       };

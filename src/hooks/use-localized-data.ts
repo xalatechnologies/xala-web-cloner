@@ -2,33 +2,40 @@ import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import type { Language } from '@/types/chat';
 
-export function useLocalizedData<T>(
-  tableName: string,
-  language: Language = 'en',
-  options: {
-    select?: string;
-    orderBy?: string;
-    orderDirection?: 'asc' | 'desc';
-  } = {}
-) {
-  const { select = '*', orderBy = 'sort_order', orderDirection = 'asc' } = options;
+type TableName = 'services' | 'products' | 'case_studies' | 'technologies' | 'about_features' | 'team_members';
 
-  return useQuery({
-    queryKey: ['localized-data', tableName, language, select, orderBy, orderDirection],
+interface UseLocalizedDataOptions {
+  queryKey: string;
+  table: TableName;
+  relationships?: string;
+  orderBy?: string;
+}
+
+export function useLocalizedData<T>({ queryKey, table, relationships, orderBy }: UseLocalizedDataOptions) {
+  const language: Language = 'en'; // Default to English
+
+  const query = useQuery({
+    queryKey: [queryKey, language],
     queryFn: async () => {
-      const query = supabase
-        .from(tableName)
-        .select(select)
-        .eq('language', language)
-        .order(orderBy, { ascending: orderDirection === 'asc' });
+      let queryBuilder = supabase
+        .from(table)
+        .select(relationships || '*')
+        .eq('language', language);
 
-      const { data, error } = await query;
-
-      if (error) {
-        throw error;
+      if (orderBy) {
+        queryBuilder = queryBuilder.order(orderBy);
       }
 
+      const { data, error } = await queryBuilder;
+
+      if (error) throw error;
       return data as T[];
     }
   });
+
+  return {
+    data: query.data || [],
+    isLoading: query.isLoading,
+    error: query.error
+  };
 }

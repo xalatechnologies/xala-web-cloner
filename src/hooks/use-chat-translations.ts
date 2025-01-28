@@ -3,17 +3,17 @@ import { supabase } from '@/integrations/supabase/client';
 import type { ChatTranslations } from '@/types/chat';
 
 const defaultTranslations: ChatTranslations = {
-  'chat.title': 'Xala AI Assistant',
+  'chat.title': 'Chat Assistant',
   'chat.status.thinking': 'Thinking...',
   'chat.status.online': 'Online',
-  'chat.input.placeholder': 'Type your message...',
-  'chat.input.button': 'Chat with Xala AI',
+  'chat.input.placeholder': 'Type a message...',
+  'chat.input.button': 'Chat',
   'chat.errors.failed_to_send': 'Failed to send message'
 };
 
-export function useChatTranslations(language: string = 'en') {
+export function useChatTranslations() {
   const { data: translations } = useQuery({
-    queryKey: ['chat-translations', language],
+    queryKey: ['chat-translations'],
     queryFn: async () => {
       const { data, error } = await supabase
         .from('sections')
@@ -33,3 +33,5 @@ export function useChatTranslations(language: string = 'en') {
 
   return translations;
 }
+
+export type { ChatTranslations };
