@@ -12,23 +12,23 @@ const TechnologyCard = ({ icon, title, description, tools }: TechnologyCardProps
   const IconComponent = icon ? (Icons[icon as keyof typeof Icons] as LucideIcon) : null;
 
   return (
-    <div className="h-full p-6 bg-xala-secondary rounded-xl border border-gray-800 hover:border-xala-accent/50 transition-all duration-300">
+    <div className="h-full p-4 sm:p-6 bg-xala-secondary rounded-xl border border-gray-800 hover:border-xala-accent/50 transition-all duration-300">
       <div className="flex flex-col h-full">
-        <div className="flex items-center gap-4 mb-4">
-          {IconComponent && <IconComponent className="w-8 h-8 text-xala-accent" />}
-          <h3 className="text-xl font-semibold text-xala-accent">{title}</h3>
+        <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+          {IconComponent && <IconComponent className="w-6 h-6 sm:w-8 sm:h-8 text-xala-accent" />}
+          <h3 className="text-lg sm:text-xl font-semibold text-xala-accent">{title}</h3>
         </div>
         
         {description && (
-          <p className="text-xala-text mb-6">{description}</p>
+          <p className="text-sm sm:text-base text-xala-text mb-4 sm:mb-6">{description}</p>
         )}
         
         {tools && tools.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-auto">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-auto">
             {tools.map((tool) => (
               <span
                 key={tool.id}
-                className="px-3 py-1 bg-xala-primary rounded-full text-sm text-xala-text"
+                className="px-2 sm:px-3 py-0.5 sm:py-1 bg-xala-primary rounded-full text-xs sm:text-sm text-xala-text"
               >
                 {tool.name}
               </span>

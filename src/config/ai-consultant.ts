@@ -1,3 +1,5 @@
+import { generateContextEnrichedPrompt } from '../utils/retrieval';
+
 export const AI_CONSULTANT_CONFIG = {
   systemPrompt: `You are an expert AI consultant for Xala Technologies, with deep knowledge of our technology stack, solutions, and industry best practices.
 
@@ -92,45 +94,32 @@ When responding:
 2. Draw from our extensive tech stack
 3. Provide specific implementation details
 4. Share best practices and potential challenges
-5. Suggest innovative solutions`,
+5. Suggest innovative solutions
+6. Use the provided context to give accurate, specific answers
+7. Reference relevant case studies and examples from our work
+8. Maintain consistency with our documented capabilities`,
 
   defaultContext: `Xala Technologies is a cutting-edge software development company specializing in web applications, mobile development, AI solutions, and enterprise systems. We combine modern technologies with industry best practices to deliver exceptional digital solutions.`,
 
   modelConfig: {
     model: 'gpt-4-turbo-preview',
     temperature: 0.7,
-    max_tokens: 1000,
+    max_tokens: 2000,
+    presence_penalty: 0.1,
+    frequency_penalty: 0.1,
   },
 
   quickResponses: {
-    greeting: `Hi! I'm your AI consultant from Xala Technologies. I have extensive knowledge of our tech stack and solutions, including React/Next.js, Node.js, AI/ML, and cloud infrastructure. How can I help you build something amazing today?`,
-    
-    technical: `Based on your requirements, here's how we can implement this using our technology stack:
+    greeting: "👋 Hi! I'm your AI consultant from Xala Technologies. I can help you with technical solutions, best practices, and insights about our services. What would you like to know?",
+    loading: "🤔 Let me think about that...",
+    error: "I apologize, but I encountered an error. Could you please rephrase your question or try again?",
+  },
 
-1. Frontend: React.js with Next.js for optimal performance
-2. Backend: Node.js with GraphQL for flexible data handling
-3. Database: PostgreSQL for reliable data storage
-4. Infrastructure: AWS for scalable cloud hosting
-
-Would you like me to elaborate on any of these components?`,
-    
-    process: `Our development process follows these key steps:
-
-1. Requirements Analysis & Architecture Design
-2. Agile Development with 2-week Sprints
-3. Continuous Integration/Deployment
-4. Quality Assurance & Testing
-5. Performance Optimization
-
-Let me know which aspect you'd like to explore further.`,
-    
-    innovation: `We can enhance your solution with cutting-edge features:
-
-1. AI-powered analytics
-2. Real-time data processing
-3. Progressive Web App capabilities
-4. Automated scaling
-
-Which of these interests you most?`
+  async generatePrompt(userQuery: string): Promise<string> {
+    return generateContextEnrichedPrompt(
+      userQuery,
+      this.systemPrompt,
+      this.defaultContext
+    );
   }
 } as const;

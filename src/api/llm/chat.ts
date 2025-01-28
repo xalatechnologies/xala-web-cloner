@@ -1,5 +1,10 @@
 import { supabase } from '@/integrations/supabase/client';
 
+const isDev = process.env.NODE_ENV === 'development';
+const EDGE_FUNCTION_URL = isDev 
+  ? 'http://localhost:8000'
+  : 'https://ttvpsjeucewnenjevfhh.functions.supabase.co/chat-ai';
+
 export async function generateResponse(message: string, language: string) {
   try {
     if (!message?.trim()) {
@@ -12,15 +17,11 @@ export async function generateResponse(message: string, language: string) {
 
     const payload = {
       message: message.trim(),
-      language: language === 'no' ? 'no' : 'en',
-      systemPrompt: language === 'no'
-        ? `Du er en AI-assistent for Xala Technologies. Du er spesialisert på å hjelpe kunder med AI-løsninger, skyintegrasjon og dataanalyse. Svar alltid på norsk.`
-        : `You are an AI assistant for Xala Technologies, specializing in helping customers with AI solutions, cloud integration, and data analytics.`
+      language: language === 'no' ? 'no' : 'en'
     };
 
     console.log('Sending request to Edge Function:', payload);
 
-    // Call existing chat-ai Edge Function
     const { data, error } = await supabase.functions.invoke('chat-ai', {
       body: payload,
     });
@@ -32,23 +33,17 @@ export async function generateResponse(message: string, language: string) {
       throw new Error(error.message || 'Edge Function error');
     }
 
-    // Check for error in the response data
     if (data?.error) {
       console.error('Edge Function returned error:', data.error);
       throw new Error(data.error);
     }
 
-    // Handle both possible response formats
-    const responseText = data?.response || data?.choices?.[0]?.message?.content;
-
-    if (!responseText) {
-      console.error('No valid response in data:', data);
+    if (!data?.message) {
+      console.error('No message in response:', data);
       throw new Error('No valid response from Edge Function');
     }
 
-    return {
-      message: responseText
-    };
+    return { message: data.message };
   } catch (error) {
     console.error('LLM error:', error);
     const errorMessage = language === 'no'

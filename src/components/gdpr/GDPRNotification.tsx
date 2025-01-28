@@ -60,17 +60,17 @@ export function GDPRNotification() {
       )}
     >
       <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex-1 text-center sm:text-left">
-          <h3 className="font-semibold mb-2">{gdprData.title}</h3>
-          <p className="text-sm text-primary-foreground/90">{gdprData.content}</p>
-        </div>
         <Button
           onClick={handleAccept}
           variant="secondary"
-          className="shrink-0 w-full sm:w-auto"
+          className="shrink-0 w-full sm:w-auto order-2 sm:order-1"
         >
           {gdprData.button_text}
         </Button>
+        <div className="flex-1 text-center sm:text-left order-1 sm:order-2">
+          <h3 className="font-semibold mb-2">{gdprData.title}</h3>
+          <p className="text-sm text-primary-foreground/90">{gdprData.content}</p>
+        </div>
       </div>
     </div>
   );

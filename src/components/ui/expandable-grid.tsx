@@ -26,9 +26,9 @@ const ExpandableGrid = ({ items, initialRows = 1, cols = 3 }: ExpandableGridProp
 
   return (
     <div className="space-y-8">
-      <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-${cols} gap-8`}>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-0">
         {visibleItems.map((item, index) => (
-          <div key={index} className="animate-fade-in" style={{
+          <div key={index} className="animate-fade-in w-full" style={{
             animationDelay: `${index * 0.1}s`
           }}>
             {item}

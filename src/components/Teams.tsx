@@ -66,18 +66,20 @@ const Teams = () => {
   if (!section) return null;
 
   return (
-    <section id="team" className="py-20 bg-xala-secondary relative overflow-hidden">
-      <div className="container">
-        <div className="flex flex-col gap-12">
-          <div className="flex flex-col gap-4 text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+    <section id="team" className="py-12 sm:py-16 lg:py-20 bg-xala-secondary relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-6 sm:gap-8 lg:gap-12">
+          <div className="flex flex-col gap-3 sm:gap-4 text-center">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white">
               {section.title}
             </h2>
-            <p className="text-lg leading-8 text-xala-text">
+            <p className="text-base sm:text-lg leading-relaxed text-xala-text max-w-2xl mx-auto">
               {section.description}
             </p>
           </div>
-          {renderContent()}
+          <div className="w-full">
+            {renderContent()}
+          </div>
         </div>
       </div>
     </section>

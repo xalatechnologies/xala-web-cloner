@@ -29,24 +29,24 @@ const Hero = () => {
     const words = title.split(' ');
     
     return (
-      <>
+      <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-6">
         {words.map((word, index) => (
           <span key={index}>
             {index === words.length - 1 ? (
               <GradientText>{word}</GradientText>
             ) : (
-              <span className="text-white">{word}{' '}</span>
+              <span className="text-xala-text">{word} </span>
             )}
           </span>
         ))}
-      </>
+      </h1>
     );
   };
 
   const isLoading = heroLoading || welcomeLoading;
 
   return (
-    <section id="home" className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-6 pb-0 sm:pt-8 sm:pb-1">
+    <section id="home" className="relative min-h-[60vh] pt-20 sm:pt-0 flex items-center justify-center overflow-hidden py-[5%]">
       <div className="absolute inset-0 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary animate-gradient-x"></div>
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-5"></div>
       

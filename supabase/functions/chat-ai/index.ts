@@ -1,89 +1,77 @@
 import { serve } from 'std/http/server.ts'
 import { OpenAI } from 'openai'
+import { DocumentVectorizer } from './utils/vectorize';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+};
+
+interface Message {
+  role: 'system' | 'user' | 'assistant';
+  content: string;
 }
 
 serve(async (req) => {
-  // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
 
   try {
-    // Get OpenAI API key
-    const apiKey = Deno.env.get('OPENAI_API_KEY')
-    if (!apiKey) {
-      console.error('OpenAI API key not found')
-      return new Response(
-        JSON.stringify({ error: 'OpenAI API key not configured' }),
-        {
-          status: 500,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        }
-      )
-    }
+    const { messages, language = 'en' } = await req.json()
 
-    const openai = new OpenAI({ apiKey })
+    // Initialize document vectorizer
+    const vectorizer = new DocumentVectorizer(
+      Deno.env.get('SUPABASE_URL') || '',
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '',
+      Deno.env.get('OPENAI_API_KEY') || ''
+    )
 
-    // Parse request body
-    let body
-    try {
-      body = await req.json()
-      console.log('Request body:', { ...body, apiKey: '[REDACTED]' })
-    } catch (e) {
-      console.error('Failed to parse request body:', e)
-      return new Response(
-        JSON.stringify({ error: 'Invalid JSON in request body' }),
-        {
-          status: 400,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        }
-      )
-    }
+    // Get relevant context from vectorized documents
+    const lastUserMessage = messages[messages.length - 1].content
+    const relevantDocs = await vectorizer.semanticSearch(lastUserMessage, 3)
+    
+    // Create context from relevant documents
+    const context = relevantDocs
+      .map(doc => `${doc.content}\n`)
+      .join('\n')
 
-    const { message = '', language = 'en' } = body
+    const augmentedMessages: Message[] = [
+      {
+        role: 'system',
+        content: `You are an expert AI consultant for Xala Technologies. Use the following relevant context from our company documents to inform your responses:\n\n${context}\n\nWhen responding:\n1. Be professional and knowledgeable\n2. Reference specific examples from the context when relevant\n3. Always provide clear next steps\n4. Include appropriate contact information`
+      },
+      ...messages
+    ]
 
-    // Create chat completion
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4-turbo-preview',
-      messages: [
-        {
-          role: 'system',
-          content: language === 'no'
-            ? 'Du er en AI-assistent for Xala Technologies. Svar alltid på norsk.'
-            : 'You are an AI assistant for Xala Technologies.'
-        },
-        {
-          role: 'user',
-          content: message
-        }
-      ],
-      temperature: 0.7,
-      max_tokens: 500
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${Deno.env.get('OPENAI_API_KEY')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'gpt-4-turbo-preview',
+        messages: augmentedMessages,
+        temperature: 0.7,
+        max_tokens: 1000,
+      }),
     })
 
-    console.log('OpenAI response:', completion)
+    const { choices } = await response.json()
 
     return new Response(
-      JSON.stringify({ response: completion.choices[0]?.message?.content }),
+      JSON.stringify({ response: choices[0].message }),
       {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        status: 200,
       },
     )
   } catch (error) {
-    console.error('Error:', error)
     return new Response(
-      JSON.stringify({ 
-        error: error.message || 'An error occurred processing your request.',
-        details: error
-      }),
+      JSON.stringify({ error: error.message }),
       {
+        status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        status: error.status || 500,
       },
     )
   }

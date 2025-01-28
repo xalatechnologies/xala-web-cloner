@@ -14,13 +14,13 @@ const About = () => {
 
   if (isLoading) {
     return (
-      <section id="about" className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+      <section id="about" className="py-12 sm:py-16 lg:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 sm:mb-12">
             <Skeleton className="h-8 w-64 mx-auto mb-4" />
             <Skeleton className="h-4 w-96 mx-auto" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16">
             {[1, 2, 3].map((i) => (
               <div key={i} className="p-6 rounded-lg bg-xala-secondary/20">
                 <Skeleton className="h-12 w-12 mb-4" />
@@ -41,14 +41,14 @@ const About = () => {
   }
 
   return (
-    <section id="about" className="py-20">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">{aboutSection?.title}</h2>
-          <p className="text-lg text-xala-text/80">{aboutSection?.description}</p>
+    <section id="about" className="py-12 sm:py-16 lg:py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4">{aboutSection?.title}</h2>
+          <p className="text-base sm:text-lg text-xala-text/80 max-w-3xl mx-auto px-4 sm:px-0">{aboutSection?.description}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16">
           {features?.map((feature) => (
             <AboutFeatureCard
               key={feature.id}
@@ -60,13 +60,13 @@ const About = () => {
         </div>
 
         {visionSection && (
-          <div className="mt-20 p-8 rounded-2xl bg-gradient-to-r from-[#9b87f5]/10 via-[#D946EF]/10 to-[#0EA5E9]/10 
+          <div className="mt-12 sm:mt-20 p-4 sm:p-8 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#9b87f5]/10 via-[#D946EF]/10 to-[#0EA5E9]/10 
                       border border-white/10 backdrop-blur-sm">
-            <div className="max-w-3xl mx-auto text-center space-y-6">
-              <h3 className="text-2xl md:text-3xl font-semibold text-white">
+            <div className="max-w-3xl mx-auto text-center space-y-4 sm:space-y-6">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white">
                 {visionSection.title}
               </h3>
-              <p className="text-lg text-white/80 leading-relaxed">
+              <p className="text-base sm:text-lg text-white/80 leading-relaxed">
                 {visionSection.description}
               </p>
             </div>

@@ -45,7 +45,7 @@ export const ChatWidget: FC = () => {
   }, [isOpen, sidebarWidth]);
 
   return (
-    <>
+    <div className="hidden sm:block fixed bottom-6 right-6 z-50">
       <AnimatePresence>
         {isOpen && (
           <>
@@ -91,6 +91,6 @@ export const ChatWidget: FC = () => {
         <MessageCircle className="w-5 h-5" />
         <span className="font-medium">{translations['chat.input.button']}</span>
       </motion.button>
-    </>
+    </div>
   );
 };

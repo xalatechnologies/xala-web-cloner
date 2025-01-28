@@ -110,7 +110,17 @@ const WorkProcess = () => {
         </div>
         
         {/* Add arrow based on screen size and position */}
-        {index < totalProcesses - 1 && process.step_number !== 3 && (
+        {index < totalProcesses - 1 && (process.step_number === 3 ? (
+          <div className="flex flex-col items-center md:hidden py-4 text-xala-accent">
+            <div className="relative">
+              <div className="absolute inset-0 bg-xala-accent/20 blur-lg transform scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative">
+                <ArrowDown className="w-6 h-6 animate-float" />
+              </div>
+            </div>
+            <div className="w-px h-8 bg-gradient-to-b from-xala-accent/50 to-transparent"></div>
+          </div>
+        ) : process.step_number !== 3 && (
           <>
             {/* Down arrow for mobile */}
             <div className="flex flex-col items-center md:hidden py-4 text-xala-accent">
@@ -134,7 +144,7 @@ const WorkProcess = () => {
               </div>
             </div>
           </>
-        )}
+        ))}
       </div>
     );
   };
