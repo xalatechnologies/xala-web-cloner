@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Message } from '@/types/chat';
-import { Chat } from '@/components/chat/Chat';
 import { v4 as uuidv4 } from 'uuid';
+import { Chat } from '@/components/chat/Chat';
+import type { Message } from '@/types/chat';
+import { useTranslation } from 'react-i18next';
 
 export default function ChatPage() {
+  const { t } = useTranslation();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -60,12 +62,20 @@ export default function ChatPage() {
   };
 
   return (
-    <div className="container mx-auto flex h-[80vh] items-center justify-center py-8">
-      <div className="h-full w-full max-w-2xl rounded-lg border bg-background shadow-sm">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
+      <div className="container mx-auto px-4 py-8">
         <Chat
           messages={messages}
           onSendMessage={handleSendMessage}
           thinking={isLoading}
+          translations={{
+            'chat.title': t('chat.title'),
+            'chat.status.thinking': t('chat.status.thinking'),
+            'chat.status.online': t('chat.status.online'),
+            'chat.input.placeholder': t('chat.input.placeholder'),
+            'chat.input.button': t('chat.input.button'),
+            'chat.errors.failed_to_send': t('chat.errors.failed_to_send'),
+          }}
         />
       </div>
     </div>

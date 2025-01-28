@@ -3,6 +3,7 @@ import { useSection } from "@/hooks/use-section";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import type { Database } from '@/integrations/supabase/types';
+import type { Technology } from '@/types/technology';
 import TechnologyGrid from './technologies/TechnologyGrid';
 
 type SupportedLanguage = Database['public']['Enums']['supported_language'];
@@ -14,11 +15,14 @@ const Technologies = () => {
   const { data: technologies = [], isLoading: isTechnologiesLoading } = useQuery({
     queryKey: ['technologies', i18n.language],
     queryFn: async () => {
-      const currentLanguage = i18n.language.toLowerCase() as SupportedLanguage;
+      const currentLanguage = i18n.language.toLowerCase().startsWith('en') ? 'en' : 'no' as SupportedLanguage;
       
       const { data, error } = await supabase
         .from('technologies')
-        .select('*')
+        .select(`
+          *,
+          technology_tools (*)
+        `)
         .eq('language', currentLanguage)
         .order('sort_order', { ascending: true });
 
@@ -26,7 +30,7 @@ const Technologies = () => {
         throw new Error('Failed to fetch technologies');
       }
 
-      return data || [];
+      return (data || []) as Technology[];
     },
   });
 
