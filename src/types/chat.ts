@@ -5,7 +5,6 @@ export type Language = 'en' | 'no';
 export interface Source {
   title: string;
   url: string;
-  text?: string;
 }
 
 export interface Message {

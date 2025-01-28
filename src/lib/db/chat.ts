@@ -1,11 +1,10 @@
-import { Message } from '@/types/chat';
+import type { Message } from '@/types/chat';
 import { supabase } from '@/integrations/supabase/client';
 
-export async function saveMessage(message: Message) {
+export async function saveMessage(message: Omit<Message, 'id' | 'updated_at'>) {
   const { error } = await supabase
     .from('chat_messages')
     .insert([{
-      id: message.id,
       content: message.content,
       type: message.type,
       status: message.status,
@@ -32,7 +31,7 @@ export async function loadMessages(limit = 50) {
     type: msg.type,
     status: msg.status,
     language: msg.language === 'en' ? 'en' : 'no',
-    sources: msg.sources as Source[],
+    sources: msg.sources,
     created_at: msg.created_at,
     updated_at: msg.updated_at
   }));

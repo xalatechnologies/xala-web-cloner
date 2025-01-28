@@ -2,9 +2,9 @@ import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import type { ChatTranslations } from '@/types/chat';
 
-export function useChatTranslations() {
-  const { data: section } = useQuery({
-    queryKey: ['chat-translations'],
+export function useChatTranslations(language: string = 'en') {
+  const { data: translations } = useQuery({
+    queryKey: ['chat-translations', language],
     queryFn: async () => {
       const { data, error } = await supabase
         .from('sections')
@@ -13,26 +13,24 @@ export function useChatTranslations() {
         .single();
 
       if (error) {
-        console.error('Failed to fetch chat translations:', error);
-        return null;
+        console.error('Error fetching chat translations:', error);
+        return getDefaultTranslations();
       }
 
-      return data;
+      return (data?.translations as ChatTranslations) || getDefaultTranslations();
     },
   });
 
-  const defaultTranslations: ChatTranslations = {
-    'chat.title': 'Chat',
-    'chat.status.thinking': 'Thinking...',
-    'chat.status.online': 'Online',
-    'chat.input.placeholder': 'Type a message...',
-    'chat.input.button': 'Chat',
-    'chat.errors.failed_to_send': 'Failed to send message',
-  };
-
-  return {
-    translations: (section?.translations as ChatTranslations) || defaultTranslations,
-  };
+  return translations || getDefaultTranslations();
 }
 
-export type { ChatTranslations };
+function getDefaultTranslations(): ChatTranslations {
+  return {
+    'chat.title': 'Xala AI Assistant',
+    'chat.status.thinking': 'Thinking...',
+    'chat.status.online': 'Online',
+    'chat.input.placeholder': 'Type your message...',
+    'chat.input.button': 'Chat with Xala AI',
+    'chat.errors.failed_to_send': 'Failed to send message'
+  };
+}
