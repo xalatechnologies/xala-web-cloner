@@ -1,4 +1,4 @@
-import type { Message } from '@/types/chat';
+import type { Message, Source } from '@/types/chat';
 import { supabase } from '@/integrations/supabase/client';
 import type { Json } from '@/integrations/supabase/types';
 
@@ -10,7 +10,7 @@ export async function saveMessage(message: Omit<Message, 'id' | 'updated_at'>) {
       type: message.type,
       status: message.status,
       language: message.language,
-      sources: message.sources as Json,
+      sources: message.sources as unknown as Json,
       created_at: message.created_at
     }]);
 
@@ -32,7 +32,7 @@ export async function loadMessages(limit = 50) {
     type: msg.type,
     status: msg.status,
     language: msg.language === 'en' ? 'en' : 'no',
-    sources: msg.sources as Message['sources'],
+    sources: msg.sources as unknown as Source[],
     created_at: msg.created_at,
     updated_at: msg.updated_at
   }));

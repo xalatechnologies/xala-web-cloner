@@ -8,12 +8,6 @@ export function useSessionChat() {
   const [isLoading, setIsLoading] = useState(false);
   const { setThinking } = useChatStore();
 
-  const updateMessageStatus = useCallback((messageId: string, status: Message['status']) => {
-    setMessages(prev => prev.map(msg => 
-      msg.id === messageId ? { ...msg, status } : msg
-    ));
-  }, []);
-
   const sendMessage = useCallback(async (content: string) => {
     const messageId = crypto.randomUUID();
     const timestamp = new Date().toISOString();
@@ -54,7 +48,13 @@ export function useSessionChat() {
       setThinking(false);
       setIsLoading(false);
     }
-  }, [setThinking, updateMessageStatus]);
+  }, [setThinking]);
+
+  const updateMessageStatus = useCallback((messageId: string, status: Message['status']) => {
+    setMessages(prev => prev.map(msg => 
+      msg.id === messageId ? { ...msg, status } : msg
+    ));
+  }, []);
 
   return {
     messages,

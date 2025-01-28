@@ -3,20 +3,20 @@ export interface Source {
   url: string;
 }
 
+export type MessageType = 'user' | 'assistant';
+export type MessageStatus = 'sending' | 'sent' | 'error';
+export type Language = 'en' | 'no';
+
 export interface Message {
   id: string;
   content: string;
-  type: 'user' | 'assistant';
-  status: 'sending' | 'sent' | 'error';
-  language: 'en' | 'no';
+  type: MessageType;
+  status: MessageStatus;
+  language: Language;
   sources?: Source[];
   created_at: string;
   updated_at?: string;
 }
-
-export type MessageType = Message['type'];
-export type MessageStatus = Message['status'];
-export type Language = 'en' | 'no';
 
 export interface ChatTranslations {
   'chat.title': string;
