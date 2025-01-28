@@ -345,6 +345,39 @@ export type Database = {
           },
         ]
       }
+      chat_messages: {
+        Row: {
+          content: string
+          created_at: string | null
+          id: string
+          language: string
+          sources: Json | null
+          status: Database["public"]["Enums"]["message_status"]
+          type: Database["public"]["Enums"]["message_type"]
+          updated_at: string | null
+        }
+        Insert: {
+          content: string
+          created_at?: string | null
+          id?: string
+          language?: string
+          sources?: Json | null
+          status?: Database["public"]["Enums"]["message_status"]
+          type: Database["public"]["Enums"]["message_type"]
+          updated_at?: string | null
+        }
+        Update: {
+          content?: string
+          created_at?: string | null
+          id?: string
+          language?: string
+          sources?: Json | null
+          status?: Database["public"]["Enums"]["message_status"]
+          type?: Database["public"]["Enums"]["message_type"]
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       clients: {
         Row: {
           created_at: string | null
@@ -440,6 +473,113 @@ export type Database = {
           name?: string
           status?: string | null
           subject?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      gdpr_notifications: {
+        Row: {
+          button_text: string
+          content: string
+          created_at: string
+          id: string
+          is_active: boolean | null
+          language: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          button_text: string
+          content: string
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          language: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          button_text?: string
+          content?: string
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          language?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      legal_content: {
+        Row: {
+          content: string
+          created_at: string | null
+          id: string
+          language: Database["public"]["Enums"]["supported_language"]
+          section_id: string | null
+          sort_order: number
+          title: string | null
+          type: Database["public"]["Enums"]["legal_content_type"]
+        }
+        Insert: {
+          content: string
+          created_at?: string | null
+          id?: string
+          language: Database["public"]["Enums"]["supported_language"]
+          section_id?: string | null
+          sort_order: number
+          title?: string | null
+          type: Database["public"]["Enums"]["legal_content_type"]
+        }
+        Update: {
+          content?: string
+          created_at?: string | null
+          id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          section_id?: string | null
+          sort_order?: number
+          title?: string | null
+          type?: Database["public"]["Enums"]["legal_content_type"]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "legal_content_section_id_fkey"
+            columns: ["section_id"]
+            isOneToOne: false
+            referencedRelation: "legal_sections"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      legal_sections: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          id: string
+          language: Database["public"]["Enums"]["supported_language"]
+          sort_order: number
+          title: string
+          type: Database["public"]["Enums"]["legal_content_type"]
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          language: Database["public"]["Enums"]["supported_language"]
+          sort_order: number
+          title: string
+          type: Database["public"]["Enums"]["legal_content_type"]
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          language?: Database["public"]["Enums"]["supported_language"]
+          sort_order?: number
+          title?: string
+          type?: Database["public"]["Enums"]["legal_content_type"]
           updated_at?: string | null
         }
         Relationships: []
@@ -689,6 +829,7 @@ export type Database = {
           section_name: string
           sort_order: number
           title: string
+          translations: Json | null
           updated_at: string | null
         }
         Insert: {
@@ -704,6 +845,7 @@ export type Database = {
           section_name: string
           sort_order?: number
           title: string
+          translations?: Json | null
           updated_at?: string | null
         }
         Update: {
@@ -719,6 +861,7 @@ export type Database = {
           section_name?: string
           sort_order?: number
           title?: string
+          translations?: Json | null
           updated_at?: string | null
         }
         Relationships: []
@@ -942,6 +1085,9 @@ export type Database = {
       bottom_section_type: "address" | "social" | "contact" | "newsletter"
       case_study_status: "draft" | "published" | "archived"
       feature_category: "ai" | "cloud" | "development" | "analytics"
+      legal_content_type: "privacy" | "terms" | "cookies"
+      message_status: "sending" | "sent" | "error"
+      message_type: "user" | "assistant"
       product_status: "draft" | "published" | "archived"
       supported_language: "en" | "no"
     }

@@ -20,6 +20,18 @@ i18n
     detection: {
       order: ['localStorage', 'navigator'],
       caches: ['localStorage'],
+      lookupFromPathIndex: 0,
+      // Map browser language codes to our supported codes
+      convertLanguageCodes: true,
+      checkWhitelist: true,
+      // This ensures that any 'en' variant (en-GB, en-US, etc) maps to 'en'
+      languageUtils: {
+        formatLanguageCode: function(code: string) {
+          if (code.startsWith('en')) return 'en';
+          if (code.startsWith('no') || code === 'nb' || code === 'nn') return 'no';
+          return code;
+        }
+      }
     },
 
     interpolation: {
