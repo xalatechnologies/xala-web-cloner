@@ -6,14 +6,12 @@ import { TypingIndicator } from './TypingIndicator';
 interface ChatMessagesProps {
   messages: Message[];
   isTyping: boolean;
-  onLinkClick: (e: React.MouseEvent<HTMLDivElement>) => void;
   messagesEndRef: React.RefObject<HTMLDivElement>;
 }
 
 export function ChatMessages({
   messages,
   isTyping,
-  onLinkClick,
   messagesEndRef
 }: ChatMessagesProps) {
   return (
@@ -22,7 +20,6 @@ export function ChatMessages({
         <ChatMessage
           key={message.id}
           message={message}
-          onLinkClick={onLinkClick}
         />
       ))}
       {isTyping && <TypingIndicator />}

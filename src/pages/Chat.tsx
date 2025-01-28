@@ -7,48 +7,48 @@ export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      type: 'bot',
+      type: 'assistant',
       content: 'Hello! How can I help you today?',
-      timestamp: new Date(),
+      status: 'sent',
+      language: 'en',
+      created_at: new Date().toISOString(),
     },
   ]);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSendMessage = async (content: string) => {
-    // Add user message
     const userMessage: Message = {
       id: uuidv4(),
       type: 'user',
       content,
-      timestamp: new Date(),
       status: 'sending',
+      language: 'en',
+      created_at: new Date().toISOString(),
     };
     
     setMessages(prev => [...prev, userMessage]);
     setIsLoading(true);
 
     try {
-      // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      // Update user message status to sent
       setMessages(prev =>
         prev.map(msg =>
           msg.id === userMessage.id ? { ...msg, status: 'sent' } : msg
         )
       );
 
-      // Simulate bot response
       const botMessage: Message = {
         id: uuidv4(),
-        type: 'bot',
+        type: 'assistant',
         content: `I received your message: "${content}"`,
-        timestamp: new Date(),
+        status: 'sent',
+        language: 'en',
+        created_at: new Date().toISOString(),
       };
 
       setMessages(prev => [...prev, botMessage]);
     } catch (error) {
-      // Update user message status to error
       setMessages(prev =>
         prev.map(msg =>
           msg.id === userMessage.id ? { ...msg, status: 'error' } : msg
@@ -65,7 +65,7 @@ export default function ChatPage() {
         <Chat
           messages={messages}
           onSendMessage={handleSendMessage}
-          isLoading={isLoading}
+          thinking={isLoading}
         />
       </div>
     </div>

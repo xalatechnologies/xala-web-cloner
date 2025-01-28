@@ -16,11 +16,3 @@ export interface Message {
   sources?: Source[];
   created_at: string;
 }
-
-export interface ChatState {
-  messages: Message[];
-  isLoading: boolean;
-  isOpen: boolean;
-  context: string;
-  thinking: boolean;
-}

@@ -14,7 +14,6 @@ export function ChatMessage({ message, isLastMessage }: ChatMessageProps) {
   const isUser = message.type === 'user';
 
   const formatContent = (content: string) => {
-    // Replace \n with actual line breaks for markdown
     return content.replace(/\\n/g, '\n');
   };
 
@@ -25,7 +24,6 @@ export function ChatMessage({ message, isLastMessage }: ChatMessageProps) {
         isUser ? 'flex-row-reverse' : 'flex-row'
       )}
     >
-      {/* Avatar */}
       <div
         className={cn(
           'flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-full',
@@ -41,7 +39,6 @@ export function ChatMessage({ message, isLastMessage }: ChatMessageProps) {
         )}
       </div>
 
-      {/* Message Content */}
       <div
         className={cn(
           'flex min-h-[40px] max-w-[80%] flex-col gap-1',
@@ -72,7 +69,7 @@ export function ChatMessage({ message, isLastMessage }: ChatMessageProps) {
                 ol: ({ children }) => (
                   <ol className="mb-3 last:mb-0 pl-4 list-decimal space-y-1.5">{children}</ol>
                 ),
-                li: ({ children, ordered }) => (
+                li: ({ children }) => (
                   <li className="pl-1 marker:text-gray-500">
                     <div className="inline">{children}</div>
                   </li>
@@ -94,7 +91,6 @@ export function ChatMessage({ message, isLastMessage }: ChatMessageProps) {
           )}
         </div>
 
-        {/* Sources if available */}
         {message.sources && message.sources.length > 0 && (
           <div className="flex flex-col space-y-1 mt-2">
             <p className="text-xs text-gray-500">Sources:</p>
@@ -112,7 +108,6 @@ export function ChatMessage({ message, isLastMessage }: ChatMessageProps) {
           </div>
         )}
 
-        {/* Message Status */}
         {message.status && (
           <span
             className={cn(
