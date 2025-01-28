@@ -1,29 +1,19 @@
 import { useQuery } from '@tanstack/react-query';
-import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
-import type { Tables } from '@/integrations/supabase/types';
-
-export interface ChatTranslations {
-  'chat.title': string;
-  'chat.status.thinking': string;
-  'chat.status.online': string;
-  'chat.input.placeholder': string;
-  'chat.input.button': string;
-  'chat.errors.failed_to_send': string;
-}
+import type { ChatTranslations } from '@/types/chat';
+import type { Language } from '@/types/chat';
 
 export function useChatTranslations() {
-  const { i18n, t } = useTranslation();
-  const currentLanguage = i18n.language.toLowerCase().startsWith('en') ? 'en' : 'no';
+  const currentLanguage: Language = 'en';
 
-  const { data: sections, isLoading } = useQuery<Tables<'sections'>[]>({
+  const { data: section } = useQuery({
     queryKey: ['chat-translations', currentLanguage],
     queryFn: async () => {
       const { data, error } = await supabase
         .from('sections')
         .select('translations')
         .eq('language', currentLanguage)
-        .eq('title', 'Chat Widget')
+        .eq('section_name', 'Chat Widget')
         .single();
 
       if (error) {
@@ -35,17 +25,16 @@ export function useChatTranslations() {
     },
   });
 
-  const translations = sections?.translations as ChatTranslations || {
-    'chat.title': t('chat.title'),
-    'chat.status.thinking': t('chat.status.thinking'),
-    'chat.status.online': t('chat.status.online'),
-    'chat.input.placeholder': t('chat.input.placeholder'),
-    'chat.input.button': t('chat.input.button'),
-    'chat.errors.failed_to_send': t('chat.errors.failed_to_send'),
+  const defaultTranslations: ChatTranslations = {
+    'chat.title': 'Chat',
+    'chat.status.thinking': 'Thinking...',
+    'chat.status.online': 'Online',
+    'chat.input.placeholder': 'Type a message...',
+    'chat.input.button': 'Chat',
+    'chat.errors.failed_to_send': 'Failed to send message',
   };
 
   return {
-    translations,
-    isLoading,
+    translations: (section?.translations as ChatTranslations) || defaultTranslations,
   };
 }

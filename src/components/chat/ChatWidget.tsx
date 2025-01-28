@@ -12,23 +12,20 @@ import type { FC } from 'react';
 
 export const ChatWidget: FC = () => {
   const { isOpen, thinking, setOpen } = useChatStore();
-  const { messages, isLoading, sendMessage, updateMessageStatus } = useSessionChat();
+  const { messages, isLoading, sendMessage } = useSessionChat();
   const { translations } = useChatTranslations();
   const { sidebarWidth } = useChatSidebar();
 
   const handleSendMessage = async (content: string): Promise<void> => {
     try {
-      const message = {
+      await sendMessage({
         id: crypto.randomUUID(),
         content,
-        type: 'user' as const,
-        status: 'sending' as const,
-        language: 'en' as const,
+        type: 'user',
+        status: 'sending',
+        language: 'en',
         created_at: new Date().toISOString(),
-      };
-
-      await sendMessage(message);
-      await updateMessageStatus(message.id, 'sent');
+      });
     } catch (error) {
       console.error(translations['chat.errors.failed_to_send'], error);
     }

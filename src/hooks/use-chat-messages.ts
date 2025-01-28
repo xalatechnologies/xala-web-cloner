@@ -1,15 +1,12 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
-import { Message } from '@/types/chat';
+import type { Message, Language } from '@/types/chat';
 
 export function useChatMessages() {
-  const { i18n } = useTranslation();
   const queryClient = useQueryClient();
-  // Map language code to 'en' or 'no'
-  const currentLanguage = i18n.language.toLowerCase().startsWith('en') ? 'en' : 'no';
+  const currentLanguage: Language = 'en';
 
-  const messagesQuery = useQuery<Message[]>({
+  const messagesQuery = useQuery({
     queryKey: ['chat-messages', currentLanguage],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -22,7 +19,7 @@ export function useChatMessages() {
         throw new Error('Failed to fetch chat messages');
       }
 
-      return data || [];
+      return (data || []) as Message[];
     },
   });
 
@@ -31,24 +28,14 @@ export function useChatMessages() {
       const { data, error } = await supabase
         .from('chat_messages')
         .insert([{
-          ...message,
-          language: currentLanguage
+          id: message.id,
+          content: message.content,
+          type: message.type,
+          status: message.status,
+          language: currentLanguage,
+          sources: message.sources,
+          created_at: message.created_at
         }]);
-
-      if (error) throw error;
-      return data;
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['chat-messages'] });
-    },
-  });
-
-  const updateMessageMutation = useMutation({
-    mutationFn: async ({ id, status }: { id: string; status: Message['status'] }) => {
-      const { data, error } = await supabase
-        .from('chat_messages')
-        .update({ status })
-        .eq('id', id);
 
       if (error) throw error;
       return data;
@@ -63,6 +50,5 @@ export function useChatMessages() {
     isLoading: messagesQuery.isLoading,
     error: messagesQuery.error,
     sendMessage: sendMessageMutation.mutate,
-    updateMessageStatus: updateMessageMutation.mutate,
   };
 }

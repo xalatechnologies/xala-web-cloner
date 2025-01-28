@@ -16,6 +16,7 @@ export interface Message {
   language: Language;
   sources?: Source[];
   created_at: string;
+  updated_at?: string;
 }
 
 export interface ChatTranslations {
