@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,24 +8,26 @@ import { useChatTranslations } from '@/hooks/use-chat-translations';
 import { useChatSidebar } from '@/hooks/use-chat-sidebar';
 import { Chat } from './Chat';
 import { ChatHeader } from './ChatHeader';
-import type { FC } from 'react';
+import type { Message } from '@/types/chat';
 
-export const ChatWidget: FC = () => {
+export const ChatWidget = () => {
   const { isOpen, thinking, setOpen } = useChatStore();
   const { messages, isLoading, sendMessage } = useSessionChat();
   const { translations } = useChatTranslations();
   const { sidebarWidth } = useChatSidebar();
 
-  const handleSendMessage = async (content: string): Promise<void> => {
+  const handleSendMessage = async (content: string) => {
+    const message: Message = {
+      id: crypto.randomUUID(),
+      content,
+      type: 'user',
+      status: 'sending',
+      language: 'en',
+      created_at: new Date().toISOString(),
+    };
+
     try {
-      await sendMessage({
-        id: crypto.randomUUID(),
-        content,
-        type: 'user',
-        status: 'sending',
-        language: 'en',
-        created_at: new Date().toISOString(),
-      });
+      await sendMessage(message);
     } catch (error) {
       console.error(translations['chat.errors.failed_to_send'], error);
     }

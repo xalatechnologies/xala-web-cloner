@@ -2,7 +2,7 @@ import { Message } from '@/types/chat';
 import { supabase } from '@/integrations/supabase/client';
 
 export async function saveMessage(message: Message) {
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('chat_messages')
     .insert([{
       id: message.id,
@@ -11,11 +11,10 @@ export async function saveMessage(message: Message) {
       status: message.status,
       language: message.language,
       sources: message.sources,
-      created_at: new Date().toISOString()
+      created_at: message.created_at
     }]);
 
   if (error) throw error;
-  return data;
 }
 
 export async function loadMessages(limit = 50) {
@@ -26,15 +25,24 @@ export async function loadMessages(limit = 50) {
     .limit(limit);
 
   if (error) throw error;
-  return data as Message[];
+
+  return data.map((msg): Message => ({
+    id: msg.id,
+    content: msg.content,
+    type: msg.type,
+    status: msg.status,
+    language: msg.language === 'en' ? 'en' : 'no',
+    sources: msg.sources as Source[],
+    created_at: msg.created_at,
+    updated_at: msg.updated_at
+  }));
 }
 
 export async function updateMessageStatus(id: string, status: Message['status']) {
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('chat_messages')
     .update({ status })
     .match({ id });
 
   if (error) throw error;
-  return data;
 }
