@@ -66,6 +66,30 @@ export type Database = {
         }
         Relationships: []
       }
+      api_keys: {
+        Row: {
+          created_at: string
+          id: string
+          key_value: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          key_value: string
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          key_value?: string
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       bottom_sections: {
         Row: {
           content: string
@@ -474,6 +498,48 @@ export type Database = {
           status?: string | null
           subject?: string
           updated_at?: string | null
+        }
+        Relationships: []
+      }
+      content: {
+        Row: {
+          content: string
+          content_vector: unknown | null
+          created_at: string
+          id: string
+          language: string
+        }
+        Insert: {
+          content: string
+          content_vector?: unknown | null
+          created_at?: string
+          id?: string
+          language: string
+        }
+        Update: {
+          content?: string
+          content_vector?: unknown | null
+          created_at?: string
+          id?: string
+          language?: string
+        }
+        Relationships: []
+      }
+      encryption_keys: {
+        Row: {
+          created_at: string
+          id: string
+          key_value: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          key_value: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          key_value?: string
         }
         Relationships: []
       }
@@ -1078,6 +1144,18 @@ export type Database = {
       create_initial_admin: {
         Args: Record<PropertyKey, never>
         Returns: undefined
+      }
+      decrypt_api_key: {
+        Args: {
+          encrypted_value: string
+        }
+        Returns: string
+      }
+      encrypt_api_key: {
+        Args: {
+          key_value: string
+        }
+        Returns: string
       }
     }
     Enums: {
