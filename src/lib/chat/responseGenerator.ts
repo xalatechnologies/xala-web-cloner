@@ -2,7 +2,9 @@ import type { BusinessContext } from './intentAnalyzer';
 
 export function generateResponse(context: BusinessContext): string {
   if (context.type === 'restaurant') {
-    return `I understand you have a restaurant and need a website. We can help you create a modern, attractive website that will help grow your business.
+    const cuisineType = context.cuisine ? `${context.cuisine} restaurant` : 'restaurant';
+    
+    return `I understand you have a ${cuisineType} and need a website. We can help you create a modern, attractive website that will help grow your business.
 
 Based on our experience with restaurant websites, here are some key features we recommend:
 1. Beautiful menu display with high-quality food photos
@@ -10,8 +12,13 @@ Based on our experience with restaurant websites, here are some key features we 
 3. Online ordering capability
 4. Mobile-friendly design
 5. Integration with popular delivery platforms
+6. Location and hours section
+7. Photo gallery to showcase your dishes
+8. Customer reviews integration
+9. Social media integration
+10. Contact form and newsletter signup
 
-Would you like me to explain more about any of these features? Or shall we discuss your specific requirements?`;
+Would you like me to explain more about any of these features? Or shall we discuss your specific requirements for your ${cuisineType} website?`;
   }
 
   if (context.type === 'website') {
@@ -24,11 +31,11 @@ Would you like me to explain more about any of these features? Or shall we discu
 We specialize in creating modern, responsive websites that help businesses grow their online presence.`;
   }
 
-  return `To help you better, could you tell me more about:
+  return `To help you better understand how we can assist you, could you tell me more about:
 
-1. What type of business do you run?
-2. What specific challenges are you trying to solve?
-3. What features are most important for your project?
+1. What type of business do you run? (e.g., restaurant, retail, services)
+2. What are your main goals for the website? (e.g., online orders, reservations, information)
+3. What specific features are most important to you?
 
-This will help me recommend the most suitable solutions from our service portfolio.`;
+This will help me recommend the most suitable solutions for your needs.`;
 }

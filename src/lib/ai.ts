@@ -21,7 +21,7 @@ export async function getAIResponse(messages: Message[], context: string): Promi
       };
     }
 
-    // Analyze user intent from the last message
+    // Analyze user intent from the last message and conversation history
     const intent = analyzeIntent(lastMessage.content);
     
     // Generate appropriate response based on intent
