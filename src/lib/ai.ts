@@ -8,6 +8,23 @@ export interface AIResponse {
   }>;
 }
 
+const RESTAURANT_SOLUTIONS = {
+  features: [
+    'Online menu management',
+    'Table reservations',
+    'Order tracking',
+    'Customer reviews',
+    'Mobile-responsive design',
+    'Integration with delivery services'
+  ],
+  technologies: [
+    'React for dynamic user interface',
+    'Supabase for data management',
+    'Real-time updates for order status',
+    'Secure payment processing'
+  ]
+};
+
 export async function getAIResponse(messages: Message[], context: string): Promise<AIResponse> {
   try {
     const lastMessage = messages[messages.length - 1];
@@ -16,41 +33,43 @@ export async function getAIResponse(messages: Message[], context: string): Promi
     // Simulate API delay
     await new Promise(resolve => setTimeout(resolve, 1000));
 
-    if (query.includes('api')) {
+    // Handle restaurant-specific queries
+    if (query.includes('restaurant') || query.includes('sushi')) {
       return {
-        content: "An API (Application Programming Interface) is a set of rules and protocols that allows different software applications to communicate with each other. Here are the key points about APIs:\n\n1. Types of APIs:\n   - REST APIs: Most common for web services\n   - GraphQL: Modern, flexible query language\n   - SOAP: Enterprise-grade protocol\n\n2. Common Use Cases:\n   - Data exchange between systems\n   - Third-party integrations\n   - Microservices communication\n\nWould you like to know more about any specific type of API or implementation details?",
-        sources: [
-          {
-            title: "RESTful API Design Guide",
-            url: "https://restfulapi.net/"
-          },
-          {
-            title: "GraphQL vs REST",
-            url: "https://www.apollographql.com/blog/graphql-vs-rest/"
-          }
-        ]
+        content: `I can help you create a modern website for your sushi restaurant. Here's what we can offer:
+
+1. Essential Features:
+${RESTAURANT_SOLUTIONS.features.map(feature => `   - ${feature}`).join('\n')}
+
+2. Technical Implementation:
+${RESTAURANT_SOLUTIONS.technologies.map(tech => `   - ${tech}`).join('\n')}
+
+Would you like me to explain any of these features in detail or shall we start with a specific aspect of your website?`,
       };
     }
 
-    if (query.includes('architecture') || query.includes('system design')) {
+    // Handle solution requests
+    if (query.includes('solution')) {
       return {
-        content: "Based on your requirements, I recommend considering a microservices architecture for the following reasons:\n\n1. Scalability: Each service can be scaled independently\n2. Flexibility: Teams can use different technologies for different services\n3. Resilience: Failures are isolated to individual services\n4. Deployment: Services can be deployed independently\n\nWould you like me to elaborate on any of these points?",
-        sources: [
-          {
-            title: "Microservices Architecture Guide",
-            url: "https://microservices.io/patterns/microservices.html"
-          },
-          {
-            title: "Scaling with Microservices",
-            url: "https://docs.microsoft.com/en-us/azure/architecture/guide/architecture-styles/microservices"
-          }
-        ]
+        content: `Let's build your restaurant website step by step:
+
+1. First, we'll create a stunning landing page showcasing your restaurant's atmosphere and signature dishes
+2. Then, we'll implement an interactive menu system with beautiful food photography
+3. Next, we'll add a reservation system for table bookings
+4. Finally, we'll integrate online ordering if needed
+
+Which of these would you like to start with?`,
       };
     }
 
     // Default response for other queries
     return {
-      content: "I'd be happy to help you understand more about " + query + ". To provide the most relevant information, could you specify:\n\n1. Your current use case or project context\n2. Any specific challenges you're facing\n3. Your technical requirements\n4. Performance or scaling needs",
+      content: `I understand you're interested in building a website. To provide the best solution, could you tell me more about:
+
+1. Your specific requirements (menu, reservations, online ordering?)
+2. Your target audience
+3. Any special features you'd like to include
+4. Your preferred design style`,
     };
 
   } catch (error) {
