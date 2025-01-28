@@ -12,7 +12,7 @@ export interface ChatTranslations {
 }
 
 export function useChatTranslations() {
-  const { i18n, t } = useTranslation();
+  const { i18n } = useTranslation();
   const currentLanguage = i18n.language.toLowerCase().startsWith('en') ? 'en' : 'no';
 
   const { data: translationsData } = useQuery({
@@ -35,12 +35,12 @@ export function useChatTranslations() {
   });
 
   const translations: ChatTranslations = translationsData || {
-    'chat.title': t('chat.title'),
-    'chat.status.thinking': t('chat.status.thinking'),
-    'chat.status.online': t('chat.status.online'),
-    'chat.input.placeholder': t('chat.input.placeholder'),
-    'chat.input.button': t('chat.input.button'),
-    'chat.errors.failed_to_send': t('chat.errors.failed_to_send'),
+    'chat.title': 'Chat',
+    'chat.status.thinking': 'Thinking...',
+    'chat.status.online': 'Online',
+    'chat.input.placeholder': 'Type a message...',
+    'chat.input.button': 'Send',
+    'chat.errors.failed_to_send': 'Failed to send message',
   };
 
   return {

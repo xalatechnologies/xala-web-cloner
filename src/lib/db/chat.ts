@@ -9,8 +9,9 @@ export async function saveMessage(message: Message) {
       content: message.content,
       type: message.type,
       status: message.status,
-      sources: message.sources,
-      created_at: new Date().toISOString()
+      language: message.language,
+      sources: message.sources || null,
+      created_at: message.created_at
     }]);
 
   if (error) throw error;
@@ -25,14 +26,18 @@ export async function loadMessages(limit = 50) {
     .limit(limit);
 
   if (error) throw error;
-  return data as Message[];
+  
+  return data.map(msg => ({
+    ...msg,
+    sources: msg.sources as Message['sources']
+  })) as Message[];
 }
 
 export async function updateMessageStatus(id: string, status: Message['status']) {
   const { data, error } = await supabase
     .from('chat_messages')
     .update({ status })
-    .match({ id });
+    .eq('id', id);
 
   if (error) throw error;
   return data;

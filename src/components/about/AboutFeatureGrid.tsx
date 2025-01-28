@@ -1,29 +1,24 @@
-import AboutFeatureCard from './AboutFeatureCard';
-import ExpandableGrid from '../ui/expandable-grid';
+import React from 'react';
+import { AboutFeatureCard } from './AboutFeatureCard';
+import { useAboutFeatures } from '@/hooks/use-about-features';
 
-interface AboutFeatureGridProps {
-  features: {
-    icon: React.ReactNode;
-    title: string;
-    description: string;
-  }[];
-  initialRows?: number;
-}
+export function AboutFeatureGrid() {
+  const { features, isLoading } = useAboutFeatures();
 
-const AboutFeatureGrid = ({ features, initialRows = 1 }: AboutFeatureGridProps) => {
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <ExpandableGrid
-      items={features.map((feature, index) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {features.map((feature) => (
         <AboutFeatureCard
-          key={index.toString()}
-          icon={feature.icon}
+          key={feature.id}
           title={feature.title}
           description={feature.description}
+          icon={feature.icon}
         />
       ))}
-      initialRows={initialRows}
-    />
+    </div>
   );
-};
-
-export default AboutFeatureGrid;
+}
