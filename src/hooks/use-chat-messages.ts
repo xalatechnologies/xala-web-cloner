@@ -6,7 +6,7 @@ import { Message, Language } from '@/types/chat';
 export function useChatMessages() {
   const { i18n } = useTranslation();
   const queryClient = useQueryClient();
-  const currentLanguage = i18n.language.toLowerCase().startsWith('en') ? 'en' : 'no' as Language;
+  const currentLanguage = (i18n.language.toLowerCase().startsWith('en') ? 'en' : 'no') as Language;
 
   const messagesQuery = useQuery({
     queryKey: ['chat-messages', currentLanguage],
