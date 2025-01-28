@@ -9,7 +9,7 @@ interface ChatStore {
   isOpen: boolean;
   thinking: boolean;
   context: string;
-  addMessage: (content: string, type: Message['type'], sources?: Message['sources']) => string;
+  addMessage: (content: string, type: Message['type']) => string;
   updateMessageStatus: (id: string, status: Message['status']) => void;
   setLoading: (loading: boolean) => void;
   setOpen: (open: boolean) => void;
@@ -23,14 +23,16 @@ export const useChatStore = create<ChatStore>((set) => ({
       id: uuidv4(),
       type: 'assistant',
       content: AI_CONSULTANT_CONFIG.quickResponses.greeting,
-      timestamp: new Date(),
+      status: 'sent',
+      language: 'en',
+      created_at: new Date().toISOString(),
     },
   ],
   isLoading: false,
   isOpen: false,
   thinking: false,
   context: AI_CONSULTANT_CONFIG.defaultContext,
-  addMessage: (content, type, sources) => {
+  addMessage: (content, type) => {
     const id = uuidv4();
     set((state) => ({
       messages: [
@@ -39,9 +41,9 @@ export const useChatStore = create<ChatStore>((set) => ({
           id,
           type,
           content,
-          timestamp: new Date(),
-          ...(type === 'user' ? { status: 'sending' as const } : {}),
-          ...(type === 'assistant' ? { thinking: true, sources } : {}),
+          status: type === 'user' ? 'sending' : 'sent',
+          language: 'en',
+          created_at: new Date().toISOString(),
         },
       ],
     }));
@@ -50,7 +52,7 @@ export const useChatStore = create<ChatStore>((set) => ({
   updateMessageStatus: (id, status) =>
     set((state) => ({
       messages: state.messages.map((msg) =>
-        msg.id === id ? { ...msg, status, thinking: false } : msg
+        msg.id === id ? { ...msg, status } : msg
       ),
     })),
   setLoading: (loading) => set({ isLoading: loading }),

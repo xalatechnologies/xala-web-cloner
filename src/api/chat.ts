@@ -1,9 +1,5 @@
 import { supabase } from '@/integrations/supabase/client';
-
-export interface ChatMessage {
-  role: 'user' | 'assistant';
-  content: string;
-}
+import type { Message } from '@/types/chat';
 
 export interface ChatResponse {
   message: string;
@@ -15,12 +11,13 @@ export async function sendChatMessage(message: string, language: string): Promis
     // Store the message in Supabase
     const { error: dbError } = await supabase
       .from('chat_messages')
-      .insert([{
+      .insert({
         content: message,
-        role: 'user',
-        language,
+        type: 'user',
+        status: 'sending',
+        language: language === 'en-gb' ? 'en' : language,
         created_at: new Date().toISOString()
-      }]);
+      });
 
     if (dbError) throw dbError;
 
@@ -45,12 +42,13 @@ export async function sendChatMessage(message: string, language: string): Promis
     // Store the AI response
     const { error: responseError } = await supabase
       .from('chat_messages')
-      .insert([{
+      .insert({
         content: data.message,
-        role: 'assistant',
-        language,
+        type: 'assistant',
+        status: 'sent',
+        language: language === 'en-gb' ? 'en' : language,
         created_at: new Date().toISOString()
-      }]);
+      });
 
     if (responseError) throw responseError;
 
