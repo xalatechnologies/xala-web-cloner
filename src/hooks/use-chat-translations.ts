@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
-import type { Tables } from '@/integrations/supabase/types';
 
 export interface ChatTranslations {
   'chat.title': string;
@@ -16,7 +15,7 @@ export function useChatTranslations() {
   const { i18n, t } = useTranslation();
   const currentLanguage = i18n.language.toLowerCase().startsWith('en') ? 'en' : 'no';
 
-  const { data: sections, isLoading } = useQuery<Tables<'sections'>[]>({
+  const { data: sections } = useQuery({
     queryKey: ['chat-translations', currentLanguage],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -35,7 +34,7 @@ export function useChatTranslations() {
     },
   });
 
-  const translations = sections?.translations as ChatTranslations || {
+  const translations: ChatTranslations = sections?.translations as ChatTranslations || {
     'chat.title': t('chat.title'),
     'chat.status.thinking': t('chat.status.thinking'),
     'chat.status.online': t('chat.status.online'),
@@ -46,6 +45,6 @@ export function useChatTranslations() {
 
   return {
     translations,
-    isLoading,
+    isLoading: !sections,
   };
 }

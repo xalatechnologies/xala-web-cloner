@@ -21,7 +21,10 @@ export function useChatMessages() {
         throw new Error('Failed to fetch chat messages');
       }
 
-      return (data || []) as Message[];
+      return (data || []).map(msg => ({
+        ...msg,
+        sources: msg.sources as Source[] || undefined
+      })) as Message[];
     },
   });
 
@@ -30,8 +33,13 @@ export function useChatMessages() {
       const { data, error } = await supabase
         .from('chat_messages')
         .insert([{
-          ...message,
-          language: currentLanguage
+          id: message.id,
+          content: message.content,
+          type: message.type,
+          status: message.status,
+          language: currentLanguage,
+          sources: message.sources || null,
+          created_at: message.created_at
         }]);
 
       if (error) throw error;
