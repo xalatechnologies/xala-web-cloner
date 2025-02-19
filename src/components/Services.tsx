@@ -3,6 +3,7 @@ import { useSection } from "@/hooks/use-section";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from '@/integrations/supabase/client';
 import ServiceGrid from './services/ServiceGrid';
+import MainLayout from './layouts/MainLayout';
 import type { Database } from '@/integrations/supabase/types';
 
 type SupportedLanguage = Database['public']['Enums']['supported_language'];
@@ -55,21 +56,23 @@ const Services = () => {
   if (!section) return null;
 
   return (
-    <section id="services" className="py-20 bg-xala-secondary relative overflow-hidden">
-      <div className="container">
-        <div className="flex flex-col gap-12">
-          <div className="flex flex-col gap-4 text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              {section.title}
-            </h2>
-            <p className="text-lg leading-8 text-xala-text">
-              {section.description}
-            </p>
+    <MainLayout pageId="services">
+      <section id="services" className="py-20 bg-xala-secondary relative overflow-hidden">
+        <div className="container">
+          <div className="flex flex-col gap-12">
+            <div className="flex flex-col gap-4 text-center">
+              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                {section.title}
+              </h2>
+              <p className="text-lg leading-8 text-xala-text">
+                {section.description}
+              </p>
+            </div>
+            {renderContent()}
           </div>
-          {renderContent()}
         </div>
-      </div>
-    </section>
+      </section>
+    </MainLayout>
   );
 };
 

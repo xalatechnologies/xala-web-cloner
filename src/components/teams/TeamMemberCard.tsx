@@ -13,11 +13,20 @@ const TeamMemberCard = ({ name, role, description, imageUrl, linkedinUrl, email 
   return (
     <div className="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 p-3 sm:p-4 lg:p-6 transition-all duration-500 hover:border-xala-accent/50 hover:shadow-2xl hover:shadow-xala-accent/10">
       <div className="relative w-full aspect-square overflow-hidden rounded-lg sm:rounded-xl bg-gradient-to-br from-xala-secondary to-xala-primary">
-        <img
-          src={imageUrl}
-          alt={name}
-          className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110"
-        />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <img
+            src={imageUrl}
+            alt={name}
+            className="w-full h-full object-contain transform transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+            style={{
+              objectPosition: 'center center',
+              objectFit: 'contain',
+              backgroundPosition: 'center center',
+              backgroundSize: 'cover'
+            }}
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-xala-primary/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       </div>
       
