@@ -5,9 +5,28 @@ import * as z from 'zod';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from "@/components/ui/use-toast";
+
+// Define the database schema type
+interface ContactSubmission {
+  id?: string;
+  created_at?: string;
+  updated_at?: string;
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  language: 'en' | 'no';
+  status?: string;
+}
 
 const formSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -21,7 +40,6 @@ type FormValues = z.infer<typeof formSchema>;
 export const ContactForm = () => {
   const { t, i18n } = useTranslation();
   const { toast } = useToast();
-  const translations = t('contact.form', { returnObjects: true }) as Record<string, string>;
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -35,15 +53,21 @@ export const ContactForm = () => {
 
   const onSubmit = async (values: FormValues) => {
     try {
-      const { error } = await supabase
-        .from('contact_submissions')
-        .insert([{ 
-          ...values, 
-          language: i18n.language,
-          created_at: new Date().toISOString()
-        }]);
+      // Map language code to enum value
+      const languageCode = i18n.language === 'nb' ? 'no' : 'en';
 
-      if (error) throw error;
+      // Save to Supabase
+      const submission: ContactSubmission = {
+        ...values,
+        language: languageCode,
+        created_at: new Date().toISOString(),
+      };
+
+      const { error: supabaseError } = await supabase
+        .from('contact_submissions')
+        .insert(submission);
+
+      if (supabaseError) throw supabaseError;
 
       toast({
         title: t('contact.form.success.title'),
@@ -116,25 +140,22 @@ export const ContactForm = () => {
                 </FormItem>
               )}
             />
-            <div className="relative">
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Textarea
-                        {...field}
-                        placeholder={t('contact.form.message')}
-                        rows={8}
-                        className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 resize-none min-h-[216px] p-4"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
+            <FormField
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Textarea
+                      {...field}
+                      placeholder={t('contact.form.message')}
+                      className="bg-white/5 border-white/10 text-white placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 resize-none min-h-[216px] p-4"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </div>
           
           <div className="flex flex-col items-center gap-6 mt-auto">
