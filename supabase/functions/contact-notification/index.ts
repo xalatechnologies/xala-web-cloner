@@ -6,7 +6,7 @@ interface ContactRecord {
   email: string;
   subject: string;
   message: string;
-  language: 'en' | 'no';
+  language: 'en' | 'no' | 'nb';
 }
 
 interface WebhookPayload {
@@ -94,11 +94,12 @@ serve(async (req: Request) => {
 
     // Send confirmation email to sender
     console.log('📧 Sending confirmation email to sender...');
-    const confirmationSubject = language === 'no' 
+    const isNorwegian = language === 'no' || language === 'nb';
+    const confirmationSubject = isNorwegian 
       ? 'Bekreftelse på mottatt henvendelse - Xala'
       : 'Confirmation of Received Inquiry - Xala';
 
-    const confirmationMessage = language === 'no'
+    const confirmationMessage = isNorwegian
       ? `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #333;">Takk for din henvendelse</h2>
