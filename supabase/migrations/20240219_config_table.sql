@@ -27,6 +27,7 @@ create trigger update_config_updated_at
 insert into public.config (key, value)
 values
   ('edge_function_url', 'https://ttvpsjeucewnenjevfhh.supabase.co/functions/v1'),
-  ('edge_function_key', 'your-service-role-key-here')
+  ('edge_function_key', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR0dnBzamV1Y2V3bmVuamV2ZmhoIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczNzg1NDYwNiwiZXhwIjoyMDUzNDMwNjA2fQ.CkwwsUflQQQawtxCaxL2_CxYYjNnjnQWIIczlH15OeU'),
+  ('admin_email', 'info@xala.no')
 on conflict (key) do update
 set value = excluded.value; 

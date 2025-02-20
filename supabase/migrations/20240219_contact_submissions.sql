@@ -10,6 +10,7 @@ create table if not exists public.contact_submissions (
     message text not null,
     language contact_language not null,
     status text default 'pending',
+    error_details text,
     created_at timestamptz default now(),
     updated_at timestamptz default now()
 );
