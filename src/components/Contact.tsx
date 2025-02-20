@@ -55,12 +55,14 @@ const Contact = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="space-y-8">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+            <div className="lg:w-[400px] space-y-8">
               <ContactInfo />
               <SocialLinks />
             </div>
-            <ContactForm />
+            <div className="flex-1">
+              <ContactForm />
+            </div>
           </div>
         </div>
       </section>

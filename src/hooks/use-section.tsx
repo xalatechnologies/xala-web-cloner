@@ -17,6 +17,7 @@ export interface Section {
   columns: number;
   created_at: string | null;
   updated_at: string | null;
+  translations?: Record<string, string>;
 }
 
 export const useSection = (sectionName: string) => {

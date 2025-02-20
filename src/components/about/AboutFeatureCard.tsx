@@ -29,12 +29,12 @@ const AboutFeatureCard = ({ title, description, icon }: AboutFeatureCardProps) =
                       group-hover:from-[#9b87f5] group-hover:to-[#D946EF] transition-all duration-500">
             <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
-          <h3 className="text-base sm:text-lg font-semibold text-white group-hover:text-[#9b87f5] transition-colors">
+          <h3 className="text-lg sm:text-xl font-semibold text-white group-hover:text-[#9b87f5] transition-colors">
             {title}
           </h3>
         </div>
         
-        <p className="text-xs sm:text-sm text-white/70 group-hover:text-white/90 transition-colors">
+        <p className="text-sm sm:text-base text-white/70 group-hover:text-white/90 transition-colors">
           {description}
         </p>
       </div>

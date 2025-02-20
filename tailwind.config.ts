@@ -18,6 +18,11 @@ export default {
       },
     },
     extend: {
+      fontSize: {
+        'base': ['1.0625rem', '1.75'], // Slightly larger than default 1rem
+        'lg': ['1.1875rem', '1.75'],   // Slightly larger than default 1.125rem
+        'xl': ['1.3125rem', '1.75'],   // Slightly larger than default 1.25rem
+      },
       fontFamily: {
         sans: ["Chakra Petch", "sans-serif"],
         chakra: ["Chakra Petch", "sans-serif"],

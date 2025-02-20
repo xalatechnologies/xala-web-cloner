@@ -12,7 +12,7 @@ const Services = () => {
   const { t, i18n } = useTranslation();
   const { data: section, isLoading: isSectionLoading } = useSection('services');
 
-  const currentLanguage = i18n.language.toLowerCase() as SupportedLanguage;
+  const currentLanguage = (i18n.language.toLowerCase().split('-')[0] === 'en' ? 'en' : 'no') as SupportedLanguage;
 
   const { data: services = [], isLoading: isServicesLoading } = useQuery({
     queryKey: ['services', currentLanguage],

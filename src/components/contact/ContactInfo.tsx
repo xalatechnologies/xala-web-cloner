@@ -13,16 +13,15 @@ type ContactInfoProps = {
   details: string;
 };
 
-const ContactInfoItem = ({ icon, title, subtitle, details }: ContactInfoProps) => (
-  <div className="group p-8 rounded-2xl bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 
+const ContactInfoItem = ({ icon, title, details }: ContactInfoProps) => (
+  <div className="group p-4 sm:p-6 rounded-2xl bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 
                 hover:border-white/20 transition-all duration-700 animate-fade-in">
-    <div className="flex items-center space-x-6">
-      <div className="p-4 rounded-xl bg-white/5 transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:bg-white/10">
+    <div className="flex items-center space-x-4">
+      <div className="p-3 rounded-xl bg-white/5 transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:bg-white/10">
         {icon}
       </div>
       <div className="text-left">
         <h3 className="text-xl font-semibold text-white mb-1">{title}</h3>
-        <p className="text-sm text-xala-text/60 mb-2">{subtitle}</p>
         <p className="text-xala-text/80">{details}</p>
       </div>
     </div>
@@ -72,7 +71,7 @@ export const ContactInfo = () => {
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 w-full max-w-md">
       {contactInfo.map((info, index) => (
         <ContactInfoItem key={index} {...info} />
       ))}

@@ -68,7 +68,7 @@ const ActionButtons = ({ onSectionClick }: ActionButtonsProps) => {
               : 'bg-white/5 text-white hover:bg-white/10 backdrop-blur-sm border border-white/20'
             }`}
         >
-          <span className="flex items-center gap-2">
+          <span className="flex items-center gap-2 text-base sm:text-lg">
             {button.name}
             <ArrowDown className="w-5 h-5 animate-bounce" />
           </span>

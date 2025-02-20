@@ -29,7 +29,7 @@ const Hero = () => {
     const words = title.split(' ');
     
     return (
-      <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-6">
+      <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-6">
         {words.map((word, index) => (
           <span key={index}>
             {index === words.length - 1 ? (
@@ -39,7 +39,7 @@ const Hero = () => {
             )}
           </span>
         ))}
-      </h1>
+      </div>
     );
   };
 

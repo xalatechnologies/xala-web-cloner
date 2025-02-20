@@ -16,11 +16,11 @@ const TechnologyCard = ({ icon, title, description, tools }: TechnologyCardProps
       <div className="flex flex-col h-full">
         <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
           {IconComponent && <IconComponent className="w-6 h-6 sm:w-8 sm:h-8 text-xala-accent" />}
-          <h3 className="text-lg sm:text-xl font-semibold text-xala-accent">{title}</h3>
+          <h3 className="text-xl sm:text-2xl font-semibold text-xala-accent">{title}</h3>
         </div>
         
         {description && (
-          <p className="text-sm sm:text-base text-xala-text mb-4 sm:mb-6">{description}</p>
+          <p className="text-base sm:text-lg text-xala-text mb-4 sm:mb-6">{description}</p>
         )}
         
         {tools && tools.length > 0 && (
@@ -28,7 +28,7 @@ const TechnologyCard = ({ icon, title, description, tools }: TechnologyCardProps
             {tools.map((tool) => (
               <span
                 key={tool.id}
-                className="px-2 sm:px-3 py-0.5 sm:py-1 bg-xala-primary rounded-full text-xs sm:text-sm text-xala-text"
+                className="px-2 sm:px-3 py-0.5 sm:py-1 bg-xala-primary rounded-full text-sm sm:text-base text-xala-text"
               >
                 {tool.name}
               </span>

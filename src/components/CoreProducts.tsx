@@ -11,7 +11,7 @@ type SupportedLanguage = Database['public']['Enums']['supported_language'];
 const CoreProducts = () => {
   const { t, i18n } = useTranslation();
   const { data: section, isLoading: isSectionLoading } = useSection('core-products');
-  const currentLanguage = i18n.language.toLowerCase() as SupportedLanguage;
+  const currentLanguage = (i18n.language.toLowerCase().split('-')[0] === 'en' ? 'en' : 'no') as SupportedLanguage;
 
   const { data: products = [], isLoading: isProductsLoading } = useQuery({
     queryKey: ['products', currentLanguage],
@@ -61,7 +61,7 @@ const CoreProducts = () => {
   if (!section) return null;
 
   return (
-    <section id="core-products" className="py-20 bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary relative overflow-hidden">
+    <section id="core-products" className="py-20 bg-xala-secondary relative overflow-hidden">
       <div className="container">
         <div className="flex flex-col gap-12">
           <div className="flex flex-col gap-4 text-center">

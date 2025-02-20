@@ -13,6 +13,7 @@ interface ChatProps {
   thinking?: boolean;
   translations: ChatTranslations;
   className?: string;
+  autoFocus?: boolean;
 }
 
 export const Chat: FC<ChatProps> = ({
@@ -21,7 +22,8 @@ export const Chat: FC<ChatProps> = ({
   disabled,
   thinking,
   translations,
-  className
+  className,
+  autoFocus
 }) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -57,6 +59,7 @@ export const Chat: FC<ChatProps> = ({
           disabled={disabled}
           thinking={thinking}
           placeholder={translations['chat.input.placeholder']}
+          autoFocus={autoFocus}
         />
       </div>
     </div>

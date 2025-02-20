@@ -9,20 +9,45 @@ import { useChatSidebar } from '@/hooks/use-chat-sidebar';
 import { Chat } from './Chat';
 import { ChatHeader } from './ChatHeader';
 import type { FC } from 'react';
+import type { Message } from '@/types/chat';
 
 export const ChatWidget: FC = () => {
   const { isOpen, thinking, setOpen } = useChatStore();
   const { messages, isLoading, sendMessage, updateMessageStatus } = useSessionChat();
   const { translations } = useChatTranslations();
   const { sidebarWidth } = useChatSidebar();
+  const chatRef = useRef<HTMLDivElement>(null);
+  const { i18n } = useTranslation();
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (chatRef.current && !chatRef.current.contains(event.target as Node)) {
+      setOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.body.style.marginRight = `${sidebarWidth}px`;
+    } else {
+      document.body.style.marginRight = '0';
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.body.style.marginRight = '0';
+    };
+  }, [isOpen, sidebarWidth, setOpen]);
 
   const handleSendMessage = async (content: string): Promise<void> => {
     try {
-      const message = {
+      const message: Message = {
         id: crypto.randomUUID(),
         content,
-        type: 'user' as const,
-        status: 'sending' as const,
+        type: 'user',
+        status: 'sending',
+        language: i18n.language === 'nb' ? 'no' : 'en',
+        created_at: new Date().toISOString()
       };
 
       await sendMessage(message);
@@ -31,18 +56,6 @@ export const ChatWidget: FC = () => {
       console.error(translations['chat.errors.failed_to_send'], error);
     }
   };
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.marginRight = sidebarWidth;
-    } else {
-      document.body.style.marginRight = '0';
-    }
-
-    return () => {
-      document.body.style.marginRight = '0';
-    };
-  }, [isOpen, sidebarWidth]);
 
   return (
     <div className="hidden sm:block fixed bottom-6 right-6 z-50">
@@ -53,6 +66,7 @@ export const ChatWidget: FC = () => {
             <div className="fixed top-0 right-[480px] z-50 h-screen w-1 bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary lg:block hidden" />
             
             <motion.div
+              ref={chatRef}
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
@@ -73,6 +87,7 @@ export const ChatWidget: FC = () => {
                   disabled={isLoading}
                   thinking={thinking}
                   translations={translations}
+                  autoFocus={isOpen}
                 />
               </div>
             </motion.div>

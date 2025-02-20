@@ -8,6 +8,7 @@ interface ChatInputProps {
   disabled?: boolean;
   thinking?: boolean;
   placeholder?: string;
+  autoFocus?: boolean;
 }
 
 export function ChatInput({
@@ -15,9 +16,17 @@ export function ChatInput({
   disabled,
   thinking,
   placeholder = 'Type a message...',
+  autoFocus = false,
 }: ChatInputProps) {
   const [message, setMessage] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // Auto focus when component mounts if autoFocus is true
+  useEffect(() => {
+    if (autoFocus && textareaRef.current) {
+      textareaRef.current.focus();
+    }
+  }, [autoFocus]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

@@ -23,12 +23,12 @@ const ServiceCard = ({ icon, title, description }: ServiceCardProps) => {
                       group-hover:from-[#9b87f5] group-hover:to-[#D946EF] transition-all duration-500">
             {IconComponent && <IconComponent className="w-6 h-6" />}
           </div>
-          <h3 className="text-xl font-semibold text-white group-hover:text-[#9b87f5] transition-colors">
+          <h3 className="text-xl sm:text-2xl font-semibold text-white group-hover:text-[#9b87f5] transition-colors">
             {title}
           </h3>
         </div>
         
-        <p className="text-white/70 group-hover:text-white/90 transition-colors">
+        <p className="text-base sm:text-lg text-white/70 group-hover:text-white/90 transition-colors">
           {description}
         </p>
       </div>

@@ -20,7 +20,7 @@ const ProductCard = ({ title, description, icon, image_url }: ProductCardProps) 
           ) : (
             <Image className="w-8 h-8 text-[#9b87f5]" />
           )}
-          <h3 className="text-xl font-semibold text-white group-hover:text-[#9b87f5] transition-colors">
+          <h3 className="text-2xl font-semibold text-white group-hover:text-[#9b87f5] transition-colors">
             {title}
           </h3>
         </div>
@@ -35,7 +35,7 @@ const ProductCard = ({ title, description, icon, image_url }: ProductCardProps) 
           </div>
         )}
         
-        <p className="text-white/70 group-hover:text-white/90 transition-colors">
+        <p className="text-lg text-white/70 group-hover:text-white/90 transition-colors">
           {description}
         </p>
       </div>
