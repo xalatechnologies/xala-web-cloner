@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
-import type { Tables } from '@/integrations/supabase/types';
+import type { Database } from '@/integrations/supabase/types';
 
 export interface ChatTranslations {
   'chat.title': string;
@@ -12,30 +12,41 @@ export interface ChatTranslations {
   'chat.errors.failed_to_send': string;
 }
 
+type Section = Database['public']['Tables']['sections']['Row'] & {
+  translations: ChatTranslations;
+};
+
 export function useChatTranslations() {
   const { i18n, t } = useTranslation();
+  // Normalize language code to just 'en' or 'no'
   const currentLanguage = i18n.language.toLowerCase().startsWith('en') ? 'en' : 'no';
 
-  const { data: sections, isLoading } = useQuery<Tables<'sections'>[]>({
+  const { data: section, isLoading } = useQuery<Section | null>({
     queryKey: ['chat-translations', currentLanguage],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from('sections')
-        .select('translations')
-        .eq('language', currentLanguage)
-        .eq('title', 'Chat Widget')
-        .single();
+      try {
+        const { data, error } = await supabase
+          .from('sections')
+          .select('*')
+          .eq('language', currentLanguage)
+          .eq('section_name', 'chat-widget')
+          .limit(1)
+          .maybeSingle();
 
-      if (error) {
+        if (error) {
+          console.error('Failed to fetch chat translations:', error);
+          return null;
+        }
+
+        return data as Section;
+      } catch (error) {
         console.error('Failed to fetch chat translations:', error);
         return null;
       }
-
-      return data;
     },
   });
 
-  const translations = sections?.translations as ChatTranslations || {
+  const translations = section?.translations || {
     'chat.title': t('chat.title'),
     'chat.status.thinking': t('chat.status.thinking'),
     'chat.status.online': t('chat.status.online'),
