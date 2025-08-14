@@ -1,8 +1,14 @@
-const { createClient } = require('@supabase/supabase-js');
-const OpenAI = require('openai');
-const fs = require('fs');
-const path = require('path');
-require('dotenv').config();
+import { createClient } from '@supabase/supabase-js';
+import OpenAI from 'openai';
+import fs from 'node:fs';
+import path from 'node:path';
+import dotenv from 'dotenv';
+import { fileURLToPath } from 'node:url';
+
+dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 interface DocumentInfo {
   path: string;

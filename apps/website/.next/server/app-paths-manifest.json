@@ -1,0 +1,21 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/(site)/aktuelt/[slug]/page": "app/(site)/aktuelt/[slug]/page.js",
+  "/(site)/aktuelt/page": "app/(site)/aktuelt/page.js",
+  "/(site)/karriere/page": "app/(site)/karriere/page.js",
+  "/(site)/kontakt/page": "app/(site)/kontakt/page.js",
+  "/(site)/om-oss/page": "app/(site)/om-oss/page.js",
+  "/(site)/page": "app/(site)/page.js",
+  "/(site)/partnere/page": "app/(site)/partnere/page.js",
+  "/(site)/produkter/merida/page": "app/(site)/produkter/merida/page.js",
+  "/(site)/produkter/orgsys/page": "app/(site)/produkter/orgsys/page.js",
+  "/(site)/produkter/page": "app/(site)/produkter/page.js",
+  "/(site)/produkter/relatude/page": "app/(site)/produkter/relatude/page.js",
+  "/(site)/referanser/page": "app/(site)/referanser/page.js",
+  "/(site)/tjenester/ai/page": "app/(site)/tjenester/ai/page.js",
+  "/(site)/tjenester/e-handel/page": "app/(site)/tjenester/e-handel/page.js",
+  "/(site)/tjenester/konsulenttjenester/page": "app/(site)/tjenester/konsulenttjenester/page.js",
+  "/(site)/tjenester/nettsider/page": "app/(site)/tjenester/nettsider/page.js",
+  "/(site)/tjenester/page": "app/(site)/tjenester/page.js",
+  "/(site)/tjenester/web-applikasjoner/page": "app/(site)/tjenester/web-applikasjoner/page.js"
+}
