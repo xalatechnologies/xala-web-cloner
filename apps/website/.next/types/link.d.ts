@@ -30,22 +30,22 @@ declare namespace __next_route_internal_types__ {
 
   type StaticRoutes = 
     | `/aktuelt`
-    | `/karriere`
     | `/kontakt`
+    | `/karriere`
     | `/om-oss`
-    | `/`
     | `/partnere`
     | `/produkter/merida`
+    | `/`
     | `/produkter/orgsys`
     | `/produkter`
     | `/produkter/relatude`
-    | `/referanser`
     | `/tjenester/ai`
-    | `/tjenester/e-handel`
+    | `/referanser`
     | `/tjenester/konsulenttjenester`
     | `/tjenester/nettsider`
     | `/tjenester`
     | `/tjenester/web-applikasjoner`
+    | `/tjenester/e-handel`
   type DynamicRoutes<T extends string = string> = 
     | `/aktuelt/${SafeSlug<T>}`
 

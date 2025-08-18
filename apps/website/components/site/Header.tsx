@@ -51,13 +51,19 @@ export function Header() {
         <Link href="/" className="flex items-center gap-2" aria-label="Xala hjem">
           <img src="/xala.svg" alt="Xala" className="h-7 md:h-8 w-auto" />
         </Link>
-        <nav className="hidden md:flex items-center gap-6" aria-label="Hovedmeny">
+        <nav className="hidden" aria-label="Hovedmeny">
           {NAV_ITEMS.map((item, idx) => (
-            <div key={item.label} className="relative">
+            <div
+              key={item.label}
+              className="relative"
+              onMouseEnter={() => item.children && setOpen(idx)}
+              onMouseLeave={() => item.children && setOpen((prev) => (prev === idx ? null : prev))}
+            >
               <button
                 className="flex items-center gap-1 p-2 rounded-md hover:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 aria-expanded={open === idx}
                 aria-controls={`menu-${idx}`}
+                aria-haspopup={!!item.children}
                 onClick={() => setOpen(open === idx ? null : idx)}
               >
                 <span>{item.label}</span>
@@ -82,17 +88,18 @@ export function Header() {
           ))}
         </nav>
         <button
-          className="md:hidden p-2 rounded-md hover:bg-black/5"
+          className="p-2 rounded-md hover:bg-black/5 flex items-center gap-1 ml-auto"
           aria-label="Åpne meny"
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen(true)}
         >
           <Menu className="h-6 w-6" />
+          <span className="text-sm">Meny</span>
         </button>
       </div>
 
       {mobileOpen && (
-        <div role="dialog" aria-modal="true" className="md:hidden fixed inset-0 bg-black/50" onClick={() => setMobileOpen(false)}>
+        <div role="dialog" aria-modal="true" className="fixed inset-0 bg-black/50 z-50" onClick={() => setMobileOpen(false)}>
           <div className="ml-auto h-full w-80 bg-[hsl(var(--bg))] p-4" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between">
               <span className="font-semibold">Meny</span>
