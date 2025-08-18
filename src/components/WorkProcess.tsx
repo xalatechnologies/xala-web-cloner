@@ -59,11 +59,11 @@ const WorkProcess = () => {
 
   if (isLoading) {
     return (
-      <section className="py-12 md:py-24 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary">
+      <section className="py-12 md:py-24 bg-background dark:bg-gradient-to-br dark:from-xala-primary dark:via-xala-secondary dark:to-xala-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="p-8 rounded-2xl bg-white/10">
+              <div key={i} className="p-8 rounded-2xl bg-card border border-border dark:bg-white/10">
                 <Skeleton className="h-8 w-8 mb-6" />
                 <Skeleton className="h-6 w-3/4 mb-3" />
                 <Skeleton className="h-20 w-full" />
@@ -81,66 +81,62 @@ const WorkProcess = () => {
     return (
       <div key={process.id} className="relative group">
         <div
-          className="relative h-full"
-          style={{
-            animation: 'fade-in 0.5s ease-out forwards',
-            opacity: 0
-          }}
+          className="relative h-full opacity-0 animate-[fade-in_0.5s_ease-out_forwards]"
         >
-          <div className="h-full relative p-6 md:p-8 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 
-                        hover:border-xala-accent/50 transition-all duration-500 group-hover:transform group-hover:scale-[1.02]
-                        group-hover:shadow-2xl group-hover:shadow-xala-accent/20">
-            <div className="absolute -top-4 -right-4 w-10 h-10 md:w-12 md:h-12 bg-xala-accent rounded-full flex items-center justify-center
+          <div className="h-full relative p-6 md:p-8 rounded-2xl bg-card text-card-foreground border border-border dark:bg-gradient-to-br dark:from-white/10 dark:to-white/5 backdrop-blur-sm 
+                        hover:border-primary/50 transition-all duration-500 group-hover:transform group-hover:scale-[1.02]
+                        group-hover:shadow-2xl group-hover:shadow-primary/20">
+            <div className="absolute -top-4 -right-4 w-10 h-10 md:w-12 md:h-12 bg-primary rounded-full flex items-center justify-center
                           transform group-hover:scale-110 transition-transform duration-300">
-              <span className="text-white font-bold text-sm md:text-base">{String(process.step_number).padStart(2, '0')}</span>
+              <span className="text-primary-foreground font-bold text-sm md:text-base">{String(process.step_number).padStart(2, '0')}</span>
             </div>
 
             <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4 mb-4">
-              <div className="text-xala-accent relative">
-                <div className="absolute inset-0 bg-xala-accent/20 filter blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="text-primary relative">
+                <div className="absolute inset-0 bg-primary/20 filter blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative transform group-hover:scale-110 transition-transform duration-300">
                   <Icon className="w-6 h-6 md:w-8 md:h-8" />
                 </div>
               </div>
-              <h3 className="text-lg md:text-xl font-semibold text-xala-accent">{process.title}</h3>
+              <h3 className="text-lg md:text-xl font-semibold text-primary">{process.title}</h3>
             </div>
 
-            <p className="text-sm md:text-base text-xala-text/70">{process.description}</p>
+            <p className="text-sm md:text-base text-muted-foreground">{process.description}</p>
           </div>
         </div>
         
         {/* Add arrow based on screen size and position */}
         {index < totalProcesses - 1 && (process.step_number === 3 ? (
-          <div className="flex flex-col items-center md:hidden py-4 text-xala-accent">
+          <div className="flex flex-col items-center md:hidden py-4 text-primary">
             <div className="relative">
               <div className="absolute inset-0 bg-xala-accent/20 blur-lg transform scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative">
                 <ArrowDown className="w-6 h-6 animate-float" />
               </div>
             </div>
-            <div className="w-px h-8 bg-gradient-to-b from-xala-accent/50 to-transparent"></div>
+            <div className="w-px h-8 bg-gradient-to-b from-primary/50 to-transparent"></div>
           </div>
         ) : process.step_number !== 3 && (
           <>
             {/* Down arrow for mobile */}
-            <div className="flex flex-col items-center md:hidden py-4 text-xala-accent">
+            <div className="flex flex-col items-center md:hidden py-4 text-primary">
               <div className="relative">
                 <div className="absolute inset-0 bg-xala-accent/20 blur-lg transform scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative">
                   <ArrowDown className="w-6 h-6 animate-float" />
                 </div>
               </div>
-              <div className="w-px h-8 bg-gradient-to-b from-xala-accent/50 to-transparent"></div>
+              <div className="w-px h-8 bg-gradient-to-b from-primary/50 to-transparent"></div>
             </div>
 
             {/* Right arrow for desktop */}
             <div className="hidden md:block absolute top-1/2 -right-12 transform -translate-y-1/2">
               <div className="relative px-3">
-                <div className="absolute inset-0 bg-xala-accent/20 blur-lg transform scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-primary/20 blur-lg transform scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative">
-                  <ArrowRight className="w-6 h-6 text-xala-accent animate-pulse-slow" />
+                  <ArrowRight className="w-6 h-6 text-primary animate-pulse-slow" />
                 </div>
-                <div className="absolute top-1/2 right-0 h-px w-8 bg-gradient-to-r from-xala-accent/50 to-transparent transform -translate-y-1/2"></div>
+                <div className="absolute top-1/2 right-0 h-px w-8 bg-gradient-to-r from-primary/50 to-transparent transform -translate-y-1/2"></div>
               </div>
             </div>
           </>

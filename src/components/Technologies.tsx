@@ -59,13 +59,13 @@ const Technologies = () => {
   };
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-xala-secondary via-xala-primary to-xala-secondary">
+    <section className="py-12 sm:py-16 lg:py-20 bg-background dark:bg-gradient-to-b dark:from-xala-secondary dark:via-xala-primary dark:to-xala-secondary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16 animate-fade-in">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
             {section?.title || t('technologies.title')}
           </h2>
-          <p className="text-xala-text text-base sm:text-lg max-w-2xl mx-auto px-4 sm:px-6">
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-4 sm:px-6">
             {section?.description || t('technologies.description')}
           </p>
         </div>

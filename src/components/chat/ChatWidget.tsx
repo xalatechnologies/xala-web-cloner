@@ -62,8 +62,8 @@ export const ChatWidget: FC = () => {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Gradient Border */}
-            <div className="fixed top-0 right-[480px] z-50 h-screen w-1 bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary lg:block hidden" />
+            {/* Gradient Border (dark only) */}
+            <div className="fixed top-0 right-[480px] z-50 h-screen w-1 bg-border dark:bg-gradient-to-b dark:from-xala-primary dark:via-xala-secondary dark:to-xala-primary lg:block hidden" />
             
             <motion.div
               ref={chatRef}
@@ -76,7 +76,7 @@ export const ChatWidget: FC = () => {
                 stiffness: 300,
                 mass: 0.8 
               }}
-              className="fixed top-0 right-0 z-50 h-screen flex flex-col bg-white/80 backdrop-blur-md shadow-2xl overflow-hidden lg:w-[480px] w-full"
+              className="fixed top-0 right-0 z-50 h-screen flex flex-col bg-card text-card-foreground border-l border-border dark:bg-white/80 dark:text-black backdrop-blur-md shadow-2xl overflow-hidden lg:w-[480px] w-full"
             >
               <ChatHeader thinking={thinking} translations={translations} />
 
@@ -101,7 +101,7 @@ export const ChatWidget: FC = () => {
         whileTap={{ scale: 0.95 }}
         animate={isOpen ? { opacity: 0, x: 100 } : { opacity: 1, x: 0 }}
         transition={{ duration: 0.2 }}
-        className="fixed bottom-4 right-4 z-50 flex items-center space-x-2 px-6 py-3 bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary text-white rounded-full shadow-lg hover:shadow-xl backdrop-blur-sm"
+        className="fixed bottom-4 right-4 z-50 flex items-center space-x-2 px-6 py-3 rounded-full shadow-lg hover:shadow-xl backdrop-blur-sm bg-primary text-primary-foreground dark:bg-gradient-to-b dark:from-xala-primary dark:via-xala-secondary dark:to-xala-primary"
       >
         <MessageCircle className="w-5 h-5" />
         <span className="font-medium">{translations['chat.input.button']}</span>

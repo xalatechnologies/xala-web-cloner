@@ -39,7 +39,7 @@ const Contact = () => {
         plausibleDomain: 'xala.no'
       }}
     >
-      <section id="contact" className="relative py-24 overflow-hidden bg-gradient-to-b from-xala-primary to-xala-secondary">
+      <section id="contact" className="relative py-24 overflow-hidden bg-background dark:bg-gradient-to-b dark:from-xala-primary dark:to-xala-secondary">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -left-1/4 -top-1/4 w-1/2 h-1/2 bg-[#8B5CF6]/10 rounded-full blur-3xl animate-float-1"></div>
           <div className="absolute -right-1/4 -bottom-1/4 w-1/2 h-1/2 bg-[#D946EF]/10 rounded-full blur-3xl animate-float-2"></div>
@@ -50,7 +50,7 @@ const Contact = () => {
             <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-[#8B5CF6] via-[#D946EF] to-[#0EA5E9] text-transparent bg-clip-text mb-4">
               {section?.title || t('contact.title')}
             </h2>
-            <p className="text-xala-text/80 text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               {section?.description || t('contact.description')}
             </p>
           </div>
