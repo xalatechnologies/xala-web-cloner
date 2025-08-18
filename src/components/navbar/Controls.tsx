@@ -2,6 +2,7 @@ import { Moon, Sun, Globe } from 'lucide-react';
 import { Toggle } from '../ui/toggle';
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
+import { useTheme } from 'next-themes';
 
 interface ControlsProps {
   isDarkMode: boolean;
@@ -12,6 +13,7 @@ interface ControlsProps {
 
 const Controls = ({ isDarkMode, language, onThemeToggle, onLanguageToggle }: ControlsProps) => {
   const { i18n } = useTranslation();
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     // Set initial language to Norwegian
@@ -26,20 +28,20 @@ const Controls = ({ isDarkMode, language, onThemeToggle, onLanguageToggle }: Con
 
   return (
     <div className="flex items-center gap-4">
-     {/*  <Toggle
+      <Toggle
         aria-label="Toggle theme"
-        pressed={isDarkMode}
-        onPressedChange={onThemeToggle}
-        className="hover:bg-xala-secondary/50"
+        pressed={theme === 'dark'}
+        onPressedChange={(pressed) => setTheme(pressed ? 'dark' : 'light')}
+        className="hover:bg-accent"
       >
-        {isDarkMode ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
-      </Toggle> */}
+        {theme === 'dark' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+      </Toggle>
 
       <Toggle
         aria-label="Toggle language"
         pressed={language === 'NO'}
         onPressedChange={handleLanguageToggle}
-        className="hover:bg-xala-secondary/50"
+        className="hover:bg-accent"
       >
         <Globe className="w-5 h-5" />
         <span className="ml-1 text-sm">{language}</span>

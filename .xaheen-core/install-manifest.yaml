@@ -1,0 +1,206 @@
+version: 1.0.0
+installed_at: '2025-08-14T11:16:02.810Z'
+install_type: full
+agent: null
+ides_setup:
+  - cursor
+expansion_packs: []
+files:
+  - path: .xaheen-core/working-in-the-brownfield.md
+    hash: 1b038f7ae3362da0
+    modified: false
+  - path: .xaheen-core/user-guide.md
+    hash: f2f8890d030171ed
+    modified: false
+  - path: .xaheen-core/enhanced-ide-development-workflow.md
+    hash: 6b066d3a1e1fd70d
+    modified: false
+  - path: .xaheen-core/core-config.yaml
+    hash: 69f7736d33e24ea4
+    modified: false
+  - path: .xaheen-core/utils/xaheen-doc-template.md
+    hash: a8bf14c1b09fcc33
+    modified: false
+  - path: .xaheen-core/utils/workflow-management.md
+    hash: 1d1af4a842a5933d
+    modified: false
+  - path: .xaheen-core/templates/story-tmpl.yaml
+    hash: dee630bee4fcaad3
+    modified: false
+  - path: .xaheen-core/templates/project-brief-tmpl.yaml
+    hash: cd4b269b0722c361
+    modified: false
+  - path: .xaheen-core/templates/prd-tmpl.yaml
+    hash: e807b588dfb603dd
+    modified: false
+  - path: .xaheen-core/templates/market-research-tmpl.yaml
+    hash: 949ab9c006cfaf6f
+    modified: false
+  - path: .xaheen-core/templates/fullstack-architecture-tmpl.yaml
+    hash: ef0aea75ac4946ee
+    modified: false
+  - path: .xaheen-core/templates/front-end-spec-tmpl.yaml
+    hash: ceb07429c009df27
+    modified: false
+  - path: .xaheen-core/templates/front-end-architecture-tmpl.yaml
+    hash: 337c8a6c1dd75446
+    modified: false
+  - path: .xaheen-core/templates/competitor-analysis-tmpl.yaml
+    hash: b58b108e14dac04b
+    modified: false
+  - path: .xaheen-core/templates/brownfield-prd-tmpl.yaml
+    hash: bada70d6cd246e8f
+    modified: false
+  - path: .xaheen-core/templates/brownfield-architecture-tmpl.yaml
+    hash: a153d1eca84ff783
+    modified: false
+  - path: .xaheen-core/templates/brainstorming-output-tmpl.yaml
+    hash: e57cba4ec7ed29e0
+    modified: false
+  - path: .xaheen-core/templates/architecture-tmpl.yaml
+    hash: 95c119ae5fab09cd
+    modified: false
+  - path: .xaheen-core/workflows/greenfield-ui.yaml
+    hash: b3f5e915647cfa9f
+    modified: false
+  - path: .xaheen-core/workflows/greenfield-service.yaml
+    hash: 50480fbf29780bdf
+    modified: false
+  - path: .xaheen-core/workflows/greenfield-fullstack.yaml
+    hash: 212b177859ec6bfb
+    modified: false
+  - path: .xaheen-core/workflows/brownfield-ui.yaml
+    hash: 59ee86f785b31048
+    modified: false
+  - path: .xaheen-core/workflows/brownfield-service.yaml
+    hash: f9f13f3ea58189e7
+    modified: false
+  - path: .xaheen-core/workflows/brownfield-fullstack.yaml
+    hash: ac523c900b1cf75c
+    modified: false
+  - path: .xaheen-core/tasks/validate-next-story.md
+    hash: 1d0b5b88ff6767c6
+    modified: false
+  - path: .xaheen-core/tasks/shard-doc.md
+    hash: 55f21a146fd97f33
+    modified: false
+  - path: .xaheen-core/tasks/review-story.md
+    hash: 3227ccb80046a22a
+    modified: false
+  - path: .xaheen-core/tasks/kb-mode-interaction.md
+    hash: c45bffa4e2b4d849
+    modified: false
+  - path: .xaheen-core/tasks/index-docs.md
+    hash: 349f0ddf65dd71fe
+    modified: false
+  - path: .xaheen-core/tasks/generate-ai-frontend-prompt.md
+    hash: b0a89d7a4aeaa5f8
+    modified: false
+  - path: .xaheen-core/tasks/facilitate-brainstorming-session.md
+    hash: a53bc1514457148d
+    modified: false
+  - path: .xaheen-core/tasks/execute-checklist.md
+    hash: 1804b3da91ce71ae
+    modified: false
+  - path: .xaheen-core/tasks/document-project.md
+    hash: 62495d0979bb6924
+    modified: false
+  - path: .xaheen-core/tasks/create-next-story.md
+    hash: 22127b7be7c81e44
+    modified: false
+  - path: .xaheen-core/tasks/create-doc.md
+    hash: 25eeaf60dd5e7065
+    modified: false
+  - path: .xaheen-core/tasks/create-deep-research-prompt.md
+    hash: 5716b19ae78b3afb
+    modified: false
+  - path: .xaheen-core/tasks/create-brownfield-story.md
+    hash: 354a4d5293e2e5dc
+    modified: false
+  - path: .xaheen-core/tasks/correct-course.md
+    hash: 86883e777382e25f
+    modified: false
+  - path: .xaheen-core/tasks/brownfield-create-story.md
+    hash: 6e5cd0247836c4de
+    modified: false
+  - path: .xaheen-core/tasks/brownfield-create-epic.md
+    hash: 1b2b6c8b67a176ee
+    modified: false
+  - path: .xaheen-core/tasks/advanced-elicitation.md
+    hash: 28e3b538dc6fe104
+    modified: false
+  - path: .xaheen-core/data/xaheen-kb.md
+    hash: 34fc5e11c1091931
+    modified: false
+  - path: .xaheen-core/data/technical-preferences.md
+    hash: 6530bed845540b0d
+    modified: false
+  - path: .xaheen-core/data/elicitation-methods.md
+    hash: 6c4d7716010e8d55
+    modified: false
+  - path: .xaheen-core/data/brainstorming-techniques.md
+    hash: 2dae43f4464f1ad2
+    modified: false
+  - path: .xaheen-core/checklists/story-draft-checklist.md
+    hash: d3a5783fcd5bf5e9
+    modified: false
+  - path: .xaheen-core/checklists/story-dod-checklist.md
+    hash: 06ab7e73a69f930a
+    modified: false
+  - path: .xaheen-core/checklists/po-master-checklist.md
+    hash: 89d2dc785aa0e8a7
+    modified: false
+  - path: .xaheen-core/checklists/pm-checklist.md
+    hash: 139209e205a92628
+    modified: false
+  - path: .xaheen-core/checklists/change-checklist.md
+    hash: 2c116b0d558f0d15
+    modified: false
+  - path: .xaheen-core/checklists/architect-checklist.md
+    hash: 99f4655b9ff99dd1
+    modified: false
+  - path: .xaheen-core/bmad-core/user-guide.md
+    hash: e3b0c44298fc1c14
+    modified: false
+  - path: .xaheen-core/agents/xaheen-orchestrator.md
+    hash: 7dc8186dbd6b81eb
+    modified: false
+  - path: .xaheen-core/agents/xaheen-master.md
+    hash: 97b710e32396a7b5
+    modified: false
+  - path: .xaheen-core/agents/ux-expert.md
+    hash: ae52eba8b52e4f39
+    modified: false
+  - path: .xaheen-core/agents/sm.md
+    hash: 242efcbd26ccf46f
+    modified: false
+  - path: .xaheen-core/agents/qa.md
+    hash: 5b80b2795c21278a
+    modified: false
+  - path: .xaheen-core/agents/po.md
+    hash: c5e896e486a70d2d
+    modified: false
+  - path: .xaheen-core/agents/pm.md
+    hash: 7b6213b88fb0b655
+    modified: false
+  - path: .xaheen-core/agents/dev.md
+    hash: 3ac3427b953f449d
+    modified: false
+  - path: .xaheen-core/agents/architect.md
+    hash: 35112b71f157ac83
+    modified: false
+  - path: .xaheen-core/agents/analyst.md
+    hash: 9501bed441d006d3
+    modified: false
+  - path: .xaheen-core/agent-teams/team-no-ui.yaml
+    hash: 969b7583f8dd3f38
+    modified: false
+  - path: .xaheen-core/agent-teams/team-ide-minimal.yaml
+    hash: 600b6795116fd74e
+    modified: false
+  - path: .xaheen-core/agent-teams/team-fullstack.yaml
+    hash: 35a8be977290eb28
+    modified: false
+  - path: .xaheen-core/agent-teams/team-all.yaml
+    hash: b837e62ef215f731
+    modified: false

@@ -176,7 +176,111 @@ i18n
           terms: {
             title: "Terms-of-Service",
           },
-          lastUpdated: "last-updated"
+          lastUpdated: "last-updated",
+          business: {
+            hero: {
+              title: "We Use Technology to Create Digital Transformation",
+              subtitle: "Your Strategic Technology Partner",
+              description: "We don't just build software - we create measurable business transformation. Our expertise turns complex challenges into competitive advantages.",
+              cta: {
+                primary: "Explore Business Solutions",
+                secondary: "Schedule Consultation"
+              },
+              value: {
+                partnership: "Strategic Partnership",
+                transformation: "Digital Transformation",
+                results: "Measurable Results",
+                innovation: "Innovation Leadership"
+              }
+            },
+            navigation: {
+              challenge: "What Business Challenge Can We Solve for You?",
+              solutions: "Business Solutions",
+              outcomes: "Success Stories",
+              partnership: "Partnership Approach",
+              consultation: "Free Consultation"
+            },
+            services: {
+              digitalTransformation: {
+                title: "Digital Transformation",
+                challenge: "Legacy systems limiting business growth and efficiency",
+                outcome: "Modernized infrastructure enabling rapid scaling and improved customer experience",
+                approach: "Strategic technology roadmap with measurable business impact",
+                timeline: "3-8 months for complete transformation",
+                investment: "Starting from 500,000 NOK"
+              },
+              aiAutomation: {
+                title: "AI & Intelligent Automation",
+                challenge: "Manual processes consuming resources and creating bottlenecks",
+                outcome: "Automated workflows reducing operational costs and improving accuracy",
+                approach: "Custom AI solutions integrated with existing business processes",
+                timeline: "2-6 months for full automation implementation",
+                investment: "Starting from 200,000 NOK"
+              },
+              enterpriseIntegration: {
+                title: "Enterprise Integration & APIs",
+                challenge: "Disconnected systems creating data silos and inefficiencies",
+                outcome: "Unified data ecosystem enabling seamless information flow",
+                approach: "Modern API architecture connecting all business systems",
+                timeline: "2-5 months for complete integration",
+                investment: "Starting from 300,000 NOK"
+              },
+              modernWebApps: {
+                title: "Modern Web Applications",
+                challenge: "Outdated web presence limiting customer engagement",
+                outcome: "Enhanced digital presence driving customer acquisition and retention",
+                approach: "User-centered design with cutting-edge technology",
+                timeline: "1-4 months for full deployment",
+                investment: "Starting from 150,000 NOK"
+              }
+            },
+            stories: {
+              title: "Client Success Stories",
+              subtitle: "Measurable Business Impact Through Technology",
+              cta: "Explore All Success Stories",
+              metrics: {
+                efficiency: "Efficiency Improvement",
+                cost_savings: "Cost Savings",
+                revenue_growth: "Revenue Growth",
+                time_reduction: "Time Reduction"
+              }
+            },
+            partnership: {
+              title: "Your Technology Transformation Partner",
+              subtitle: "Collaborative Approach to Business Success",
+              approach: {
+                consultation: {
+                  title: "Strategic Consultation",
+                  description: "Understanding your business challenges and transformation goals"
+                },
+                planning: {
+                  title: "Solution Architecture",
+                  description: "Designing technology solutions that align with business objectives"
+                },
+                implementation: {
+                  title: "Agile Delivery",
+                  description: "Iterative development with continuous business value delivery"
+                },
+                optimization: {
+                  title: "Continuous Optimization",
+                  description: "Ongoing support and enhancement for sustained business growth"
+                }
+              }
+            },
+            cta: {
+              consultation: {
+                title: "Ready to Transform Your Business?",
+                description: "Schedule a free consultation to discuss your digital transformation needs",
+                button: "Schedule Free Consultation",
+                guarantee: "No obligation - just insights and recommendations"
+              },
+              contact: {
+                business: "Business Transformation Inquiry",
+                partnership: "Strategic Partnership Discussion",
+                solution: "Custom Solution Request"
+              }
+            }
+          }
         }
       },
       no: {
@@ -347,7 +451,111 @@ i18n
           terms: {
             title: "Brukervilkår",
           },
-          lastUpdated: "Sist oppdatert"
+          lastUpdated: "Sist oppdatert",
+          business: {
+            hero: {
+              title: "Vi bruker teknologi for å skape digital transformasjon",
+              subtitle: "Din strategiske teknologipartner",
+              description: "Vi bygger ikke bare programvare - vi skaper målbar forretningsendring. Vår ekspertise gjør komplekse utfordringer til konkurransefortrinn.",
+              cta: {
+                primary: "Utforsk våre løsninger",
+                secondary: "Book konsultasjon"
+              },
+              value: {
+                partnership: "Strategisk partnerskap",
+                transformation: "Digital transformasjon",
+                results: "Målbare resultater",
+                innovation: "Innovasjonsledelse"
+              }
+            },
+            navigation: {
+              challenge: "Hva kan vi løse for din bedrift?",
+              solutions: "Forretningsløsninger",
+              outcomes: "Suksesshistorier",
+              partnership: "Partnerskap",
+              consultation: "Gratis konsultasjon"
+            },
+            services: {
+              digitalTransformation: {
+                title: "Digital transformasjon",
+                challenge: "Eldre systemer som begrenser forretningsvekst og effektivitet",
+                outcome: "Modernisert infrastruktur som muliggjør rask skalering og forbedret kundeopplevelse",
+                approach: "Strategisk teknologikart med målbar forretningseffekt",
+                timeline: "3-8 måneder for fullstendig transformasjon",
+                investment: "Fra 500 000 NOK"
+              },
+              aiAutomation: {
+                title: "AI og intelligent automatisering",
+                challenge: "Manuelle prosesser som forbruker ressurser og skaper flaskehalser",
+                outcome: "Automatiserte arbeidsflyter som reduserer driftskostnader og forbedrer nøyaktighet",
+                approach: "Tilpassede AI-løsninger integrert med eksisterende forretningsprosesser",
+                timeline: "2-6 måneder for full automatiseringsimplementering",
+                investment: "Fra 200 000 NOK"
+              },
+              enterpriseIntegration: {
+                title: "Virksomhetsintegrasjon og API-er",
+                challenge: "Adskilte systemer som skaper datasiloer og ineffektivitet",
+                outcome: "Samlet dataøkosystem som muliggjør sømløs informasjonsflyt",
+                approach: "Moderne API-arkitektur som forbinder alle forretningssystemer",
+                timeline: "2-5 måneder for fullstendig integrasjon",
+                investment: "Fra 300 000 NOK"
+              },
+              modernWebApps: {
+                title: "Moderne webapplikasjoner",
+                challenge: "Utdatert nettilstedeværelse som begrenser kundeengasjement",
+                outcome: "Forbedret digital tilstedeværelse som driver kundeakkvisisjon og kundelojalitet",
+                approach: "Brukersentrert design med banebrytende teknologi",
+                timeline: "1-4 måneder for full distribusjon",
+                investment: "Fra 150 000 NOK"
+              }
+            },
+            stories: {
+              title: "Kundesuksesshistorier",
+              subtitle: "Målbar forretningseffekt gjennom teknologi",
+              cta: "Utforsk alle suksesshistorier",
+              metrics: {
+                efficiency: "Effektivitetsforbedring",
+                cost_savings: "Kostnadsbesparelser",
+                revenue_growth: "Inntektsvekst",
+                time_reduction: "Tidsreduksjon"
+              }
+            },
+            partnership: {
+              title: "Din teknologitransformasjonspartner",
+              subtitle: "Samarbeidstilnærming til forretningssuksess",
+              approach: {
+                consultation: {
+                  title: "Strategisk rådgivning",
+                  description: "Forstå dine forretningsutfordringer og transformasjonsmål"
+                },
+                planning: {
+                  title: "Løsningsarkitektur",
+                  description: "Design teknologiløsninger som er i tråd med forretningsmål"
+                },
+                implementation: {
+                  title: "Smidig levering",
+                  description: "Iterativ utvikling med kontinuerlig levering av forretningsverdi"
+                },
+                optimization: {
+                  title: "Kontinuerlig optimalisering",
+                  description: "Pågående støtte og forbedring for vedvarende forretningsvekst"
+                }
+              }
+            },
+            cta: {
+              consultation: {
+                title: "Klar til å transformere din bedrift?",
+                description: "Book en gratis konsultasjon for å diskutere dine digitale transformasjonsbehov",
+                button: "Book gratis konsultasjon",
+                guarantee: "Ingen forpliktelser - bare innsikt og anbefalinger"
+              },
+              contact: {
+                business: "Forespørsel om forretningsendring",
+                partnership: "Strategisk partnerskapsdiskusjon",
+                solution: "Forespørsel om tilpasset løsning"
+              }
+            }
+          }
         }
       }
     },

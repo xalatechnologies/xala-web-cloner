@@ -61,11 +61,11 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-xala-primary to-xala-secondary">
-      <div className="w-full max-w-md p-8 space-y-6 bg-white/5 backdrop-blur-xl rounded-2xl shadow-xl">
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="w-full max-w-md p-8 space-y-6 bg-card text-card-foreground border border-border rounded-2xl shadow-xl">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-white mb-2">Admin Portal</h1>
-          <p className="text-gray-400">Sign in to access the dashboard</p>
+          <h1 className="text-3xl font-bold text-foreground mb-2">Admin Portal</h1>
+          <p className="text-muted-foreground">Sign in to access the dashboard</p>
         </div>
         
         {error && (
@@ -81,7 +81,7 @@ const AdminLogin = () => {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+              className="w-full"
               required
               disabled={isLoading}
             />
@@ -92,14 +92,14 @@ const AdminLogin = () => {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+              className="w-full"
               required
               disabled={isLoading}
             />
           </div>
           <Button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+            className="w-full"
             disabled={isLoading}
           >
             {isLoading ? (
@@ -114,7 +114,7 @@ const AdminLogin = () => {
           <div className="text-center">
             <Link
               to="/admin/reset-password"
-              className="text-sm text-gray-400 hover:text-white transition-colors"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               Forgot your password?
             </Link>

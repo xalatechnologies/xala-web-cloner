@@ -69,11 +69,11 @@ const AdminResetPassword = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-xala-primary to-xala-secondary">
-      <div className="w-full max-w-md p-8 space-y-6 bg-white/5 backdrop-blur-xl rounded-2xl shadow-xl">
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="w-full max-w-md p-8 space-y-6 bg-card text-card-foreground border border-border rounded-2xl shadow-xl">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-white mb-2">Reset Password</h1>
-          <p className="text-gray-400">
+          <h1 className="text-3xl font-bold text-foreground mb-2">Reset Password</h1>
+          <p className="text-muted-foreground">
             {accessToken 
               ? "Enter your new password"
               : "Enter your email to receive a password reset link"}
@@ -94,7 +94,7 @@ const AdminResetPassword = () => {
                 placeholder="New Password"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                className="w-full bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                className="w-full"
                 required
                 minLength={6}
               />
@@ -106,14 +106,14 @@ const AdminResetPassword = () => {
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                className="w-full"
                 required
               />
             </div>
           )}
           <Button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+            className="w-full"
             disabled={isLoading}
           >
             {isLoading 
@@ -125,7 +125,7 @@ const AdminResetPassword = () => {
           <Button
             type="button"
             variant="ghost"
-            className="w-full text-gray-400 hover:text-white"
+            className="w-full text-muted-foreground hover:text-foreground"
             onClick={() => navigate('/admin')}
           >
             Back to Login

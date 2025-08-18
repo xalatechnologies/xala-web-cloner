@@ -70,7 +70,7 @@ export function ChatInput({
           disabled={!message.trim() || disabled}
           className={cn(
             'absolute bottom-2 right-2 flex h-8 w-8 items-center justify-center rounded-full',
-            'bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary text-white',
+            'bg-primary text-primary-foreground dark:bg-gradient-to-b dark:from-xala-primary dark:via-xala-secondary dark:to-xala-primary',
             'transition-all duration-200 ease-out',
             'hover:shadow-md hover:scale-105 active:scale-95',
             'disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100'

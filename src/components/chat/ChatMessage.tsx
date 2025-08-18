@@ -30,8 +30,8 @@ export function ChatMessage({ message, isLastMessage }: ChatMessageProps) {
         className={cn(
           'flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-full',
           isUser
-            ? 'bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary'
-            : 'bg-gray-100 backdrop-blur-sm'
+            ? 'bg-primary text-primary-foreground dark:bg-gradient-to-b dark:from-xala-primary dark:via-xala-secondary dark:to-xala-primary'
+            : 'bg-muted text-muted-foreground'
         )}
       >
         {isUser ? (
@@ -52,15 +52,15 @@ export function ChatMessage({ message, isLastMessage }: ChatMessageProps) {
           className={cn(
             'rounded-2xl px-4 py-3 shadow-sm',
             isUser
-              ? 'bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary text-white backdrop-blur-sm'
-              : 'bg-white/80 backdrop-blur-sm border border-gray-200/50 text-black'
+              ? 'bg-primary text-primary-foreground dark:bg-gradient-to-b dark:from-xala-primary dark:via-xala-secondary dark:to-xala-primary'
+              : 'bg-card text-card-foreground border border-border'
           )}
         >
           {isUser ? (
             <div className="text-sm whitespace-pre-line">{message.content}</div>
           ) : (
             <ReactMarkdown
-              className="prose prose-sm max-w-none text-black [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
+              className="prose prose-sm max-w-none text-foreground [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
               remarkPlugins={[remarkGfm]}
               components={{
                 p: ({ children }) => (
@@ -71,11 +71,6 @@ export function ChatMessage({ message, isLastMessage }: ChatMessageProps) {
                 ),
                 ol: ({ children }) => (
                   <ol className="mb-3 last:mb-0 pl-4 list-decimal space-y-1.5">{children}</ol>
-                ),
-                li: ({ children, ordered }) => (
-                  <li className="pl-1 marker:text-gray-500">
-                    <div className="inline">{children}</div>
-                  </li>
                 ),
                 a: ({ children, href }) => (
                   <a

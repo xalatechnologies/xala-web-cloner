@@ -55,7 +55,7 @@ export function GDPRNotification() {
     <div
       className={cn(
         "fixed bottom-0 left-0 right-0 z-50",
-        "bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary text-primary-foreground border-t shadow-lg",
+        "bg-card text-card-foreground border-t border-border shadow-lg",
         "p-4 md:p-6"
       )}
     >

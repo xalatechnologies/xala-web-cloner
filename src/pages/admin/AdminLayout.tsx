@@ -20,6 +20,9 @@ import {
   Wrench,
   Settings,
   LogOut,
+  Target,
+  BookOpen,
+  Globe,
 } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 
@@ -43,6 +46,8 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
 
   const menuItems = [
     { id: 'dashboard', title: 'Dashboard', icon: LayoutDashboard, path: '/admin/dashboard' },
+    { id: 'business-content', title: 'Business Content', icon: Target, path: '/admin/business-content' },
+    { id: 'translations', title: 'Translations', icon: Globe, path: '/admin/translations' },
     { id: 'team', title: 'Team', icon: Users, path: '/admin/team' },
     { id: 'case-studies', title: 'Case Studies', icon: FileText, path: '/admin/case-studies' },
     { id: 'products', title: 'Products', icon: Box, path: '/admin/products' },
@@ -52,10 +57,10 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-gradient-to-br from-xala-primary to-xala-secondary font-chakra">
-        <Sidebar className="border-r border-white/10">
+      <div className="min-h-screen flex w-full bg-background font-chakra">
+        <Sidebar className="border-r border-border">
           <div className="p-6">
-            <h1 className="text-2xl font-bold text-white">Xala CMS</h1>
+            <h1 className="text-2xl font-bold text-foreground">Xala CMS</h1>
           </div>
           
           <SidebarContent>
@@ -71,7 +76,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
                           navigate(item.path);
                         }}
                         className={`transition-colors duration-200 ${
-                          activeItem === item.id ? 'bg-white/10 text-white' : 'text-white/70 hover:text-white hover:bg-white/5'
+                          activeItem === item.id ? 'bg-accent text-accent-foreground' : 'text-foreground hover:bg-muted'
                         }`}
                       >
                         <item.icon className="w-5 h-5" />
@@ -83,7 +88,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
                   <SidebarMenuItem>
                     <SidebarMenuButton 
                       onClick={handleLogout} 
-                      className="text-red-400 hover:text-red-300 hover:bg-red-400/10 transition-colors duration-200"
+                      className="text-red-600 hover:text-red-500 hover:bg-red-500/10 transition-colors duration-200"
                     >
                       <LogOut className="w-5 h-5" />
                       <span>Logout</span>
