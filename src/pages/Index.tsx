@@ -1,5 +1,6 @@
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
+import VideoHero from '../components/hero/VideoHero';
 import CoreProducts from '../components/CoreProducts';
 import About from '../components/About';
 import Contact from '../components/Contact';
@@ -15,7 +16,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-xala-primary">
       <Navbar />
-      <Hero />
+      <VideoHero words={["AI", "sky", "apper", "data"]} />
       <Clients />
       <WorkProcess />
       <Technologies />

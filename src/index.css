@@ -11,34 +11,36 @@
 }
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 47.4% 11.2%;
+  --background: 42 52% 94%;
+  /* Primary text color: deep slate for maximum readability on warm background */
+  --foreground: 222 20% 10%;
 
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --muted: 210 40% 97%;
+  /* Secondary text color: slightly darker for improved contrast */
+  --muted-foreground: 215 16% 32%;
 
   --popover: 0 0% 100%;
   --popover-foreground: 222.2 47.4% 11.2%;
 
   --card: 0 0% 100%;
-  --card-foreground: 222.2 47.4% 11.2%;
+  --card-foreground: 220 18% 12%;
 
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
+  --border: 216 12% 92%;
+  --input: 216 12% 92%;
 
-  --primary: 208 94% 54%; /* xala accent #38BDF8 */
-  --primary-foreground: 210 40% 98%;
+  --primary: 243 72% 59%;
+  --primary-foreground: 0 0% 100%;
 
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 19 29% 52%;
+  --secondary-foreground: 0 0% 100%;
 
   --accent: 210 40% 96.1%;
   --accent-foreground: 222.2 47.4% 11.2%;
 
-  --destructive: 0 84.2% 60.2%;
+  --destructive: 0 72% 52%;
   --destructive-foreground: 210 40% 98%;
 
-  --ring: 208 94% 54%;
+  --ring: 243 72% 59%;
 
   /* Charts */
   --chart-1: 221.2 83.2% 53.3%;
@@ -105,5 +107,64 @@
 }
 
 textarea {
-  color: #0F172A;
+  color: hsl(var(--foreground));
+}
+
+/* Hero slow pan/zoom */
+@layer utilities {
+  @keyframes hero-kenburns {
+    0% {
+      transform: scale(1) translate(0, 0);
+    }
+    100% {
+      transform: scale(1.07) translate(-1.5%, -1.5%);
+    }
+  }
+  .animate-hero-kenburns {
+    animation: hero-kenburns 240s ease-in-out infinite alternate;
+  }
+}
+
+/* Seamless marquee utility for logos */
+@layer utilities {
+  @keyframes marquee-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes marquee-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+
+  .marquee-row {
+    display: flex;
+    width: max-content;
+    gap: 1.5rem;
+    will-change: transform;
+    animation: marquee-left var(--marquee-duration, 45s) linear infinite;
+  }
+  .marquee-row-reverse {
+    animation-name: marquee-right;
+  }
+  .marquee:hover .marquee-row {
+    animation-play-state: paused;
+  }
+  .marquee-inner {
+    transform: translateX(var(--drag-offset, 0px));
+    will-change: transform;
+  }
+  .marquee-mask {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right,
+      var(--color-background) 0%,
+      rgba(255,255,255,0) 8%,
+      rgba(255,255,255,0) 92%,
+      var(--color-background) 100%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-row { animation: none; }
+  }
 }

@@ -113,7 +113,7 @@ export const ContactForm = () => {
   };
 
   return (
-    <div className="backdrop-blur-sm rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-white/5 to-transparent border border-white/10 w-full min-w-[500px] flex-1">
+    <div className="rounded-2xl p-6 sm:p-8 bg-card text-card-foreground border border-border w-full min-w-[500px] flex-1 dark:bg-gradient-to-br dark:from-white/5 dark:to-transparent dark:border-white/10">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col h-full space-y-4">
           <div className="space-y-4 flex-1">
@@ -127,7 +127,7 @@ export const ContactForm = () => {
                       <Input
                         {...field}
                         placeholder={getTranslation('contact.form.name.placeholder')}
-                        className="bg-white/5 border-white/10 text-white text-base sm:text-lg placeholder:text-base sm:placeholder:text-lg placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 h-14"
+                        className="text-base sm:text-lg h-14 bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary dark:bg-white/5 dark:text-white dark:border-white/10"
                       />
                     </FormControl>
                     <FormMessage />
@@ -144,7 +144,7 @@ export const ContactForm = () => {
                         {...field}
                         type="email"
                         placeholder={getTranslation('contact.form.email.placeholder')}
-                        className="bg-white/5 border-white/10 text-white text-base sm:text-lg placeholder:text-base sm:placeholder:text-lg placeholder:text-white/50 focus:border-[#D946EF] transition-all duration-500 h-14"
+                        className="text-base sm:text-lg h-14 bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary dark:bg-white/5 dark:text-white dark:border-white/10"
                       />
                     </FormControl>
                     <FormMessage />
@@ -161,7 +161,7 @@ export const ContactForm = () => {
                     <Input
                       {...field}
                       placeholder={getTranslation('contact.form.subject.placeholder')}
-                      className="bg-white/5 border-white/10 text-white text-base sm:text-lg placeholder:text-base sm:placeholder:text-lg placeholder:text-white/50 focus:border-[#0EA5E9] transition-all duration-500 h-14"
+                      className="text-base sm:text-lg h-14 bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary dark:bg-white/5 dark:text-white dark:border-white/10"
                     />
                   </FormControl>
                   <FormMessage />
@@ -177,7 +177,7 @@ export const ContactForm = () => {
                     <Textarea
                       {...field}
                       placeholder={getTranslation('contact.form.message.placeholder')}
-                      className="bg-white/5 border-white/10 text-white text-base sm:text-lg placeholder:text-base sm:placeholder:text-lg placeholder:text-white/50 focus:border-[#8B5CF6] transition-all duration-500 resize-none min-h-[266px] p-4"
+                      className="resize-none min-h-[266px] p-4 text-base sm:text-lg bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary dark:bg-white/5 dark:text-white dark:border-white/10"
                     />
                   </FormControl>
                   <FormMessage />
@@ -190,7 +190,7 @@ export const ContactForm = () => {
             <Button
               type="submit"
               disabled={form.formState.isSubmitting}
-              className="w-full bg-white/10 hover:bg-white/20 text-white font-medium h-14 rounded-xl transition-all duration-300 border border-white/10 hover:border-white/20 text-lg"
+              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-medium h-14 rounded-xl transition-all duration-300 text-lg"
             >
               {form.formState.isSubmitting ? (
                 getTranslation('contact.form.status.sending')

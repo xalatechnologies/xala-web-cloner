@@ -92,7 +92,7 @@ export function ChatMessage({ message, isLastMessage }: ChatMessageProps) {
         {/* Sources if available */}
         {message.sources && message.sources.length > 0 && (
           <div className="flex flex-col space-y-1 mt-2">
-            <p className="text-xs text-gray-500">Sources:</p>
+            <p className="text-xs text-muted-foreground">Sources:</p>
             {message.sources.map((source, index) => (
               <a
                 key={index}
@@ -112,7 +112,7 @@ export function ChatMessage({ message, isLastMessage }: ChatMessageProps) {
           <span
             className={cn(
               'text-xs',
-              message.status === 'error' ? 'text-red-500' : 'text-gray-400'
+              message.status === 'error' ? 'text-red-500' : 'text-muted-foreground'
             )}
           >
             {message.status === 'sending' && 'Sending...'}

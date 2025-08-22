@@ -53,7 +53,7 @@ export const Chat: FC<ChatProps> = ({
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="border-t border-gray-100/50 bg-white/50 backdrop-blur-sm p-4 flex-shrink-0">
+      <div className="border-t border-border bg-surface p-4 flex-shrink-0">
         <ChatInput
           onSendMessage={onSendMessage}
           disabled={disabled}

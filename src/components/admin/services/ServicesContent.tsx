@@ -185,38 +185,38 @@ export function ServicesContent() {
   return (
     <main className="flex-1 overflow-y-auto p-8">
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-4xl font-bold text-white font-chakra">Services</h1>
+        <h1 className="text-4xl font-bold text-foreground font-chakra">Services</h1>
       </div>
 
-      <Card className="border-none bg-gradient-to-br from-gray-900/50 to-gray-800/50">
+      <Card className="border border-border bg-surface">
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle className="text-xl font-bold text-white font-chakra">Manage Services</CardTitle>
+          <CardTitle className="text-xl font-bold text-foreground font-chakra">Manage Services</CardTitle>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                 <Input
                   placeholder="Search services..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-400 w-[200px]"
+                  className="pl-10 bg-background border-border text-foreground placeholder:text-muted-foreground w-[200px]"
                 />
               </div>
               <Select 
                 value={filterLanguage} 
                 onValueChange={(value: SupportedLanguage | "all") => setFilterLanguage(value)}
               >
-                <SelectTrigger className="w-[120px] bg-gray-800 border-gray-700 text-white">
+                <SelectTrigger className="w-[120px] bg-surface border-border text-text">
                   <SelectValue placeholder="Language" />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-800 border-gray-700">
-                  <SelectItem value="all" className="text-white hover:bg-gray-700">All Languages</SelectItem>
-                  <SelectItem value="en" className="text-white hover:bg-gray-700">English</SelectItem>
-                  <SelectItem value="no" className="text-white hover:bg-gray-700">Norwegian</SelectItem>
+                <SelectContent className="bg-surface border-border">
+                  <SelectItem value="all" className="text-text hover:bg-muted">All Languages</SelectItem>
+                  <SelectItem value="en" className="text-text hover:bg-muted">English</SelectItem>
+                  <SelectItem value="no" className="text-text hover:bg-muted">Norwegian</SelectItem>
                 </SelectContent>
               </Select>
             </div>
-            <Button onClick={() => setIsCreateDialogOpen(true)} className="bg-blue-500 hover:bg-blue-600">
+            <Button onClick={() => setIsCreateDialogOpen(true)} className="bg-primary text-primary-foreground hover:bg-primary/90">
               <Plus className="w-4 h-4 mr-2" />
               Add Service
             </Button>

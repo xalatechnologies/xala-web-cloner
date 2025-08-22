@@ -81,8 +81,7 @@ const ActionButtons = ({ onSectionClick }: ActionButtonsProps) => {
       <Button
         onClick={handleConsultationClick}
         className="group px-8 py-6 rounded-lg font-medium transition-all transform hover:scale-105 flex-1 min-w-[200px]
-          shadow-lg shadow-xala-accent/20 bg-gradient-to-r from-[#9b87f5] via-[#8B5CF6] to-[#7E69AB] 
-          hover:from-[#8B5CF6] hover:via-[#7E69AB] hover:to-[#9b87f5] text-white"
+          shadow-lg shadow-primary/20 bg-primary text-primary-foreground"
       >
         <span className="flex items-center gap-2 text-base sm:text-lg">
           <Calendar className="w-5 h-5" />

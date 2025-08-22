@@ -19,11 +19,16 @@ export default {
     },
     extend: {
       colors: {
+        // Core tokens mapped to CSS variables
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        text: {
+          DEFAULT: "hsl(var(--foreground))",
+          muted: "hsl(var(--muted-foreground))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -52,12 +57,11 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        xala: {
-          primary: "#0F172A",
-          secondary: "#1E293B",
-          accent: "#38BDF8",
-          text: "#E2E8F0",
-        },
+        surface: "hsl(var(--card))",
+        success: "#16A34A",
+        warning: "#F4D06F",
+        info: "#2563EB",
+        danger: "#DC2626",
       },
       fontSize: {
         'base': ['1.0625rem', '1.75'], // Slightly larger than default 1rem

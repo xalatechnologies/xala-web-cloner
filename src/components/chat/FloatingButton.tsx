@@ -21,7 +21,7 @@ export function FloatingButton({ onClick }: FloatingButtonProps) {
       exit="exit"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className="fixed bottom-6 right-6 p-4 bg-[#003057] text-white rounded-full shadow-lg hover:bg-[#002543] focus:outline-none focus:ring-2 focus:ring-[#003057] focus:ring-offset-2 transition-colors duration-200"
+      className="fixed bottom-6 right-6 p-4 bg-primary text-primary-foreground rounded-full shadow-lg hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors duration-200"
       onClick={onClick}
     >
       <Bot className="h-6 w-6" />

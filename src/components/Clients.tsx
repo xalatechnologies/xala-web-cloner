@@ -4,6 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
 import ClientGrid from './clients/ClientGrid';
+import ClientMarquee from './clients/ClientMarquee';
+import type { Database } from '@/integrations/supabase/types';
 
 const Clients = () => {
   const { t } = useTranslation();
@@ -40,19 +42,46 @@ const Clients = () => {
       );
     }
 
-    if (!clients?.length) {
-      return (
-        <div className="text-center text-xala-text">
-          {t('clients.noClients')}
-        </div>
-      );
-    }
+    // Fallback list sourced from public/clients folder to ensure logos render
+    const fallbackClients: Array<Pick<Database['public']['Tables']['clients']['Row'], 'id' | 'name' | 'logo_url' | 'website_url' | 'language' | 'sort_order'>> = [
+      { id: 'ssb', name: 'Statistics Norway', logo_url: '/clients/ssb.svg', website_url: 'https://www.ssb.no', language: 'en', sort_order: 10 },
+      { id: 'nhn', name: 'Norsk Helsenett', logo_url: '/clients/nhn.svg', website_url: 'https://www.nhn.no', language: 'en', sort_order: 20 },
+      { id: 'sykehuspartner', name: 'Sykehuspartner', logo_url: '/clients/sykehuspartner.svg', website_url: 'https://www.sykehuspartner.no', language: 'en', sort_order: 30 },
+      { id: 'nov', name: 'NOV', logo_url: '/clients/nov2.svg', website_url: 'https://www.nov.com', language: 'en', sort_order: 40 },
+      { id: 'ocha', name: 'OCHA', logo_url: '/clients/ocha.png', website_url: 'https://www.unocha.org', language: 'en', sort_order: 50 },
+      { id: 'globalconnect', name: 'GlobalConnect', logo_url: '/clients/globelconnect.png', website_url: 'https://www.globalconnect.no', language: 'en', sort_order: 60 },
+      { id: 'furst', name: 'Fürst', logo_url: '/clients/furst.png', website_url: 'https://www.furst.no', language: 'en', sort_order: 70 },
+      { id: 'usaid', name: 'USAID', logo_url: '/clients/usaid.png', website_url: 'https://www.usaid.gov', language: 'en', sort_order: 80 },
+      { id: 'norwegian', name: 'Norwegian', logo_url: '/clients/norwegian.svg', website_url: 'https://www.norwegian.com', language: 'en', sort_order: 90 },
+      { id: 'altinn', name: 'Altinn', logo_url: '/clients/altinn.svg', website_url: 'https://www.altinn.no', language: 'en', sort_order: 100 },
+      { id: 'unicef', name: 'UNICEF', logo_url: '/clients/unicef.png', website_url: 'https://www.unicef.org', language: 'en', sort_order: 110 },
+      { id: 'nordre-follo', name: 'Nordre Follo kommune', logo_url: '/clients/nordre-follo.svg', website_url: 'https://www.nordrefollo.kommune.no', language: 'en', sort_order: 120 },
+      { id: 'ruter', name: 'Ruter', logo_url: '/clients/ruter.png', website_url: 'https://www.ruter.no', language: 'en', sort_order: 140 },
+      { id: 'sparebank', name: 'SpareBank 1', logo_url: '/clients/sparebank.png', website_url: 'https://www.sparebank1.no', language: 'en', sort_order: 150 },
+    ];
 
+    const fallbackMap = new Map(fallbackClients.map(fc => [fc.name.toLowerCase(), fc]));
+    const normalizedDb = (clients || []).map((c) => {
+      const key = (c.name || '').toLowerCase();
+      const fb = fallbackMap.get(key);
+      // Prefer local /clients assets if DB path missing or not set
+      const logo = (!c.logo_url || c.logo_url.trim() === '' || !c.logo_url.startsWith('/clients/')) && fb
+        ? fb.logo_url
+        : c.logo_url;
+      return { ...c, logo_url: logo } as Database['public']['Tables']['clients']['Row'];
+    });
+
+    const present = new Set(normalizedDb.map(c => (c.name || '').toLowerCase()));
+    const mergedClients = [
+      ...normalizedDb,
+      ...fallbackClients.filter(fc => !present.has(fc.name.toLowerCase()))
+    ] as unknown as Database['public']['Tables']['clients']['Row'][];
+
+    // Marquee presentation for delightful motion; falls back to static grid if motion is reduced
     return (
-      <ClientGrid 
-        clients={clients}
-        initialRows={section?.rows || 1}
-      />
+      <div className="space-y-10">
+        <ClientMarquee clients={mergedClients} rows={2} speedSeconds={120} />
+      </div>
     );
   };
 
@@ -62,7 +91,7 @@ const Clients = () => {
 
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-10 sm:mb-12 animate-fade-in">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 sm:mb-6 text-foreground">
+          <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-4 sm:mb-6">
             {section?.title || t('clients.title')}
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">

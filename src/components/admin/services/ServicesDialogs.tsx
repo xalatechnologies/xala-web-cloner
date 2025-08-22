@@ -133,7 +133,7 @@ export function ServicesDialogs({
             if (isCreateDialogOpen) setIsCreateDialogOpen(false);
             if (isEditDialogOpen) setIsEditDialogOpen(false);
           }}
-          className="bg-white/5 border-white/10 text-white hover:bg-white/10"
+          className="bg-surface border-border text-foreground hover:bg-muted"
         >
           Cancel
         </Button>
@@ -147,10 +147,10 @@ export function ServicesDialogs({
   return (
     <>
       <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
-        <DialogContent className="bg-gray-800/95 backdrop-blur-lg text-white border-gray-700">
+        <DialogContent className="bg-surface text-text border border-border">
           <DialogHeader>
             <DialogTitle>Create New Service</DialogTitle>
-            <DialogDescription className="text-gray-400">
+            <DialogDescription className="text-muted-foreground">
               Add a new service to your website
             </DialogDescription>
           </DialogHeader>
@@ -159,10 +159,10 @@ export function ServicesDialogs({
       </Dialog>
 
       <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
-        <DialogContent className="bg-gray-800/95 backdrop-blur-lg text-white border-gray-700">
+        <DialogContent className="bg-surface text-text border border-border">
           <DialogHeader>
             <DialogTitle>Edit Service</DialogTitle>
-            <DialogDescription className="text-gray-400">
+            <DialogDescription className="text-muted-foreground">
               Make changes to the service
             </DialogDescription>
           </DialogHeader>
@@ -171,10 +171,10 @@ export function ServicesDialogs({
       </Dialog>
 
       <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <DialogContent className="bg-gray-800/95 backdrop-blur-lg text-white border-gray-700">
+        <DialogContent className="bg-surface text-text border border-border">
           <DialogHeader>
             <DialogTitle>Delete Service</DialogTitle>
-            <DialogDescription className="text-gray-400">
+            <DialogDescription className="text-muted-foreground">
               Are you sure you want to delete this service? This action cannot be undone.
             </DialogDescription>
           </DialogHeader>
@@ -182,7 +182,7 @@ export function ServicesDialogs({
             <Button
               variant="outline"
               onClick={() => setIsDeleteDialogOpen(false)}
-              className="bg-white/5 border-white/10 text-white hover:bg-white/10"
+              className="bg-surface border-border text-foreground hover:bg-muted"
             >
               Cancel
             </Button>

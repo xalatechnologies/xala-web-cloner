@@ -1,0 +1,130 @@
+import { useEffect, useMemo, useState } from 'react'
+import { ChevronDown, ShieldCheck, Lock, BookOpen, Calendar, ArrowRight, Award, Cloud, Brain, Database, Code, Cpu } from 'lucide-react'
+
+interface VideoHeroProps {
+  videoSrc?: string
+  poster?: string
+  words?: string[]
+}
+
+function DynamicWord({ words, interval = 2200 }: { words: string[]; interval?: number }) {
+  const safeWords = useMemo(() => (words?.length ? words : ['AI', 'sky', 'design', 'data']), [words])
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    const id = setInterval(() => setIndex((i) => (i + 1) % safeWords.length), interval)
+    return () => clearInterval(id)
+  }, [safeWords, interval])
+
+  return (
+    <span key={index} className="inline-block min-w-[5ch] transition-opacity duration-500">
+      {safeWords[index]}
+    </span>
+  )
+}
+
+export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/hero-bg.svg', words }: VideoHeroProps) {
+  return (
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background video */}
+      <div className="absolute inset-0 -z-10">
+        <video
+          className="h-full w-full object-cover animate-hero-kenburns"
+          src={videoSrc}
+          poster={poster}
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+        {/* Enhanced readability overlays for better text visibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/70 to-background/40" />
+        <div className="absolute inset-0 backdrop-blur-[1px]" />
+      </div>
+
+      {/* Enhanced Headline */}
+      <div className="relative z-10 mx-auto max-w-5xl px-6 pt-24 text-center">
+        <div className="flex flex-col items-center gap-3">
+          <div className="inline-flex items-center gap-2">
+            <span className="group relative rounded-xl bg-white/95 border border-gray-200/80 shadow-xl backdrop-blur-sm px-4 py-2 text-base font-semibold text-gray-800 hover:shadow-2xl transition-all duration-300">
+              <Code className="absolute -top-1 -right-1 h-3 w-3 text-blue-500" />
+              Vi bruker <span className="sr-only">_</span>
+            </span>
+            <span className="group relative rounded-xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200/80 shadow-xl backdrop-blur-sm px-4 py-2 text-base font-bold text-blue-600 hover:shadow-2xl transition-all duration-300">
+              <Brain className="absolute -top-1 -right-1 h-3 w-3 text-blue-500" />
+              <DynamicWord words={words ?? ['AI', 'sky', 'apps', 'data']} />
+            </span>
+            <span className="group relative rounded-xl bg-white/95 border border-gray-200/80 shadow-xl backdrop-blur-sm px-4 py-2 text-base font-semibold text-gray-800 hover:shadow-2xl transition-all duration-300">
+              <Database className="absolute -top-1 -right-1 h-3 w-3 text-green-500" />
+              for å
+            </span>
+          </div>
+          <div className="inline-flex items-center gap-2">
+            <span className="group relative rounded-xl bg-white/95 border border-gray-200/80 shadow-xl backdrop-blur-sm px-4 py-2 text-base font-semibold text-gray-800 hover:shadow-2xl transition-all duration-300">
+              <Cpu className="absolute -top-1 -right-1 h-3 w-3 text-purple-500" />
+              skape en
+            </span>
+            <span className="group relative rounded-xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200/80 shadow-xl backdrop-blur-sm px-4 py-2 text-base font-bold text-blue-600 hover:shadow-2xl transition-all duration-300">
+              <Brain className="absolute -top-1 -right-1 h-3 w-3 text-blue-500" />
+              positiv forandring
+            </span>
+          </div>
+        </div>
+
+        {/* Enhanced scroll indicator with smooth scroll functionality */}
+        <div className="mt-6 flex items-center justify-center">
+          <button 
+            onClick={() => {
+              const nextSection = document.getElementById('clients');
+              if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="group cursor-pointer p-2 rounded-full border border-blue-200/80 bg-white/90 backdrop-blur-sm hover:bg-blue-50 transition-all duration-300 hover:scale-110 hover:shadow-lg"
+            aria-label="Scroll to next section"
+          >
+            <ChevronDown className="h-5 w-5 text-blue-600 group-hover:text-blue-700 transition-colors duration-300 animate-bounce" />
+          </button>
+        </div>
+      </div>
+
+      {/* Enhanced Bottom Corner Overlays */}
+      <div className="absolute bottom-6 left-6 z-20 flex flex-col gap-2 max-w-[200px]">
+        <span className="inline-flex items-center gap-2 rounded-full border border-gray-200/80 bg-white/95 backdrop-blur-sm px-3 py-1.5 text-sm font-semibold text-gray-800 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <div className="p-0.5 rounded-full bg-blue-500/10">
+            <ShieldCheck className="h-3.5 w-3.5 text-blue-600" />
+          </div>
+          ISO Certified
+        </span>
+        <span className="inline-flex items-center gap-2 rounded-full border border-gray-200/80 bg-white/95 backdrop-blur-sm px-3 py-1.5 text-sm font-semibold text-gray-800 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <div className="p-0.5 rounded-full bg-green-500/10">
+            <Lock className="h-3.5 w-3.5 text-green-600" />
+          </div>
+          GDPR Ready
+        </span>
+        <span className="inline-flex items-center gap-2 rounded-full border border-gray-200/80 bg-white/95 backdrop-blur-sm px-3 py-1.5 text-sm font-semibold text-gray-800 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <div className="p-0.5 rounded-full bg-blue-500/10">
+            <Award className="h-3.5 w-3.5 text-blue-600" />
+          </div>
+          Microsoft Certified
+        </span>
+        <span className="inline-flex items-center gap-2 rounded-full border border-gray-200/80 bg-white/95 backdrop-blur-sm px-3 py-1.5 text-sm font-semibold text-gray-800 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <div className="p-0.5 rounded-full bg-orange-500/10">
+            <Cloud className="h-3.5 w-3.5 text-orange-600" />
+          </div>
+          AWS Certified
+        </span>
+      </div>
+
+      <div className="absolute bottom-6 right-6 z-20">
+        <a href="#contact" className="group inline-flex items-center gap-2 rounded-xl bg-blue-600 text-white px-5 py-2.5 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-blue-700 font-semibold">
+          <Calendar className="h-4 w-4" />
+          Bestill møte
+          <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform duration-300" />
+        </a>
+      </div>
+    </section>
+  )
+}
+
+

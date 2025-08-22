@@ -59,7 +59,7 @@ export function ChatInput({
           disabled={disabled}
           maxRows={6}
           className={cn(
-            'flex-1 resize-none bg-transparent py-3 pl-4 pr-12 outline-none placeholder:text-gray-400',
+            'flex-1 resize-none bg-transparent py-3 pl-4 pr-12 outline-none placeholder:text-muted-foreground',
             'min-h-[44px] max-h-[200px]',
             disabled && 'cursor-not-allowed opacity-50'
           )}
@@ -84,7 +84,7 @@ export function ChatInput({
         </button>
       </div>
 
-      <div className="mt-2 text-xs text-gray-400">
+      <div className="mt-2 text-xs text-muted-foreground">
         Press Enter to send, Shift + Enter for new line
       </div>
     </form>

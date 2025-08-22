@@ -28,9 +28,7 @@ const ExpandableGrid = ({ items, initialRows = 1, cols = 3 }: ExpandableGridProp
     <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-0">
         {visibleItems.map((item, index) => (
-          <div key={index} className="animate-fade-in w-full" style={{
-            animationDelay: `${index * 0.1}s`
-          }}>
+          <div key={index} className={`animate-fade-in w-full`}>
             {item}
           </div>
         ))}
@@ -41,8 +39,7 @@ const ExpandableGrid = ({ items, initialRows = 1, cols = 3 }: ExpandableGridProp
           <Button
             onClick={handleShowMore}
             className="group px-8 py-6 rounded-lg font-medium transition-all transform hover:scale-105
-              shadow-lg shadow-xala-accent/20 bg-gradient-to-r from-[#9b87f5] via-[#8B5CF6] to-[#7E69AB] 
-              hover:from-[#8B5CF6] hover:via-[#7E69AB] hover:to-[#9b87f5] text-white"
+              shadow-lg shadow-primary/20 bg-primary text-primary-foreground"
           >
             <span className="flex items-center gap-2">
               Show More

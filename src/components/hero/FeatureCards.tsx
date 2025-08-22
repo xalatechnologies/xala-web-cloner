@@ -55,14 +55,14 @@ const FeatureCards = () => {
         {[...Array(3)].map((_, i) => (
           <div 
             key={i} 
-            className="h-full p-6 rounded-2xl bg-white/5 animate-pulse backdrop-blur-sm border border-white/5"
+            className="h-full p-6 rounded-2xl bg-card animate-pulse border border-border"
           >
             <div className="flex flex-col items-start gap-4">
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-xl bg-white/10" />
-                <div className="h-6 w-32 bg-white/10 rounded" />
+                <div className="w-16 h-16 rounded-xl bg-muted" />
+                <div className="h-6 w-32 bg-muted rounded" />
               </div>
-              <div className="h-24 w-full bg-white/10 rounded" />
+              <div className="h-24 w-full bg-muted rounded" />
             </div>
           </div>
         ))}
@@ -96,38 +96,32 @@ interface FeatureCardProps {
 
 const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => (
   <div 
-    className={`group relative h-full p-6 rounded-3xl bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-transparent 
-                backdrop-blur-sm border border-white/10 hover:border-xala-accent/50 
-                transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl hover:shadow-xala-accent/20
-                animate-fade-in cursor-pointer overflow-hidden text-left`}
-    style={{ 
-      animationDelay: `${index * 200}ms`,
-      transform: `perspective(1000px) rotateY(${index * 5}deg)`
-    }}
+    className={`group relative h-full p-6 rounded-3xl bg-card text-card-foreground border border-border hover:border-primary/50 
+                transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20
+                animate-fade-in cursor-pointer overflow-hidden text-left dark:bg-gradient-to-br dark:from-white/[0.08] dark:via-white/[0.04] dark:to-transparent`}
   >
     {/* Animated background gradient */}
-    <div className="absolute inset-0 bg-gradient-to-br from-xala-accent/0 via-[#9b87f5]/0 to-[#D946EF]/0 
-                    group-hover:from-xala-accent/20 group-hover:via-[#9b87f5]/10 group-hover:to-[#D946EF]/5 
-                    transition-all duration-700 rounded-3xl opacity-0 group-hover:opacity-100" />
+    <div className="absolute inset-0 bg-[linear-gradient(135deg,hsla(var(--primary),0)_0%,hsla(280,65%,60%,0)_100%)] 
+                    group-hover:bg-[linear-gradient(135deg,hsla(var(--primary),0.2)_0%,hsla(280,65%,60%,0.1)_100%)] transition-all duration-700 rounded-3xl opacity-0 group-hover:opacity-100" />
     
     {/* Glowing orb effect */}
-    <div className="absolute -top-20 -right-20 w-40 h-40 bg-xala-accent/30 rounded-full blur-3xl 
-                    group-hover:bg-xala-accent/40 transform group-hover:scale-150 transition-all duration-700 opacity-0 group-hover:opacity-100" />
+    <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/30 rounded-full blur-3xl 
+                    group-hover:bg-primary/40 transform group-hover:scale-150 transition-all duration-700 opacity-0 group-hover:opacity-100" />
     
     {/* Animated border */}
-    <div className="absolute inset-0 rounded-[2rem_0.5rem_2rem_2rem] border border-xala-accent/0 group-hover:border-xala-accent/30 
+    <div className="absolute inset-0 rounded-[2rem_0.5rem_2rem_2rem] border border-primary/0 group-hover:border-primary/30 
                     transition-all duration-700" />
 
     <div className="relative flex flex-col h-full z-10">
       <div className="flex justify-center mb-6">
         {icon}
       </div>
-      <h3 className="text-2xl font-bold bg-gradient-to-r from-white via-white to-xala-accent/80 
-                     bg-clip-text text-transparent group-hover:from-xala-accent group-hover:via-white group-hover:to-[#D946EF]
+      <h3 className="text-2xl font-bold bg-gradient-to-r from-foreground via-foreground to-primary/80 
+                     bg-clip-text text-transparent group-hover:from-primary group-hover:via-foreground group-hover:to-[#D946EF]
                      transition-all duration-700 tracking-tight mb-4">
         {title}
       </h3>
-      <p className="text-lg text-xala-text/70 group-hover:text-white/90 transition-colors duration-700 leading-relaxed">
+      <p className="text-lg text-muted-foreground group-hover:text-foreground transition-colors duration-700 leading-relaxed">
         {description.length > 100 ? `${description.substring(0, 100)}...` : description}
       </p>
     </div>

@@ -36,8 +36,7 @@ const TeamGrid = ({ members, initialRows = 1, cols = 3 }: TeamGridProps) => {
           <button
             onClick={() => setVisibleRows(prev => prev + 1)}
             className="group px-8 py-6 rounded-lg font-medium transition-all transform hover:scale-105
-              shadow-lg shadow-xala-accent/20 bg-gradient-to-r from-[#9b87f5] via-[#8B5CF6] to-[#7E69AB] 
-              hover:from-[#8B5CF6] hover:via-[#7E69AB] hover:to-[#9b87f5] text-white"
+              shadow-lg shadow-primary/20 bg-primary text-primary-foreground"
           >
             Show More
           </button>

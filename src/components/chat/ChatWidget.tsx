@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -18,12 +18,34 @@ export const ChatWidget: FC = () => {
   const { sidebarWidth } = useChatSidebar();
   const chatRef = useRef<HTMLDivElement>(null);
   const { i18n } = useTranslation();
+  const [showChatWidget, setShowChatWidget] = useState(false);
 
   const handleClickOutside = (event: MouseEvent) => {
     if (chatRef.current && !chatRef.current.contains(event.target as Node)) {
       setOpen(false);
     }
   };
+
+  // Scroll detection to show chat widget only after hero section
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.getElementById('home');
+      if (heroSection) {
+        const heroHeight = heroSection.offsetHeight;
+        const scrollPosition = window.scrollY;
+        // Show chat widget when user scrolls past 80% of hero section
+        setShowChatWidget(scrollPosition > heroHeight * 0.8);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    // Check initial scroll position
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -56,6 +78,11 @@ export const ChatWidget: FC = () => {
       console.error(translations['chat.errors.failed_to_send'], error);
     }
   };
+
+  // Don't render chat widget if user hasn't scrolled past hero section
+  if (!showChatWidget) {
+    return null;
+  }
 
   return (
     <div className="hidden sm:block fixed bottom-6 right-6 z-50">

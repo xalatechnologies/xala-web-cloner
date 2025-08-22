@@ -12,23 +12,22 @@ const ServiceCard = ({ icon, title, description }: ServiceCardProps) => {
 
   return (
     <div 
-      className="group h-full p-4 sm:p-6 lg:p-8 rounded-xl bg-white/5 border border-white/10 hover:border-[#9b87f5]/50 
-                 backdrop-blur-sm transition-all duration-500 hover:transform hover:-translate-y-1
-                 hover:shadow-lg hover:shadow-[#9b87f5]/10"
+      className="group h-full p-4 sm:p-6 lg:p-8 rounded-xl bg-card border border-border hover:border-primary/50 
+                 transition-all duration-500 hover:transform hover:-translate-y-1
+                 hover:shadow-lg hover:shadow-primary/10"
     >
       <div className="flex flex-col h-full">
         <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
-          <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#9b87f5]/20 to-transparent 
-                      flex items-center justify-center text-[#9b87f5] group-hover:text-white
-                      group-hover:from-[#9b87f5] group-hover:to-[#D946EF] transition-all duration-500">
+          <div className="w-12 h-12 rounded-lg bg-[linear-gradient(135deg,hsla(var(--primary),0.12),transparent)] 
+                      flex items-center justify-center text-primary transition-all duration-500">
             {IconComponent && <IconComponent className="w-6 h-6" />}
           </div>
-          <h3 className="text-xl sm:text-2xl font-semibold text-white group-hover:text-[#9b87f5] transition-colors">
+          <h3 className="text-xl sm:text-2xl font-semibold text-primary">
             {title}
           </h3>
         </div>
         
-        <p className="text-base sm:text-lg text-white/70 group-hover:text-white/90 transition-colors">
+        <p className="text-base sm:text-lg text-muted-foreground transition-colors">
           {description}
         </p>
       </div>

@@ -36,7 +36,7 @@ export default function TestRAG() {
         <button
           type="submit"
           disabled={loading}
-          className="bg-blue-500 text-white px-4 py-2 rounded disabled:bg-gray-400"
+          className="bg-primary text-primary-foreground px-4 py-2 rounded disabled:opacity-50"
         >
           {loading ? 'Searching...' : 'Search'}
         </button>
@@ -45,7 +45,7 @@ export default function TestRAG() {
       {results && (
         <div className="mt-4">
           <h2 className="text-xl font-semibold mb-2">Results:</h2>
-          <pre className="whitespace-pre-wrap bg-gray-100 p-4 rounded">
+          <pre className="whitespace-pre-wrap bg-muted p-4 rounded">
             {results}
           </pre>
         </div>

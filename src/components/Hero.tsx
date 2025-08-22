@@ -49,8 +49,9 @@ const Hero = () => {
   const isLoading = heroLoading || welcomeLoading;
 
   return (
-    <section id="home" className="relative min-h-[60vh] pt-20 sm:pt-[5%] flex items-center justify-center overflow-hidden py-[5%] bg-background">
+    <section id="home" className="relative min-h-[60vh] pt-24 sm:pt-[6%] flex items-center justify-center overflow-hidden py-[5%] bg-background">
       <div className="absolute inset-0 hidden dark:block bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary animate-gradient-x"></div>
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top,rgba(16,24,40,0.06),transparent_60%)]"></div>
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-5"></div>
       
       <GalaxyBackground />

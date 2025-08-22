@@ -41,13 +41,13 @@ const Contact = () => {
     >
       <section id="contact" className="relative py-24 overflow-hidden bg-background dark:bg-gradient-to-b dark:from-xala-primary dark:to-xala-secondary">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -left-1/4 -top-1/4 w-1/2 h-1/2 bg-[#8B5CF6]/10 rounded-full blur-3xl animate-float-1"></div>
-          <div className="absolute -right-1/4 -bottom-1/4 w-1/2 h-1/2 bg-[#D946EF]/10 rounded-full blur-3xl animate-float-2"></div>
+          <div className="absolute -left-1/4 -top-1/4 w-1/2 h-1/2 bg-primary/10 rounded-full blur-3xl animate-float-1"></div>
+          <div className="absolute -right-1/4 -bottom-1/4 w-1/2 h-1/2 bg-primary/10 rounded-full blur-3xl animate-float-2"></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-[#8B5CF6] via-[#D946EF] to-[#0EA5E9] text-transparent bg-clip-text mb-4">
+            <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-primary via-primary to-primary text-transparent bg-clip-text mb-4">
               {section?.title || t('contact.title')}
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">

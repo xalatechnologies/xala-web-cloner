@@ -14,15 +14,14 @@ type ContactInfoProps = {
 };
 
 const ContactInfoItem = ({ icon, title, details }: ContactInfoProps) => (
-  <div className="group p-4 sm:p-6 rounded-2xl bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm border border-white/10 
-                hover:border-white/20 transition-all duration-700 animate-fade-in">
+  <div className="group p-4 sm:p-6 rounded-2xl bg-card text-card-foreground border border-border transition-all duration-700 animate-fade-in dark:bg-gradient-to-br dark:from-white/5 dark:to-transparent">
     <div className="flex items-center space-x-4">
-      <div className="p-3 rounded-xl bg-white/5 transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:bg-white/10">
+      <div className="p-3 rounded-xl bg-muted transition-all duration-700 ease-in-out group-hover:scale-110 group-hover:bg-muted/70 dark:bg-white/5 dark:group-hover:bg-white/10">
         {icon}
       </div>
       <div className="text-left">
-        <h3 className="text-xl font-semibold text-white mb-1">{title}</h3>
-        <p className="text-xala-text/80">{details}</p>
+        <h3 className="text-xl font-semibold text-foreground mb-1">{title}</h3>
+        <p className="text-muted-foreground">{details}</p>
       </div>
     </div>
   </div>
@@ -51,19 +50,19 @@ export const ContactInfo = () => {
 
   const contactInfo = [
     {
-      icon: <Phone className="w-6 h-6 text-[#8B5CF6]" />,
+      icon: <Phone className="w-6 h-6 text-primary" />,
       title: getContactValue('phone_label'),
       subtitle: getContactValue('phone_description'),
       details: getContactValue('phone')
     },
     {
-      icon: <Mail className="w-6 h-6 text-[#D946EF]" />,
+      icon: <Mail className="w-6 h-6 text-primary" />,
       title: getContactValue('email_label'),
       subtitle: getContactValue('email_description'),
       details: getContactValue('email')
     },
     {
-      icon: <MapPin className="w-6 h-6 text-[#0EA5E9]" />,
+      icon: <MapPin className="w-6 h-6 text-primary" />,
       title: getContactValue('address_label'),
       subtitle: getContactValue('address_description'),
       details: getContactValue('address')

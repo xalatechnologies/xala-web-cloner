@@ -23,22 +23,22 @@ export function TableFilters({
   return (
     <div className="flex items-center space-x-4">
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
         <Input
           placeholder="Search..."
           value={searchTerm}
           onChange={(e) => onSearchChange(e.target.value)}
-          className="pl-10 bg-gray-800/50 border-gray-700 text-white w-64 focus:ring-2 focus:ring-blue-500 transition-all"
+          className="pl-10 bg-surface border-border text-text w-64 focus:ring-2 focus:ring-primary transition-all"
         />
       </div>
       <Select value={filterLanguage} onValueChange={onLanguageChange}>
-        <SelectTrigger className="w-32 bg-gray-800/50 border-gray-700 text-white focus:ring-2 focus:ring-blue-500">
+        <SelectTrigger className="w-32 bg-surface border-border text-text focus:ring-2 focus:ring-primary">
           <SelectValue placeholder="Language" />
         </SelectTrigger>
-        <SelectContent className="bg-gray-800 border-gray-700">
-          <SelectItem value="all" className="text-white hover:bg-gray-700">All</SelectItem>
-          <SelectItem value="en" className="text-white hover:bg-gray-700">English</SelectItem>
-          <SelectItem value="no" className="text-white hover:bg-gray-700">Norwegian</SelectItem>
+        <SelectContent className="bg-surface border-border">
+          <SelectItem value="all" className="text-text hover:bg-muted">All</SelectItem>
+          <SelectItem value="en" className="text-text hover:bg-muted">English</SelectItem>
+          <SelectItem value="no" className="text-text hover:bg-muted">Norwegian</SelectItem>
         </SelectContent>
       </Select>
       {onAddNew && (
