@@ -28,6 +28,15 @@ i18n
             getInTouch: 'Get in touch',
             ourProcess: 'Our Process',
             aboutUs: 'About us',
+            heroText: {
+              weUse: 'We use',
+              data: 'data',
+              to: 'to',
+              create: 'create a',
+              positiveChange: 'positive change'
+            },
+            bookMeeting: 'Book meeting',
+            scrollToNext: 'Scroll to next section',
             features: {
               aiSolutions: 'AI Solutions',
               aiDesc: 'Intelligent systems for smarter decisions',
@@ -303,6 +312,15 @@ i18n
             getInTouch: 'Ta kontakt',
             ourProcess: 'Vår prosess',
             aboutUs: 'Om oss',
+            heroText: {
+              weUse: 'Vi bruker',
+              data: 'data',
+              to: 'for å',
+              create: 'skape en',
+              positiveChange: 'positiv forandring'
+            },
+            bookMeeting: 'Bestill møte',
+            scrollToNext: 'Rull til neste seksjon',
             features: {
               aiSolutions: 'AI-løsninger',
               aiDesc: 'Intelligente systemer for smartere beslutninger',

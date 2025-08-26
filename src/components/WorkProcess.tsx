@@ -146,10 +146,10 @@ const WorkProcess = () => {
   };
 
   return (
-    <section id="work-process" className="py-12 md:py-24 bg-background dark:bg-gradient-to-br dark:from-xala-primary dark:via-xala-secondary dark:to-xala-primary relative overflow-hidden">
-      <div className="absolute inset-0 hidden dark:block bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-5 animate-pulse"></div>
+    <section id="work-process" className="py-12 md:py-24 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary relative overflow-hidden">
 
-      <div className="absolute inset-0 overflow-hidden hidden dark:block">
+
+      <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-48 md:w-64 h-48 md:h-64 bg-purple-500/30 rounded-full filter blur-3xl animate-float-1"></div>
         <div className="absolute bottom-1/4 right-1/4 w-48 md:w-64 h-48 md:h-64 bg-blue-500/30 rounded-full filter blur-3xl animate-float-2"></div>
         <div className="absolute top-1/2 left-1/2 w-48 md:w-64 h-48 md:h-64 bg-cyan-500/30 rounded-full filter blur-3xl animate-float-3"></div>
@@ -160,7 +160,7 @@ const WorkProcess = () => {
           <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-4 md:mb-6">
             {section?.title || t('workProcess.title')}
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg px-4">
+          <p className="text-xala-text/80 max-w-2xl mx-auto text-base md:text-lg px-4">
             {section?.description || t('workProcess.description')}
           </p>
         </div>

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { ChevronDown, ShieldCheck, Lock, BookOpen, Calendar, ArrowRight, Award, Cloud, Brain, Database, Code, Cpu } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 interface VideoHeroProps {
   videoSrc?: string
@@ -24,6 +25,8 @@ function DynamicWord({ words, interval = 2200 }: { words: string[]; interval?: n
 }
 
 export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/hero-bg.svg', words }: VideoHeroProps) {
+  const { t } = useTranslation();
+  
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background video */}
@@ -43,30 +46,30 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
       </div>
 
       {/* Enhanced Headline */}
-      <div className="relative z-10 mx-auto max-w-5xl px-6 pt-24 text-center">
-        <div className="flex flex-col items-center gap-3">
-          <div className="inline-flex items-center gap-2">
-            <span className="group relative rounded-xl bg-white/95 border border-gray-200/80 shadow-xl backdrop-blur-sm px-4 py-2 text-base font-semibold text-gray-800 hover:shadow-2xl transition-all duration-300">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-24 text-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="inline-flex items-center gap-3">
+            <span className="group relative rounded-xl bg-white/95 border border-gray-200/80 shadow-xl backdrop-blur-sm px-6 py-3 text-lg font-semibold text-gray-800 hover:shadow-2xl transition-all duration-300 min-w-[140px]">
               <Code className="absolute -top-1 -right-1 h-3 w-3 text-blue-500" />
-              Vi bruker <span className="sr-only">_</span>
+              {t('hero.heroText.weUse')} <span className="sr-only">_</span>
             </span>
-            <span className="group relative rounded-xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200/80 shadow-xl backdrop-blur-sm px-4 py-2 text-base font-bold text-blue-600 hover:shadow-2xl transition-all duration-300">
+            <span className="group relative rounded-xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200/80 shadow-xl backdrop-blur-sm px-6 py-3 text-lg font-bold text-blue-600 hover:shadow-2xl transition-all duration-300 min-w-[140px]">
               <Brain className="absolute -top-1 -right-1 h-3 w-3 text-blue-500" />
               <DynamicWord words={words ?? ['AI', 'sky', 'apps', 'data']} />
             </span>
-            <span className="group relative rounded-xl bg-white/95 border border-gray-200/80 shadow-xl backdrop-blur-sm px-4 py-2 text-base font-semibold text-gray-800 hover:shadow-2xl transition-all duration-300">
+            <span className="group relative rounded-xl bg-white/95 border border-gray-200/80 shadow-xl backdrop-blur-sm px-6 py-3 text-lg font-semibold text-gray-800 hover:shadow-2xl transition-all duration-300 min-w-[140px]">
               <Database className="absolute -top-1 -right-1 h-3 w-3 text-green-500" />
-              for å
+              {t('hero.heroText.to')}
             </span>
           </div>
-          <div className="inline-flex items-center gap-2">
-            <span className="group relative rounded-xl bg-white/95 border border-gray-200/80 shadow-xl backdrop-blur-sm px-4 py-2 text-base font-semibold text-gray-800 hover:shadow-2xl transition-all duration-300">
+          <div className="inline-flex items-center gap-3">
+            <span className="group relative rounded-xl bg-white/95 border border-gray-200/80 shadow-xl backdrop-blur-sm px-6 py-3 text-lg font-semibold text-gray-800 hover:shadow-2xl transition-all duration-300 min-w-[140px]">
               <Cpu className="absolute -top-1 -right-1 h-3 w-3 text-purple-500" />
-              skape en
+              {t('hero.heroText.create')}
             </span>
-            <span className="group relative rounded-xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200/80 shadow-xl backdrop-blur-sm px-4 py-2 text-base font-bold text-blue-600 hover:shadow-2xl transition-all duration-300">
+            <span className="group relative rounded-xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200/80 shadow-xl backdrop-blur-sm px-6 py-3 text-lg font-bold text-blue-600 hover:shadow-2xl transition-all duration-300 min-w-[160px]">
               <Brain className="absolute -top-1 -right-1 h-3 w-3 text-blue-500" />
-              positiv forandring
+              {t('hero.heroText.positiveChange')}
             </span>
           </div>
         </div>
@@ -81,7 +84,7 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
               }
             }}
             className="group cursor-pointer p-2 rounded-full border border-blue-200/80 bg-white/90 backdrop-blur-sm hover:bg-blue-50 transition-all duration-300 hover:scale-110 hover:shadow-lg"
-            aria-label="Scroll to next section"
+            aria-label={t('hero.scrollToNext')}
           >
             <ChevronDown className="h-5 w-5 text-blue-600 group-hover:text-blue-700 transition-colors duration-300 animate-bounce" />
           </button>
@@ -119,7 +122,7 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
       <div className="absolute bottom-6 right-6 z-20">
         <a href="#contact" className="group inline-flex items-center gap-2 rounded-xl bg-blue-600 text-white px-5 py-2.5 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-blue-700 font-semibold">
           <Calendar className="h-4 w-4" />
-          Bestill møte
+          {t('hero.bookMeeting')}
           <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform duration-300" />
         </a>
       </div>
