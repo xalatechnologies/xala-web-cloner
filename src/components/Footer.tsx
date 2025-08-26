@@ -28,18 +28,40 @@ const Footer = () => {
     },
   });
 
+  // Fallback navigation links if database is not available
+  const fallbackLinks = [
+    { name: 'Tjenester', href: '/tjenester' },
+    { name: 'Produkter', href: '/produkter' },
+    { name: 'Caser', href: '/caser' },
+    { name: 'Slik vi jobber', href: '/slik-vi-jobber' },
+    { name: 'Teknologi', href: '/teknologi' },
+    { name: 'Om oss', href: '/om-oss' },
+    { name: 'Kontakt', href: '/kontakt' },
+    { name: 'Personvern', href: '/privacy' },
+    { name: 'Vilkår', href: '/terms' }
+  ];
+
   return (
     <footer className="w-full py-4 px-4 md:px-8 relative overflow-hidden bg-background text-foreground border-t border-border dark:bg-xala-primary dark:border-white/5">
       <div className="container mx-auto px-4 py-6">
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <div className="flex items-center space-x-2 text-muted-foreground">
-            <Copyright className="w-4 h-4" />
-            <span>{currentYear} Xala. {t('footer.rights')}</span>
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-6 lg:space-y-0">
+          
+          {/* Left side - Company info */}
+          <div className="flex flex-col space-y-2">
+            <div className="flex items-center space-x-2 text-muted-foreground">
+              <Copyright className="w-4 h-4" />
+              <span>{currentYear} Xala Technologies. {t('footer.rights')}</span>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Innovativ teknologi for fremtidens bedrifter
+            </p>
           </div>
-          <div className="flex space-x-6 text-sm text-muted-foreground">
-            {menuItems?.map((item) => (
+
+          {/* Right side - Navigation links */}
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
+            {(menuItems && menuItems.length > 0 ? menuItems : fallbackLinks).map((item) => (
               <Link 
-                key={item.id}
+                key={item.href}
                 to={item.href} 
                 className="hover:text-primary transition-colors duration-300"
               >

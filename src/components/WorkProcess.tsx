@@ -13,6 +13,14 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
 
+interface WorkProcessItem {
+  id: string;
+  step_number: number;
+  title: string;
+  description: string;
+  icon: string;
+}
+
 const WorkProcess = () => {
   const { t, i18n } = useTranslation();
   const { data: section, isLoading: isSectionLoading } = useSection('work-process');
@@ -63,7 +71,7 @@ const WorkProcess = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="p-8 rounded-2xl bg-card border border-border dark:bg-white/10">
+              <div key={i} className="p-8 rounded-2xl bg-card border border-border">
                 <Skeleton className="h-8 w-8 mb-6" />
                 <Skeleton className="h-6 w-3/4 mb-3" />
                 <Skeleton className="h-20 w-full" />
@@ -75,7 +83,7 @@ const WorkProcess = () => {
     );
   }
 
-  const renderProcessCard = (process: any, index: number, totalProcesses: number) => {
+  const renderProcessCard = (process: WorkProcessItem, index: number, totalProcesses: number) => {
     const Icon = getIconComponent(process.icon);
     
     return (
@@ -83,7 +91,7 @@ const WorkProcess = () => {
         <div
           className="relative h-full opacity-0 animate-[fade-in_0.5s_ease-out_forwards]"
         >
-          <div className="h-full relative p-6 md:p-8 rounded-2xl bg-card text-card-foreground border border-border dark:bg-gradient-to-br dark:from-white/10 dark:to-white/5 backdrop-blur-sm 
+          <div className="h-full relative p-6 md:p-8 rounded-2xl bg-card text-card-foreground border border-border backdrop-blur-sm 
                         hover:border-primary/50 transition-all duration-500 group-hover:transform group-hover:scale-[1.02]
                         group-hover:shadow-2xl group-hover:shadow-primary/20">
             <div className="absolute -top-4 -right-4 w-10 h-10 md:w-12 md:h-12 bg-primary rounded-full flex items-center justify-center

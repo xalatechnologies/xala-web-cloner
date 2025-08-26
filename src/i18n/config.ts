@@ -18,7 +18,18 @@ i18n
             workProcess: 'Work Process',
             caseStudies: 'Case Studies',
             team: 'Team',
-            contact: 'Contact'
+            contact: 'Contact',
+            services: 'Services',
+            servicesDescription: 'Complete spectrum of technology services for modern businesses',
+            products: 'Products',
+            productsDescription: 'Innovative AI-powered solutions transforming industries',
+            cases: 'Cases',
+            casesDescription: 'Explore our successful project implementations',
+            workProcessDescription: 'Our structured approach from idea to implementation',
+            technology: 'Technology',
+            technologyDescription: 'Cutting-edge technologies powering your digital transformation',
+            aboutDescription: 'Learn about our mission and expertise',
+            contactDescription: 'Get in touch for a non-committal conversation'
           },
           hero: {
             welcome: 'Welcome to the Future of Technology',
@@ -37,6 +48,12 @@ i18n
             },
             bookMeeting: 'Book meeting',
             scrollToNext: 'Scroll to next section',
+            certifications: {
+              iso: 'ISO Certified',
+              gdpr: 'GDPR Ready',
+              microsoft: 'Microsoft Certified',
+              aws: 'AWS Certified'
+            },
             features: {
               aiSolutions: 'AI Solutions',
               aiDesc: 'Intelligent systems for smarter decisions',
@@ -46,6 +63,129 @@ i18n
               customDevDesc: 'Tailored applications for your needs',
               dataAnalytics: 'Data Analytics',
               dataDesc: 'Transform data into insights'
+            }
+          },
+          valueProps: {
+            title: 'Why Choose Xala?',
+            description: 'We combine technical expertise with business acumen to deliver solutions that create real value for your business.',
+            fastDelivery: {
+              title: 'Fast Delivery',
+              description: 'We deliver working solutions quickly with modern technology and efficient working methods.'
+            },
+            scalableSolutions: {
+              title: 'Scalable Solutions',
+              description: 'All our solutions are built to grow with your business and handle future growth.'
+            },
+            expertise: {
+              title: 'Expertise',
+              description: 'Our team has deep competence in AI, cloud technology and modern development.'
+            },
+            fullService: {
+              title: 'Full Service',
+              description: 'From idea to finished solution - we cover the entire process with design, development and deployment.'
+            }
+          },
+          finalCTA: {
+            title: 'Ready to Transform Your Business?',
+            description: 'Let us discuss how we can help you achieve your goals through innovative technological solutions.',
+            startConversation: 'Start the conversation',
+            viewCases: 'View our cases',
+            callUs: 'Call us at',
+            emailUs: 'or send an email to'
+          },
+          teasers: {
+            services: {
+              title: 'Our Services',
+              description: 'We deliver complete technology solutions that drive business growth',
+              viewAll: 'View all services',
+              aiMachineLearning: {
+                title: 'AI & Machine Learning',
+                description: 'Automate processes and gain insights from data with modern AI solutions.'
+              },
+              cloudSolutions: {
+                title: 'Cloud Solutions',
+                description: 'Secure and scalable cloud infrastructure with Azure and AWS.'
+              },
+              webDevelopment: {
+                title: 'Web Development',
+                description: 'Modern websites and applications with React, Next.js and TypeScript.'
+              },
+              mobileDevelopment: {
+                title: 'Mobile Development',
+                description: 'Native and cross-platform mobile apps for iOS and Android.'
+              }
+            },
+            products: {
+              title: 'Our Core Products',
+              description: 'Ready-made solutions that can be customized to your needs',
+              viewAll: 'View all products',
+              available: 'Available',
+              beta: 'Beta',
+              coming: 'Coming',
+              fylleut: {
+                title: 'Fylleut',
+                description: 'Automated form and document filling with AI.'
+              },
+              nextbid: {
+                title: 'NextBid',
+                description: 'Intelligent tender management and document analysis.'
+              },
+              supplymantix: {
+                title: 'SupplyMantix',
+                description: 'Supply chain optimization with machine learning.'
+              }
+            },
+            process: {
+              title: 'How We Work',
+              description: 'From first meeting to finished solution, we follow a structured process that ensures we deliver on time, cost and quality. We believe in transparency and involvement throughout the process.',
+              readProcess: 'Read the process',
+              steps: {
+                mapping: 'Mapping',
+                design: 'Design',
+                development: 'Development',
+                delivery: 'Delivery'
+              }
+            },
+            team: {
+              title: 'Meet Our Team',
+              description: 'The people behind Xala Technologies',
+              viewFullTeam: 'See the whole team',
+              members: {
+                wahid: {
+                  name: 'Wahid Rahmani',
+                  role: 'CEO & Founder',
+                  description: 'Experienced technology leader with passion for innovation'
+                },
+                amin: {
+                  name: 'Amin Ismail',
+                  role: 'CTO & Co-owner',
+                  description: 'Technical architect with deep expertise in cloud solutions'
+                }
+              }
+            },
+            tech: {
+              title: 'Technology Platform',
+              description: 'We build on modern technologies like React, TypeScript, Next.js, Azure and AWS. Our technology choices ensure scalable, secure and maintainable solutions that grow with your business.',
+              viewTechnology: 'View technology'
+            },
+            contact: {
+              title: 'Ready for a Chat?',
+              description: 'We respond to all inquiries within 24 hours. Get in touch for a non-committal conversation.',
+              getInTouch: 'Get in touch',
+              contactInfo: {
+                email: {
+                  title: 'Email',
+                  value: 'post@xala.no'
+                },
+                phone: {
+                  title: 'Phone',
+                  value: '+47 123 45 678'
+                },
+                responseTime: {
+                  title: 'Response time',
+                  value: 'Within 24 hours'
+                }
+              }
             }
           },
           about: {
@@ -186,6 +326,33 @@ i18n
             title: "Terms-of-Service",
           },
           lastUpdated: "last-updated",
+          pages: {
+            services: {
+              eyebrow: 'Services',
+              title: 'Our Services',
+              description: 'Complete spectrum of technology services for modern businesses.'
+            },
+            products: {
+              eyebrow: 'Products',
+              title: 'Our Core Products',
+              description: 'Ready-made solutions that can be customized to your needs and deployed quickly.'
+            },
+            contact: {
+              eyebrow: 'Contact',
+              title: 'Get in Touch',
+              description: 'We respond to all inquiries within 24 hours. Send us a message or call directly.'
+            },
+            about: {
+              eyebrow: 'About Us',
+              title: 'Xala Technologies',
+              description: 'We are passionate about technology that creates real value for our customers.'
+            },
+            team: {
+              eyebrow: 'About Us',
+              title: 'Meet Our Team',
+              description: 'The people behind Xala Technologies. Experienced developers, designers and consultants.'
+            }
+          },
           business: {
             hero: {
               title: "We Use Technology to Create Digital Transformation",
@@ -302,7 +469,18 @@ i18n
             workProcess: 'Arbeidsprosess',
             caseStudies: 'Casestudier',
             team: 'Team',
-            contact: 'Kontakt'
+            contact: 'Kontakt',
+            services: 'Tjenester',
+            servicesDescription: 'Komplett spekter av teknologitjenester for moderne virksomheter',
+            products: 'Produkter',
+            productsDescription: 'Innovative AI-drevne løsninger som transformerer bransjer',
+            cases: 'Caser',
+            casesDescription: 'Utforsk våre vellykkede prosjektimplementeringer',
+            workProcessDescription: 'Vår strukturerte tilnærming fra idé til implementering',
+            technology: 'Teknologi',
+            technologyDescription: 'Banebrytende teknologier som driver din digitale transformasjon',
+            aboutDescription: 'Lær om vårt oppdrag og ekspertise',
+            contactDescription: 'Ta kontakt for en uforpliktende samtale'
           },
           hero: {
             welcome: 'Velkommen til fremtidens teknologi',
@@ -321,6 +499,12 @@ i18n
             },
             bookMeeting: 'Bestill møte',
             scrollToNext: 'Rull til neste seksjon',
+            certifications: {
+              iso: 'ISO-sertifisert',
+              gdpr: 'GDPR-klar',
+              microsoft: 'Microsoft-sertifisert',
+              aws: 'AWS-sertifisert'
+            },
             features: {
               aiSolutions: 'AI-løsninger',
               aiDesc: 'Intelligente systemer for smartere beslutninger',
@@ -330,6 +514,129 @@ i18n
               customDevDesc: 'Skreddersydde applikasjoner for dine behov',
               dataAnalytics: 'Dataanalyse',
               dataDesc: 'Transformer data til innsikt'
+            }
+          },
+          valueProps: {
+            title: 'Hvorfor velge Xala?',
+            description: 'Vi kombinerer teknisk ekspertise med forretningsteft for å levere løsninger som skaper real verdi for din bedrift.',
+            fastDelivery: {
+              title: 'Rask levering',
+              description: 'Vi leverer fungerende løsninger raskt med moderne teknologi og effektive arbeidsmetoder.'
+            },
+            scalableSolutions: {
+              title: 'Skalerbare løsninger',
+              description: 'Alle våre løsninger er bygget for å vokse med din bedrift og håndtere fremtidig vekst.'
+            },
+            expertise: {
+              title: 'Ekspertise',
+              description: 'Vårt team har dyp kompetanse innen AI, sky-teknologi og moderne utvikling.'
+            },
+            fullService: {
+              title: 'Fullservice',
+              description: 'Fra idé til ferdig løsning - vi dekker hele prosessen med design, utvikling og deploy.'
+            }
+          },
+          finalCTA: {
+            title: 'Klar for å transformere din bedrift?',
+            description: 'La oss diskutere hvordan vi kan hjelpe deg med å oppnå dine mål gjennom innovative teknologiske løsninger.',
+            startConversation: 'Start samtalen',
+            viewCases: 'Se våre caser',
+            callUs: 'Ring oss på',
+            emailUs: 'eller send en epost til'
+          },
+          teasers: {
+            services: {
+              title: 'Våre tjenester',
+              description: 'Vi leverer komplette teknologiløsninger som driver forretningsvekst',
+              viewAll: 'Se alle tjenester',
+              aiMachineLearning: {
+                title: 'AI & Maskinlæring',
+                description: 'Automatiser prosesser og få innsikt fra data med moderne AI-løsninger.'
+              },
+              cloudSolutions: {
+                title: 'Skyløsninger',
+                description: 'Sikker og skalerbar infrastruktur i skyen med Azure og AWS.'
+              },
+              webDevelopment: {
+                title: 'Webutvikling',
+                description: 'Moderne nettsider og applikasjoner med React, Next.js og TypeScript.'
+              },
+              mobileDevelopment: {
+                title: 'Mobilutvikling',
+                description: 'Native og cross-platform mobilapper for iOS og Android.'
+              }
+            },
+            products: {
+              title: 'Våre kjerneprodukter',
+              description: 'Ferdige løsninger som kan tilpasses dine behov',
+              viewAll: 'Se alle produkter',
+              available: 'Tilgjengelig',
+              beta: 'Beta',
+              coming: 'Kommende',
+              fylleut: {
+                title: 'Fylleut',
+                description: 'Automatisert utfylling av skjemaer og dokumenter med AI.'
+              },
+              nextbid: {
+                title: 'NextBid',
+                description: 'Intelligent anbudshåndtering og dokumentanalyse.'
+              },
+              supplymantix: {
+                title: 'SupplyMantix',
+                description: 'Forsyningskjede-optimalisering med maskinlæring.'
+              }
+            },
+            process: {
+              title: 'Slik jobber vi',
+              description: 'Fra første møte til ferdig løsning følger vi en strukturert prosess som sikrer at vi leverer på tid, kost og kvalitet. Vi tror på transparens og involvering gjennom hele prosessen.',
+              readProcess: 'Les prosessen',
+              steps: {
+                mapping: 'Kartlegging',
+                design: 'Design',
+                development: 'Utvikling',
+                delivery: 'Levering'
+              }
+            },
+            team: {
+              title: 'Møt teamet vårt',
+              description: 'Menneskene bak Xala Technologies',
+              viewFullTeam: 'Se hele teamet',
+              members: {
+                wahid: {
+                  name: 'Wahid Rahmani',
+                  role: 'CEO & Grunder',
+                  description: 'Erfaren teknologileder med passion for innovasjon'
+                },
+                amin: {
+                  name: 'Amin Ismail',
+                  role: 'CTO & Medeier',
+                  description: 'Teknisk arkitekt med dyp ekspertise innen skyløsninger'
+                }
+              }
+            },
+            tech: {
+              title: 'Teknologiplattform',
+              description: 'Vi bygger på moderne teknologier som React, TypeScript, Next.js, Azure og AWS. Vårt teknologivalg sikrer skalerbare, sikre og vedlikeholdbare løsninger som vokser med din bedrift.',
+              viewTechnology: 'Se teknologi'
+            },
+            contact: {
+              title: 'Klar for en prat?',
+              description: 'Vi svarer på alle henvendelser innen 24 timer. Ta kontakt for en uforpliktende samtale.',
+              getInTouch: 'Ta kontakt',
+              contactInfo: {
+                email: {
+                  title: 'E-post',
+                  value: 'post@xala.no'
+                },
+                phone: {
+                  title: 'Telefon',
+                  value: '+47 123 45 678'
+                },
+                responseTime: {
+                  title: 'Responstid',
+                  value: 'Innen 24 timer'
+                }
+              }
             }
           },
           about: {
@@ -470,6 +777,33 @@ i18n
             title: "Brukervilkår",
           },
           lastUpdated: "Sist oppdatert",
+          pages: {
+            services: {
+              eyebrow: 'Tjenester',
+              title: 'Våre tjenester',
+              description: 'Komplett spekter av teknologitjenester for moderne virksomheter.'
+            },
+            products: {
+              eyebrow: 'Produkter',
+              title: 'Våre kjerneprodukter',
+              description: 'Ferdige løsninger som kan tilpasses dine behov og komme raskt i produksjon.'
+            },
+            contact: {
+              eyebrow: 'Kontakt',
+              title: 'Ta kontakt med oss',
+              description: 'Vi svarer på alle henvendelser innen 24 timer. Send oss en melding eller ring direkte.'
+            },
+            about: {
+              eyebrow: 'Om oss',
+              title: 'Xala Technologies',
+              description: 'Vi brenner for teknologi som skaper reell verdi for våre kunder.'
+            },
+            team: {
+              eyebrow: 'Om oss',
+              title: 'Møt teamet vårt',
+              description: 'Menneskene bak Xala Technologies. Erfarne utviklere, designere og rådgivere.'
+            }
+          },
           business: {
             hero: {
               title: "Vi bruker teknologi for å skape digital transformasjon",

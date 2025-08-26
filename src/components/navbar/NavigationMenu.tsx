@@ -1,9 +1,10 @@
 import { Database } from '@/integrations/supabase/types';
-import { Menu, X, Calendar, Lightbulb, Target, Users, MessageSquare } from 'lucide-react';
+import { Menu, X, Settings, Code, Briefcase, Target, Info, Phone } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useBusinessNavigation, useBusinessServices } from '@/i18n/business-content';
 import { MenuItem } from '../Navbar';
+import { Link } from 'react-router-dom';
 
 interface NavigationMenuProps {
   isOpen: boolean;
@@ -39,48 +40,61 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
     return `nav.${key}`;
   };
 
-  // Business-focused navigation items
-  const businessNavItems = [
+  // Main navigation items for the hamburger menu
+  const mainNavItems = [
     {
-      name: businessNav.challenge,
-      href: '#services',
+      name: t('nav.services'),
+      href: '/tjenester',
+      icon: Settings,
+      description: t('nav.servicesDescription')
+    },
+    {
+      name: t('nav.products'),
+      href: '/produkter',
+      icon: Code,
+      description: t('nav.productsDescription')
+    },
+    {
+      name: t('nav.cases'),
+      href: '/caser',
+      icon: Briefcase,
+      description: t('nav.casesDescription')
+    },
+    {
+      name: t('nav.workProcess'),
+      href: '/slik-vi-jobber',
       icon: Target,
-      description: 'Discover how we solve business challenges',
-      isChallenge: true
+      description: t('nav.workProcessDescription')
     },
     {
-      name: businessNav.solutions,
-      href: '#services',
-      icon: Lightbulb,
-      description: businessServices.digitalTransformation.outcome.substring(0, 60) + '...'
+      name: t('nav.technology'),
+      href: '/teknologi',
+      icon: Code,
+      description: t('nav.technologyDescription')
     },
     {
-      name: businessNav.outcomes,
-      href: '#case-studies',
-      icon: Target,
-      description: 'See measurable business results from our partnerships'
+      name: t('nav.about'),
+      href: '/om-oss',
+      icon: Info,
+      description: t('nav.aboutDescription')
     },
     {
-      name: businessNav.partnership,
-      href: '#about',
-      icon: Users,
-      description: 'Learn about our collaborative approach'
-    },
-    {
-      name: businessNav.consultation,
-      href: '#contact',
-      icon: Calendar,
-      description: 'Schedule a free business consultation',
+      name: t('nav.contact'),
+      href: '/kontakt',
+      icon: Phone,
+      description: t('nav.contactDescription'),
       isPrimary: true
     }
   ];
 
   const handleNavClick = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false);
+    if (href.startsWith('#')) {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
+    setIsOpen(false);
   };
 
   return (
@@ -103,77 +117,142 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
 
       <div 
         ref={menuRef}
-        className={`absolute top-full left-0 w-full backdrop-blur-lg transform transition-all duration-500 ease-in-out bg-[linear-gradient(135deg,hsl(var(--card))_0%,hsl(var(--muted))_100%)] ${
+        className={`absolute top-full left-0 w-full backdrop-blur-lg transform transition-all duration-500 ease-in-out bg-[linear-gradient(135deg,hsl(var(--card))_0%,hsl(var(--muted))_100%)] border-t border-border/50 shadow-xl ${
           isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Business Challenge Header */}
-          <div className="mb-8 text-center">
-            <h3 className="text-xl font-semibold text-primary mb-2">
-              {businessNav.challenge}
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              Choose your business transformation journey
-            </p>
-          </div>
-
-          {/* Business Navigation Grid */}
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {businessNavItems.map((item, index) => {
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          {/* Main Navigation Grid - Optimized for 2 rows */}
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            {/* First 4 items - First row on large screens */}
+            {mainNavItems.slice(0, 4).map((item, index) => {
               const IconComponent = item.icon;
               return (
-                <div
+                <Link
                   key={item.name}
-                  onClick={() => handleNavClick(item.href)}
-                  className={`group cursor-pointer p-4 rounded-lg transition-all duration-300 hover:scale-105 border [transition:opacity_500ms,transform_500ms] ${
+                  to={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="group cursor-pointer p-6 rounded-xl transition-all duration-300 hover:scale-105 border block shadow-md hover:shadow-lg bg-card/80 border-border/50 hover:border-border"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-xl bg-muted/80">
+                      <IconComponent 
+                        size={24} 
+                        className="transition-colors text-foreground" 
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold mb-2 transition-colors text-foreground">
+                        {item.name}
+                      </h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+            
+            {/* Last 3 items - Second row on large screens */}
+            {/* Center the last 3 items on large screens by adding offset */}
+            <div className="hidden lg:block lg:col-span-4">
+              <div className="grid grid-cols-3 gap-6 max-w-3xl mx-auto">
+                {mainNavItems.slice(4).map((item, index) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`group cursor-pointer p-6 rounded-xl transition-all duration-300 hover:scale-105 border block shadow-md hover:shadow-lg ${
+                        item.isPrimary 
+                          ? 'bg-gradient-to-br from-primary/15 to-primary/5 border-primary/30 hover:border-primary/50' 
+                          : 'bg-card/80 border-border/50 hover:border-border'
+                      }`}
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className={`p-3 rounded-xl ${item.isPrimary ? 'bg-primary/20' : 'bg-muted/80'}`}>
+                          <IconComponent 
+                            size={24} 
+                            className={`transition-colors ${item.isPrimary ? 'text-primary' : 'text-foreground'}`} 
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <h4 className={`text-lg font-semibold mb-2 transition-colors ${item.isPrimary ? 'text-primary' : 'text-foreground'}`}>
+                            {item.name}
+                          </h4>
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            {item.description}
+                          </p>
+                        </div>
+                      </div>
+                      {item.isPrimary && (
+                        <div className="mt-4 flex items-center gap-2 text-primary">
+                          <Phone size={14} />
+                          <span className="text-sm font-medium">Ta kontakt</span>
+                        </div>
+                      )}
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+            
+            {/* Mobile and tablet: show last 3 items normally */}
+            {mainNavItems.slice(4).map((item, index) => {
+              const IconComponent = item.icon;
+              return (
+                <Link
+                  key={`mobile-${item.name}`}
+                  to={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`lg:hidden group cursor-pointer p-6 rounded-xl transition-all duration-300 hover:scale-105 border block shadow-md hover:shadow-lg ${
                     item.isPrimary 
-                      ? 'bg-[linear-gradient(90deg,hsla(var(--primary),0.15),hsla(280,65%,60%,0.15))] border-primary' 
-                      : 'bg-card border-border'
+                      ? 'bg-gradient-to-br from-primary/15 to-primary/5 border-primary/30 hover:border-primary/50 sm:col-span-2' 
+                      : 'bg-card/80 border-border/50 hover:border-border'
                   }`}
                 >
-                  <div className="flex items-start gap-3">
-                    <div className={`p-2 rounded-lg ${item.isPrimary ? 'bg-[hsla(var(--primary),0.15)]' : 'bg-muted'}`}>
+                  <div className="flex items-start gap-4">
+                    <div className={`p-3 rounded-xl ${item.isPrimary ? 'bg-primary/20' : 'bg-muted/80'}`}>
                       <IconComponent 
-                        size={20} 
+                        size={24} 
                         className={`transition-colors ${item.isPrimary ? 'text-primary' : 'text-foreground'}`} 
                       />
                     </div>
                     <div className="flex-1">
-                      <h4 className={`font-semibold mb-1 transition-colors ${item.isPrimary ? 'text-primary' : 'text-foreground'}`}>
+                      <h4 className={`text-lg font-semibold mb-2 transition-colors ${item.isPrimary ? 'text-primary' : 'text-foreground'}`}>
                         {item.name}
                       </h4>
-                      <p className="text-xs text-muted-foreground leading-relaxed">
+                      <p className="text-sm text-muted-foreground leading-relaxed">
                         {item.description}
                       </p>
                     </div>
                   </div>
                   {item.isPrimary && (
-                    <div className="mt-3 text-center">
-                      <span className="inline-flex items-center gap-1 text-xs text-primary font-medium">
-                        <Calendar size={12} />
-                        Free consultation
-                      </span>
+                    <div className="mt-4 flex items-center gap-2 text-primary">
+                      <Phone size={14} />
+                      <span className="text-sm font-medium">Ta kontakt</span>
                     </div>
                   )}
-                </div>
+                </Link>
               );
             })}
           </div>
 
-          {/* Fallback: Original menu items if business nav is empty */}
-          {businessNavItems.length === 0 && items.length > 0 && (
+          {/* Fallback: Database menu items if available */}
+          {mainNavItems.length === 0 && items.length > 0 && (
             <div className="grid gap-6">
               {items.map((item, index) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
+                  to={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-2xl font-bold text-foreground hover:text-primary transform transition-all duration-300 hover:translate-x-2 relative group"
+                  className="text-2xl font-bold text-foreground hover:text-primary transform transition-all duration-300 hover:translate-x-2 relative group block"
                 >
                   {item.name}
                   <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-primary transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
-                </a>
+                </Link>
               ))}
             </div>
           )}
