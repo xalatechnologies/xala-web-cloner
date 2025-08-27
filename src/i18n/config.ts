@@ -151,15 +151,33 @@ i18n
               description: 'The people behind Xala Technologies',
               viewFullTeam: 'See the whole team',
               members: {
+                ibrahim: {
+                  name: 'Ibrahim Rahmani',
+                  role: 'Founder & CEO',
+                  description: 'Ibrahim is an experienced technology leader with over ten years of experience in software development and team leadership. His expertise spans cloud architecture and AI integration.',
+                  email: 'ibrahim@xala.no',
+                  linkedin: 'https://www.linkedin.com/in/ibrahim-rahmani/'
+                },
+                hamid: {
+                  name: 'Hamid Rahmani',
+                  role: 'Technical Project Manager',
+                  description: 'Hamid is a technical expert specializing in cloud architecture and DevOps practices. He leads our technical initiatives and ensures the highest quality standards in our deliveries.',
+                  email: 'hamid@xala.no',
+                  linkedin: 'https://www.linkedin.com/in/hamid-rahmani/'
+                },
                 wahid: {
                   name: 'Wahid Rahmani',
-                  role: 'CEO & Founder',
-                  description: 'Experienced technology leader with passion for innovation'
+                  role: 'Full-Stack Developer',
+                  description: 'Master in Computer Science | Experienced software developer with expertise in machine learning, cloud services, IT leadership and development of innovative, scalable software solutions for various industries.',
+                  email: 'wahid@xala.no',
+                  linkedin: 'https://www.linkedin.com/in/wahid-rahmani/'
                 },
-                amin: {
-                  name: 'Amin Ismail',
-                  role: 'CTO & Co-owner',
-                  description: 'Technical architect with deep expertise in cloud solutions'
+                elias: {
+                  name: 'Elias Yassin',
+                  role: 'Customer Success Manager',
+                  description: 'Specialist in sales, focused on delivering intuitive, effective and engaging solutions that build strong customer experiences and increase sales.',
+                  email: 'elias@xala.no',
+                  linkedin: 'https://www.linkedin.com/in/elias-yassin/'
                 }
               }
             },
@@ -602,15 +620,33 @@ i18n
               description: 'Menneskene bak Xala Technologies',
               viewFullTeam: 'Se hele teamet',
               members: {
+                ibrahim: {
+                  name: 'Ibrahim Rahmani',
+                  role: 'Grunnlegger og daglig leder',
+                  description: 'Ibrahim er en erfaren teknologileder med over ti års erfaring innen programvareutvikling og teamledelse. Hans ekspertise spenner over skyarkitektur og AI-integrasjon.',
+                  email: 'ibrahim@xala.no',
+                  linkedin: 'https://www.linkedin.com/in/ibrahim-rahmani/'
+                },
+                hamid: {
+                  name: 'Hamid Rahmani',
+                  role: 'Teknisk Prosjektleder',
+                  description: 'Hamid er en teknisk ekspert som spesialiserer seg på skyarkitektur og DevOps-praksis. Han leder våre tekniske initiativer og sikrer høyeste kvalitetsstandarder i våre leveranser.',
+                  email: 'hamid@xala.no',
+                  linkedin: 'https://www.linkedin.com/in/hamid-rahmani/'
+                },
                 wahid: {
                   name: 'Wahid Rahmani',
-                  role: 'CEO & Grunder',
-                  description: 'Erfaren teknologileder med passion for innovasjon'
+                  role: 'Fullstackutvikler',
+                  description: 'Master i informatikk | Erfaren programvareutvikler med ekspertise innen maskinlæring, skytjenester, IT-ledelse og utvikling av innovative, skalerbare programvareløsninger for ulike bransjer.',
+                  email: 'wahid@xala.no',
+                  linkedin: 'https://www.linkedin.com/in/wahid-rahmani/'
                 },
-                amin: {
-                  name: 'Amin Ismail',
-                  role: 'CTO & Medeier',
-                  description: 'Teknisk arkitekt med dyp ekspertise innen skyløsninger'
+                elias: {
+                  name: 'Elias Yassin',
+                  role: 'Customer Success Manager',
+                  description: 'Spesialist innen salg, med fokus på å levere intuitive, effektive og engasjerende løsninger som bygger sterke kundeopplevelser og øker salg.',
+                  email: 'elias@xala.no',
+                  linkedin: 'https://www.linkedin.com/in/elias-yassin/'
                 }
               }
             },

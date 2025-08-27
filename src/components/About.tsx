@@ -44,7 +44,7 @@ const About = () => {
     <section id="about" className="py-12 sm:py-16 lg:py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">{aboutSection?.title}</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4 gradient-text">{aboutSection?.title}</h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto px-4 sm:px-0">{aboutSection?.description}</p>
         </div>
 
@@ -62,7 +62,7 @@ const About = () => {
         {visionSection && (
           <div className="mt-12 sm:mt-20 p-4 sm:p-8 rounded-xl sm:rounded-2xl bg-card border border-border dark:bg-gradient-to-r dark:from-[#9b87f5]/10 dark:via-[#D946EF]/10 dark:to-[#0EA5E9]/10">
             <div className="max-w-3xl mx-auto text-center space-y-4 sm:space-y-6">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold gradient-text">
                 {visionSection.title}
               </h3>
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">

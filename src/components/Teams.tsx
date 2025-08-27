@@ -96,7 +96,7 @@ const Teams = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-6 sm:gap-8 lg:gap-12">
             <div className="flex flex-col gap-3 sm:gap-4 text-center">
-              <h2 className="text-2xl sm:text-3xl lg:py-4 text-4xl font-bold tracking-tight bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+              <h2 className="text-2xl sm:text-3xl lg:py-4 text-4xl font-bold tracking-tight gradient-text">
                 {section.title}
               </h2>
               <p className="text-base sm:text-lg leading-relaxed text-muted-foreground max-w-2xl mx-auto">

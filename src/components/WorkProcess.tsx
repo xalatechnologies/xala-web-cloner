@@ -159,13 +159,13 @@ const WorkProcess = () => {
 
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-48 md:w-64 h-48 md:h-64 bg-purple-500/30 rounded-full filter blur-3xl animate-float-1"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-48 md:w-64 h-48 md:h-64 bg-blue-500/30 rounded-full filter blur-3xl animate-float-2"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-48 md:w-64 h-48 md:h-64 bg-primary/30 rounded-full filter blur-3xl animate-float-2"></div>
         <div className="absolute top-1/2 left-1/2 w-48 md:w-64 h-48 md:h-64 bg-cyan-500/30 rounded-full filter blur-3xl animate-float-3"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-12 md:mb-20 animate-fade-in">
-          <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-4 md:mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-4 md:mb-6">
             {section?.title || t('workProcess.title')}
           </h2>
           <p className="text-xala-text/80 max-w-2xl mx-auto text-base md:text-lg px-4">

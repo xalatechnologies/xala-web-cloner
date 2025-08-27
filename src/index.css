@@ -1,91 +1,224 @@
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: 'cv01', 'cv02', 'cv03', 'cv04';
+  }
+  
+  /* Smooth focus transitions */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+    transition: all 0.2s ease-in-out;
   }
 }
 
 :root {
-  --background: 42 52% 94%;
-  /* Primary text color: deep slate for maximum readability on warm background */
-  --foreground: 222 20% 10%;
-
-  --muted: 210 40% 97%;
-  /* Secondary text color: slightly darker for improved contrast */
-  --muted-foreground: 215 16% 32%;
-
+  /* Light theme - Unified warm background with consistent semantic colors */
+  --background: 42 52% 94%; /* Beautiful warm background - consistent */
+  --foreground: 222 20% 10%; /* Deep slate for maximum readability */
+  
+  --muted: 210 40% 97%; /* Soft muted background */
+  --muted-foreground: 215 16% 32%; /* Enhanced contrast for secondary text */
+  
   --popover: 0 0% 100%;
-  --popover-foreground: 222.2 47.4% 11.2%;
-
-  --card: 0 0% 100%;
-  --card-foreground: 220 18% 12%;
-
-  --border: 216 12% 92%;
+  --popover-foreground: 222 20% 10%;
+  
+  --card: 0 0% 100%; /* Pure white cards for contrast */
+  --card-foreground: 222 20% 10%; /* Consistent with main text */
+  
+  --border: 216 12% 92%; /* Subtle borders that work with warm background */
   --input: 216 12% 92%;
-
-  --primary: 243 72% 59%;
-  --primary-foreground: 0 0% 100%;
-
-  --secondary: 19 29% 52%;
-  --secondary-foreground: 0 0% 100%;
-
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
-
-  --destructive: 0 72% 52%;
-  --destructive-foreground: 210 40% 98%;
-
-  --ring: 243 72% 59%;
-
+  
+  /* Unified brand colors - consistent throughout project */
+  --primary: 262 83% 58%; /* Rich purple - main brand color */
+  --primary-foreground: 0 0% 100%; /* Pure white for contrast */
+  
+  --secondary: 42 15% 85%; /* Harmonizes with warm background */
+  --secondary-foreground: 222 20% 10%;
+  
+  --accent: 210 40% 96.1%; /* Soft accent */
+  --accent-foreground: 222 20% 10%;
+  
+  /* Unified semantic colors */
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  
+  --success: 142 76% 36%;
+  --success-foreground: 0 0% 98%;
+  
+  --warning: 47.9 95.8% 53.1%;
+  --warning-foreground: 26 83.3% 14.1%;
+  
+  --info: 221 83% 53%;
+  --info-foreground: 0 0% 98%;
+  
+  --ring: 262 83% 58%;
+  
+  /* Unified gradient system */
+  --gradient-start: 262 83% 58%; /* Primary purple */
+  --gradient-middle: 262 70% 65%; /* Lighter purple */
+  --gradient-end: 221 83% 53%; /* Blue accent */
+  
   /* Charts */
-  --chart-1: 221.2 83.2% 53.3%;
-  --chart-2: 142.1 76.2% 36.3%;
-  --chart-3: 27 96% 61%;
-  --chart-4: 280 65% 60%;
-  --chart-5: 197 37% 24%;
+  --chart-1: 262 83% 58%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 197 37% 24%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
 }
 
 .dark {
-  --background: 221 39% 11%;
-  --foreground: 210 40% 98%;
+  /* Dark theme - Sophisticated deep palette with consistent colors */
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  
+  /* Unified brand colors for dark theme */
+  --primary: 263 70% 50.4%; /* Adjusted purple for dark mode visibility */
+  --primary-foreground: 0 0% 98%;
+  
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  
+  /* Unified semantic colors for dark */
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 85.7% 97.3%;
+  
+  --success: 142 71% 45%;
+  --success-foreground: 0 0% 98%;
+  
+  --warning: 47.9 95.8% 53.1%;
+  --warning-foreground: 26 83.3% 14.1%;
+  
+  --info: 221 83% 53%;
+  --info-foreground: 0 0% 98%;
+  
+  --ring: 263 70% 50.4%;
+  
+  /* Unified gradient system for dark */
+  --gradient-start: 263 70% 50.4%; /* Primary purple for dark */
+  --gradient-middle: 263 60% 55%; /* Lighter purple for dark */
+  --gradient-end: 221 83% 53%; /* Blue accent */
+}
 
-  --muted: 217 33% 17%;
-  --muted-foreground: 215 20% 65%;
 
-  --popover: 224 71% 4%;
-  --popover-foreground: 210 40% 98%;
+/* Premium component utilities */
+@layer components {
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+  
+  .glass-dark {
+    @apply bg-black/10 backdrop-blur-md border border-white/10;
+  }
+  
+  .card-premium {
+    @apply bg-card border border-border/50 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+  
+  /* Unified gradient text - consistent across entire project */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-primary/80 to-info bg-clip-text text-transparent;
+  }
+  
+  .gradient-border {
+    @apply relative before:absolute before:inset-0 before:p-[1px] before:bg-gradient-to-r before:from-primary before:to-primary/70 before:rounded-lg before:content-[''] [&>*]:relative [&>*]:bg-background [&>*]:rounded-[calc(0.5rem-1px)];
+  }
+  
+  /* Client card consistent styling */
+  .client-card {
+    @apply bg-card border border-border shadow-sm rounded-xl hover:shadow-md transition-all duration-300;
+  }
+  
+  /* Dark mode: client cards should be white */
+  .dark .client-card {
+    @apply bg-white border-white/20 shadow-sm;
+  }
+  
+  /* Logo containers inside client cards */
+  .client-logo-container {
+    @apply bg-card;
+  }
+  
+  /* Dark mode: logo containers should be white for better logo visibility */
+  .dark .client-logo-container {
+    @apply bg-white;
+  }
+  
+  .client-card-fallback {
+    @apply bg-muted text-muted-foreground border border-border;
+  }
+}
 
-  --card: 224 71% 4%;
-  --card-foreground: 210 40% 98%;
-
-  --border: 216 34% 17%;
-  --input: 216 34% 17%;
-
-  --primary: 217 91% 60%;
-  --primary-foreground: 222.2 47.4% 11.2%;
-
-  --secondary: 222 47% 11%;
-  --secondary-foreground: 210 40% 98%;
-
-  --accent: 216 34% 17%;
-  --accent-foreground: 210 40% 98%;
-
-  --destructive: 0 63% 31%;
-  --destructive-foreground: 210 40% 98%;
-
-  --ring: 217 91% 60%;
-
-  /* Charts */
-  --chart-1: 221.2 83.2% 53.3%;
-  --chart-2: 142.1 76.2% 36.3%;
-  --chart-3: 27 96% 61%;
-  --chart-4: 280 65% 60%;
-  --chart-5: 197 37% 24%;
+/* Enhanced animations */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 }
 
 .gradient-bg {

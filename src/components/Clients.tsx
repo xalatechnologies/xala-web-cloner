@@ -91,7 +91,7 @@ const Clients = () => {
 
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-10 sm:mb-12 animate-fade-in">
-          <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-4 sm:mb-6">
+          <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 sm:mb-6">
             {section?.title || t('clients.title')}
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
