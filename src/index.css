@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Unbounded:wght@600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -22,31 +22,31 @@
 }
 
 :root {
-  /* Light theme - Scandinavian luxury system with warm craft tones */
-  --background: 36 20% 98%; /* #FDFCF9 - Off-white, slightly warm, not harsh white */
-  --foreground: 0 0% 7%; /* #111111 - Rich black for excellent readability */
+  /* Light theme - Polkadot design system */
+  --background: 0 0% 100%; /* #FFFFFF - White background */
+  --foreground: 0 0% 9%; /* #171717 - Polkadot text color */
   
-  --muted: 30 15% 96%; /* #FAF7F2 - Very subtle beige tone for section alternatives */
-  --muted-foreground: 0 0% 18%; /* #2E2E2E - Softer for longer reading */
+  --muted: 0 0% 35%; /* #5B5B5B - Polkadot muted text */
+  --muted-foreground: 0 0% 35%; /* #5B5B5B - Polkadot muted text */
   
   --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 7%;
+  --popover-foreground: 0 0% 9%;
   
-  --card: 0 0% 100%; /* Pure white cards for contrast */
-  --card-foreground: 0 0% 7%; /* Consistent with main text */
+  --card: 0 0% 100%; /* White cards */
+  --card-foreground: 0 0% 9%; /* Consistent with main text */
   
-  --border: 0 0% 85%; /* Subtle borders */
-  --input: 0 0% 85%;
+  --border: 0 0% 91%; /* #E7E9EE - Polkadot border color */
+  --input: 0 0% 91%;
   
-  /* Primary accent - More vibrant amber for better visibility and attractiveness in light mode */
-  --primary: 40 100% 50%; /* #FFA500 - Vibrant orange-yellow for better contrast and visual appeal */
-  --primary-foreground: 0 0% 7%; /* Rich black for contrast on amber */
+  /* Primary accent - Polkadot pink */
+  --primary: 332 100% 45%; /* #E6007A - Polkadot accent color */
+  --primary-foreground: 0 0% 100%; /* White for contrast on pink */
   
-  --secondary: 172 38% 20%; /* #234E52 - Deep Forest Green for premium, nature, stability */
-  --secondary-foreground: 0 0% 98%; /* White for contrast on green */
+  --secondary: 210 100% 50%; /* Blue for secondary elements */
+  --secondary-foreground: 0 0% 100%; /* White for contrast on blue */
   
-  --accent: 30 15% 96%; /* #FAF7F2 - Subtle beige for accents */
-  --accent-foreground: 0 0% 7%;
+  --accent: 0 0% 95%; /* #F3F5F7 - Polkadot surface2 */
+  --accent-foreground: 0 0% 9%;
   
   /* Semantic colors */
   --destructive: 0 84.2% 60.2%;
@@ -61,16 +61,16 @@
   --info: 221 83% 53%;
   --info-foreground: 0 0% 98%;
   
-  --ring: 40 100% 50%; /* Vibrant amber ring to match primary */
+  --ring: 332 100% 45%; /* Polkadot pink ring to match primary */
   
   /* Unified gradient system with new colors */
-  --gradient-start: 40 100% 50%; /* Vibrant amber primary */
-  --gradient-middle: 36 20% 98%; /* Off-white */
-  --gradient-end: 172 38% 20%; /* Deep Forest Green */
+  --gradient-start: 332 100% 45%; /* Polkadot pink primary */
+  --gradient-middle: 0 0% 100%; /* White */
+  --gradient-end: 210 100% 50%; /* Blue */
   
   /* Charts */
-  --chart-1: 40 100% 50%; /* Vibrant amber */
-  --chart-2: 172 38% 20%; /* Deep Forest Green */
+  --chart-1: 332 100% 45%; /* Polkadot pink */
+  --chart-2: 210 100% 50%; /* Blue */
   --chart-3: 197 37% 24%;
   --chart-4: 43 74% 66%;
   --chart-5: 27 87% 67%;
@@ -171,6 +171,76 @@
   .client-card-fallback {
     @apply bg-muted text-muted-foreground border border-border;
   }
+  
+  /* Polkadot utilities */
+  .bg-sky {
+    background: radial-gradient(1200px 600px at 20% 0%, #CFE6FF 0%, #FFFFFF 60%);
+    background-repeat: no-repeat;
+  }
+  
+  .bg-lime {
+    background: radial-gradient(900px 500px at 80% 50%, #D7FF5E 0%, rgba(215,255,94,0) 60%);
+    background-repeat: no-repeat;
+  }
+  
+  .bg-sky-bottom {
+    background: radial-gradient(1000px 520px at 50% 100%, #CFE6FF 0%, #FFFFFF 55%);
+    background-repeat: no-repeat;
+  }
+  
+  .text-muted {
+    color: hsl(var(--muted));
+  }
+  
+  .surface {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: 1rem;
+    box-shadow: 0 18px 48px rgba(0,0,0,.08);
+  }
+  
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, hsl(var(--primary)), transparent 70%);
+    background: color-mix(in srgb, hsl(var(--primary)), white 88%);
+    color: hsl(var(--primary));
+    font-weight: 600;
+    font-size: 12px;
+  }
+  
+  .btn-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .btn-primary {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    box-shadow: 0 14px 32px rgba(230,0,122,.25);
+  }
+  
+  .btn-primary:hover {
+    background: #FF2670;
+    transform: translateY(-1px);
+  }
+  
+  .btn-ghost {
+    background: #fff;
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--border));
+  }
+  
+  .btn-ghost:hover {
+    border-color: #d0d5dc;
+  }
 }
 
 /* Enhanced animations */
@@ -255,49 +325,5 @@ textarea {
   }
   .animate-hero-kenburns {
     animation: hero-kenburns 240s ease-in-out infinite alternate;
-  }
-}
-
-/* Seamless marquee utility for logos */
-@layer utilities {
-  @keyframes marquee-left {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  @keyframes marquee-right {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
-  }
-
-  .marquee-row {
-    display: flex;
-    width: max-content;
-    gap: 1.5rem;
-    will-change: transform;
-    animation: marquee-left var(--marquee-duration, 45s) linear infinite;
-  }
-  .marquee-row-reverse {
-    animation-name: marquee-right;
-  }
-  .marquee:hover .marquee-row {
-    animation-play-state: paused;
-  }
-  .marquee-inner {
-    transform: translateX(var(--drag-offset, 0px));
-    will-change: transform;
-  }
-  .marquee-mask {
-    pointer-events: none;
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right,
-      var(--color-background) 0%,
-      rgba(255,255,255,0) 8%,
-      rgba(255,255,255,0) 92%,
-      var(--color-background) 100%);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .marquee-row { animation: none; }
   }
 }

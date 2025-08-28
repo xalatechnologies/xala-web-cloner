@@ -32,7 +32,7 @@ export default function ServicesTeaser() {
     <section className="py-16 md:py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6 font-heading">
             {t('teasers.services.title')}
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -44,10 +44,10 @@ export default function ServicesTeaser() {
           {services.map((service, index) => (
             <div 
               key={index} 
-              className="p-8 rounded-2xl border border-border bg-card hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
+              className="p-8 rounded-2xl border border-border bg-card hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group surface"
             >
               <div className="text-4xl mb-5 group-hover:scale-110 transition-transform duration-300">{service.icon}</div>
-              <h3 className="text-xl font-bold text-card-foreground mb-4 group-hover:text-primary transition-colors">
+              <h3 className="text-xl font-bold text-card-foreground mb-4 group-hover:text-primary transition-colors font-heading">
                 {service.title}
               </h3>
               <p className="text-base text-muted-foreground leading-relaxed">
@@ -60,7 +60,7 @@ export default function ServicesTeaser() {
         <div className="text-center">
           <Link 
             to="/tjenester" 
-            className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-primary-foreground bg-primary hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-pill text-primary-foreground bg-primary hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 btn-primary"
           >
             {t('teasers.services.viewAll')}
             <svg className="ml-3 h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

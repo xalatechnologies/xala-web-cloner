@@ -81,10 +81,10 @@ const Navbar = () => {
             <div className="relative flex items-center">
               <span className="text-4xl sm:text-5xl font-bold text-primary flex items-center">
                 <span className="opacity-0">X</span><span className="ml-[8%]">ALA</span>
-                <span className="text-lg sm:text-xl ml-2 sm:ml-3 font-medium -translate-y-1 tracking-wider font-['Tiro_Devanagari_Sanskrit'] italic text-primary/90">Technologies</span>
+                <span className="text-lg sm:text-xl ml-2 sm:ml-3 font-medium -translate-y-1 tracking-wider font-heading italic text-primary/90">Technologies</span>
               </span>
               <div className="absolute left-0 top-1/2 -translate-y-1/2">
-                <Logo className="w-11 h-11 sm:w-14 sm:h-14 text-foreground transition-all duration-300 group-hover:text-xala-accent" />
+                <Logo className="w-11 h-11 sm:w-14 sm:h-14 text-foreground transition-all duration-300 group-hover:text-primary" />
               </div>
             </div>
           </Link>
