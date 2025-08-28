@@ -123,7 +123,7 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Main Navigation Grid - Optimized for 2 rows */}
-          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
             {/* First 4 items - First row on large screens */}
             {mainNavItems.slice(0, 4).map((item, index) => {
               const IconComponent = item.icon;
@@ -132,7 +132,7 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
                   key={item.name}
                   to={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="group cursor-pointer p-6 rounded-xl transition-all duration-300 hover:scale-105 border block shadow-md hover:shadow-lg bg-card/80 border-border/50 hover:border-border"
+                  className="group cursor-pointer p-6 rounded-xl transition-all duration-300 hover:scale-105 border block shadow-md hover:shadow-lg bg-card/80 border-border/50 hover:border-border min-w-0"
                 >
                   <div className="flex items-start gap-4">
                     <div className="p-3 rounded-xl bg-muted/80">
@@ -142,10 +142,10 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
                       />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-lg font-semibold mb-2 transition-colors text-foreground">
+                      <h4 className="text-lg font-semibold mb-2 transition-colors text-foreground truncate">
                         {item.name}
                       </h4>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
                         {item.description}
                       </p>
                     </div>
@@ -165,7 +165,7 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
                       key={item.name}
                       to={item.href}
                       onClick={() => setIsOpen(false)}
-                      className={`group cursor-pointer p-6 rounded-xl transition-all duration-300 hover:scale-105 border block shadow-md hover:shadow-lg ${
+                      className={`group cursor-pointer p-4 sm:p-6 rounded-xl transition-all duration-300 hover:scale-105 border block shadow-md hover:shadow-lg min-w-0 ${
                         item.isPrimary 
                           ? 'bg-gradient-to-br from-primary/15 to-primary/5 border-primary/30 hover:border-primary/50' 
                           : 'bg-card/80 border-border/50 hover:border-border'
@@ -179,10 +179,10 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
                           />
                         </div>
                         <div className="flex-1">
-                          <h4 className={`text-lg font-semibold mb-2 transition-colors ${item.isPrimary ? 'text-primary' : 'text-foreground'}`}>
+                          <h4 className={`text-lg font-semibold mb-2 transition-colors ${item.isPrimary ? 'text-primary' : 'text-foreground'} truncate`}>
                             {item.name}
                           </h4>
-                          <p className="text-sm text-muted-foreground leading-relaxed">
+                          <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
                             {item.description}
                           </p>
                         </div>
@@ -207,7 +207,7 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
                   key={`mobile-${item.name}`}
                   to={item.href}
                   onClick={() => setIsOpen(false)}
-                  className={`lg:hidden group cursor-pointer p-6 rounded-xl transition-all duration-300 hover:scale-105 border block shadow-md hover:shadow-lg ${
+                  className={`lg:hidden group cursor-pointer p-4 sm:p-6 rounded-xl transition-all duration-300 hover:scale-105 border block shadow-md hover:shadow-lg min-w-0 ${
                     item.isPrimary 
                       ? 'bg-gradient-to-br from-primary/15 to-primary/5 border-primary/30 hover:border-primary/50 sm:col-span-2' 
                       : 'bg-card/80 border-border/50 hover:border-border'
@@ -221,10 +221,10 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
                       />
                     </div>
                     <div className="flex-1">
-                      <h4 className={`text-lg font-semibold mb-2 transition-colors ${item.isPrimary ? 'text-primary' : 'text-foreground'}`}>
+                      <h4 className={`text-lg font-semibold mb-2 transition-colors ${item.isPrimary ? 'text-primary' : 'text-foreground'} truncate`}>
                         {item.name}
                       </h4>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
                         {item.description}
                       </p>
                     </div>

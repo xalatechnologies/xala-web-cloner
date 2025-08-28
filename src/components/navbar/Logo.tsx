@@ -13,9 +13,9 @@ const Logo = ({ className = '' }: { className?: string }) => {
         <defs>
           {/* Static gradients */}
           <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#6E3BF4" />
-            <stop offset="50%" stopColor="#D946EF" />
-            <stop offset="100%" stopColor="#0EA5E9" />
+            <stop offset="0%" stopColor="#FFB703" />
+            <stop offset="50%" stopColor="#FFB703" />
+            <stop offset="100%" stopColor="#FFB703" />
           </linearGradient>
 
           {/* Circuit pattern with counter-rotation */}
@@ -41,7 +41,7 @@ const Logo = ({ className = '' }: { className?: string }) => {
           {/* Gentle glow */}
           <filter id="cyberGlow" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
-            <feFlood floodColor="#0EA5E9" floodOpacity="0.35" result="color"/>
+            <feFlood floodColor="#FFB703" floodOpacity="0.35" result="color"/>
             <feComposite in="color" in2="blur" operator="in" result="glow"/>
             <feMerge>
               <feMergeNode in="glow"/>

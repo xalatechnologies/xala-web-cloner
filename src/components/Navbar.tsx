@@ -8,6 +8,7 @@ import NavigationMenu from './navbar/NavigationMenu';
 import { Skeleton } from './ui/skeleton';
 import type { Database } from '@/integrations/supabase/types';
 import { useMenuItems } from '@/hooks/use-menu-items';
+import { useTranslation } from 'react-i18next';
 
 type SupportedLanguage = Database['public']['Enums']['supported_language'];
 
@@ -23,7 +24,7 @@ export interface MenuItem {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [language, setLanguage] = useState<'EN' | 'NO'>('NO');
+  const { i18n } = useTranslation();
 
   const { data: menuItems, isLoading } = useMenuItems();
 
@@ -32,7 +33,7 @@ const Navbar = () => {
   };
 
   const toggleLanguage = () => {
-    setLanguage(prev => prev === 'EN' ? 'NO' : 'EN');
+    // Language is now handled by i18n library
   };
 
   if (isLoading) {
@@ -55,7 +56,7 @@ const Navbar = () => {
               <div className="hidden md:flex">
                 <Controls 
                   isDarkMode={isDarkMode}
-                  language={language}
+                  language={i18n.language === 'en' ? 'EN' : 'NO'}
                   onThemeToggle={toggleTheme}
                   onLanguageToggle={toggleLanguage}
                 />
@@ -91,7 +92,7 @@ const Navbar = () => {
             <div className="hidden md:flex">
               <Controls 
                 isDarkMode={isDarkMode}
-                language={language}
+                language={i18n.language === 'en' ? 'EN' : 'NO'}
                 onThemeToggle={toggleTheme}
                 onLanguageToggle={toggleLanguage}
               />

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -22,33 +22,33 @@
 }
 
 :root {
-  /* Light theme - Unified warm background with consistent semantic colors */
-  --background: 42 52% 94%; /* Beautiful warm background - consistent */
-  --foreground: 222 20% 10%; /* Deep slate for maximum readability */
+  /* Light theme - Scandinavian luxury system with warm craft tones */
+  --background: 36 20% 98%; /* #FDFCF9 - Off-white, slightly warm, not harsh white */
+  --foreground: 0 0% 7%; /* #111111 - Rich black for excellent readability */
   
-  --muted: 210 40% 97%; /* Soft muted background */
-  --muted-foreground: 215 16% 32%; /* Enhanced contrast for secondary text */
+  --muted: 30 15% 96%; /* #FAF7F2 - Very subtle beige tone for section alternatives */
+  --muted-foreground: 0 0% 18%; /* #2E2E2E - Softer for longer reading */
   
   --popover: 0 0% 100%;
-  --popover-foreground: 222 20% 10%;
+  --popover-foreground: 0 0% 7%;
   
   --card: 0 0% 100%; /* Pure white cards for contrast */
-  --card-foreground: 222 20% 10%; /* Consistent with main text */
+  --card-foreground: 0 0% 7%; /* Consistent with main text */
   
-  --border: 216 12% 92%; /* Subtle borders that work with warm background */
-  --input: 216 12% 92%;
+  --border: 0 0% 85%; /* Subtle borders */
+  --input: 0 0% 85%;
   
-  /* Unified brand colors - consistent throughout project */
-  --primary: 262 83% 58%; /* Rich purple - main brand color */
-  --primary-foreground: 0 0% 100%; /* Pure white for contrast */
+  /* Primary accent - More vibrant amber for better visibility and attractiveness in light mode */
+  --primary: 40 100% 50%; /* #FFA500 - Vibrant orange-yellow for better contrast and visual appeal */
+  --primary-foreground: 0 0% 7%; /* Rich black for contrast on amber */
   
-  --secondary: 42 15% 85%; /* Harmonizes with warm background */
-  --secondary-foreground: 222 20% 10%;
+  --secondary: 172 38% 20%; /* #234E52 - Deep Forest Green for premium, nature, stability */
+  --secondary-foreground: 0 0% 98%; /* White for contrast on green */
   
-  --accent: 210 40% 96.1%; /* Soft accent */
-  --accent-foreground: 222 20% 10%;
+  --accent: 30 15% 96%; /* #FAF7F2 - Subtle beige for accents */
+  --accent-foreground: 0 0% 7%;
   
-  /* Unified semantic colors */
+  /* Semantic colors */
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
   
@@ -61,49 +61,49 @@
   --info: 221 83% 53%;
   --info-foreground: 0 0% 98%;
   
-  --ring: 262 83% 58%;
+  --ring: 40 100% 50%; /* Vibrant amber ring to match primary */
   
-  /* Unified gradient system */
-  --gradient-start: 262 83% 58%; /* Primary purple */
-  --gradient-middle: 262 70% 65%; /* Lighter purple */
-  --gradient-end: 221 83% 53%; /* Blue accent */
+  /* Unified gradient system with new colors */
+  --gradient-start: 40 100% 50%; /* Vibrant amber primary */
+  --gradient-middle: 36 20% 98%; /* Off-white */
+  --gradient-end: 172 38% 20%; /* Deep Forest Green */
   
   /* Charts */
-  --chart-1: 262 83% 58%;
-  --chart-2: 173 58% 39%;
+  --chart-1: 40 100% 50%; /* Vibrant amber */
+  --chart-2: 172 38% 20%; /* Deep Forest Green */
   --chart-3: 197 37% 24%;
   --chart-4: 43 74% 66%;
   --chart-5: 27 87% 67%;
 }
 
 .dark {
-  /* Dark theme - Sophisticated deep palette with consistent colors */
-  --background: 240 10% 3.9%;
-  --foreground: 0 0% 98%;
+  /* Dark theme - Sophisticated deep palette with Scandinavian luxury tones */
+  --background: 0 0% 4%; /* #0C0C0C - Dark contrast section */
+  --foreground: 0 0% 98%; /* Near white for excellent readability */
   
-  --muted: 240 3.7% 15.9%;
-  --muted-foreground: 240 5% 64.9%;
+  --muted: 0 0% 12%;
+  --muted-foreground: 0 0% 75%;
   
-  --popover: 240 10% 3.9%;
+  --popover: 0 0% 4%;
   --popover-foreground: 0 0% 98%;
   
-  --card: 240 10% 3.9%;
+  --card: 0 0% 8%;
   --card-foreground: 0 0% 98%;
   
-  --border: 240 3.7% 15.9%;
-  --input: 240 3.7% 15.9%;
+  --border: 0 0% 15%;
+  --input: 0 0% 15%;
   
-  /* Unified brand colors for dark theme */
-  --primary: 263 70% 50.4%; /* Adjusted purple for dark mode visibility */
-  --primary-foreground: 0 0% 98%;
+  /* Brand colors for dark theme - maintaining original amber accent */
+  --primary: 45 93% 51%; /* #FFB703 - Original amber for dark mode (more visible against dark background) */
+  --primary-foreground: 0 0% 7%; /* Rich black for contrast */
   
-  --secondary: 240 3.7% 15.9%;
-  --secondary-foreground: 0 0% 98%;
+  --secondary: 172 38% 20%; /* #234E52 - Deep Forest Green */
+  --secondary-foreground: 0 0% 98%; /* White for contrast */
   
-  --accent: 240 3.7% 15.9%;
+  --accent: 0 0% 12%;
   --accent-foreground: 0 0% 98%;
   
-  /* Unified semantic colors for dark */
+  /* Semantic colors for dark */
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 85.7% 97.3%;
   
@@ -116,12 +116,12 @@
   --info: 221 83% 53%;
   --info-foreground: 0 0% 98%;
   
-  --ring: 263 70% 50.4%;
+  --ring: 45 93% 51%; /* Original amber ring for dark mode */
   
-  /* Unified gradient system for dark */
-  --gradient-start: 263 70% 50.4%; /* Primary purple for dark */
-  --gradient-middle: 263 60% 55%; /* Lighter purple for dark */
-  --gradient-end: 221 83% 53%; /* Blue accent */
+  /* Unified gradient system for dark with new colors */
+  --gradient-start: 45 93% 51%; /* Original amber primary for dark mode */
+  --gradient-middle: 0 0% 4%; /* Dark background */
+  --gradient-end: 172 38% 20%; /* Deep Forest Green */
 }
 
 
@@ -141,7 +141,7 @@
   
   /* Unified gradient text - consistent across entire project */
   .gradient-text {
-    @apply bg-gradient-to-r from-primary via-primary/80 to-info bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary via-foreground to-secondary bg-clip-text text-transparent;
   }
   
   .gradient-border {

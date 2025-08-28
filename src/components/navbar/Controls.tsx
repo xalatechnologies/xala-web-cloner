@@ -39,12 +39,12 @@ const Controls = ({ isDarkMode, language, onThemeToggle, onLanguageToggle }: Con
 
       <Toggle
         aria-label="Toggle language"
-        pressed={language === 'NO'}
+        pressed={i18n.language === 'no'}
         onPressedChange={handleLanguageToggle}
         className="hover:bg-accent"
       >
         <Globe className="w-5 h-5" />
-        <span className="ml-1 text-sm">{language}</span>
+        <span className="ml-1 text-sm">{i18n.language === 'en' ? 'EN' : 'NO'}</span>
       </Toggle>
     </div>
   );

@@ -44,27 +44,27 @@ export default function ValueProps() {
   ];
 
   return (
-    <section className="py-16 md:py-20 bg-background">
+    <section className="py-20 md:py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-8">
             {t('valueProps.title')}
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
             {t('valueProps.description')}
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {values.map((value, index) => (
             <div key={index} className="text-center group">
-              <div className="mx-auto h-16 w-16 text-primary mb-4 group-hover:scale-110 transition-transform duration-200">
+              <div className="mx-auto h-20 w-20 text-primary mb-8 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
                 {value.icon}
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">
+              <h3 className="text-2xl font-bold text-foreground mb-6 group-hover:text-primary transition-colors">
                 {value.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-lg text-muted-foreground leading-relaxed font-light">
                 {value.description}
               </p>
             </div>

@@ -29,23 +29,30 @@ export default function ServicesTeaser() {
   ];
 
   return (
-    <section className="py-12 md:py-16 bg-background">
+    <section className="py-16 md:py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
             {t('teasers.services.title')}
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             {t('teasers.services.description')}
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {services.map((service, index) => (
-            <div key={index} className="p-6 rounded-lg border border-border bg-card hover:shadow-lg transition-shadow">
-              <div className="text-3xl mb-3">{service.icon}</div>
-              <h3 className="text-lg font-semibold text-card-foreground mb-2">{service.title}</h3>
-              <p className="text-sm text-muted-foreground">{service.description}</p>
+            <div 
+              key={index} 
+              className="p-8 rounded-2xl border border-border bg-card hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
+            >
+              <div className="text-4xl mb-5 group-hover:scale-110 transition-transform duration-300">{service.icon}</div>
+              <h3 className="text-xl font-bold text-card-foreground mb-4 group-hover:text-primary transition-colors">
+                {service.title}
+              </h3>
+              <p className="text-base text-muted-foreground leading-relaxed">
+                {service.description}
+              </p>
             </div>
           ))}
         </div>
@@ -53,10 +60,10 @@ export default function ServicesTeaser() {
         <div className="text-center">
           <Link 
             to="/tjenester" 
-            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-primary-foreground bg-primary hover:bg-primary/90 transition-colors"
+            className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-primary-foreground bg-primary hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             {t('teasers.services.viewAll')}
-            <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="ml-3 h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </Link>

@@ -79,22 +79,22 @@ const Clients = () => {
 
     // Marquee presentation for delightful motion; falls back to static grid if motion is reduced
     return (
-      <div className="space-y-10">
+      <div className="space-y-12">
         <ClientMarquee clients={mergedClients} rows={2} speedSeconds={120} />
       </div>
     );
   };
 
   return (
-    <section id="clients" className="py-12 sm:py-16 relative overflow-hidden bg-background">
+    <section id="clients" className="py-20 md:py-24 relative overflow-hidden bg-background">
       <div className="absolute inset-0 hidden dark:block bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary" />
 
       <div className="container mx-auto px-4 relative">
-        <div className="text-center mb-10 sm:mb-12 animate-fade-in">
-          <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 sm:mb-6">
+        <div className="text-center mb-20 animate-fade-in">
+          <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-8">
             {section?.title || t('clients.title')}
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
             {section?.description || t('clients.description')}
           </p>
         </div>
