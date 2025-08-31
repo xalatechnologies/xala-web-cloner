@@ -44,10 +44,10 @@ export default function ValueProps() {
   ];
 
   return (
-    <section className="py-20 md:py-24 bg-background bg-lime">
+    <section className="py-20 md:py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-8 font-heading">
+          <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-8">
             {t('valueProps.title')}
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
@@ -57,11 +57,11 @@ export default function ValueProps() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {values.map((value, index) => (
-            <div key={index} className="text-center group surface">
+            <div key={index} className="text-center group">
               <div className="mx-auto h-20 w-20 text-primary mb-8 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
                 {value.icon}
               </div>
-              <h3 className="text-2xl font-bold text-foreground mb-6 group-hover:text-primary transition-colors font-heading">
+              <h3 className="text-2xl font-bold text-foreground mb-6 group-hover:text-primary transition-colors">
                 {value.title}
               </h3>
               <p className="text-lg text-muted-foreground leading-relaxed font-light">

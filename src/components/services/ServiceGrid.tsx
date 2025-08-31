@@ -15,15 +15,21 @@ const ServiceGrid = ({ services, initialRows, cols }: ServiceGridProps) => {
       icon={service.icon}
       title={service.title}
       description={service.description}
+      // Pass image prop if available (would need to be added to the services table)
+      image={service.image_url || undefined}
+      // Pass language prop to handle Norwegian titles
+      language={service.language}
     />
   ));
 
   return (
-    <ExpandableGrid 
-      items={serviceCards}
-      initialRows={initialRows}
-      cols={cols}
-    />
+    <div className="mt-12">
+      <ExpandableGrid 
+        items={serviceCards}
+        initialRows={initialRows}
+        cols={cols}
+      />
+    </div>
   );
 };
 

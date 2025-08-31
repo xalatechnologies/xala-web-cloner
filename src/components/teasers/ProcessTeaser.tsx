@@ -39,7 +39,7 @@ export default function ProcessTeaser() {
           <div className="text-center lg:text-right">
             <Link 
               to="/slik-vi-jobber" 
-              className="inline-flex items-center px-6 py-3 border border-primary-foreground/20 dark:border-border text-base font-medium rounded-md text-primary-foreground dark:text-foreground bg-primary-foreground/10 dark:bg-accent hover:bg-primary-foreground/20 dark:hover:bg-accent/80 backdrop-blur-sm transition-colors"
+              className="inline-flex items-center px-6 py-3 border border-primary-foreground/20 dark:border-border text-base font-medium rounded-md text-primary-foreground dark:text-foreground bg-primary-foreground/10 dark:bg-accent hover:bg-primary-foreground/20 dark:hover:bg-accent/80 backdrop-blur-sm transition-colors dark:hover:text-amber-500"
             >
               {t('teasers.process.readProcess')}
               <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

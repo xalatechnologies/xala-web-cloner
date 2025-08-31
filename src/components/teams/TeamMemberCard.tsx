@@ -20,6 +20,10 @@ const TeamMemberCard = ({ name, role, description, imageUrl, linkedinUrl, email 
     if (n.includes('hamid')) {
       return 'object-[center_35%]';
     }
+    if (n.includes('wahid')) {
+      // Further adjusted positioning for Wahid to show his head and hair more clearly
+      return 'object-[center_25%]';
+    }
     if (n.includes('amin')) {
       return 'object-[center_38%]';
     }
@@ -32,9 +36,9 @@ const TeamMemberCard = ({ name, role, description, imageUrl, linkedinUrl, email 
       // Reduce zoom slightly more for maximum padding while keeping presence
       return { base: 'scale-[1.08]', hover: 'group-hover:scale-[1.12]' };
     }
-    if (n.includes('amin')) {
-      // Balanced crop for Amin
-      return { base: 'scale-[1.18]', hover: 'group-hover:scale-[1.22]' };
+    if (n.includes('amin') || n.includes('wahid')) {
+      // Further reduce zoom for better head and hair visibility
+      return { base: 'scale-[1.12]', hover: 'group-hover:scale-[1.16]' };
     }
     return { base: 'scale-[1.08]', hover: 'group-hover:scale-[1.12]' };
   };

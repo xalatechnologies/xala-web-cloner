@@ -1,0 +1,68 @@
+{
+  "services": [
+    {
+      "title": "Digital Transformation",
+      "description": "Seamlessly modernize your legacy infrastructure with our comprehensive digital transformation services. We specialize in cloud migration, API modernization, and user experience enhancement using cutting-edge technologies like React, Azure, and modern DevOps practices to ensure business continuity while driving innovation.",
+      "icon": "CloudCog",
+      "language": "en",
+      "sort_order": 1,
+      "featured": true
+    },
+    {
+      "title": "AI & Intelligent Automation",
+      "description": "Unlock the power of artificial intelligence and machine learning to revolutionize your business operations. Our custom AI solutions streamline workflows, reduce manual effort, and deliver intelligent insights that drive smarter decision-making and significant cost savings.",
+      "icon": "Brain",
+      "language": "en",
+      "sort_order": 2,
+      "featured": true
+    },
+    {
+      "title": "Enterprise Integration & APIs",
+      "description": "Break down data silos and create a unified digital ecosystem with our enterprise-grade integration solutions. Our RESTful API development and microservices architecture enable seamless data flow across your organization, improving business intelligence and operational efficiency.",
+      "icon": "Code2",
+      "language": "en",
+      "sort_order": 3,
+      "featured": false
+    },
+    {
+      "title": "Modern Web Applications",
+      "description": "Deliver exceptional user experiences across all devices with our modern web applications. Built using progressive technologies like React and TypeScript, our solutions drive customer engagement, increase conversion rates, and support your business growth through innovative design and robust functionality.",
+      "icon": "Globe",
+      "language": "en",
+      "sort_order": 4,
+      "featured": false
+    },
+    {
+      "title": "Digital Transformasjon",
+      "description": "Moderniser sømløst din eldre infrastruktur med våre omfattende digitale transformasjonstjenester. Vi spesialiserer oss på skysmigrering, API-modernisering og forbedring av brukeropplevelsen ved hjelp av banebrytende teknologier som React, Azure og moderne DevOps-praksis for å sikre forretningskontinuitet samtidig som vi fremmer innovasjon.",
+      "icon": "CloudCog",
+      "language": "no",
+      "sort_order": 1,
+      "featured": true
+    },
+    {
+      "title": "AI & Automatisering",
+      "description": "Lås opp kraften i kunstig intelligens og maskinlæring for å revolusjonere dine forretningsoperasjoner. Våre tilpassede AI-løsninger strømlinjeformer arbeidsflyter, reduserer manuelt arbeid og leverer intelligente innsikter som driver smartere beslutningstaking og betydelige kostnadsbesparelser.",
+      "icon": "Brain",
+      "language": "no",
+      "sort_order": 2,
+      "featured": true
+    },
+    {
+      "title": "Bedriftsintegrasjon",
+      "description": "Bryt ned datasiloer og skap et forent digitalt økosystem med våre bedriftsintegrasjonsløsninger i enterprise-klasse. Vår utvikling av RESTful API-er og mikrotjenestearkitektur muliggjør sømløs dataflyt på tvers av organisasjonen, noe som forbedrer forretningsintelligens og operasjonell effektivitet.",
+      "icon": "Code2",
+      "language": "no",
+      "sort_order": 3,
+      "featured": false
+    },
+    {
+      "title": "Moderne Webapplikasjoner",
+      "description": "Lever unntaksgode brukeropplevelser på tvers av alle enheter med våre moderne webapplikasjoner. Bygget med progressive teknologier som React og TypeScript, driver våre løsninger kundeforedrag, øker konverteringsrater og støtter forretningsveksten din gjennom innovativt design og robust funksjonalitet.",
+      "icon": "Globe",
+      "language": "no",
+      "sort_order": 4,
+      "featured": false
+    }
+  ]
+}

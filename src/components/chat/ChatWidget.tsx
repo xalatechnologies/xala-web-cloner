@@ -19,6 +19,7 @@ export const ChatWidget: FC = () => {
   const chatRef = useRef<HTMLDivElement>(null);
   const { i18n } = useTranslation();
   const [showChatWidget, setShowChatWidget] = useState(false);
+  const [isNearFooter, setIsNearFooter] = useState(false);
 
   const handleClickOutside = (event: MouseEvent) => {
     if (chatRef.current && !chatRef.current.contains(event.target as Node)) {
@@ -26,15 +27,22 @@ export const ChatWidget: FC = () => {
     }
   };
 
-  // Scroll detection to show chat widget only after hero section
+  // Scroll detection to show chat widget only after hero section and adjust for footer
   useEffect(() => {
     const handleScroll = () => {
       const heroSection = document.getElementById('home');
       if (heroSection) {
         const heroHeight = heroSection.offsetHeight;
         const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        
         // Show chat widget when user scrolls past 80% of hero section
         setShowChatWidget(scrollPosition > heroHeight * 0.8);
+        
+        // Check if we're near the footer (within 200px of bottom)
+        const distanceFromBottom = documentHeight - (scrollPosition + windowHeight);
+        setIsNearFooter(distanceFromBottom < 200);
       }
     };
 
@@ -103,7 +111,9 @@ export const ChatWidget: FC = () => {
                 stiffness: 300,
                 mass: 0.8 
               }}
-              className="fixed top-0 right-0 z-50 h-screen flex flex-col bg-card text-card-foreground border-l border-border dark:bg-white/80 dark:text-black backdrop-blur-md shadow-2xl overflow-hidden lg:w-[480px] w-full"
+              className={`fixed top-0 right-0 z-50 h-screen flex flex-col bg-card text-card-foreground border-l border-border dark:bg-background dark:text-foreground backdrop-blur-md shadow-2xl overflow-hidden lg:w-[480px] w-full ${
+                isNearFooter ? 'h-[calc(100vh-6rem)]' : 'h-screen'
+              }`}
             >
               <ChatHeader thinking={thinking} translations={translations} />
 
@@ -128,7 +138,9 @@ export const ChatWidget: FC = () => {
         whileTap={{ scale: 0.95 }}
         animate={isOpen ? { opacity: 0, x: 100 } : { opacity: 1, x: 0 }}
         transition={{ duration: 0.2 }}
-        className="fixed bottom-4 right-4 z-50 flex items-center space-x-2 px-6 py-3 rounded-full shadow-lg hover:shadow-xl backdrop-blur-sm bg-primary text-primary-foreground dark:bg-gradient-to-b dark:from-xala-primary dark:via-xala-secondary dark:to-xala-primary"
+        className={`fixed right-4 z-50 flex items-center space-x-2 px-6 py-3 rounded-full shadow-lg hover:shadow-xl backdrop-blur-sm bg-primary text-primary-foreground dark:bg-gradient-to-b dark:from-xala-primary dark:via-xala-secondary dark:to-xala-primary ${
+          isNearFooter ? 'bottom-24' : 'bottom-4'
+        }`}
       >
         <MessageCircle className="w-5 h-5" />
         <span className="font-medium">{translations['chat.input.button']}</span>

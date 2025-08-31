@@ -914,6 +914,83 @@ export type Database = {
         }
         Relationships: []
       }
+      legal_sections: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          id: string
+          language: string
+          sort_order: number | null
+          title: string
+          type: Database["public"]["Enums"]["legal_content_type"]
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          language?: string
+          sort_order?: number | null
+          title: string
+          type: Database["public"]["Enums"]["legal_content_type"]
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          language?: string
+          sort_order?: number | null
+          title?: string
+          type?: Database["public"]["Enums"]["legal_content_type"]
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      legal_content: {
+        Row: {
+          content: string
+          created_at: string | null
+          id: string
+          language: string
+          section_id: string | null
+          sort_order: number | null
+          title: string | null
+          type: Database["public"]["Enums"]["legal_content_type"]
+          updated_at: string | null
+        }
+        Insert: {
+          content: string
+          created_at?: string | null
+          id?: string
+          language?: string
+          section_id?: string | null
+          sort_order?: number | null
+          title?: string | null
+          type: Database["public"]["Enums"]["legal_content_type"]
+          updated_at?: string | null
+        }
+        Update: {
+          content?: string
+          created_at?: string | null
+          id?: string
+          language?: string
+          section_id?: string | null
+          sort_order?: number | null
+          title?: string | null
+          type?: Database["public"]["Enums"]["legal_content_type"]
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "legal_content_section_id_fkey"
+            columns: ["section_id"]
+            isOneToOne: false
+            referencedRelation: "legal_sections"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -943,6 +1020,7 @@ export type Database = {
       case_study_status: "draft" | "published" | "archived"
       feature_category: "ai" | "cloud" | "development" | "analytics"
       product_status: "draft" | "published" | "archived"
+      legal_content_type: "privacy" | "terms" | "cookies"
       supported_language: "en" | "no"
     }
     CompositeTypes: {

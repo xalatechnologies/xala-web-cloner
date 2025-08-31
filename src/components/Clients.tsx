@@ -86,7 +86,7 @@ const Clients = () => {
   };
 
   return (
-    <section id="clients" className="py-20 md:py-24 relative overflow-hidden bg-background">
+    <section id="clients" className="py-20 md:py-24 relative overflow-hidden bg-background highlight-gradient">
       <div className="absolute inset-0 hidden dark:block bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary" />
 
       <div className="container mx-auto px-4 relative">

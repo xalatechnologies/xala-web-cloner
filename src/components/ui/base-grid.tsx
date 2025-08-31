@@ -9,7 +9,7 @@ export function BaseGrid({ items, initialRows = 1, cols = 3 }: BaseGridProps) {
       "md:grid-cols-2",
       `lg:grid-cols-${cols}`
     )}>
-      {items.slice(0, initialRows * cols).map((item, index) => (
+      {items.map((item, index) => (
         <div 
           key={index} 
           className="animate-fade-in" 

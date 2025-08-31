@@ -61,7 +61,7 @@ const CoreProducts = () => {
   if (!section) return null;
 
   return (
-    <section id="core-products" className="py-20 bg-background relative overflow-hidden">
+    <section id="core-products" className="py-20 bg-background relative overflow-hidden highlight-gradient">
       <div className="container">
         <div className="flex flex-col gap-12">
           <div className="flex flex-col gap-4 text-center">

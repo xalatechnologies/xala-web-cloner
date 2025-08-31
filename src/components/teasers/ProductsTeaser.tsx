@@ -39,11 +39,11 @@ export default function ProductsTeaser() {
           {products.map((product, index) => (
             <div key={index} className="p-6 rounded-lg border border-border bg-card hover:shadow-lg transition-shadow">
               <div className="flex justify-between items-start mb-3">
-                <h3 className="text-lg font-semibold text-card-foreground">{product.title}</h3>
-                <span className={`px-2 py-1 text-xs rounded-full ${
+                <h3 className="text-lg font-semibold text-foreground">{product.title}</h3>
+                <span className={`px-2 py-1 text-xs rounded-full font-medium ${
                   product.status === t('teasers.products.available') ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' :
                   product.status === t('teasers.products.beta') ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300' :
-                  'bg-muted text-muted-foreground'
+                  'bg-muted text-foreground'
                 }`}>
                   {product.status}
                 </span>

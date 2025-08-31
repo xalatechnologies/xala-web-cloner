@@ -1,35 +1,70 @@
 import { LucideIcon } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
+import { processServiceTitle } from '@/utils/text-hyphenation';
 
 interface ServiceCardProps {
   icon: string;
   title: string;
   description: string;
+  image?: string; // Add optional image prop
+  language?: string; // Add language prop to handle Norwegian titles
 }
 
-const ServiceCard = ({ icon, title, description }: ServiceCardProps) => {
+const ServiceCard = ({ icon, title, description, image, language = 'en' }: ServiceCardProps) => {
   const IconComponent = icon ? (LucideIcons[icon as keyof typeof LucideIcons] as LucideIcon) : null;
 
+  // Function to handle image loading errors
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.style.display = 'none';
+  };
+
+  // Process title for Norwegian hyphenation
+  const processedTitle = processServiceTitle(title, language);
+
+  // Determine if we're using Norwegian
+  const isNorwegian = language === 'no' || language === 'nb' || language === 'nn';
+
   return (
-    <div 
-      className="group h-full p-4 sm:p-6 lg:p-8 rounded-xl bg-card border border-border hover:border-primary/50 
-                 transition-all duration-500 hover:transform hover:-translate-y-1
-                 hover:shadow-lg hover:shadow-primary/10"
-    >
+    <div className="service-card group">
       <div className="flex flex-col h-full">
-        <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
-          <div className="w-12 h-12 rounded-lg bg-[linear-gradient(135deg,hsla(var(--primary),0.12),transparent)] 
-                      flex items-center justify-center text-primary transition-all duration-500">
-            {IconComponent && <IconComponent className="w-6 h-6" />}
+        {/* Image section - shown if image is provided */}
+        {image && (
+          <div className="mb-5 rounded-xl overflow-hidden">
+            <img 
+              src={image} 
+              alt={title} 
+              className="service-card-image group-hover:scale-110"
+              onError={handleImageError}
+            />
           </div>
-          <h3 className="text-xl sm:text-2xl font-semibold text-primary">
-            {title}
+        )}
+        
+        <div className="flex items-start gap-4 mb-5">
+          <div className="service-card-icon-container text-primary">
+            {IconComponent && <IconComponent className="w-7 h-7" />}
+          </div>
+          <h3 className={`service-card-title ${isNorwegian ? 'no' : ''}`} dangerouslySetInnerHTML={{ __html: processedTitle }}>
           </h3>
         </div>
         
-        <p className="text-base sm:text-lg text-muted-foreground transition-colors">
+        <p className="service-card-description">
           {description}
         </p>
+        
+        <div className="service-card-cta">
+          <span className="service-card-cta-text group">
+            Learn more
+            <svg 
+              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
+        </div>
       </div>
     </div>
   );

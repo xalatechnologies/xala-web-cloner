@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Unbounded:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Unbounded:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -19,34 +19,45 @@
     @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
     transition: all 0.2s ease-in-out;
   }
+  
+  /* Font families for Polkadot style */
+  h1, h2, h3, h4, h5, h6, .heading {
+    font-family: "Unbounded", system-ui, sans-serif;
+    font-weight: 700;
+  }
+  
+  body, p, li, .body-text {
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 400;
+  }
 }
 
 :root {
-  /* Light theme - Polkadot design system */
-  --background: 0 0% 100%; /* #FFFFFF - White background */
-  --foreground: 0 0% 9%; /* #171717 - Polkadot text color */
+  /* Light theme - Polkadot style tokens */
+  --background: 0 0% 100%; /* #FFFFFF - Surface / White BG */
+  --foreground: 0 0% 9%; /* #171717 - Text Primary */
   
-  --muted: 0 0% 35%; /* #5B5B5B - Polkadot muted text */
-  --muted-foreground: 0 0% 35%; /* #5B5B5B - Polkadot muted text */
+  --muted: 210 10% 96%; /* #F3F5F7 - Surface Secondary */
+  --muted-foreground: 0 0% 36%; /* #5B5B5B - Text Muted */
   
   --popover: 0 0% 100%;
   --popover-foreground: 0 0% 9%;
   
-  --card: 0 0% 100%; /* White cards */
-  --card-foreground: 0 0% 9%; /* Consistent with main text */
+  --card: 0 0% 100%; /* #FFFFFF - Surface / White BG */
+  --card-foreground: 0 0% 9%; /* #171717 - Text Primary */
   
-  --border: 0 0% 91%; /* #E7E9EE - Polkadot border color */
-  --input: 0 0% 91%;
+  --border: 210 10% 91%; /* #E7E9EE - Border / Divider */
+  --input: 210 10% 91%; /* #E7E9EE - Border / Divider */
   
-  /* Primary accent - Polkadot pink */
-  --primary: 332 100% 45%; /* #E6007A - Polkadot accent color */
-  --primary-foreground: 0 0% 100%; /* White for contrast on pink */
+  /* Primary accent - Polkadot magenta for CTAs and highlights */
+  --primary: 330 100% 45%; /* #E6007A - Accent / Brand / CTAs */
+  --primary-foreground: 0 0% 100%; /* White for contrast on primary */
   
-  --secondary: 210 100% 50%; /* Blue for secondary elements */
-  --secondary-foreground: 0 0% 100%; /* White for contrast on blue */
+  --secondary: 330 100% 50%; /* #FF2670 - Accent Hover / Active */
+  --secondary-foreground: 0 0% 100%; /* White for contrast on secondary */
   
-  --accent: 0 0% 95%; /* #F3F5F7 - Polkadot surface2 */
-  --accent-foreground: 0 0% 9%;
+  --accent: 330 100% 45%; /* #E6007A - Accent / Brand / CTAs */
+  --accent-foreground: 0 0% 100%; /* White for contrast on accent */
   
   /* Semantic colors */
   --destructive: 0 84.2% 60.2%;
@@ -61,23 +72,28 @@
   --info: 221 83% 53%;
   --info-foreground: 0 0% 98%;
   
-  --ring: 332 100% 45%; /* Polkadot pink ring to match primary */
+  --ring: 330 100% 45%; /* #E6007A - Ring to match primary */
   
-  /* Unified gradient system with new colors */
-  --gradient-start: 332 100% 45%; /* Polkadot pink primary */
-  --gradient-middle: 0 0% 100%; /* White */
-  --gradient-end: 210 100% 50%; /* Blue */
+  /* Unified gradient system with Polkadot colors */
+  --gradient-start: 330 100% 45%; /* #E6007A - Primary */
+  --gradient-middle: 0 0% 100%; /* #FFFFFF - Background */
+  --gradient-end: 210 10% 96%; /* #F3F5F7 - Surface Secondary */
   
   /* Charts */
-  --chart-1: 332 100% 45%; /* Polkadot pink */
-  --chart-2: 210 100% 50%; /* Blue */
+  --chart-1: 330 100% 45%; /* #E6007A */
+  --chart-2: 210 10% 96%; /* #F3F5F7 */
   --chart-3: 197 37% 24%;
   --chart-4: 43 74% 66%;
   --chart-5: 27 87% 67%;
+  
+  /* Polkadot gradients */
+  --hero-gradient: radial-gradient(1200px 600px at 20% 0%, #CFE6FF 0%, #FFFFFF 60%);
+  --highlight-gradient: radial-gradient(900px 500px at 80% 50%, #D7FF5E 0%, rgba(215,255,94,0) 60%);
+  --footer-gradient: radial-gradient(1000px 520px at 50% 100%, #CFE6FF 0%, #FFFFFF 55%);
 }
 
 .dark {
-  /* Dark theme - Sophisticated deep palette with Scandinavian luxury tones */
+  /* Dark theme - Sophisticated deep palette with Scandinavian luxury tones (unchanged) */
   --background: 0 0% 4%; /* #0C0C0C - Dark contrast section */
   --foreground: 0 0% 98%; /* Near white for excellent readability */
   
@@ -93,8 +109,8 @@
   --border: 0 0% 15%;
   --input: 0 0% 15%;
   
-  /* Brand colors for dark theme - maintaining original amber accent */
-  --primary: 45 93% 51%; /* #FFB703 - Original amber for dark mode (more visible against dark background) */
+  /* Brand colors for dark theme - maintaining amber accent */
+  --primary: 45 93% 51%; /* #FFB703 - Amber / Honeywood for CTAs */
   --primary-foreground: 0 0% 7%; /* Rich black for contrast */
   
   --secondary: 172 38% 20%; /* #234E52 - Deep Forest Green */
@@ -116,10 +132,10 @@
   --info: 221 83% 53%;
   --info-foreground: 0 0% 98%;
   
-  --ring: 45 93% 51%; /* Original amber ring for dark mode */
+  --ring: 45 93% 51%; /* Amber ring to match primary */
   
   /* Unified gradient system for dark with new colors */
-  --gradient-start: 45 93% 51%; /* Original amber primary for dark mode */
+  --gradient-start: 45 93% 51%; /* Amber primary */
   --gradient-middle: 0 0% 4%; /* Dark background */
   --gradient-end: 172 38% 20%; /* Deep Forest Green */
 }
@@ -172,74 +188,99 @@
     @apply bg-muted text-muted-foreground border border-border;
   }
   
-  /* Polkadot utilities */
-  .bg-sky {
-    background: radial-gradient(1200px 600px at 20% 0%, #CFE6FF 0%, #FFFFFF 60%);
-    background-repeat: no-repeat;
+  /* Light mode XALA text color - only applies in light mode */
+  .light-xala-text {
+    color: #171717; /* Text Primary */
   }
   
-  .bg-lime {
-    background: radial-gradient(900px 500px at 80% 50%, #D7FF5E 0%, rgba(215,255,94,0) 60%);
-    background-repeat: no-repeat;
+  /* Light mode Technologies text color - only applies in light mode */
+  .light-xala-subtext {
+    color: #171717; /* Text Primary */
   }
   
-  .bg-sky-bottom {
-    background: radial-gradient(1000px 520px at 50% 100%, #CFE6FF 0%, #FFFFFF 55%);
-    background-repeat: no-repeat;
-  }
-  
-  .text-muted {
-    color: hsl(var(--muted));
-  }
-  
-  .surface {
-    background: hsl(var(--card));
-    border: 1px solid hsl(var(--border));
-    border-radius: 1rem;
-    box-shadow: 0 18px 48px rgba(0,0,0,.08);
-  }
-  
-  .chip {
-    display: inline-flex;
-    align-items: center;
-    padding: 6px 10px;
-    border-radius: 999px;
-    border: 1px solid color-mix(in srgb, hsl(var(--primary)), transparent 70%);
-    background: color-mix(in srgb, hsl(var(--primary)), white 88%);
+  /* Dark mode: reset to default text color */
+  .dark .light-xala-text {
     color: hsl(var(--primary));
-    font-weight: 600;
-    font-size: 12px;
   }
   
-  .btn-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 18px;
-    border-radius: 999px;
-    font-weight: 600;
-    text-decoration: none;
+  .dark .light-xala-subtext {
+    color: hsl(var(--primary) / 0.9);
   }
   
+  /* Logo color classes */
+  .logo-path {
+    color: #171717; /* Text Primary in light mode */
+  }
+  
+  .dark .logo-path {
+    color: #FFB703; /* Amber in dark mode */
+  }
+  
+  /* Button styles for Polkadot theme */
   .btn-primary {
-    background: hsl(var(--primary));
-    color: hsl(var(--primary-foreground));
-    box-shadow: 0 14px 32px rgba(230,0,122,.25);
+    background: #E6007A; /* Accent / Brand / CTAs */
+    color: #fff;
   }
   
   .btn-primary:hover {
-    background: #FF2670;
-    transform: translateY(-1px);
+    background: #FF2670; /* Accent Hover / Active */
   }
   
-  .btn-ghost {
+  .btn-secondary {
     background: #fff;
-    color: hsl(var(--foreground));
-    border: 1px solid hsl(var(--border));
+    color: #171717;
+    border: 1px solid #E7E9EE;
   }
   
-  .btn-ghost:hover {
+  .btn-secondary:hover {
     border-color: #d0d5dc;
+  }
+  
+  /* Card styles for Polkadot theme */
+  .polkadot-card {
+    background: #fff;
+    border: 1px solid #E7E9EE;
+    box-shadow: 0 18px 48px rgba(0,0,0,.08);
+  }
+  
+  /* Chip / Label styles for Polkadot theme */
+  .polkadot-chip {
+    background: rgba(230, 0, 122, 0.1); /* #E6007A @ 10% opacity */
+    border: rgba(230, 0, 122, 0.3); /* #E6007A @ 30% opacity */
+    color: #E6007A;
+  }
+  
+  /* Gradient backgrounds - Light mode only */
+  .hero-gradient {
+    background: var(--hero-gradient);
+  }
+
+  .highlight-gradient {
+    background: var(--highlight-gradient);
+  }
+
+  .footer-gradient {
+    background: var(--footer-gradient);
+  }
+  
+  /* Custom hover effect for navigation menu items */
+  .nav-item-hover {
+    @apply transition-colors duration-200;
+  }
+  
+  .nav-item-hover:hover {
+    color: #E6007A; /* Polkadot magenta for light mode */
+  }
+  
+  .dark .nav-item-hover:hover {
+    color: #FFB703; /* Amber/yellow for dark mode */
+  }
+
+  /* Ensure dark mode overrides these gradients */
+  .dark .hero-gradient,
+  .dark .highlight-gradient,
+  .dark .footer-gradient {
+    background: transparent;
   }
 }
 
@@ -325,5 +366,135 @@ textarea {
   }
   .animate-hero-kenburns {
     animation: hero-kenburns 240s ease-in-out infinite alternate;
+  }
+}
+
+/* Seamless marquee utility for logos */
+@layer utilities {
+  @keyframes marquee-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes marquee-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+
+  .marquee-row {
+    display: flex;
+    width: max-content;
+    gap: 1.5rem;
+    will-change: transform;
+    animation: marquee-left var(--marquee-duration, 45s) linear infinite;
+  }
+  .marquee-row-reverse {
+    animation-name: marquee-right;
+  }
+  .marquee:hover .marquee-row {
+    animation-play-state: paused;
+  }
+  .marquee-inner {
+    transform: translateX(var(--drag-offset, 0px));
+    will-change: transform;
+  }
+  .marquee-mask {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right,
+      var(--color-background) 0%,
+      rgba(255,255,255,0) 8%,
+      rgba(255,255,255,0) 92%,
+      var(--color-background) 100%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-row { animation: none; }
+  }
+}
+
+/* Enhanced service card styling */
+@layer components {
+  .service-card {
+    @apply bg-card border border-border rounded-2xl p-7 transition-all duration-300 flex flex-col h-full;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+  }
+  
+  .service-card:hover {
+    @apply border-primary/60 transform -translate-y-2 shadow-xl;
+    box-shadow: 0 20px 25px -5px rgba(230, 0, 122, 0.15), 0 10px 10px -5px rgba(230, 0, 122, 0.1);
+  }
+  
+  .service-card-image {
+    @apply mb-5 rounded-xl overflow-hidden w-full h-48 object-cover transition-transform duration-500;
+  }
+  
+  .service-card-icon-container {
+    @apply w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0;
+    background: linear-gradient(135deg, hsla(var(--primary), 0.15), transparent);
+  }
+  
+  .service-card-title {
+    @apply text-2xl font-bold leading-tight text-primary;
+    word-break: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+  }
+  
+  .service-card-description {
+    @apply text-base text-foreground leading-relaxed mb-6 flex-grow;
+  }
+  
+  .service-card-cta {
+    @apply mt-auto pt-4 border-t border-border/50;
+  }
+  
+  .service-card-cta-text {
+    @apply text-primary font-semibold text-base flex items-center gap-2;
+  }
+}
+
+/* Language-specific styling for Norwegian titles */
+@layer utilities {
+  .no .service-card-title {
+    word-break: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    overflow-wrap: break-word;
+  }
+  
+  /* Additional hyphenation support */
+  .hyphenate-no {
+    hyphens: auto;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-shadow-md {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card:hover {
+    transform: none;
+  }
+  
+  .service-card-image {
+    transition: none;
   }
 }

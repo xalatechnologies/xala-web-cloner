@@ -31,6 +31,7 @@ i18n
             aboutDescription: 'Learn about our mission and expertise',
             contactDescription: 'Get in touch for a non-committal conversation'
           },
+          Loading: 'Loading',
           hero: {
             welcome: 'Welcome to the Future of Technology',
             title: 'Building Digital',
@@ -193,11 +194,11 @@ i18n
               contactInfo: {
                 email: {
                   title: 'Email',
-                  value: 'post@xala.no'
+                  value: 'Info@xala.no'
                 },
                 phone: {
                   title: 'Phone',
-                  value: '+47 123 45 678'
+                  value: '+47 966 65 001'
                 },
                 responseTime: {
                   title: 'Response time',
@@ -252,7 +253,10 @@ i18n
                 description: "Pioneered quantum computing applications for complex calculations, achieving unprecedented accuracy rates",
                 metrics: "99.9% Accuracy Rate"
               }
-            }
+            },
+            showMore: 'Show More Case Studies',
+            showLess: 'Show Less',
+            noResults: 'No case studies available'
           },
           contact: {
             title: "Let's Build Something Amazing",
@@ -500,6 +504,7 @@ i18n
             aboutDescription: 'Lær om vårt oppdrag og ekspertise',
             contactDescription: 'Ta kontakt for en uforpliktende samtale'
           },
+          Loading: 'Laster',
           hero: {
             welcome: 'Velkommen til fremtidens teknologi',
             title: 'Bygger Digital',
@@ -662,11 +667,11 @@ i18n
               contactInfo: {
                 email: {
                   title: 'E-post',
-                  value: 'post@xala.no'
+                  value: 'Info@xala.no'
                 },
                 phone: {
                   title: 'Telefon',
-                  value: '+47 123 45 678'
+                  value: '+47 966 65 001'
                 },
                 responseTime: {
                   title: 'Responstid',
@@ -721,7 +726,10 @@ i18n
                 description: "Pionerte kvantedataapplikasjoner for komplekse beregninger, oppnådde enestående nøyaktighetsgrad",
                 metrics: "99.9% nøyaktighetsgrad"
               }
-            }
+            },
+            showMore: 'Se flere casestudier',
+            showLess: 'Vis mindre',
+            noResults: 'Ingen casestudier tilgjengelig'
           },
           contact: {
             title: "La oss bygge noe fantastisk",
@@ -850,105 +858,102 @@ i18n
                 secondary: "Book konsultasjon"
               },
               value: {
-                partnership: "Strategisk partnerskap",
-                transformation: "Digital transformasjon",
-                results: "Målbare resultater",
-                innovation: "Innovasjonsledelse"
+                partnership: "Strategisk Partnerskap",
+                transformation: "Digital Transformasjon",
+                results: "Målbare Resultater",
+                innovation: "Kontinuerlig Innovasjon"
               }
             },
             navigation: {
-              challenge: "Hva kan vi løse for din bedrift?",
+              challenge: "Hvilke Forretningsutfordringer Kan Vi Løse for Deg?",
               solutions: "Forretningsløsninger",
-              outcomes: "Suksesshistorier",
-              partnership: "Partnerskap",
-              consultation: "Gratis konsultasjon"
+              outcomes: "Resultater",
+              partnership: "Partnerskapsmodell",
+              consultation: "Gratis Konsultasjon"
             },
             services: {
               digitalTransformation: {
-                title: "Digital transformasjon",
-                challenge: "Eldre systemer som begrenser forretningsvekst og effektivitet",
+                title: "Digital Transformasjon",
+                challenge: "Eldre systemer som hindrer din bedrifts vekst og effektivitet",
                 outcome: "Modernisert infrastruktur som muliggjør rask skalering og forbedret kundeopplevelse",
-                approach: "Strategisk teknologikart med målbar forretningseffekt",
-                timeline: "3-8 måneder for fullstendig transformasjon",
+                approach: "Strategisk teknologiveikart med målbar forretningspåvirkning",
+                timeline: "3-8 måneder for full transformasjon",
                 investment: "Fra 500 000 NOK"
               },
               aiAutomation: {
-                title: "AI og intelligent automatisering",
-                challenge: "Manuelle prosesser som forbruker ressurser og skaper flaskehalser",
+                title: "AI & Intelligent Automatisering",
+                challenge: "Manuelle prosesser som konsumerer ressurser og skaper flaskehalser",
                 outcome: "Automatiserte arbeidsflyter som reduserer driftskostnader og forbedrer nøyaktighet",
                 approach: "Tilpassede AI-løsninger integrert med eksisterende forretningsprosesser",
                 timeline: "2-6 måneder for full automatiseringsimplementering",
                 investment: "Fra 200 000 NOK"
               },
               enterpriseIntegration: {
-                title: "Virksomhetsintegrasjon og API-er",
-                challenge: "Adskilte systemer som skaper datasiloer og ineffektivitet",
+                title: "Bedriftsintegrasjon & APIer",
+                challenge: "Frakoblede systemer som skaper datasiloer og ineffektiviteter",
                 outcome: "Samlet dataøkosystem som muliggjør sømløs informasjonsflyt",
-                approach: "Moderne API-arkitektur som forbinder alle forretningssystemer",
-                timeline: "2-5 måneder for fullstendig integrasjon",
+                approach: "Moderne API-arkitektur som kobler sammen alle forretningssystemer",
+                timeline: "2-5 måneder for full integrasjon",
                 investment: "Fra 300 000 NOK"
               },
               modernWebApps: {
-                title: "Moderne webapplikasjoner",
-                challenge: "Utdatert nettilstedeværelse som begrenser kundeengasjement",
-                outcome: "Forbedret digital tilstedeværelse som driver kundeakkvisisjon og kundelojalitet",
-                approach: "Brukersentrert design med banebrytende teknologi",
-                timeline: "1-4 måneder for full distribusjon",
+                title: "Moderne Webapplikasjoner",
+                challenge: "Utdatert webtilstedeværelse som begrenser kundeengasjement",
+                outcome: "Forbedret digital tilstedeværelse som driver kundeanskaffelse og tilbakekall",
+                approach: "Brukerfokusert design med banebrytende teknologi",
+                timeline: "1-4 måneder for full utrullering",
                 investment: "Fra 150 000 NOK"
               }
             },
             stories: {
               title: "Kundesuksesshistorier",
-              subtitle: "Målbar forretningseffekt gjennom teknologi",
-              cta: "Utforsk alle suksesshistorier",
+              subtitle: "Målbar Forretningspåvirkning Gjennom Teknologi",
+              cta: "Utforsk Alle Suksesshistorier",
               metrics: {
-                efficiency: "Effektivitetsforbedring",
+                efficiency: "Effektivitetsøkning",
                 cost_savings: "Kostnadsbesparelser",
                 revenue_growth: "Inntektsvekst",
                 time_reduction: "Tidsreduksjon"
               }
             },
             partnership: {
-              title: "Din teknologitransformasjonspartner",
-              subtitle: "Samarbeidstilnærming til forretningssuksess",
+              title: "Din Teknologitransformasjonspartner",
+              subtitle: "Kollaborativ Tilnærming til Forretningshell",
               approach: {
                 consultation: {
-                  title: "Strategisk rådgivning",
-                  description: "Forstå dine forretningsutfordringer og transformasjonsmål"
+                  title: "Strategisk Konsultasjon",
+                  description: "Forståelse av dine forretningsutfordringer og transformasjonsmål"
                 },
                 planning: {
                   title: "Løsningsarkitektur",
-                  description: "Design teknologiløsninger som er i tråd med forretningsmål"
+                  description: "Design av teknologiløsninger som er i tråd med forretningsmål"
                 },
                 implementation: {
-                  title: "Smidig levering",
-                  description: "Iterativ utvikling med kontinuerlig levering av forretningsverdi"
+                  title: "Agil Levering",
+                  description: "Iterativ utvikling med kontinuerlig forretningsverdi-levering"
                 },
                 optimization: {
-                  title: "Kontinuerlig optimalisering",
-                  description: "Pågående støtte og forbedring for vedvarende forretningsvekst"
+                  title: "Kontinuerlig Optimalisering",
+                  description: "Løpende støtte og forbedring for bærekraftig forretningsvekst"
                 }
               }
             },
             cta: {
               consultation: {
-                title: "Klar til å transformere din bedrift?",
+                title: "Klar til å Transformere Din Bedrift?",
                 description: "Book en gratis konsultasjon for å diskutere dine digitale transformasjonsbehov",
-                button: "Book gratis konsultasjon",
+                button: "Book Gratis Konsultasjon",
                 guarantee: "Ingen forpliktelser - bare innsikt og anbefalinger"
               },
               contact: {
-                business: "Forespørsel om forretningsendring",
-                partnership: "Strategisk partnerskapsdiskusjon",
-                solution: "Forespørsel om tilpasset løsning"
+                business: "Forretningsomdannelse Henvendelse",
+                partnership: "Strategisk Partnerskapsdiskusjon",
+                solution: "Tilpasset Løsningsforespørsel"
               }
             }
           }
         }
       }
-    },
-    detection: {
-      order: ['navigator']
     }
   });
 

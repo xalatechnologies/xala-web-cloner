@@ -8,7 +8,7 @@ Ibrahim Rahmani
 - Microsoft Certified | MSc Informasjonssystemer
 - Frontend Developer | Backend Developer
 - Full-stack Developer | Team Leader
-- Contact: +47 940 77 006 | ibrahim@xala.no
+- Contact: +47 966 65 001 | Info@xala.no
 - LinkedIn: linkedin.com/in/ibrahimrahmani/
 
 ## Core Expertise
@@ -41,7 +41,7 @@ Ibrahim Rahmani
 - Azure Active Directory
 
 ## Contact Information
-- Phone: +47 940 77 006
-- Email: ibrahim@xala.no
+- Phone: +47 966 65 001
+- Email: Info@xala.no
 - Location: Norway
 - LinkedIn: linkedin.com/in/ibrahimrahmani/

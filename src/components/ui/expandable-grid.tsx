@@ -25,23 +25,23 @@ const ExpandableGrid = ({ items, initialRows = 1, cols = 3 }: ExpandableGridProp
   };
 
   return (
-    <div className="space-y-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-0">
+    <div className="space-y-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {visibleItems.map((item, index) => (
-          <div key={index} className={`animate-fade-in w-full`}>
+          <div key={index} className="w-full">
             {item}
           </div>
         ))}
       </div>
 
       {visibleRows < totalRows && (
-        <div className="flex justify-center mt-12">
+        <div className="flex justify-center mt-16">
           <Button
             onClick={handleShowMore}
-            className="group px-8 py-6 rounded-lg font-medium transition-all transform hover:scale-105
-              shadow-lg shadow-primary/20 bg-primary text-primary-foreground"
+            className="group px-8 py-6 rounded-xl font-semibold text-lg transition-all transform hover:scale-105
+              shadow-lg shadow-primary/25 bg-primary text-primary-foreground hover:bg-primary/90"
           >
-            <span className="flex items-center gap-2">
+            <span className="flex items-center gap-3">
               Show More
               <ChevronDown className="w-5 h-5 animate-bounce" />
             </span>

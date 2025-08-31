@@ -62,8 +62,8 @@ const companyInfo = {
   - Mobile Applications
   
   Contact:
-  - Phone: +47 940 77 006
-  - Email: ibrahim@xala.no
+  - Phone: +47 966 65 001
+  - Email: Info@xala.no
   - Location: Norway`,
   metadata: {
     source: 'company',

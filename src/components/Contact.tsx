@@ -39,7 +39,7 @@ const Contact = () => {
         plausibleDomain: 'xala.no'
       }}
     >
-      <section id="contact" className="relative py-24 overflow-hidden bg-background dark:bg-gradient-to-b dark:from-xala-primary dark:to-xala-secondary">
+      <section id="contact" className="relative py-24 overflow-hidden bg-background dark:bg-gradient-to-b dark:from-xala-primary dark:to-xala-secondary hero-gradient">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -left-1/4 -top-1/4 w-1/2 h-1/2 bg-primary/10 rounded-full blur-3xl animate-float-1"></div>
           <div className="absolute -right-1/4 -bottom-1/4 w-1/2 h-1/2 bg-primary/10 rounded-full blur-3xl animate-float-2"></div>

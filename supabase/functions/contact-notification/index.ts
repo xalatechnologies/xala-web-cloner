@@ -71,7 +71,7 @@ serve(async (req: Request) => {
     console.log('📧 Sending admin notification email...');
     await transport.sendMail({
       from: 'website@xala.no',
-      to: 'info@xala.no',
+      to: 'Info@xala.no',
       replyTo: email,
       subject: `New Contact Form Submission - Website: ${subject}`,
       html: `
@@ -166,4 +166,4 @@ serve(async (req: Request) => {
       }
     );
   }
-}); 
+});

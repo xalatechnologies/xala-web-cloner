@@ -92,7 +92,7 @@ const Teams = () => {
       pageId="team"
       language={i18n.language}
     >
-      <section id="team" className="py-12 sm:py-16 lg:py-20 bg-background relative overflow-hidden">
+      <section id="team" className="py-12 sm:py-16 lg:py-20 bg-background relative overflow-hidden hero-gradient">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-6 sm:gap-8 lg:gap-12">
             <div className="flex flex-col gap-3 sm:gap-4 text-center">

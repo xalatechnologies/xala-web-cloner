@@ -33,7 +33,7 @@ export const Chat: FC<ChatProps> = ({
 
   return (
     <div className={cn('flex h-full flex-col', className)}>
-      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 bg-gray-50/50">
+      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 bg-gray-50/50 dark:bg-background dark:text-foreground">
         <AnimatePresence initial={false}>
           {messages.map((message, index) => (
             <motion.div
@@ -53,7 +53,7 @@ export const Chat: FC<ChatProps> = ({
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="border-t border-border bg-surface p-4 flex-shrink-0">
+      <div className="border-t border-border bg-surface p-4 flex-shrink-0 dark:border-border dark:bg-background dark:text-foreground">
         <ChatInput
           onSendMessage={onSendMessage}
           disabled={disabled}

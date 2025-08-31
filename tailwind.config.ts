@@ -70,17 +70,6 @@ export default {
           foreground: "hsl(var(--info-foreground))",
         },
         
-        // Polkadot core colors (only for light mode)
-        pd: {
-          accent: "#E6007A",
-          accentHover: "#FF2670",
-          text: "#171717",
-          muted: "#5B5B5B",
-          surface: "#FFFFFF",
-          surface2: "#F3F5F7",
-          border: "#E7E9EE"
-        },
-        
         // Legacy support (gradually migrate away from these)
         surface: "hsl(var(--card))",
         danger: "hsl(var(--destructive))",
@@ -101,11 +90,11 @@ export default {
         '9xl': ['8rem', { lineHeight: '1' }],
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
-        display: ["var(--font-unbounded)", "Unbounded", "system-ui", "sans-serif"],
+        sans: ["Inter", "system-ui", "sans-serif"],
         serif: ["Fraunces", "Georgia", "serif"],
+        display: ["Fraunces", "Georgia", "serif"],
         body: ["Inter", "system-ui", "sans-serif"],
-        heading: ["Unbounded", "system-ui", "sans-serif"],
+        heading: ["Fraunces", "Georgia", "serif"],
       },
       fontWeight: {
         thin: '100',
@@ -125,21 +114,6 @@ export default {
         wide: '0.025em',
         wider: '0.05em',
         widest: '0.1em',
-      },
-      backgroundImage: {
-        // page top/bottom backdrop gradients (light blue -> white)
-        "pd-sky": "radial-gradient(1200px 600px at 20% 0%, #CFE6FF 0%, #FFFFFF 60%)",
-        // section accent wash (lime glow)
-        "pd-lime": "radial-gradient(900px 500px at 80% 50%, #D7FF5E 0%, rgba(215,255,94,0) 60%)",
-        // footer sky
-        "pd-sky-bottom": "radial-gradient(1000px 520px at 50% 100%, #CFE6FF 0%, #FFFFFF 55%)",
-      },
-      boxShadow: {
-        pd: "0 18px 48px rgba(0,0,0,.08)",
-      },
-      borderRadius: {
-        pill: "999px",
-        xl: "1rem",
       },
       animation: {
         "fade-in": "fade-in 0.5s ease-out forwards",

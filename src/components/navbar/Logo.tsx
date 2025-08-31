@@ -13,9 +13,9 @@ const Logo = ({ className = '' }: { className?: string }) => {
         <defs>
           {/* Static gradients */}
           <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FFB703" />
-            <stop offset="50%" stopColor="#FFB703" />
-            <stop offset="100%" stopColor="#FFB703" />
+            <stop offset="0%" stopColor="currentColor" />
+            <stop offset="50%" stopColor="currentColor" />
+            <stop offset="100%" stopColor="currentColor" />
           </linearGradient>
 
           {/* Circuit pattern with counter-rotation */}
@@ -41,7 +41,7 @@ const Logo = ({ className = '' }: { className?: string }) => {
           {/* Gentle glow */}
           <filter id="cyberGlow" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
-            <feFlood floodColor="#FFB703" floodOpacity="0.35" result="color"/>
+            <feFlood floodColor="currentColor" floodOpacity="0.35" result="color"/>
             <feComposite in="color" in2="blur" operator="in" result="glow"/>
             <feMerge>
               <feMergeNode in="glow"/>
@@ -107,54 +107,31 @@ const Logo = ({ className = '' }: { className?: string }) => {
           filter="url(#cyberGlow)"
         />
 
-        {/* Micro icons ring around the X */}
-        <g stroke="url(#mainGradient)" strokeWidth="1.2" fill="none" opacity="0.85">
-          {/* AI (brain) */}
+        {/* Simplified micro icons ring around the X - reduced from 8 to 4 for better visibility */}
+        <g stroke="url(#mainGradient)" strokeWidth="1.8" fill="none" opacity="1">
+          {/* AI (brain) - Top */}
           <g transform="translate(50 50) rotate(0) translate(0 -36)">
-            <path d="M-4 -2.5c2-2 6-2 8 0m-10 2.5h12m-10 2.5c2 2 6 2 8 0" />
-            <circle cx="-2.5" cy="0" r="1.1" />
-            <circle cx="2.5" cy="0" r="1.1" />
+            <path d="M-5 -3c2.5-2.5 7.5-2.5 10 0m-12.5 3.5h15m-12.5 3.5c2.5 2.5 7.5 2.5 10 0" />
+            <circle cx="-3" cy="0" r="1.5" />
+            <circle cx="3" cy="0" r="1.5" />
           </g>
-          {/* Database (cylinder) */}
-          <g transform="translate(50 50) rotate(45) translate(0 -36)">
-            <ellipse cx="0" cy="-3.5" rx="5" ry="2.2" />
-            <rect x="-5" y="-3.5" width="10" height="7" rx="1.2" />
-            <ellipse cx="0" cy="3.5" rx="5" ry="2.2" />
-          </g>
-          {/* Web app (browser window) */}
+          {/* Database (cylinder) - Right */}
           <g transform="translate(50 50) rotate(90) translate(0 -36)">
-            <rect x="-6" y="-5" width="12" height="10" rx="1.8" />
-            <line x1="-6" y1="-2.5" x2="6" y2="-2.5" />
-            <circle cx="-3.8" cy="-3.7" r="0.7" />
-            <circle cx="-1.8" cy="-3.7" r="0.7" />
-            <circle cx="0.2" cy="-3.7" r="0.7" />
+            <ellipse cx="0" cy="-4.5" rx="6" ry="2.8" />
+            <rect x="-6" y="-4.5" width="12" height="9" rx="1.5" />
+            <ellipse cx="0" cy="4.5" rx="6" ry="2.8" />
           </g>
-          {/* Applications (grid) */}
-          <g transform="translate(50 50) rotate(135) translate(0 -36)">
-            <rect x="-5.5" y="-5.5" width="4.5" height="4.5" rx="0.8" />
-            <rect x="1" y="-5.5" width="4.5" height="4.5" rx="0.8" />
-            <rect x="-5.5" y="1" width="4.5" height="4.5" rx="0.8" />
-            <rect x="1" y="1" width="4.5" height="4.5" rx="0.8" />
-          </g>
-          {/* Cloud */}
+          {/* Cloud - Bottom */}
           <g transform="translate(50 50) rotate(180) translate(0 -36)">
-            <path d="M-5 1.5a3.5 3.5 0 1 1 3.8-4 3 3 0 1 1 1.8 5.5h-5.6z" />
+            <path d="M-6 2a4 4 0 1 1 4.5-5 3.5 3.5 0 1 1 2.3 6.5h-6.8z" />
           </g>
-          {/* Code brackets */}
-          <g transform="translate(50 50) rotate(225) translate(0 -36)">
-            <path d="M-5 -4 l-2 2 l2 2 M5 -4 l2 2 l-2 2" />
-          </g>
-          {/* Chip */}
+          {/* Chip - Left */}
           <g transform="translate(50 50) rotate(270) translate(0 -36)">
-            <rect x="-4" y="-4" width="8" height="8" rx="1.2" />
-            <line x1="-7" y1="0" x2="-4" y2="0" />
-            <line x1="7" y1="0" x2="4" y2="0" />
-            <line x1="0" y1="-7" x2="0" y2="-4" />
-            <line x1="0" y1="7" x2="0" y2="4" />
-          </g>
-          {/* Data flow (arrows) */}
-          <g transform="translate(50 50) rotate(315) translate(0 -36)">
-            <path d="M-5 0 h7 m0 0 l-2 -2 m2 2 l-2 2" />
+            <rect x="-5" y="-5" width="10" height="10" rx="1.5" />
+            <line x1="-8" y1="0" x2="-5" y2="0" />
+            <line x1="8" y1="0" x2="5" y2="0" />
+            <line x1="0" y1="-8" x2="0" y2="-5" />
+            <line x1="0" y1="8" x2="0" y2="5" />
           </g>
         </g>
       </svg>

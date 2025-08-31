@@ -36,16 +36,16 @@ const Services = () => {
   const renderContent = () => {
     if (isLoading) {
       return (
-        <div className="flex justify-center items-center min-h-[200px]">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-400"></div>
+        <div className="flex justify-center items-center min-h-[300px]">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-primary"></div>
         </div>
       );
     }
 
     if (!services.length) {
       return (
-        <div className="text-center text-xala-text">
-          <p>{t('No services available')}</p>
+        <div className="text-center text-foreground py-16">
+          <p className="text-xl">{t('No services available')}</p>
         </div>
       );
     }
@@ -57,14 +57,14 @@ const Services = () => {
 
   return (
     <MainLayout pageId="services">
-      <section id="services" className="py-20 bg-background relative overflow-hidden">
+      <section id="services" className="py-24 bg-background hero-gradient dark:bg-background">
         <div className="container">
-          <div className="flex flex-col gap-12">
-            <div className="flex flex-col gap-4 text-center">
-              <h2 className="text-3xl font-bold tracking-tight gradient-text sm:text-4xl">
+          <div className="flex flex-col gap-16">
+            <div className="flex flex-col gap-6 text-center max-w-3xl mx-auto">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight gradient-text">
                 {section.title}
               </h2>
-              <p className="text-lg leading-8 text-muted-foreground">
+              <p className="text-xl leading-8 text-muted-foreground">
                 {section.description}
               </p>
             </div>

@@ -1,5 +1,5 @@
 import { Database } from '@/integrations/supabase/types';
-import { Menu, X, Settings, Code, Briefcase, Target, Info, Phone } from 'lucide-react';
+import { Menu, X, Settings, Code, Briefcase, Target, Info, Phone, Users } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useBusinessNavigation, useBusinessServices } from '@/i18n/business-content';
@@ -45,44 +45,42 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
     {
       name: t('nav.services'),
       href: '/tjenester',
-      icon: Settings,
-      description: t('nav.servicesDescription')
+      icon: Settings
     },
     {
       name: t('nav.products'),
       href: '/produkter',
-      icon: Code,
-      description: t('nav.productsDescription')
+      icon: Code
     },
     {
       name: t('nav.cases'),
       href: '/caser',
-      icon: Briefcase,
-      description: t('nav.casesDescription')
+      icon: Briefcase
     },
     {
       name: t('nav.workProcess'),
       href: '/slik-vi-jobber',
-      icon: Target,
-      description: t('nav.workProcessDescription')
+      icon: Target
     },
     {
       name: t('nav.technology'),
       href: '/teknologi',
-      icon: Code,
-      description: t('nav.technologyDescription')
+      icon: Code
+    },
+    {
+      name: t('nav.team'),
+      href: '/om-oss/team',
+      icon: Users
     },
     {
       name: t('nav.about'),
       href: '/om-oss',
-      icon: Info,
-      description: t('nav.aboutDescription')
+      icon: Info
     },
     {
       name: t('nav.contact'),
       href: '/kontakt',
       icon: Phone,
-      description: t('nav.contactDescription'),
       isPrimary: true
     }
   ];
@@ -123,7 +121,7 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Main Navigation Grid - Optimized for 2 rows */}
-          <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
+          <div className="grid gap-5 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
             {/* First 4 items - First row on large screens */}
             {mainNavItems.slice(0, 4).map((item, index) => {
               const IconComponent = item.icon;
@@ -132,32 +130,28 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
                   key={item.name}
                   to={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="group cursor-pointer p-6 rounded-xl transition-all duration-300 hover:scale-105 border block shadow-md hover:shadow-lg bg-card/80 border-border/50 hover:border-border min-w-0"
+                  className="group cursor-pointer p-5 rounded-xl transition-all duration-300 hover:scale-[1.02] border block shadow-md hover:shadow-lg bg-card/90 border-border/50 hover:border-border min-w-0 backdrop-blur-sm nav-item-hover"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-xl bg-muted/80">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2.5 rounded-lg bg-muted/80 group-hover:bg-primary/20 transition-colors duration-200">
                       <IconComponent 
-                        size={24} 
-                        className="transition-colors text-foreground" 
+                        size={20} 
+                        className="transition-colors text-foreground group-hover:text-primary" 
                       />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-lg font-semibold mb-2 transition-colors text-foreground truncate">
+                      <h4 className="text-base font-medium transition-colors text-foreground truncate group-hover:text-primary">
                         {item.name}
                       </h4>
-                      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
-                        {item.description}
-                      </p>
                     </div>
                   </div>
                 </Link>
               );
             })}
             
-            {/* Last 3 items - Second row on large screens */}
-            {/* Center the last 3 items on large screens by adding offset */}
+            {/* Last 4 items - Second row on large screens */}
             <div className="hidden lg:block lg:col-span-4">
-              <div className="grid grid-cols-3 gap-6 max-w-3xl mx-auto">
+              <div className="grid grid-cols-4 gap-5 max-w-4xl mx-auto">
                 {mainNavItems.slice(4).map((item, index) => {
                   const IconComponent = item.icon;
                   return (
@@ -165,41 +159,44 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
                       key={item.name}
                       to={item.href}
                       onClick={() => setIsOpen(false)}
-                      className={`group cursor-pointer p-4 sm:p-6 rounded-xl transition-all duration-300 hover:scale-105 border block shadow-md hover:shadow-lg min-w-0 ${
+                      className={`group cursor-pointer p-5 rounded-xl transition-all duration-300 hover:scale-[1.02] border block shadow-md hover:shadow-lg min-w-0 backdrop-blur-sm nav-item-hover ${
                         item.isPrimary 
                           ? 'bg-gradient-to-br from-primary/15 to-primary/5 border-primary/30 hover:border-primary/50' 
-                          : 'bg-card/80 border-border/50 hover:border-border'
+                          : 'bg-card/90 border-border/50 hover:border-border'
                       }`}
                     >
-                      <div className="flex items-start gap-4">
-                        <div className={`p-3 rounded-xl ${item.isPrimary ? 'bg-primary/20' : 'bg-muted/80'}`}>
+                      <div className="flex items-center gap-3">
+                        <div className={`p-2.5 rounded-lg transition-colors duration-200 ${
+                          item.isPrimary 
+                            ? 'bg-primary/20 group-hover:bg-primary/30' 
+                            : 'bg-muted/80 group-hover:bg-primary/20'
+                        }`}>
                           <IconComponent 
-                            size={24} 
-                            className={`transition-colors ${item.isPrimary ? 'text-primary' : 'text-foreground'}`} 
+                            size={20} 
+                            className={`transition-colors ${
+                              item.isPrimary 
+                                ? 'text-primary group-hover:text-primary/80' 
+                                : 'text-foreground group-hover:text-primary'
+                            }`} 
                           />
                         </div>
                         <div className="flex-1">
-                          <h4 className={`text-lg font-semibold mb-2 transition-colors ${item.isPrimary ? 'text-primary' : 'text-foreground'} truncate`}>
+                          <h4 className={`text-base font-medium transition-colors truncate ${
+                            item.isPrimary 
+                              ? 'text-primary group-hover:text-primary/80' 
+                              : 'text-foreground group-hover:text-primary'
+                          }`}>
                             {item.name}
                           </h4>
-                          <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
-                            {item.description}
-                          </p>
                         </div>
                       </div>
-                      {item.isPrimary && (
-                        <div className="mt-4 flex items-center gap-2 text-primary">
-                          <Phone size={14} />
-                          <span className="text-sm font-medium">Ta kontakt</span>
-                        </div>
-                      )}
                     </Link>
                   );
                 })}
               </div>
             </div>
             
-            {/* Mobile and tablet: show last 3 items normally */}
+            {/* Mobile and tablet: show last 4 items normally */}
             {mainNavItems.slice(4).map((item, index) => {
               const IconComponent = item.icon;
               return (
@@ -207,34 +204,37 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
                   key={`mobile-${item.name}`}
                   to={item.href}
                   onClick={() => setIsOpen(false)}
-                  className={`lg:hidden group cursor-pointer p-4 sm:p-6 rounded-xl transition-all duration-300 hover:scale-105 border block shadow-md hover:shadow-lg min-w-0 ${
+                  className={`lg:hidden group cursor-pointer p-5 rounded-xl transition-all duration-300 hover:scale-[1.02] border block shadow-md hover:shadow-lg min-w-0 backdrop-blur-sm nav-item-hover ${
                     item.isPrimary 
-                      ? 'bg-gradient-to-br from-primary/15 to-primary/5 border-primary/30 hover:border-primary/50 sm:col-span-2' 
-                      : 'bg-card/80 border-border/50 hover:border-border'
+                      ? 'bg-gradient-to-br from-primary/15 to-primary/5 border-primary/30 hover:border-primary/50' 
+                      : 'bg-card/90 border-border/50 hover:border-border'
                   }`}
                 >
-                  <div className="flex items-start gap-4">
-                    <div className={`p-3 rounded-xl ${item.isPrimary ? 'bg-primary/20' : 'bg-muted/80'}`}>
+                  <div className="flex items-center gap-3">
+                    <div className={`p-2.5 rounded-lg transition-colors duration-200 ${
+                      item.isPrimary 
+                        ? 'bg-primary/20 group-hover:bg-primary/30' 
+                        : 'bg-muted/80 group-hover:bg-primary/20'
+                    }`}>
                       <IconComponent 
-                        size={24} 
-                        className={`transition-colors ${item.isPrimary ? 'text-primary' : 'text-foreground'}`} 
+                        size={20} 
+                        className={`transition-colors ${
+                          item.isPrimary 
+                            ? 'text-primary group-hover:text-primary/80' 
+                            : 'text-foreground group-hover:text-primary'
+                        }`} 
                       />
                     </div>
                     <div className="flex-1">
-                      <h4 className={`text-lg font-semibold mb-2 transition-colors ${item.isPrimary ? 'text-primary' : 'text-foreground'} truncate`}>
+                      <h4 className={`text-base font-medium transition-colors truncate ${
+                        item.isPrimary 
+                          ? 'text-primary group-hover:text-primary/80' 
+                          : 'text-foreground group-hover:text-primary'
+                      }`}>
                         {item.name}
                       </h4>
-                      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
-                        {item.description}
-                      </p>
                     </div>
                   </div>
-                  {item.isPrimary && (
-                    <div className="mt-4 flex items-center gap-2 text-primary">
-                      <Phone size={14} />
-                      <span className="text-sm font-medium">Ta kontakt</span>
-                    </div>
-                  )}
                 </Link>
               );
             })}

@@ -15,7 +15,11 @@ export default function TeamTeaser() {
     if (n.includes('hamid')) {
       return 'object-[center_35%]';
     }
-    if (n.includes('amin') || n.includes('wahid')) {
+    if (n.includes('wahid')) {
+      // Further adjusted positioning for Wahid to show his head and hair more clearly
+      return 'object-[center_25%]';
+    }
+    if (n.includes('amin')) {
       return 'object-[center_38%]';
     }
     return 'object-[center_20%]';
@@ -27,7 +31,8 @@ export default function TeamTeaser() {
       return { base: 'scale-[1.08]', hover: 'group-hover:scale-[1.12]' };
     }
     if (n.includes('amin') || n.includes('wahid')) {
-      return { base: 'scale-[1.18]', hover: 'group-hover:scale-[1.22]' };
+      // Further reduce zoom for better head and hair visibility
+      return { base: 'scale-[1.12]', hover: 'group-hover:scale-[1.16]' };
     }
     return { base: 'scale-[1.08]', hover: 'group-hover:scale-[1.12]' };
   };
