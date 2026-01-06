@@ -13,25 +13,32 @@ interface TeamGridProps {
 const TeamGrid = ({ members, initialRows = 1, cols = 3 }: TeamGridProps) => {
   const [visibleRows, setVisibleRows] = useState(initialRows);
 
-  const memberCards = members.slice(0, visibleRows * cols).map((member) => (
+  // Extract unique roles with their descriptions from members
+  const roleMap = new Map<string, string | null>();
+  members.forEach(member => {
+    if (member.role && !roleMap.has(member.role)) {
+      roleMap.set(member.role, member.description);
+    }
+  });
+
+  // Limit to 6 cards maximum
+  const uniqueRoles = Array.from(roleMap.entries()).slice(0, 6);
+
+  const roleCards = uniqueRoles.slice(0, visibleRows * cols).map(([role, description], index) => (
     <TeamMemberCard
-      key={member.id}
-      name={member.name}
-      role={member.role}
-      description={member.description}
-      imageUrl={member.image_url}
-      linkedinUrl={member.linkedin_url}
-      email={member.email}
+      key={`role-${index}`}
+      role={role}
+      description={description}
     />
   ));
 
   return (
     <div className="w-full">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-        {memberCards}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
+        {roleCards}
       </div>
       
-      {members.length > visibleRows * cols && (
+      {uniqueRoles.length > visibleRows * cols && (
         <div className="flex justify-center mt-8 sm:mt-12">
           <button
             onClick={() => setVisibleRows(prev => prev + 1)}

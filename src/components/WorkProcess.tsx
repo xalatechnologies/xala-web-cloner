@@ -165,7 +165,7 @@ const WorkProcess = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-12 md:mb-20 animate-fade-in">
-          <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-4 md:mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 md:mb-6">
             {section?.title || t('workProcess.title')}
           </h2>
           <p className="text-xala-text/80 max-w-2xl mx-auto text-base md:text-lg px-4">

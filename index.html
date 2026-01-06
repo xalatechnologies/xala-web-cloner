@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Xala Technologies AS | Innovative Teknologiløsninger | Oslo, Norge</title>
     <meta name="theme-color" content="#F7F3EA" />
+    <script>
+      // Set dark mode as default before React loads to prevent flash
+      if (!localStorage.getItem('theme')) {
+        document.documentElement.classList.add('dark');
+      } else {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else if (theme === 'light') {
+          document.documentElement.classList.remove('dark');
+        }
+      }
+    </script>
     
     <!-- Primary Meta Tags -->
     <meta name="title" content="Xala Technologies AS | Innovative Teknologiløsninger | Oslo, Norge">

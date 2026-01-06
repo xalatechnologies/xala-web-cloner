@@ -5,12 +5,12 @@ import Footer from '../components/Footer';
 
 export default function ProdukterPage() {
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="pt-20">
+      <div className="pt-20 flex-1">
         <CoreProducts />
       </div>
       <Footer />
-    </>
+    </div>
   );
 }

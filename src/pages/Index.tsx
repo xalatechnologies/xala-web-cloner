@@ -23,18 +23,20 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-xala-primary">
+    <div className="min-h-screen flex flex-col bg-xala-primary">
       <Navbar />
-      <VideoHero words={getHeroWords()} />
-      <Clients />
-      <ValueProps />
-      <ServicesTeaser />
-      <ProductsTeaser />
-      <ProcessTeaser />
-      <TeamTeaser />
-      <TechTeaser />
-      <FinalCTA />
-      <ContactTeaser />
+      <div className="flex-1">
+        <VideoHero words={getHeroWords()} />
+        <Clients />
+        <ValueProps />
+        <ServicesTeaser />
+        <ProductsTeaser />
+        <ProcessTeaser />
+        <TeamTeaser />
+        <TechTeaser />
+        <FinalCTA />
+        <ContactTeaser />
+      </div>
       <Footer />
     </div>
   );
