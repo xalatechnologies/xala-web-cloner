@@ -1,0 +1,123 @@
+{
+  "nav": {
+    "services": "Tjenester",
+    "servicesDescription": "Utforsk våre omfattende digitale løsninger og tjenester",
+    "products": "Produkter",
+    "productsDescription": "Oppdag våre innovative programvareprodukter og verktøy",
+    "cases": "Caser",
+    "casesDescription": "Utforsk våre vellykkede prosjektimplementeringer",
+    "workProcess": "Vår Prossess",
+    "workProcessDescription": "Lær om vår testede metode og tilnærming",
+    "technology": "Teknologi",
+    "technologyDescription": "Oppdag vår moderne teknologistack",
+    "team": "Team",
+    "about": "Om Oss",
+    "aboutDescription": "Lær mer om vårt selskap og vår misjon",
+    "contact": "Kontakt",
+    "contactDescription": "Kom i kontakt med vårt team"
+  },
+  "business": {
+    "hero": {
+      "title": "Transformer Din Bedrift med Innovativ Teknologi",
+      "subtitle": "Strategisk Partnerskap for Digitalt Fremragende",
+      "description": "Vi hjelper fremtidsrettede bedrifter med å utnytte moderne teknologi for å drive vekst, effektivitet og konkurransefortrinn i den digitale tidsalderen.",
+      "cta": {
+        "primary": "Start Din Transformasjon",
+        "secondary": "Se Vårt Arbeid"
+      },
+      "value": {
+        "partnership": "Strategisk Partnerskap",
+        "transformation": "Digital Transformasjon",
+        "results": "Målbare Resultater",
+        "innovation": "Kontinuerlig Innovasjon"
+      }
+    },
+    "navigation": {
+      "challenge": "Utfordring",
+      "solutions": "Løsninger",
+      "outcomes": "Resultater",
+      "partnership": "Partnerskap",
+      "consultation": "Konsultasjon"
+    },
+    "services": {
+      "digitalTransformation": {
+        "title": "Digital Transformasjon",
+        "challenge": "Eldre systemer som hindrer din bedrift?",
+        "outcome": "Moderne, skalerbare løsninger som driver vekst",
+        "approach": "Omfattende analyse og strategisk implementering",
+        "timeline": "3-6 måneder",
+        "investment": "Fra 50 000 NOK"
+      },
+      "aiAutomation": {
+        "title": "AI & Automatisering",
+        "challenge": "Manuelle prosesser som bremser deg?",
+        "outcome": "Intelligent automatisering som sparer tid og penger",
+        "approach": "Tilpassede AI-løsninger skreddersydd for dine behov",
+        "timeline": "2-4 måneder",
+        "investment": "Fra 30 000 NOK"
+      },
+      "enterpriseIntegration": {
+        "title": "Bedriftsintegrasjon",
+        "challenge": "Frakoblede systemer som skaper ineffektivitet?",
+        "outcome": "Sømløs dataflyt på tvers av organisasjonen",
+        "approach": "API-først integrasjonsstrategi",
+        "timeline": "4-8 måneder",
+        "investment": "Fra 75 000 NOK"
+      },
+      "modernWebApps": {
+        "title": "Moderne Webapplikasjoner",
+        "challenge": "Utdaterte grensesnitt som påvirker brukeropplevelsen?",
+        "outcome": "Raske, responsive applikasjoner som engasjerer brukere",
+        "approach": "Moderne frontend med robust backend",
+        "timeline": "2-5 måneder",
+        "investment": "Fra 40 000 NOK"
+      }
+    },
+    "stories": {
+      "title": "Suksesshistorier",
+      "subtitle": "Reelle resultater for reelle bedrifter",
+      "cta": "Se Alle Caser",
+      "metrics": {
+        "efficiency": "Effektivitetsøkning",
+        "cost_savings": "Kostnadsbesparelser",
+        "revenue_growth": "Inntektsvekst",
+        "time_reduction": "Tidsreduksjon"
+      }
+    },
+    "partnership": {
+      "title": "Strategisk Partnerskap",
+      "subtitle": "Din suksess er vår suksess",
+      "approach": {
+        "consultation": {
+          "title": "Oppdagelseskonsultasjon",
+          "description": "Vi begynner med en omfattende forståelse av dine bedriftsmål, utfordringer og muligheter."
+        },
+        "planning": {
+          "title": "Strategisk Planlegging",
+          "description": "Vårt team utvikler en detaljert veikart med klare milepæler, leveranser og suksessmål."
+        },
+        "implementation": {
+          "title": "Utførelse & Levering",
+          "description": "Vi bygger og implementerer løsninger med kontinuerlige tilbakemeldingsløkker for å sikre samsvar med din visjon."
+        },
+        "optimization": {
+          "title": "Optimalisering & Vekst",
+          "description": "Støtte etter lansering, ytelsesovervåking og løpende forbedringer for å maksimere avkastning."
+        }
+      }
+    },
+    "cta": {
+      "consultation": {
+        "title": "Klar til å Transformere Din Bedrift?",
+        "description": "Book en gratis konsultasjon for å diskutere ditt prosjekt og oppdage hvordan vi kan hjelpe deg med å nå dine mål.",
+        "button": "Book Gratis Konsultasjon",
+        "guarantee": "100% Tilfredshetsgaranti"
+      },
+      "contact": {
+        "business": "Bedriftshenvendelse",
+        "partnership": "Partnerskapsmulighet",
+        "solution": "Løsningsdiskusjon"
+      }
+    }
+  }
+}

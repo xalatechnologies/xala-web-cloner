@@ -1,0 +1,30 @@
+// Add these to your English translation file (en.json or similar)
+{
+  "contact": {
+    "form": {
+      "name": "Your Name",
+      "email": "Email Address",
+      "subject": "Subject",
+      "message": "Your Message",
+      "status": {
+        "send": "Send Message",
+        "sending": "Sending..."
+      },
+      "validation": {
+        "name_min": "Name must be at least {{minimum}} characters",
+        "email_invalid": "Please enter a valid email address",
+        "subject_min": "Subject must be at least {{minimum}} characters",
+        "message_min": "Message must be at least {{minimum}} characters",
+        "captcha_required": "Please complete the captcha verification"
+      },
+      "success": {
+        "title": "Message Sent",
+        "description": "Thank you for your message. We will get back to you soon!"
+      },
+      "error": {
+        "title": "Error",
+        "description": "There was a problem sending your message. Please try again."
+      }
+    }
+  }
+}

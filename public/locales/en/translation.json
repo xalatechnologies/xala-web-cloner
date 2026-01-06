@@ -1,0 +1,123 @@
+{
+  "nav": {
+    "services": "Services",
+    "servicesDescription": "Explore our comprehensive digital solutions and services",
+    "products": "Products",
+    "productsDescription": "Discover our innovative software products and tools",
+    "cases": "Case Studies",
+    "casesDescription": "Explore our successful project implementations",
+    "workProcess": "Our Process",
+    "workProcessDescription": "Learn about our proven methodology and approach",
+    "technology": "Technology",
+    "technologyDescription": "Discover our cutting-edge technology stack",
+    "team": "Team",
+    "about": "About Us",
+    "aboutDescription": "Learn more about our company and mission",
+    "contact": "Contact",
+    "contactDescription": "Get in touch with our team"
+  },
+  "business": {
+    "hero": {
+      "title": "Transform Your Business with Innovative Technology",
+      "subtitle": "Strategic Partnership for Digital Excellence",
+      "description": "We help forward-thinking businesses leverage cutting-edge technology to drive growth, efficiency, and competitive advantage in the digital age.",
+      "cta": {
+        "primary": "Start Your Transformation",
+        "secondary": "View Our Work"
+      },
+      "value": {
+        "partnership": "Strategic Partnership",
+        "transformation": "Digital Transformation",
+        "results": "Measurable Results",
+        "innovation": "Continuous Innovation"
+      }
+    },
+    "navigation": {
+      "challenge": "Challenge",
+      "solutions": "Solutions",
+      "outcomes": "Outcomes",
+      "partnership": "Partnership",
+      "consultation": "Consultation"
+    },
+    "services": {
+      "digitalTransformation": {
+        "title": "Digital Transformation",
+        "challenge": "Legacy systems holding your business back?",
+        "outcome": "Modern, scalable solutions that drive growth",
+        "approach": "Comprehensive analysis and strategic implementation",
+        "timeline": "3-6 months",
+        "investment": "From $50,000"
+      },
+      "aiAutomation": {
+        "title": "AI & Automation",
+        "challenge": "Manual processes slowing you down?",
+        "outcome": "Intelligent automation that saves time and money",
+        "approach": "Custom AI solutions tailored to your needs",
+        "timeline": "2-4 months",
+        "investment": "From $30,000"
+      },
+      "enterpriseIntegration": {
+        "title": "Enterprise Integration",
+        "challenge": "Disconnected systems creating inefficiencies?",
+        "outcome": "Seamless data flow across your organization",
+        "approach": "API-first integration strategy",
+        "timeline": "4-8 months",
+        "investment": "From $75,000"
+      },
+      "modernWebApps": {
+        "title": "Modern Web Applications",
+        "challenge": "Outdated interfaces affecting user experience?",
+        "outcome": "Fast, responsive applications that engage users",
+        "approach": "Cutting-edge frontend with robust backend",
+        "timeline": "2-5 months",
+        "investment": "From $40,000"
+      }
+    },
+    "stories": {
+      "title": "Success Stories",
+      "subtitle": "Real results for real businesses",
+      "cta": "View All Case Studies",
+      "metrics": {
+        "efficiency": "Efficiency Increase",
+        "cost_savings": "Cost Savings",
+        "revenue_growth": "Revenue Growth",
+        "time_reduction": "Time Reduction"
+      }
+    },
+    "partnership": {
+      "title": "Strategic Partnership",
+      "subtitle": "Your success is our success",
+      "approach": {
+        "consultation": {
+          "title": "Discovery Consultation",
+          "description": "We begin with a comprehensive understanding of your business goals, challenges, and opportunities."
+        },
+        "planning": {
+          "title": "Strategic Planning",
+          "description": "Our team develops a detailed roadmap with clear milestones, deliverables, and success metrics."
+        },
+        "implementation": {
+          "title": "Execution & Delivery",
+          "description": "We build and deploy solutions with continuous feedback loops to ensure alignment with your vision."
+        },
+        "optimization": {
+          "title": "Optimization & Growth",
+          "description": "Post-launch support, performance monitoring, and ongoing improvements to maximize ROI."
+        }
+      }
+    },
+    "cta": {
+      "consultation": {
+        "title": "Ready to Transform Your Business?",
+        "description": "Schedule a free consultation to discuss your project and discover how we can help you achieve your goals.",
+        "button": "Book Free Consultation",
+        "guarantee": "100% Satisfaction Guarantee"
+      },
+      "contact": {
+        "business": "Business Inquiry",
+        "partnership": "Partnership Opportunity",
+        "solution": "Solution Discussion"
+      }
+    }
+  }
+}

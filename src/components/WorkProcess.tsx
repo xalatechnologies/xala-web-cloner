@@ -1,115 +1,186 @@
-import { PhoneCall, Palette, Code2, TestTube2, Rocket, HeartHandshake } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { useSection } from "@/hooks/use-section";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { Skeleton } from "./ui/skeleton";
+import * as Icons from "lucide-react";
+import { LucideIcon, ArrowRight, ArrowDown } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
+
+interface WorkProcessItem {
+  id: string;
+  step_number: number;
+  title: string;
+  description: string;
+  icon: string;
+}
 
 const WorkProcess = () => {
-  const processes = [
-    {
-      icon: <PhoneCall className="w-8 h-8" />,
-      title: "Discovery Call",
-      description: "Initial consultation to understand your vision and requirements",
-      step: "01",
-      delay: "0"
+  const { t, i18n } = useTranslation();
+  const { data: section, isLoading: isSectionLoading } = useSection('work-process');
+  
+  const { data: processes, isLoading: isProcessesLoading } = useQuery({
+    queryKey: ['work-processes', i18n.language],
+    queryFn: async () => {
+      const currentLanguage = i18n.language.toLowerCase() as "en" | "no";
+      
+      let query = await supabase
+        .from('work_processes')
+        .select('*')
+        .eq('language', currentLanguage)
+        .order('step_number', { ascending: true });
+
+      if (query.error || !query.data?.length) {
+        query = await supabase
+          .from('work_processes')
+          .select('*')
+          .eq('language', 'en')
+          .order('step_number', { ascending: true });
+      }
+
+      if (query.error) {
+        throw query.error;
+      }
+
+      return query.data || [];
     },
-    {
-      icon: <Palette className="w-8 h-8" />,
-      title: "Design Process",
-      description: "Creating intuitive and engaging user experiences",
-      step: "02",
-      delay: "200"
-    },
-    {
-      icon: <Code2 className="w-8 h-8" />,
-      title: "Development",
-      description: "Building robust and scalable solutions",
-      step: "03",
-      delay: "400"
-    },
-    {
-      icon: <TestTube2 className="w-8 h-8" />,
-      title: "Testing Process",
-      description: "Ensuring quality and performance",
-      step: "04",
-      delay: "600"
-    },
-    {
-      icon: <Rocket className="w-8 h-8" />,
-      title: "Deployment",
-      description: "Launching your solution to the world",
-      step: "05",
-      delay: "800"
-    },
-    {
-      icon: <HeartHandshake className="w-8 h-8" />,
-      title: "Support",
-      description: "Ongoing maintenance and assistance",
-      step: "06",
-      delay: "1000"
-    }
-  ];
+  });
+
+  const getIconComponent = (iconName: string): LucideIcon => {
+    const IconComponent = Icons[iconName as keyof typeof Icons] as LucideIcon;
+    return IconComponent || Icons.HelpCircle;
+  };
+
+  const isLoading = isSectionLoading || isProcessesLoading;
+  const plugin = useRef(
+    Autoplay({
+      delay: 4000,
+      stopOnInteraction: true,
+    })
+  );
+
+  if (isLoading) {
+    return (
+      <section className="py-12 md:py-24 bg-background dark:bg-gradient-to-br dark:from-xala-primary dark:via-xala-secondary dark:to-xala-primary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-8">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="p-8 rounded-2xl bg-card border border-border">
+                <Skeleton className="h-8 w-8 mb-6" />
+                <Skeleton className="h-6 w-3/4 mb-3" />
+                <Skeleton className="h-20 w-full" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const renderProcessCard = (process: WorkProcessItem, index: number, totalProcesses: number) => {
+    const Icon = getIconComponent(process.icon);
+    
+    return (
+      <div key={process.id} className="relative group">
+        <div
+          className="relative h-full opacity-0 animate-[fade-in_0.5s_ease-out_forwards]"
+        >
+          <div className="h-full relative p-6 md:p-8 rounded-2xl bg-card text-card-foreground border border-border backdrop-blur-sm 
+                        hover:border-primary/50 transition-all duration-500 group-hover:transform group-hover:scale-[1.02]
+                        group-hover:shadow-2xl group-hover:shadow-primary/20">
+            <div className="absolute -top-4 -right-4 w-10 h-10 md:w-12 md:h-12 bg-primary rounded-full flex items-center justify-center
+                          transform group-hover:scale-110 transition-transform duration-300">
+              <span className="text-primary-foreground font-bold text-sm md:text-base">{String(process.step_number).padStart(2, '0')}</span>
+            </div>
+
+            <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4 mb-4">
+              <div className="text-primary relative">
+                <div className="absolute inset-0 bg-primary/20 filter blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative transform group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-6 h-6 md:w-8 md:h-8" />
+                </div>
+              </div>
+              <h3 className="text-lg md:text-xl font-semibold text-primary">{process.title}</h3>
+            </div>
+
+            <p className="text-sm md:text-base text-muted-foreground">{process.description}</p>
+          </div>
+        </div>
+        
+        {/* Add arrow based on screen size and position */}
+        {index < totalProcesses - 1 && (process.step_number === 3 ? (
+          <div className="flex flex-col items-center md:hidden py-4 text-primary">
+            <div className="relative">
+              <div className="absolute inset-0 bg-xala-accent/20 blur-lg transform scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative">
+                <ArrowDown className="w-6 h-6 animate-float" />
+              </div>
+            </div>
+            <div className="w-px h-8 bg-gradient-to-b from-primary/50 to-transparent"></div>
+          </div>
+        ) : process.step_number !== 3 && (
+          <>
+            {/* Down arrow for mobile */}
+            <div className="flex flex-col items-center md:hidden py-4 text-primary">
+              <div className="relative">
+                <div className="absolute inset-0 bg-xala-accent/20 blur-lg transform scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative">
+                  <ArrowDown className="w-6 h-6 animate-float" />
+                </div>
+              </div>
+              <div className="w-px h-8 bg-gradient-to-b from-primary/50 to-transparent"></div>
+            </div>
+
+            {/* Right arrow for desktop */}
+            <div className="hidden md:block absolute top-1/2 -right-12 transform -translate-y-1/2">
+              <div className="relative px-3">
+                <div className="absolute inset-0 bg-primary/20 blur-lg transform scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative">
+                  <ArrowRight className="w-6 h-6 text-primary animate-pulse-slow" />
+                </div>
+                <div className="absolute top-1/2 right-0 h-px w-8 bg-gradient-to-r from-primary/50 to-transparent transform -translate-y-1/2"></div>
+              </div>
+            </div>
+          </>
+        ))}
+      </div>
+    );
+  };
 
   return (
-    <section id="work-process" className="py-24 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary relative overflow-hidden">
-      {/* Animated background grid */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-5 animate-pulse"></div>
+    <section id="work-process" className="py-12 md:py-24 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary relative overflow-hidden">
 
-      {/* Floating orbs background effect */}
+
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/30 rounded-full filter blur-3xl animate-float-1"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-500/30 rounded-full filter blur-3xl animate-float-2"></div>
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-cyan-500/30 rounded-full filter blur-3xl animate-float-3"></div>
+        <div className="absolute top-1/4 left-1/4 w-48 md:w-64 h-48 md:h-64 bg-purple-500/30 rounded-full filter blur-3xl animate-float-1"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-48 md:w-64 h-48 md:h-64 bg-primary/30 rounded-full filter blur-3xl animate-float-2"></div>
+        <div className="absolute top-1/2 left-1/2 w-48 md:w-64 h-48 md:h-64 bg-cyan-500/30 rounded-full filter blur-3xl animate-float-3"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Section header */}
-        <div className="text-center mb-20 animate-fade-in">
-          <h2 className="text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-6">
-            Our Work Process Model
+        <div className="text-center mb-12 md:mb-20 animate-fade-in">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 md:mb-6">
+            {section?.title || t('workProcess.title')}
           </h2>
-          <p className="text-xala-text/80 max-w-2xl mx-auto text-lg">
-            A streamlined approach to delivering exceptional results
+          <p className="text-xala-text/80 max-w-2xl mx-auto text-base md:text-lg px-4">
+            {section?.description || t('workProcess.description')}
           </p>
         </div>
 
-        {/* Process steps */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
-          {processes.map((process, index) => (
-            <div
-              key={index}
-              className="relative group"
-              style={{
-                animation: 'fade-in 0.5s ease-out forwards',
-                animationDelay: `${process.delay}ms`,
-                opacity: 0
-              }}
-            >
-              {/* Connecting lines */}
-              {index < processes.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-xala-accent to-transparent transform -translate-y-1/2 z-10"></div>
-              )}
+        {/* Mobile view: Single column */}
+        <div className="md:hidden space-y-8">
+          {processes?.map((process, index) => renderProcessCard(process, index, processes.length))}
+        </div>
 
-              {/* Process card */}
-              <div className="relative p-8 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 
-                            hover:border-xala-accent/50 transition-all duration-500 group-hover:transform group-hover:scale-105
-                            group-hover:shadow-2xl group-hover:shadow-xala-accent/20">
-                {/* Step number */}
-                <div className="absolute -top-4 -right-4 w-12 h-12 bg-xala-accent rounded-full flex items-center justify-center
-                              transform group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-white font-bold">{process.step}</span>
-                </div>
-
-                {/* Icon with glow effect */}
-                <div className="mb-6 text-xala-accent relative">
-                  <div className="absolute inset-0 bg-xala-accent/20 filter blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="relative transform group-hover:scale-110 transition-transform duration-300">
-                    {process.icon}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <h3 className="text-xl font-semibold text-xala-accent mb-3">{process.title}</h3>
-                <p className="text-xala-text/70">{process.description}</p>
-              </div>
-            </div>
-          ))}
+        {/* Desktop view: Grid */}
+        <div className="hidden md:grid md:grid-cols-3 gap-8">
+          {processes?.map((process, index) => renderProcessCard(process, index, processes.length))}
         </div>
       </div>
     </section>

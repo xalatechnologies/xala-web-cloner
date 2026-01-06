@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main X shape -->
+  <path
+    d="M20 20 L80 80 M80 20 L20 80"
+    stroke="#8B5CF6"
+    stroke-width="12"
+    stroke-linecap="round"
+  />
+  
+  <!-- Gradient overlay -->
+  <path
+    d="M20 20 L80 80 M80 20 L20 80"
+    stroke="url(#gradient)"
+    stroke-width="8"
+    stroke-linecap="round"
+    opacity="0.75"
+  />
+
+  <!-- Define gradient -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="50%" stop-color="#D946EF" />
+      <stop offset="100%" stop-color="#0EA5E9" />
+    </linearGradient>
+  </defs>
+</svg>

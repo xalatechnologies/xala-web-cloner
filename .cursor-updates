@@ -1,0 +1,6 @@
+# Cursor Updates
+
+- Implemented email sending functionality using Resend for the contact form, including email service, API route, and form updates.
+- Refactored email sending to use Supabase Edge Functions instead of Express server.
+- Fixed environment variable configuration to use Vite's import.meta.env system.
+- Added database trigger and Edge Function for automated email notifications on contact form submissions. 

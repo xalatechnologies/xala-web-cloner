@@ -1,0 +1,42 @@
+:root {
+  --color-primary: #4F46E5;
+  --color-primary-hover: #4338CA;
+  --color-secondary: #A47864;
+  --color-secondary-hover: #8E6554;
+  --color-background: #F7F3EA;
+  --color-surface: #FFFFFF;
+  --color-text: #0F172A;
+  --color-text-muted: #475569;
+  --color-border: #E5E7EB;
+  --color-success: #16A34A;
+  --color-warning: #F4D06F;
+  --color-info: #2563EB;
+  --color-danger: #DC2626;
+
+  --focus-ring: rgba(79, 70, 229, 0.45);
+  --selection: rgba(79, 70, 229, 0.25);
+  --skeleton-from: rgba(2, 6, 23, 0.04);
+  --skeleton-to: rgba(2, 6, 23, 0.08);
+  --outline: #E5E7EB;
+}
+
+html, body {
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+::selection { background: var(--selection); }
+
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--focus-ring);
+}
+
+*::-webkit-scrollbar { height: 10px; width: 10px; }
+*::-webkit-scrollbar-track { background: var(--color-background); }
+*::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 999px; }
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: var(--color-text);
+  -webkit-box-shadow: 0 0 0 1000px var(--color-surface) inset;
+}

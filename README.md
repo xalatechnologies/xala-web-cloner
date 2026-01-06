@@ -1,69 +1,80 @@
-# Welcome to your Lovable project
+# Xala Technologies Website
 
-## Project info
+This is the official website for Xala Technologies, showcasing our expertise in software development, cloud solutions, and digital transformation.
 
-**URL**: https://lovable.dev/projects/f65a7545-07ad-4717-a51c-b52ae5181632
+## Project Overview
 
-## How can I edit this code?
+Built with modern web technologies, this website demonstrates our commitment to excellence in software development and technological innovation.
 
-There are several ways of editing your application.
+## Technologies Used
 
-**Use Lovable**
+- **React** - A JavaScript library for building user interfaces
+- **TypeScript** - Adds static typing to JavaScript
+- **Vite** - Next generation frontend tooling
+- **Tailwind CSS** - A utility-first CSS framework
+- **shadcn/ui** - High-quality React components
+- **Lucide Icons** - Beautiful open source icons
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/f65a7545-07ad-4717-a51c-b52ae5181632) and start prompting.
+## Development
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js (v18 or higher)
+- npm or yarn package manager
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Local Development
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+1. Clone the repository:
+```bash
+git clone https://github.com/your-username/xala-technologies.git
 ```
 
-**Edit a file directly in GitHub**
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+3. Start the development server:
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-**Use GitHub Codespaces**
+4. Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Building for Production
 
-## What technologies are used for this project?
+To create a production build:
 
-This project is built with .
+```bash
+npm run build
+# or
+yarn build
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Deployment
 
-## How can I deploy this project?
+The website can be deployed to any static hosting service like:
+- Vercel
+- Netlify
+- GitHub Pages
+- AWS S3
 
-Simply open [Lovable](https://lovable.dev/projects/f65a7545-07ad-4717-a51c-b52ae5181632) and click on Share -> Publish.
+## Contributing
 
-## I want to use a custom domain - is that possible?
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+## License
+
+This project is proprietary software owned by Xala Technologies.
+
+## Contact
+
+For any inquiries, please reach out to us through our website contact form.

@@ -1,111 +1,105 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import { useRef } from "react";
-
-const clients = [
-  {
-    name: "NOV",
-    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
-  },
-  {
-    name: "Statistics Norway",
-    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
-  },
-  {
-    name: "Altinn",
-    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
-  },
-  {
-    name: "FURST",
-    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
-  },
-  {
-    name: "Sykehuspartner",
-    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
-  },
-  {
-    name: "Norwegian",
-    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
-  },
-  {
-    name: "UNICEF",
-    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
-  },
-  {
-    name: "OCHA",
-    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
-  },
-  {
-    name: "TDS",
-    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
-  },
-  {
-    name: "Telia",
-    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
-  },
-  {
-    name: "SpareBank 1",
-    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
-  },
-  {
-    name: "Ruter",
-    logo: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png",
-  },
-];
+import { useTranslation } from "react-i18next";
+import { useSection } from "@/hooks/use-section";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { Skeleton } from "@/components/ui/skeleton";
+import ClientGrid from './clients/ClientGrid';
+import ClientMarquee from './clients/ClientMarquee';
+import type { Database } from '@/integrations/supabase/types';
 
 const Clients = () => {
-  const plugin = useRef(
-    Autoplay({ 
-      delay: 0, // Set to 0 for continuous movement
-      stopOnInteraction: false, 
-      stopOnMouseEnter: true,
-      rootNode: (emblaRoot) => emblaRoot.parentElement,
-    })
-  );
+  const { t } = useTranslation();
+  const { data: section, isLoading: isSectionLoading } = useSection('clients');
+
+  const { data: clients = [], isLoading: isClientsLoading } = useQuery({
+    queryKey: ['clients'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('clients')
+        .select('*')
+        .order('sort_order', { ascending: true });
+
+      if (error) {
+        throw new Error('Failed to fetch clients');
+      }
+
+      return data || [];
+    }
+  });
+
+  const isLoading = isSectionLoading || isClientsLoading;
+
+  const renderContent = () => {
+    if (isLoading) {
+      return (
+        <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {[...Array(8)].map((_, index) => (
+            <div key={index} className="h-40">
+              <Skeleton className="w-full h-full rounded-xl bg-xala-secondary/50" />
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    // Fallback list sourced from public/clients folder to ensure logos render
+    const fallbackClients: Array<Pick<Database['public']['Tables']['clients']['Row'], 'id' | 'name' | 'logo_url' | 'website_url' | 'language' | 'sort_order'>> = [
+      { id: 'ssb', name: 'Statistics Norway', logo_url: '/clients/ssb.svg', website_url: 'https://www.ssb.no', language: 'en', sort_order: 10 },
+      { id: 'nhn', name: 'Norsk Helsenett', logo_url: '/clients/nhn.svg', website_url: 'https://www.nhn.no', language: 'en', sort_order: 20 },
+      { id: 'sykehuspartner', name: 'Sykehuspartner', logo_url: '/clients/sykehuspartner.svg', website_url: 'https://www.sykehuspartner.no', language: 'en', sort_order: 30 },
+      { id: 'nov', name: 'NOV', logo_url: '/clients/nov2.svg', website_url: 'https://www.nov.com', language: 'en', sort_order: 40 },
+      { id: 'ocha', name: 'OCHA', logo_url: '/clients/ocha.png', website_url: 'https://www.unocha.org', language: 'en', sort_order: 50 },
+      { id: 'globalconnect', name: 'GlobalConnect', logo_url: '/clients/globelconnect.png', website_url: 'https://www.globalconnect.no', language: 'en', sort_order: 60 },
+      { id: 'furst', name: 'Fürst', logo_url: '/clients/furst.png', website_url: 'https://www.furst.no', language: 'en', sort_order: 70 },
+      { id: 'usaid', name: 'USAID', logo_url: '/clients/usaid.png', website_url: 'https://www.usaid.gov', language: 'en', sort_order: 80 },
+      { id: 'norwegian', name: 'Norwegian', logo_url: '/clients/norwegian.svg', website_url: 'https://www.norwegian.com', language: 'en', sort_order: 90 },
+      { id: 'altinn', name: 'Altinn', logo_url: '/clients/altinn.svg', website_url: 'https://www.altinn.no', language: 'en', sort_order: 100 },
+      { id: 'unicef', name: 'UNICEF', logo_url: '/clients/unicef.png', website_url: 'https://www.unicef.org', language: 'en', sort_order: 110 },
+      { id: 'nordre-follo', name: 'Nordre Follo kommune', logo_url: '/clients/nordre-follo.svg', website_url: 'https://www.nordrefollo.kommune.no', language: 'en', sort_order: 120 },
+      { id: 'ruter', name: 'Ruter', logo_url: '/clients/ruter.png', website_url: 'https://www.ruter.no', language: 'en', sort_order: 140 },
+      { id: 'sparebank', name: 'SpareBank 1', logo_url: '/clients/sparebank.png', website_url: 'https://www.sparebank1.no', language: 'en', sort_order: 150 },
+    ];
+
+    const fallbackMap = new Map(fallbackClients.map(fc => [fc.name.toLowerCase(), fc]));
+    const normalizedDb = (clients || []).map((c) => {
+      const key = (c.name || '').toLowerCase();
+      const fb = fallbackMap.get(key);
+      // Prefer local /clients assets if DB path missing or not set
+      const logo = (!c.logo_url || c.logo_url.trim() === '' || !c.logo_url.startsWith('/clients/')) && fb
+        ? fb.logo_url
+        : c.logo_url;
+      return { ...c, logo_url: logo } as Database['public']['Tables']['clients']['Row'];
+    });
+
+    const present = new Set(normalizedDb.map(c => (c.name || '').toLowerCase()));
+    const mergedClients = [
+      ...normalizedDb,
+      ...fallbackClients.filter(fc => !present.has(fc.name.toLowerCase()))
+    ] as unknown as Database['public']['Tables']['clients']['Row'][];
+
+    // Marquee presentation for delightful motion; falls back to static grid if motion is reduced
+    return (
+      <div className="space-y-12">
+        <ClientMarquee clients={mergedClients} rows={2} speedSeconds={120} />
+      </div>
+    );
+  };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-xala-primary to-xala-secondary overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-            Our Clients
+    <section id="clients" className="py-20 md:py-24 relative overflow-hidden bg-background highlight-gradient">
+      <div className="absolute inset-0 hidden dark:block bg-gradient-to-b from-xala-primary via-xala-secondary to-xala-primary" />
+
+      <div className="container mx-auto px-4 relative">
+        <div className="text-center mb-20 animate-fade-in">
+          <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-8">
+            {section?.title || t('clients.title')}
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Partnering with visionary clients to drive innovation, efficiency, and sustainable growth.
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
+            {section?.description || t('clients.description')}
           </p>
         </div>
 
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-            skipSnaps: true,
-            dragFree: true,
-          }}
-          plugins={[plugin.current]}
-          className="w-full max-w-6xl mx-auto"
-        >
-          <CarouselContent className="-ml-2 md:-ml-4">
-            {[...clients, ...clients].map((client, index) => (
-              <CarouselItem 
-                key={index} 
-                className="pl-2 md:pl-4 md:basis-1/4 lg:basis-1/6"
-              >
-                <div className="h-32 flex items-center justify-center p-4">
-                  <img
-                    src={client.logo}
-                    alt={client.name}
-                    className="max-w-[100px] max-h-[50px] object-contain opacity-80 hover:opacity-100 transition-all duration-700 ease-in-out transform hover:scale-110"
-                  />
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
+        {renderContent()}
       </div>
     </section>
   );

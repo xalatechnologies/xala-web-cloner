@@ -1,88 +1,78 @@
-import { ArrowRight, Stethoscope, FormInput, Building2 } from "lucide-react";
-import { Button } from "./ui/button";
+import { useTranslation } from 'react-i18next';
+import { useSection } from '@/hooks/use-section';
+import { useQuery } from '@tanstack/react-query';
+import { supabase } from '@/integrations/supabase/client';
+import ProductGrid from './products/ProductGrid';
+import { Skeleton } from './ui/skeleton';
+import { Database } from '@/integrations/supabase/types';
+
+type SupportedLanguage = Database['public']['Enums']['supported_language'];
 
 const CoreProducts = () => {
-  const products = [
-    {
-      title: "DoctorAI.no",
-      description: "AI-powered medical consultation platform that helps healthcare professionals make more informed decisions and improve patient care.",
-      icon: <Stethoscope className="w-12 h-12 text-xala-accent" />,
-      metrics: "10,000+ Consultations",
-      image: "/lovable-uploads/ea66315b-13e9-4a09-a8cb-c851dc16edff.png"
-    },
-    {
-      title: "FylleUt.no",
-      description: "Advanced AI-driven form builder that simplifies document creation and automation, making form filling effortless and intelligent.",
-      icon: <FormInput className="w-12 h-12 text-xala-accent" />,
-      metrics: "50,000+ Forms Generated",
-      image: "/lovable-uploads/9b91e49d-aca0-47e2-afa3-2544f823e714.png"
-    },
-    {
-      title: "Prinsipro",
-      description: "AI-powered architecture principles management system that streamlines design decisions and ensures consistency across projects.",
-      icon: <Building2 className="w-12 h-12 text-xala-accent" />,
-      metrics: "1,000+ Projects Managed",
-      image: "/lovable-uploads/ae7b22ee-8cf9-494a-9e98-8b5e537bd6c9.png"
+  const { t, i18n } = useTranslation();
+  const { data: section, isLoading: isSectionLoading } = useSection('core-products');
+  const currentLanguage = (i18n.language.toLowerCase().split('-')[0] === 'en' ? 'en' : 'no') as SupportedLanguage;
+
+  const { data: products = [], isLoading: isProductsLoading } = useQuery({
+    queryKey: ['products', currentLanguage],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .eq('language', currentLanguage)
+        .order('sort_order', { ascending: true });
+
+      if (error) {
+        throw new Error('Failed to fetch products');
+      }
+
+      return data || [];
     }
-  ];
+  });
+
+  const isLoading = isSectionLoading || isProductsLoading;
+
+  const renderContent = () => {
+    if (isLoading) {
+      return (
+        <div className="flex justify-center items-center min-h-[200px]">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-400"></div>
+        </div>
+      );
+    }
+
+    if (!products.length) {
+      return (
+        <div className="text-center text-xala-text">
+          <p>{t('No products available')}</p>
+        </div>
+      );
+    }
+
+    return (
+      <ProductGrid 
+        products={products} 
+        initialRows={section?.rows || 2}
+        cols={section?.columns || 3}
+      />
+    );
+  };
+
+  if (!section) return null;
 
   return (
-    <section className="py-20 bg-xala-primary relative overflow-hidden">
-      {/* Background gradient effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary opacity-50" />
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-xala-accent mb-4">
-            Our Products
-          </h2>
-          <p className="text-xala-text text-lg max-w-2xl mx-auto">
-            Innovative AI-powered solutions transforming healthcare, documentation, and architecture
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
-            <div
-              key={index}
-              className="group relative bg-xala-secondary rounded-xl p-6 hover:transform hover:scale-105 transition-all duration-300 overflow-hidden"
-            >
-              {/* Product image as background with overlay */}
-              <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              
-              {/* Content */}
-              <div className="relative z-10">
-                <div className="flex items-center justify-between mb-4">
-                  {product.icon}
-                  <span className="text-sm text-xala-accent font-semibold">
-                    {product.metrics}
-                  </span>
-                </div>
-                
-                <h3 className="text-xl font-semibold mb-3 text-xala-accent">
-                  {product.title}
-                </h3>
-                
-                <p className="text-xala-text mb-6">
-                  {product.description}
-                </p>
-                
-                <Button
-                  variant="outline"
-                  className="group w-full bg-transparent border border-xala-accent text-xala-accent hover:bg-xala-accent hover:text-white transition-all duration-300"
-                >
-                  Learn More
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </div>
-            </div>
-          ))}
+    <section id="core-products" className="py-20 bg-background relative overflow-hidden highlight-gradient">
+      <div className="container">
+        <div className="flex flex-col gap-12">
+          <div className="flex flex-col gap-4 text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              {section.title}
+            </h2>
+            <p className="text-lg leading-8 text-muted-foreground">
+              {section.description}
+            </p>
+          </div>
+          {renderContent()}
         </div>
       </div>
     </section>

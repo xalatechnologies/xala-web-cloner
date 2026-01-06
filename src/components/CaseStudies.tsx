@@ -1,83 +1,1281 @@
-import { ArrowRight, BookOpen, ChartBar, Award } from "lucide-react";
-import { Card, CardContent } from "./ui/card";
+import { useTranslation } from "react-i18next";
+import { useSection } from "@/hooks/use-section";
+import type { Database } from "@/integrations/supabase/types";
+import type { Section } from "@/types/section";
+import { useLocalizedData } from "@/hooks/use-localized-data";
+import { LoadingSpinner } from "./ui/loading-spinner";
+import CaseStudyGrid from './case-studies/CaseStudyGrid';
+import React, { useState } from "react";
+import { Button } from "./ui/button";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { motion } from "framer-motion";
+
+type CaseStudy = Database['public']['Tables']['case_studies']['Row'] & {
+  case_study_metrics: Database['public']['Tables']['case_study_metrics']['Row'][];
+};
+
+// Define static case studies for all companies (English)
+const staticCaseStudiesEn: CaseStudy[] = [
+  {
+    id: 'furst-static',
+    title: 'Furst',
+    description: 'Revolutionized legal document processing with AI-powered automation, reducing manual review time by 70% while maintaining 99.2% accuracy in contract analysis.',
+    image_url: '/clients/furst.png',
+    icon: null,
+    language: 'en',
+    company_name: 'Furst',
+    sort_order: 0,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'ocha-static',
+    title: 'OCHA',
+    description: 'Streamlined humanitarian response coordination for the UN Office for the Coordination of Humanitarian Affairs, creating data visualization tools that improved crisis response times by 45% and resource allocation efficiency by 30%.',
+    image_url: '/clients/ocha.png',
+    icon: null,
+    language: 'en',
+    company_name: 'OCHA',
+    sort_order: 14,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'altinn-static',
+    title: 'Altinn',
+    description: 'Transformed Norway\'s digital public service platform with scalable cloud infrastructure, serving over 5 million citizens with 99.99% uptime and enhanced security compliance.',
+    image_url: '/clients/altinn.svg',
+    icon: null,
+    language: 'en',
+    company_name: 'Altinn',
+    sort_order: 1,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'sparebank1-static',
+    title: 'SpareBank 1',
+    description: 'Modernized Norway\'s leading banking group with secure fintech solutions, enabling real-time transaction processing and improving customer onboarding efficiency by 65%.',
+    image_url: '/clients/sparebank.png',
+    icon: null,
+    language: 'en',
+    company_name: 'SpareBank 1',
+    sort_order: 2,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'unicef-static',
+    title: 'UNICEF',
+    description: 'Empowered global humanitarian efforts with resilient data infrastructure, enabling real-time monitoring of aid distribution across 190+ countries and improving response times by 40%.',
+    image_url: '/clients/unicef.png',
+    icon: null,
+    language: 'en',
+    company_name: 'UNICEF',
+    sort_order: 3,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'ruter-static',
+    title: 'Ruter',
+    description: 'Optimized Norway\'s largest public transport network with intelligent routing algorithms, reducing average commute times by 12% and increasing passenger satisfaction scores to 4.8/5.',
+    image_url: '/clients/ruter.png',
+    icon: null,
+    language: 'en',
+    company_name: 'Ruter',
+    sort_order: 4,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'nordre-follo-static',
+    title: 'Nordre Follo',
+    description: 'Digitized municipal services for 50,000+ residents with intuitive civic platforms, increasing digital service adoption by 85% and reducing administrative costs by 30%.',
+    image_url: '/clients/nordre-follo.svg',
+    icon: null,
+    language: 'en',
+    company_name: 'Nordre Follo',
+    sort_order: 5,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'nov-static',
+    title: 'NOV',
+    description: 'Engineered cutting-edge energy sector solutions with IoT-enabled monitoring systems, achieving 25% improvement in operational efficiency and predictive maintenance capabilities.',
+    image_url: '/clients/nov2.svg',
+    icon: null,
+    language: 'en',
+    company_name: 'NOV',
+    sort_order: 6,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'ssb-static',
+    title: 'Statistisk sentralbyrå',
+    description: 'Modernized Norway\'s national statistical office with big data analytics platforms, processing 10x more datasets while reducing computation time from hours to minutes.',
+    image_url: '/clients/ssb.svg',
+    icon: null,
+    language: 'en',
+    company_name: 'Statistisk sentralbyrå',
+    sort_order: 7,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'norsk-helsenett-static',
+    title: 'Norsk Helsenett',
+    description: 'Secured Norway\'s healthcare communication infrastructure with HIPAA-compliant solutions, connecting 300+ hospitals and clinics while maintaining 100% data privacy compliance.',
+    image_url: '/clients/nhn.svg',
+    icon: null,
+    language: 'en',
+    company_name: 'Norsk Helsenett',
+    sort_order: 8,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'sykehuspartner-static',
+    title: 'Sykehuspartner',
+    description: 'Transformed hospital procurement processes with automated supply chain solutions, reducing medical equipment downtime by 40% and saving hospitals over 15% on operational costs.',
+    image_url: '/clients/sykehuspartner.svg',
+    icon: null,
+    language: 'en',
+    company_name: 'Sykehuspartner',
+    sort_order: 9,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'telia-static',
+    title: 'Telia',
+    description: 'Enhanced Nordic telecommunications infrastructure with 5G-ready network solutions, expanding coverage to remote areas and improving network reliability by 35% across Scandinavia.',
+    image_url: '/clients/telia.png',
+    icon: null,
+    language: 'en',
+    company_name: 'Telia',
+    sort_order: 10,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'usaid-static',
+    title: 'USAID',
+    description: 'Empowered global development initiatives with data-driven impact assessment tools, enabling evidence-based decision making across 80+ countries and improving aid effectiveness by 28%.',
+    image_url: '/clients/usaid.png',
+    icon: null,
+    language: 'en',
+    company_name: 'USAID',
+    sort_order: 11,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'norwegian-static',
+    title: 'Norwegian',
+    description: 'Optimized airline operations with AI-powered revenue management systems, increasing ancillary revenue by 22% and improving flight scheduling efficiency across 150+ destinations worldwide.',
+    image_url: '/clients/norwegian.svg',
+    icon: null,
+    language: 'en',
+    company_name: 'Norwegian',
+    sort_order: 12,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'globalconnect-static',
+    title: 'GlobalConnect',
+    description: 'Revolutionized enterprise connectivity with software-defined networking solutions, providing 99.95% uptime SLA and reducing network provisioning time from weeks to hours for 5,000+ business customers.',
+    image_url: '/clients/globelconnect.png',
+    icon: null,
+    language: 'en',
+    company_name: 'GlobalConnect',
+    sort_order: 13,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  }
+];
+
+// Define static case studies for all companies (Norwegian)
+const staticCaseStudiesNo: CaseStudy[] = [
+  {
+    id: 'furst-static-no',
+    title: 'Furst',
+    description: 'Revolutionerte behandlingen av juridiske dokumenter med AI-drevet automatisering, reduserte manuell gjennomgangstid med 70 % samtidig som nøyaktigheten i kontraktanalyser ble opprettholdt på 99,2 %.',
+    image_url: '/clients/furst.png',
+    icon: null,
+    language: 'no',
+    company_name: 'Furst',
+    sort_order: 0,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'ocha-static-no',
+    title: 'OCHA',
+    description: 'Effektiviserte koordineringen av humanitær respons for FN Kontoret for koordinering av humanitære anliggender, ved å skape datavisualiseringsverktøy som forbedret kriseberedskapstiden med 45 % og effektiviteten i ressursfordelingen med 30 %.',
+    image_url: '/clients/ocha.png',
+    icon: null,
+    language: 'no',
+    company_name: 'OCHA',
+    sort_order: 14,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'altinn-static-no',
+    title: 'Altinn',
+    description: 'Transformerte Norges digitale offentlige tjenesteplattform med skalerbar skyinfrastruktur, betjente over 5 millioner innbyggere med 99,99 % oppetid og forbedret sikkerhetskompatibilitet.',
+    image_url: '/clients/altinn.svg',
+    icon: null,
+    language: 'no',
+    company_name: 'Altinn',
+    sort_order: 1,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'sparebank1-static-no',
+    title: 'SpareBank 1',
+    description: 'Moderniserte Norges ledende bankkonsern med sikre finansløsninger, muliggjorde sanntids transaksjonsbehandling og forbedret kundeonboarding-effektiviteten med 65 %.',
+    image_url: '/clients/sparebank.png',
+    icon: null,
+    language: 'no',
+    company_name: 'SpareBank 1',
+    sort_order: 2,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'unicef-static-no',
+    title: 'UNICEF',
+    description: 'Styrket globale humanitære innsatser med robust datainfrastruktur, muliggjorde sanntids overvåking av hjelpedistribusjon i over 190 land og forbedret responstider med 40 %.',
+    image_url: '/clients/unicef.png',
+    icon: null,
+    language: 'no',
+    company_name: 'UNICEF',
+    sort_order: 3,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'ruter-static-no',
+    title: 'Ruter',
+    description: 'Optimaliserte Norges største kollektivtransportnett med intelligente rutealgoritmer, reduserte gjennomsnittlig reisetid med 12 % og økte passasjertilfredsheten til 4,8/5.',
+    image_url: '/clients/ruter.png',
+    icon: null,
+    language: 'no',
+    company_name: 'Ruter',
+    sort_order: 4,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'nordre-follo-static-no',
+    title: 'Nordre Follo',
+    description: 'Digitaliserte kommunetjenester for 50 000+ innbyggere med intuitive borgerplattformer, økte adopsjonen av digitale tjenester med 85 % og reduserte administrative kostnader med 30 %.',
+    image_url: '/clients/nordre-follo.svg',
+    icon: null,
+    language: 'no',
+    company_name: 'Nordre Follo',
+    sort_order: 5,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'nov-static-no',
+    title: 'NOV',
+    description: 'Utformet banebrytende løsninger for energisektoren med IoT-aktiverte overvåkningssystemer, oppnådde 25 % forbedring i operasjonell effektivitet og prediktive vedlikeholdsfunksjoner.',
+    image_url: '/clients/nov2.svg',
+    icon: null,
+    language: 'no',
+    company_name: 'NOV',
+    sort_order: 6,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'ssb-static-no',
+    title: 'Statistisk sentralbyrå',
+    description: 'Moderniserte Norges nasjonale statistikkontor med plattformer for analyse av big data, behandlet 10 ganger flere datasett samtidig som beregningstiden ble redusert fra timer til minutter.',
+    image_url: '/clients/ssb.svg',
+    icon: null,
+    language: 'no',
+    company_name: 'Statistisk sentralbyrå',
+    sort_order: 7,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'norsk-helsenett-static-no',
+    title: 'Norsk Helsenett',
+    description: 'Sikret Norges helsekommunikasjonsinfrastruktur med HIPAA-kompatible løsninger, koblet sammen 300+ sykehus og klinikker samtidig som 100 % personvern ble opprettholdt.',
+    image_url: '/clients/nhn.svg',
+    icon: null,
+    language: 'no',
+    company_name: 'Norsk Helsenett',
+    sort_order: 8,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'sykehuspartner-static-no',
+    title: 'Sykehuspartner',
+    description: 'Transformerte sykehusenes innkjøpsprosesser med automatiserte forsyningskjedeløsninger, reduserte nedetid for medisinsk utstyr med 40 % og sparte sykehusene over 15 % på driftskostnadene.',
+    image_url: '/clients/sykehuspartner.svg',
+    icon: null,
+    language: 'no',
+    company_name: 'Sykehuspartner',
+    sort_order: 9,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'telia-static-no',
+    title: 'Telia',
+    description: 'Forbedret den nordiske telekominfrastrukturen med 5G-klare nettverksløsninger, utvidet dekning til avsidesliggende områder og forbedret nettverkspåliteligheten med 35 % på tvers av Skandinavia.',
+    image_url: '/clients/telia.png',
+    icon: null,
+    language: 'no',
+    company_name: 'Telia',
+    sort_order: 10,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'usaid-static-no',
+    title: 'USAID',
+    description: 'Styrket globale utviklingsinitiativer med datadrevne verktøy for effektmåling, muliggjorde beslutningsgrunnlag basert på evidens i over 80 land og forbedret bistandseffektiviteten med 28 %.',
+    image_url: '/clients/usaid.png',
+    icon: null,
+    language: 'no',
+    company_name: 'USAID',
+    sort_order: 11,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'norwegian-static-no',
+    title: 'Norwegian',
+    description: 'Optimaliserte flyselskapets operasjoner med AI-drevne inntektsstyringssystemer, økte tilleggsinntektene med 22 % og forbedret effektiviteten i flyrutesettingen til 150+ destinasjoner verden over.',
+    image_url: '/clients/norwegian.svg',
+    icon: null,
+    language: 'no',
+    company_name: 'Norwegian',
+    sort_order: 12,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'globalconnect-static-no',
+    title: 'GlobalConnect',
+    description: 'Revolutionerte bedriftskonnektivitet med nettverksløsninger basert på programvaredefinert nettverk, tilbød 99,95 % oppetid og reduserte nettverksprovisjoneringstiden fra uker til timer for 5000+ bedriftskunder.',
+    image_url: '/clients/globelconnect.png',
+    icon: null,
+    language: 'no',
+    company_name: 'GlobalConnect',
+    sort_order: 13,
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
+    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  }
+];
 
 const CaseStudies = () => {
-  const cases = [
-    {
-      title: "AI-Driven Analytics Platform",
-      description: "Developed a cutting-edge analytics platform using machine learning algorithms that increased client efficiency by 300%",
-      metrics: "300% Efficiency Increase",
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-      icon: <ChartBar className="w-6 h-6" />
-    },
-    {
-      title: "Neural Network Integration",
-      description: "Implemented advanced neural networks for real-time data processing, reducing response time by 85%",
-      metrics: "85% Faster Processing",
-      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7",
-      icon: <Award className="w-6 h-6" />
-    },
-    {
-      title: "Quantum Computing Solution",
-      description: "Pioneered quantum computing applications for complex calculations, achieving unprecedented accuracy rates",
-      metrics: "99.9% Accuracy Rate",
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
-      icon: <BookOpen className="w-6 h-6" />
+  const { t, i18n } = useTranslation();
+  const { data: section, isLoading: isSectionLoading } = useSection('case-studies');
+  const [visibleCount, setVisibleCount] = useState(6); // Initially show 6 case studies
+  const [isAnimating, setIsAnimating] = useState(false);
+  
+  const { data: caseStudies = [], isLoading: isCaseStudiesLoading } = useLocalizedData<CaseStudy>({
+    queryKey: 'case-studies',
+    table: 'case_studies',
+    relationships: 'case_study_metrics(*)',
+    orderBy: 'sort_order'
+  });
+
+  // Get the appropriate static case studies based on the current language
+  const getCurrentStaticCaseStudies = () => {
+    return i18n.language.startsWith('no') ? staticCaseStudiesNo : staticCaseStudiesEn;
+  };
+
+  // Log the fetched case studies to see what's being retrieved from the database
+  React.useEffect(() => {
+    if (caseStudies.length > 0) {
+      console.log('Database fetched case studies:', caseStudies);
     }
-  ];
+  }, [caseStudies]);
+
+  const isLoading = isSectionLoading || isCaseStudiesLoading;
+
+  const loadMore = () => {
+    setIsAnimating(true);
+    // Increase by 6 more cases each time, or show all if less than 6 remain
+    setVisibleCount(prevCount => {
+      const allCaseCount = getCurrentStaticCaseStudies().length + caseStudies.length;
+      const remainingCount = allCaseCount - prevCount;
+      const increment = Math.min(6, remainingCount);
+      return prevCount + increment;
+    });
+    
+    // Reset animation state after a short delay
+    setTimeout(() => setIsAnimating(false), 1000);
+  };
+
+  const renderContent = () => {
+    if (isLoading) {
+      return <LoadingSpinner />;
+    }
+
+    // Combine the static case studies with the fetched case studies
+    const allCaseStudies = [...getCurrentStaticCaseStudies(), ...caseStudies];
+    
+    // Filter out specific case studies that should be removed
+    const filteredCaseStudies = allCaseStudies.filter(study => {
+      // Filter for the "Digital Transformasjon for Retail" case study
+      const retailTitleMatch = study.title.includes('Retail') || study.title === 'Digital Transformasjon for Retail';
+      const retailDescriptionMatch = study.description?.includes('Digital Transformasjon for Retail') || 
+                             study.description?.includes('e-handelsløsning') ||
+                             study.description?.includes('200%');
+      
+      // Filter for other case studies mentioned in previous instructions
+      const altinnMatch = study.title.includes('Altinn') && study.title.includes('Modernisering');
+      const ssbMatch = study.title.includes('SSB') && study.title.includes('Data Platform');
+      const aiCustomerServiceMatch = study.title.includes('AI-Drevet Kundeservice') || 
+                                    study.title.includes('AI-drevet analyseplattform') ||
+                                    (study.description?.includes('AI-drevet') && study.description?.includes('300%'));
+      
+      // Filter for the Norwegian Booking System case
+      const norwegianBookingMatch = study.title.includes('Norwegian Booking System') ||
+                                   (study.title.includes('Norwegian') && study.description?.includes('bookingsystem')) ||
+                                   study.description?.includes('skalerbart bookingsystem');
+      
+      // General filter for any booking system cases
+      const bookingSystemMatch = study.title.includes('Booking System') || study.description?.includes('booking system');
+      
+      // NEW: Filter for the specific unwanted English case studies
+      const altinnModernizationMatch = study.title === 'Altinn Modernization' && 
+                                      study.description?.includes('Comprehensive modernization of Altinn');
+      const aiPoweredCustomerServiceMatch = study.title === 'AI-Powered Customer Service' && 
+                                           study.description?.includes('chatbot handling 70% of customer inquiries');
+      
+      // Return false if any match is found (to exclude the case study)
+      return !(retailTitleMatch || retailDescriptionMatch || altinnMatch || ssbMatch || aiCustomerServiceMatch || 
+               norwegianBookingMatch || bookingSystemMatch || altinnModernizationMatch || aiPoweredCustomerServiceMatch);
+    });
+
+    if (!filteredCaseStudies.length) {
+      return (
+        <div className="text-center text-xala-text">
+          <p>{t('caseStudies.noResults')}</p>
+        </div>
+      );
+    }
+
+    // Only show the specified number of case studies
+    const visibleCaseStudies = filteredCaseStudies.slice(0, visibleCount);
+    const hasMore = visibleCount < filteredCaseStudies.length;
+    const showLess = visibleCount > 6;
+
+    const handleShowLess = () => {
+      setIsAnimating(true);
+      setVisibleCount(6);
+      // Scroll to the top of the section
+      document.getElementById('case-studies')?.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => setIsAnimating(false), 1000);
+    };
+
+    return (
+      <div className="flex flex-col items-center gap-12 w-full">
+        <div className="w-full">
+          <CaseStudyGrid 
+            caseStudies={visibleCaseStudies}
+            initialRows={section?.rows || 2}
+            cols={section?.columns || 3}
+          />
+        </div>
+        
+        <div className="flex gap-4 flex-wrap justify-center">
+          {hasMore && (
+            <Button 
+              onClick={loadMore}
+              variant="outline" 
+              size="lg"
+              disabled={isAnimating}
+              className="mt-6 px-8 py-6 text-lg font-medium rounded-xl flex items-center gap-2 border-primary/20 hover:border-primary hover:bg-primary/5 transition-all duration-300 group shadow-lg hover:shadow-xl text-foreground hover:text-foreground"
+            >
+              {isAnimating ? (
+                <>
+                  <LoadingSpinner className="h-5 w-5" />
+                  <span>{t('Loading')}...</span>
+                </>
+              ) : (
+                <>
+                  {t('caseStudies.showMore')}
+                  <motion.div
+                    animate={{ rotate: isAnimating ? 360 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <ChevronDown className="h-5 w-5 group-hover:translate-y-1 transition-transform" />
+                  </motion.div>
+                </>
+              )}
+            </Button>
+          )}
+          
+          {showLess && (
+            <Button 
+              onClick={handleShowLess}
+              variant="outline" 
+              size="lg"
+              disabled={isAnimating}
+              className="mt-6 px-8 py-6 text-lg font-medium rounded-xl flex items-center gap-2 border-primary/20 hover:border-primary hover:bg-primary/5 transition-all duration-300 group shadow-lg hover:shadow-xl text-foreground hover:text-foreground"
+            >
+              {t('caseStudies.showLess')}
+              <ChevronUp className="h-5 w-5 group-hover:-translate-y-1 transition-transform" />
+            </Button>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  if (!section) return null;
 
   return (
-    <section className="py-20 bg-xala-secondary relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary opacity-50"></div>
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-5"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Section header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl font-bold text-xala-accent mb-4">Case Studies</h2>
-          <p className="text-xala-text/80 max-w-2xl mx-auto">
-            Explore how our innovative solutions have transformed businesses and redefined possibilities
-          </p>
-        </div>
-
-        {/* Case studies grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {cases.map((study, index) => (
-            <Card 
-              key={index}
-              className="group relative overflow-hidden bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm 
-                       border border-white/10 hover:border-xala-accent/50 transition-all duration-300"
-            >
-              <CardContent className="p-0">
-                {/* Image container */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={study.image}
-                    alt={study.title}
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-xala-primary/90 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 flex items-center gap-2 text-xala-accent">
-                    {study.icon}
-                    <span className="font-semibold">{study.metrics}</span>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-xala-accent mb-3">{study.title}</h3>
-                  <p className="text-xala-text/70 mb-4">{study.description}</p>
-                  
-                  {/* Read more link */}
-                  <div className="flex items-center gap-2 text-xala-accent group/link cursor-pointer">
-                    <span className="font-medium">Read Case Study</span>
-                    <ArrowRight className="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+    <section id="case-studies" className="py-20 bg-background relative overflow-hidden hero-gradient">
+      <div className="container">
+        <div className="flex flex-col gap-12">
+          <div className="flex flex-col gap-4 text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              {section.title}
+            </h2>
+            <p className="text-lg leading-8 text-text-muted">
+              {section.description}
+            </p>
+          </div>
+          {renderContent()}
         </div>
       </div>
     </section>

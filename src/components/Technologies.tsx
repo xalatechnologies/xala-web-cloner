@@ -1,74 +1,76 @@
-import { Code2, Brain, Layout, Palette, Server, Terminal } from 'lucide-react';
+import { useTranslation } from "react-i18next";
+import { useSection } from "@/hooks/use-section";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import type { Database } from '@/integrations/supabase/types';
+import TechnologyGrid from './technologies/TechnologyGrid';
+
+type SupportedLanguage = Database['public']['Enums']['supported_language'];
 
 const Technologies = () => {
-  const technologies = [
-    {
-      icon: <Code2 className="w-8 h-8 text-xala-accent mb-4" />,
-      name: "Frontend Development",
-      tools: ["React", "TypeScript", "Tailwind CSS"]
+  const { t, i18n } = useTranslation();
+  const { data: section, isLoading: isSectionLoading } = useSection('technologies');
+  
+  const { data: technologies = [], isLoading: isTechnologiesLoading } = useQuery({
+    queryKey: ['technologies', i18n.language],
+    queryFn: async () => {
+      const currentLanguage = i18n.language.toLowerCase() as SupportedLanguage;
+      
+      const { data, error } = await supabase
+        .from('technologies')
+        .select('*')
+        .eq('language', currentLanguage)
+        .order('sort_order', { ascending: true });
+
+      if (error) {
+        throw new Error('Failed to fetch technologies');
+      }
+
+      return data || [];
     },
-    {
-      icon: <Server className="w-8 h-8 text-xala-accent mb-4" />,
-      name: "Backend Solutions",
-      tools: ["Node.js", "RESTful APIs", "GraphQL"]
-    },
-    {
-      icon: <Brain className="w-8 h-8 text-xala-accent mb-4" />,
-      name: "AI Solutions",
-      tools: ["GPT-4", "LangChain", "Eleven Labs"]
-    },
-    {
-      icon: <Layout className="w-8 h-8 text-xala-accent mb-4" />,
-      name: "UI/UX Design",
-      tools: ["Figma", "Adobe XD", "Sketch"]
-    },
-    {
-      icon: <Terminal className="w-8 h-8 text-xala-accent mb-4" />,
-      name: "DevOps",
-      tools: ["Docker", "Kubernetes", "CI/CD"]
-    },
-    {
-      icon: <Palette className="w-8 h-8 text-xala-accent mb-4" />,
-      name: "Design Systems",
-      tools: ["Material UI", "Shadcn/UI", "Storybook"]
+  });
+
+  const isLoading = isSectionLoading || isTechnologiesLoading;
+
+  const renderContent = () => {
+    if (isLoading) {
+      return (
+        <div className="flex justify-center items-center min-h-[200px]">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-400"></div>
+        </div>
+      );
     }
-  ];
+
+    if (!technologies.length) {
+      return (
+        <div className="text-center text-xala-text">
+          {t('technologies.noData')}
+        </div>
+      );
+    }
+
+    return (
+      <TechnologyGrid 
+        technologies={technologies} 
+        initialRows={section?.rows || 2}
+        cols={section?.columns || 3}
+      />
+    );
+  };
 
   return (
-    <section className="py-20 bg-xala-primary">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-            Technologies & Tools
+    <section className="py-12 sm:py-16 lg:py-20 bg-background dark:bg-gradient-to-b dark:from-xala-secondary dark:via-xala-primary dark:to-xala-secondary highlight-gradient">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16 animate-fade-in">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-foreground">
+            {section?.title || t('technologies.title')}
           </h2>
-          <p className="text-xala-text text-lg max-w-2xl mx-auto">
-            We leverage cutting-edge technologies and industry-standard tools to deliver exceptional solutions
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-4 sm:px-6">
+            {section?.description || t('technologies.description')}
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {technologies.map((tech, index) => (
-            <div
-              key={index}
-              className="p-6 bg-xala-secondary rounded-xl border border-gray-800 hover:border-xala-accent/50 transition-all duration-300"
-            >
-              <div className="flex flex-col items-center text-center">
-                {tech.icon}
-                <h3 className="text-xl font-semibold mb-4 text-xala-accent">{tech.name}</h3>
-                <div className="flex flex-wrap justify-center gap-2">
-                  {tech.tools.map((tool, toolIndex) => (
-                    <span
-                      key={toolIndex}
-                      className="px-3 py-1 bg-xala-primary rounded-full text-sm text-xala-text"
-                    >
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        {renderContent()}
       </div>
     </section>
   );
