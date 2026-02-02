@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Mail, Phone, Clock } from 'lucide-react';
+import { Mail, Phone, Clock, ChevronRight } from 'lucide-react';
 
 export default function ContactTeaser() {
   const { t } = useTranslation();
-  
+
   return (
     <section className="py-20 md:py-24 bg-primary dark:bg-gradient-to-br dark:from-background dark:via-muted dark:to-background text-primary-foreground dark:text-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -15,7 +15,7 @@ export default function ContactTeaser() {
         <p className="text-xl md:text-2xl text-primary-foreground/90 dark:text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed font-light">
           {t('teasers.contact.description')}
         </p>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-5xl mx-auto">
           <div className="text-center p-6 rounded-2xl bg-primary-foreground/10 dark:bg-accent backdrop-blur-sm">
             <div className="flex justify-center mb-4">
@@ -39,15 +39,13 @@ export default function ContactTeaser() {
             <div className="text-xl text-primary-foreground/80 dark:text-muted-foreground">{t('teasers.contact.contactInfo.responseTime.value')}</div>
           </div>
         </div>
-        
-        <Link 
-          to="/kontakt" 
+
+        <Link
+          to="/kontakt"
           className="inline-flex items-center px-10 py-5 border border-primary-foreground/20 dark:border-border text-xl font-medium rounded-xl text-primary-foreground dark:text-foreground bg-primary-foreground/10 dark:bg-accent hover:bg-primary-foreground/20 dark:hover:bg-accent/80 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 dark:hover:text-amber-500"
         >
           {t('teasers.contact.getInTouch')}
-          <svg className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          <ChevronRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-1" />
         </Link>
       </div>
     </section>

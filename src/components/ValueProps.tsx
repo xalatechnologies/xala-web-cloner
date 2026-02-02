@@ -1,74 +1,79 @@
-import React from 'react';
+
 import { useTranslation } from 'react-i18next';
+import { Zap, TrendingUp, Lightbulb, Heart } from 'lucide-react';
 
 export default function ValueProps() {
   const { t } = useTranslation();
-  
+
   const values = [
     {
       title: t('valueProps.fastDelivery.title'),
       description: t('valueProps.fastDelivery.description'),
-      icon: (
-        <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      )
+      icon: Zap
     },
     {
       title: t('valueProps.scalableSolutions.title'),
       description: t('valueProps.scalableSolutions.description'),
-      icon: (
-        <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
-        </svg>
-      )
+      icon: TrendingUp
     },
     {
       title: t('valueProps.expertise.title'),
       description: t('valueProps.expertise.description'),
-      icon: (
-        <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-        </svg>
-      )
+      icon: Lightbulb
     },
     {
       title: t('valueProps.fullService.title'),
       description: t('valueProps.fullService.description'),
-      icon: (
-        <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-        </svg>
-      )
+      icon: Heart
     }
   ];
 
   return (
     <section className="py-20 md:py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             {t('valueProps.title')}
           </h2>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             {t('valueProps.description')}
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {values.map((value, index) => (
-            <div key={index} className="text-center group">
-              <div className="mx-auto h-20 w-20 text-primary mb-8 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
-                {value.icon}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {values.map((value, index) => {
+            const IconComponent = value.icon;
+            return (
+              <div
+                key={index}
+                className="p-8 rounded-2xl border border-border bg-card hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 group relative overflow-hidden"
+              >
+                {/* Gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/0 
+                                group-hover:from-primary/5 group-hover:via-transparent group-hover:to-primary/10 
+                                transition-all duration-500 pointer-events-none" />
+
+                <div className="relative z-10">
+                  {/* Icon aligned with title in a row */}
+                  <div className="flex items-center gap-4 mb-5">
+                    <div className="relative shrink-0">
+                      {/* Icon glow effect */}
+                      <div className="absolute inset-0 bg-primary/25 rounded-xl blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="relative p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
+                        <IconComponent className="w-8 h-8 text-primary group-hover:scale-110 transition-transform duration-300" />
+                      </div>
+                    </div>
+                    <h3 className="text-xl md:text-2xl font-bold text-card-foreground group-hover:text-primary transition-colors duration-300">
+                      {value.title}
+                    </h3>
+                  </div>
+                  <p className="text-base md:text-lg text-muted-foreground group-hover:text-foreground leading-relaxed transition-colors duration-300 pl-0 md:pl-[68px]">
+                    {value.description}
+                  </p>
+                </div>
               </div>
-              <h3 className="text-2xl font-bold text-foreground mb-6 group-hover:text-primary transition-colors">
-                {value.title}
-              </h3>
-              <p className="text-lg text-muted-foreground leading-relaxed font-light">
-                {value.description}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
