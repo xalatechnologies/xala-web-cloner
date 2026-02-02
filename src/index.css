@@ -341,6 +341,100 @@
   .dark .footer-gradient {
     background: transparent;
   }
+
+  /* Silky bottom border - thin at edges, visible in middle */
+  .silky-border {
+    position: relative;
+  }
+
+  .silky-border::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--primary) / 0.1) 10%,
+      hsl(var(--primary) / 0.4) 30%,
+      hsl(var(--primary) / 0.6) 50%,
+      hsl(var(--primary) / 0.4) 70%,
+      hsl(var(--primary) / 0.1) 90%,
+      transparent 100%
+    );
+  }
+
+  /* Enhanced section backgrounds with subtle gradients */
+  .section-enhanced {
+    position: relative;
+  }
+
+  .section-enhanced::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 80% 50% at 50% 0%,
+      hsl(var(--primary) / 0.03) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  /* Alternate section with bottom gradient */
+  .section-alt {
+    position: relative;
+  }
+
+  .section-alt::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 80% 50% at 50% 100%,
+      hsl(var(--primary) / 0.05) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  /* Combined: enhanced section with silky border */
+  .section-styled {
+    position: relative;
+  }
+
+  .section-styled::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 100% 60% at 50% -20%,
+      hsl(var(--primary) / 0.04) 0%,
+      transparent 60%
+    );
+    pointer-events: none;
+  }
+
+  .section-styled::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--primary) / 0.08) 15%,
+      hsl(var(--primary) / 0.35) 40%,
+      hsl(var(--primary) / 0.5) 50%,
+      hsl(var(--primary) / 0.35) 60%,
+      hsl(var(--primary) / 0.08) 85%,
+      transparent 100%
+    );
+  }
 }
 
 /* Enhanced animations */

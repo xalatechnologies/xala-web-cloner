@@ -37,7 +37,7 @@ export default function ProcessTeaser() {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-background relative overflow-hidden">
+    <section className="py-20 md:py-28 bg-background relative overflow-hidden section-styled">
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />

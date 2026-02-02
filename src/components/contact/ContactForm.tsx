@@ -113,7 +113,7 @@ export const ContactForm = () => {
   };
 
   return (
-    <div className="rounded-2xl p-6 sm:p-8 bg-card text-card-foreground border border-border w-full min-w-[500px] flex-1 dark:bg-gradient-to-br dark:from-white/5 dark:to-transparent dark:border-white/10">
+    <div className="rounded-2xl p-4 sm:p-6 md:p-8 bg-card text-card-foreground border border-border w-full flex-1 dark:bg-gradient-to-br dark:from-white/5 dark:to-transparent dark:border-white/10">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col h-full space-y-4">
           <div className="space-y-4 flex-1">
@@ -185,7 +185,7 @@ export const ContactForm = () => {
               )}
             />
           </div>
-          
+
           <div className="flex flex-col items-center gap-4 mt-auto">
             <Button
               type="submit"

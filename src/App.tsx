@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import AppProviders from './components/providers/AppProviders';
 import { GDPRNotification } from './components/gdpr/GDPRNotification';
 import { ChatWidget } from './components/chat/ChatWidget';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Index';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Terms from './pages/Terms';
@@ -28,6 +29,7 @@ const App = () => {
     <AppProviders>
       <HelmetProvider>
         <Router>
+          <ScrollToTop />
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route path="/" element={<Home />} />

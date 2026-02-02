@@ -1,9 +1,16 @@
 import ProductCard from './ProductCard';
 import ExpandableGrid from '../ui/expandable-grid';
-import type { Tables } from '@/integrations/supabase/types';
+
+export interface ProductItem {
+  id: string;
+  title: string;
+  description: string;
+  image_url: string;
+  icon?: string | null;
+}
 
 interface ProductGridProps {
-  products: Tables<'products'>[];
+  products: ProductItem[];
   initialRows?: number;
   cols?: number;
 }
@@ -20,7 +27,7 @@ const ProductGrid = ({ products, initialRows = 1, cols = 3 }: ProductGridProps) 
   ));
 
   return (
-    <ExpandableGrid 
+    <ExpandableGrid
       items={productCards}
       initialRows={initialRows}
       cols={cols}

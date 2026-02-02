@@ -28,7 +28,7 @@ function DynamicWord({ words, interval = 2200 }: { words: string[]; interval?: n
 export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/hero-bg.svg', words }: VideoHeroProps) {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background video */}
@@ -48,7 +48,7 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
       </div>
 
       {/* Enhanced Headline */}
-      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-24 text-center">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-16 sm:pt-24 text-center">
         <div className="flex flex-col items-center gap-4">
           <div className="inline-flex items-center gap-3">
             <span className="group relative rounded-xl bg-card/95 border border-border shadow-xl backdrop-blur-sm px-6 py-3 text-lg font-semibold text-card-foreground hover:shadow-2xl transition-all duration-300 min-w-[140px]">
@@ -78,7 +78,7 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
 
         {/* Enhanced scroll indicator with smooth scroll functionality */}
         <div className="mt-6 flex items-center justify-center">
-          <button 
+          <button
             onClick={() => {
               const nextSection = document.getElementById('clients');
               if (nextSection) {
@@ -122,7 +122,7 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
       </div>
 
       <div className="absolute bottom-6 right-6 z-20">
-        <button 
+        <button
           onClick={() => navigate('/kontakt')}
           className="group inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-5 py-2.5 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-primary/90 font-semibold"
         >

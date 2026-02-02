@@ -60,7 +60,7 @@ export default function TechTeaser() {
   ];
 
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden bg-gradient-to-b from-background via-muted/30 to-background">
+    <section className="py-20 md:py-28 relative overflow-hidden bg-gradient-to-b from-background via-muted/30 to-background section-styled">
       {/* Animated background grid */}
       <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]">
         <div className="absolute inset-0" style={{

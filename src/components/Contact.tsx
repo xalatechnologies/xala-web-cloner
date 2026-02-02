@@ -30,7 +30,7 @@ const Contact = () => {
   });
 
   return (
-    <MainLayout 
+    <MainLayout
       pageId="contact"
       language={i18n.language}
       analytics={{
@@ -54,13 +54,13 @@ const Contact = () => {
               {section?.description || t('contact.description')}
             </p>
           </div>
-          
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
-            <div className="lg:w-[400px] space-y-8">
+
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 overflow-hidden">
+            <div className="w-full lg:w-[400px] lg:shrink-0 space-y-4 lg:space-y-8">
               <ContactInfo />
               <SocialLinks />
             </div>
-            <div className="flex-1">
+            <div className="flex-1 min-w-0 overflow-hidden">
               <ContactForm />
             </div>
           </div>

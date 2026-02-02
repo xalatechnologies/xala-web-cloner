@@ -16,13 +16,25 @@ const Controls = ({ isDarkMode, language, onThemeToggle, onLanguageToggle }: Con
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
-    // Set initial language to Norwegian
-    i18n.changeLanguage('no');
-  }, []);
+    // Check for saved language preference in localStorage
+    const savedLang = localStorage.getItem('i18nextLng');
+
+    // If no saved preference, detect from browser settings
+    if (!savedLang) {
+      const browserLang = navigator.language.toLowerCase();
+      // If browser is Norwegian (nb, nn, no), use 'no', otherwise use 'en'
+      const detectedLang = browserLang.startsWith('no') || browserLang.startsWith('nb') || browserLang.startsWith('nn')
+        ? 'no'
+        : 'en';
+      i18n.changeLanguage(detectedLang);
+    }
+  }, [i18n]);
 
   const handleLanguageToggle = () => {
     const newLang = i18n.language === 'en' ? 'no' : 'en';
     i18n.changeLanguage(newLang);
+    // Save preference to localStorage
+    localStorage.setItem('i18nextLng', newLang);
     onLanguageToggle();
   };
 

@@ -10,7 +10,6 @@ import ProcessTeaser from '../components/teasers/ProcessTeaser';
 // import TeamTeaser from '../components/teasers/TeamTeaser';
 import TechTeaser from '../components/teasers/TechTeaser';
 import ContactTeaser from '../components/teasers/ContactTeaser';
-import FinalCTA from '../components/FinalCTA';
 import { useTranslation } from 'react-i18next';
 
 const Index = () => {
@@ -36,7 +35,6 @@ const Index = () => {
         <ProcessTeaser />
         {/* <TeamTeaser /> */}
         <TechTeaser />
-        <FinalCTA />
         <ContactTeaser />
       </div>
       <Footer />

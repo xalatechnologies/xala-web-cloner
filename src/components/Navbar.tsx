@@ -87,8 +87,18 @@ const Navbar = () => {
               className="h-12 sm:h-14 w-auto transition-all duration-300 group-hover:scale-105 group-hover:brightness-110"
             />
           </Link>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            {/* Desktop controls */}
             <div className="hidden md:flex">
+              <Controls
+                isDarkMode={isDarkMode}
+                language={i18n.language === 'en' ? 'EN' : 'NO'}
+                onThemeToggle={toggleTheme}
+                onLanguageToggle={toggleLanguage}
+              />
+            </div>
+            {/* Mobile controls - show to the left of hamburger */}
+            <div className="flex md:hidden">
               <Controls
                 isDarkMode={isDarkMode}
                 language={i18n.language === 'en' ? 'EN' : 'NO'}

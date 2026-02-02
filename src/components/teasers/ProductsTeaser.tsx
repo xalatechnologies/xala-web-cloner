@@ -1,38 +1,47 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { FileText, ClipboardList, Boxes, ChevronRight } from 'lucide-react';
+import { FileText, ClipboardList, Boxes, ChevronRight, Sparkles } from 'lucide-react';
 
 export default function ProductsTeaser() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isEnglish = i18n.language === 'en';
 
   const products = [
     {
       title: 'Digilist',
-      description: 'Digital listehåndtering og sjekklister for kvalitetssikring og compliance i bedrifter.',
-      status: 'Tilgjengelig',
+      description: isEnglish
+        ? 'Digital list management and checklists for quality assurance and compliance in businesses.'
+        : 'Digital listehåndtering og sjekklister for kvalitetssikring og compliance i bedrifter.',
+      status: isEnglish ? 'Available' : 'Tilgjengelig',
       statusType: 'available',
       icon: ClipboardList,
       url: 'https://digilist.no'
     },
     {
       title: 'Digiskjema',
-      description: 'Smart skjemabygger med AI-assistert utfylling og automatisert dokumentgenerering.',
-      status: 'Tilgjengelig',
+      description: isEnglish
+        ? 'Smart form builder with AI-assisted completion and automated document generation.'
+        : 'Smart skjemabygger med AI-assistert utfylling og automatisert dokumentgenerering.',
+      status: isEnglish ? 'Available' : 'Tilgjengelig',
       statusType: 'available',
       icon: FileText,
       url: 'https://digiskjema.no'
     },
     {
       title: 'Xaheen',
-      description: 'AI-drevet applikasjonsbygger som lar deg lage komplette webapplikasjoner med naturlig språk.',
+      description: isEnglish
+        ? 'AI-powered application builder that lets you create complete web applications with natural language.'
+        : 'AI-drevet applikasjonsbygger som lar deg lage komplette webapplikasjoner med naturlig språk.',
       status: 'Live',
       statusType: 'available',
-      icon: FileText,
+      icon: Sparkles,
       url: 'https://xaheen.com'
     },
     {
       title: 'Norchain',
-      description: 'Komplett blockchain-operativsystem for digital handel med betalinger, regnskap og governance.',
+      description: isEnglish
+        ? 'Complete blockchain operating system for digital commerce with payments, accounting and governance.'
+        : 'Komplett blockchain-operativsystem for digital handel med betalinger, regnskap og governance.',
       status: 'Live',
       statusType: 'available',
       icon: Boxes,
@@ -52,7 +61,7 @@ export default function ProductsTeaser() {
   };
 
   return (
-    <section className="py-16 md:py-20 bg-muted/30">
+    <section className="py-16 md:py-20 bg-muted/30 section-styled">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">

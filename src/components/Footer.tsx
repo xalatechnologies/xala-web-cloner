@@ -10,6 +10,7 @@ type SupportedLanguage = Database['public']['Enums']['supported_language'];
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { t, i18n } = useTranslation();
+  const isEnglish = i18n.language === 'en';
 
   const { data: menuItems } = useQuery({
     queryKey: ['footer-menu', i18n.language],
@@ -29,23 +30,23 @@ const Footer = () => {
   });
 
   const companyLinks = [
-    { name: 'Om oss', href: '/om-oss' },
-    { name: 'Teamet', href: '/team' },
-    { name: 'Karriere', href: '/karriere' },
-    { name: 'Kontakt', href: '/kontakt' },
+    { name: isEnglish ? 'About Us' : 'Om oss', href: '/om-oss' },
+    { name: isEnglish ? 'Team' : 'Teamet', href: '/team' },
+    { name: isEnglish ? 'Careers' : 'Karriere', href: '/karriere' },
+    { name: isEnglish ? 'Contact' : 'Kontakt', href: '/kontakt' },
   ];
 
   const serviceLinks = [
-    { name: 'Tjenester', href: '/tjenester' },
-    { name: 'Produkter', href: '/produkter' },
-    { name: 'Caser', href: '/caser' },
-    { name: 'Teknologi', href: '/teknologi' },
+    { name: isEnglish ? 'Services' : 'Tjenester', href: '/tjenester' },
+    { name: isEnglish ? 'Products' : 'Produkter', href: '/produkter' },
+    { name: isEnglish ? 'Cases' : 'Caser', href: '/caser' },
+    { name: isEnglish ? 'Technology' : 'Teknologi', href: '/teknologi' },
   ];
 
   const legalLinks = [
-    { name: 'Personvern', href: '/privacy' },
-    { name: 'Vilkår', href: '/terms' },
-    { name: 'Cookies', href: '/cookies' },
+    { name: isEnglish ? 'Privacy' : 'Personvern', href: '/privacy' },
+    { name: isEnglish ? 'Terms' : 'Vilkår', href: '/terms' },
+    { name: isEnglish ? 'Cookies' : 'Cookies', href: '/cookies' },
   ];
 
   const products = [
@@ -54,6 +55,21 @@ const Footer = () => {
     { name: 'Xaheen', href: 'https://xaheen.com', external: true },
     { name: 'Norchain', href: 'https://norchain.org', external: true },
   ];
+
+  // Localized section headers
+  const sectionHeaders = {
+    company: isEnglish ? 'Company' : 'Selskap',
+    solutions: isEnglish ? 'Solutions' : 'Løsninger',
+    products: isEnglish ? 'Products' : 'Produkter',
+  };
+
+  // Localized description
+  const description = isEnglish
+    ? 'We create innovative technology solutions that drive business growth and digital transformation.'
+    : 'Vi skaper innovative teknologiløsninger som driver forretningsvekst og digital transformasjon.';
+
+  // Localized location
+  const location = isEnglish ? 'Oslo, Norway' : 'Oslo, Norge';
 
   return (
     <footer className="relative overflow-hidden bg-slate-900 dark:bg-slate-950 text-white">
@@ -82,7 +98,7 @@ const Footer = () => {
               <span className="text-2xl font-bold text-white">Xala Technologies</span>
             </Link>
             <p className="text-slate-400 mb-6 max-w-sm leading-relaxed">
-              Vi skaper innovative teknologiløsninger som driver forretningsvekst og digital transformasjon.
+              {description}
             </p>
 
             {/* Contact info */}
@@ -97,14 +113,14 @@ const Footer = () => {
               </a>
               <div className="flex items-center gap-3 text-slate-400">
                 <MapPin className="w-4 h-4" />
-                <span>Oslo, Norge</span>
+                <span>{location}</span>
               </div>
             </div>
           </div>
 
           {/* Company links */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Selskap</h3>
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">{sectionHeaders.company}</h3>
             <ul className="space-y-3">
               {companyLinks.map((link) => (
                 <li key={link.href}>
@@ -121,7 +137,7 @@ const Footer = () => {
 
           {/* Services links */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Løsninger</h3>
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">{sectionHeaders.solutions}</h3>
             <ul className="space-y-3">
               {serviceLinks.map((link) => (
                 <li key={link.href}>
@@ -138,7 +154,7 @@ const Footer = () => {
 
           {/* Products links */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Produkter</h3>
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">{sectionHeaders.products}</h3>
             <ul className="space-y-3">
               {products.map((link) => (
                 <li key={link.href}>
