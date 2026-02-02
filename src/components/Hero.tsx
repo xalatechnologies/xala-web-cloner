@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Sparkles } from 'lucide-react';
 import GalaxyBackground from './hero/GalaxyBackground';
 import FloatingIcons from './hero/FloatingIcons';
 import FeatureCards from './hero/FeatureCards';
@@ -62,7 +63,7 @@ const Hero = () => {
           <div className="inline-block">
             <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-accent text-accent-foreground backdrop-blur-sm border border-border text-sm font-medium">
               {welcomeSection?.title || (i18n.language === 'no' ? 'Velkommen' : 'Welcome')}
-              <span className="ml-1 opacity-70">✨</span>
+              <Sparkles className="ml-1 w-4 h-4 opacity-70" />
             </span>
           </div>
 

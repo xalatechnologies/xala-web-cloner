@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Unbounded:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import './styles/digilist-root.css';
 
 @tailwind base;
 @tailwind components;
@@ -10,8 +11,13 @@
   }
   
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-feature-settings: 'cv01', 'cv02', 'cv03', 'cv04';
+    @apply bg-background text-foreground font-sans;
+    /* Use DigiList font - Inter with cv05 feature */
+    font-feature-settings: "cv05" 1;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   /* Smooth focus transitions */
@@ -20,15 +26,15 @@
     transition: all 0.2s ease-in-out;
   }
   
-  /* Font families for Polkadot style */
+  /* All headings use DigiList Inter font - same as body */
   h1, h2, h3, h4, h5, h6, .heading {
-    font-family: "Unbounded", system-ui, sans-serif;
-    font-weight: 700;
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font-feature-settings: "cv05" 1;
   }
   
-  body, p, li, .body-text {
-    font-family: "Inter", system-ui, sans-serif;
-    font-weight: 400;
+  /* Ensure all text elements use DigiList Inter font with cv05 feature */
+  p, li, span, div, a, button, input, textarea, select, label, .body-text {
+    font-feature-settings: "cv05" 1;
   }
 }
 

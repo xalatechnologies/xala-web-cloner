@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Brain, Cloud, Laptop, Smartphone } from 'lucide-react';
 
 export default function ServicesTeaser() {
   const { t } = useTranslation();
@@ -9,22 +10,22 @@ export default function ServicesTeaser() {
     {
       title: t('teasers.services.aiMachineLearning.title'),
       description: t('teasers.services.aiMachineLearning.description'),
-      icon: '🤖'
+      icon: Brain
     },
     {
       title: t('teasers.services.cloudSolutions.title'),
       description: t('teasers.services.cloudSolutions.description'),
-      icon: '☁️'
+      icon: Cloud
     },
     {
       title: t('teasers.services.webDevelopment.title'),
       description: t('teasers.services.webDevelopment.description'),
-      icon: '💻'
+      icon: Laptop
     },
     {
       title: t('teasers.services.mobileDevelopment.title'),
       description: t('teasers.services.mobileDevelopment.description'),
-      icon: '📱'
+      icon: Smartphone
     }
   ];
 
@@ -41,20 +42,25 @@ export default function ServicesTeaser() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {services.map((service, index) => (
-            <div 
-              key={index} 
-              className="p-8 rounded-2xl border border-border bg-card hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
-            >
-              <div className="text-4xl mb-5 group-hover:scale-110 transition-transform duration-300">{service.icon}</div>
-              <h3 className="text-xl font-bold text-card-foreground mb-4 group-hover:text-primary transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-base text-muted-foreground leading-relaxed">
-                {service.description}
-              </p>
-            </div>
-          ))}
+          {services.map((service, index) => {
+            const IconComponent = service.icon;
+            return (
+              <div 
+                key={index} 
+                className="p-8 rounded-2xl border border-border bg-card hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
+              >
+                <div className="mb-5 group-hover:scale-110 transition-transform duration-300">
+                  <IconComponent className="w-12 h-12 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-card-foreground mb-4 group-hover:text-primary transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+            );
+          })}
         </div>
         
         <div className="text-center">

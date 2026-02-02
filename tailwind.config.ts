@@ -90,11 +90,11 @@ export default {
         '9xl': ['8rem', { lineHeight: '1' }],
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans: ["Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Arial", "sans-serif"],
         serif: ["Fraunces", "Georgia", "serif"],
-        display: ["Fraunces", "Georgia", "serif"],
-        body: ["Inter", "system-ui", "sans-serif"],
-        heading: ["Fraunces", "Georgia", "serif"],
+        display: ["Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Arial", "sans-serif"],
+        body: ["Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Arial", "sans-serif"],
+        heading: ["Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Arial", "sans-serif"],
       },
       fontWeight: {
         thin: '100',

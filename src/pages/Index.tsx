@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import ServicesTeaser from '../components/teasers/ServicesTeaser';
 import ProductsTeaser from '../components/teasers/ProductsTeaser';
 import ProcessTeaser from '../components/teasers/ProcessTeaser';
-import TeamTeaser from '../components/teasers/TeamTeaser';
+// import TeamTeaser from '../components/teasers/TeamTeaser';
 import TechTeaser from '../components/teasers/TechTeaser';
 import ContactTeaser from '../components/teasers/ContactTeaser';
 import FinalCTA from '../components/FinalCTA';
@@ -32,7 +32,7 @@ const Index = () => {
         <ServicesTeaser />
         <ProductsTeaser />
         <ProcessTeaser />
-        <TeamTeaser />
+        {/* <TeamTeaser /> */}
         <TechTeaser />
         <FinalCTA />
         <ContactTeaser />

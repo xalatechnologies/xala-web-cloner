@@ -1,5 +1,5 @@
 import { Database } from '@/integrations/supabase/types';
-import { Menu, X, Settings, Code, Briefcase, Target, Info, Phone, Users } from 'lucide-react';
+import { Menu, X, Settings, Code, Briefcase, Target, Info, Phone } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useBusinessNavigation, useBusinessServices } from '@/i18n/business-content';
@@ -67,11 +67,11 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
       href: '/teknologi',
       icon: Code
     },
-    {
-      name: t('nav.team'),
-      href: '/om-oss/team',
-      icon: Users
-    },
+    // {
+    //   name: t('nav.team'),
+    //   href: '/om-oss/team',
+    //   icon: Users
+    // },
     {
       name: t('nav.about'),
       href: '/om-oss',

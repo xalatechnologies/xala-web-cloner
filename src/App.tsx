@@ -14,7 +14,7 @@ import CaserPage from './pages/CaserPage';
 import SlikViJobberPage from './pages/SlikViJobberPage';
 import TeknologiPage from './pages/TeknologiPage';
 import OmOssPage from './pages/OmOssPage';
-import TeamPage from './pages/TeamPage';
+// import TeamPage from './pages/TeamPage';
 import KontaktPage from './pages/KontaktPage';
 
 const analyticsConfig = {
@@ -37,7 +37,7 @@ const App = () => {
               <Route path="/slik-vi-jobber" element={<SlikViJobberPage />} />
               <Route path="/teknologi" element={<TeknologiPage />} />
               <Route path="/om-oss" element={<OmOssPage />} />
-              <Route path="/om-oss/team" element={<TeamPage />} />
+              {/* <Route path="/om-oss/team" element={<TeamPage />} /> */}
               <Route path="/kontakt" element={<KontaktPage />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<Terms />} />
