@@ -297,5 +297,19 @@
         "devops": "DevOps",
         "database": "Database",
         "ai": "AI"
+    },
+    "chat": {
+        "title": "Xala AI Assistant",
+        "status": {
+            "thinking": "Thinking...",
+            "online": "Online"
+        },
+        "input": {
+            "placeholder": "Type a message...",
+            "button": "Chat with Xala AI"
+        },
+        "errors": {
+            "failed_to_send": "Failed to send message"
+        }
     }
 }

@@ -297,5 +297,19 @@
         "devops": "ديف أوبس",
         "database": "قاعدة البيانات",
         "ai": "الذكاء الاصطناعي"
+    },
+    "chat": {
+        "title": "مساعد Xala الذكي",
+        "status": {
+            "thinking": "جارٍ التفكير...",
+            "online": "متصل"
+        },
+        "input": {
+            "placeholder": "اكتب رسالة...",
+            "button": "تحدث مع Xala AI"
+        },
+        "errors": {
+            "failed_to_send": "فشل إرسال الرسالة"
+        }
     }
 }
