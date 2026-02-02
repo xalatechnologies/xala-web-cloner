@@ -1,45 +1,29 @@
-import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
-import { useTranslation } from "react-i18next";
-import { type Database } from "@/integrations/supabase/types";
+import { useTranslation } from 'react-i18next';
+import sectionsData from '@/data/sections.json';
+
+type Language = 'no' | 'en' | 'ar';
 
 export interface Section {
   id: string;
-  section_name: string;
   title: string;
   description: string | null;
-  language: Database['public']['Enums']['supported_language'];
-  sort_order: number;
-  background: string | null;
-  carousel: boolean;
-  autoscroll: boolean;
-  rows: number;
-  columns: number;
-  created_at: string | null;
-  updated_at: string | null;
-  translations?: Record<string, string>;
+  background?: string | null;
 }
 
 export const useSection = (sectionName: string) => {
   const { i18n } = useTranslation();
 
-  return useQuery({
-    queryKey: ['section', sectionName, i18n.language],
-    queryFn: async () => {
-      const currentLanguage = i18n.language.toLowerCase() as Database['public']['Enums']['supported_language'];
-      
-      const { data, error } = await supabase
-        .from('sections')
-        .select('*')
-        .eq('section_name', sectionName)
-        .eq('language', currentLanguage)
-        .single();
+  // Normalize language code
+  const lang = i18n.language?.toLowerCase() as Language;
+  const currentLanguage: Language = lang === 'ar' ? 'ar' : (lang === 'en' ? 'en' : 'no');
 
-      if (error) {
-        throw new Error(`Failed to fetch section "${sectionName}"`);
-      }
+  // Get section data directly from JSON
+  const langSections = sectionsData[currentLanguage] || sectionsData.no;
+  const data = langSections[sectionName as keyof typeof langSections] as Section | undefined;
 
-      return data as Section;
-    },
-  });
+  return {
+    data: data ?? null,
+    isLoading: false,
+    error: data ? null : new Error(`Section "${sectionName}" not found`),
+  };
 };

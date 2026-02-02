@@ -1,0 +1,116 @@
+{
+    "no": [
+        {
+            "id": "norchain",
+            "title": "Norchain",
+            "description": "Komplett blockchain-operativsystem med L1-infrastruktur, NorPay betalingsløsninger, og NorLedger for sporbarhet.",
+            "icon": "Blocks",
+            "features": [
+                "L1 Infrastruktur",
+                "NorPay Betalinger",
+                "NorLedger Sporbarhet",
+                "Smart Contracts"
+            ]
+        },
+        {
+            "id": "xaheen",
+            "title": "Xaheen AI Builder",
+            "description": "AI-drevet utviklingsplattform som akselererer programvareutvikling med intelligent kodeassistanse.",
+            "icon": "Cpu",
+            "features": [
+                "AI Kodeassistanse",
+                "Automatisk Testing",
+                "CI/CD Integrasjon",
+                "Kodeanalyse"
+            ]
+        },
+        {
+            "id": "digilist",
+            "title": "DigiList",
+            "description": "Digital markedsplass og SaaS-plattform for utleie og booking av objekter og tjenester.",
+            "icon": "LayoutGrid",
+            "features": [
+                "Booking System",
+                "Betalingsintegrasjon",
+                "Flerspråklig",
+                "Multi-tenant"
+            ]
+        }
+    ],
+    "en": [
+        {
+            "id": "norchain",
+            "title": "Norchain",
+            "description": "Complete blockchain operating system with L1 infrastructure, NorPay payment solutions, and NorLedger for traceability.",
+            "icon": "Blocks",
+            "features": [
+                "L1 Infrastructure",
+                "NorPay Payments",
+                "NorLedger Traceability",
+                "Smart Contracts"
+            ]
+        },
+        {
+            "id": "xaheen",
+            "title": "Xaheen AI Builder",
+            "description": "AI-powered development platform that accelerates software development with intelligent code assistance.",
+            "icon": "Cpu",
+            "features": [
+                "AI Code Assistance",
+                "Automated Testing",
+                "CI/CD Integration",
+                "Code Analysis"
+            ]
+        },
+        {
+            "id": "digilist",
+            "title": "DigiList",
+            "description": "Digital marketplace and SaaS platform for rental and booking of objects and services.",
+            "icon": "LayoutGrid",
+            "features": [
+                "Booking System",
+                "Payment Integration",
+                "Multilingual",
+                "Multi-tenant"
+            ]
+        }
+    ],
+    "ar": [
+        {
+            "id": "norchain",
+            "title": "نورتشين",
+            "description": "نظام تشغيل بلوكتشين كامل مع بنية تحتية L1 وحلول دفع NorPay وNorLedger للتتبع.",
+            "icon": "Blocks",
+            "features": [
+                "بنية L1 التحتية",
+                "مدفوعات NorPay",
+                "تتبع NorLedger",
+                "العقود الذكية"
+            ]
+        },
+        {
+            "id": "xaheen",
+            "title": "زاهين AI بيلدر",
+            "description": "منصة تطوير مدعومة بالذكاء الاصطناعي تسرع تطوير البرمجيات مع مساعدة ذكية للكود.",
+            "icon": "Cpu",
+            "features": [
+                "مساعدة الكود بالذكاء الاصطناعي",
+                "اختبار آلي",
+                "تكامل CI/CD",
+                "تحليل الكود"
+            ]
+        },
+        {
+            "id": "digilist",
+            "title": "ديجيليست",
+            "description": "سوق رقمي ومنصة SaaS للتأجير والحجز للأشياء والخدمات.",
+            "icon": "LayoutGrid",
+            "features": [
+                "نظام الحجز",
+                "تكامل الدفع",
+                "متعدد اللغات",
+                "متعدد المستأجرين"
+            ]
+        }
+    ]
+}

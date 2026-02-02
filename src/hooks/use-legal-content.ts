@@ -1,51 +1,44 @@
-import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
-import { supabase } from '@/integrations/supabase/client';
-import type { Database } from '@/integrations/supabase/types';
+import legalData from '@/data/legal.json';
 
-export type LegalSection = Database['public']['Tables']['legal_sections']['Row'];
-export type LegalContent = Database['public']['Tables']['legal_content']['Row'];
+type Language = 'no' | 'en' | 'ar';
+type LegalType = 'privacy' | 'terms' | 'cookies';
+
+export interface LegalSection {
+  id: string;
+  title: string;
+  content: string;
+}
+
+export interface LegalContent {
+  title: string;
+  lastUpdated: string;
+  sections: LegalSection[];
+}
 
 interface UseLegalContentProps {
-  type: 'privacy' | 'terms' | 'cookies';
+  type: LegalType;
 }
 
 export const useLegalContent = ({ type }: UseLegalContentProps) => {
   const { i18n } = useTranslation();
 
-  return useQuery({
-    queryKey: ['legal', type, i18n.language],
-    queryFn: async () => {
-      // First get all sections for this legal type
-      const { data: sections, error: sectionsError } = await supabase
-        .from('legal_sections')
-        .select('*')
-        .eq('type', type)
-        .eq('language', i18n.language)
-        .order('sort_order', { ascending: true });
+  // Normalize language
+  const lang = i18n.language?.toLowerCase() as Language;
+  const currentLanguage: Language = lang === 'ar' ? 'ar' : (lang === 'en' ? 'en' : 'no');
 
-      if (sectionsError) throw sectionsError;
+  const langData = legalData[currentLanguage] || legalData.no;
+  const content = langData[type] as LegalContent | undefined;
 
-      // Then get all content for these sections
-      const { data: content, error: contentError } = await supabase
-        .from('legal_content')
-        .select('*')
-        .eq('type', type)
-        .eq('language', i18n.language)
-        .order('sort_order', { ascending: true });
-
-      if (contentError) throw contentError;
-
-      // Organize content by section
-      const organizedContent = sections?.map(section => ({
-        ...section,
-        items: content?.filter(item => item.section_id === section.id) || []
-      }));
-
-      return {
-        sections: organizedContent || [],
-        lastUpdated: sections?.[0]?.updated_at || new Date().toISOString()
-      };
-    }
-  });
+  return {
+    data: content ? {
+      sections: content.sections.map(s => ({
+        ...s,
+        items: [{ content: s.content }]
+      })),
+      lastUpdated: content.lastUpdated
+    } : null,
+    isLoading: false,
+    error: content ? null : new Error(`Legal content "${type}" not found`),
+  };
 };

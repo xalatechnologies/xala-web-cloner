@@ -1,8 +1,5 @@
 import { useTranslation } from "react-i18next";
 import { useSection } from "@/hooks/use-section";
-import type { Database } from "@/integrations/supabase/types";
-import type { Section } from "@/types/section";
-import { useLocalizedData } from "@/hooks/use-localized-data";
 import { LoadingSpinner } from "./ui/loading-spinner";
 import CaseStudyGrid from './case-studies/CaseStudyGrid';
 import React, { useState } from "react";
@@ -10,9 +7,19 @@ import { Button } from "./ui/button";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { motion } from "framer-motion";
 
-type CaseStudy = Database['public']['Tables']['case_studies']['Row'] & {
-  case_study_metrics: Database['public']['Tables']['case_study_metrics']['Row'][];
-};
+interface CaseStudy {
+  id: string;
+  title: string;
+  description: string | null;
+  image_url: string | null;
+  icon: string | null;
+  language: string;
+  company_name: string | null;
+  sort_order: number;
+  status: string;
+  case_study_metrics: any[];
+  [key: string]: any;
+}
 
 // Define static case studies for all companies (English)
 const staticCaseStudiesEn: CaseStudy[] = [
@@ -1104,85 +1111,65 @@ const staticCaseStudiesNo: CaseStudy[] = [
 
 const CaseStudies = () => {
   const { t, i18n } = useTranslation();
-  const { data: section, isLoading: isSectionLoading } = useSection('case-studies');
-  const [visibleCount, setVisibleCount] = useState(6); // Initially show 6 case studies
+  const { data: section } = useSection('case-studies');
+  const [visibleCount, setVisibleCount] = useState(6);
   const [isAnimating, setIsAnimating] = useState(false);
-  
-  const { data: caseStudies = [], isLoading: isCaseStudiesLoading } = useLocalizedData<CaseStudy>({
-    queryKey: 'case-studies',
-    table: 'case_studies',
-    relationships: 'case_study_metrics(*)',
-    orderBy: 'sort_order'
-  });
 
   // Get the appropriate static case studies based on the current language
   const getCurrentStaticCaseStudies = () => {
     return i18n.language.startsWith('no') ? staticCaseStudiesNo : staticCaseStudiesEn;
   };
 
-  // Log the fetched case studies to see what's being retrieved from the database
-  React.useEffect(() => {
-    if (caseStudies.length > 0) {
-      console.log('Database fetched case studies:', caseStudies);
-    }
-  }, [caseStudies]);
-
-  const isLoading = isSectionLoading || isCaseStudiesLoading;
-
   const loadMore = () => {
     setIsAnimating(true);
     // Increase by 6 more cases each time, or show all if less than 6 remain
     setVisibleCount(prevCount => {
-      const allCaseCount = getCurrentStaticCaseStudies().length + caseStudies.length;
+      const allCaseCount = getCurrentStaticCaseStudies().length;
       const remainingCount = allCaseCount - prevCount;
       const increment = Math.min(6, remainingCount);
       return prevCount + increment;
     });
-    
+
     // Reset animation state after a short delay
     setTimeout(() => setIsAnimating(false), 1000);
   };
 
   const renderContent = () => {
-    if (isLoading) {
-      return <LoadingSpinner />;
-    }
+    // Use static case studies directly - no database fetching
+    const allCaseStudies = getCurrentStaticCaseStudies();
 
-    // Combine the static case studies with the fetched case studies
-    const allCaseStudies = [...getCurrentStaticCaseStudies(), ...caseStudies];
-    
     // Filter out specific case studies that should be removed
     const filteredCaseStudies = allCaseStudies.filter(study => {
       // Filter for the "Digital Transformasjon for Retail" case study
       const retailTitleMatch = study.title.includes('Retail') || study.title === 'Digital Transformasjon for Retail';
-      const retailDescriptionMatch = study.description?.includes('Digital Transformasjon for Retail') || 
-                             study.description?.includes('e-handelsløsning') ||
-                             study.description?.includes('200%');
-      
+      const retailDescriptionMatch = study.description?.includes('Digital Transformasjon for Retail') ||
+        study.description?.includes('e-handelsløsning') ||
+        study.description?.includes('200%');
+
       // Filter for other case studies mentioned in previous instructions
       const altinnMatch = study.title.includes('Altinn') && study.title.includes('Modernisering');
       const ssbMatch = study.title.includes('SSB') && study.title.includes('Data Platform');
-      const aiCustomerServiceMatch = study.title.includes('AI-Drevet Kundeservice') || 
-                                    study.title.includes('AI-drevet analyseplattform') ||
-                                    (study.description?.includes('AI-drevet') && study.description?.includes('300%'));
-      
+      const aiCustomerServiceMatch = study.title.includes('AI-Drevet Kundeservice') ||
+        study.title.includes('AI-drevet analyseplattform') ||
+        (study.description?.includes('AI-drevet') && study.description?.includes('300%'));
+
       // Filter for the Norwegian Booking System case
       const norwegianBookingMatch = study.title.includes('Norwegian Booking System') ||
-                                   (study.title.includes('Norwegian') && study.description?.includes('bookingsystem')) ||
-                                   study.description?.includes('skalerbart bookingsystem');
-      
+        (study.title.includes('Norwegian') && study.description?.includes('bookingsystem')) ||
+        study.description?.includes('skalerbart bookingsystem');
+
       // General filter for any booking system cases
       const bookingSystemMatch = study.title.includes('Booking System') || study.description?.includes('booking system');
-      
+
       // NEW: Filter for the specific unwanted English case studies
-      const altinnModernizationMatch = study.title === 'Altinn Modernization' && 
-                                      study.description?.includes('Comprehensive modernization of Altinn');
-      const aiPoweredCustomerServiceMatch = study.title === 'AI-Powered Customer Service' && 
-                                           study.description?.includes('chatbot handling 70% of customer inquiries');
-      
+      const altinnModernizationMatch = study.title === 'Altinn Modernization' &&
+        study.description?.includes('Comprehensive modernization of Altinn');
+      const aiPoweredCustomerServiceMatch = study.title === 'AI-Powered Customer Service' &&
+        study.description?.includes('chatbot handling 70% of customer inquiries');
+
       // Return false if any match is found (to exclude the case study)
-      return !(retailTitleMatch || retailDescriptionMatch || altinnMatch || ssbMatch || aiCustomerServiceMatch || 
-               norwegianBookingMatch || bookingSystemMatch || altinnModernizationMatch || aiPoweredCustomerServiceMatch);
+      return !(retailTitleMatch || retailDescriptionMatch || altinnMatch || ssbMatch || aiCustomerServiceMatch ||
+        norwegianBookingMatch || bookingSystemMatch || altinnModernizationMatch || aiPoweredCustomerServiceMatch);
     });
 
     if (!filteredCaseStudies.length) {
@@ -1209,18 +1196,18 @@ const CaseStudies = () => {
     return (
       <div className="flex flex-col items-center gap-12 w-full">
         <div className="w-full">
-          <CaseStudyGrid 
+          <CaseStudyGrid
             caseStudies={visibleCaseStudies}
             initialRows={section?.rows || 2}
             cols={section?.columns || 3}
           />
         </div>
-        
+
         <div className="flex gap-4 flex-wrap justify-center">
           {hasMore && (
-            <Button 
+            <Button
               onClick={loadMore}
-              variant="outline" 
+              variant="outline"
               size="lg"
               disabled={isAnimating}
               className="mt-6 px-8 py-6 text-lg font-medium rounded-xl flex items-center gap-2 border-primary/20 hover:border-primary hover:bg-primary/5 transition-all duration-300 group shadow-lg hover:shadow-xl text-foreground hover:text-foreground"
@@ -1243,11 +1230,11 @@ const CaseStudies = () => {
               )}
             </Button>
           )}
-          
+
           {showLess && (
-            <Button 
+            <Button
               onClick={handleShowLess}
-              variant="outline" 
+              variant="outline"
               size="lg"
               disabled={isAnimating}
               className="mt-6 px-8 py-6 text-lg font-medium rounded-xl flex items-center gap-2 border-primary/20 hover:border-primary hover:bg-primary/5 transition-all duration-300 group shadow-lg hover:shadow-xl text-foreground hover:text-foreground"

@@ -1,0 +1,197 @@
+{
+    "no": {
+        "privacy": {
+            "title": "Personvernerklæring",
+            "lastUpdated": "2024-01-15",
+            "sections": [
+                {
+                    "id": "intro",
+                    "title": "Innledning",
+                    "content": "Xala Technologies AS respekterer ditt personvern og er forpliktet til å beskytte dine personopplysninger. Denne personvernerklæringen beskriver hvordan vi samler inn, bruker og beskytter din informasjon."
+                },
+                {
+                    "id": "collection",
+                    "title": "Innsamling av data",
+                    "content": "Vi samler inn informasjon du gir oss direkte, som kontaktinformasjon når du fyller ut skjemaer på nettstedet vårt."
+                },
+                {
+                    "id": "usage",
+                    "title": "Bruk av data",
+                    "content": "Vi bruker informasjonen til å levere tjenester, svare på henvendelser, og forbedre brukeropplevelsen."
+                },
+                {
+                    "id": "rights",
+                    "title": "Dine rettigheter",
+                    "content": "Du har rett til innsyn, retting, sletting og dataportabilitet. Kontakt oss på personvern@xala.no."
+                }
+            ]
+        },
+        "terms": {
+            "title": "Vilkår for bruk",
+            "lastUpdated": "2024-01-15",
+            "sections": [
+                {
+                    "id": "acceptance",
+                    "title": "Aksept av vilkår",
+                    "content": "Ved å bruke våre tjenester aksepterer du disse vilkårene. Hvis du ikke godtar vilkårene, må du ikke bruke tjenestene."
+                },
+                {
+                    "id": "services",
+                    "title": "Våre tjenester",
+                    "content": "Xala Technologies leverer teknologikonsultering, utvikling og digitale løsninger. Tjenestene leveres som beskrevet i individuelle avtaler."
+                },
+                {
+                    "id": "liability",
+                    "title": "Ansvarsbegrensning",
+                    "content": "Xala Technologies er ikke ansvarlig for indirekte tap eller skader som følge av bruk av tjenestene."
+                }
+            ]
+        },
+        "cookies": {
+            "title": "Informasjonskapsler",
+            "lastUpdated": "2024-01-15",
+            "sections": [
+                {
+                    "id": "what",
+                    "title": "Hva er informasjonskapsler?",
+                    "content": "Informasjonskapsler er små tekstfiler som lagres på enheten din når du besøker nettsteder."
+                },
+                {
+                    "id": "usage",
+                    "title": "Hvordan vi bruker dem",
+                    "content": "Vi bruker informasjonskapsler for å forbedre brukeropplevelsen og analysere trafikk."
+                }
+            ]
+        }
+    },
+    "en": {
+        "privacy": {
+            "title": "Privacy Policy",
+            "lastUpdated": "2024-01-15",
+            "sections": [
+                {
+                    "id": "intro",
+                    "title": "Introduction",
+                    "content": "Xala Technologies AS respects your privacy and is committed to protecting your personal data. This privacy policy describes how we collect, use, and protect your information."
+                },
+                {
+                    "id": "collection",
+                    "title": "Data Collection",
+                    "content": "We collect information you provide directly, such as contact information when you fill out forms on our website."
+                },
+                {
+                    "id": "usage",
+                    "title": "Data Usage",
+                    "content": "We use the information to deliver services, respond to inquiries, and improve user experience."
+                },
+                {
+                    "id": "rights",
+                    "title": "Your Rights",
+                    "content": "You have the right to access, rectification, deletion, and data portability. Contact us at privacy@xala.no."
+                }
+            ]
+        },
+        "terms": {
+            "title": "Terms of Service",
+            "lastUpdated": "2024-01-15",
+            "sections": [
+                {
+                    "id": "acceptance",
+                    "title": "Acceptance of Terms",
+                    "content": "By using our services, you accept these terms. If you do not agree to the terms, you must not use the services."
+                },
+                {
+                    "id": "services",
+                    "title": "Our Services",
+                    "content": "Xala Technologies provides technology consulting, development, and digital solutions. Services are delivered as described in individual agreements."
+                },
+                {
+                    "id": "liability",
+                    "title": "Limitation of Liability",
+                    "content": "Xala Technologies is not liable for indirect losses or damages resulting from use of the services."
+                }
+            ]
+        },
+        "cookies": {
+            "title": "Cookie Policy",
+            "lastUpdated": "2024-01-15",
+            "sections": [
+                {
+                    "id": "what",
+                    "title": "What are Cookies?",
+                    "content": "Cookies are small text files stored on your device when you visit websites."
+                },
+                {
+                    "id": "usage",
+                    "title": "How We Use Them",
+                    "content": "We use cookies to improve user experience and analyze traffic."
+                }
+            ]
+        }
+    },
+    "ar": {
+        "privacy": {
+            "title": "سياسة الخصوصية",
+            "lastUpdated": "2024-01-15",
+            "sections": [
+                {
+                    "id": "intro",
+                    "title": "مقدمة",
+                    "content": "تحترم شركة زالا للتقنية خصوصيتك وتلتزم بحماية بياناتك الشخصية. توضح سياسة الخصوصية هذه كيفية جمع معلوماتك واستخدامها وحمايتها."
+                },
+                {
+                    "id": "collection",
+                    "title": "جمع البيانات",
+                    "content": "نجمع المعلومات التي تقدمها مباشرة، مثل معلومات الاتصال عند ملء النماذج على موقعنا."
+                },
+                {
+                    "id": "usage",
+                    "title": "استخدام البيانات",
+                    "content": "نستخدم المعلومات لتقديم الخدمات والرد على الاستفسارات وتحسين تجربة المستخدم."
+                },
+                {
+                    "id": "rights",
+                    "title": "حقوقك",
+                    "content": "لديك الحق في الوصول والتصحيح والحذف وقابلية نقل البيانات. تواصل معنا على privacy@xala.no."
+                }
+            ]
+        },
+        "terms": {
+            "title": "شروط الاستخدام",
+            "lastUpdated": "2024-01-15",
+            "sections": [
+                {
+                    "id": "acceptance",
+                    "title": "قبول الشروط",
+                    "content": "باستخدام خدماتنا، فإنك توافق على هذه الشروط. إذا كنت لا توافق على الشروط، يجب عليك عدم استخدام الخدمات."
+                },
+                {
+                    "id": "services",
+                    "title": "خدماتنا",
+                    "content": "تقدم زالا للتقنية استشارات تقنية وتطوير وحلول رقمية. يتم تقديم الخدمات كما هو موضح في الاتفاقيات الفردية."
+                },
+                {
+                    "id": "liability",
+                    "title": "حدود المسؤولية",
+                    "content": "شركة زالا للتقنية غير مسؤولة عن الخسائر أو الأضرار غير المباشرة الناتجة عن استخدام الخدمات."
+                }
+            ]
+        },
+        "cookies": {
+            "title": "سياسة ملفات تعريف الارتباط",
+            "lastUpdated": "2024-01-15",
+            "sections": [
+                {
+                    "id": "what",
+                    "title": "ما هي ملفات تعريف الارتباط؟",
+                    "content": "ملفات تعريف الارتباط هي ملفات نصية صغيرة يتم تخزينها على جهازك عند زيارة المواقع."
+                },
+                {
+                    "id": "usage",
+                    "title": "كيف نستخدمها",
+                    "content": "نستخدم ملفات تعريف الارتباط لتحسين تجربة المستخدم وتحليل حركة المرور."
+                }
+            ]
+        }
+    }
+}

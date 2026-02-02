@@ -189,6 +189,128 @@
   /* Muted dark */
 }
 
+/* ===========================================
+   Designsystemet Typography System
+   https://designsystemet.no/no/components/docs/heading/overview
+   https://designsystemet.no/no/components/docs/paragraph/overview
+   =========================================== */
+
+:root {
+  /* Heading sizes - Designsystemet scale */
+  --ds-heading-2xl: 3rem;
+  /* 48px */
+  --ds-heading-xl: 2.25rem;
+  /* 36px */
+  --ds-heading-lg: 1.875rem;
+  /* 30px */
+  --ds-heading-md: 1.5rem;
+  /* 24px */
+  --ds-heading-sm: 1.25rem;
+  /* 20px */
+  --ds-heading-xs: 1.125rem;
+  /* 18px */
+  --ds-heading-2xs: 1rem;
+  /* 16px */
+
+  /* Paragraph sizes - Designsystemet scale */
+  --ds-paragraph-xl: 1.25rem;
+  /* 20px */
+  --ds-paragraph-lg: 1.125rem;
+  /* 18px */
+  --ds-paragraph-md: 1rem;
+  /* 16px */
+  --ds-paragraph-sm: 0.875rem;
+  /* 14px */
+  --ds-paragraph-xs: 0.75rem;
+  /* 12px */
+
+  /* Line heights for readability */
+  --ds-line-height-heading: 1.2;
+  --ds-line-height-paragraph: 1.6;
+}
+
+/* Heading utility classes */
+.heading-2xl {
+  font-size: var(--ds-heading-2xl);
+  line-height: var(--ds-line-height-heading);
+  font-weight: 700;
+}
+
+.heading-xl {
+  font-size: var(--ds-heading-xl);
+  line-height: var(--ds-line-height-heading);
+  font-weight: 700;
+}
+
+.heading-lg {
+  font-size: var(--ds-heading-lg);
+  line-height: var(--ds-line-height-heading);
+  font-weight: 600;
+}
+
+.heading-md {
+  font-size: var(--ds-heading-md);
+  line-height: var(--ds-line-height-heading);
+  font-weight: 600;
+}
+
+.heading-sm {
+  font-size: var(--ds-heading-sm);
+  line-height: var(--ds-line-height-heading);
+  font-weight: 600;
+}
+
+.heading-xs {
+  font-size: var(--ds-heading-xs);
+  line-height: var(--ds-line-height-heading);
+  font-weight: 500;
+}
+
+.heading-2xs {
+  font-size: var(--ds-heading-2xs);
+  line-height: var(--ds-line-height-heading);
+  font-weight: 500;
+}
+
+/* Paragraph utility classes */
+.paragraph-xl {
+  font-size: var(--ds-paragraph-xl);
+  line-height: var(--ds-line-height-paragraph);
+}
+
+.paragraph-lg {
+  font-size: var(--ds-paragraph-lg);
+  line-height: var(--ds-line-height-paragraph);
+}
+
+.paragraph-md {
+  font-size: var(--ds-paragraph-md);
+  line-height: var(--ds-line-height-paragraph);
+}
+
+.paragraph-sm {
+  font-size: var(--ds-paragraph-sm);
+  line-height: var(--ds-line-height-paragraph);
+}
+
+.paragraph-xs {
+  font-size: var(--ds-paragraph-xs);
+  line-height: var(--ds-line-height-paragraph);
+}
+
+/* Responsive heading sizes for mobile */
+@media (max-width: 768px) {
+  :root {
+    --ds-heading-2xl: 2.25rem;
+    /* 36px on mobile */
+    --ds-heading-xl: 1.875rem;
+    /* 30px on mobile */
+    --ds-heading-lg: 1.5rem;
+    /* 24px on mobile */
+    --ds-heading-md: 1.25rem;
+    /* 20px on mobile */
+  }
+}
 
 /* Premium component utilities */
 @layer components {
@@ -354,16 +476,14 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      hsl(var(--primary) / 0.1) 10%,
-      hsl(var(--primary) / 0.4) 30%,
-      hsl(var(--primary) / 0.6) 50%,
-      hsl(var(--primary) / 0.4) 70%,
-      hsl(var(--primary) / 0.1) 90%,
-      transparent 100%
-    );
+    background: linear-gradient(90deg,
+        transparent 0%,
+        hsl(var(--primary) / 0.1) 10%,
+        hsl(var(--primary) / 0.4) 30%,
+        hsl(var(--primary) / 0.6) 50%,
+        hsl(var(--primary) / 0.4) 70%,
+        hsl(var(--primary) / 0.1) 90%,
+        transparent 100%);
   }
 
   /* Enhanced section backgrounds with subtle gradients */
@@ -375,11 +495,9 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-      ellipse 80% 50% at 50% 0%,
-      hsl(var(--primary) / 0.03) 0%,
-      transparent 70%
-    );
+    background: radial-gradient(ellipse 80% 50% at 50% 0%,
+        hsl(var(--primary) / 0.03) 0%,
+        transparent 70%);
     pointer-events: none;
   }
 
@@ -392,11 +510,9 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-      ellipse 80% 50% at 50% 100%,
-      hsl(var(--primary) / 0.05) 0%,
-      transparent 70%
-    );
+    background: radial-gradient(ellipse 80% 50% at 50% 100%,
+        hsl(var(--primary) / 0.05) 0%,
+        transparent 70%);
     pointer-events: none;
   }
 
@@ -409,11 +525,9 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-      ellipse 100% 60% at 50% -20%,
-      hsl(var(--primary) / 0.04) 0%,
-      transparent 60%
-    );
+    background: radial-gradient(ellipse 100% 60% at 50% -20%,
+        hsl(var(--primary) / 0.04) 0%,
+        transparent 60%);
     pointer-events: none;
   }
 
@@ -424,16 +538,14 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      hsl(var(--primary) / 0.08) 15%,
-      hsl(var(--primary) / 0.35) 40%,
-      hsl(var(--primary) / 0.5) 50%,
-      hsl(var(--primary) / 0.35) 60%,
-      hsl(var(--primary) / 0.08) 85%,
-      transparent 100%
-    );
+    background: linear-gradient(90deg,
+        transparent 0%,
+        hsl(var(--primary) / 0.08) 15%,
+        hsl(var(--primary) / 0.35) 40%,
+        hsl(var(--primary) / 0.5) 50%,
+        hsl(var(--primary) / 0.35) 60%,
+        hsl(var(--primary) / 0.08) 85%,
+        transparent 100%);
   }
 }
 
@@ -588,6 +700,35 @@ textarea {
       animation: none;
     }
   }
+
+  /* RTL marquee fix - use RTL-specific keyframes */
+  @keyframes marquee-rtl {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(50%);
+    }
+  }
+
+  @keyframes marquee-rtl-reverse {
+    0% {
+      transform: translateX(50%);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  [dir="rtl"] .marquee-row {
+    animation-name: marquee-rtl;
+  }
+
+  [dir="rtl"] .marquee-row-reverse {
+    animation-name: marquee-rtl-reverse;
+  }
 }
 
 /* Enhanced service card styling */
@@ -674,4 +815,67 @@ textarea {
   .service-card-image {
     transition: none;
   }
+}
+
+/* ===========================================
+   RTL (Right-to-Left) Support for Arabic
+   =========================================== */
+
+/* Apply Arabic font when in RTL mode */
+[dir="rtl"] {
+  font-family: 'Noto Sans Arabic', 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* RTL text alignment */
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+/* RTL flex direction adjustments */
+[dir="rtl"] .flex-row:not(.rtl-preserve) {
+  flex-direction: row-reverse;
+}
+
+/* RTL margin/padding adjustments using logical properties */
+[dir="rtl"] .ml-auto {
+  margin-left: unset;
+  margin-right: auto;
+}
+
+[dir="rtl"] .mr-auto {
+  margin-right: unset;
+  margin-left: auto;
+}
+
+/* RTL icon flipping for directional icons */
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* Preserve certain flex layouts in RTL */
+.rtl-preserve {
+  flex-direction: row !important;
+}
+
+/* RTL navigation adjustments */
+[dir="rtl"] nav .gap-6,
+[dir="rtl"] nav .gap-4 {
+  flex-direction: row-reverse;
+}
+
+/* Ensure icons in buttons stay correctly positioned */
+[dir="rtl"] .inline-flex.items-center .ml-2,
+[dir="rtl"] .inline-flex.items-center .ml-3 {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+[dir="rtl"] .inline-flex.items-center .mr-2,
+[dir="rtl"] .inline-flex.items-center .mr-3 {
+  margin-right: 0;
+  margin-left: 0.5rem;
 }

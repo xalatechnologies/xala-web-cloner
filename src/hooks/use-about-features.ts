@@ -1,30 +1,27 @@
 import { useTranslation } from 'react-i18next';
-import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
-import type { Database } from '@/integrations/supabase/types';
+import aboutFeaturesData from '@/data/about-features.json';
 
-type SupportedLanguage = Database['public']['Enums']['supported_language'];
+type Language = 'no' | 'en' | 'ar';
+
+export interface AboutFeature {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+}
 
 export function useAboutFeatures() {
   const { i18n } = useTranslation();
 
-  return useQuery({
-    queryKey: ['about-features', i18n.language],
-    queryFn: async () => {
-      const currentLanguage = i18n.language.toLowerCase() as SupportedLanguage;
-      
-      const { data, error } = await supabase
-        .from('about_features')
-        .select('*')
-        .eq('language', currentLanguage)
-        .order('sort_order', { ascending: true });
+  // Normalize language
+  const lang = i18n.language?.toLowerCase() as Language;
+  const currentLanguage: Language = lang === 'ar' ? 'ar' : (lang === 'en' ? 'en' : 'no');
 
-      if (error) {
-        throw new Error('Failed to fetch about features');
-      }
+  const features = aboutFeaturesData[currentLanguage] || aboutFeaturesData.no;
 
-      return data || [];
-    },
-    enabled: !!i18n.language,
-  });
+  return {
+    data: features as AboutFeature[],
+    isLoading: false,
+    error: null,
+  };
 }

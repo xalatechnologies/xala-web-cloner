@@ -1,0 +1,92 @@
+[
+    {
+        "id": "ssb",
+        "name": "Statistics Norway",
+        "logoUrl": "/clients/ssb.svg",
+        "websiteUrl": "https://www.ssb.no"
+    },
+    {
+        "id": "nhn",
+        "name": "Norsk helsenett",
+        "logoUrl": "/clients/nhn.svg",
+        "websiteUrl": "https://www.nhn.no"
+    },
+    {
+        "id": "altinn",
+        "name": "Altinn",
+        "logoUrl": "/clients/altinn.svg",
+        "websiteUrl": "https://www.altinn.no"
+    },
+    {
+        "id": "nordre-follo",
+        "name": "Nordre Follo kommune",
+        "logoUrl": "/clients/nordre-follo.svg",
+        "websiteUrl": "https://www.nordrefollo.kommune.no"
+    },
+    {
+        "id": "sparebank",
+        "name": "SpareBank 1",
+        "logoUrl": "/clients/sparebank.png",
+        "websiteUrl": "https://www.sparebank1.no"
+    },
+    {
+        "id": "globalconnect",
+        "name": "GlobalConnect",
+        "logoUrl": "/clients/globelconnect.png",
+        "websiteUrl": "https://www.globalconnect.no"
+    },
+    {
+        "id": "norwegian",
+        "name": "Norwegian",
+        "logoUrl": "/clients/norwegian.svg",
+        "websiteUrl": "https://www.norwegian.com"
+    },
+    {
+        "id": "ocha",
+        "name": "UN OCHA",
+        "logoUrl": "/clients/ocha.png",
+        "websiteUrl": "https://www.unocha.org"
+    },
+    {
+        "id": "nov",
+        "name": "NOV",
+        "logoUrl": "/clients/nov2.svg",
+        "websiteUrl": "https://www.nov.com"
+    },
+    {
+        "id": "ruter",
+        "name": "Ruter",
+        "logoUrl": "/clients/ruter.png",
+        "websiteUrl": "https://ruter.no"
+    },
+    {
+        "id": "sykehuspartner",
+        "name": "Sykehuspartner",
+        "logoUrl": "/clients/sykehuspartner.svg",
+        "websiteUrl": "https://sykehuspartner.no"
+    },
+    {
+        "id": "telia",
+        "name": "Telia",
+        "logoUrl": "/clients/telia.png",
+        "websiteUrl": "https://www.telia.no"
+    },
+    {
+        "id": "unicef",
+        "name": "UNICEF",
+        "logoUrl": "/clients/unicef.png",
+        "websiteUrl": "https://www.unicef.org"
+    },
+    {
+        "id": "usaid",
+        "name": "USAID",
+        "logoUrl": "/clients/usaid.png",
+        "websiteUrl": "https://www.usaid.gov"
+    },
+    {
+        "id": "furst",
+        "name": "Fürst Medisinsk Laboratorium",
+        "logoUrl": "/clients/furst.png",
+        "websiteUrl": "https://www.furst.no"
+    }
+]

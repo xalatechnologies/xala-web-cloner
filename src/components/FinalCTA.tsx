@@ -28,12 +28,12 @@ export default function FinalCTA() {
             className="inline-flex items-center px-10 py-5 border border-border text-xl font-medium rounded-xl text-foreground bg-card hover:bg-accent backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 group hover:text-primary"
           >
             {t('finalCTA.viewCases')}
-            <ChevronRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-1" />
+            <ChevronRight className="ms-3 h-6 w-6 rtl:rotate-180 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
         <div className="text-muted-foreground">
           <p className="text-lg">
-            {t('finalCTA.callUs')} <span className="font-bold text-xl">+47 966 65 001</span> {t('finalCTA.emailUs')}{' '}
+            {t('finalCTA.callUs')} <span dir="ltr" className="font-bold text-xl">+47 966 65 001</span> {t('finalCTA.emailUs')}{' '}
             <span className="font-bold text-xl">Info@xala.no</span>
           </p>
         </div>

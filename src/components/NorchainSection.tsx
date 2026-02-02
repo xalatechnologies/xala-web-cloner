@@ -2,161 +2,122 @@ import { ExternalLink, Boxes, CreditCard, BookOpen, MessageCircle, ArrowRightLef
 import { useTranslation } from 'react-i18next';
 
 export default function NorchainSection() {
-    const { i18n } = useTranslation();
-    const isEnglish = i18n.language === 'en';
+    const { t } = useTranslation();
 
     const features = [
         {
-            title: 'NorChain L1',
-            description: isEnglish
-                ? 'High-performance blockchain with 3-second finality and 10,000+ TPS capacity.'
-                : 'Høyytelse blockchain med 3-sekunders finalisering og 10,000+ TPS kapasitet.',
+            title: t('norchain.features.l1.title'),
+            description: t('norchain.features.l1.description'),
             icon: Boxes
         },
         {
-            title: 'NorPay',
-            description: isEnglish
-                ? 'Complete payment infrastructure for Web3 - like Stripe for blockchain.'
-                : 'Komplett betalingsinfrastruktur for Web3 - som Stripe for blockchain.',
+            title: t('norchain.features.norpay.title'),
+            description: t('norchain.features.norpay.description'),
             icon: CreditCard
         },
         {
-            title: 'NorLedger',
-            description: isEnglish
-                ? 'First blockchain-anchored accounting system with daily audit logs.'
-                : 'Første blockchain-forankrede regnskapssystem med daglige revisjonslogger.',
+            title: t('norchain.features.norledger.title'),
+            description: t('norchain.features.norledger.description'),
             icon: BookOpen
         },
         {
-            title: 'NorChat',
-            description: isEnglish
-                ? 'Web3 super-messenger combining chat, calls, and seamless payments.'
-                : 'Web3 super-messenger som kombinerer chat, samtaler og sømløse betalinger.',
+            title: t('norchain.features.norchat.title'),
+            description: t('norchain.features.norchat.description'),
             icon: MessageCircle
         },
         {
-            title: 'Swap & DEX',
-            description: isEnglish
-                ? 'Complete trading ecosystem from simple swaps to professional trading.'
-                : 'Komplett handelsøkosystem fra enkle byttinger til profesjonell trading.',
+            title: t('norchain.features.swap.title'),
+            description: t('norchain.features.swap.description'),
             icon: ArrowRightLeft
         },
         {
-            title: 'Compliance',
-            description: isEnglish
-                ? 'Enterprise-grade compliance for KYC/AML and regulatory requirements.'
-                : 'Enterprise-grade compliance for KYC/AML og regulatoriske krav.',
+            title: t('norchain.features.compliance.title'),
+            description: t('norchain.features.compliance.description'),
             icon: Shield
         }
     ];
 
     const stats = [
-        { value: '15+', label: isEnglish ? 'Global Nodes' : 'Globale noder' },
-        { value: '3s', label: isEnglish ? 'Finality' : 'Finalisering' },
-        { value: '10K+', label: isEnglish ? 'TPS Capacity' : 'TPS kapasitet' },
-        { value: '99.9%', label: isEnglish ? 'Uptime' : 'Oppetid' }
+        { value: '15+', label: t('norchain.stats.nodes') },
+        { value: '3s', label: t('norchain.stats.finality') },
+        { value: '10K+', label: t('norchain.stats.tps') },
+        { value: '99.9%', label: t('norchain.stats.uptime') }
     ];
 
-    const content = {
-        badge: 'Blockchain for Good',
-        title: 'NorChain OS',
-        subtitle: isEnglish
-            ? 'The complete blockchain operating system for digital commerce'
-            : 'Det komplette blockchain-operativsystemet for digital handel',
-        subtext: isEnglish
-            ? '12+ integrated apps • Payments • Accounting • Messaging • Trading • Governance'
-            : '12+ integrerte applikasjoner • Betalinger • Regnskap • Meldinger • Trading • Governance',
-        exploreCta: isEnglish ? 'Explore NorChain' : 'Utforsk NorChain',
-        docsCta: isEnglish ? 'Documentation' : 'Dokumentasjon'
-    };
-
     return (
-        <section className="py-20 md:py-28 relative overflow-hidden section-styled">
-            {/* Background gradient - consistent dark slate in both modes */}
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+        <section className="py-20 md:py-28 bg-gradient-to-b from-slate-900 to-slate-800 relative overflow-hidden section-styled">
+            {/* Background elements */}
+            <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-repeat opacity-5" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
 
-            {/* Animated gradient orbs */}
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-violet-500/20 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
-                        <Boxes className="w-5 h-5 text-violet-400" />
-                        <span className="text-sm font-medium text-white/90">{content.badge}</span>
-                    </div>
+                    <span className="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                        {t('norchain.badge')}
+                    </span>
                     <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                        {content.title}
+                        {t('norchain.title')}
                     </h2>
-                    <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto leading-relaxed mb-4">
-                        {content.subtitle}
+                    <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-4 leading-relaxed">
+                        {t('norchain.subtitle')}
                     </p>
-                    <p className="text-lg text-white/50 max-w-3xl mx-auto">
-                        {content.subtext}
+                    <p className="text-base text-slate-400">
+                        {t('norchain.subtext')}
                     </p>
                 </div>
 
                 {/* Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-                    {stats.map((stat, i) => (
-                        <div key={i} className="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
-                            <div className="text-3xl md:text-4xl font-bold text-white mb-2">{stat.value}</div>
-                            <div className="text-sm text-white/60">{stat.label}</div>
+                    {stats.map((stat, index) => (
+                        <div key={index} className="text-center p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
+                            <div className="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.value}</div>
+                            <div className="text-base text-slate-300">{stat.label}</div>
                         </div>
                     ))}
                 </div>
 
-                {/* Features grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                {/* Features Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
                     {features.map((feature, index) => {
                         const IconComponent = feature.icon;
                         return (
                             <div
                                 key={index}
-                                className="p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-violet-400/50 hover:bg-white/10 transition-all duration-500 group"
+                                className="p-6 bg-white/5 rounded-2xl border border-white/10 hover:border-primary/50 transition-all duration-300 group backdrop-blur-sm"
                             >
-                                <div className="flex items-center gap-4 mb-4">
-                                    <div className="p-3 rounded-xl bg-violet-500/20 group-hover:bg-violet-500/30 transition-colors">
-                                        <IconComponent className="w-6 h-6 text-violet-400" />
-                                    </div>
-                                    <h3 className="text-lg font-bold text-white group-hover:text-violet-300 transition-colors">
-                                        {feature.title}
-                                    </h3>
+                                <div className="p-3 bg-primary/10 rounded-xl w-fit mb-4 group-hover:bg-primary/20 transition-colors">
+                                    <IconComponent className="w-6 h-6 text-primary" />
                                 </div>
-                                <p className="text-white/60 group-hover:text-white/80 transition-colors leading-relaxed">
-                                    {feature.description}
-                                </p>
+                                <h3 className="text-xl md:text-2xl font-bold text-white mb-3">{feature.title}</h3>
+                                <p className="text-base md:text-lg text-slate-300 leading-relaxed">{feature.description}</p>
                             </div>
                         );
                     })}
                 </div>
 
-                {/* CTA */}
-                <div className="text-center">
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a
-                            href="https://norchain.org"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center px-8 py-4 text-base font-medium rounded-xl text-white bg-gradient-to-r from-violet-600 to-blue-600 hover:from-violet-500 hover:to-blue-500 transition-all duration-300 shadow-lg shadow-violet-500/25 hover:shadow-xl hover:shadow-violet-500/40 transform hover:-translate-y-1"
-                        >
-                            {content.exploreCta}
-                            <ExternalLink className="ml-3 h-5 w-5" />
-                        </a>
-                        <a
-                            href="https://docs.norchain.org"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center px-8 py-4 text-base font-medium rounded-xl text-white border border-white/30 hover:bg-white/10 transition-all duration-300"
-                        >
-                            <Code className="mr-3 h-5 w-5" />
-                            {content.docsCta}
-                        </a>
-                    </div>
+                {/* CTAs */}
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a
+                        href="https://norchain.org"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground rounded-xl font-medium hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/20"
+                    >
+                        {t('norchain.exploreCta')}
+                        <ExternalLink className="ml-2 w-5 h-5" />
+                    </a>
+                    <a
+                        href="https://docs.norchain.org"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center px-8 py-4 bg-white/10 text-white rounded-xl font-medium hover:bg-white/20 transition-all duration-300 border border-white/20"
+                    >
+                        <Code className="mr-2 w-5 h-5" />
+                        {t('norchain.docsCta')}
+                    </a>
                 </div>
             </div>
         </section>
     );
 }
-

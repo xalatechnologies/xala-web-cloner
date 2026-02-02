@@ -1,0 +1,113 @@
+{
+    "no": [
+        {
+            "id": "discover-no",
+            "step_number": 1,
+            "title": "Oppdagelse",
+            "description": "Vi starter med å forstå dine forretningsbehov, mål og utfordringer gjennom grundige samtaler og analyse.",
+            "icon": "Search"
+        },
+        {
+            "id": "design-no",
+            "step_number": 2,
+            "title": "Design",
+            "description": "Basert på innsikten designer vi løsninger som adresserer dine spesifikke behov med fokus på brukervennlighet.",
+            "icon": "Palette"
+        },
+        {
+            "id": "develop-no",
+            "step_number": 3,
+            "title": "Utvikling",
+            "description": "Vårt erfarne team utvikler løsningen med beste praksis og moderne teknologi for optimal ytelse.",
+            "icon": "Code"
+        },
+        {
+            "id": "deploy-no",
+            "step_number": 4,
+            "title": "Lansering",
+            "description": "Vi sørger for en smidig lansering med grundig testing og kontinuerlig støtte etter go-live.",
+            "icon": "Rocket"
+        },
+        {
+            "id": "iterate-no",
+            "step_number": 5,
+            "title": "Forbedring",
+            "description": "Vi følger opp med kontinuerlig forbedring basert på tilbakemeldinger og nye muligheter.",
+            "icon": "RefreshCw"
+        }
+    ],
+    "en": [
+        {
+            "id": "discover-en",
+            "step_number": 1,
+            "title": "Discovery",
+            "description": "We start by understanding your business needs, goals, and challenges through thorough conversations and analysis.",
+            "icon": "Search"
+        },
+        {
+            "id": "design-en",
+            "step_number": 2,
+            "title": "Design",
+            "description": "Based on insights, we design solutions that address your specific needs with focus on user experience.",
+            "icon": "Palette"
+        },
+        {
+            "id": "develop-en",
+            "step_number": 3,
+            "title": "Development",
+            "description": "Our experienced team develops the solution using best practices and modern technology for optimal performance.",
+            "icon": "Code"
+        },
+        {
+            "id": "deploy-en",
+            "step_number": 4,
+            "title": "Launch",
+            "description": "We ensure a smooth launch with thorough testing and continuous support after go-live.",
+            "icon": "Rocket"
+        },
+        {
+            "id": "iterate-en",
+            "step_number": 5,
+            "title": "Improvement",
+            "description": "We follow up with continuous improvement based on feedback and new opportunities.",
+            "icon": "RefreshCw"
+        }
+    ],
+    "ar": [
+        {
+            "id": "discover-ar",
+            "step_number": 1,
+            "title": "الاكتشاف",
+            "description": "نبدأ بفهم احتياجات عملك وأهدافك وتحدياتك من خلال محادثات وتحليلات شاملة.",
+            "icon": "Search"
+        },
+        {
+            "id": "design-ar",
+            "step_number": 2,
+            "title": "التصميم",
+            "description": "بناءً على الرؤى، نصمم حلولاً تعالج احتياجاتك المحددة مع التركيز على تجربة المستخدم.",
+            "icon": "Palette"
+        },
+        {
+            "id": "develop-ar",
+            "step_number": 3,
+            "title": "التطوير",
+            "description": "يطور فريقنا ذو الخبرة الحل باستخدام أفضل الممارسات والتقنيات الحديثة للحصول على أداء مثالي.",
+            "icon": "Code"
+        },
+        {
+            "id": "deploy-ar",
+            "step_number": 4,
+            "title": "الإطلاق",
+            "description": "نضمن إطلاقاً سلساً مع اختبار شامل ودعم مستمر بعد الانطلاق.",
+            "icon": "Rocket"
+        },
+        {
+            "id": "iterate-ar",
+            "step_number": 5,
+            "title": "التحسين",
+            "description": "نتابع بتحسين مستمر بناءً على الملاحظات والفرص الجديدة.",
+            "icon": "RefreshCw"
+        }
+    ]
+}

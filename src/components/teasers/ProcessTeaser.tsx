@@ -9,28 +9,28 @@ export default function ProcessTeaser() {
     {
       number: '01',
       title: t('teasers.process.steps.mapping'),
-      description: 'Vi starter med å forstå din virksomhet, mål og utfordringer for å skape et solid fundament.',
+      description: t('teasers.process.steps.mappingDesc'),
       icon: Search,
       color: 'from-blue-500 to-cyan-500'
     },
     {
       number: '02',
       title: t('teasers.process.steps.design'),
-      description: 'Vi designer brukeropplevelsen og arkitekturen som sikrer en intuitiv og skalerbar løsning.',
+      description: t('teasers.process.steps.designDesc'),
       icon: Palette,
       color: 'from-violet-500 to-purple-500'
     },
     {
       number: '03',
       title: t('teasers.process.steps.development'),
-      description: 'Vårt team utvikler løsningen med moderne teknologi og kontinuerlig kvalitetssikring.',
+      description: t('teasers.process.steps.developmentDesc'),
       icon: Code2,
       color: 'from-emerald-500 to-green-500'
     },
     {
       number: '04',
       title: t('teasers.process.steps.delivery'),
-      description: 'Vi leverer, lanserer og sikrer en smidig overgang med opplæring og support.',
+      description: t('teasers.process.steps.deliveryDesc'),
       icon: Rocket,
       color: 'from-orange-500 to-amber-500'
     }
@@ -47,7 +47,7 @@ export default function ProcessTeaser() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
             {t('teasers.process.title')}
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -93,10 +93,10 @@ export default function ProcessTeaser() {
                     </div>
 
                     {/* Content */}
-                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                       {step.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed text-sm">
+                    <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                       {step.description}
                     </p>
                   </div>
@@ -120,7 +120,7 @@ export default function ProcessTeaser() {
             className="inline-flex items-center px-8 py-4 text-base font-medium rounded-xl text-primary-foreground bg-primary hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             {t('teasers.process.readProcess')}
-            <ChevronRight className="ml-3 h-5 w-5" />
+            <ChevronRight className="ms-3 h-5 w-5 rtl:rotate-180" />
           </Link>
         </div>
       </div>

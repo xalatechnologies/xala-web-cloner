@@ -12,59 +12,17 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { supabase } from '@/integrations/supabase/client';
 import { useToast } from "@/components/ui/use-toast";
-import { useSection } from "@/hooks/use-section";
-import type { Section } from "@/hooks/use-section";
-
-interface ContactFormTranslations {
-  'contact.form.name.placeholder': string;
-  'contact.form.email.placeholder': string;
-  'contact.form.subject.placeholder': string;
-  'contact.form.message.placeholder': string;
-  'contact.form.status.send': string;
-  'contact.form.status.sending': string;
-  'contact.form.success.title': string;
-  'contact.form.success.description': string;
-  'contact.form.error.title': string;
-  'contact.form.error.description': string;
-  'contact.form.validation.name.min': string;
-  'contact.form.validation.email.invalid': string;
-  'contact.form.validation.subject.min': string;
-  'contact.form.validation.message.min': string;
-}
-
-// Define the database schema type
-interface ContactSubmission {
-  id?: string;
-  created_at?: string;
-  updated_at?: string;
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-  language: 'en' | 'no';
-  status?: string;
-}
 
 export const ContactForm = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { toast } = useToast();
-  const { data: section } = useSection('contact-form');
-
-  // Get translations from section data or fallback to i18n
-  const getTranslation = (key: string): string => {
-    if (!section?.translations) {
-      return t(key);
-    }
-    return section.translations[key] || t(key);
-  };
 
   const formSchema = z.object({
-    name: z.string().min(2, getTranslation('contact.form.validation.name.min')),
-    email: z.string().email(getTranslation('contact.form.validation.email.invalid')),
-    subject: z.string().min(2, getTranslation('contact.form.validation.subject.min')),
-    message: z.string().min(10, getTranslation('contact.form.validation.message.min')),
+    name: z.string().min(2, t('contact.form.validation.name.min')),
+    email: z.string().email(t('contact.form.validation.email.invalid')),
+    subject: z.string().min(2, t('contact.form.validation.subject.min')),
+    message: z.string().min(10, t('contact.form.validation.message.min')),
   });
 
   type FormValues = z.infer<typeof formSchema>;
@@ -81,32 +39,20 @@ export const ContactForm = () => {
 
   const onSubmit = async (values: FormValues) => {
     try {
-      // Map language code to enum value
-      const languageCode = i18n.language === 'nb' ? 'no' : 'en';
-
-      // Save to Supabase
-      const submission: ContactSubmission = {
-        ...values,
-        language: languageCode,
-        created_at: new Date().toISOString(),
-      };
-
-      const { error: supabaseError } = await supabase
-        .from('contact_submissions')
-        .insert(submission);
-
-      if (supabaseError) throw supabaseError;
+      // TODO: Replace with your preferred form submission method
+      // For example, send to an API endpoint, email service, or store locally
+      console.log('Form submitted:', values);
 
       toast({
-        title: getTranslation('contact.form.success.title'),
-        description: getTranslation('contact.form.success.description'),
+        title: t('contact.form.success.title'),
+        description: t('contact.form.success.description'),
       });
       form.reset();
     } catch (error) {
       console.error('Form submission error:', error);
       toast({
-        title: getTranslation('contact.form.error.title'),
-        description: getTranslation('contact.form.error.description'),
+        title: t('contact.form.error.title'),
+        description: t('contact.form.error.description'),
         variant: "destructive",
       });
     }
@@ -126,7 +72,7 @@ export const ContactForm = () => {
                     <FormControl>
                       <Input
                         {...field}
-                        placeholder={getTranslation('contact.form.name.placeholder')}
+                        placeholder={t('contact.form.name.placeholder')}
                         className="text-base sm:text-lg h-14 bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary dark:bg-white/5 dark:text-white dark:border-white/10"
                       />
                     </FormControl>
@@ -143,7 +89,7 @@ export const ContactForm = () => {
                       <Input
                         {...field}
                         type="email"
-                        placeholder={getTranslation('contact.form.email.placeholder')}
+                        placeholder={t('contact.form.email.placeholder')}
                         className="text-base sm:text-lg h-14 bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary dark:bg-white/5 dark:text-white dark:border-white/10"
                       />
                     </FormControl>
@@ -160,7 +106,7 @@ export const ContactForm = () => {
                   <FormControl>
                     <Input
                       {...field}
-                      placeholder={getTranslation('contact.form.subject.placeholder')}
+                      placeholder={t('contact.form.subject.placeholder')}
                       className="text-base sm:text-lg h-14 bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary dark:bg-white/5 dark:text-white dark:border-white/10"
                     />
                   </FormControl>
@@ -176,7 +122,7 @@ export const ContactForm = () => {
                   <FormControl>
                     <Textarea
                       {...field}
-                      placeholder={getTranslation('contact.form.message.placeholder')}
+                      placeholder={t('contact.form.message.placeholder')}
                       className="resize-none min-h-[266px] p-4 text-base sm:text-lg bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary dark:bg-white/5 dark:text-white dark:border-white/10"
                     />
                   </FormControl>
@@ -193,9 +139,9 @@ export const ContactForm = () => {
               className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-medium h-14 rounded-xl transition-all duration-300 text-lg"
             >
               {form.formState.isSubmitting ? (
-                getTranslation('contact.form.status.sending')
+                t('contact.form.status.sending')
               ) : (
-                getTranslation('contact.form.status.send')
+                t('contact.form.status.send')
               )}
             </Button>
           </div>

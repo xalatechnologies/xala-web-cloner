@@ -1,31 +1,28 @@
 import { useTranslation } from 'react-i18next';
-import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
-import type { Database } from '@/integrations/supabase/types';
+import menuData from '@/data/menu.json';
 
-type SupportedLanguage = Database['public']['Enums']['supported_language'];
-type MenuItem = Database['public']['Tables']['menu_items']['Row'];
+type Language = 'no' | 'en' | 'ar';
+
+export interface MenuItem {
+  id: string;
+  name: string;
+  href: string;
+  sortOrder: number;
+}
 
 export function useMenuItems() {
   const { i18n } = useTranslation();
 
-  return useQuery({
-    queryKey: ['menuItems', i18n.language],
-    queryFn: async () => {
-      const currentLanguage = i18n.language.toLowerCase() as SupportedLanguage;
-      
-      const { data, error } = await supabase
-        .from('menu_items')
-        .select('*')
-        .eq('language', currentLanguage)
-        .order('sort_order', { ascending: true });
+  // Normalize language code
+  const lang = i18n.language?.toLowerCase() as Language;
+  const currentLanguage: Language = lang === 'ar' ? 'ar' : (lang === 'en' ? 'en' : 'no');
 
-      if (error) {
-        throw new Error('Failed to fetch menu items');
-      }
+  // Return data directly - no async, no loading state
+  const data = menuData[currentLanguage] || menuData.no;
 
-      return (data || []) as MenuItem[];
-    },
-    enabled: !!i18n.language,
-  });
+  return {
+    data,
+    isLoading: false,
+    error: null,
+  };
 }

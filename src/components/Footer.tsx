@@ -1,52 +1,30 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
-import type { Database } from "@/integrations/supabase/types";
 import { Mail, Phone, MapPin, Linkedin, Github, Twitter } from "lucide-react";
-
-type SupportedLanguage = Database['public']['Enums']['supported_language'];
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { t, i18n } = useTranslation();
-  const isEnglish = i18n.language === 'en';
+  const { t } = useTranslation();
 
-  const { data: menuItems } = useQuery({
-    queryKey: ['footer-menu', i18n.language],
-    queryFn: async () => {
-      const currentLang = i18n.language.toLowerCase() as SupportedLanguage;
-
-      const { data, error } = await supabase
-        .from('menu_items')
-        .select('*')
-        .eq('language', currentLang)
-        .eq('location', 'footer')
-        .order('sort_order', { ascending: true });
-
-      if (error) throw error;
-      return data;
-    },
-  });
 
   const companyLinks = [
-    { name: isEnglish ? 'About Us' : 'Om oss', href: '/om-oss' },
-    { name: isEnglish ? 'Team' : 'Teamet', href: '/team' },
-    { name: isEnglish ? 'Careers' : 'Karriere', href: '/karriere' },
-    { name: isEnglish ? 'Contact' : 'Kontakt', href: '/kontakt' },
+    { name: t('footer.links.about'), href: '/om-oss' },
+    { name: t('footer.links.team'), href: '/team' },
+    { name: t('footer.links.careers'), href: '/karriere' },
+    { name: t('footer.links.contact'), href: '/kontakt' },
   ];
 
   const serviceLinks = [
-    { name: isEnglish ? 'Services' : 'Tjenester', href: '/tjenester' },
-    { name: isEnglish ? 'Products' : 'Produkter', href: '/produkter' },
-    { name: isEnglish ? 'Cases' : 'Caser', href: '/caser' },
-    { name: isEnglish ? 'Technology' : 'Teknologi', href: '/teknologi' },
+    { name: t('nav.services'), href: '/tjenester' },
+    { name: t('nav.products'), href: '/produkter' },
+    { name: t('nav.cases'), href: '/caser' },
+    { name: t('nav.technology'), href: '/teknologi' },
   ];
 
   const legalLinks = [
-    { name: isEnglish ? 'Privacy' : 'Personvern', href: '/privacy' },
-    { name: isEnglish ? 'Terms' : 'Vilkår', href: '/terms' },
-    { name: isEnglish ? 'Cookies' : 'Cookies', href: '/cookies' },
+    { name: t('footer.links.privacy') || 'Privacy', href: '/privacy' },
+    { name: t('footer.links.terms') || 'Terms', href: '/terms' },
+    { name: t('footer.links.cookies') || 'Cookies', href: '/cookies' },
   ];
 
   const products = [
@@ -58,18 +36,16 @@ const Footer = () => {
 
   // Localized section headers
   const sectionHeaders = {
-    company: isEnglish ? 'Company' : 'Selskap',
-    solutions: isEnglish ? 'Solutions' : 'Løsninger',
-    products: isEnglish ? 'Products' : 'Produkter',
+    company: t('footer.company'),
+    solutions: t('footer.solutions'),
+    products: t('footer.productsHeader'),
   };
 
   // Localized description
-  const description = isEnglish
-    ? 'We create innovative technology solutions that drive business growth and digital transformation.'
-    : 'Vi skaper innovative teknologiløsninger som driver forretningsvekst og digital transformasjon.';
+  const description = t('footer.description');
 
   // Localized location
-  const location = isEnglish ? 'Oslo, Norway' : 'Oslo, Norge';
+  const location = t('footer.location');
 
   return (
     <footer className="relative overflow-hidden bg-slate-900 dark:bg-slate-950 text-white">
@@ -97,22 +73,22 @@ const Footer = () => {
               />
               <span className="text-2xl font-bold text-white">Xala Technologies</span>
             </Link>
-            <p className="text-slate-400 mb-6 max-w-sm leading-relaxed">
+            <p className="text-base md:text-lg text-slate-300 mb-6 max-w-sm leading-relaxed">
               {description}
             </p>
 
             {/* Contact info */}
             <div className="space-y-3">
-              <a href="mailto:info@xala.no" className="flex items-center gap-3 text-slate-400 hover:text-primary transition-colors">
-                <Mail className="w-4 h-4" />
+              <a href="mailto:info@xala.no" className="flex items-center gap-3 text-base text-slate-300 hover:text-primary transition-colors">
+                <Mail className="w-5 h-5" />
                 <span>info@xala.no</span>
               </a>
-              <a href="tel:+4796665001" className="flex items-center gap-3 text-slate-400 hover:text-primary transition-colors">
-                <Phone className="w-4 h-4" />
-                <span>+47 966 65 001</span>
+              <a href="tel:+4796665001" className="flex items-center gap-3 text-base text-slate-300 hover:text-primary transition-colors">
+                <Phone className="w-5 h-5" />
+                <span dir="ltr">+47 966 65 001</span>
               </a>
-              <div className="flex items-center gap-3 text-slate-400">
-                <MapPin className="w-4 h-4" />
+              <div className="flex items-center gap-3 text-base text-slate-300">
+                <MapPin className="w-5 h-5" />
                 <span>{location}</span>
               </div>
             </div>
@@ -120,13 +96,13 @@ const Footer = () => {
 
           {/* Company links */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">{sectionHeaders.company}</h3>
+            <h3 className="text-base font-semibold text-white uppercase tracking-wider mb-4">{sectionHeaders.company}</h3>
             <ul className="space-y-3">
               {companyLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-slate-400 hover:text-primary transition-colors duration-200"
+                    className="text-base text-slate-300 hover:text-primary transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -137,13 +113,13 @@ const Footer = () => {
 
           {/* Services links */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">{sectionHeaders.solutions}</h3>
+            <h3 className="text-base font-semibold text-white uppercase tracking-wider mb-4">{sectionHeaders.solutions}</h3>
             <ul className="space-y-3">
               {serviceLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-slate-400 hover:text-primary transition-colors duration-200"
+                    className="text-base text-slate-300 hover:text-primary transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -154,7 +130,7 @@ const Footer = () => {
 
           {/* Products links */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">{sectionHeaders.products}</h3>
+            <h3 className="text-base font-semibold text-white uppercase tracking-wider mb-4">{sectionHeaders.products}</h3>
             <ul className="space-y-3">
               {products.map((link) => (
                 <li key={link.href}>
@@ -162,7 +138,7 @@ const Footer = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-400 hover:text-primary transition-colors duration-200 inline-flex items-center gap-1"
+                    className="text-base text-slate-300 hover:text-primary transition-colors duration-200 inline-flex items-center gap-1"
                   >
                     {link.name}
                     <span className="text-xs">↗</span>

@@ -1,8 +1,12 @@
 import { useRef, useState } from 'react';
 import ClientCard from './ClientCard';
-import type { Database } from '@/integrations/supabase/types';
 
-type Client = Database['public']['Tables']['clients']['Row'];
+interface Client {
+  id: string;
+  name: string;
+  logo_url: string;
+  website_url?: string;
+}
 
 interface ClientMarqueeProps {
   clients: Client[];

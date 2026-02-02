@@ -1,4 +1,3 @@
-import { Database } from '@/integrations/supabase/types';
 import { Menu, X, Settings, Code, Briefcase, Target, Info, Phone } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -22,7 +21,7 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
-        menuRef.current && 
+        menuRef.current &&
         buttonRef.current &&
         !menuRef.current.contains(event.target as Node) &&
         !buttonRef.current.contains(event.target as Node)
@@ -113,11 +112,10 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
         </div>
       </button>
 
-      <div 
+      <div
         ref={menuRef}
-        className={`absolute top-full left-0 w-full backdrop-blur-lg transform transition-all duration-500 ease-in-out bg-[linear-gradient(135deg,hsl(var(--card))_0%,hsl(var(--muted))_100%)] border-t border-border/50 shadow-xl ${
-          isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
-        }`}
+        className={`absolute top-full left-0 w-full backdrop-blur-lg transform transition-all duration-500 ease-in-out bg-[linear-gradient(135deg,hsl(var(--card))_0%,hsl(var(--muted))_100%)] border-t border-border/50 shadow-xl ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Main Navigation Grid - Optimized for 2 rows */}
@@ -134,9 +132,9 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
                 >
                   <div className="flex items-center gap-3">
                     <div className="p-2.5 rounded-lg bg-muted/80 group-hover:bg-primary/20 transition-colors duration-200">
-                      <IconComponent 
-                        size={20} 
-                        className="transition-colors text-foreground group-hover:text-primary" 
+                      <IconComponent
+                        size={20}
+                        className="transition-colors text-foreground group-hover:text-primary"
                       />
                     </div>
                     <div className="flex-1">
@@ -148,7 +146,7 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
                 </Link>
               );
             })}
-            
+
             {/* Last 4 items - Second row on large screens */}
             <div className="hidden lg:block lg:col-span-4">
               <div className="grid grid-cols-4 gap-5 max-w-4xl mx-auto">
@@ -159,33 +157,29 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
                       key={item.name}
                       to={item.href}
                       onClick={() => setIsOpen(false)}
-                      className={`group cursor-pointer p-5 rounded-xl transition-all duration-300 hover:scale-[1.02] border block shadow-md hover:shadow-lg min-w-0 backdrop-blur-sm nav-item-hover ${
-                        item.isPrimary 
-                          ? 'bg-gradient-to-br from-primary/15 to-primary/5 border-primary/30 hover:border-primary/50' 
-                          : 'bg-card/90 border-border/50 hover:border-border'
-                      }`}
+                      className={`group cursor-pointer p-5 rounded-xl transition-all duration-300 hover:scale-[1.02] border block shadow-md hover:shadow-lg min-w-0 backdrop-blur-sm nav-item-hover ${item.isPrimary
+                        ? 'bg-gradient-to-br from-primary/15 to-primary/5 border-primary/30 hover:border-primary/50'
+                        : 'bg-card/90 border-border/50 hover:border-border'
+                        }`}
                     >
                       <div className="flex items-center gap-3">
-                        <div className={`p-2.5 rounded-lg transition-colors duration-200 ${
-                          item.isPrimary 
-                            ? 'bg-primary/20 group-hover:bg-primary/30' 
-                            : 'bg-muted/80 group-hover:bg-primary/20'
-                        }`}>
-                          <IconComponent 
-                            size={20} 
-                            className={`transition-colors ${
-                              item.isPrimary 
-                                ? 'text-primary group-hover:text-primary/80' 
-                                : 'text-foreground group-hover:text-primary'
-                            }`} 
+                        <div className={`p-2.5 rounded-lg transition-colors duration-200 ${item.isPrimary
+                          ? 'bg-primary/20 group-hover:bg-primary/30'
+                          : 'bg-muted/80 group-hover:bg-primary/20'
+                          }`}>
+                          <IconComponent
+                            size={20}
+                            className={`transition-colors ${item.isPrimary
+                              ? 'text-primary group-hover:text-primary/80'
+                              : 'text-foreground group-hover:text-primary'
+                              }`}
                           />
                         </div>
                         <div className="flex-1">
-                          <h4 className={`text-base font-medium transition-colors truncate ${
-                            item.isPrimary 
-                              ? 'text-primary group-hover:text-primary/80' 
-                              : 'text-foreground group-hover:text-primary'
-                          }`}>
+                          <h4 className={`text-base font-medium transition-colors truncate ${item.isPrimary
+                            ? 'text-primary group-hover:text-primary/80'
+                            : 'text-foreground group-hover:text-primary'
+                            }`}>
                             {item.name}
                           </h4>
                         </div>
@@ -195,7 +189,7 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
                 })}
               </div>
             </div>
-            
+
             {/* Mobile and tablet: show last 4 items normally */}
             {mainNavItems.slice(4).map((item, index) => {
               const IconComponent = item.icon;
@@ -204,33 +198,29 @@ const NavigationMenu = ({ isOpen, setIsOpen, items }: NavigationMenuProps) => {
                   key={`mobile-${item.name}`}
                   to={item.href}
                   onClick={() => setIsOpen(false)}
-                  className={`lg:hidden group cursor-pointer p-5 rounded-xl transition-all duration-300 hover:scale-[1.02] border block shadow-md hover:shadow-lg min-w-0 backdrop-blur-sm nav-item-hover ${
-                    item.isPrimary 
-                      ? 'bg-gradient-to-br from-primary/15 to-primary/5 border-primary/30 hover:border-primary/50' 
-                      : 'bg-card/90 border-border/50 hover:border-border'
-                  }`}
+                  className={`lg:hidden group cursor-pointer p-5 rounded-xl transition-all duration-300 hover:scale-[1.02] border block shadow-md hover:shadow-lg min-w-0 backdrop-blur-sm nav-item-hover ${item.isPrimary
+                    ? 'bg-gradient-to-br from-primary/15 to-primary/5 border-primary/30 hover:border-primary/50'
+                    : 'bg-card/90 border-border/50 hover:border-border'
+                    }`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className={`p-2.5 rounded-lg transition-colors duration-200 ${
-                      item.isPrimary 
-                        ? 'bg-primary/20 group-hover:bg-primary/30' 
-                        : 'bg-muted/80 group-hover:bg-primary/20'
-                    }`}>
-                      <IconComponent 
-                        size={20} 
-                        className={`transition-colors ${
-                          item.isPrimary 
-                            ? 'text-primary group-hover:text-primary/80' 
-                            : 'text-foreground group-hover:text-primary'
-                        }`} 
+                    <div className={`p-2.5 rounded-lg transition-colors duration-200 ${item.isPrimary
+                      ? 'bg-primary/20 group-hover:bg-primary/30'
+                      : 'bg-muted/80 group-hover:bg-primary/20'
+                      }`}>
+                      <IconComponent
+                        size={20}
+                        className={`transition-colors ${item.isPrimary
+                          ? 'text-primary group-hover:text-primary/80'
+                          : 'text-foreground group-hover:text-primary'
+                          }`}
                       />
                     </div>
                     <div className="flex-1">
-                      <h4 className={`text-base font-medium transition-colors truncate ${
-                        item.isPrimary 
-                          ? 'text-primary group-hover:text-primary/80' 
-                          : 'text-foreground group-hover:text-primary'
-                      }`}>
+                      <h4 className={`text-base font-medium transition-colors truncate ${item.isPrimary
+                        ? 'text-primary group-hover:text-primary/80'
+                        : 'text-foreground group-hover:text-primary'
+                        }`}>
                         {item.name}
                       </h4>
                     </div>

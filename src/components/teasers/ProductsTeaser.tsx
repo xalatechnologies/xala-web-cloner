@@ -3,46 +3,37 @@ import { useTranslation } from 'react-i18next';
 import { FileText, ClipboardList, Boxes, ChevronRight, Sparkles } from 'lucide-react';
 
 export default function ProductsTeaser() {
-  const { t, i18n } = useTranslation();
-  const isEnglish = i18n.language === 'en';
+  const { t } = useTranslation();
 
   const products = [
     {
       title: 'Digilist',
-      description: isEnglish
-        ? 'Digital list management and checklists for quality assurance and compliance in businesses.'
-        : 'Digital listehåndtering og sjekklister for kvalitetssikring og compliance i bedrifter.',
-      status: isEnglish ? 'Available' : 'Tilgjengelig',
+      description: t('products.digilist.description'),
+      status: t('products.digilist.status'),
       statusType: 'available',
       icon: ClipboardList,
       url: 'https://digilist.no'
     },
     {
       title: 'Digiskjema',
-      description: isEnglish
-        ? 'Smart form builder with AI-assisted completion and automated document generation.'
-        : 'Smart skjemabygger med AI-assistert utfylling og automatisert dokumentgenerering.',
-      status: isEnglish ? 'Available' : 'Tilgjengelig',
+      description: t('products.digiskjema.description'),
+      status: t('products.digiskjema.status'),
       statusType: 'available',
       icon: FileText,
       url: 'https://digiskjema.no'
     },
     {
       title: 'Xaheen',
-      description: isEnglish
-        ? 'AI-powered application builder that lets you create complete web applications with natural language.'
-        : 'AI-drevet applikasjonsbygger som lar deg lage komplette webapplikasjoner med naturlig språk.',
-      status: 'Live',
+      description: t('products.xaheen.description'),
+      status: t('products.xaheen.status'),
       statusType: 'available',
       icon: Sparkles,
       url: 'https://xaheen.com'
     },
     {
       title: 'Norchain',
-      description: isEnglish
-        ? 'Complete blockchain operating system for digital commerce with payments, accounting and governance.'
-        : 'Komplett blockchain-operativsystem for digital handel med betalinger, regnskap og governance.',
-      status: 'Live',
+      description: t('products.norchain.description'),
+      status: t('products.norchain.status'),
       statusType: 'available',
       icon: Boxes,
       url: 'https://norchain.org'
@@ -124,7 +115,7 @@ export default function ProductsTeaser() {
             className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-primary-foreground bg-primary hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             {t('teasers.products.viewAll')}
-            <ChevronRight className="ml-3 h-5 w-5" />
+            <ChevronRight className="ms-3 h-5 w-5 rtl:rotate-180" />
           </Link>
         </div>
       </div>

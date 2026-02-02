@@ -6,7 +6,7 @@ import { Cookie, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export function GDPRNotification() {
-  const { i18n } = useTranslation();
+  const { t } = useTranslation();
   const [showNotification, setShowNotification] = useState(false);
 
   // Check if user has already accepted GDPR
@@ -19,15 +19,13 @@ export function GDPRNotification() {
     }
   }, []);
 
-  // Content based on language
+  // Content based on language - using i18n
   const content = {
-    title: i18n.language === 'no' ? 'Vi bruker informasjonskapsler' : 'We use cookies',
-    content: i18n.language === 'no'
-      ? 'Vi bruker informasjonskapsler for å forbedre din opplevelse på nettstedet vårt og for å analysere trafikk.'
-      : 'We use cookies to improve your experience on our website and to analyze traffic.',
-    acceptText: i18n.language === 'no' ? 'Godta alle' : 'Accept all',
-    declineText: i18n.language === 'no' ? 'Kun nødvendige' : 'Essential only',
-    learnMore: i18n.language === 'no' ? 'Les mer' : 'Learn more'
+    title: t('gdpr.title'),
+    content: t('gdpr.content'),
+    acceptText: t('gdpr.acceptAll'),
+    declineText: t('gdpr.essentialOnly'),
+    learnMore: t('gdpr.learnMore')
   };
 
   const handleAccept = () => {

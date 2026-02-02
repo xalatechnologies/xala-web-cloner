@@ -1,0 +1,98 @@
+{
+    "no": [
+        {
+            "id": "home-no",
+            "name": "Hjem",
+            "href": "/",
+            "sortOrder": 1
+        },
+        {
+            "id": "services-no",
+            "name": "Tjenester",
+            "href": "/tjenester",
+            "sortOrder": 2
+        },
+        {
+            "id": "products-no",
+            "name": "Produkter",
+            "href": "/produkter",
+            "sortOrder": 3
+        },
+        {
+            "id": "about-no",
+            "name": "Om Oss",
+            "href": "/om-oss",
+            "sortOrder": 4
+        },
+        {
+            "id": "contact-no",
+            "name": "Kontakt",
+            "href": "/kontakt",
+            "sortOrder": 5
+        }
+    ],
+    "en": [
+        {
+            "id": "home-en",
+            "name": "Home",
+            "href": "/",
+            "sortOrder": 1
+        },
+        {
+            "id": "services-en",
+            "name": "Services",
+            "href": "/tjenester",
+            "sortOrder": 2
+        },
+        {
+            "id": "products-en",
+            "name": "Products",
+            "href": "/produkter",
+            "sortOrder": 3
+        },
+        {
+            "id": "about-en",
+            "name": "About Us",
+            "href": "/om-oss",
+            "sortOrder": 4
+        },
+        {
+            "id": "contact-en",
+            "name": "Contact",
+            "href": "/kontakt",
+            "sortOrder": 5
+        }
+    ],
+    "ar": [
+        {
+            "id": "home-ar",
+            "name": "الرئيسية",
+            "href": "/",
+            "sortOrder": 1
+        },
+        {
+            "id": "services-ar",
+            "name": "الخدمات",
+            "href": "/tjenester",
+            "sortOrder": 2
+        },
+        {
+            "id": "products-ar",
+            "name": "المنتجات",
+            "href": "/produkter",
+            "sortOrder": 3
+        },
+        {
+            "id": "about-ar",
+            "name": "من نحن",
+            "href": "/om-oss",
+            "sortOrder": 4
+        },
+        {
+            "id": "contact-ar",
+            "name": "اتصل بنا",
+            "href": "/kontakt",
+            "sortOrder": 5
+        }
+    ]
+}
