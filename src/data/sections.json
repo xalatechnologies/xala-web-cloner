@@ -2,7 +2,7 @@
     "no": {
         "hero": {
             "id": "hero-no",
-            "title": "Innovative Teknologiløsninger",
+            "title": "Innovative teknologiløsninger",
             "description": "Vi hjelper bedrifter med digital transformasjon gjennom skreddersydde løsninger innen AI, blockchain og skyteknologi.",
             "background": "/images/hero-bg.jpg"
         },
@@ -13,27 +13,27 @@
         },
         "vision": {
             "id": "vision-no",
-            "title": "Vår Visjon",
+            "title": "Vår visjon",
             "description": "Å være Norges ledende teknologipartner for digital transformasjon, og hjelpe virksomheter med å utnytte teknologiens fulle potensial."
         },
         "clients": {
             "id": "clients-no",
-            "title": "Våre Kunder",
+            "title": "Våre kunder",
             "description": "Vi samarbeider med ledende organisasjoner i offentlig og privat sektor."
         },
         "contact": {
             "id": "contact-no",
-            "title": "Kontakt Oss",
+            "title": "Kontakt oss",
             "description": "Ta kontakt for en uforpliktende samtale om hvordan vi kan hjelpe din virksomhet."
         },
         "services": {
             "id": "services-no",
-            "title": "Våre Tjenester",
+            "title": "Våre tjenester",
             "description": "Vi tilbyr et bredt spekter av teknologitjenester for å møte dine behov."
         },
         "products": {
             "id": "products-no",
-            "title": "Våre Produkter",
+            "title": "Våre produkter",
             "description": "Utforsk våre innovative produkter som driver digital transformasjon."
         },
         "technologies": {
@@ -48,7 +48,7 @@
         },
         "work-process": {
             "id": "work-process-no",
-            "title": "Slik Vi Jobber",
+            "title": "Slik vi jobber",
             "description": "Vår metodiske tilnærming sikrer kvalitet og effektivitet i hvert prosjekt."
         },
         "teams": {
@@ -60,7 +60,7 @@
             "id": "footer-no",
             "title": "Xala Technologies AS",
             "description": "Innovative teknologiløsninger for fremtiden.",
-            "address": "Oslo, Norge",
+            "address": "Nesbru, Norge",
             "email": "kontakt@xala.no",
             "phone": "+47 22 22 22 22"
         }
@@ -126,7 +126,7 @@
             "id": "footer-en",
             "title": "Xala Technologies AS",
             "description": "Innovative technology solutions for the future.",
-            "address": "Oslo, Norway",
+            "address": "Nesbru, Norway",
             "email": "contact@xala.no",
             "phone": "+47 22 22 22 22"
         }

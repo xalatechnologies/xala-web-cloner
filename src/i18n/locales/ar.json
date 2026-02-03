@@ -39,7 +39,7 @@
         "bookMeeting": "احجز اجتماعاً",
         "scrollToNext": "انتقل للقسم التالي",
         "certifications": {
-            "iso": "ISO 27001",
+            "iso": "ISO 27001 & 27701",
             "gdpr": "متوافق مع GDPR",
             "microsoft": "شريك مايكروسوفت",
             "aws": "شريك AWS"
@@ -289,6 +289,7 @@
         "showMore": "عرض المزيد",
         "showLess": "عرض أقل"
     },
+    "lastUpdated": "آخر تحديث",
     "categories": {
         "frontend": "الواجهة الأمامية",
         "backend": "الخادم",
@@ -310,6 +311,19 @@
         },
         "errors": {
             "failed_to_send": "فشل إرسال الرسالة"
+        }
+    },
+    "careers": {
+        "title": "الوظائف في Xala؟",
+        "description": "نبحث دائماً عن أشخاص موهوبين يريدون المساعدة في بناء المستقبل. أرسل لنا طلباً مفتوحاً!",
+        "openApplication": {
+            "title": "طلب مفتوح",
+            "description": "تريد العمل معنا ولكن لا ترى منصباً يناسبك الآن؟ نقبل الطلبات المفتوحة على مدار السنة.",
+            "instructions": "أرسل لنا بريداً إلكترونياً مع سيرتك الذاتية وطلبك ووصفاً موجزاً عن نفسك ولماذا تريد العمل في Xala.",
+            "sendEmail": "إرسال بريد إلكتروني إلى info@xala.no",
+            "emailLabel": "البريد الإلكتروني:",
+            "emailSubject": "طلب مفتوح - Xala Technologies",
+            "emailBody": "مرحباً،\n\nأرسل طلباً مفتوحاً إلى Xala Technologies.\n\nمع أطيب التحيات"
         }
     }
 }

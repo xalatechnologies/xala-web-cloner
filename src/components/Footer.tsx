@@ -9,7 +9,6 @@ const Footer = () => {
 
   const companyLinks = [
     { name: t('footer.links.about'), href: '/om-oss' },
-    { name: t('footer.links.team'), href: '/team' },
     { name: t('footer.links.careers'), href: '/karriere' },
     { name: t('footer.links.contact'), href: '/kontakt' },
   ];
@@ -157,7 +156,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <div className="flex flex-col sm:flex-row items-center gap-4 text-slate-500 text-sm">
-            <span>© {currentYear} Xala Technologies AS. {t('footer.rights')}</span>
+            <span>© 2026 Xala Technologies AS</span>
             <div className="flex gap-4">
               {legalLinks.map((link) => (
                 <Link
@@ -190,7 +189,7 @@ const Footer = () => {
               <Github className="w-5 h-5" />
             </a>
             <a
-              href="https://twitter.com/xalatech"
+              href="https://x.com/NorChaiin"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-slate-800 hover:bg-primary flex items-center justify-center transition-all duration-300 hover:scale-110"

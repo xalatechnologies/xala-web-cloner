@@ -8,7 +8,7 @@ const socialLinks = [
   },
   {
     icon: <Twitter className="w-5 h-5" />,
-    href: "https://twitter.com/xalatechnologies",
+    href: "https://x.com/NorChaiin",
     color: "hover:text-primary"
   },
   {

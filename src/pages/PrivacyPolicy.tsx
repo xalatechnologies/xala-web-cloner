@@ -45,7 +45,7 @@ const PrivacyPolicy = () => {
       <Navbar />
       <div className="flex-grow pt-20">
         <LegalLayout
-          title={t('privacy.title')}
+          title={data?.title || t('legal.privacy.title', 'Personvernerklæring')}
           lastUpdated={data?.lastUpdated || ''}
         >
           {data?.sections.map((section) => (
@@ -54,7 +54,10 @@ const PrivacyPolicy = () => {
               {section.description && (
                 <p className="text-foreground/80 leading-relaxed">{section.description}</p>
               )}
-              {section.items.length > 0 && (
+              {!section.description && section.items && section.items.length === 1 && !section.items[0].title && (
+                <p className="text-foreground/90 leading-relaxed">{section.items[0].content}</p>
+              )}
+              {section.items && section.items.length > 0 && section.items.some(item => item.title) && (
                 <ul className="space-y-4 pl-6 list-disc marker:text-primary">
                   {section.items.map((item) => (
                     <li key={item.id} className="text-foreground/90">

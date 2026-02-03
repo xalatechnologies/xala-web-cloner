@@ -17,6 +17,7 @@ import TeknologiPage from './pages/TeknologiPage';
 import OmOssPage from './pages/OmOssPage';
 // import TeamPage from './pages/TeamPage';
 import KontaktPage from './pages/KontaktPage';
+import KarrierePage from './pages/KarrierePage';
 
 const analyticsConfig = {
   googleAnalyticsId: "G-NFGNKJDHHW",
@@ -41,6 +42,7 @@ const App = () => {
               <Route path="/om-oss" element={<OmOssPage />} />
               {/* <Route path="/om-oss/team" element={<TeamPage />} /> */}
               <Route path="/kontakt" element={<KontaktPage />} />
+              <Route path="/karriere" element={<KarrierePage />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/cookies" element={<CookiesPolicy />} />

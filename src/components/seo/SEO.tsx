@@ -171,8 +171,8 @@ export const SEO = ({
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content={ogImage} />
-        <meta name="twitter:creator" content="@xalatechnologies" />
-        <meta name="twitter:site" content="@xalatechnologies" />
+        <meta name="twitter:creator" content="@NorChaiin" />
+        <meta name="twitter:site" content="@NorChaiin" />
 
         {/* LinkedIn */}
         <meta property="linkedin:card" content="summary_large_image" />

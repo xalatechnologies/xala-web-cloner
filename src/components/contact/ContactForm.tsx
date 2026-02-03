@@ -13,9 +13,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useToast } from "@/components/ui/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 export const ContactForm = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { toast } = useToast();
 
   const formSchema = z.object({
@@ -39,9 +40,36 @@ export const ContactForm = () => {
 
   const onSubmit = async (values: FormValues) => {
     try {
-      // TODO: Replace with your preferred form submission method
-      // For example, send to an API endpoint, email service, or store locally
-      console.log('Form submitted:', values);
+      // Normalize language code to match database enum (contact_language: 'en' | 'no')
+      const currentLang = i18n.language?.toLowerCase() || 'no';
+      // Map to database enum - contact_language only supports 'en' and 'no'
+      const dbLanguage = (currentLang === 'en' || currentLang === 'ar') ? 'en' : 'no';
+
+      // Insert into Supabase contact_submissions table
+      // This will trigger the database trigger that sends the email
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert({
+          name: values.name,
+          email: values.email,
+          subject: values.subject,
+          message: values.message,
+          language: dbLanguage,
+          status: 'pending',
+        });
+
+      if (error) {
+        console.error('Supabase error:', error);
+        console.error('Error details:', {
+          message: error.message,
+          details: error.details,
+          hint: error.hint,
+          code: error.code
+        });
+        throw error;
+      }
+
+      console.log('Contact form submitted successfully');
 
       toast({
         title: t('contact.form.success.title'),

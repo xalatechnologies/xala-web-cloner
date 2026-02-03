@@ -7,7 +7,13 @@ type LegalType = 'privacy' | 'terms' | 'cookies';
 export interface LegalSection {
   id: string;
   title: string;
-  content: string;
+  content?: string;
+  description?: string;
+  items?: Array<{
+    id: string;
+    title?: string;
+    content: string;
+  }>;
 }
 
 export interface LegalContent {
@@ -32,9 +38,14 @@ export const useLegalContent = ({ type }: UseLegalContentProps) => {
 
   return {
     data: content ? {
+      title: content.title,
       sections: content.sections.map(s => ({
-        ...s,
-        items: [{ content: s.content }]
+        id: s.id,
+        title: s.title,
+        description: s.description || undefined,
+        items: s.items && s.items.length > 0 
+          ? s.items 
+          : (s.content ? [{ id: s.id, title: undefined, content: s.content }] : [])
       })),
       lastUpdated: content.lastUpdated
     } : null,

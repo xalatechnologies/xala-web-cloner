@@ -39,7 +39,7 @@
         "bookMeeting": "Book meeting",
         "scrollToNext": "Scroll to next section",
         "certifications": {
-            "iso": "ISO 27001",
+            "iso": "ISO 27001 & 27701",
             "gdpr": "GDPR Compliant",
             "microsoft": "Microsoft Partner",
             "aws": "AWS Partner"
@@ -226,7 +226,7 @@
         "company": "Company",
         "solutions": "Solutions",
         "productsHeader": "Products",
-        "location": "Oslo, Norway",
+        "location": "Nesbru, Norway",
         "links": {
             "about": "About Us",
             "team": "Team",
@@ -289,6 +289,7 @@
         "showMore": "Show More",
         "showLess": "Show Less"
     },
+    "lastUpdated": "Last updated",
     "categories": {
         "frontend": "Frontend",
         "backend": "Backend",
@@ -310,6 +311,19 @@
         },
         "errors": {
             "failed_to_send": "Failed to send message"
+        }
+    },
+    "careers": {
+        "title": "Careers at Xala?",
+        "description": "We are always looking for talented people who want to help build the future. Send us an open application!",
+        "openApplication": {
+            "title": "Open Application",
+            "description": "Want to work with us but don't see a position that fits you right now? We accept open applications year-round.",
+            "instructions": "Send us an email with your CV, application, and a brief description of yourself and why you want to work at Xala.",
+            "sendEmail": "Send email to info@xala.no",
+            "emailLabel": "Email:",
+            "emailSubject": "Open Application - Xala Technologies",
+            "emailBody": "Hello,\n\nI am submitting an open application to Xala Technologies.\n\nBest regards"
         }
     }
 }

@@ -30,12 +30,12 @@ const contactData = {
   no: {
     phone: { label: 'Telefon', value: '+47 966 65 001' },
     email: { label: 'E-post', value: 'info@xala.no' },
-    address: { label: 'Adresse', value: 'Oslo, Norge' }
+    address: { label: 'Adresse', value: 'Nesbru, Norge' }
   },
   en: {
     phone: { label: 'Phone', value: '+47 966 65 001' },
     email: { label: 'Email', value: 'info@xala.no' },
-    address: { label: 'Address', value: 'Oslo, Norway' }
+    address: { label: 'Address', value: 'Nesbru, Norway' }
   },
   ar: {
     phone: { label: 'الهاتف', value: '+47 966 65 001' },

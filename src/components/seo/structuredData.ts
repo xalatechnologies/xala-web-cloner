@@ -31,11 +31,11 @@ export const generateOrganizationSchema = (
   address: {
     '@type': 'PostalAddress',
     addressCountry: 'NO',
-    addressLocality: 'Oslo'
+    addressLocality: 'Nesbru'
   },
   sameAs: [
     'https://www.linkedin.com/company/xala-technologies',
-    'https://twitter.com/xalatechnologies'
+    'https://x.com/NorChaiin'
   ]
 });
 
