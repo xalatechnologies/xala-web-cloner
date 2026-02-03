@@ -55,7 +55,7 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
               <Code className="absolute -top-1 -right-1 h-3 w-3 text-primary" />
               {t('hero.heroText.weUse')} <span className="sr-only">_</span>
             </span>
-            <span className="group relative rounded-xl bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/30 shadow-xl backdrop-blur-sm px-6 py-3 text-lg font-bold text-foreground hover:shadow-2xl transition-all duration-300 min-w-[140px]">
+            <span className="group relative rounded-xl bg-gradient-to-r from-primary/40 to-primary/30 border-2 border-primary/60 shadow-xl backdrop-blur-sm px-6 py-3 text-lg font-bold text-foreground hover:shadow-2xl transition-all duration-300 min-w-[140px] hover:from-primary/50 hover:to-primary/40 hover:border-primary/80">
               <Brain className="absolute -top-1 -right-1 h-3 w-3 text-primary" />
               <DynamicWord words={words ?? ['AI', 'sky', 'apps', 'data']} />
             </span>
@@ -69,7 +69,7 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
               <Cpu className="absolute -top-1 -right-1 h-3 w-3 text-purple-500" />
               {t('hero.heroText.create')}
             </span>
-            <span className="group relative rounded-xl bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/30 shadow-xl backdrop-blur-sm px-6 py-3 text-lg font-bold text-foreground hover:shadow-2xl transition-all duration-300 min-w-[160px]">
+            <span className="group relative rounded-xl bg-gradient-to-r from-primary/40 to-primary/30 border-2 border-primary/60 shadow-xl backdrop-blur-sm px-6 py-3 text-lg font-bold text-foreground hover:shadow-2xl transition-all duration-300 min-w-[160px] hover:from-primary/50 hover:to-primary/40 hover:border-primary/80">
               <Brain className="absolute -top-1 -right-1 h-3 w-3 text-primary" />
               {t('hero.heroText.positiveChange')}
             </span>
