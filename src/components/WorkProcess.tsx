@@ -111,11 +111,13 @@ const WorkProcess = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-12 md:mb-20 animate-fade-in">
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 md:mb-6">
-            {section?.title || t('workProcess.title', 'How We Work')}
+            {section?.title || t('workProcess.title', 'What is our job?')}
           </h2>
-          <p className="text-xala-text/80 max-w-2xl mx-auto text-base md:text-lg px-4">
-            {section?.description || t('workProcess.description', '')}
-          </p>
+          {(section?.description ?? t('workProcess.description', '')) && (
+            <p className="text-xala-text/80 max-w-2xl mx-auto text-base md:text-lg px-4">
+              {section?.description || t('workProcess.description', '')}
+            </p>
+          )}
         </div>
 
         {/* Mobile view: Single column */}

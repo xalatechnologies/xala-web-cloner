@@ -1,23 +1,24 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import AppProviders from './components/providers/AppProviders';
 import { GDPRNotification } from './components/gdpr/GDPRNotification';
 import { ChatWidget } from './components/chat/ChatWidget';
 import ScrollToTop from './components/ScrollToTop';
-import Home from './pages/Index';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import Terms from './pages/Terms';
-import CookiesPolicy from './pages/CookiesPolicy';
-import TjenesterPage from './pages/TjenesterPage';
-import ProdukterPage from './pages/ProdukterPage';
-import CaserPage from './pages/CaserPage';
-import SlikViJobberPage from './pages/SlikViJobberPage';
-import TeknologiPage from './pages/TeknologiPage';
-import OmOssPage from './pages/OmOssPage';
-// import TeamPage from './pages/TeamPage';
-import KontaktPage from './pages/KontaktPage';
-import KarrierePage from './pages/KarrierePage';
+import PageLoader from './components/PageLoader';
+
+const Home = lazy(() => import('./pages/Index'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const Terms = lazy(() => import('./pages/Terms'));
+const CookiesPolicy = lazy(() => import('./pages/CookiesPolicy'));
+const TjenesterPage = lazy(() => import('./pages/TjenesterPage'));
+const ProdukterPage = lazy(() => import('./pages/ProdukterPage'));
+const CaserPage = lazy(() => import('./pages/CaserPage'));
+const SlikViJobberPage = lazy(() => import('./pages/SlikViJobberPage'));
+const TeknologiPage = lazy(() => import('./pages/TeknologiPage'));
+const OmOssPage = lazy(() => import('./pages/OmOssPage'));
+const KontaktPage = lazy(() => import('./pages/KontaktPage'));
+const KarrierePage = lazy(() => import('./pages/KarrierePage'));
 
 const analyticsConfig = {
   googleAnalyticsId: "G-NFGNKJDHHW",
@@ -31,7 +32,7 @@ const App = () => {
       <HelmetProvider>
         <Router>
           <ScrollToTop />
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<PageLoader />}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/tjenester" element={<TjenesterPage />} />

@@ -4,14 +4,17 @@ interface ProductCardProps {
   title: string;
   description: string;
   icon?: string | null;
-  image_url: string;
+  image_url?: string;
+  url?: string;
 }
 
-const ProductCard = ({ title, description, icon, image_url }: ProductCardProps) => {
-  return (
-    <div className="group h-full p-8 rounded-2xl bg-card border border-border hover:border-primary/50 
-                  transition-all duration-500 hover:transform hover:-translate-y-2
-                  hover:shadow-xl hover:shadow-primary/15 relative overflow-hidden">
+const cardClassName = "group h-full p-8 rounded-2xl bg-card border border-border hover:border-primary/50 " +
+  "transition-all duration-500 hover:transform hover:-translate-y-2 " +
+  "hover:shadow-xl hover:shadow-primary/15 relative overflow-hidden";
+
+const ProductCard = ({ title, description, icon, image_url, url }: ProductCardProps) => {
+  const content = (
+    <>
       {/* Animated gradient overlay on hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/0 
                       group-hover:from-primary/5 group-hover:via-transparent group-hover:to-primary/10 
@@ -49,8 +52,23 @@ const ProductCard = ({ title, description, icon, image_url }: ProductCardProps) 
           {description}
         </p>
       </div>
-    </div>
+    </>
   );
+
+  if (url) {
+    return (
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`block ${cardClassName}`}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return <div className={cardClassName}>{content}</div>;
 };
 
 export default ProductCard;

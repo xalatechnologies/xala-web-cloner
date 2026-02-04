@@ -1,6 +1,5 @@
-import { LucideIcon, ChevronRight } from 'lucide-react';
+import { LucideIcon } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 import { processServiceTitle } from '@/utils/text-hyphenation';
 
 interface ServiceCardProps {
@@ -12,7 +11,6 @@ interface ServiceCardProps {
 }
 
 const ServiceCard = ({ icon, title, description, image, language = 'en' }: ServiceCardProps) => {
-  const { t } = useTranslation();
   const IconComponent = icon ? (LucideIcons[icon as keyof typeof LucideIcons] as LucideIcon) : null;
 
   // Function to handle image loading errors
@@ -60,13 +58,6 @@ const ServiceCard = ({ icon, title, description, image, language = 'en' }: Servi
         <p className="service-card-description">
           {description}
         </p>
-
-        <div className="service-card-cta">
-          <span className="service-card-cta-text group inline-flex items-center gap-2 cursor-pointer">
-            {t('services.learnMore', 'Learn more')}
-            <ChevronRight className="w-4 h-4 transition-all duration-300 group-hover:translate-x-1 group-hover:text-primary" />
-          </span>
-        </div>
       </div>
     </div>
   );

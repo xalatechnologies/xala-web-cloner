@@ -56,6 +56,11 @@
         "title": "Stolte partnere",
         "description": "Vi samarbeider med ledende aktører i ulike bransjer"
     },
+    "caseStudies": {
+        "noResults": "Ingen casestudier funnet",
+        "showMore": "Vis mer",
+        "showLess": "Vis mindre"
+    },
     "valueProps": {
         "title": "Hvorfor velge Xala?",
         "description": "Vi kombinerer teknisk ekspertise med forretningsforståelse for å levere løsninger som skaper reell verdi for din bedrift.",

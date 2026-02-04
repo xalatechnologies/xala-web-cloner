@@ -1,4 +1,3 @@
-import { ArrowRight } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
@@ -60,19 +59,12 @@ const CaseStudyCard = ({ title, description, imageUrl, icon, link, metrics }: Ca
         </div>
 
         <div className="p-6 flex flex-col flex-grow">
-          <div className="flex-grow">
-            <h3 className="text-xl font-semibold text-primary mb-3">
-              {title}
-            </h3>
-            <p className="text-muted-foreground mb-4">
-              {description}
-            </p>
-          </div>
-          
-          <div className="flex items-center gap-2 text-primary group/link cursor-pointer mt-auto">
-            <span className="font-medium">Read More</span>
-            <ArrowRight className="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" />
-          </div>
+          <h3 className="text-xl font-semibold text-primary mb-3">
+            {title}
+          </h3>
+          <p className="text-muted-foreground">
+            {description}
+          </p>
         </div>
       </CardContent>
     </Card>

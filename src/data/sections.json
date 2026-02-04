@@ -48,8 +48,7 @@
         },
         "work-process": {
             "id": "work-process-no",
-            "title": "Slik vi jobber",
-            "description": "Vår metodiske tilnærming sikrer kvalitet og effektivitet i hvert prosjekt."
+            "title": "Hva er jobben vår?"
         },
         "teams": {
             "id": "teams-no",
@@ -114,8 +113,7 @@
         },
         "work-process": {
             "id": "work-process-en",
-            "title": "How We Work",
-            "description": "Our methodical approach ensures quality and efficiency in every project."
+            "title": "What is our job?"
         },
         "teams": {
             "id": "teams-en",
@@ -180,8 +178,7 @@
         },
         "work-process": {
             "id": "work-process-ar",
-            "title": "كيف نعمل",
-            "description": "نهجنا المنهجي يضمن الجودة والكفاءة في كل مشروع."
+            "title": "ما هي مهمتنا؟"
         },
         "teams": {
             "id": "teams-ar",

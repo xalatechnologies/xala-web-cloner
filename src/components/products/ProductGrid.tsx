@@ -5,8 +5,9 @@ export interface ProductItem {
   id: string;
   title: string;
   description: string;
-  image_url: string;
+  image_url?: string;
   icon?: string | null;
+  url?: string;
 }
 
 interface ProductGridProps {
@@ -23,6 +24,7 @@ const ProductGrid = ({ products, initialRows = 1, cols = 3 }: ProductGridProps) 
       description={product.description}
       image_url={product.image_url}
       icon={product.icon}
+      url={product.url}
     />
   ));
 

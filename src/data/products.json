@@ -3,6 +3,7 @@
         {
             "id": "norchain",
             "title": "Norchain",
+            "url": "https://norchain.org",
             "description": "Komplett blockchain-operativsystem med L1-infrastruktur, NorPay betalingsløsninger, og NorLedger for sporbarhet.",
             "icon": "Blocks",
             "features": [
@@ -15,6 +16,7 @@
         {
             "id": "xaheen",
             "title": "Xaheen AI Builder",
+            "url": "https://xaheen.com",
             "description": "AI-drevet utviklingsplattform som akselererer programvareutvikling med intelligent kodeassistanse.",
             "icon": "Cpu",
             "features": [
@@ -27,6 +29,7 @@
         {
             "id": "digilist",
             "title": "DigiList",
+            "url": "https://digilist.no",
             "description": "Digital markedsplass og SaaS-plattform for utleie og booking av objekter og tjenester.",
             "icon": "LayoutGrid",
             "features": [
@@ -41,6 +44,7 @@
         {
             "id": "norchain",
             "title": "Norchain",
+            "url": "https://norchain.org",
             "description": "Complete blockchain operating system with L1 infrastructure, NorPay payment solutions, and NorLedger for traceability.",
             "icon": "Blocks",
             "features": [
@@ -53,6 +57,7 @@
         {
             "id": "xaheen",
             "title": "Xaheen AI Builder",
+            "url": "https://xaheen.com",
             "description": "AI-powered development platform that accelerates software development with intelligent code assistance.",
             "icon": "Cpu",
             "features": [
@@ -65,6 +70,7 @@
         {
             "id": "digilist",
             "title": "DigiList",
+            "url": "https://digilist.no",
             "description": "Digital marketplace and SaaS platform for rental and booking of objects and services.",
             "icon": "LayoutGrid",
             "features": [
@@ -79,6 +85,7 @@
         {
             "id": "norchain",
             "title": "نورتشين",
+            "url": "https://norchain.org",
             "description": "نظام تشغيل بلوكتشين كامل مع بنية تحتية L1 وحلول دفع NorPay وNorLedger للتتبع.",
             "icon": "Blocks",
             "features": [
@@ -91,6 +98,7 @@
         {
             "id": "xaheen",
             "title": "زاهين AI بيلدر",
+            "url": "https://xaheen.com",
             "description": "منصة تطوير مدعومة بالذكاء الاصطناعي تسرع تطوير البرمجيات مع مساعدة ذكية للكود.",
             "icon": "Cpu",
             "features": [
@@ -103,6 +111,7 @@
         {
             "id": "digilist",
             "title": "ديجيليست",
+            "url": "https://digilist.no",
             "description": "سوق رقمي ومنصة SaaS للتأجير والحجز للأشياء والخدمات.",
             "icon": "LayoutGrid",
             "features": [

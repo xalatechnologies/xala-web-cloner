@@ -56,6 +56,11 @@
         "title": "Trusted by Leading Companies",
         "description": "We partner with industry leaders across various sectors"
     },
+    "caseStudies": {
+        "noResults": "No case studies found",
+        "showMore": "Show more",
+        "showLess": "Show less"
+    },
     "valueProps": {
         "title": "Why Choose Xala?",
         "description": "We combine technical expertise with business acumen to deliver solutions that create real value for your business.",
