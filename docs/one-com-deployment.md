@@ -36,13 +36,32 @@ FTP is not encrypted. Prefer SFTP when possible.
 
 ## Remote web root
 
-On one.com, the website files are usually placed in one of:
+On one.com, the website root folder **may not be** `public_html`. If you see:
 
-- `public_html`
-- `www`
-- `web`
+```text
+scp: realpath public_html/: No such file
+scp: upload "public_html/": path canonicalization failed
+```
 
-Check in the One.com file manager or your hosting package description. The PowerShell script uses **`public_html`** by default; you can change it via the script parameter or the documented variable.
+then the folder name is different. **Find the correct path** by listing your home directory:
+
+```bash
+ssh xala.no@ssh.xala.no "pwd && ls -la"
+```
+
+Enter your SSH password when prompted. For xala.no the home is `httpd.private` and the web folders are **`public_html`** and **`www`** — use the full path in the deploy command below.
+
+**One.com web root:** One.com’s SSH docs say the web space is at **`/www`** (absolute path). Deploy with:
+
+```bash
+scp -r -P 22 dist/. xala.no@ssh.xala.no:/customers/6/7/3/xala.no/httpd.private/public_html/
+```
+
+Alternatively, to deploy to **www** use `.../httpd.private/www/` in the path. To list the remote directory to see your account’s folder names:
+
+```bash
+ssh xala.no@ssh.xala.no "pwd && ls -la"
+```
 
 ---
 
@@ -91,6 +110,8 @@ The script:
 1. Builds the site with `npm run build` (unless `-SkipBuild`).
 2. Uploads the contents of `dist/` to the remote path via SFTP (using OpenSSH `sftp` or `scp`).
 
+On one.com the web root is usually the absolute path **`/www`** — use `-RemotePath /www` (or the path you see when you run `ssh xala.no@ssh.xala.no "pwd && ls -la"`).
+
 ---
 
 ## Manual deployment
@@ -99,11 +120,30 @@ The script:
    ```bash
    npm run build
    ```
-2. **Upload** the contents of the `dist/` folder to your one.com web root using:
-   - An SFTP client (e.g. FileZilla, WinSCP) with the SSH/SFTP details above, or  
-   - FTP with the FTP host/username/port above.
+2. **Upload** the contents of the `dist/` folder. For xala.no the web root is one of **`public_html`** or **`www`** (use full path):
+   ```bash
+   scp -r -P 22 dist/. xala.no@ssh.xala.no:/customers/6/7/3/xala.no/httpd.private/public_html/
+   ```
+   Or use `www` instead of `public_html` in the path if that's where your site is served from.
+   Or use an SFTP client (FileZilla, WinSCP) or FTP with the details above.
 
 The repository includes `public/.htaccess`; Vite copies it into `dist/`, so HTTPS, redirects, and SPA routing are applied on one.com.
+
+---
+
+## Site not updating after deploy?
+
+1. **Browser cache** — Do a hard refresh: **Ctrl+Shift+R** (Windows/Linux) or **Cmd+Shift+R** (Mac). Or open the site in a private/incognito window.
+2. **Wrong folder** — Your domain may be served from **www** while you uploaded to **public_html** (or the opposite). In the One.com control panel, check which folder the domain uses, then upload to that folder. Try deploying to the other path if needed:
+   - `.../httpd.private/public_html/`
+   - `.../httpd.private/www/`
+3. **Clean deploy** — Old hashed JS/CSS files can leave the server showing an old `index.html`. Use a sync that removes obsolete files. From the repo root:
+   ```bash
+   rsync -avz --delete -e "ssh -p 22" dist/ xala.no@ssh.xala.no:/customers/6/7/3/xala.no/httpd.private/public_html/
+   ```
+   (Replace `public_html` with `www` if that is your web root.) You will be prompted for your SSH password.
+4. **File Manager shows old dates** — If in One.com File Manager the files still show an old date after you deployed, deploy to **both** folders: run `bash scripts/deploy-onecom-both.sh` (you’ll be prompted for your SSH password twice).
+5. **Host cache** — If one.com has a “Clear cache” or “Purge cache” option in the control panel, try that.
 
 ---
 

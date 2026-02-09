@@ -33,7 +33,7 @@
 param(
     [switch]$SkipBuild,
     [string]$SshKeyPath = "",
-    [string]$RemotePath = "public_html"
+    [string]$RemotePath = "/customers/6/7/3/xala.no/httpd.private/public_html"
 )
 
 # One.com SSH/SFTP connection (see docs/one-com-deployment.md)
@@ -72,7 +72,7 @@ if (-not $SkipBuild) {
 }
 
 # Step 2: Upload via scp (OpenSSH)
-# Copy contents of dist/ into remote RemotePath (e.g. public_html).
+# Copy contents of dist/ into remote RemotePath (xala.no: public_html or www).
 # Using "dist/." so scp copies directory contents, not the folder itself.
 $DistSource = (Join-Path $DistPath ".") -replace "\\", "/"
 $ScpArgs = @(
