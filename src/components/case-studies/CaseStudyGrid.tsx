@@ -8,6 +8,7 @@ interface CaseStudy {
   description: string | null;
   image_url: string | null;
   icon: string | null;
+  slug?: string | null;
   case_study_metrics: any[];
 }
 
@@ -23,6 +24,7 @@ const CaseStudyGrid = ({ caseStudies, initialRows = 1, cols = 3 }: CaseStudyGrid
       description={study.description}
       imageUrl={study.image_url}
       icon={study.icon}
+      slug={study.slug ?? undefined}
       metrics={study.case_study_metrics}
     />
   ));

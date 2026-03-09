@@ -318,6 +318,101 @@
             "failed_to_send": "فشل إرسال الرسالة"
         }
     },
+    "caserPage": {
+        "eyebrow": "المراجع والمشاريع",
+        "title": "ما قدّمناه",
+        "description": "تعاونت Xala مع منظمات نرويجية ودولية رائدة في مجال المنصات الرقمية المعقدة وتكاملات الأنظمة والحلول السحابية.",
+        "stats": {
+            "projects": "مشاريع مُنجزة",
+            "experience": "سنوات من الخبرة",
+            "users": "مستخدم نهائي تمت خدمتهم"
+        }
+    },
+    "caseStudy": {
+        "backToAll": "جميع الحالات",
+        "readMore": "اقرأ دراسة الحالة",
+        "comingSoon": "قريباً",
+        "toc": {
+            "label": "المحتويات",
+            "overview": "نظرة عامة",
+            "challenge": "التحدي",
+            "objectives": "الأهداف",
+            "solution": "الحل",
+            "architecture": "البنية المعمارية",
+            "tech": "التقنية",
+            "integrations": "التكاملات",
+            "timeline": "التسليم",
+            "outcomes": "النتائج",
+            "capabilities": "القدرات"
+        },
+        "sections": {
+            "overview": { "accent": "Executive Overview", "heading": "نظرة عامة على المشروع" },
+            "challenge": { "accent": "Business Challenge", "heading": "التحدي" },
+            "objectives": { "accent": "Project Goals", "heading": "أهداف المشروع" },
+            "solution": {
+                "accent": "What We Built",
+                "heading": "الحل",
+                "modules": "المخرجات",
+                "users": "مجموعات المستخدمين"
+            },
+            "architecture": {
+                "accent": "System Architecture",
+                "layers": {
+                    "presentation": "طبقة العرض",
+                    "services": "طبقة الخدمات",
+                    "integrations": "طبقة التكامل",
+                    "data": "طبقة البيانات",
+                    "infrastructure": "البنية التحتية",
+                    "security": "الأمن والهوية"
+                }
+            },
+            "tech": { "accent": "Technology Stack", "heading": "مكدس التقنية" },
+            "integrations": { "accent": "Key Integrations", "heading": "التكاملات الرئيسية" },
+            "timeline": { "accent": "Delivery Approach", "heading": "كيف نفّذنا المشروع" },
+            "outcomes": { "accent": "Results & Impact", "heading": "النتائج والأثر" },
+            "capabilities": { "accent": "Delivered Capabilities", "heading": "القدرات المُسلَّمة" }
+        },
+        "meta": {
+            "client": "العميل",
+            "industry": "الصناعة",
+            "period": "الفترة",
+            "role": "دور Xala",
+            "sector": "القطاع",
+            "deliveryModel": "نموذج التسليم",
+            "partnerModel": "نموذج الشراكة",
+            "duration": "فترة التنفيذ",
+            "teamComposition": "تشكيلة الفريق",
+            "teamSize": "الحجم التقديري للفريق",
+            "scope": "النطاق",
+            "coreTechnologies": "التقنيات الأساسية",
+            "status": "الحالة",
+            "budget": "الميزانية"
+        },
+        "techCategories": {
+            "frontend": "الواجهة الأمامية",
+            "backend": "الواجهة الخلفية",
+            "databases": "قواعد البيانات",
+            "cloud": "السحابة / البنية التحتية",
+            "identity": "الهوية والأمن",
+            "integrations": "التكاملات",
+            "devops": "DevOps"
+        },
+        "archLayers": {
+            "presentation": "طبقة العرض",
+            "services": "طبقة الخدمات",
+            "integrations": "طبقة التكامل",
+            "data": "طبقة البيانات",
+            "infrastructure": "البنية التحتية",
+            "security": "الأمن والهوية"
+        },
+        "cta": {
+            "accent": "الخطوة التالية",
+            "heading": "هل يمكننا مساعدتك في شيء مماثل؟",
+            "description": "تواصل معنا للحصول على محادثة غير ملزمة حول تحديك الرقمي القادم.",
+            "contact": "تواصل معنا",
+            "allCases": "جميع الحالات"
+        }
+    },
     "careers": {
         "title": "الوظائف في Xala؟",
         "description": "نبحث دائماً عن أشخاص موهوبين يريدون المساعدة في بناء المستقبل. أرسل لنا طلباً مفتوحاً!",

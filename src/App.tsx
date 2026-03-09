@@ -19,6 +19,7 @@ const TeknologiPage = lazy(() => import('./pages/TeknologiPage'));
 const OmOssPage = lazy(() => import('./pages/OmOssPage'));
 const KontaktPage = lazy(() => import('./pages/KontaktPage'));
 const KarrierePage = lazy(() => import('./pages/KarrierePage'));
+const CaseStudyDetailPage = lazy(() => import('./pages/CaseStudyDetailPage'));
 
 const analyticsConfig = {
   googleAnalyticsId: "G-NFGNKJDHHW",
@@ -38,6 +39,7 @@ const App = () => {
               <Route path="/tjenester" element={<TjenesterPage />} />
               <Route path="/produkter" element={<ProdukterPage />} />
               <Route path="/caser" element={<CaserPage />} />
+              <Route path="/caser/:slug" element={<CaseStudyDetailPage />} />
               <Route path="/slik-vi-jobber" element={<SlikViJobberPage />} />
               <Route path="/teknologi" element={<TeknologiPage />} />
               <Route path="/om-oss" element={<OmOssPage />} />

@@ -318,6 +318,101 @@
             "failed_to_send": "Kunne ikke sende melding"
         }
     },
+    "caserPage": {
+        "eyebrow": "Referanser & prosjekter",
+        "title": "Hva vi har levert",
+        "description": "Xala har samarbeidet med ledende norske og internasjonale organisasjoner om komplekse digitale plattformer, systemintegrasjoner og skybaserte løsninger.",
+        "stats": {
+            "projects": "Levererte prosjekter",
+            "experience": "Års erfaring",
+            "users": "Sluttbrukere betjent"
+        }
+    },
+    "caseStudy": {
+        "backToAll": "Alle caser",
+        "readMore": "Les case study",
+        "comingSoon": "Kommer snart",
+        "toc": {
+            "label": "Innhold",
+            "overview": "Oversikt",
+            "challenge": "Utfordringen",
+            "objectives": "Mål",
+            "solution": "Løsningen",
+            "architecture": "Arkitektur",
+            "tech": "Teknologi",
+            "integrations": "Integrasjoner",
+            "timeline": "Gjennomføring",
+            "outcomes": "Resultater",
+            "capabilities": "Kapabiliteter"
+        },
+        "sections": {
+            "overview": { "accent": "Executive Overview", "heading": "Prosjektoversikt" },
+            "challenge": { "accent": "Business Challenge", "heading": "Utfordringen" },
+            "objectives": { "accent": "Project Goals", "heading": "Prosjektmål" },
+            "solution": {
+                "accent": "What We Built",
+                "heading": "Løsningen",
+                "modules": "Leveranser",
+                "users": "Brukergrupper"
+            },
+            "architecture": {
+                "accent": "System Architecture",
+                "layers": {
+                    "presentation": "Presentasjonslag",
+                    "services": "Tjenestelaget",
+                    "integrations": "Integrasjonslag",
+                    "data": "Datalag",
+                    "infrastructure": "Infrastruktur",
+                    "security": "Sikkerhet & identitet"
+                }
+            },
+            "tech": { "accent": "Technology Stack", "heading": "Teknologistack" },
+            "integrations": { "accent": "Key Integrations", "heading": "Nøkkelintegrasjoner" },
+            "timeline": { "accent": "Delivery Approach", "heading": "Gjennomføring" },
+            "outcomes": { "accent": "Results & Impact", "heading": "Resultater og effekt" },
+            "capabilities": { "accent": "Delivered Capabilities", "heading": "Nøkkelfunksjoner levert" }
+        },
+        "meta": {
+            "client": "Klient",
+            "industry": "Bransje",
+            "period": "Periode",
+            "role": "Xala rolle",
+            "sector": "Sektor",
+            "deliveryModel": "Leveransemodell",
+            "partnerModel": "Partnermodell",
+            "duration": "Leveranseperiode",
+            "teamComposition": "Team­sammensetning",
+            "teamSize": "Estimert teamstørrelse",
+            "scope": "Omfang",
+            "coreTechnologies": "Kjerneteknologier",
+            "status": "Status",
+            "budget": "Budsjett"
+        },
+        "techCategories": {
+            "frontend": "Frontend",
+            "backend": "Backend",
+            "databases": "Databaser",
+            "cloud": "Cloud / Infrastruktur",
+            "identity": "Identitet & sikkerhet",
+            "integrations": "Integrasjoner",
+            "devops": "DevOps"
+        },
+        "archLayers": {
+            "presentation": "Presentasjonslag",
+            "services": "Tjenestelaget",
+            "integrations": "Integrasjonslag",
+            "data": "Datalag",
+            "infrastructure": "Infrastruktur",
+            "security": "Sikkerhet & identitet"
+        },
+        "cta": {
+            "accent": "Neste steg",
+            "heading": "Skal vi hjelpe deg med noe lignende?",
+            "description": "Ta kontakt for en uforpliktende samtale om din neste digitale utfordring.",
+            "contact": "Kontakt oss",
+            "allCases": "Alle caser"
+        }
+    },
     "careers": {
         "title": "Karriere hos Xala?",
         "description": "Vi leter alltid etter talentfulle mennesker som vil være med på å bygge fremtiden. Send oss en åpen søknad!",

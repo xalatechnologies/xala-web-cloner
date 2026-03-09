@@ -318,6 +318,101 @@
             "failed_to_send": "Failed to send message"
         }
     },
+    "caserPage": {
+        "eyebrow": "References & projects",
+        "title": "What We've Delivered",
+        "description": "Xala has partnered with leading Norwegian and international organisations on complex digital platforms, system integrations, and cloud-based solutions.",
+        "stats": {
+            "projects": "Projects delivered",
+            "experience": "Years experience",
+            "users": "End users served"
+        }
+    },
+    "caseStudy": {
+        "backToAll": "All cases",
+        "readMore": "Read case study",
+        "comingSoon": "Coming soon",
+        "toc": {
+            "label": "Contents",
+            "overview": "Overview",
+            "challenge": "Challenge",
+            "objectives": "Objectives",
+            "solution": "Solution",
+            "architecture": "Architecture",
+            "tech": "Technology",
+            "integrations": "Integrations",
+            "timeline": "Delivery",
+            "outcomes": "Results",
+            "capabilities": "Capabilities"
+        },
+        "sections": {
+            "overview": { "accent": "Executive Overview", "heading": "Project Overview" },
+            "challenge": { "accent": "Business Challenge", "heading": "The Challenge" },
+            "objectives": { "accent": "Project Goals", "heading": "Project Objectives" },
+            "solution": {
+                "accent": "What We Built",
+                "heading": "The Solution",
+                "modules": "Deliverables",
+                "users": "User Groups"
+            },
+            "architecture": {
+                "accent": "System Architecture",
+                "layers": {
+                    "presentation": "Presentation Layer",
+                    "services": "Service Layer",
+                    "integrations": "Integration Layer",
+                    "data": "Data Layer",
+                    "infrastructure": "Infrastructure",
+                    "security": "Security & Identity"
+                }
+            },
+            "tech": { "accent": "Technology Stack", "heading": "Technology Stack" },
+            "integrations": { "accent": "Key Integrations", "heading": "Key Integrations" },
+            "timeline": { "accent": "Delivery Approach", "heading": "How We Delivered" },
+            "outcomes": { "accent": "Results & Impact", "heading": "Results & Impact" },
+            "capabilities": { "accent": "Delivered Capabilities", "heading": "Key Capabilities Delivered" }
+        },
+        "meta": {
+            "client": "Client",
+            "industry": "Industry",
+            "period": "Period",
+            "role": "Xala role",
+            "sector": "Sector",
+            "deliveryModel": "Delivery model",
+            "partnerModel": "Partner model",
+            "duration": "Delivery period",
+            "teamComposition": "Team composition",
+            "teamSize": "Estimated team size",
+            "scope": "Scope",
+            "coreTechnologies": "Core technologies",
+            "status": "Status",
+            "budget": "Budget"
+        },
+        "techCategories": {
+            "frontend": "Frontend",
+            "backend": "Backend",
+            "databases": "Databases",
+            "cloud": "Cloud / Infrastructure",
+            "identity": "Identity & Security",
+            "integrations": "Integrations",
+            "devops": "DevOps"
+        },
+        "archLayers": {
+            "presentation": "Presentation Layer",
+            "services": "Service Layer",
+            "integrations": "Integration Layer",
+            "data": "Data Layer",
+            "infrastructure": "Infrastructure",
+            "security": "Security & Identity"
+        },
+        "cta": {
+            "accent": "Next step",
+            "heading": "Can we help you with something similar?",
+            "description": "Get in touch for a no-commitment conversation about your next digital challenge.",
+            "contact": "Contact us",
+            "allCases": "All cases"
+        }
+    },
     "careers": {
         "title": "Careers at Xala?",
         "description": "We are always looking for talented people who want to help build the future. Send us an open application!",
