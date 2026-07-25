@@ -9,11 +9,16 @@ type MenuItem = Database['public']['Tables']['menu_items']['Row'];
 export function useMenuItems() {
   const { i18n } = useTranslation();
 
+  // The menu_items table is served from the Supabase project in
+  // src/integrations/supabase/client.ts, which is currently unreachable
+  // (non-functional pending a decision to restore or drop it). Callers
+  // should use the returned isError/data state to fall back to a
+  // hardcoded menu instead of relying on this ever resolving.
   return useQuery({
     queryKey: ['menuItems', i18n.language],
     queryFn: async () => {
       const currentLanguage = i18n.language.toLowerCase() as SupportedLanguage;
-      
+
       const { data, error } = await supabase
         .from('menu_items')
         .select('*')
@@ -27,5 +32,6 @@ export function useMenuItems() {
       return (data || []) as MenuItem[];
     },
     enabled: !!i18n.language,
+    retry: false,
   });
 }
