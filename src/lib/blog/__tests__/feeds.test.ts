@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   blogSitemapEntries,
   escapeXml,
+  renderLlmsTxt,
   renderRss,
   renderSitemap,
   staticSitemapEntries,
@@ -113,5 +114,40 @@ describe("sitemap", () => {
     expect(xml).toContain("<loc>https://xala.no</loc>");
     expect(xml).not.toContain("<loc>https://xala.no/</loc>");
     expect([...xml.matchAll(/<url>/g)]).toHaveLength(15);
+  });
+});
+
+describe("renderLlmsTxt", () => {
+  const txt = renderLlmsTxt(posts());
+
+  it("opens with the company as an H1 and a blockquote summary", () => {
+    expect(txt.startsWith("# Xala Technologies AS")).toBe(true);
+    expect(txt).toMatch(/\n> .+/);
+  });
+
+  // The facts an answer engine needs to resolve the entity, stated rather than
+  // left to be inferred from a React bundle.
+  it("states the identifying facts", () => {
+    expect(txt).toContain("920972454");
+    expect(txt).toContain("Nesbruveien 75, 1394 Nesbru, Asker");
+  });
+
+  it("lists every real route as a markdown link", () => {
+    expect(txt).toContain("- [Forside](https://xala.no)");
+    expect(txt).toContain("- [Tjenester](https://xala.no/tjenester)");
+    expect(txt).toContain("- [Kontakt](https://xala.no/kontakt)");
+    expect(txt).not.toContain("/no/");
+  });
+
+  it("lists each post with its description", () => {
+    expect(txt).toContain("- [Første & beste](https://xala.no/blogg/forste): En <beskrivelse> med tegn.");
+  });
+
+  it("says so plainly when there are no posts, rather than emitting an empty section", () => {
+    expect(renderLlmsTxt([])).toContain("(ingen publisert ennå)");
+  });
+
+  it("has no unresolved template placeholders", () => {
+    expect(txt).not.toMatch(/\$\{|undefined|\[object/);
   });
 });

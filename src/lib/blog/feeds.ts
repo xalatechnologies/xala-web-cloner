@@ -118,6 +118,64 @@ export const STATIC_ROUTES = [
   { path: "/cookies", priority: "0.3", changefreq: "yearly" },
 ];
 
+/**
+ * `llms.txt` — the site, in the form an answer engine can read in one request.
+ *
+ * A crawler that does not execute JavaScript has to reconstruct what this site
+ * is from a React bundle. This states it directly: who the company is, what it
+ * does, and every page worth reading, with a one-line description each
+ * (llmstxt.org).
+ *
+ * Generated at build time from the routes and posts that actually exist, so it
+ * cannot drift from the site the way a hand-written file does. The SEO agent
+ * produces a richer version into the host's `.xaheen/seo/`; committing that as
+ * `public/llms.txt` overrides this one, because Vite copies `public/` over the
+ * build output.
+ */
+export function renderLlmsTxt(posts: BlogPost[]): string {
+  const lines = [
+    `# ${ORGANIZATION}`,
+    "",
+    "> Norsk systemutviklingshus i Asker. Skreddersydd programvare, Microsoft 365 og SharePoint,",
+    "> Azure og Power Platform, systemintegrasjon og AI-løsninger for offentlig sektor og næringsliv.",
+    "",
+    `Organisasjonsnummer: 920972454. Nesbruveien 75, 1394 Nesbru, Asker, Norge.`,
+    "",
+    "## Sider",
+    "",
+    ...STATIC_ROUTES.map((r) => `- [${LLMS_PAGE_TITLES[r.path] ?? r.path}](${SITE_ORIGIN}${r.path === "/" ? "" : r.path})`),
+    "",
+    "## Fagartikler",
+    "",
+    ...(posts.length
+      ? posts.map((p) => `- [${p.title}](${postUrl(p)}): ${p.description}`)
+      : ["- (ingen publisert ennå)"]),
+    "",
+    "## Kontakt",
+    "",
+    `- E-post: info@xala.no`,
+    `- Nettsted: ${SITE_ORIGIN}/kontakt`,
+    "",
+  ];
+  return `${lines.join("\n")}`;
+}
+
+/** Human titles for the static routes, for llms.txt and nothing else. */
+const LLMS_PAGE_TITLES: Record<string, string> = {
+  "/": "Forside",
+  "/tjenester": "Tjenester",
+  "/produkter": "Produkter",
+  "/caser": "Kundecaser",
+  "/slik-vi-jobber": "Slik vi jobber",
+  "/teknologi": "Teknologi",
+  "/om-oss": "Om oss",
+  "/om-oss/team": "Team",
+  "/kontakt": "Kontakt",
+  "/privacy": "Personvern",
+  "/terms": "Vilkår",
+  "/cookies": "Informasjonskapsler",
+};
+
 export function staticSitemapEntries(today: string): SitemapEntry[] {
   return STATIC_ROUTES.map((route) => ({
     loc: `${SITE_ORIGIN}${route.path === "/" ? "" : route.path}`,

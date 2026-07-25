@@ -41,6 +41,7 @@ import {
   STATIC_ROUTES,
   blogSitemapEntries,
   escapeXml,
+  renderLlmsTxt,
   renderRss,
   renderSitemap,
   staticSitemapEntries,
@@ -261,14 +262,29 @@ function main(): void {
   write(path.join(DIST, "404.html"), shell);
 
   write(path.join(DIST, "blogg", "rss.xml"), renderRss(posts));
+
+  // llms.txt, unless one is committed under public/ — Vite copies public/ into
+  // dist/, so a file the SEO agent produced and someone committed wins over
+  // this build-time default rather than being silently overwritten.
+  const llmsPath = path.join(DIST, "llms.txt");
+  if (fs.existsSync(path.join(ROOT, "public", "llms.txt"))) {
+    console.log("prerender: public/llms.txt is committed — keeping it, not regenerating");
+  } else {
+    write(llmsPath, renderLlmsTxt(posts));
+  }
   write(
     path.join(DIST, "sitemap.xml"),
     renderSitemap([...staticSitemapEntries(today), ...blogSitemapEntries(posts)]),
   );
 
-  const robots = path.join(DIST, "robots.txt");
-  if (!fs.existsSync(robots)) {
-    write(robots, `User-agent: *\nAllow: /\n\nSitemap: ${SITE_ORIGIN}/sitemap.xml\n`);
+  // robots.txt is a tracked file in public/ and Vite copies it into dist/ — one
+  // source of truth. Assert it arrived rather than writing a default over it:
+  // silently substituting our own would hide the case where someone deleted or
+  // renamed it, and a missing robots.txt on a site built to be crawled is
+  // exactly the kind of thing that should stop a deploy.
+  if (!fs.existsSync(path.join(DIST, "robots.txt"))) {
+    console.error("prerender: dist/robots.txt is missing — public/robots.txt was not copied.");
+    process.exit(1);
   }
 
   console.log(
