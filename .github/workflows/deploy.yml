@@ -1,0 +1,76 @@
+name: Deploy xala.no
+
+# Auto-deploys to https://xala.no whenever main updates (a PR merge, or the
+# agent fleet pushing a blog post), plus a manual "Run workflow" button.
+#
+# Reuses the repo's own deploy.sh so CI and local deploys never drift.
+on:
+  push:
+    branches: [main]
+    # Only CI edits are ignored. Deliberately NOT "**/*.md": blog posts ARE
+    # markdown, and ignoring them on the sibling repo meant content pushes never
+    # auto-deployed — a whole day of posts silently never went live.
+    paths-ignore:
+      - ".github/**"
+  workflow_dispatch: {}
+
+# One production deploy at a time; never cancel mid-rsync.
+concurrency:
+  group: xala-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      # No version input: pnpm is pinned by "packageManager" in package.json.
+      # Setting both errors with "Multiple versions of pnpm specified".
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # Fast, and it fails before anything is uploaded.
+      - name: Test
+        run: pnpm exec vitest run src/lib/blog
+
+      - name: Configure SSH access to the VPS
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          # Base64 on one line, so GitHub's multi-line secret handling cannot
+          # mangle the PEM.
+          echo "${{ secrets.VPS_SSH_KEY }}" | base64 -d > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          ssh-keygen -y -f ~/.ssh/id_deploy > /dev/null
+          # ssh-keyscan is a network call that occasionally returns nothing.
+          # Under `bash -e` that silently fast-failed the whole deploy on the
+          # sibling repo. Retry, then fail loudly only if truly unreachable.
+          for i in 1 2 3 4 5; do
+            ssh-keyscan -T 10 -H 72.61.23.56 >> ~/.ssh/known_hosts 2>/dev/null || true
+            [ -s ~/.ssh/known_hosts ] && break
+            echo "ssh-keyscan attempt $i produced no host key, retrying in 5s…"
+            sleep 5
+          done
+          [ -s ~/.ssh/known_hosts ]
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/id_deploy
+          echo "SSH_AUTH_SOCK=$SSH_AUTH_SOCK" >> "$GITHUB_ENV"
+          echo "SSH_AGENT_PID=$SSH_AGENT_PID" >> "$GITHUB_ENV"
+
+      - name: Build + deploy (atomic release)
+        run: ./deploy.sh
+
+      # A green deploy is not evidence the site works. This fetches the live
+      # site and asserts every post is prerendered, canonical and listed — the
+      # regressions that otherwise ship unnoticed.
+      - name: Verify the site is live
+        run: |
+          sleep 5
+          node scripts/verify-live.mjs
