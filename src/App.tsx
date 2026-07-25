@@ -16,6 +16,9 @@ import TeknologiPage from './pages/TeknologiPage';
 import OmOssPage from './pages/OmOssPage';
 import TeamPage from './pages/TeamPage';
 import KontaktPage from './pages/KontaktPage';
+import BloggPage from './pages/BloggPage';
+import BloggPostPage from './pages/BloggPostPage';
+import NotFound from './pages/NotFound';
 
 const analyticsConfig = {
   googleAnalyticsId: "G-NFGNKJDHHW",
@@ -39,9 +42,15 @@ const App = () => {
               <Route path="/om-oss" element={<OmOssPage />} />
               <Route path="/om-oss/team" element={<TeamPage />} />
               <Route path="/kontakt" element={<KontaktPage />} />
+              <Route path="/blogg" element={<BloggPage />} />
+              <Route path="/blogg/:slug" element={<BloggPostPage />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/cookies" element={<CookiesPolicy />} />
+              {/* Anything unmatched must render a real 404 page, not a blank
+                  screen — a SPA that silently renders nothing on an unknown
+                  path is a soft 404 to every crawler. */}
+              <Route path="*" element={<NotFound />} />
             </Routes>
             <GDPRNotification />
             <ChatWidget />

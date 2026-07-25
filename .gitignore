@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Agent fleet knowledge store (XWEB host) — memory, learning, crawl db
+.xaheen/
