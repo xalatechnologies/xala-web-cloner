@@ -1,9 +1,27 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { vi } from 'vitest';
 import { ChatWidget } from '../ChatWidget';
 import { useChatStore } from '../useChatStore';
 import { useSessionChat } from '@/hooks/use-session-chat';
 import { useTranslation } from 'react-i18next';
+
+// jsdom doesn't implement scrollIntoView; Chat.tsx calls it on every message update.
+Element.prototype.scrollIntoView = vi.fn();
+
+// useChatTranslations queries Supabase (currently unreachable) via
+// react-query, so ChatWidget needs a QueryClientProvider ancestor in tests
+// just like it has in the real app (see AppProviders).
+function renderChatWidget() {
+  const queryClient = new QueryClient({
+    defaultOptions: { queries: { retry: false } },
+  });
+  return render(
+    <QueryClientProvider client={queryClient}>
+      <ChatWidget />
+    </QueryClientProvider>
+  );
+}
 
 // Mock the hooks
 vi.mock('../useChatStore');
@@ -25,6 +43,17 @@ describe('ChatWidget', () => {
   beforeEach(() => {
     // Reset mocks
     vi.clearAllMocks();
+
+    // ChatWidget only renders once the user has scrolled past the "#home"
+    // hero section; simulate that scroll position so these tests see the
+    // widget the same way a real page visit would.
+    const hero = document.createElement('div');
+    hero.id = 'home';
+    Object.defineProperty(hero, 'offsetHeight', { value: 1000, configurable: true });
+    document.body.appendChild(hero);
+    Object.defineProperty(window, 'scrollY', { value: 900, configurable: true, writable: true });
+    Object.defineProperty(window, 'innerHeight', { value: 800, configurable: true, writable: true });
+    Object.defineProperty(document.documentElement, 'scrollHeight', { value: 5000, configurable: true });
 
     // Mock useChatStore
     (useChatStore as any).mockReturnValue({
@@ -51,6 +80,10 @@ describe('ChatWidget', () => {
     });
   });
 
+  afterEach(() => {
+    document.getElementById('home')?.remove();
+  });
+
   it('renders chat button when closed', () => {
     (useChatStore as any).mockReturnValue({
       isOpen: false,
@@ -58,7 +91,7 @@ describe('ChatWidget', () => {
       setOpen: mockSetOpen,
     });
 
-    render(<ChatWidget />);
+    renderChatWidget();
     expect(screen.getByText('chat.input.button')).toBeInTheDocument();
   });
 
@@ -69,7 +102,7 @@ describe('ChatWidget', () => {
       setOpen: mockSetOpen,
     });
 
-    render(<ChatWidget />);
+    renderChatWidget();
     fireEvent.click(screen.getByText('chat.input.button'));
     expect(mockSetOpen).toHaveBeenCalledWith(true);
   });
@@ -77,10 +110,10 @@ describe('ChatWidget', () => {
   it('sends message when form is submitted', async () => {
     const testMessage = 'Hello, this is a test message';
     
-    render(<ChatWidget />);
+    renderChatWidget();
     
     const input = screen.getByPlaceholderText('chat.input.placeholder');
-    const form = screen.getByRole('form');
+    const form = input.closest('form') as HTMLFormElement;
 
     fireEvent.change(input, { target: { value: testMessage } });
     fireEvent.submit(form);
@@ -100,17 +133,17 @@ describe('ChatWidget', () => {
       setOpen: mockSetOpen,
     });
 
-    render(<ChatWidget />);
+    renderChatWidget();
     expect(screen.getByText('chat.status.thinking')).toBeInTheDocument();
   });
 
   it('handles message status updates', async () => {
     const testMessage = 'Test message';
     
-    render(<ChatWidget />);
+    renderChatWidget();
     
     const input = screen.getByPlaceholderText('chat.input.placeholder');
-    const form = screen.getByRole('form');
+    const form = input.closest('form') as HTMLFormElement;
 
     fireEvent.change(input, { target: { value: testMessage } });
     fireEvent.submit(form);
@@ -131,7 +164,7 @@ describe('ChatWidget', () => {
       },
     });
 
-    render(<ChatWidget />);
+    renderChatWidget();
     expect(screen.getByText('Chat med Xala AI')).toBeInTheDocument();
   });
 });

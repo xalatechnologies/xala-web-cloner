@@ -39,6 +39,20 @@ export function useSessionChat() {
     } catch (error) {
       console.error('Failed to send message:', error);
       updateMessageStatus({ id: message.id, status: 'error' });
+
+      // The chat-ai Edge Function is served from the currently-unreachable
+      // Supabase project (see src/integrations/supabase/client.ts) — show a
+      // visible "unavailable" message instead of leaving the thinking
+      // indicator spinning or failing silently.
+      const unavailableMessage: Message = {
+        id: `${message.id}-error`,
+        content: error instanceof Error ? error.message : String(error),
+        type: 'assistant',
+        status: 'error',
+        language: message.language,
+        created_at: new Date().toISOString()
+      };
+      setMessages(prev => [...prev, unavailableMessage]);
     } finally {
       setThinking(false);
       setIsLoading(false);
