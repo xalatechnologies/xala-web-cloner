@@ -91,6 +91,10 @@ export const ContactForm = () => {
         created_at: new Date().toISOString(),
       };
 
+      // The Supabase backend this insert depends on is currently
+      // unreachable (non-functional pending a decision to restore or
+      // drop it) — the catch block below surfaces a visible error toast
+      // rather than failing silently.
       const { error: supabaseError } = await supabase
         .from('contact_submissions')
         .insert(submission);
