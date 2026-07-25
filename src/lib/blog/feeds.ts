@@ -102,20 +102,64 @@ ${urls}
 `;
 }
 
-/** The site's own routes, so the generated sitemap is complete, not blog-only. */
+/**
+ * The site's own routes — for the sitemap, for llms.txt, and for the per-route
+ * title and description the prerender step writes into each page.
+ *
+ * `title`/`description` are here because the SPA gives every non-blog route the
+ * SAME <head>: /tjenester, /om-oss and /kontakt all served the home page's
+ * title, description and canonical, and no <h1> at all. Six pages that a
+ * crawler cannot tell apart, competing with each other for the same terms.
+ */
 export const STATIC_ROUTES = [
-  { path: "/", priority: "1.0", changefreq: "weekly" },
-  { path: "/tjenester", priority: "0.9", changefreq: "monthly" },
-  { path: "/produkter", priority: "0.8", changefreq: "monthly" },
-  { path: "/caser", priority: "0.8", changefreq: "monthly" },
-  { path: "/slik-vi-jobber", priority: "0.7", changefreq: "monthly" },
-  { path: "/teknologi", priority: "0.7", changefreq: "monthly" },
-  { path: "/om-oss", priority: "0.7", changefreq: "monthly" },
-  { path: "/om-oss/team", priority: "0.6", changefreq: "monthly" },
-  { path: "/kontakt", priority: "0.6", changefreq: "yearly" },
-  { path: "/privacy", priority: "0.3", changefreq: "yearly" },
-  { path: "/terms", priority: "0.3", changefreq: "yearly" },
-  { path: "/cookies", priority: "0.3", changefreq: "yearly" },
+  { path: "/", priority: "1.0", changefreq: "weekly",
+    title: "Xala Technologies AS | Systemutvikling, Microsoft 365 og Azure",
+    h1: "Vi bygger systemene virksomheten din faktisk trenger",
+    description: "Norsk systemutviklingshus i Asker. Skreddersydd programvare, Microsoft 365 og SharePoint, Azure, Power Platform, integrasjon og AI for offentlig sektor og næringsliv." },
+  { path: "/tjenester", priority: "0.9", changefreq: "monthly",
+    title: "Tjenester | Systemutvikling, integrasjon og sky | Xala Technologies",
+    h1: "Tjenester",
+    description: "Skreddersydd systemutvikling, Microsoft 365 og SharePoint, Azure og Power Platform, systemintegrasjon, API-utvikling og AI-løsninger." },
+  { path: "/produkter", priority: "0.8", changefreq: "monthly",
+    title: "Produkter | Xala Technologies",
+    h1: "Produkter",
+    description: "Løsninger og produkter fra Xala Technologies, bygget på Microsoft-plattformen og moderne webteknologi." },
+  { path: "/caser", priority: "0.8", changefreq: "monthly",
+    title: "Kundecaser | Prosjekter for offentlig sektor og næringsliv | Xala Technologies",
+    h1: "Kundecaser",
+    description: "Utvalgte prosjekter for offentlig sektor og næringsliv, og hva vi faktisk leverte i hvert av dem." },
+  { path: "/slik-vi-jobber", priority: "0.7", changefreq: "monthly",
+    title: "Slik vi jobber | Fra behov til satt i drift | Xala Technologies",
+    h1: "Slik vi jobber",
+    description: "Hvordan vi går fra behov til løsning i drift: avklaring, arkitektur, leveranser i etapper og overlevering." },
+  { path: "/teknologi", priority: "0.7", changefreq: "monthly",
+    title: "Teknologi | .NET, React, Azure og Power Platform | Xala Technologies",
+    h1: "Teknologi",
+    description: "Teknologiene vi bygger på: .NET og C#, React og TypeScript, Azure, SharePoint og SPFx, Power Platform og moderne integrasjonsmønstre." },
+  { path: "/om-oss", priority: "0.7", changefreq: "monthly",
+    title: "Om oss | Xala Technologies AS, Asker",
+    h1: "Om oss",
+    description: "Xala Technologies AS er et norsk systemutviklingshus på Nesbru i Asker, med kunder i offentlig sektor og privat næringsliv." },
+  { path: "/om-oss/team", priority: "0.6", changefreq: "monthly",
+    title: "Team | Xala Technologies",
+    h1: "Team",
+    description: "Menneskene som utvikler, arkitekterer og leverer løsningene." },
+  { path: "/kontakt", priority: "0.6", changefreq: "yearly",
+    title: "Kontakt oss | Xala Technologies AS",
+    h1: "Kontakt oss",
+    description: "Ta en uforpliktende prat om prosjektet deres. Nesbruveien 75, 1394 Nesbru. E-post info@xala.no." },
+  { path: "/privacy", priority: "0.3", changefreq: "yearly",
+    title: "Personvernerklæring | Xala Technologies",
+    h1: "Personvernerklæring",
+    description: "Hvordan Xala Technologies AS behandler personopplysninger." },
+  { path: "/terms", priority: "0.3", changefreq: "yearly",
+    title: "Vilkår | Xala Technologies",
+    h1: "Vilkår",
+    description: "Vilkår for bruk av xala.no." },
+  { path: "/cookies", priority: "0.3", changefreq: "yearly",
+    title: "Informasjonskapsler | Xala Technologies",
+    h1: "Informasjonskapsler",
+    description: "Hvilke informasjonskapsler xala.no bruker, og hvorfor." },
 ];
 
 /**

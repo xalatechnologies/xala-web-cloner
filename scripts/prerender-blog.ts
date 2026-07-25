@@ -256,8 +256,35 @@ function main(): void {
   // content, and the NotFound page React renders afterwards does not undo the
   // status line that was already sent.
   for (const route of STATIC_ROUTES) {
-    if (route.path === "/") continue; // dist/index.html already is this
-    write(path.join(DIST, route.path.replace(/^\//, ""), "index.html"), shell);
+    const canonical = `${SITE_ORIGIN}${route.path === "/" ? "" : route.path}`;
+    // Its own <head> AND an <h1>. The SPA gave every one of these routes the
+    // home page's title, description and canonical, and no <h1> at all — six
+    // pages a crawler cannot tell apart, competing with each other for the same
+    // terms. React replaces the body on mount, so the h1 here is what a
+    // crawler reads, not what a visitor ends up looking at.
+    const html = renderBody(
+      renderHead(shell, {
+        title: route.title,
+        description: route.description,
+        canonical,
+        ogType: "website",
+        jsonLd: {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "@id": `${canonical}#webpage`,
+          name: route.title,
+          description: route.description,
+          url: canonical,
+          inLanguage: "nb-NO",
+          isPartOf: { "@id": `${SITE_ORIGIN}/#organization` },
+        },
+      }),
+      `<div class="min-h-screen flex flex-col"><main><h1>${escapeHtml(route.h1)}</h1><p>${escapeHtml(route.description)}</p></main></div>`,
+    );
+    write(
+      route.path === "/" ? path.join(DIST, "index.html") : path.join(DIST, route.path.replace(/^\//, ""), "index.html"),
+      html,
+    );
   }
   write(path.join(DIST, "404.html"), shell);
 
