@@ -38,6 +38,7 @@ import {
   postUrl,
 } from "../src/lib/blog/seo";
 import {
+  STATIC_ROUTES,
   blogSitemapEntries,
   escapeXml,
   renderRss,
@@ -244,6 +245,20 @@ function main(): void {
       ),
     );
   }
+
+  // Give every real route a file of its own, so nginx can serve `$uri/index.html`
+  // and answer anything else with a genuine 404.
+  //
+  // Without these the server needs a catch-all `/index.html` fallback, which
+  // hands back HTTP 200 for URLs that do not exist — a soft 404. Crawlers treat
+  // a site that answers 200 for everything as having unbounded duplicate
+  // content, and the NotFound page React renders afterwards does not undo the
+  // status line that was already sent.
+  for (const route of STATIC_ROUTES) {
+    if (route.path === "/") continue; // dist/index.html already is this
+    write(path.join(DIST, route.path.replace(/^\//, ""), "index.html"), shell);
+  }
+  write(path.join(DIST, "404.html"), shell);
 
   write(path.join(DIST, "blogg", "rss.xml"), renderRss(posts));
   write(
