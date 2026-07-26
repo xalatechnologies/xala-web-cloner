@@ -40,6 +40,7 @@ import {
 import {
   STATIC_ROUTES,
   blogSitemapEntries,
+  caseStudySitemapEntries,
   escapeXml,
   renderLlmsTxt,
   renderRss,
@@ -47,6 +48,7 @@ import {
   staticSitemapEntries,
 } from "../src/lib/blog/feeds";
 import type { BlogPost } from "../src/lib/blog/types";
+import { caseStudies } from "../src/data/case-studies/index";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CONTENT_DIR = path.join(ROOT, "src", "content", "blog");
@@ -263,6 +265,19 @@ function main(): void {
 
   write(path.join(DIST, "blogg", "rss.xml"), renderRss(posts));
 
+  // Case studies feed both llms.txt and the sitemap. Only those with a slug
+  // have a reachable /caser/:slug route.
+  const routableCaseStudies = caseStudies.filter(
+    (study): study is typeof study & { slug: string } => Boolean(study.slug),
+  );
+  const caseStudySlugs = routableCaseStudies.map((study) => study.slug);
+  const llmsCaseStudies = routableCaseStudies.map((study) => ({
+    slug: study.slug,
+    title: study.title,
+    client: study.client,
+    summary: study.summary,
+  }));
+
   // llms.txt, unless one is committed under public/ — Vite copies public/ into
   // dist/, so a file the SEO agent produced and someone committed wins over
   // this build-time default rather than being silently overwritten.
@@ -270,11 +285,16 @@ function main(): void {
   if (fs.existsSync(path.join(ROOT, "public", "llms.txt"))) {
     console.log("prerender: public/llms.txt is committed — keeping it, not regenerating");
   } else {
-    write(llmsPath, renderLlmsTxt(posts));
+    write(llmsPath, renderLlmsTxt(posts, llmsCaseStudies));
   }
+
   write(
     path.join(DIST, "sitemap.xml"),
-    renderSitemap([...staticSitemapEntries(today), ...blogSitemapEntries(posts)]),
+    renderSitemap([
+      ...staticSitemapEntries(today),
+      ...caseStudySitemapEntries(caseStudySlugs, today),
+      ...blogSitemapEntries(posts),
+    ]),
   );
 
   // robots.txt is a tracked file in public/ and Vite copies it into dist/ — one

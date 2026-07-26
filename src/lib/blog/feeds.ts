@@ -83,6 +83,23 @@ export function blogSitemapEntries(posts: BlogPost[]): SitemapEntry[] {
   ];
 }
 
+/**
+ * Sitemap entries for the case study detail pages at /caser/<slug>.
+ *
+ * These are real routes with substantial content, but nothing linked them into
+ * the sitemap, so seventeen pages were only discoverable by crawling the /caser
+ * index — and for a while not even that, because the /caser/:slug route had been
+ * dropped and every card 404'd.
+ */
+export function caseStudySitemapEntries(slugs: string[], today: string): SitemapEntry[] {
+  return slugs.map((slug) => ({
+    loc: `${SITE_ORIGIN}/caser/${slug}`,
+    lastmod: today,
+    changefreq: "yearly",
+    priority: "0.6",
+  }));
+}
+
 export function renderSitemap(entries: SitemapEntry[]): string {
   const urls = entries
     .map(
@@ -111,7 +128,7 @@ export const STATIC_ROUTES = [
   { path: "/slik-vi-jobber", priority: "0.7", changefreq: "monthly" },
   { path: "/teknologi", priority: "0.7", changefreq: "monthly" },
   { path: "/om-oss", priority: "0.7", changefreq: "monthly" },
-  { path: "/om-oss/team", priority: "0.6", changefreq: "monthly" },
+  { path: "/karriere", priority: "0.6", changefreq: "monthly" },
   { path: "/kontakt", priority: "0.6", changefreq: "yearly" },
   { path: "/privacy", priority: "0.3", changefreq: "yearly" },
   { path: "/terms", priority: "0.3", changefreq: "yearly" },
@@ -132,7 +149,22 @@ export const STATIC_ROUTES = [
  * `public/llms.txt` overrides this one, because Vite copies `public/` over the
  * build output.
  */
-export function renderLlmsTxt(posts: BlogPost[]): string {
+/** The subset of a case study that llms.txt needs, so this file stays free of
+ *  the full CaseStudy type. */
+export interface LlmsCaseStudy {
+  slug: string;
+  title: string;
+  client?: string;
+  summary?: string;
+}
+
+/** Collapses whitespace and trims to one readable line. */
+function oneLine(text: string, max = 180): string {
+  const flat = text.replace(/\s+/g, " ").trim();
+  return flat.length > max ? `${flat.slice(0, max - 1).trimEnd()}…` : flat;
+}
+
+export function renderLlmsTxt(posts: BlogPost[], caseStudies: LlmsCaseStudy[] = []): string {
   const lines = [
     `# ${ORGANIZATION}`,
     "",
@@ -145,6 +177,20 @@ export function renderLlmsTxt(posts: BlogPost[]): string {
     "",
     ...STATIC_ROUTES.map((r) => `- [${LLMS_PAGE_TITLES[r.path] ?? r.path}](${SITE_ORIGIN}${r.path === "/" ? "" : r.path})`),
     "",
+    // Named references are the most quotable thing on the site, so they are
+    // stated here rather than left for a crawler to find behind the /caser index.
+    ...(caseStudies.length
+      ? [
+          "## Kundecaser",
+          "",
+          ...caseStudies.map((study) => {
+            const client = study.client ? ` — ${study.client}` : "";
+            const summary = study.summary ? `: ${oneLine(study.summary)}` : "";
+            return `- [${study.title}](${SITE_ORIGIN}/caser/${study.slug})${client}${summary}`;
+          }),
+          "",
+        ]
+      : []),
     "## Fagartikler",
     "",
     ...(posts.length
@@ -169,7 +215,7 @@ const LLMS_PAGE_TITLES: Record<string, string> = {
   "/slik-vi-jobber": "Slik vi jobber",
   "/teknologi": "Teknologi",
   "/om-oss": "Om oss",
-  "/om-oss/team": "Team",
+  "/karriere": "Karriere",
   "/kontakt": "Kontakt",
   "/privacy": "Personvern",
   "/terms": "Vilkår",
