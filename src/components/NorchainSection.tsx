@@ -53,7 +53,7 @@ export default function NorchainSection() {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <span className="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                    <span className="inline-block px-4 py-1 bg-[hsl(32_58%_56%/0.15)] text-[hsl(32_58%_56%)] rounded-full text-sm font-medium mb-4">
                         {t('norchain.badge')}
                     </span>
                     <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">

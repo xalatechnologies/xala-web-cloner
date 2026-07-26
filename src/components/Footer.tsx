@@ -155,7 +155,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
 
           {/* Copyright */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 text-stone-500 text-sm">
+          <div className="flex flex-col sm:flex-row items-center gap-4 text-stone-400 text-sm">
             {/* currentYear is computed at the top of this component; the year
                 was hardcoded here and would have gone stale on 1 January. */}
             <span>© {currentYear} Xala Technologies AS</span>
