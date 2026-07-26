@@ -52,6 +52,14 @@ const SECTOR_DOT: Record<string, string> = {
   'Telecom':             'bg-fuchsia-400',
 };
 
+/**
+ * Sector is a closed taxonomy used as the filter key, the colour-map key and
+ * the visible label. Only the label is translated — keeping the raw English
+ * value as the key means filtering, colours and the data file all stay in sync.
+ */
+const sectorKey = (sector: string) =>
+  `caserPage.sectors.${sector.toLowerCase().replace(' / ', '_').replace(/ /g, '_')}`;
+
 // ─── Case Card ─────────────────────────────────────────────────────────────────
 function CaseCard({ entry, index }: { entry: CaserEntry; index: number }) {
   const { t } = useTranslation();
@@ -77,7 +85,7 @@ function CaseCard({ entry, index }: { entry: CaserEntry; index: number }) {
           'absolute top-4 left-4 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full border',
           sectorColor
         )}>
-          {entry.sector}
+          {t(sectorKey(entry.sector), entry.sector)}
         </span>
 
         {/* Full case badge */}
@@ -212,7 +220,7 @@ function FilterSidebar({
         {/* Sector */}
         <div>
           <p className="text-xs font-black uppercase tracking-widest text-muted-foreground/50 mb-4">
-            Sector
+            {t('caserPage.sector')}
           </p>
           <div className="space-y-1">
             <button
@@ -249,7 +257,7 @@ function FilterSidebar({
                 >
                   <span className="flex items-center gap-2.5">
                     <span className={cn('h-2 w-2 rounded-full shrink-0', dot)} />
-                    {sector}
+                    {t(sectorKey(sector), sector)}
                   </span>
                   <span className="text-xs font-bold bg-muted text-muted-foreground px-2 py-0.5 rounded-lg">
                     {count}
@@ -270,7 +278,7 @@ function FilterSidebar({
             className="w-full flex items-center justify-between mb-4"
           >
             <p className="text-xs font-black uppercase tracking-widest text-muted-foreground/50">
-              Technology
+              {t('caserPage.technology')}
               {activeTags.size > 0 && (
                 <span className="ml-2 bg-primary text-primary-foreground text-[10px] font-black px-1.5 py-0.5 rounded-full">
                   {activeTags.size}
@@ -348,7 +356,7 @@ function MobileFilterBar({
           )}
         >
           <SlidersHorizontal className="h-4 w-4" />
-          Filters
+          {t('caserPage.filters')}
           {hasFilters && (
             <span className="bg-primary-foreground/20 text-primary-foreground text-xs font-black px-1.5 py-0.5 rounded-full leading-none">
               {(activeSector ? 1 : 0) + activeTags.size}
@@ -378,7 +386,7 @@ function MobileFilterBar({
                 : 'bg-card border-border text-muted-foreground hover:text-foreground'
             )}
           >
-            {sector}
+            {t(sectorKey(sector), sector)}
           </button>
         ))}
       </div>

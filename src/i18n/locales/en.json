@@ -361,7 +361,18 @@
     "clearAllFilters": "Clear all filters",
     "casesTotal": "cases total",
     "cases": "cases",
-    "withFullCase": "with full case studies"
+    "withFullCase": "with full case studies",
+    "sectors": {
+      "public_sector": "Public sector",
+      "aviation": "Aviation",
+      "finance": "Finance",
+      "healthcare": "Healthcare",
+      "legal_tech": "Legal / tech",
+      "public_transport": "Public transport",
+      "energy": "Energy",
+      "ngo_international": "NGO / international",
+      "telecom": "Telecom"
+    }
   },
   "caseStudy": {
     "backToAll": "All cases",

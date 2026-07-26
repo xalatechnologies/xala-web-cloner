@@ -361,7 +361,18 @@
     "clearAllFilters": "مسح كل عوامل التصفية",
     "casesTotal": "إجمالي الحالات",
     "cases": "حالات",
-    "withFullCase": "مع دراسات حالة كاملة"
+    "withFullCase": "مع دراسات حالة كاملة",
+    "sectors": {
+      "public_sector": "القطاع العام",
+      "aviation": "الطيران",
+      "finance": "التمويل",
+      "healthcare": "الصحة",
+      "legal_tech": "القانون والتقنية",
+      "public_transport": "النقل العام",
+      "energy": "الطاقة",
+      "ngo_international": "منظمات دولية",
+      "telecom": "الاتصالات"
+    }
   },
   "caseStudy": {
     "backToAll": "جميع الحالات",

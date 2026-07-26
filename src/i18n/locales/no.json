@@ -361,7 +361,18 @@
     "clearAllFilters": "Nullstill alle filtre",
     "casesTotal": "caser totalt",
     "cases": "caser",
-    "withFullCase": "med full case study"
+    "withFullCase": "med full case study",
+    "sectors": {
+      "public_sector": "Offentlig sektor",
+      "aviation": "Luftfart",
+      "finance": "Finans",
+      "healthcare": "Helse",
+      "legal_tech": "Juss og teknologi",
+      "public_transport": "Kollektivtransport",
+      "energy": "Energi",
+      "ngo_international": "NGO og internasjonalt",
+      "telecom": "Telekom"
+    }
   },
   "caseStudy": {
     "backToAll": "Alle caser",
