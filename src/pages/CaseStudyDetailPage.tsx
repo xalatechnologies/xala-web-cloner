@@ -631,7 +631,7 @@ function ArchitectureSection({
             <ul className="space-y-2.5">
               {items!.map((item, j) => (
                 <li key={j} className="text-sm text-foreground/70 flex gap-2 items-start leading-relaxed">
-                  <span className="text-primary shrink-0 mt-1 text-[10px]">●</span>
+                  <span aria-hidden className="text-primary shrink-0 mt-1 text-[10px]">●</span>
                   {item}
                 </li>
               ))}
