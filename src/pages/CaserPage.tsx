@@ -29,15 +29,15 @@ import {
  * uses a single hue for text, fill and border so a badge reads as one thing.
  */
 const SECTOR_COLORS: Record<string, string> = {
-  'Public Sector':       'text-amber-300 bg-amber-500/10 border-amber-500/25',
-  'Aviation':            'text-sky-300 bg-sky-500/10 border-sky-500/25',
-  'Finance':             'text-emerald-300 bg-emerald-500/10 border-emerald-500/25',
-  'Healthcare':          'text-rose-300 bg-rose-500/10 border-rose-500/25',
-  'Legal / Tech':        'text-violet-300 bg-violet-500/10 border-violet-500/25',
-  'Public Transport':    'text-orange-300 bg-orange-500/10 border-orange-500/25',
-  'Energy':              'text-yellow-300 bg-yellow-500/10 border-yellow-500/25',
-  'NGO / International': 'text-teal-300 bg-teal-500/10 border-teal-500/25',
-  'Telecom':             'text-fuchsia-300 bg-fuchsia-500/10 border-fuchsia-500/25',
+  'Public Sector':       'text-amber-800 dark:text-amber-300 bg-amber-500/10 border-amber-500/30',
+  'Aviation':            'text-sky-700 dark:text-sky-300 bg-sky-500/10 border-sky-500/30',
+  'Finance':             'text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 border-emerald-500/30',
+  'Healthcare':          'text-rose-700 dark:text-rose-300 bg-rose-500/10 border-rose-500/30',
+  'Legal / Tech':        'text-violet-700 dark:text-violet-300 bg-violet-500/10 border-violet-500/30',
+  'Public Transport':    'text-orange-700 dark:text-orange-300 bg-orange-500/10 border-orange-500/30',
+  'Energy':              'text-yellow-700 dark:text-yellow-300 bg-yellow-500/10 border-yellow-500/30',
+  'NGO / International': 'text-teal-700 dark:text-teal-300 bg-teal-500/10 border-teal-500/30',
+  'Telecom':             'text-fuchsia-700 dark:text-fuchsia-300 bg-fuchsia-500/10 border-fuchsia-500/30',
 };
 
 const SECTOR_DOT: Record<string, string> = {
@@ -219,7 +219,7 @@ function FilterSidebar({
 
         {/* Sector */}
         <div>
-          <p className="text-xs font-black uppercase tracking-widest text-muted-foreground/50 mb-4">
+          <p className="text-xs font-black uppercase tracking-widest text-muted-foreground mb-4">
             {t('caserPage.sector')}
           </p>
           <div className="space-y-1">
@@ -277,7 +277,7 @@ function FilterSidebar({
             onClick={() => setTechOpen(v => !v)}
             className="w-full flex items-center justify-between mb-4"
           >
-            <p className="text-xs font-black uppercase tracking-widest text-muted-foreground/50">
+            <p className="text-xs font-black uppercase tracking-widest text-muted-foreground">
               {t('caserPage.technology')}
               {activeTags.size > 0 && (
                 <span className="ml-2 bg-primary text-primary-foreground text-[10px] font-black px-1.5 py-0.5 rounded-full">
@@ -286,8 +286,8 @@ function FilterSidebar({
               )}
             </p>
             {techOpen
-              ? <ChevronUp className="h-4 w-4 text-muted-foreground/50" />
-              : <ChevronDown className="h-4 w-4 text-muted-foreground/50" />
+              ? <ChevronUp className="h-4 w-4 text-muted-foreground" />
+              : <ChevronDown className="h-4 w-4 text-muted-foreground" />
             }
           </button>
           <AnimatePresence>
@@ -402,7 +402,7 @@ function MobileFilterBar({
           >
             <div className="bg-card border border-border rounded-2xl p-5">
               <div className="flex items-center justify-between mb-4">
-                <p className="text-sm font-black uppercase tracking-widest text-muted-foreground/50">{t('caserPage.technology')}</p>
+                <p className="text-sm font-black uppercase tracking-widest text-muted-foreground">{t('caserPage.technology')}</p>
                 {hasFilters && (
                   <button onClick={clearAll} className="text-sm text-primary font-bold">Clear all</button>
                 )}
