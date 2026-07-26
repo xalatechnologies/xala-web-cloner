@@ -13,7 +13,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useToast } from "@/components/ui/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 
 export const ContactForm = () => {
   const { t, i18n } = useTranslation();
@@ -40,36 +39,16 @@ export const ContactForm = () => {
 
   const onSubmit = async (values: FormValues) => {
     try {
-      // Normalize language code to match database enum (contact_language: 'en' | 'no')
-      const currentLang = i18n.language?.toLowerCase() || 'no';
-      // Map to database enum - contact_language only supports 'en' and 'no'
-      const dbLanguage = (currentLang === 'en' || currentLang === 'ar') ? 'en' : 'no';
-
-      // Insert into Supabase contact_submissions table
-      // This will trigger the database trigger that sends the email
-      const { error } = await supabase
-        .from('contact_submissions')
-        .insert({
-          name: values.name,
-          email: values.email,
-          subject: values.subject,
-          message: values.message,
-          language: dbLanguage,
-          status: 'pending',
-        });
-
-      if (error) {
-        console.error('Supabase error:', error);
-        console.error('Error details:', {
-          message: error.message,
-          details: error.details,
-          hint: error.hint,
-          code: error.code
-        });
-        throw error;
-      }
-
-      console.log('Contact form submitted successfully');
+      // Send email via mailto link as a simple, zero-backend approach.
+      // For production, replace with a form service like Formspree or Web3Forms.
+      const mailtoSubject = encodeURIComponent(`[xala.no] ${values.subject}`);
+      const mailtoBody = encodeURIComponent(
+        `Navn: ${values.name}\nE-post: ${values.email}\n\n${values.message}`
+      );
+      window.open(
+        `mailto:info@xala.no?subject=${mailtoSubject}&body=${mailtoBody}`,
+        '_self'
+      );
 
       toast({
         title: t('contact.form.success.title'),

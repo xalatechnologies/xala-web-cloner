@@ -19,16 +19,28 @@
             "sortOrder": 3
         },
         {
+            "id": "cases-no",
+            "name": "Caser",
+            "href": "/caser",
+            "sortOrder": 4
+        },
+        {
+            "id": "blog-no",
+            "name": "Blogg",
+            "href": "/blogg",
+            "sortOrder": 5
+        },
+        {
             "id": "about-no",
             "name": "Om oss",
             "href": "/om-oss",
-            "sortOrder": 4
+            "sortOrder": 6
         },
         {
             "id": "contact-no",
             "name": "Kontakt",
             "href": "/kontakt",
-            "sortOrder": 5
+            "sortOrder": 7
         }
     ],
     "en": [
@@ -51,16 +63,28 @@
             "sortOrder": 3
         },
         {
+            "id": "cases-en",
+            "name": "Cases",
+            "href": "/caser",
+            "sortOrder": 4
+        },
+        {
+            "id": "blog-en",
+            "name": "Blog",
+            "href": "/blogg",
+            "sortOrder": 5
+        },
+        {
             "id": "about-en",
             "name": "About Us",
             "href": "/om-oss",
-            "sortOrder": 4
+            "sortOrder": 6
         },
         {
             "id": "contact-en",
             "name": "Contact",
             "href": "/kontakt",
-            "sortOrder": 5
+            "sortOrder": 7
         }
     ],
     "ar": [
@@ -83,16 +107,28 @@
             "sortOrder": 3
         },
         {
+            "id": "cases-ar",
+            "name": "الحالات",
+            "href": "/caser",
+            "sortOrder": 4
+        },
+        {
+            "id": "blog-ar",
+            "name": "المدونة",
+            "href": "/blogg",
+            "sortOrder": 5
+        },
+        {
             "id": "about-ar",
             "name": "من نحن",
             "href": "/om-oss",
-            "sortOrder": 4
+            "sortOrder": 6
         },
         {
             "id": "contact-ar",
             "name": "اتصل بنا",
             "href": "/kontakt",
-            "sortOrder": 5
+            "sortOrder": 7
         }
     ]
 }

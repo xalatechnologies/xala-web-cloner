@@ -19,6 +19,7 @@ const Navbar = () => {
   const { i18n } = useTranslation();
   const { theme } = useTheme();
 
+  // useMenuItems returns static JSON data — no Supabase dependency
   const { data: menuItems } = useMenuItems();
 
   const toggleTheme = () => {
@@ -34,7 +35,6 @@ const Navbar = () => {
     ? '/LOGO/PNG/Asset 3@6x.png'  // White logo for dark mode
     : '/LOGO/PNG/Asset 4@6x.png'; // Green logo for light mode
 
-  // No loading state needed - data is instant from JSON
   return (
     <nav className="fixed top-0 inset-x-0 z-50 
                     bg-white/80 supports-[backdrop-filter]:bg-white/70 backdrop-blur-xl 

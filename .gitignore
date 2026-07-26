@@ -34,3 +34,6 @@ dist-ssr
 # Build outputs
 *.tsbuildinfo
 .cache/
+
+# Agent fleet knowledge store (XWEB host) — memory, learning, crawl db
+.xaheen/

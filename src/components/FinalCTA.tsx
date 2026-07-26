@@ -18,7 +18,7 @@ export default function FinalCTA() {
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-10">
           <Link
             to="/kontakt"
-            className="inline-flex items-center px-10 py-5 border border-transparent text-xl font-medium rounded-xl text-foreground dark:text-foreground bg-card hover:bg-accent transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 group dark:hover:text-amber-500"
+            className="inline-flex items-center px-10 py-5 border border-transparent text-xl font-medium rounded-xl text-foreground dark:text-foreground bg-card hover:bg-accent transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 group dark:hover:text-primary"
           >
             {t('finalCTA.startConversation')}
             <MessageCircle className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-1" />

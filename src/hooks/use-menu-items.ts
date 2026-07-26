@@ -17,7 +17,7 @@ export function useMenuItems() {
   const lang = i18n.language?.toLowerCase() as Language;
   const currentLanguage: Language = lang === 'ar' ? 'ar' : (lang === 'en' ? 'en' : 'no');
 
-  // Return data directly - no async, no loading state
+  // Return data directly from static JSON - no Supabase, no async, no loading state
   const data = menuData[currentLanguage] || menuData.no;
 
   return {

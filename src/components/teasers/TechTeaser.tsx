@@ -40,7 +40,7 @@ export default function TechTeaser() {
     {
       name: 'AWS',
       logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg',
-      color: 'from-orange-400 to-amber-500'
+      color: 'from-emerald-400 to-green-500'
     },
     {
       name: 'PostgreSQL',

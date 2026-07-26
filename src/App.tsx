@@ -18,8 +18,9 @@ const SlikViJobberPage = lazy(() => import('./pages/SlikViJobberPage'));
 const TeknologiPage = lazy(() => import('./pages/TeknologiPage'));
 const OmOssPage = lazy(() => import('./pages/OmOssPage'));
 const KontaktPage = lazy(() => import('./pages/KontaktPage'));
-const KarrierePage = lazy(() => import('./pages/KarrierePage'));
-const CaseStudyDetailPage = lazy(() => import('./pages/CaseStudyDetailPage'));
+const BloggPage = lazy(() => import('./pages/BloggPage'));
+const BloggPostPage = lazy(() => import('./pages/BloggPostPage'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 const analyticsConfig = {
   googleAnalyticsId: "G-NFGNKJDHHW",
@@ -39,16 +40,16 @@ const App = () => {
               <Route path="/tjenester" element={<TjenesterPage />} />
               <Route path="/produkter" element={<ProdukterPage />} />
               <Route path="/caser" element={<CaserPage />} />
-              <Route path="/caser/:slug" element={<CaseStudyDetailPage />} />
               <Route path="/slik-vi-jobber" element={<SlikViJobberPage />} />
               <Route path="/teknologi" element={<TeknologiPage />} />
               <Route path="/om-oss" element={<OmOssPage />} />
-              {/* <Route path="/om-oss/team" element={<TeamPage />} /> */}
               <Route path="/kontakt" element={<KontaktPage />} />
-              <Route path="/karriere" element={<KarrierePage />} />
+              <Route path="/blogg" element={<BloggPage />} />
+              <Route path="/blogg/:slug" element={<BloggPostPage />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/cookies" element={<CookiesPolicy />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
             <GDPRNotification />
             <ChatWidget />

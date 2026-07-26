@@ -61,7 +61,7 @@ const CookiesPolicy = () => {
                 <ul className="space-y-4 pl-6 list-disc marker:text-primary">
                   {section.items.map((item) => (
                     <li key={item.id} className="text-foreground/90">
-                      {item.title && <strong className="text-primary dark:text-amber-400">{item.title}: </strong>}
+                      {item.title && <strong className="text-primary dark:text-primary">{item.title}: </strong>}
                       {item.content}
                     </li>
                   ))}

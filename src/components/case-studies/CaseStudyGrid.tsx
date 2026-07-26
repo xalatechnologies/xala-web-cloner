@@ -1,6 +1,10 @@
 import CaseStudyCard from './CaseStudyCard';
 import { BaseGrid } from '../ui/base-grid';
-import type { GridConfig } from '@/types/section';
+
+interface GridConfig {
+  initialRows?: number;
+  cols?: number;
+}
 
 interface CaseStudy {
   id: string;

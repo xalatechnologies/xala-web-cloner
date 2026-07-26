@@ -32,7 +32,7 @@ export default function ProcessTeaser() {
       title: t('teasers.process.steps.delivery'),
       description: t('teasers.process.steps.deliveryDesc'),
       icon: Rocket,
-      color: 'from-orange-500 to-amber-500'
+      color: 'from-emerald-500 to-green-500'
     }
   ];
 

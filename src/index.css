@@ -387,59 +387,8 @@
   }
 
   .dark .logo-path {
-    color: #FFB703;
-    /* Amber in dark mode */
-  }
-
-  /* Button styles for Polkadot theme */
-  .btn-primary {
-    background: #E6007A;
-    /* Accent / Brand / CTAs */
-    color: #fff;
-  }
-
-  .btn-primary:hover {
-    background: #FF2670;
-    /* Accent Hover / Active */
-  }
-
-  .btn-secondary {
-    background: #fff;
-    color: #171717;
-    border: 1px solid #E7E9EE;
-  }
-
-  .btn-secondary:hover {
-    border-color: #d0d5dc;
-  }
-
-  /* Card styles for Polkadot theme */
-  .polkadot-card {
-    background: #fff;
-    border: 1px solid #E7E9EE;
-    box-shadow: 0 18px 48px rgba(0, 0, 0, .08);
-  }
-
-  /* Chip / Label styles for Polkadot theme */
-  .polkadot-chip {
-    background: rgba(230, 0, 122, 0.1);
-    /* #E6007A @ 10% opacity */
-    border: rgba(230, 0, 122, 0.3);
-    /* #E6007A @ 30% opacity */
-    color: #E6007A;
-  }
-
-  /* Gradient backgrounds - Light mode only */
-  .hero-gradient {
-    background: var(--hero-gradient);
-  }
-
-  .highlight-gradient {
-    background: var(--highlight-gradient);
-  }
-
-  .footer-gradient {
-    background: var(--footer-gradient);
+    color: #7ED956;
+    /* Xala brand green in dark mode */
   }
 
   /* Custom hover effect for navigation menu items */
@@ -448,13 +397,12 @@
   }
 
   .nav-item-hover:hover {
-    color: #E6007A;
-    /* Polkadot magenta for light mode */
+    color: hsl(var(--primary));
   }
 
   .dark .nav-item-hover:hover {
-    color: #FFB703;
-    /* Amber/yellow for dark mode */
+    color: #7ED956;
+    /* Xala brand green in dark mode */
   }
 
   /* Ensure dark mode overrides these gradients */

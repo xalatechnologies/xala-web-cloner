@@ -42,7 +42,7 @@ export default function ContactTeaser() {
 
         <Link
           to="/kontakt"
-          className="inline-flex items-center px-10 py-5 border border-primary-foreground/20 dark:border-border text-xl font-medium rounded-xl text-primary-foreground dark:text-foreground bg-primary-foreground/10 dark:bg-accent hover:bg-primary-foreground/20 dark:hover:bg-accent/80 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 dark:hover:text-amber-500"
+          className="inline-flex items-center px-10 py-5 border border-primary-foreground/20 dark:border-border text-xl font-medium rounded-xl text-primary-foreground dark:text-foreground bg-primary-foreground/10 dark:bg-accent hover:bg-primary-foreground/20 dark:hover:bg-accent/80 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 dark:hover:text-primary"
         >
           {t('teasers.contact.getInTouch')}
           <ChevronRight className="ms-3 h-6 w-6 rtl:rotate-180 transition-transform group-hover:translate-x-1" />
