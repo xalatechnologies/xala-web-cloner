@@ -80,6 +80,7 @@ export const ContactForm = () => {
                       <Input
                         {...field}
                         placeholder={t('contact.form.name.placeholder')}
+                        aria-label={t('contact.form.name.placeholder')}
                         className="text-base sm:text-lg h-14 bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary dark:bg-white/5 dark:text-white dark:border-white/10"
                       />
                     </FormControl>
@@ -97,6 +98,7 @@ export const ContactForm = () => {
                         {...field}
                         type="email"
                         placeholder={t('contact.form.email.placeholder')}
+                        aria-label={t('contact.form.email.placeholder')}
                         className="text-base sm:text-lg h-14 bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary dark:bg-white/5 dark:text-white dark:border-white/10"
                       />
                     </FormControl>
@@ -114,6 +116,7 @@ export const ContactForm = () => {
                     <Input
                       {...field}
                       placeholder={t('contact.form.subject.placeholder')}
+                        aria-label={t('contact.form.subject.placeholder')}
                       className="text-base sm:text-lg h-14 bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary dark:bg-white/5 dark:text-white dark:border-white/10"
                     />
                   </FormControl>
@@ -130,6 +133,7 @@ export const ContactForm = () => {
                     <Textarea
                       {...field}
                       placeholder={t('contact.form.message.placeholder')}
+                        aria-label={t('contact.form.message.placeholder')}
                       className="resize-none min-h-[266px] p-4 text-base sm:text-lg bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary dark:bg-white/5 dark:text-white dark:border-white/10"
                     />
                   </FormControl>

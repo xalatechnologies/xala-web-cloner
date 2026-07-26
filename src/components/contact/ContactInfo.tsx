@@ -18,7 +18,7 @@ const ContactInfoItem = ({ icon, title, details, isLtr }: ContactInfoProps) => (
         {icon}
       </div>
       <div>
-        <h3 className="text-xl font-semibold text-foreground mb-1">{title}</h3>
+        <h2 className="text-xl font-semibold text-foreground mb-1">{title}</h2>
         <p className="text-muted-foreground" dir={isLtr ? 'ltr' : undefined}>{details}</p>
       </div>
     </div>

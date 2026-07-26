@@ -13,7 +13,7 @@ const CookiesPolicy = () => {
     return (
       <div className="min-h-screen flex flex-col bg-background">
         <Navbar />
-        <div className="flex-grow pt-20">
+        <main id="main" className="flex-grow pt-20">
           <div className="container mx-auto px-4 max-w-4xl py-16 md:py-24">
             <div className="space-y-8">
               <div className="text-center">
@@ -34,7 +34,7 @@ const CookiesPolicy = () => {
               ))}
             </div>
           </div>
-        </div>
+        </main>
         <Footer />
       </div>
     );
@@ -43,7 +43,7 @@ const CookiesPolicy = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
-      <div className="flex-grow pt-20">
+      <main id="main" className="flex-grow pt-20">
         <LegalLayout
           title={data?.title || t('legal.cookies.title', 'Informasjonskapsler')}
           lastUpdated={data?.lastUpdated || ''}
@@ -70,7 +70,7 @@ const CookiesPolicy = () => {
             </section>
           ))}
         </LegalLayout>
-      </div>
+      </main>
       <Footer />
     </div>
   );

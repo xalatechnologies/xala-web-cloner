@@ -53,7 +53,7 @@ const WorkProcess = () => {
                   <Icon className="w-6 h-6 md:w-8 md:h-8" />
                 </div>
               </div>
-              <h3 className="text-lg md:text-xl font-semibold text-primary">{process.title}</h3>
+              <h2 className="text-lg md:text-xl font-semibold text-primary">{process.title}</h2>
             </div>
 
             <p className="text-sm md:text-base text-muted-foreground">{process.description}</p>

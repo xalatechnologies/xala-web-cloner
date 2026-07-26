@@ -31,9 +31,9 @@ const ProductCard = ({ title, description, icon, image_url, url }: ProductCardPr
               <Image className="w-8 h-8 text-primary relative z-10" />
             )}
           </div>
-          <h3 className="text-2xl font-bold text-primary">
+          <h2 className="text-2xl font-bold text-primary">
             {title}
-          </h3>
+          </h2>
         </div>
 
         {image_url && (

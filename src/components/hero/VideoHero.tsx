@@ -35,7 +35,7 @@ function DynamicWord({ words, interval = 2500 }: { words: string[]; interval?: n
   )
 }
 
-export default function VideoHero({ videoSrc, poster = '/hero-bg.svg', words }: VideoHeroProps) {
+export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/hero-bg.svg', words }: VideoHeroProps) {
   const { t } = useTranslation()
   const navigate = useNavigate()
 
@@ -54,9 +54,9 @@ export default function VideoHero({ videoSrc, poster = '/hero-bg.svg', words }: 
     >
       {/* Background */}
       <div className="absolute inset-0">
-        {/* Rendered only when a video is actually supplied. The default used to
-            be /videos/xala.mp4, which does not exist — every page load fetched
-            it and 404'd. The poster carries the background on its own. */}
+        {/* public/videos/xala.mp4 is the background film. The conditional
+            stays so a caller can opt out with videoSrc={undefined} and fall
+            back to the poster, but the default is the real asset. */}
         {videoSrc ? (
           <video
             className="h-full w-full object-cover"
@@ -105,15 +105,17 @@ export default function VideoHero({ videoSrc, poster = '/hero-bg.svg', words }: 
           transition={{ delay: 0.3, duration: 0.6 }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1] mb-6"
         >
-          {/* "We build X that lasts" rather than "we use AI to create positive
-              change": it names what is actually delivered, and "that lasts" is
-              the claim a public-sector buyer is weighing. */}
-          {t('hero.heroText.weBuild', 'Vi bygger')}{' '}
-          <DynamicWord words={words ?? ['fagsystemer', 'AI-løsninger', 'skytjenester', 'integrasjoner']} />
-          <br className="hidden sm:block" />
-          {' '}
-          <span className="text-primary">
-            {t('hero.heroText.thatLast', 'som varer')}
+          {/* Two fixed lines. The rotating word sits on its own line with a
+              reserved height, because the words differ in length
+              ("integrasjoner" vs "saksbehandlingssystemer") and inline they
+              reflowed the headline between two and three lines on every tick.
+              The audience clause moved to the subtitle rather than making the
+              heading a third line. */}
+          <span className="block">{t('hero.heroText.weBuild', 'Vi bygger')} </span>
+          <span className="block min-h-[1.15em]">
+            <DynamicWord
+              words={words ?? ['saksbehandlingssystemer', 'tilskuddsportaler', 'bevillingsportaler', 'skjemaløsninger', 'prosessautomatisering', 'integrasjoner']}
+            />
           </span>
         </motion.h1>
 
@@ -149,21 +151,37 @@ export default function VideoHero({ videoSrc, poster = '/hero-bg.svg', words }: 
           </button>
         </motion.div>
 
-        {/* Trust bar */}
-        <motion.div
+        {/* Credentials. AWS dropped — Azure is the platform these systems
+            actually run on — and the list now leads with what a Norwegian
+            public-sector buyer screens for: universal design, WCAG and the
+            DigDir design principles sit alongside the security certifications.
+            Rendered as bordered chips rather than 11px grey text, which was
+            close to invisible for the most load-bearing proof on the page. */}
+        <motion.ul
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.8 }}
-          className="mt-14 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[11px] text-muted-foreground uppercase tracking-[0.2em] font-semibold"
+          transition={{ delay: 0.9, duration: 0.6 }}
+          className="mt-14 flex flex-wrap items-center justify-center gap-2.5"
+          aria-label={t('hero.credentials.label', 'Sertifiseringer og standarder')}
         >
-          <span>ISO 27001</span>
-          <span className="w-1 h-1 rounded-full bg-border" />
-          <span>GDPR</span>
-          <span className="w-1 h-1 rounded-full bg-border" />
-          <span>Microsoft Partner</span>
-          <span className="w-1 h-1 rounded-full bg-border" />
-          <span>AWS</span>
-        </motion.div>
+          {[
+            t('hero.credentials.iso27001', 'ISO 27001'),
+            t('hero.credentials.soc2', 'SOC 2'),
+            t('hero.credentials.gdpr', 'GDPR'),
+            t('hero.credentials.wcag', 'WCAG 2.2 AA'),
+            t('hero.credentials.uu', 'Universell utforming'),
+            t('hero.credentials.digdir', 'DigDir designprinsipper'),
+            t('hero.credentials.azure', 'Microsoft Azure'),
+            t('hero.credentials.microsoft', 'Microsoft Partner'),
+          ].map((item) => (
+            <li
+              key={item}
+              className="rounded-full border border-border bg-card/70 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground/80 backdrop-blur-sm"
+            >
+              {item}
+            </li>
+          ))}
+        </motion.ul>
       </div>
 
       {/* Scroll indicator */}

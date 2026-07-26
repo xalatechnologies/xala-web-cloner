@@ -36,7 +36,7 @@
       "create": "create a",
       "positiveChange": "positive change",
       "weBuild": "We build",
-      "thatLast": "that last"
+      "thatLast": "for the public sector and enterprise"
     },
     "bookMeeting": "Book meeting",
     "scrollToNext": "Scroll to next section",
@@ -46,8 +46,19 @@
       "microsoft": "Microsoft Partner",
       "aws": "AWS Partner"
     },
-    "subtitle": "Software house in Asker, Norway. We have delivered for Altinn, Statistics Norway, Norsk helsenett and Nordre Follo — and we maintain what we build.",
-    "viewCases": "See our work"
+    "subtitle": "We digitalise case handling and business processes for the public sector and enterprise — from application to decision. Custom systems, automation and integrations.",
+    "viewCases": "See our work",
+    "credentials": {
+      "label": "Certifications and standards",
+      "iso27001": "ISO 27001",
+      "soc2": "SOC 2",
+      "gdpr": "GDPR",
+      "wcag": "WCAG 2.2 AA",
+      "uu": "Universal design",
+      "digdir": "DigDir design principles",
+      "azure": "Microsoft Azure",
+      "microsoft": "Microsoft Partner"
+    }
   },
   "gdpr": {
     "title": "We use cookies",

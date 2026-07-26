@@ -36,7 +36,7 @@
       "create": "skape",
       "positiveChange": "positiv endring",
       "weBuild": "Vi bygger",
-      "thatLast": "som varer"
+      "thatLast": "for offentlig sektor og næringsliv"
     },
     "bookMeeting": "Book møte",
     "scrollToNext": "Bla til neste seksjon",
@@ -46,8 +46,19 @@
       "microsoft": "Microsoft Partner",
       "aws": "AWS Partner"
     },
-    "subtitle": "Systemutviklingshus i Asker. Vi har levert til Altinn, SSB, Norsk helsenett og Nordre Follo kommune — og forvalter det vi bygger.",
-    "viewCases": "Se våre prosjekter"
+    "subtitle": "Vi digitaliserer saksbehandling og forretningsprosesser for offentlig sektor og næringsliv — fra søknad til vedtak. Skreddersydde fagsystemer, automatisering og integrasjoner.",
+    "viewCases": "Se våre prosjekter",
+    "credentials": {
+      "label": "Sertifiseringer og standarder",
+      "iso27001": "ISO 27001",
+      "soc2": "SOC 2",
+      "gdpr": "GDPR",
+      "wcag": "WCAG 2.2 AA",
+      "uu": "Universell utforming",
+      "digdir": "DigDir designprinsipper",
+      "azure": "Microsoft Azure",
+      "microsoft": "Microsoft Partner"
+    }
   },
   "gdpr": {
     "title": "Vi bruker informasjonskapsler",

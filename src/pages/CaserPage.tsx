@@ -107,12 +107,12 @@ function CaseCard({ entry, index }: { entry: CaserEntry; index: number }) {
 
       {/* Content */}
       <div className="p-6 flex flex-col flex-1">
-        <h3 className={cn(
+        <h2 className={cn(
           'text-xl font-bold mb-3 leading-tight transition-colors duration-200',
           isLinked ? 'text-foreground group-hover:text-primary' : 'text-muted-foreground'
         )}>
           {entry.title}
-        </h3>
+        </h2>
 
         <p className="text-sm leading-relaxed text-muted-foreground flex-1 line-clamp-3 mb-5">
           {entry.description}
@@ -477,6 +477,8 @@ export default function CaserPage() {
       <div className="min-h-screen flex flex-col bg-background">
         <Navbar />
 
+        <main id="main" className="flex-1">
+
         {/* ── Hero ─────────────────────────────────────────────────────── */}
         <section className="relative overflow-hidden pt-32 pb-24 border-b border-border">
           <div className="absolute inset-0 pointer-events-none">
@@ -543,6 +545,7 @@ export default function CaserPage() {
               value={search}
               onChange={e => setSearch(e.target.value)}
               placeholder={t('caserPage.searchPlaceholder')}
+              aria-label={t('caserPage.searchPlaceholder')}
               className="w-full h-14 pl-12 pr-12 bg-card border border-border rounded-2xl text-base text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-all font-medium"
             />
             {search && (
@@ -680,6 +683,8 @@ export default function CaserPage() {
             </div>
           </div>
         </div>
+
+        </main>
 
         <Footer />
       </div>

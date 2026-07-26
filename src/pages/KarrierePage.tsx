@@ -11,7 +11,7 @@ export default function KarrierePage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
-      <div className="flex-1 pt-20">
+      <main id="main" className="flex-1 pt-20">
         <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="max-w-4xl mx-auto space-y-12">
             {/* Header Section */}
@@ -92,7 +92,7 @@ export default function KarrierePage() {
             </div>
           </div>
         </div>
-      </div>
+      </main>
       <Footer />
     </div>
   );

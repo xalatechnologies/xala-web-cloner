@@ -15,21 +15,22 @@ import { useTranslation } from 'react-i18next';
 const Index = () => {
   const { i18n } = useTranslation();
 
-  // The rotating word now names a deliverable rather than a technology, so the
-  // sentence reads "We build <fagsystemer> that last" — a claim about what the
-  // client receives instead of a list of buzzwords. Matched on prefix because
-  // i18next reports regional tags like nb-NO and en-GB.
+  // The rotating word names the product families themselves, taken from the
+  // work in the case studies and the product line: saksbehandling, Nordre
+  // Follo's tilskudds- and bevillingsportal, Digiskjema's form solutions, the
+  // integration and automation work. Not a technology list — a buyer searching
+  // for "bevillingsportal" should see the word they searched for.
   const getHeroWords = () => {
     const lang = i18n.language?.toLowerCase() ?? 'no';
-    if (lang.startsWith('en')) return ['systems', 'AI solutions', 'cloud services', 'integrations'];
-    if (lang.startsWith('ar')) return ['أنظمة الأعمال', 'حلول الذكاء', 'خدمات سحابية', 'تكاملات'];
-    return ['fagsystemer', 'AI-løsninger', 'skytjenester', 'integrasjoner'];
+    if (lang.startsWith('en')) return ['case management systems', 'grant portals', 'licensing portals', 'digital forms', 'process automation', 'integrations'];
+    if (lang.startsWith('ar')) return ['أنظمة معالجة الطلبات', 'بوابات المنح', 'بوابات التراخيص', 'النماذج الرقمية', 'أتمتة العمليات', 'التكاملات'];
+    return ['saksbehandlingssystemer', 'tilskuddsportaler', 'bevillingsportaler', 'skjemaløsninger', 'prosessautomatisering', 'integrasjoner'];
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
-      <div className="flex-1">
+      <main id="main" className="flex-1">
         <VideoHero words={getHeroWords()} />
         <Clients />
         <ValueProps />
@@ -40,7 +41,7 @@ const Index = () => {
         <TechTeaser />
         <ContactTeaser />
         <FinalCTA />
-      </div>
+      </main>
       <Footer />
     </div>
   );

@@ -28,9 +28,9 @@ const AboutFeatureCard = ({ title, description, icon }: AboutFeatureCardProps) =
                       flex items-center justify-center text-primary transition-all duration-500">
             <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
-          <h3 className="text-lg sm:text-xl font-semibold text-primary">
+          <h2 className="text-lg sm:text-xl font-semibold text-primary">
             {title}
-          </h3>
+          </h2>
         </div>
         
         <p className="text-sm sm:text-base text-muted-foreground transition-colors">
