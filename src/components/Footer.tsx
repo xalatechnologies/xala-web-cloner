@@ -156,7 +156,9 @@ const Footer = () => {
 
           {/* Copyright */}
           <div className="flex flex-col sm:flex-row items-center gap-4 text-slate-500 text-sm">
-            <span>© 2026 Xala Technologies AS</span>
+            {/* currentYear is computed at the top of this component; the year
+                was hardcoded here and would have gone stale on 1 January. */}
+            <span>© {currentYear} Xala Technologies AS</span>
             <div className="flex gap-4">
               {legalLinks.map((link) => (
                 <Link
