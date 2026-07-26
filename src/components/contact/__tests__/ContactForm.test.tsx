@@ -1,25 +1,12 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { ContactForm } from '../ContactForm';
 
-const insertMock = vi.fn();
 const toastMock = vi.fn();
-
-vi.mock('@/integrations/supabase/client', () => ({
-  supabase: {
-    from: vi.fn(() => ({
-      insert: insertMock,
-    })),
-  },
-}));
+const openMock = vi.fn();
 
 vi.mock('@/components/ui/use-toast', () => ({
   useToast: () => ({ toast: toastMock }),
-}));
-
-vi.mock('@/hooks/use-section', () => ({
-  useSection: () => ({ data: null }),
 }));
 
 vi.mock('react-i18next', () => ({
@@ -28,15 +15,6 @@ vi.mock('react-i18next', () => ({
     i18n: { language: 'en' },
   }),
 }));
-
-function renderForm() {
-  const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } });
-  return render(
-    <QueryClientProvider client={queryClient}>
-      <ContactForm />
-    </QueryClientProvider>
-  );
-}
 
 function fillValidForm() {
   fireEvent.change(screen.getByPlaceholderText('contact.form.name.placeholder'), {
@@ -53,17 +31,56 @@ function fillValidForm() {
   });
 }
 
+function submit() {
+  fireEvent.click(screen.getByRole('button', { name: 'contact.form.status.send' }));
+}
+
 describe('ContactForm', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    vi.stubGlobal('open', openMock);
   });
 
-  it('shows a visible error toast when the Supabase insert fails', async () => {
-    insertMock.mockResolvedValue({ error: new Error('network error') });
-
-    renderForm();
+  it('hands a valid submission to the mail client with the message encoded', async () => {
+    render(<ContactForm />);
     fillValidForm();
-    fireEvent.click(screen.getByRole('button', { name: 'contact.form.status.send' }));
+    submit();
+
+    await waitFor(() => expect(openMock).toHaveBeenCalledTimes(1));
+
+    const [url, target] = openMock.mock.calls[0];
+    expect(url).toContain('mailto:info@xala.no');
+    // The subject is namespaced and the body carries name + email + message,
+    // so a submission is not silently reduced to an empty mail draft.
+    expect(decodeURIComponent(url)).toContain('[xala.no] Hello there');
+    expect(decodeURIComponent(url)).toContain('jane@example.com');
+    expect(decodeURIComponent(url)).toContain('This is a long enough test message.');
+    expect(target).toBe('_self');
+  });
+
+  it('confirms a successful submission to the user', async () => {
+    render(<ContactForm />);
+    fillValidForm();
+    submit();
+
+    await waitFor(() => {
+      expect(toastMock).toHaveBeenCalledWith(
+        expect.not.objectContaining({ variant: 'destructive' })
+      );
+    });
+  });
+
+  it('shows a visible error toast when handing off to the mail client fails', async () => {
+    // Replaces the old Supabase-insert failure path: the delivery mechanism
+    // changed to mailto, but a failed send must still be visible rather than
+    // leaving the user staring at an apparently-accepted form.
+    openMock.mockImplementation(() => {
+      throw new Error('no mail handler');
+    });
+
+    render(<ContactForm />);
+    fillValidForm();
+    submit();
 
     await waitFor(() => {
       expect(toastMock).toHaveBeenCalledWith(
@@ -72,17 +89,13 @@ describe('ContactForm', () => {
     });
   });
 
-  it('shows a success toast when the Supabase insert succeeds', async () => {
-    insertMock.mockResolvedValue({ error: null });
-
-    renderForm();
-    fillValidForm();
-    fireEvent.click(screen.getByRole('button', { name: 'contact.form.status.send' }));
+  it('does not attempt a send when the form is empty', async () => {
+    render(<ContactForm />);
+    submit();
 
     await waitFor(() => {
-      expect(toastMock).toHaveBeenCalledWith(
-        expect.not.objectContaining({ variant: 'destructive' })
-      );
+      expect(screen.getByText('contact.form.validation.name.min')).toBeInTheDocument();
     });
+    expect(openMock).not.toHaveBeenCalled();
   });
 });
