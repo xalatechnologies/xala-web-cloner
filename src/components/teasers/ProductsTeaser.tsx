@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { FileText, ClipboardList, Boxes, ChevronRight, Sparkles } from 'lucide-react';
+import { Section } from '@/components/ui/section';
 
 export default function ProductsTeaser() {
   const { t } = useTranslation();
@@ -52,7 +53,7 @@ export default function ProductsTeaser() {
   };
 
   return (
-    <section className="py-16 md:py-20 bg-muted/30 section-styled">
+    <Section tone="muted" size="sm" styled container={false}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
@@ -119,6 +120,6 @@ export default function ProductsTeaser() {
           </Link>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

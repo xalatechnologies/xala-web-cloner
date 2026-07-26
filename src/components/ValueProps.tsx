@@ -1,6 +1,7 @@
 
 import { useTranslation } from 'react-i18next';
 import { Zap, TrendingUp, Lightbulb, Heart } from 'lucide-react';
+import { Section } from '@/components/ui/section';
 
 export default function ValueProps() {
   const { t } = useTranslation();
@@ -29,7 +30,7 @@ export default function ValueProps() {
   ];
 
   return (
-    <section className="py-20 md:py-24 bg-background section-styled">
+    <Section tone="muted" size="md" styled container={false}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
@@ -76,6 +77,6 @@ export default function ValueProps() {
           })}
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

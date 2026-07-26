@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ChevronRight } from 'lucide-react';
+import { Section } from '@/components/ui/section';
 
 export default function TechTeaser() {
   const { t } = useTranslation();
@@ -60,7 +61,7 @@ export default function TechTeaser() {
   ];
 
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden bg-gradient-to-b from-background via-muted/30 to-background section-styled">
+    <Section tone="muted" size="md" styled container={false}>
       {/* Animated background grid */}
       <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]">
         <div className="absolute inset-0" style={{
@@ -147,6 +148,6 @@ export default function TechTeaser() {
           </Link>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
