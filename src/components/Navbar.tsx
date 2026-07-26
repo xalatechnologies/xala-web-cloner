@@ -58,8 +58,8 @@ const Navbar = () => {
   }, [i18n.language]);
 
   // Vector rather than the 6x PNGs: crisp at any size, a fraction of the
-  // bytes, and the mark is a single fill so it can carry the palette. One ember
-  // per scheme, each contrast-checked against its own background.
+  // bytes, and the mark is a single fill so it can carry the palette. One
+  // bronze per scheme, each contrast-checked against its own background.
   const logoSrc = theme === 'dark' ? '/logo-xala-dark.svg' : '/logo-xala-light.svg';
 
   const isActive = (href: string) => location.pathname === href;
@@ -84,7 +84,7 @@ const Navbar = () => {
             : 'py-6 bg-transparent'
         }`}
       >
-        {/* Instrument hairline: brand green at the very top edge, always there,
+        {/* Instrument hairline: the accent at the very top edge, always there,
             never loud. Anchors the bar to the top of the viewport. */}
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
@@ -136,12 +136,12 @@ const Navbar = () => {
               <button
                 onClick={toggleLanguage}
                 aria-label="Toggle language"
-                className={`hidden sm:flex items-center rounded-md border border-border/60 overflow-hidden text-[11px] font-bold tracking-[0.12em] ${FOCUS}`}
+                className={`hidden sm:flex items-center min-h-11 rounded-md border border-border/60 overflow-hidden text-[11px] font-bold tracking-[0.12em] ${FOCUS}`}
               >
-                <span className={`px-2 py-1.5 transition-colors ${!isEnglish ? 'bg-primary/15 text-primary' : 'text-muted-foreground'}`}>
+                <span className={`px-2.5 py-3 transition-colors ${!isEnglish ? 'bg-primary/15 text-primary' : 'text-muted-foreground'}`}>
                   NO
                 </span>
-                <span className={`px-2 py-1.5 transition-colors ${isEnglish ? 'bg-primary/15 text-primary' : 'text-muted-foreground'}`}>
+                <span className={`px-2.5 py-3 transition-colors ${isEnglish ? 'bg-primary/15 text-primary' : 'text-muted-foreground'}`}>
                   EN
                 </span>
               </button>
@@ -149,7 +149,7 @@ const Navbar = () => {
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                 aria-label="Toggle theme"
-                className={`p-2.5 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors ${FOCUS}`}
+                className={`inline-flex items-center justify-center min-h-11 min-w-11 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors ${FOCUS}`}
               >
                 {theme === 'dark' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
               </button>
@@ -168,7 +168,7 @@ const Navbar = () => {
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label={isOpen ? 'Close menu' : 'Open menu'}
                 aria-expanded={isOpen}
-                className={`lg:hidden p-2.5 rounded-md text-foreground hover:bg-accent transition-colors ${FOCUS}`}
+                className={`lg:hidden inline-flex items-center justify-center min-h-11 min-w-11 rounded-md text-foreground hover:bg-accent transition-colors ${FOCUS}`}
               >
                 {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>

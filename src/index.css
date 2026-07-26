@@ -353,7 +353,7 @@
 
   /* Dark mode: client cards with subtle neutral background */
   .dark .client-card {
-    @apply bg-neutral-200/95 border-neutral-300/50 shadow-lg rounded-xl;
+    @apply bg-stone-200/95 border-stone-300/50 shadow-lg rounded-xl;
   }
 
   /* Logo containers inside client cards */
