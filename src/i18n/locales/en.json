@@ -178,6 +178,12 @@
         }
       },
       "eyebrow": "Contact"
+    },
+    "blog": {
+      "eyebrow": "Articles",
+      "title": "What we write about",
+      "description": "Lessons from our projects — architecture, modernisation and digitalising case handling.",
+      "viewAll": "See all articles"
     }
   },
   "norchain": {

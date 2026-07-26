@@ -178,6 +178,12 @@
         }
       },
       "eyebrow": "Kontakt"
+    },
+    "blog": {
+      "eyebrow": "Fagartikler",
+      "title": "Det vi skriver om",
+      "description": "Erfaringer fra prosjektene våre — arkitektur, modernisering og digitalisering av saksbehandling.",
+      "viewAll": "Se alle fagartikler"
     }
   },
   "norchain": {

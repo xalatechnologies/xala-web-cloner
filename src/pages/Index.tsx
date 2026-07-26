@@ -8,6 +8,7 @@ import ProductsTeaser from '../components/teasers/ProductsTeaser';
 import NorchainSection from '../components/NorchainSection';
 import ProcessTeaser from '../components/teasers/ProcessTeaser';
 import TechTeaser from '../components/teasers/TechTeaser';
+import BlogTeaser from '../components/teasers/BlogTeaser';
 import ContactTeaser from '../components/teasers/ContactTeaser';
 import FinalCTA from '../components/FinalCTA';
 import { useTranslation } from 'react-i18next';
@@ -39,6 +40,7 @@ const Index = () => {
         <NorchainSection />
         <ProcessTeaser />
         <TechTeaser />
+        <BlogTeaser />
         <ContactTeaser />
         <FinalCTA />
       </main>
