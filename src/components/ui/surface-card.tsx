@@ -30,8 +30,8 @@ interface SurfaceCardProps {
 }
 
 const BASE =
-  'group relative overflow-hidden rounded-2xl border border-border bg-card p-8 ' +
-  'transition-all duration-500 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10';
+  'group relative overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-soft ' +
+  'transition-all duration-300 hover:border-primary/50 hover:shadow-lift hover:-translate-y-0.5';
 
 const LINK_FOCUS =
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 ' +

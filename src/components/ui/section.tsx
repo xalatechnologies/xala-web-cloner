@@ -18,7 +18,7 @@ export type SectionSize = 'sm' | 'md' | 'lg';
 
 const TONE: Record<SectionTone, string> = {
   default: 'bg-background text-foreground',
-  muted: 'bg-muted/30 text-foreground',
+  muted: 'bg-surface text-foreground',
   // Dark in both colour schemes, so its contents must use light text. Matches
   // NorchainSection, which established this treatment.
   dark: 'bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 text-white',

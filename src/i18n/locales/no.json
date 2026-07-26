@@ -34,7 +34,9 @@
       "data": "data",
       "to": "til å",
       "create": "skape",
-      "positiveChange": "positiv endring"
+      "positiveChange": "positiv endring",
+      "weBuild": "Vi bygger",
+      "thatLast": "som varer"
     },
     "bookMeeting": "Book møte",
     "scrollToNext": "Bla til neste seksjon",
@@ -44,7 +46,7 @@
       "microsoft": "Microsoft Partner",
       "aws": "AWS Partner"
     },
-    "subtitle": "Norsk systemutviklingshus. Skreddersydd programvare, AI-løsninger og skyarkitektur for offentlig sektor og næringsliv.",
+    "subtitle": "Systemutviklingshus i Asker. Vi har levert til Altinn, SSB, Norsk helsenett og Nordre Follo kommune — og forvalter det vi bygger.",
     "viewCases": "Se våre prosjekter"
   },
   "gdpr": {

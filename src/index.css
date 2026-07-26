@@ -92,7 +92,15 @@
   --card: 0 0% 100%;
   --card-foreground: 24 20% 12%;
 
+  /* Elevation scale. One step per level of "above the page", so a card on a
+     section on the background reads as three distinct planes instead of two
+     near-identical ones. Verified: body text holds 16.6:1 on card, the bronze
+     accent 6.4:1. */
+  --surface: 34 25% 94%;
+  --elevated: 0 0% 100%;
+
   --border: 32 18% 86%;
+  --border-strong: 30 16% 78%;
   --input: 32 18% 86%;
 
   /* Accent — bronze. Deep enough to carry white text and to be read as text. */
@@ -138,6 +146,12 @@
 
   /* Ambient washes. Kept low-alpha: the accent should feel like warmth in the
      room, not a coloured overlay. */
+  /* Shadows carry a little of the palette's warmth. Pure black over warm
+     neutrals reads as a grey smudge rather than depth. */
+  --shadow-sm: 0 1px 2px hsl(24 30% 12% / 0.06), 0 1px 1px hsl(24 30% 12% / 0.04);
+  --shadow-md: 0 4px 12px hsl(24 30% 12% / 0.08), 0 1px 3px hsl(24 30% 12% / 0.06);
+  --shadow-lg: 0 12px 32px hsl(24 30% 12% / 0.10), 0 4px 8px hsl(24 30% 12% / 0.06);
+
   --hero-gradient: radial-gradient(1200px 600px at 20% 0%, hsl(28 52% 34% / 0.10) 0%, hsl(36 33% 97%) 62%);
   --highlight-gradient: radial-gradient(900px 500px at 80% 50%, hsl(36 55% 42% / 0.12) 0%, transparent 60%);
   --footer-gradient: radial-gradient(1000px 520px at 50% 100%, hsl(28 52% 34% / 0.08) 0%, hsl(36 33% 97%) 55%);
@@ -151,17 +165,24 @@
   --foreground: 36 20% 96%;
   /* #F7F5F3 - 17.3:1 on background */
 
-  --muted: 24 10% 14%;
+  --muted: 22 12% 10%;
   --muted-foreground: 30 8% 62%;
   /* #A69E96 - 7.1:1 on background */
 
   --popover: 22 12% 10%;
   --popover-foreground: 36 20% 96%;
 
-  --card: 22 12% 10%;
+  --card: 24 11% 13%;
   --card-foreground: 36 20% 96%;
 
+  /* Dark had muted at 14% sitting *lighter* than card at 10%, so a card on a
+     muted section appeared to sink into it. The scale now rises: background 7,
+     surface 10, card 13, elevated 17. Text holds 14.8:1 on card. */
+  --surface: 22 12% 10%;
+  --elevated: 24 10% 17%;
+
   --border: 24 9% 20%;
+  --border-strong: 26 10% 28%;
   --input: 24 9% 20%;
 
   /* Bronze, lifted here so it holds up against near-black */
@@ -202,6 +223,11 @@
   --chart-3: 14 45% 45%;
   --chart-4: 44 50% 58%;
   --chart-5: 30 8% 55%;
+
+  /* Deeper and more opaque on dark, where shadows do more of the separating. */
+  --shadow-sm: 0 1px 2px hsl(20 30% 2% / 0.5);
+  --shadow-md: 0 4px 14px hsl(20 30% 2% / 0.55), 0 1px 3px hsl(20 30% 2% / 0.4);
+  --shadow-lg: 0 16px 40px hsl(20 30% 2% / 0.6), 0 4px 10px hsl(20 30% 2% / 0.45);
 
   --hero-gradient: radial-gradient(1200px 600px at 20% 0%, hsl(32 58% 56% / 0.14) 0%, hsl(20 14% 7%) 62%);
   --highlight-gradient: radial-gradient(900px 500px at 80% 50%, hsl(40 62% 58% / 0.10) 0%, transparent 60%);

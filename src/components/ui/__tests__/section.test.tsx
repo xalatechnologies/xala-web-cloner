@@ -62,7 +62,7 @@ describe('Section rhythm', () => {
 
   it('offers exactly the three tones, and dark carries light text', () => {
     const { unmount } = render(<Section tone="muted">a</Section>);
-    expect(sectionEl().className).toContain('bg-muted/30');
+    expect(sectionEl().className).toContain("bg-surface");
     unmount();
 
     render(<Section tone="dark">b</Section>);

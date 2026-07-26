@@ -15,10 +15,15 @@ import { useTranslation } from 'react-i18next';
 const Index = () => {
   const { i18n } = useTranslation();
 
+  // The rotating word now names a deliverable rather than a technology, so the
+  // sentence reads "We build <fagsystemer> that last" — a claim about what the
+  // client receives instead of a list of buzzwords. Matched on prefix because
+  // i18next reports regional tags like nb-NO and en-GB.
   const getHeroWords = () => {
-    if (i18n.language === 'en') return ['AI', 'cloud', 'apps', 'data'];
-    if (i18n.language === 'ar') return ['الذكاء', 'السحابة', 'التطبيقات', 'البيانات'];
-    return ['AI', 'sky', 'apper', 'data'];
+    const lang = i18n.language?.toLowerCase() ?? 'no';
+    if (lang.startsWith('en')) return ['systems', 'AI solutions', 'cloud services', 'integrations'];
+    if (lang.startsWith('ar')) return ['أنظمة الأعمال', 'حلول الذكاء', 'خدمات سحابية', 'تكاملات'];
+    return ['fagsystemer', 'AI-løsninger', 'skytjenester', 'integrasjoner'];
   };
 
   return (

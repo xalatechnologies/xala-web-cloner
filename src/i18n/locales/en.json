@@ -34,7 +34,9 @@
       "data": "data",
       "to": "to",
       "create": "create a",
-      "positiveChange": "positive change"
+      "positiveChange": "positive change",
+      "weBuild": "We build",
+      "thatLast": "that last"
     },
     "bookMeeting": "Book meeting",
     "scrollToNext": "Scroll to next section",
@@ -44,7 +46,7 @@
       "microsoft": "Microsoft Partner",
       "aws": "AWS Partner"
     },
-    "subtitle": "Norwegian software house. Custom software, AI solutions and cloud architecture for the public sector and private business.",
+    "subtitle": "Software house in Asker, Norway. We have delivered for Altinn, Statistics Norway, Norsk helsenett and Nordre Follo — and we maintain what we build.",
     "viewCases": "See our work"
   },
   "gdpr": {

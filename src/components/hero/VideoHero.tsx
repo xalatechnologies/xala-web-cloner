@@ -105,13 +105,15 @@ export default function VideoHero({ videoSrc, poster = '/hero-bg.svg', words }: 
           transition={{ delay: 0.3, duration: 0.6 }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1] mb-6"
         >
-          {t('hero.heroText.weUse', 'Vi bruker')}{' '}
-          <DynamicWord words={words ?? ['AI', 'sky', 'apper', 'data']} />
+          {/* "We build X that lasts" rather than "we use AI to create positive
+              change": it names what is actually delivered, and "that lasts" is
+              the claim a public-sector buyer is weighing. */}
+          {t('hero.heroText.weBuild', 'Vi bygger')}{' '}
+          <DynamicWord words={words ?? ['fagsystemer', 'AI-løsninger', 'skytjenester', 'integrasjoner']} />
           <br className="hidden sm:block" />
-          {' '}{t('hero.heroText.to', 'til å')}{' '}
-          {t('hero.heroText.create', 'skape')}{' '}
+          {' '}
           <span className="text-primary">
-            {t('hero.heroText.positiveChange', 'positiv endring')}
+            {t('hero.heroText.thatLast', 'som varer')}
           </span>
         </motion.h1>
 
