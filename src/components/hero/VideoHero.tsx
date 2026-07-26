@@ -170,7 +170,7 @@ export default function VideoHero({ videoSrc, poster = '/hero-bg.svg', words }: 
           const next = document.getElementById('clients')
           next?.scrollIntoView({ behavior: 'smooth' })
         }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 p-2 text-muted-foreground/70 hover:text-foreground transition-colors"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 inline-flex items-center justify-center min-h-11 min-w-11 text-muted-foreground/70 hover:text-foreground transition-colors"
         aria-label={t('hero.scrollToNext', 'Scroll ned')}
       >
         <ChevronDown className="w-6 h-6 animate-bounce" />

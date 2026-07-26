@@ -36,6 +36,14 @@
   .heading {
     font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     font-feature-settings: "cv05" 1;
+
+    /* Norwegian compounds are long: "Informasjonskapselpolitikk" is 26
+       characters and at text-4xl it overflowed the viewport on a 390px screen,
+       giving the whole page a horizontal scrollbar. Headings now break and
+       hyphenate rather than push the layout wider. hyphens: auto uses the lang
+       attribute, which Navbar keeps in sync with the active language. */
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   /* Ensure all text elements use DigiList Inter font with cv05 feature */

@@ -339,7 +339,7 @@ function MobileFilterBar({
         <button
           onClick={() => setOpen(v => !v)}
           className={cn(
-            'shrink-0 flex items-center gap-2 text-sm font-bold px-4 py-2.5 rounded-xl border transition-all',
+            'shrink-0 flex items-center gap-2 text-sm font-bold px-4 py-3 rounded-xl border transition-all',
             open || hasFilters
               ? 'bg-primary text-primary-foreground border-primary'
               : 'bg-card border-border text-foreground'
@@ -357,7 +357,7 @@ function MobileFilterBar({
         <button
           onClick={() => setActiveSector(null)}
           className={cn(
-            'shrink-0 text-sm font-bold px-4 py-2.5 rounded-xl border transition-all',
+            'shrink-0 text-sm font-bold px-4 py-3 rounded-xl border transition-all',
             activeSector === null
               ? 'bg-primary text-primary-foreground border-primary'
               : 'bg-card border-border text-muted-foreground hover:text-foreground'
@@ -370,7 +370,7 @@ function MobileFilterBar({
             key={sector}
             onClick={() => setActiveSector(activeSector === sector ? null : sector)}
             className={cn(
-              'shrink-0 text-sm font-bold px-4 py-2.5 rounded-xl border transition-all whitespace-nowrap',
+              'shrink-0 text-sm font-bold px-4 py-3 rounded-xl border transition-all whitespace-nowrap',
               activeSector === sector
                 ? 'bg-primary text-primary-foreground border-primary'
                 : 'bg-card border-border text-muted-foreground hover:text-foreground'

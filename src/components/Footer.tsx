@@ -61,7 +61,7 @@ const Footer = () => {
 
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link to="/" className="inline-block mb-6">
+            <Link to="/" className="inline-flex items-center min-h-11 mb-6">
               <img
                 src="/xala-logo-white.svg"
                 alt="Xala Technologies"
@@ -78,11 +78,11 @@ const Footer = () => {
 
             {/* Contact info */}
             <div className="space-y-3">
-              <a href="mailto:info@xala.no" className="flex items-center gap-3 text-base text-stone-300 hover:text-primary transition-colors">
+              <a href="mailto:info@xala.no" className="flex items-center gap-3 min-h-11 text-base text-stone-300 hover:text-primary transition-colors">
                 <Mail className="w-5 h-5" />
                 <span>info@xala.no</span>
               </a>
-              <a href="tel:+4796665001" className="flex items-center gap-3 text-base text-stone-300 hover:text-primary transition-colors">
+              <a href="tel:+4796665001" className="flex items-center gap-3 min-h-11 text-base text-stone-300 hover:text-primary transition-colors">
                 <Phone className="w-5 h-5" />
                 <span dir="ltr">+47 966 65 001</span>
               </a>
@@ -101,7 +101,7 @@ const Footer = () => {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-base text-stone-300 hover:text-primary transition-colors duration-200"
+                    className="inline-flex items-center min-h-11 text-base text-stone-300 hover:text-primary transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -118,7 +118,7 @@ const Footer = () => {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-base text-stone-300 hover:text-primary transition-colors duration-200"
+                    className="inline-flex items-center min-h-11 text-base text-stone-300 hover:text-primary transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -137,7 +137,7 @@ const Footer = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-base text-stone-300 hover:text-primary transition-colors duration-200 inline-flex items-center gap-1"
+                    className="text-base text-stone-300 hover:text-primary transition-colors duration-200 min-h-11 inline-flex items-center gap-1"
                   >
                     {link.name}
                     <span className="text-xs">↗</span>
@@ -164,7 +164,7 @@ const Footer = () => {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className="hover:text-primary transition-colors"
+                  className="inline-flex items-center min-h-11 hover:text-primary transition-colors"
                 >
                   {link.name}
                 </Link>
@@ -178,7 +178,8 @@ const Footer = () => {
               href="https://www.linkedin.com/company/2558426"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-stone-800 hover:bg-primary flex items-center justify-center transition-all duration-300 hover:scale-110"
+              aria-label="Xala Technologies på LinkedIn"
+              className="w-11 h-11 rounded-full bg-stone-800 hover:bg-primary flex items-center justify-center transition-all duration-300 hover:scale-110"
             >
               <Linkedin className="w-5 h-5" />
             </a>
@@ -186,7 +187,8 @@ const Footer = () => {
               href="https://github.com/xalatechnologies"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-stone-800 hover:bg-primary flex items-center justify-center transition-all duration-300 hover:scale-110"
+              aria-label="Xala Technologies på GitHub"
+              className="w-11 h-11 rounded-full bg-stone-800 hover:bg-primary flex items-center justify-center transition-all duration-300 hover:scale-110"
             >
               <Github className="w-5 h-5" />
             </a>
@@ -194,7 +196,8 @@ const Footer = () => {
               href="https://x.com/NorChaiin"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-stone-800 hover:bg-primary flex items-center justify-center transition-all duration-300 hover:scale-110"
+              aria-label="Xala Technologies på X"
+              className="w-11 h-11 rounded-full bg-stone-800 hover:bg-primary flex items-center justify-center transition-all duration-300 hover:scale-110"
             >
               <Twitter className="w-5 h-5" />
             </a>
