@@ -4,6 +4,7 @@ import { Menu, X, Moon, Sun, ArrowRight } from 'lucide-react';
 import { useMenuItems } from '@/hooks/use-menu-items';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'next-themes';
+import { LANGUAGES, normalizeLang, type LanguageCode } from './navbar/languages';
 
 /** Two-digit index, so the drawer reads like a parts list rather than a list. */
 const ordinal = (index: number) => String(index + 1).padStart(2, '0');
@@ -63,13 +64,12 @@ const Navbar = () => {
   const logoSrc = theme === 'dark' ? '/logo-xala-dark.svg' : '/logo-xala-light.svg';
 
   const isActive = (href: string) => location.pathname === href;
-  const isEnglish = i18n.language?.toLowerCase().startsWith('en');
+  const activeLang = normalizeLang(i18n.language);
 
-  const toggleLanguage = () => {
-    const next = isEnglish ? 'no' : 'en';
-    i18n.changeLanguage(next);
+  const selectLanguage = (code: LanguageCode) => {
+    i18n.changeLanguage(code);
     try {
-      localStorage.setItem('i18nextLng', next);
+      localStorage.setItem('i18nextLng', code);
     } catch {
       // Private browsing: the switch still applies for this session.
     }
@@ -131,20 +131,31 @@ const Navbar = () => {
 
             {/* Right: controls + CTA */}
             <div className="flex items-center gap-2">
-              {/* Segmented language switch: shows both states, so it reads as a
-                  choice rather than a mystery button. */}
-              <button
-                onClick={toggleLanguage}
-                aria-label="Toggle language"
-                className={`hidden sm:flex items-center min-h-11 rounded-md border border-border/60 overflow-hidden text-[11px] font-bold tracking-[0.12em] ${FOCUS}`}
+              {/* Segmented language picker. Each language is its own button so
+                  it can be reached directly and announced by name, rather than
+                  a toggle that cycles and hides where you are. */}
+              <div
+                role="group"
+                aria-label="Språk / Language"
+                className="hidden sm:flex items-center rounded-md border border-border/60 overflow-hidden"
               >
-                <span className={`px-2.5 py-3 transition-colors ${!isEnglish ? 'bg-primary/15 text-primary' : 'text-muted-foreground'}`}>
-                  NO
-                </span>
-                <span className={`px-2.5 py-3 transition-colors ${isEnglish ? 'bg-primary/15 text-primary' : 'text-muted-foreground'}`}>
-                  EN
-                </span>
-              </button>
+                {LANGUAGES.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => selectLanguage(lang.code)}
+                    lang={lang.code}
+                    aria-label={lang.name}
+                    aria-current={activeLang === lang.code ? 'true' : undefined}
+                    className={`min-h-11 px-2.5 text-[11px] font-bold tracking-[0.12em] transition-colors ${FOCUS} ${
+                      activeLang === lang.code
+                        ? 'bg-primary/15 text-primary'
+                        : 'text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    {lang.label}
+                  </button>
+                ))}
+              </div>
 
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -236,13 +247,30 @@ const Navbar = () => {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               )}
-              <button
-                onClick={toggleLanguage}
-                aria-label="Toggle language"
-                className={`w-full py-3 text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground rounded-lg border border-border/60 ${FOCUS}`}
+              {/* Same three languages on mobile, each named in its own
+                  language. The old control read "Switch to English" and could
+                  only ever reach two of the three. */}
+              <div
+                role="group"
+                aria-label="Språk / Language"
+                className="grid grid-cols-3 gap-2"
               >
-                {isEnglish ? 'Bytt til norsk' : 'Switch to English'}
-              </button>
+                {LANGUAGES.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => selectLanguage(lang.code)}
+                    lang={lang.code}
+                    aria-current={activeLang === lang.code ? 'true' : undefined}
+                    className={`min-h-11 rounded-lg border text-sm font-semibold transition-colors ${FOCUS} ${
+                      activeLang === lang.code
+                        ? 'border-primary/50 bg-primary/15 text-primary'
+                        : 'border-border/60 text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    {lang.name}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>

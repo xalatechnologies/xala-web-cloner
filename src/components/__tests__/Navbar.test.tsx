@@ -74,6 +74,37 @@ describe('Navbar', () => {
     expect(screen.queryByRole('link', { name: 'Hjem' })).not.toBeInTheDocument();
   });
 
+  it('offers every language the site ships copy for', () => {
+    renderNavbar();
+
+    // The picker used to be a two-state NO/EN toggle, so the Arabic site
+    // highlighted NO and had no control that could return to Arabic.
+    for (const name of ['Norsk', 'English', 'العربية']) {
+      expect(screen.getAllByRole('button', { name }).length).toBeGreaterThan(0);
+    }
+  });
+
+  it('marks the active language and only the active language', () => {
+    renderNavbar();
+
+    // The mocked i18n reports 'no'.
+    const current = screen
+      .getAllByRole('button')
+      .filter((b) => b.getAttribute('aria-current') === 'true');
+
+    expect(current.length).toBeGreaterThan(0);
+    current.forEach((b) => expect(b.getAttribute('lang')).toBe('no'));
+  });
+
+  it('tags each option with the language it selects', () => {
+    renderNavbar();
+
+    // lang on the option lets a screen reader pronounce العربية as Arabic
+    // rather than reading it in the page language.
+    expect(screen.getAllByRole('button', { name: 'العربية' })[0]).toHaveAttribute('lang', 'ar');
+    expect(screen.getAllByRole('button', { name: 'English' })[0]).toHaveAttribute('lang', 'en');
+  });
+
   it('exposes the logo as a link home', () => {
     renderNavbar('/tjenester');
 
