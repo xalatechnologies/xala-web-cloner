@@ -802,10 +802,18 @@ textarea {
   text-align: left;
 }
 
-/* RTL flex direction adjustments */
-[dir="rtl"] .flex-row:not(.rtl-preserve) {
-  flex-direction: row-reverse;
-}
+/* No flex-direction overrides for RTL.
+ *
+ * `dir="rtl"` already reverses the visual order of a `flex-direction: row`
+ * container — that is what the property is for. Adding `row-reverse` on top
+ * reverses it a second time, so the layout lands back in LTR order while the
+ * text runs right-to-left. That is exactly what was happening in the header:
+ * the logo sat on the left of the Arabic page, where the last item belongs.
+ *
+ * The rules that did it are deleted rather than narrowed. If a specific row
+ * genuinely needs to stay in source order regardless of direction, give it
+ * .rtl-preserve, which is still defined below.
+ */
 
 /* RTL margin/padding adjustments using logical properties */
 [dir="rtl"] .ml-auto {
@@ -823,16 +831,32 @@ textarea {
   transform: scaleX(-1);
 }
 
+/* Arrows and chevrons point the other way in a right-to-left page.
+ *
+ * Done once here rather than as on each icon: there were
+ * eighteen directional icons and only six carried the class, so "next" arrows
+ * pointed backwards across most of the Arabic site.
+ *
+ * `scale` rather than `transform: scaleX(-1)` on purpose — Tailwind builds
+ * hover effects like group-hover:translate-x-0.5 out of the `transform`
+ * property, and overriding it here would silently kill them. `scale` is its own
+ * property and composes instead of clobbering.
+ */
+[dir="rtl"] .lucide-arrow-right,
+[dir="rtl"] .lucide-arrow-left,
+[dir="rtl"] .lucide-chevron-right,
+[dir="rtl"] .lucide-chevron-left {
+  scale: -1 1;
+}
+
 /* Preserve certain flex layouts in RTL */
 .rtl-preserve {
   flex-direction: row !important;
 }
 
-/* RTL navigation adjustments */
-[dir="rtl"] nav .gap-6,
-[dir="rtl"] nav .gap-4 {
-  flex-direction: row-reverse;
-}
+/* (The [dir="rtl"] nav .gap-6 / .gap-4 row-reverse rules lived here. They
+ * matched the header's own "flex items-center justify-between gap-6" container
+ * and double-flipped it — see the note above.) */
 
 /* Ensure icons in buttons stay correctly positioned */
 [dir="rtl"] .inline-flex.items-center .ml-2,

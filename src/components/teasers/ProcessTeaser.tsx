@@ -121,7 +121,7 @@ export default function ProcessTeaser() {
             className="inline-flex items-center px-8 py-4 text-base font-medium rounded-xl text-primary-foreground bg-primary hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             {t('teasers.process.readProcess')}
-            <ChevronRight className="ms-3 h-5 w-5 rtl:rotate-180" />
+            <ChevronRight className="ms-3 h-5 w-5" />
           </Link>
         </div>
       </div>

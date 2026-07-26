@@ -144,7 +144,7 @@ export default function TechTeaser() {
             className="inline-flex items-center px-8 py-4 text-base font-medium rounded-xl text-primary-foreground bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transform hover:-translate-y-1"
           >
             {t('teasers.tech.viewTechnology')}
-            <ChevronRight className="ms-3 h-5 w-5 rtl:rotate-180" />
+            <ChevronRight className="ms-3 h-5 w-5" />
           </Link>
         </div>
       </div>

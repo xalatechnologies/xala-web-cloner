@@ -99,7 +99,7 @@ export default function ProductsTeaser() {
             className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-primary-foreground bg-primary hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             {t('teasers.products.viewAll')}
-            <ChevronRight className="ms-3 h-5 w-5 rtl:rotate-180" />
+            <ChevronRight className="ms-3 h-5 w-5" />
           </Link>
         </div>
       </div>
