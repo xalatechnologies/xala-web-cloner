@@ -1,5 +1,11 @@
 import { cn } from "@/lib/utils";
-import type { BaseGridProps } from "@/types/section";
+import type { ReactNode } from "react";
+
+interface BaseGridProps {
+  items: ReactNode[];
+  initialRows?: number;
+  cols?: number;
+}
 
 export function BaseGrid({ items, initialRows = 1, cols = 3 }: BaseGridProps) {
   return (

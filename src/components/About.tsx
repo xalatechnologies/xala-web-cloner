@@ -20,8 +20,9 @@ const About = () => {
             <Skeleton className="h-8 w-64 mx-auto mb-4" />
             <Skeleton className="h-4 w-96 mx-auto" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16">
-            {[1, 2, 3].map((i) => (
+          <div className="flex justify-center mb-12 sm:mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-4xl w-full">
+            {[1, 2, 3, 4].map((i) => (
               <div key={i} className="p-6 rounded-lg bg-xala-secondary/20">
                 <Skeleton className="h-12 w-12 mb-4" />
                 <Skeleton className="h-6 w-48 mb-2" />
@@ -29,6 +30,7 @@ const About = () => {
                 <Skeleton className="h-4 w-3/4 mt-1" />
               </div>
             ))}
+            </div>
           </div>
           <div className="max-w-3xl mx-auto">
             <Skeleton className="h-8 w-48 mx-auto mb-4" />
@@ -48,15 +50,17 @@ const About = () => {
           <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto px-4 sm:px-0">{aboutSection?.description}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16">
-          {features?.map((feature) => (
-            <AboutFeatureCard
-              key={feature.id}
-              title={feature.title}
-              description={feature.description}
-              icon={feature.icon}
-            />
-          ))}
+        <div className="flex justify-center mb-12 sm:mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-4xl w-full">
+            {features?.map((feature) => (
+              <AboutFeatureCard
+                key={feature.id}
+                title={feature.title}
+                description={feature.description}
+                icon={feature.icon}
+              />
+            ))}
+          </div>
         </div>
 
         {visionSection && (

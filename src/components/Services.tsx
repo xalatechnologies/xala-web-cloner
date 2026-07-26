@@ -1,47 +1,23 @@
 import { useTranslation } from "react-i18next";
 import { useSection } from "@/hooks/use-section";
-import { useQuery } from "@tanstack/react-query";
-import { supabase } from '@/integrations/supabase/client';
 import ServiceGrid from './services/ServiceGrid';
 import MainLayout from './layouts/MainLayout';
-import type { Database } from '@/integrations/supabase/types';
+import servicesData from '@/data/services.json';
 
-type SupportedLanguage = Database['public']['Enums']['supported_language'];
+type Language = 'no' | 'en' | 'ar';
 
 const Services = () => {
   const { t, i18n } = useTranslation();
-  const { data: section, isLoading: isSectionLoading } = useSection('services');
+  const { data: section } = useSection('services');
 
-  const currentLanguage = (i18n.language.toLowerCase().split('-')[0] === 'en' ? 'en' : 'no') as SupportedLanguage;
+  // Normalize language
+  const lang = i18n.language?.toLowerCase() as Language;
+  const currentLanguage: Language = lang === 'ar' ? 'ar' : (lang === 'en' ? 'en' : 'no');
 
-  const { data: services = [], isLoading: isServicesLoading } = useQuery({
-    queryKey: ['services', currentLanguage],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from('services')
-        .select('*')
-        .eq('language', currentLanguage)
-        .order('sort_order', { ascending: true });
-
-      if (error) {
-        throw new Error('Failed to fetch services');
-      }
-
-      return data || [];
-    }
-  });
-
-  const isLoading = isSectionLoading || isServicesLoading;
+  // Get services from JSON
+  const services = servicesData[currentLanguage] || servicesData.no;
 
   const renderContent = () => {
-    if (isLoading) {
-      return (
-        <div className="flex justify-center items-center min-h-[300px]">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-primary"></div>
-        </div>
-      );
-    }
-
     if (!services.length) {
       return (
         <div className="text-center text-foreground py-16">
@@ -50,10 +26,12 @@ const Services = () => {
       );
     }
 
-    return <ServiceGrid services={services} initialRows={section?.rows || 2} cols={section?.columns || 3} />;
+    return <ServiceGrid services={services as any} initialRows={2} cols={3} />;
   };
 
-  if (!section) return null;
+  // Section data with fallbacks
+  const sectionTitle = section?.title || t('services.title', 'Our Services');
+  const sectionDescription = section?.description || t('services.description', '');
 
   return (
     <MainLayout pageId="services">
@@ -62,10 +40,10 @@ const Services = () => {
           <div className="flex flex-col gap-16">
             <div className="flex flex-col gap-6 text-center max-w-3xl mx-auto">
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-                {section.title}
+                {sectionTitle}
               </h2>
               <p className="text-xl leading-8 text-muted-foreground">
-                {section.description}
+                {sectionDescription}
               </p>
             </div>
             {renderContent()}

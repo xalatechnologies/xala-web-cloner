@@ -1,10 +1,12 @@
 import TechnologyCard from './TechnologyCard';
 import ExpandableGrid from '../ui/expandable-grid';
-import { Database } from '@/integrations/supabase/types';
 
-type Technology = Database['public']['Tables']['technologies']['Row'] & {
-  technology_tools: Database['public']['Tables']['technology_tools']['Row'][];
-};
+interface Technology {
+  id: string;
+  name: string;
+  category: string;
+  icon: string;
+}
 
 interface TechnologyGridProps {
   technologies: Technology[];
@@ -12,19 +14,18 @@ interface TechnologyGridProps {
   cols?: number;
 }
 
-const TechnologyGrid = ({ technologies, initialRows = 1, cols = 3 }: TechnologyGridProps) => {
+const TechnologyGrid = ({ technologies, initialRows = 2, cols = 3 }: TechnologyGridProps) => {
   const technologyCards = technologies.map((tech) => (
     <TechnologyCard
       key={tech.id}
+      name={tech.name}
+      category={tech.category}
       icon={tech.icon}
-      title={tech.title}
-      description={tech.description || undefined}
-      tools={tech.technology_tools}
     />
   ));
 
   return (
-    <ExpandableGrid 
+    <ExpandableGrid
       items={technologyCards}
       initialRows={initialRows}
       cols={cols}

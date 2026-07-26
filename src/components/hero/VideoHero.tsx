@@ -28,7 +28,7 @@ function DynamicWord({ words, interval = 2200 }: { words: string[]; interval?: n
 export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/hero-bg.svg', words }: VideoHeroProps) {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background video */}
@@ -48,14 +48,14 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
       </div>
 
       {/* Enhanced Headline */}
-      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-24 text-center">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-16 sm:pt-24 text-center">
         <div className="flex flex-col items-center gap-4">
           <div className="inline-flex items-center gap-3">
             <span className="group relative rounded-xl bg-card/95 border border-border shadow-xl backdrop-blur-sm px-6 py-3 text-lg font-semibold text-card-foreground hover:shadow-2xl transition-all duration-300 min-w-[140px]">
               <Code className="absolute -top-1 -right-1 h-3 w-3 text-primary" />
               {t('hero.heroText.weUse')} <span className="sr-only">_</span>
             </span>
-            <span className="group relative rounded-xl bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/30 shadow-xl backdrop-blur-sm px-6 py-3 text-lg font-bold text-foreground hover:shadow-2xl transition-all duration-300 min-w-[140px]">
+            <span className="group relative rounded-xl bg-gradient-to-r from-primary/40 to-primary/30 border-2 border-primary/60 shadow-xl backdrop-blur-sm px-6 py-3 text-lg font-bold text-foreground hover:shadow-2xl transition-all duration-300 min-w-[140px] hover:from-primary/50 hover:to-primary/40 hover:border-primary/80">
               <Brain className="absolute -top-1 -right-1 h-3 w-3 text-primary" />
               <DynamicWord words={words ?? ['AI', 'sky', 'apps', 'data']} />
             </span>
@@ -69,7 +69,7 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
               <Cpu className="absolute -top-1 -right-1 h-3 w-3 text-purple-500" />
               {t('hero.heroText.create')}
             </span>
-            <span className="group relative rounded-xl bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/30 shadow-xl backdrop-blur-sm px-6 py-3 text-lg font-bold text-foreground hover:shadow-2xl transition-all duration-300 min-w-[160px]">
+            <span className="group relative rounded-xl bg-gradient-to-r from-primary/40 to-primary/30 border-2 border-primary/60 shadow-xl backdrop-blur-sm px-6 py-3 text-lg font-bold text-foreground hover:shadow-2xl transition-all duration-300 min-w-[160px] hover:from-primary/50 hover:to-primary/40 hover:border-primary/80">
               <Brain className="absolute -top-1 -right-1 h-3 w-3 text-primary" />
               {t('hero.heroText.positiveChange')}
             </span>
@@ -78,7 +78,7 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
 
         {/* Enhanced scroll indicator with smooth scroll functionality */}
         <div className="mt-6 flex items-center justify-center">
-          <button 
+          <button
             onClick={() => {
               const nextSection = document.getElementById('clients');
               if (nextSection) {
@@ -122,7 +122,7 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
       </div>
 
       <div className="absolute bottom-6 right-6 z-20">
-        <button 
+        <button
           onClick={() => navigate('/kontakt')}
           className="group inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-5 py-2.5 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-primary/90 font-semibold"
         >

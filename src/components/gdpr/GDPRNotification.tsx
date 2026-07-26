@@ -1,53 +1,44 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-interface GDPRNotification {
-  id: string;
-  title: string;
-  content: string;
-  button_text: string;
-  is_active: boolean;
-  language: string;
-}
+import { Cookie, Shield } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function GDPRNotification() {
-  const { i18n } = useTranslation();
+  const { t } = useTranslation();
   const [showNotification, setShowNotification] = useState(false);
 
   // Check if user has already accepted GDPR
   useEffect(() => {
     const hasAcceptedGDPR = localStorage.getItem('gdpr-accepted');
     if (!hasAcceptedGDPR) {
-      setShowNotification(true);
+      // Small delay for better UX
+      const timer = setTimeout(() => setShowNotification(true), 1000);
+      return () => clearTimeout(timer);
     }
   }, []);
 
-  // Fetch GDPR notification content from Supabase
-  const { data: gdprData } = useQuery({
-    queryKey: ['gdpr-notification', i18n.language],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from('gdpr_notifications')
-        .select('*')
-        .eq('language', i18n.language)
-        .eq('is_active', true)
-        .single();
-
-      if (error) throw error;
-      return data as GDPRNotification;
-    },
-  });
+  // Content based on language - using i18n
+  const content = {
+    title: t('gdpr.title'),
+    content: t('gdpr.content'),
+    acceptText: t('gdpr.acceptAll'),
+    declineText: t('gdpr.essentialOnly'),
+    learnMore: t('gdpr.learnMore')
+  };
 
   const handleAccept = () => {
     localStorage.setItem('gdpr-accepted', 'true');
     setShowNotification(false);
   };
 
-  if (!showNotification || !gdprData) {
+  const handleDecline = () => {
+    localStorage.setItem('gdpr-accepted', 'essential-only');
+    setShowNotification(false);
+  };
+
+  if (!showNotification) {
     return null;
   }
 
@@ -55,21 +46,56 @@ export function GDPRNotification() {
     <div
       className={cn(
         "fixed bottom-0 left-0 right-0 z-50",
-        "bg-card text-card-foreground border-t border-border shadow-lg",
-        "p-4 md:p-6"
+        "animate-in slide-in-from-bottom-full duration-500"
       )}
     >
-      <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <Button
-          onClick={handleAccept}
-          variant="secondary"
-          className="shrink-0 w-full sm:w-auto order-2 sm:order-1"
-        >
-          {gdprData.button_text}
-        </Button>
-        <div className="flex-1 text-center sm:text-left order-1 sm:order-2">
-          <h3 className="font-semibold mb-2">{gdprData.title}</h3>
-          <p className="text-sm text-primary-foreground/90">{gdprData.content}</p>
+      {/* Solid dark background for guaranteed contrast */}
+      <div className="absolute inset-0 bg-slate-900 border-t border-slate-700" />
+
+      <div className="relative container mx-auto p-4 md:p-6">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-6">
+
+          {/* Icon and content */}
+          <div className="flex items-start gap-4 flex-1">
+            <div className="shrink-0 p-3 rounded-xl bg-primary/20 hidden sm:block">
+              <Cookie className="w-6 h-6 text-primary" />
+            </div>
+
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-2">
+                <Shield className="w-4 h-4 text-primary sm:hidden" />
+                <h3 className="font-semibold text-white text-lg">
+                  {content.title}
+                </h3>
+              </div>
+              <p className="text-sm text-slate-300 leading-relaxed max-w-3xl">
+                {content.content}{' '}
+                <Link
+                  to="/cookies"
+                  className="text-primary hover:underline font-medium"
+                >
+                  {content.learnMore}
+                </Link>
+              </p>
+            </div>
+          </div>
+
+          {/* Buttons */}
+          <div className="flex items-center gap-3 w-full lg:w-auto shrink-0">
+            <Button
+              onClick={handleDecline}
+              variant="outline"
+              className="flex-1 lg:flex-none border-slate-600 text-white hover:bg-slate-800 hover:text-white bg-transparent"
+            >
+              {content.declineText}
+            </Button>
+            <Button
+              onClick={handleAccept}
+              className="flex-1 lg:flex-none bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/25"
+            >
+              {content.acceptText}
+            </Button>
+          </div>
         </div>
       </div>
     </div>

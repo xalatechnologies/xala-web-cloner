@@ -1,7 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
-import { supabase } from '@/integrations/supabase/client';
-import type { Database } from '@/integrations/supabase/types';
 
 export interface ChatTranslations {
   'chat.title': string;
@@ -12,51 +9,20 @@ export interface ChatTranslations {
   'chat.errors.failed_to_send': string;
 }
 
-type Section = Database['public']['Tables']['sections']['Row'] & {
-  translations: ChatTranslations;
-};
-
 export function useChatTranslations() {
-  const { i18n, t } = useTranslation();
-  // Normalize language code to just 'en' or 'no'
-  const currentLanguage = i18n.language.toLowerCase().startsWith('en') ? 'en' : 'no';
+  const { t } = useTranslation();
 
-  const { data: section, isLoading } = useQuery<Section | null>({
-    queryKey: ['chat-translations', currentLanguage],
-    queryFn: async () => {
-      try {
-        const { data, error } = await supabase
-          .from('sections')
-          .select('*')
-          .eq('language', currentLanguage)
-          .eq('section_name', 'chat-widget')
-          .limit(1)
-          .maybeSingle();
-
-        if (error) {
-          console.error('Failed to fetch chat translations:', error);
-          return null;
-        }
-
-        return data as Section;
-      } catch (error) {
-        console.error('Failed to fetch chat translations:', error);
-        return null;
-      }
-    },
-  });
-
-  const translations = section?.translations || {
-    'chat.title': t('chat.title'),
-    'chat.status.thinking': t('chat.status.thinking'),
-    'chat.status.online': t('chat.status.online'),
-    'chat.input.placeholder': t('chat.input.placeholder'),
-    'chat.input.button': t('chat.input.button'),
-    'chat.errors.failed_to_send': t('chat.errors.failed_to_send'),
+  const translations: ChatTranslations = {
+    'chat.title': t('chat.title', 'Xala AI Assistant'),
+    'chat.status.thinking': t('chat.status.thinking', 'Thinking...'),
+    'chat.status.online': t('chat.status.online', 'Online'),
+    'chat.input.placeholder': t('chat.input.placeholder', 'Type a message...'),
+    'chat.input.button': t('chat.input.button', 'Chat with Xala AI'),
+    'chat.errors.failed_to_send': t('chat.errors.failed_to_send', 'Failed to send message'),
   };
 
   return {
     translations,
-    isLoading,
+    isLoading: false,
   };
 }

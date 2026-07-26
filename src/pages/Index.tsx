@@ -5,19 +5,19 @@ import ValueProps from '../components/ValueProps';
 import Footer from '../components/Footer';
 import ServicesTeaser from '../components/teasers/ServicesTeaser';
 import ProductsTeaser from '../components/teasers/ProductsTeaser';
+import NorchainSection from '../components/NorchainSection';
 import ProcessTeaser from '../components/teasers/ProcessTeaser';
-import TeamTeaser from '../components/teasers/TeamTeaser';
+// import TeamTeaser from '../components/teasers/TeamTeaser';
 import TechTeaser from '../components/teasers/TechTeaser';
 import ContactTeaser from '../components/teasers/ContactTeaser';
-import FinalCTA from '../components/FinalCTA';
 import { useTranslation } from 'react-i18next';
 
 const Index = () => {
   const { i18n } = useTranslation();
-  
+
   // Dynamic words that change based on language
   const getHeroWords = () => {
-    return i18n.language === 'en' 
+    return i18n.language === 'en'
       ? ["AI", "cloud", "apps", "data"]
       : ["AI", "sky", "apper", "data"];
   };
@@ -31,10 +31,10 @@ const Index = () => {
         <ValueProps />
         <ServicesTeaser />
         <ProductsTeaser />
+        <NorchainSection />
         <ProcessTeaser />
-        <TeamTeaser />
+        {/* <TeamTeaser /> */}
         <TechTeaser />
-        <FinalCTA />
         <ContactTeaser />
       </div>
       <Footer />

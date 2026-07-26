@@ -58,6 +58,7 @@ yarn build
 ## Deployment
 
 The website can be deployed to any static hosting service like:
+- **One.com** (xala.no) — see [One.com deployment guide](docs/one-com-deployment.md) and `scripts/Deploy-To-OneCom.ps1` for SSH/SFTP.
 - Vercel
 - Netlify
 - GitHub Pages

@@ -1,0 +1,134 @@
+{
+    "no": [
+        {
+            "id": "home-no",
+            "name": "Hjem",
+            "href": "/",
+            "sortOrder": 1
+        },
+        {
+            "id": "services-no",
+            "name": "Tjenester",
+            "href": "/tjenester",
+            "sortOrder": 2
+        },
+        {
+            "id": "products-no",
+            "name": "Produkter",
+            "href": "/produkter",
+            "sortOrder": 3
+        },
+        {
+            "id": "cases-no",
+            "name": "Caser",
+            "href": "/caser",
+            "sortOrder": 4
+        },
+        {
+            "id": "blog-no",
+            "name": "Blogg",
+            "href": "/blogg",
+            "sortOrder": 5
+        },
+        {
+            "id": "about-no",
+            "name": "Om oss",
+            "href": "/om-oss",
+            "sortOrder": 6
+        },
+        {
+            "id": "contact-no",
+            "name": "Kontakt",
+            "href": "/kontakt",
+            "sortOrder": 7
+        }
+    ],
+    "en": [
+        {
+            "id": "home-en",
+            "name": "Home",
+            "href": "/",
+            "sortOrder": 1
+        },
+        {
+            "id": "services-en",
+            "name": "Services",
+            "href": "/tjenester",
+            "sortOrder": 2
+        },
+        {
+            "id": "products-en",
+            "name": "Products",
+            "href": "/produkter",
+            "sortOrder": 3
+        },
+        {
+            "id": "cases-en",
+            "name": "Cases",
+            "href": "/caser",
+            "sortOrder": 4
+        },
+        {
+            "id": "blog-en",
+            "name": "Blog",
+            "href": "/blogg",
+            "sortOrder": 5
+        },
+        {
+            "id": "about-en",
+            "name": "About Us",
+            "href": "/om-oss",
+            "sortOrder": 6
+        },
+        {
+            "id": "contact-en",
+            "name": "Contact",
+            "href": "/kontakt",
+            "sortOrder": 7
+        }
+    ],
+    "ar": [
+        {
+            "id": "home-ar",
+            "name": "الرئيسية",
+            "href": "/",
+            "sortOrder": 1
+        },
+        {
+            "id": "services-ar",
+            "name": "الخدمات",
+            "href": "/tjenester",
+            "sortOrder": 2
+        },
+        {
+            "id": "products-ar",
+            "name": "المنتجات",
+            "href": "/produkter",
+            "sortOrder": 3
+        },
+        {
+            "id": "cases-ar",
+            "name": "الحالات",
+            "href": "/caser",
+            "sortOrder": 4
+        },
+        {
+            "id": "blog-ar",
+            "name": "المدونة",
+            "href": "/blogg",
+            "sortOrder": 5
+        },
+        {
+            "id": "about-ar",
+            "name": "من نحن",
+            "href": "/om-oss",
+            "sortOrder": 6
+        },
+        {
+            "id": "contact-ar",
+            "name": "اتصل بنا",
+            "href": "/kontakt",
+            "sortOrder": 7
+        }
+    ]
+}

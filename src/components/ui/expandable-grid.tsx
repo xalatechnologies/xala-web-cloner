@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from './button';
 import { ChevronDown } from 'lucide-react';
 
@@ -9,6 +10,7 @@ interface ExpandableGridProps {
 }
 
 const ExpandableGrid = ({ items, initialRows = 1, cols = 3 }: ExpandableGridProps) => {
+  const { t } = useTranslation();
   const itemsPerRow = {
     sm: 1,  // Mobile: 1 item per row
     md: 2,  // Tablet: 2 items per row
@@ -42,7 +44,7 @@ const ExpandableGrid = ({ items, initialRows = 1, cols = 3 }: ExpandableGridProp
               shadow-lg shadow-primary/25 bg-primary text-primary-foreground hover:bg-primary/90"
           >
             <span className="flex items-center gap-3">
-              Show More
+              {t('common.showMore', 'Show More')}
               <ChevronDown className="w-5 h-5 animate-bounce" />
             </span>
           </Button>

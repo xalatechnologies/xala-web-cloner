@@ -1,0 +1,197 @@
+{
+    "no": {
+        "hero": {
+            "id": "hero-no",
+            "title": "Innovative teknologiløsninger",
+            "description": "Vi hjelper bedrifter med digital transformasjon gjennom skreddersydde løsninger innen AI, blockchain og skyteknologi.",
+            "background": "/images/hero-bg.jpg"
+        },
+        "about": {
+            "id": "about-no",
+            "title": "Om Xala Technologies",
+            "description": "Xala Technologies er et norsk teknologiselskap som spesialiserer seg på innovative digitale løsninger. Vi kombinerer dyp teknisk ekspertise med forretningsforståelse for å levere løsninger som skaper reell verdi."
+        },
+        "vision": {
+            "id": "vision-no",
+            "title": "Vår visjon",
+            "description": "Å være Norges ledende teknologipartner for digital transformasjon, og hjelpe virksomheter med å utnytte teknologiens fulle potensial."
+        },
+        "clients": {
+            "id": "clients-no",
+            "title": "Våre kunder",
+            "description": "Vi samarbeider med ledende organisasjoner i offentlig og privat sektor."
+        },
+        "contact": {
+            "id": "contact-no",
+            "title": "Kontakt oss",
+            "description": "Ta kontakt for en uforpliktende samtale om hvordan vi kan hjelpe din virksomhet."
+        },
+        "services": {
+            "id": "services-no",
+            "title": "Våre tjenester",
+            "description": "Vi tilbyr et bredt spekter av teknologitjenester for å møte dine behov."
+        },
+        "products": {
+            "id": "products-no",
+            "title": "Våre produkter",
+            "description": "Utforsk våre innovative produkter som driver digital transformasjon."
+        },
+        "technologies": {
+            "id": "technologies-no",
+            "title": "Teknologier",
+            "description": "Vi bruker moderne teknologier for å bygge robuste og skalerbare løsninger."
+        },
+        "case-studies": {
+            "id": "case-studies-no",
+            "title": "Prosjekter",
+            "description": "Se hvordan vi har hjulpet våre kunder med å oppnå sine mål."
+        },
+        "work-process": {
+            "id": "work-process-no",
+            "title": "Hva er jobben vår?"
+        },
+        "teams": {
+            "id": "teams-no",
+            "title": "Vårt Team",
+            "description": "Møt våre dyktige eksperter som driver innovasjon."
+        },
+        "footer": {
+            "id": "footer-no",
+            "title": "Xala Technologies AS",
+            "description": "Innovative teknologiløsninger for fremtiden.",
+            "address": "Nesbru, Norge",
+            "email": "kontakt@xala.no",
+            "phone": "+47 22 22 22 22"
+        }
+    },
+    "en": {
+        "hero": {
+            "id": "hero-en",
+            "title": "Innovative Technology Solutions",
+            "description": "We help businesses with digital transformation through tailored solutions in AI, blockchain, and cloud technology.",
+            "background": "/images/hero-bg.jpg"
+        },
+        "about": {
+            "id": "about-en",
+            "title": "About Xala Technologies",
+            "description": "Xala Technologies is a Norwegian technology company specializing in innovative digital solutions. We combine deep technical expertise with business understanding to deliver solutions that create real value."
+        },
+        "vision": {
+            "id": "vision-en",
+            "title": "Our Vision",
+            "description": "To be Norway's leading technology partner for digital transformation, helping businesses unlock technology's full potential."
+        },
+        "clients": {
+            "id": "clients-en",
+            "title": "Our Clients",
+            "description": "We collaborate with leading organizations in the public and private sectors."
+        },
+        "contact": {
+            "id": "contact-en",
+            "title": "Contact Us",
+            "description": "Get in touch for a no-obligation conversation about how we can help your business."
+        },
+        "services": {
+            "id": "services-en",
+            "title": "Our Services",
+            "description": "We offer a wide range of technology services to meet your needs."
+        },
+        "products": {
+            "id": "products-en",
+            "title": "Our Products",
+            "description": "Explore our innovative products driving digital transformation."
+        },
+        "technologies": {
+            "id": "technologies-en",
+            "title": "Technologies",
+            "description": "We use modern technologies to build robust and scalable solutions."
+        },
+        "case-studies": {
+            "id": "case-studies-en",
+            "title": "Projects",
+            "description": "See how we have helped our clients achieve their goals."
+        },
+        "work-process": {
+            "id": "work-process-en",
+            "title": "What is our job?"
+        },
+        "teams": {
+            "id": "teams-en",
+            "title": "Our Team",
+            "description": "Meet our skilled experts who drive innovation."
+        },
+        "footer": {
+            "id": "footer-en",
+            "title": "Xala Technologies AS",
+            "description": "Innovative technology solutions for the future.",
+            "address": "Nesbru, Norway",
+            "email": "contact@xala.no",
+            "phone": "+47 22 22 22 22"
+        }
+    },
+    "ar": {
+        "hero": {
+            "id": "hero-ar",
+            "title": "حلول تقنية مبتكرة",
+            "description": "نساعد الشركات في التحول الرقمي من خلال حلول مخصصة في الذكاء الاصطناعي والبلوكتشين والحوسبة السحابية.",
+            "background": "/images/hero-bg.jpg"
+        },
+        "about": {
+            "id": "about-ar",
+            "title": "عن شركة زالا للتقنية",
+            "description": "زالا للتقنية هي شركة تقنية نرويجية متخصصة في الحلول الرقمية المبتكرة. نجمع بين الخبرة التقنية العميقة وفهم الأعمال لتقديم حلول تخلق قيمة حقيقية."
+        },
+        "vision": {
+            "id": "vision-ar",
+            "title": "رؤيتنا",
+            "description": "أن نكون الشريك التقني الرائد في النرويج للتحول الرقمي، ومساعدة الشركات على إطلاق الإمكانات الكاملة للتكنولوجيا."
+        },
+        "clients": {
+            "id": "clients-ar",
+            "title": "عملاؤنا",
+            "description": "نتعاون مع رواد الصناعة في مختلف القطاعات."
+        },
+        "contact": {
+            "id": "contact-ar",
+            "title": "اتصل بنا",
+            "description": "تواصل معنا لإجراء محادثة غير ملزمة حول كيف يمكننا مساعدة عملك."
+        },
+        "services": {
+            "id": "services-ar",
+            "title": "خدماتنا",
+            "description": "نقدم مجموعة واسعة من الخدمات التقنية لتلبية احتياجاتك."
+        },
+        "products": {
+            "id": "products-ar",
+            "title": "منتجاتنا",
+            "description": "استكشف منتجاتنا المبتكرة التي تقود التحول الرقمي."
+        },
+        "technologies": {
+            "id": "technologies-ar",
+            "title": "التقنيات",
+            "description": "نستخدم تقنيات حديثة لبناء حلول قوية وقابلة للتوسع."
+        },
+        "case-studies": {
+            "id": "case-studies-ar",
+            "title": "المشاريع",
+            "description": "شاهد كيف ساعدنا عملاءنا في تحقيق أهدافهم."
+        },
+        "work-process": {
+            "id": "work-process-ar",
+            "title": "ما هي مهمتنا؟"
+        },
+        "teams": {
+            "id": "teams-ar",
+            "title": "فريقنا",
+            "description": "تعرف على خبرائنا المهرة الذين يقودون الابتكار."
+        },
+        "footer": {
+            "id": "footer-ar",
+            "title": "شركة زالا للتقنية",
+            "description": "حلول تقنية مبتكرة للمستقبل.",
+            "address": "أوسلو، النرويج",
+            "email": "contact@xala.no",
+            "phone": "+47 22 22 22 22"
+        }
+    }
+}

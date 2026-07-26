@@ -1,8 +1,5 @@
 import { useTranslation } from "react-i18next";
 import { useSection } from "@/hooks/use-section";
-import type { Database } from "@/integrations/supabase/types";
-import type { Section } from "@/types/section";
-import { useLocalizedData } from "@/hooks/use-localized-data";
 import { LoadingSpinner } from "./ui/loading-spinner";
 import CaseStudyGrid from './case-studies/CaseStudyGrid';
 import React, { useState } from "react";
@@ -10,20 +7,32 @@ import { Button } from "./ui/button";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { motion } from "framer-motion";
 
-type CaseStudy = Database['public']['Tables']['case_studies']['Row'] & {
-  case_study_metrics: Database['public']['Tables']['case_study_metrics']['Row'][];
-};
+interface CaseStudy {
+  id: string;
+  title: string;
+  description: string | null;
+  image_url: string | null;
+  icon: string | null;
+  language: string;
+  company_name: string | null;
+  sort_order: number;
+  status: string;
+  slug?: string | null;
+  case_study_metrics: any[];
+  [key: string]: any;
+}
 
 // Define static case studies for all companies (English)
 const staticCaseStudiesEn: CaseStudy[] = [
   {
     id: 'furst-static',
-    title: 'Furst',
-    description: 'Revolutionized legal document processing with AI-powered automation, reducing manual review time by 70% while maintaining 99.2% accuracy in contract analysis.',
+    title: 'Fürst Forum',
+    description:
+      'Supporting a secure healthcare communication and collaboration platform for medical professionals.',
     image_url: '/clients/furst.png',
     icon: null,
     language: 'en',
-    company_name: 'Furst',
+    company_name: 'Fürst Medisinsk Laboratorium',
     sort_order: 0,
     status: 'published',
     case_study_metrics: [],
@@ -44,7 +53,7 @@ const staticCaseStudiesEn: CaseStudy[] = [
     published_at: null,
     results: null,
     security_measures: null,
-    slug: null,
+    slug: 'furst-forum',
     solution_overview: null,
     team_composition: null,
     team_size: null,
@@ -97,6 +106,7 @@ const staticCaseStudiesEn: CaseStudy[] = [
     language: 'en',
     company_name: 'Altinn',
     sort_order: 1,
+    slug: 'altinn',
     status: 'published',
     case_study_metrics: [],
     architecture_overview: null,
@@ -116,7 +126,42 @@ const staticCaseStudiesEn: CaseStudy[] = [
     published_at: null,
     results: null,
     security_measures: null,
-    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'norwegian-static',
+    title: 'Norwegian',
+    description: 'Optimized airline operations with AI-powered revenue management systems, increasing ancillary revenue by 22% and improving flight scheduling efficiency across 150+ destinations worldwide.',
+    image_url: '/clients/norwegian.svg',
+    icon: null,
+    language: 'en',
+    company_name: 'Norwegian',
+    sort_order: 2,
+    slug: 'norwegian-airlines-enterprise-platform',
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
     solution_overview: null,
     team_composition: null,
     team_size: null,
@@ -133,6 +178,7 @@ const staticCaseStudiesEn: CaseStudy[] = [
     language: 'en',
     company_name: 'SpareBank 1',
     sort_order: 2,
+    slug: 'sparebank1',
     status: 'published',
     case_study_metrics: [],
     architecture_overview: null,
@@ -152,7 +198,6 @@ const staticCaseStudiesEn: CaseStudy[] = [
     published_at: null,
     results: null,
     security_measures: null,
-    slug: null,
     solution_overview: null,
     team_composition: null,
     team_size: null,
@@ -162,12 +207,13 @@ const staticCaseStudiesEn: CaseStudy[] = [
   },
   {
     id: 'unicef-static',
-    title: 'UNICEF',
-    description: 'Empowered global humanitarian efforts with resilient data infrastructure, enabling real-time monitoring of aid distribution across 190+ countries and improving response times by 40%.',
+    title: 'UNICEF Afghanistan',
+    description:
+      'Child protection and birth registration platform supporting vulnerable child case workflows, secure data handling, and humanitarian reporting.',
     image_url: '/clients/unicef.png',
     icon: null,
     language: 'en',
-    company_name: 'UNICEF',
+    company_name: 'UNICEF Afghanistan',
     sort_order: 3,
     status: 'published',
     case_study_metrics: [],
@@ -188,7 +234,7 @@ const staticCaseStudiesEn: CaseStudy[] = [
     published_at: null,
     results: null,
     security_measures: null,
-    slug: null,
+    slug: 'unicef-afghanistan-child-protection-birth-registration',
     solution_overview: null,
     team_composition: null,
     team_size: null,
@@ -196,6 +242,7 @@ const staticCaseStudiesEn: CaseStudy[] = [
     testing_approach: null,
     updated_at: null,
   },
+  // UNICEF Liberia can be added as a static card later if needed
   {
     id: 'ruter-static',
     title: 'Ruter',
@@ -234,12 +281,13 @@ const staticCaseStudiesEn: CaseStudy[] = [
   },
   {
     id: 'nordre-follo-static',
-    title: 'Nordre Follo',
-    description: 'Digitized municipal services for 50,000+ residents with intuitive civic platforms, increasing digital service adoption by 85% and reducing administrative costs by 30%.',
+    title: 'Nordre Follo Municipality',
+    description:
+      'Delivering digital grant and licensing portals with modern architecture, React and .NET implementation, and alignment to municipal architecture principles.',
     image_url: '/clients/nordre-follo.svg',
     icon: null,
     language: 'en',
-    company_name: 'Nordre Follo',
+    company_name: 'Nordre Follo Municipality',
     sort_order: 5,
     status: 'published',
     case_study_metrics: [],
@@ -260,7 +308,7 @@ const staticCaseStudiesEn: CaseStudy[] = [
     published_at: null,
     results: null,
     security_measures: null,
-    slug: null,
+    slug: 'nordre-follo-tilskuddsportal-bevillingsportal',
     solution_overview: null,
     team_composition: null,
     team_size: null,
@@ -485,42 +533,6 @@ const staticCaseStudiesEn: CaseStudy[] = [
     updated_at: null,
   },
   {
-    id: 'norwegian-static',
-    title: 'Norwegian',
-    description: 'Optimized airline operations with AI-powered revenue management systems, increasing ancillary revenue by 22% and improving flight scheduling efficiency across 150+ destinations worldwide.',
-    image_url: '/clients/norwegian.svg',
-    icon: null,
-    language: 'en',
-    company_name: 'Norwegian',
-    sort_order: 12,
-    status: 'published',
-    case_study_metrics: [],
-    architecture_overview: null,
-    background: null,
-    challenges: null,
-    created_at: null,
-    deployment_strategy: null,
-    executive_summary: null,
-    featured: null,
-    future_roadmap: null,
-    industry: null,
-    key_features: null,
-    lessons_learned: null,
-    methodology: null,
-    objectives: null,
-    project_duration: null,
-    published_at: null,
-    results: null,
-    security_measures: null,
-    slug: null,
-    solution_overview: null,
-    team_composition: null,
-    team_size: null,
-    testimonials: null,
-    testing_approach: null,
-    updated_at: null,
-  },
-  {
     id: 'globalconnect-static',
     title: 'GlobalConnect',
     description: 'Revolutionized enterprise connectivity with software-defined networking solutions, providing 99.95% uptime SLA and reducing network provisioning time from weeks to hours for 5,000+ business customers.',
@@ -562,12 +574,13 @@ const staticCaseStudiesEn: CaseStudy[] = [
 const staticCaseStudiesNo: CaseStudy[] = [
   {
     id: 'furst-static-no',
-    title: 'Furst',
-    description: 'Revolutionerte behandlingen av juridiske dokumenter med AI-drevet automatisering, reduserte manuell gjennomgangstid med 70 % samtidig som nøyaktigheten i kontraktanalyser ble opprettholdt på 99,2 %.',
+    title: 'Fürst Forum',
+    description:
+      'Bidrar til en sikker kommunikasjons- og samhandlingsplattform for helsepersonell gjennom skalerbar arkitektur og integrasjoner.',
     image_url: '/clients/furst.png',
     icon: null,
     language: 'no',
-    company_name: 'Furst',
+    company_name: 'Fürst Medisinsk Laboratorium',
     sort_order: 0,
     status: 'published',
     case_study_metrics: [],
@@ -588,7 +601,7 @@ const staticCaseStudiesNo: CaseStudy[] = [
     published_at: null,
     results: null,
     security_measures: null,
-    slug: null,
+    slug: 'furst-forum',
     solution_overview: null,
     team_composition: null,
     team_size: null,
@@ -641,6 +654,7 @@ const staticCaseStudiesNo: CaseStudy[] = [
     language: 'no',
     company_name: 'Altinn',
     sort_order: 1,
+    slug: 'altinn',
     status: 'published',
     case_study_metrics: [],
     architecture_overview: null,
@@ -660,7 +674,42 @@ const staticCaseStudiesNo: CaseStudy[] = [
     published_at: null,
     results: null,
     security_measures: null,
-    slug: null,
+    solution_overview: null,
+    team_composition: null,
+    team_size: null,
+    testimonials: null,
+    testing_approach: null,
+    updated_at: null,
+  },
+  {
+    id: 'norwegian-static-no',
+    title: 'Norwegian',
+    description: 'Optimaliserte flyselskapsoperasjoner med AI-drevet inntektsstyring, økte tilleggsinntekter med 22 % og forbedret flyplanleggingseffektiviteten på tvers av 150+ destinasjoner.',
+    image_url: '/clients/norwegian.svg',
+    icon: null,
+    language: 'no',
+    company_name: 'Norwegian',
+    sort_order: 2,
+    slug: 'norwegian-airlines-enterprise-platform',
+    status: 'published',
+    case_study_metrics: [],
+    architecture_overview: null,
+    background: null,
+    challenges: null,
+    created_at: null,
+    deployment_strategy: null,
+    executive_summary: null,
+    featured: null,
+    future_roadmap: null,
+    industry: null,
+    key_features: null,
+    lessons_learned: null,
+    methodology: null,
+    objectives: null,
+    project_duration: null,
+    published_at: null,
+    results: null,
+    security_measures: null,
     solution_overview: null,
     team_composition: null,
     team_size: null,
@@ -677,6 +726,7 @@ const staticCaseStudiesNo: CaseStudy[] = [
     language: 'no',
     company_name: 'SpareBank 1',
     sort_order: 2,
+    slug: 'sparebank1',
     status: 'published',
     case_study_metrics: [],
     architecture_overview: null,
@@ -696,7 +746,6 @@ const staticCaseStudiesNo: CaseStudy[] = [
     published_at: null,
     results: null,
     security_measures: null,
-    slug: null,
     solution_overview: null,
     team_composition: null,
     team_size: null,
@@ -706,12 +755,13 @@ const staticCaseStudiesNo: CaseStudy[] = [
   },
   {
     id: 'unicef-static-no',
-    title: 'UNICEF',
-    description: 'Styrket globale humanitære innsatser med robust datainfrastruktur, muliggjorde sanntids overvåking av hjelpedistribusjon i over 190 land og forbedret responstider med 40 %.',
+    title: 'UNICEF Afghanistan',
+    description:
+      'Plattform for barnebeskyttelse og fødselsregistrering som støtter saksflyt for sårbare barn, sikker datahåndtering og humanitær rapportering.',
     image_url: '/clients/unicef.png',
     icon: null,
     language: 'no',
-    company_name: 'UNICEF',
+    company_name: 'UNICEF Afghanistan',
     sort_order: 3,
     status: 'published',
     case_study_metrics: [],
@@ -732,7 +782,7 @@ const staticCaseStudiesNo: CaseStudy[] = [
     published_at: null,
     results: null,
     security_measures: null,
-    slug: null,
+    slug: 'unicef-afghanistan-child-protection-birth-registration',
     solution_overview: null,
     team_composition: null,
     team_size: null,
@@ -778,12 +828,13 @@ const staticCaseStudiesNo: CaseStudy[] = [
   },
   {
     id: 'nordre-follo-static-no',
-    title: 'Nordre Follo',
-    description: 'Digitaliserte kommunetjenester for 50 000+ innbyggere med intuitive borgerplattformer, økte adopsjonen av digitale tjenester med 85 % og reduserte administrative kostnader med 30 %.',
+    title: 'Nordre Follo kommune',
+    description:
+      'Leverer digitale tilskudds- og bevillingsportaler med moderne arkitektur, React- og .NET-implementasjon og støtte for kommunale arkitekturprinsipper.',
     image_url: '/clients/nordre-follo.svg',
     icon: null,
     language: 'no',
-    company_name: 'Nordre Follo',
+    company_name: 'Nordre Follo kommune',
     sort_order: 5,
     status: 'published',
     case_study_metrics: [],
@@ -804,7 +855,7 @@ const staticCaseStudiesNo: CaseStudy[] = [
     published_at: null,
     results: null,
     security_measures: null,
-    slug: null,
+    slug: 'nordre-follo-tilskuddsportal-bevillingsportal',
     solution_overview: null,
     team_composition: null,
     team_size: null,
@@ -1029,42 +1080,6 @@ const staticCaseStudiesNo: CaseStudy[] = [
     updated_at: null,
   },
   {
-    id: 'norwegian-static-no',
-    title: 'Norwegian',
-    description: 'Optimaliserte flyselskapets operasjoner med AI-drevne inntektsstyringssystemer, økte tilleggsinntektene med 22 % og forbedret effektiviteten i flyrutesettingen til 150+ destinasjoner verden over.',
-    image_url: '/clients/norwegian.svg',
-    icon: null,
-    language: 'no',
-    company_name: 'Norwegian',
-    sort_order: 12,
-    status: 'published',
-    case_study_metrics: [],
-    architecture_overview: null,
-    background: null,
-    challenges: null,
-    created_at: null,
-    deployment_strategy: null,
-    executive_summary: null,
-    featured: null,
-    future_roadmap: null,
-    industry: null,
-    key_features: null,
-    lessons_learned: null,
-    methodology: null,
-    objectives: null,
-    project_duration: null,
-    published_at: null,
-    results: null,
-    security_measures: null,
-    slug: null,
-    solution_overview: null,
-    team_composition: null,
-    team_size: null,
-    testimonials: null,
-    testing_approach: null,
-    updated_at: null,
-  },
-  {
     id: 'globalconnect-static-no',
     title: 'GlobalConnect',
     description: 'Revolutionerte bedriftskonnektivitet med nettverksløsninger basert på programvaredefinert nettverk, tilbød 99,95 % oppetid og reduserte nettverksprovisjoneringstiden fra uker til timer for 5000+ bedriftskunder.',
@@ -1104,85 +1119,65 @@ const staticCaseStudiesNo: CaseStudy[] = [
 
 const CaseStudies = () => {
   const { t, i18n } = useTranslation();
-  const { data: section, isLoading: isSectionLoading } = useSection('case-studies');
-  const [visibleCount, setVisibleCount] = useState(6); // Initially show 6 case studies
+  const { data: section } = useSection('case-studies');
+  const [visibleCount, setVisibleCount] = useState(6);
   const [isAnimating, setIsAnimating] = useState(false);
-  
-  const { data: caseStudies = [], isLoading: isCaseStudiesLoading } = useLocalizedData<CaseStudy>({
-    queryKey: 'case-studies',
-    table: 'case_studies',
-    relationships: 'case_study_metrics(*)',
-    orderBy: 'sort_order'
-  });
 
   // Get the appropriate static case studies based on the current language
   const getCurrentStaticCaseStudies = () => {
     return i18n.language.startsWith('no') ? staticCaseStudiesNo : staticCaseStudiesEn;
   };
 
-  // Log the fetched case studies to see what's being retrieved from the database
-  React.useEffect(() => {
-    if (caseStudies.length > 0) {
-      console.log('Database fetched case studies:', caseStudies);
-    }
-  }, [caseStudies]);
-
-  const isLoading = isSectionLoading || isCaseStudiesLoading;
-
   const loadMore = () => {
     setIsAnimating(true);
     // Increase by 6 more cases each time, or show all if less than 6 remain
     setVisibleCount(prevCount => {
-      const allCaseCount = getCurrentStaticCaseStudies().length + caseStudies.length;
+      const allCaseCount = getCurrentStaticCaseStudies().length;
       const remainingCount = allCaseCount - prevCount;
       const increment = Math.min(6, remainingCount);
       return prevCount + increment;
     });
-    
+
     // Reset animation state after a short delay
     setTimeout(() => setIsAnimating(false), 1000);
   };
 
   const renderContent = () => {
-    if (isLoading) {
-      return <LoadingSpinner />;
-    }
+    // Use static case studies directly - no database fetching
+    const allCaseStudies = getCurrentStaticCaseStudies();
 
-    // Combine the static case studies with the fetched case studies
-    const allCaseStudies = [...getCurrentStaticCaseStudies(), ...caseStudies];
-    
     // Filter out specific case studies that should be removed
     const filteredCaseStudies = allCaseStudies.filter(study => {
       // Filter for the "Digital Transformasjon for Retail" case study
       const retailTitleMatch = study.title.includes('Retail') || study.title === 'Digital Transformasjon for Retail';
-      const retailDescriptionMatch = study.description?.includes('Digital Transformasjon for Retail') || 
-                             study.description?.includes('e-handelsløsning') ||
-                             study.description?.includes('200%');
-      
+      const retailDescriptionMatch = study.description?.includes('Digital Transformasjon for Retail') ||
+        study.description?.includes('e-handelsløsning') ||
+        study.description?.includes('200%');
+
       // Filter for other case studies mentioned in previous instructions
       const altinnMatch = study.title.includes('Altinn') && study.title.includes('Modernisering');
       const ssbMatch = study.title.includes('SSB') && study.title.includes('Data Platform');
-      const aiCustomerServiceMatch = study.title.includes('AI-Drevet Kundeservice') || 
-                                    study.title.includes('AI-drevet analyseplattform') ||
-                                    (study.description?.includes('AI-drevet') && study.description?.includes('300%'));
-      
+      const aiCustomerServiceMatch = study.title.includes('AI-Drevet Kundeservice') ||
+        study.title.includes('AI-drevet analyseplattform') ||
+        (study.description?.includes('AI-drevet') && study.description?.includes('300%'));
+
       // Filter for the Norwegian Booking System case
       const norwegianBookingMatch = study.title.includes('Norwegian Booking System') ||
-                                   (study.title.includes('Norwegian') && study.description?.includes('bookingsystem')) ||
-                                   study.description?.includes('skalerbart bookingsystem');
-      
+        (study.title.includes('Norwegian') && study.description?.includes('bookingsystem')) ||
+        study.description?.includes('skalerbart bookingsystem');
+
       // General filter for any booking system cases
       const bookingSystemMatch = study.title.includes('Booking System') || study.description?.includes('booking system');
-      
+
       // NEW: Filter for the specific unwanted English case studies
-      const altinnModernizationMatch = study.title === 'Altinn Modernization' && 
-                                      study.description?.includes('Comprehensive modernization of Altinn');
-      const aiPoweredCustomerServiceMatch = study.title === 'AI-Powered Customer Service' && 
-                                           study.description?.includes('chatbot handling 70% of customer inquiries');
-      
+      const altinnModernizationMatch = study.title === 'Altinn Modernization' &&
+        study.description?.includes('Comprehensive modernization of Altinn');
+      const aiPoweredCustomerServiceMatch = study.title === 'AI-Powered Customer Service' &&
+        study.description?.includes('chatbot handling 70% of customer inquiries');
+
       // Return false if any match is found (to exclude the case study)
-      return !(retailTitleMatch || retailDescriptionMatch || altinnMatch || ssbMatch || aiCustomerServiceMatch || 
-               norwegianBookingMatch || bookingSystemMatch || altinnModernizationMatch || aiPoweredCustomerServiceMatch);
+      return !(retailTitleMatch || retailDescriptionMatch || altinnMatch || ssbMatch || aiCustomerServiceMatch ||
+        norwegianBookingMatch || bookingSystemMatch || altinnModernizationMatch || aiPoweredCustomerServiceMatch);
     });
 
     if (!filteredCaseStudies.length) {
@@ -1209,18 +1204,18 @@ const CaseStudies = () => {
     return (
       <div className="flex flex-col items-center gap-12 w-full">
         <div className="w-full">
-          <CaseStudyGrid 
+          <CaseStudyGrid
             caseStudies={visibleCaseStudies}
             initialRows={section?.rows || 2}
             cols={section?.columns || 3}
           />
         </div>
-        
+
         <div className="flex gap-4 flex-wrap justify-center">
           {hasMore && (
-            <Button 
+            <Button
               onClick={loadMore}
-              variant="outline" 
+              variant="outline"
               size="lg"
               disabled={isAnimating}
               className="mt-6 px-8 py-6 text-lg font-medium rounded-xl flex items-center gap-2 border-primary/20 hover:border-primary hover:bg-primary/5 transition-all duration-300 group shadow-lg hover:shadow-xl text-foreground hover:text-foreground"
@@ -1243,11 +1238,11 @@ const CaseStudies = () => {
               )}
             </Button>
           )}
-          
+
           {showLess && (
-            <Button 
+            <Button
               onClick={handleShowLess}
-              variant="outline" 
+              variant="outline"
               size="lg"
               disabled={isAnimating}
               className="mt-6 px-8 py-6 text-lg font-medium rounded-xl flex items-center gap-2 border-primary/20 hover:border-primary hover:bg-primary/5 transition-all duration-300 group shadow-lg hover:shadow-xl text-foreground hover:text-foreground"

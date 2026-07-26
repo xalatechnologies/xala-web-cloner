@@ -1,17 +1,10 @@
 import { useTranslation } from "react-i18next";
 import { useSection } from "@/hooks/use-section";
-import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
-import { Skeleton } from "./ui/skeleton";
 import * as Icons from "lucide-react";
 import { LucideIcon, ArrowRight, ArrowDown } from "lucide-react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import { useRef } from "react";
+import workProcessData from "@/data/work-process.json";
+
+type Language = 'no' | 'en' | 'ar';
 
 interface WorkProcessItem {
   id: string;
@@ -23,69 +16,23 @@ interface WorkProcessItem {
 
 const WorkProcess = () => {
   const { t, i18n } = useTranslation();
-  const { data: section, isLoading: isSectionLoading } = useSection('work-process');
-  
-  const { data: processes, isLoading: isProcessesLoading } = useQuery({
-    queryKey: ['work-processes', i18n.language],
-    queryFn: async () => {
-      const currentLanguage = i18n.language.toLowerCase() as "en" | "no";
-      
-      let query = await supabase
-        .from('work_processes')
-        .select('*')
-        .eq('language', currentLanguage)
-        .order('step_number', { ascending: true });
+  const { data: section } = useSection('work-process');
 
-      if (query.error || !query.data?.length) {
-        query = await supabase
-          .from('work_processes')
-          .select('*')
-          .eq('language', 'en')
-          .order('step_number', { ascending: true });
-      }
+  // Normalize language
+  const lang = i18n.language?.toLowerCase() as Language;
+  const currentLanguage: Language = lang === 'ar' ? 'ar' : (lang === 'en' ? 'en' : 'no');
 
-      if (query.error) {
-        throw query.error;
-      }
-
-      return query.data || [];
-    },
-  });
+  // Get work processes from JSON
+  const processes = workProcessData[currentLanguage] || workProcessData.no;
 
   const getIconComponent = (iconName: string): LucideIcon => {
     const IconComponent = Icons[iconName as keyof typeof Icons] as LucideIcon;
     return IconComponent || Icons.HelpCircle;
   };
 
-  const isLoading = isSectionLoading || isProcessesLoading;
-  const plugin = useRef(
-    Autoplay({
-      delay: 4000,
-      stopOnInteraction: true,
-    })
-  );
-
-  if (isLoading) {
-    return (
-      <section className="py-12 md:py-24 bg-background dark:bg-gradient-to-br dark:from-xala-primary dark:via-xala-secondary dark:to-xala-primary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="p-8 rounded-2xl bg-card border border-border">
-                <Skeleton className="h-8 w-8 mb-6" />
-                <Skeleton className="h-6 w-3/4 mb-3" />
-                <Skeleton className="h-20 w-full" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   const renderProcessCard = (process: WorkProcessItem, index: number, totalProcesses: number) => {
     const Icon = getIconComponent(process.icon);
-    
+
     return (
       <div key={process.id} className="relative group">
         <div
@@ -112,7 +59,7 @@ const WorkProcess = () => {
             <p className="text-sm md:text-base text-muted-foreground">{process.description}</p>
           </div>
         </div>
-        
+
         {/* Add arrow based on screen size and position */}
         {index < totalProcesses - 1 && (process.step_number === 3 ? (
           <div className="flex flex-col items-center md:hidden py-4 text-primary">
@@ -155,8 +102,6 @@ const WorkProcess = () => {
 
   return (
     <section id="work-process" className="py-12 md:py-24 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary relative overflow-hidden">
-
-
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-48 md:w-64 h-48 md:h-64 bg-purple-500/30 rounded-full filter blur-3xl animate-float-1"></div>
         <div className="absolute bottom-1/4 right-1/4 w-48 md:w-64 h-48 md:h-64 bg-primary/30 rounded-full filter blur-3xl animate-float-2"></div>
@@ -166,21 +111,23 @@ const WorkProcess = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-12 md:mb-20 animate-fade-in">
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 md:mb-6">
-            {section?.title || t('workProcess.title')}
+            {section?.title || t('workProcess.title', 'What is our job?')}
           </h2>
-          <p className="text-xala-text/80 max-w-2xl mx-auto text-base md:text-lg px-4">
-            {section?.description || t('workProcess.description')}
-          </p>
+          {(section?.description ?? t('workProcess.description', '')) && (
+            <p className="text-xala-text/80 max-w-2xl mx-auto text-base md:text-lg px-4">
+              {section?.description || t('workProcess.description', '')}
+            </p>
+          )}
         </div>
 
         {/* Mobile view: Single column */}
         <div className="md:hidden space-y-8">
-          {processes?.map((process, index) => renderProcessCard(process, index, processes.length))}
+          {processes.map((process, index) => renderProcessCard(process, index, processes.length))}
         </div>
 
         {/* Desktop view: Grid */}
         <div className="hidden md:grid md:grid-cols-3 gap-8">
-          {processes?.map((process, index) => renderProcessCard(process, index, processes.length))}
+          {processes.map((process, index) => renderProcessCard(process, index, processes.length))}
         </div>
       </div>
     </section>
