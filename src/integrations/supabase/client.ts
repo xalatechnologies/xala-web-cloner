@@ -2,6 +2,10 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from './types';
 
+// NOTE: this project no longer resolves in DNS (confirmed NXDOMAIN) — every
+// feature backed by it (nav/footer menus, contact form, RAG chat) is
+// non-functional until a decision is made to restore or drop this
+// dependency. Callers must degrade gracefully rather than assume it works.
 const SUPABASE_URL = "https://ttvpsjeucewnenjevfhh.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR0dnBzamV1Y2V3bmVuamV2ZmhoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzc4NTQ2MDYsImV4cCI6MjA1MzQzMDYwNn0.u-1wM_IXyFIThCzEVe1QZWD3abOYbNwLz7MAk642iOk";
 

@@ -14,6 +14,9 @@ import type { Message } from '@/types/chat';
 export const ChatWidget: FC = () => {
   const { isOpen, thinking, setOpen } = useChatStore();
   const { messages, isLoading, sendMessage, updateMessageStatus } = useSessionChat();
+  // useChatTranslations falls back to static i18n copy if the Supabase-backed
+  // "sections" lookup fails (that project is currently unreachable/DNS-dead,
+  // see src/integrations/supabase/client.ts) — no fallback wiring needed here.
   const { translations } = useChatTranslations();
   const { sidebarWidth } = useChatSidebar();
   const chatRef = useRef<HTMLDivElement>(null);

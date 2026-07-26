@@ -21,12 +21,30 @@ export interface MenuItem {
   parent_id: string | null;
 }
 
+// Hardcoded fallback so a Supabase outage never strips all navigation
+// links (mirrors Footer.tsx's fallbackLinks pattern/content).
+const FALLBACK_MENU_ITEMS: MenuItem[] = [
+  { id: 'fallback-tjenester', name: 'Tjenester', href: '/tjenester', language: 'no', sort_order: 1, parent_id: null },
+  { id: 'fallback-produkter', name: 'Produkter', href: '/produkter', language: 'no', sort_order: 2, parent_id: null },
+  { id: 'fallback-caser', name: 'Caser', href: '/caser', language: 'no', sort_order: 3, parent_id: null },
+  { id: 'fallback-slik-vi-jobber', name: 'Slik vi jobber', href: '/slik-vi-jobber', language: 'no', sort_order: 4, parent_id: null },
+  { id: 'fallback-teknologi', name: 'Teknologi', href: '/teknologi', language: 'no', sort_order: 5, parent_id: null },
+  { id: 'fallback-om-oss', name: 'Om oss', href: '/om-oss', language: 'no', sort_order: 6, parent_id: null },
+  { id: 'fallback-kontakt', name: 'Kontakt', href: '/kontakt', language: 'no', sort_order: 7, parent_id: null },
+  { id: 'fallback-privacy', name: 'Personvern', href: '/privacy', language: 'no', sort_order: 8, parent_id: null },
+  { id: 'fallback-terms', name: 'Vilkår', href: '/terms', language: 'no', sort_order: 9, parent_id: null },
+];
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const { i18n } = useTranslation();
 
-  const { data: menuItems, isLoading } = useMenuItems();
+  // menu_items is backed by the currently-unreachable Supabase project
+  // (see src/integrations/supabase/client.ts) — fall back to a hardcoded
+  // menu whenever the query is empty or errors out.
+  const { data: menuItems, isLoading, isError } = useMenuItems();
+  const navItems = !isError && menuItems && menuItems.length > 0 ? menuItems : FALLBACK_MENU_ITEMS;
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -100,7 +118,7 @@ const Navbar = () => {
             <NavigationMenu 
               isOpen={isOpen}
               setIsOpen={setIsOpen}
-              items={menuItems || []}
+              items={navItems}
             />
           </div>
         </div>
