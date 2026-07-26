@@ -63,6 +63,48 @@ describe('SurfaceCard', () => {
   });
 });
 
+describe('SurfaceCard as an external link', () => {
+  it('opens in a new tab with the safe rel attributes', () => {
+    renderCard(<SurfaceCard href="https://norchain.no">Norchain</SurfaceCard>);
+
+    const link = screen.getByRole('link');
+    expect(link).toHaveAttribute('href', 'https://norchain.no');
+    expect(link).toHaveAttribute('target', '_blank');
+    // Without noopener the opened page gets a handle on window.opener.
+    expect(link.getAttribute('rel')).toContain('noopener');
+    expect(link.getAttribute('rel')).toContain('noreferrer');
+  });
+
+  it('tells screen readers the link leaves the site', () => {
+    renderCard(<SurfaceCard href="https://norchain.no">Norchain</SurfaceCard>);
+
+    // The visual cue for "a new tab opened" is not available to everyone.
+    expect(screen.getByRole('link').textContent).toContain('Åpnes i ny fane');
+  });
+
+  it('allows the new-tab notice to be translated', () => {
+    renderCard(
+      <SurfaceCard href="https://norchain.no" externalLabel="opens in a new tab">
+        Norchain
+      </SurfaceCard>
+    );
+
+    expect(screen.getByRole('link').textContent).toContain('opens in a new tab');
+  });
+
+  it('prefers in-app routing when both destinations are given', () => {
+    renderCard(
+      <SurfaceCard to="/produkter" href="https://example.com">
+        Produkter
+      </SurfaceCard>
+    );
+
+    const link = screen.getByRole('link');
+    expect(link).toHaveAttribute('href', '/produkter');
+    expect(link).not.toHaveAttribute('target');
+  });
+});
+
 describe('CardIcon', () => {
   it('renders its icon and hides the halo from assistive tech', () => {
     const { container } = renderCard(

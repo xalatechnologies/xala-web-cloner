@@ -19,6 +19,13 @@ interface SurfaceCardProps {
   children: ReactNode;
   /** Renders the card as a router link covering the whole surface. */
   to?: string;
+  /**
+   * Renders the card as an external link, opening in a new tab. Mutually
+   * exclusive with `to`: one is in-app routing, the other leaves the site.
+   */
+  href?: string;
+  /** Announced to screen readers when `href` opens a new tab. */
+  externalLabel?: string;
   className?: string;
 }
 
@@ -40,7 +47,13 @@ function HoverWash() {
   );
 }
 
-export const SurfaceCard = ({ children, to, className }: SurfaceCardProps) => {
+export const SurfaceCard = ({
+  children,
+  to,
+  href,
+  externalLabel = 'Åpnes i ny fane',
+  className,
+}: SurfaceCardProps) => {
   const body = (
     <>
       <HoverWash />
@@ -53,6 +66,22 @@ export const SurfaceCard = ({ children, to, className }: SurfaceCardProps) => {
       <Link to={to} className={cn(BASE, 'block', LINK_FOCUS, className)}>
         {body}
       </Link>
+    );
+  }
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cn(BASE, 'block', LINK_FOCUS, className)}
+      >
+        {body}
+        {/* A link that leaves the site and opens a new tab should say so; the
+            visual cue (a new tab appearing) is not available to everyone. */}
+        <span className="sr-only"> ({externalLabel})</span>
+      </a>
     );
   }
 
