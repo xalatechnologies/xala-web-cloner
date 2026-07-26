@@ -337,7 +337,20 @@
       "projects": "Levererte prosjekter",
       "experience": "Års erfaring",
       "users": "Sluttbrukere betjent"
-    }
+    },
+    "fullCase": "Full case",
+    "clearAll": "Nullstill",
+    "sector": "Sektor",
+    "allSectors": "Alle sektorer",
+    "technology": "Teknologi",
+    "filters": "Filtre",
+    "searchPlaceholder": "Søk på kunde, teknologi eller sektor…",
+    "noResultsTitle": "Ingen caser funnet",
+    "noResultsBody": "Juster søket eller fjern noen filtre.",
+    "clearAllFilters": "Nullstill alle filtre",
+    "casesTotal": "caser totalt",
+    "cases": "caser",
+    "withFullCase": "med full case study"
   },
   "caseStudy": {
     "backToAll": "Alle caser",
@@ -358,25 +371,25 @@
     },
     "sections": {
       "overview": {
-        "accent": "Executive Overview",
+        "accent": "Sammendrag",
         "heading": "Prosjektoversikt"
       },
       "challenge": {
-        "accent": "Business Challenge",
+        "accent": "Utfordringen",
         "heading": "Utfordringen"
       },
       "objectives": {
-        "accent": "Project Goals",
+        "accent": "Mål",
         "heading": "Prosjektmål"
       },
       "solution": {
-        "accent": "What We Built",
+        "accent": "Det vi bygde",
         "heading": "Løsningen",
         "modules": "Leveranser",
         "users": "Brukergrupper"
       },
       "architecture": {
-        "accent": "System Architecture",
+        "accent": "Systemarkitektur",
         "layers": {
           "presentation": "Presentasjonslag",
           "services": "Tjenestelaget",
@@ -384,26 +397,27 @@
           "data": "Datalag",
           "infrastructure": "Infrastruktur",
           "security": "Sikkerhet & identitet"
-        }
+        },
+        "heading": "Arkitektur"
       },
       "tech": {
-        "accent": "Technology Stack",
+        "accent": "Teknologi",
         "heading": "Teknologistack"
       },
       "integrations": {
-        "accent": "Key Integrations",
+        "accent": "Integrasjoner",
         "heading": "Nøkkelintegrasjoner"
       },
       "timeline": {
-        "accent": "Delivery Approach",
+        "accent": "Leveranse",
         "heading": "Gjennomføring"
       },
       "outcomes": {
-        "accent": "Results & Impact",
+        "accent": "Resultater",
         "heading": "Resultater og effekt"
       },
       "capabilities": {
-        "accent": "Delivered Capabilities",
+        "accent": "Levert",
         "heading": "Nøkkelfunksjoner levert"
       }
     },
@@ -446,7 +460,8 @@
       "description": "Ta kontakt for en uforpliktende samtale om din neste digitale utfordring.",
       "contact": "Kontakt oss",
       "allCases": "Alle caser"
-    }
+    },
+    "projectDetails": "Prosjektdetaljer"
   },
   "careers": {
     "title": "Karriere hos Xala?",

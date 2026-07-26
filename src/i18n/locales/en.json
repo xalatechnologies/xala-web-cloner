@@ -337,7 +337,20 @@
       "projects": "Projects delivered",
       "experience": "Years experience",
       "users": "End users served"
-    }
+    },
+    "fullCase": "Full case",
+    "clearAll": "Clear all",
+    "sector": "Sector",
+    "allSectors": "All sectors",
+    "technology": "Technology",
+    "filters": "Filters",
+    "searchPlaceholder": "Search by client, technology, or sector…",
+    "noResultsTitle": "No cases found",
+    "noResultsBody": "Try adjusting your search or removing some filters.",
+    "clearAllFilters": "Clear all filters",
+    "casesTotal": "cases total",
+    "cases": "cases",
+    "withFullCase": "with full case studies"
   },
   "caseStudy": {
     "backToAll": "All cases",
@@ -384,7 +397,8 @@
           "data": "Data Layer",
           "infrastructure": "Infrastructure",
           "security": "Security & Identity"
-        }
+        },
+        "heading": "Architecture"
       },
       "tech": {
         "accent": "Technology Stack",
@@ -446,7 +460,8 @@
       "description": "Get in touch for a no-commitment conversation about your next digital challenge.",
       "contact": "Contact us",
       "allCases": "All cases"
-    }
+    },
+    "projectDetails": "Project details"
   },
   "careers": {
     "title": "Careers at Xala?",

@@ -328,7 +328,7 @@ function HeroSection({ cs }: { cs: NonNullable<ReturnType<typeof caseStudyBySlug
             {/* card header */}
             <div className="bg-primary/8 border-b border-border px-6 py-4">
               <p className="text-xs font-bold uppercase tracking-widest text-primary">
-                Project Details
+                {t('caseStudy.projectDetails')}
               </p>
             </div>
             <div className="p-6 space-y-6">

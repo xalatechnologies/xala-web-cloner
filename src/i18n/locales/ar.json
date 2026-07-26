@@ -337,7 +337,20 @@
       "projects": "مشاريع مُنجزة",
       "experience": "سنوات من الخبرة",
       "users": "مستخدم نهائي تمت خدمتهم"
-    }
+    },
+    "fullCase": "دراسة كاملة",
+    "clearAll": "مسح الكل",
+    "sector": "القطاع",
+    "allSectors": "كل القطاعات",
+    "technology": "التقنية",
+    "filters": "عوامل التصفية",
+    "searchPlaceholder": "ابحث حسب العميل أو التقنية أو القطاع…",
+    "noResultsTitle": "لم يتم العثور على حالات",
+    "noResultsBody": "جرّب تعديل البحث أو إزالة بعض عوامل التصفية.",
+    "clearAllFilters": "مسح كل عوامل التصفية",
+    "casesTotal": "إجمالي الحالات",
+    "cases": "حالات",
+    "withFullCase": "مع دراسات حالة كاملة"
   },
   "caseStudy": {
     "backToAll": "جميع الحالات",
@@ -358,25 +371,25 @@
     },
     "sections": {
       "overview": {
-        "accent": "Executive Overview",
+        "accent": "ملخّص تنفيذي",
         "heading": "نظرة عامة على المشروع"
       },
       "challenge": {
-        "accent": "Business Challenge",
+        "accent": "التحدي",
         "heading": "التحدي"
       },
       "objectives": {
-        "accent": "Project Goals",
+        "accent": "الأهداف",
         "heading": "أهداف المشروع"
       },
       "solution": {
-        "accent": "What We Built",
+        "accent": "ما بنيناه",
         "heading": "الحل",
         "modules": "المخرجات",
         "users": "مجموعات المستخدمين"
       },
       "architecture": {
-        "accent": "System Architecture",
+        "accent": "معمارية النظام",
         "layers": {
           "presentation": "طبقة العرض",
           "services": "طبقة الخدمات",
@@ -384,26 +397,27 @@
           "data": "طبقة البيانات",
           "infrastructure": "البنية التحتية",
           "security": "الأمن والهوية"
-        }
+        },
+        "heading": "المعمارية"
       },
       "tech": {
-        "accent": "Technology Stack",
+        "accent": "التقنيات",
         "heading": "مكدس التقنية"
       },
       "integrations": {
-        "accent": "Key Integrations",
+        "accent": "التكاملات",
         "heading": "التكاملات الرئيسية"
       },
       "timeline": {
-        "accent": "Delivery Approach",
+        "accent": "التسليم",
         "heading": "كيف نفّذنا المشروع"
       },
       "outcomes": {
-        "accent": "Results & Impact",
+        "accent": "النتائج",
         "heading": "النتائج والأثر"
       },
       "capabilities": {
-        "accent": "Delivered Capabilities",
+        "accent": "ما تم تسليمه",
         "heading": "القدرات المُسلَّمة"
       }
     },
@@ -446,7 +460,8 @@
       "description": "تواصل معنا للحصول على محادثة غير ملزمة حول تحديك الرقمي القادم.",
       "contact": "تواصل معنا",
       "allCases": "جميع الحالات"
-    }
+    },
+    "projectDetails": "تفاصيل المشروع"
   },
   "careers": {
     "title": "الوظائف في Xala؟",

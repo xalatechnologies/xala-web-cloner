@@ -84,7 +84,7 @@ function CaseCard({ entry, index }: { entry: CaserEntry; index: number }) {
         {isLinked && (
           <span className="absolute top-4 right-4 flex items-center gap-1.5 text-xs font-bold text-primary bg-primary/10 border border-primary/30 px-3 py-1.5 rounded-full">
             <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-            Full case
+            {t('caserPage.fullCase')}
           </span>
         )}
 
@@ -182,6 +182,7 @@ function FilterSidebar({
   resultCount: number;
   totalCount: number;
 }) {
+  const { t } = useTranslation();
   const [techOpen, setTechOpen] = useState(true);
 
   return (
@@ -192,9 +193,9 @@ function FilterSidebar({
         <div className="flex items-center justify-between">
           <p className="text-sm font-bold text-foreground">
             {hasFilters ? (
-              <><span className="text-primary">{resultCount}</span> <span className="text-muted-foreground font-normal">of {totalCount} cases</span></>
+              <><span className="text-primary">{resultCount}</span> <span className="text-muted-foreground font-normal">/ {totalCount} {t('caserPage.cases')}</span></>
             ) : (
-              <><span className="text-primary">{totalCount}</span> <span className="text-muted-foreground font-normal">cases total</span></>
+              <><span className="text-primary">{totalCount}</span> <span className="text-muted-foreground font-normal">{t('caserPage.casesTotal')}</span></>
             )}
           </p>
           {hasFilters && (
@@ -203,7 +204,7 @@ function FilterSidebar({
               className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors font-semibold"
             >
               <X className="h-3.5 w-3.5" />
-              Clear all
+              {t('caserPage.clearAll')}
             </button>
           )}
         </div>
@@ -223,7 +224,7 @@ function FilterSidebar({
                   : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
               )}
             >
-              <span>All sectors</span>
+              <span>{t('caserPage.allSectors')}</span>
               <span className={cn(
                 'text-xs font-bold px-2 py-0.5 rounded-lg',
                 activeSector === null ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground'
@@ -331,6 +332,7 @@ function MobileFilterBar({
   clearAll: () => void;
   hasFilters: boolean;
 }) {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
 
   return (
@@ -392,7 +394,7 @@ function MobileFilterBar({
           >
             <div className="bg-card border border-border rounded-2xl p-5">
               <div className="flex items-center justify-between mb-4">
-                <p className="text-sm font-black uppercase tracking-widest text-muted-foreground/50">Technology</p>
+                <p className="text-sm font-black uppercase tracking-widest text-muted-foreground/50">{t('caserPage.technology')}</p>
                 {hasFilters && (
                   <button onClick={clearAll} className="text-sm text-primary font-bold">Clear all</button>
                 )}
@@ -540,7 +542,7 @@ export default function CaserPage() {
               type="text"
               value={search}
               onChange={e => setSearch(e.target.value)}
-              placeholder="Search by client, technology, or sector…"
+              placeholder={t('caserPage.searchPlaceholder')}
               className="w-full h-14 pl-12 pr-12 bg-card border border-border rounded-2xl text-base text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-all font-medium"
             />
             {search && (
@@ -592,9 +594,9 @@ export default function CaserPage() {
                   ) : (
                     <>
                       <span className="font-black text-foreground text-lg">{caserEntries.length}</span>
-                      <span className="text-muted-foreground"> cases</span>
+                      <span className="text-muted-foreground"> {t('caserPage.cases')}</span>
                       <span className="mx-2 text-border">·</span>
-                      <span className="font-bold text-primary">{linkedCount} with full case studies</span>
+                      <span className="font-bold text-primary">{linkedCount} {t('caserPage.withFullCase')}</span>
                     </>
                   )}
                 </p>
@@ -625,7 +627,7 @@ export default function CaserPage() {
                       onClick={clearAll}
                       className="text-sm font-bold text-muted-foreground hover:text-foreground transition-colors px-2"
                     >
-                      Clear all
+                      {t('caserPage.clearAll')}
                     </button>
                   </div>
                 )}
@@ -649,7 +651,7 @@ export default function CaserPage() {
                       className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3 rounded-xl font-bold text-base hover:bg-primary/90 transition-colors"
                     >
                       <X className="h-4 w-4" />
-                      Clear all filters
+                      {t('caserPage.clearAllFilters')}
                     </button>
                   </motion.div>
                 ) : (
