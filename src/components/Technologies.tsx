@@ -13,7 +13,7 @@ const Technologies = () => {
   const renderContent = () => {
     if (!technologies.length) {
       return (
-        <div className="text-center text-xala-text">
+        <div className="text-center text-muted-foreground">
           {t('technologies.noData', 'No technologies available')}
         </div>
       );
@@ -21,15 +21,18 @@ const Technologies = () => {
 
     return (
       <TechnologyGrid
-        technologies={technologies as any}
+        technologies={technologies}
         initialRows={2}
         cols={3}
       />
     );
   };
 
+  // The section's dark: gradient stops referenced undefined xala-* colours, so
+  // the gradient rendered transparent. Dropped rather than re-coloured, to keep
+  // the rendered result identical.
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-background dark:bg-gradient-to-b dark:from-xala-secondary dark:via-xala-primary dark:to-xala-secondary highlight-gradient">
+    <section className="py-12 sm:py-16 lg:py-20 bg-background highlight-gradient">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16 animate-fade-in">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-foreground">

@@ -27,7 +27,7 @@ const CoreProducts = () => {
 
     return (
       <ProductGrid
-        products={products as any}
+        products={products}
         initialRows={2}
         cols={2}
       />

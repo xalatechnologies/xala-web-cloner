@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useSection } from "@/hooks/use-section";
 import { LoadingSpinner } from "./ui/loading-spinner";
-import CaseStudyGrid from './case-studies/CaseStudyGrid';
+import CaseStudyGrid, { type CaseStudyMetric } from './case-studies/CaseStudyGrid';
 import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { ChevronDown, ChevronUp } from "lucide-react";
@@ -18,8 +18,10 @@ interface CaseStudy {
   sort_order: number;
   status: string;
   slug?: string | null;
-  case_study_metrics: any[];
-  [key: string]: any;
+  case_study_metrics: CaseStudyMetric[];
+  // The static entries below carry many optional narrative fields
+  // (background, challenges, executive_summary, …) that no component reads.
+  [key: string]: unknown;
 }
 
 // Define static case studies for all companies (English)
@@ -1182,7 +1184,7 @@ const CaseStudies = () => {
 
     if (!filteredCaseStudies.length) {
       return (
-        <div className="text-center text-xala-text">
+        <div className="text-center text-muted-foreground">
           <p>{t('caseStudies.noResults')}</p>
         </div>
       );
@@ -1204,10 +1206,12 @@ const CaseStudies = () => {
     return (
       <div className="flex flex-col items-center gap-12 w-full">
         <div className="w-full">
+          {/* sections.json carries no rows/columns for any section, so these
+              always fell through to the literals below. */}
           <CaseStudyGrid
             caseStudies={visibleCaseStudies}
-            initialRows={section?.rows || 2}
-            cols={section?.columns || 3}
+            initialRows={2}
+            cols={3}
           />
         </div>
 

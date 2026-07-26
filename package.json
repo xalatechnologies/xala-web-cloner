@@ -9,10 +9,10 @@
     "build": "vite build && pnpm prerender",
     "build:dev": "vite build --mode development && pnpm prerender",
     "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.app.json --noEmit",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "sitemap": "NODE_OPTIONS='--loader ts-node/esm' ts-node --project scripts/tsconfig.json scripts/generate-sitemap.ts",
     "prerender": "tsx scripts/prerender-blog.ts"
   },
   "dependencies": {
