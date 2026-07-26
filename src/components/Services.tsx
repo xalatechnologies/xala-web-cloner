@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useSection } from "@/hooks/use-section";
 import ServiceGrid from './services/ServiceGrid';
-import MainLayout from './layouts/MainLayout';
 import servicesData from '@/data/services.json';
 
 type Language = 'no' | 'en' | 'ar';
@@ -26,15 +25,16 @@ const Services = () => {
       );
     }
 
-    return <ServiceGrid services={services as any} initialRows={2} cols={3} />;
+    return <ServiceGrid services={services} language={currentLanguage} initialRows={2} cols={3} />;
   };
 
   // Section data with fallbacks
   const sectionTitle = section?.title || t('services.title', 'Our Services');
   const sectionDescription = section?.description || t('services.description', '');
 
+  // Head tags come from RouteSEO, mounted once per route in App.tsx.
   return (
-    <MainLayout pageId="services">
+    <>
       <section id="services" className="py-24 bg-background hero-gradient dark:bg-background">
         <div className="container">
           <div className="flex flex-col gap-16">
@@ -50,7 +50,7 @@ const Services = () => {
           </div>
         </div>
       </section>
-    </MainLayout>
+    </>
   );
 };
 

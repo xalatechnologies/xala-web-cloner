@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Cookie, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { CONSENT_KEY, setConsent } from './consent';
 
 export function GDPRNotification() {
   const { t } = useTranslation();
@@ -11,7 +12,7 @@ export function GDPRNotification() {
 
   // Check if user has already accepted GDPR
   useEffect(() => {
-    const hasAcceptedGDPR = localStorage.getItem('gdpr-accepted');
+    const hasAcceptedGDPR = localStorage.getItem(CONSENT_KEY);
     if (!hasAcceptedGDPR) {
       // Small delay for better UX
       const timer = setTimeout(() => setShowNotification(true), 1000);
@@ -28,13 +29,15 @@ export function GDPRNotification() {
     learnMore: t('gdpr.learnMore')
   };
 
+  // Routed through setConsent so the analytics mount actually reacts to the
+  // choice — writing localStorage directly left the banner decorative.
   const handleAccept = () => {
-    localStorage.setItem('gdpr-accepted', 'true');
+    setConsent('all');
     setShowNotification(false);
   };
 
   const handleDecline = () => {
-    localStorage.setItem('gdpr-accepted', 'essential-only');
+    setConsent('essential');
     setShowNotification(false);
   };
 

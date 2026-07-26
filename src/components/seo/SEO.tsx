@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { SITE_ORIGIN } from '@/lib/blog/seo';
 import { getPageSEO } from './seoContent';
 import type { Language, PageId } from './seoContent';
 import {
@@ -8,24 +9,35 @@ import {
   generateProductsSchema,
   generateContactSchema
 } from './structuredData';
+// generateCareerSchema / generateEventsSchema are intentionally not imported:
+// PageId has no 'careers' or 'events' member, so their switch branches were
+// unreachable. Both remain exported from enhancedSchemas.ts for whenever those
+// pages get a real pageId.
 import {
   generateTechnologyStackSchema,
   generateCaseStudySchema,
-  generateCareerSchema,
-  generateEventsSchema,
   generateBreadcrumbSchema,
   type TechnologyStack,
-  type CaseStudy,
-  type JobPosting,
-  type Event
+  type CaseStudy
 } from './enhancedSchemas';
-import Analytics from './Analytics';
+
+/** A JSON-LD block. Schemas differ per @type, so the union is structural. */
+type JsonLd = Record<string, unknown>;
 
 interface SEOProps {
   pageId: PageId;
   language: Language;
   ogImage?: string;
+  /** Absolute URL of *this* page. Defaults to the site root, which is only
+   *  correct for the front page — RouteSEO always passes the real one. */
   canonicalUrl?: string;
+  /** 'article' for blog posts and case studies, 'website' otherwise. */
+  ogType?: 'website' | 'article';
+  /** Keep thin or duplicate pages (404, legal) out of the index. */
+  noIndex?: boolean;
+  /** Overrides the canned copy — used for per-post blog titles. */
+  titleOverride?: string;
+  descriptionOverride?: string;
   teamMembers?: Array<{
     name: string;
     role: string;
@@ -45,19 +57,12 @@ interface SEOProps {
   }>;
   technologies?: TechnologyStack[];
   caseStudies?: CaseStudy[];
-  jobPostings?: JobPosting[];
-  events?: Event[];
   breadcrumbs?: Array<{ name: string; url: string }>;
-  analytics?: {
-    googleAnalyticsId?: string;
-    microsoftClarityId?: string;
-    plausibleDomain?: string;
-  };
 }
 
 const defaultProps = {
   ogImage: '/og-image.png',
-  canonicalUrl: 'https://xala.no',
+  canonicalUrl: SITE_ORIGIN,
 };
 
 export const SEO = ({
@@ -65,21 +70,27 @@ export const SEO = ({
   language,
   ogImage = defaultProps.ogImage,
   canonicalUrl = defaultProps.canonicalUrl,
+  ogType = 'website',
+  noIndex = false,
+  titleOverride,
+  descriptionOverride,
   teamMembers,
   services,
   products,
   technologies,
   caseStudies,
-  jobPostings,
-  events,
-  breadcrumbs,
-  analytics
+  breadcrumbs
 }: SEOProps) => {
-  const { title, description, keywords } = getPageSEO(pageId, language);
+  const canned = getPageSEO(pageId, language);
+  const title = titleOverride ?? canned.title;
+  const description = descriptionOverride ?? canned.description;
+  const keywords = canned.keywords;
 
   // Generate appropriate schema based on page
-  const getSchemaMarkup = () => {
-    const schemas = [generateOrganizationSchema(description, canonicalUrl)];
+  const getSchemaMarkup = (): JsonLd[] => {
+    // Annotated, not inferred: without this the array takes the Organization
+    // schema's exact shape and every other schema fails to push.
+    const schemas: JsonLd[] = [generateOrganizationSchema(description, canonicalUrl)];
 
     // Add breadcrumbs schema if available
     if (breadcrumbs) {
@@ -87,7 +98,8 @@ export const SEO = ({
     }
 
     switch (pageId) {
-      case 'team':
+      // The team is presented on /om-oss; there is no separate team route.
+      case 'about':
         if (teamMembers) {
           schemas.push(generateTeamSchema(teamMembers));
         }
@@ -111,25 +123,15 @@ export const SEO = ({
       case 'contact':
         schemas.push(generateContactSchema(canonicalUrl));
         break;
-      case 'careers':
-        if (jobPostings) {
-          schemas.push(generateCareerSchema(jobPostings));
-        }
-        break;
-      case 'events':
-        if (events) {
-          schemas.push(generateEventsSchema(events));
-        }
-        break;
     }
 
     return schemas;
   };
 
-  const alternateLanguageUrls = {
-    no: `${canonicalUrl}/no${pageId === 'home' ? '' : `/${pageId}`}`,
-    en: `${canonicalUrl}/en${pageId === 'home' ? '' : `/${pageId}`}`
-  };
+  // og:image must be absolute — crawlers reject a bare path like /og-image.png.
+  const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${SITE_ORIGIN}${ogImage}`;
+
+  const ogLocale = language === 'no' ? 'nb_NO' : language === 'ar' ? 'ar_AR' : 'en_US';
 
   return (
     <>
@@ -142,27 +144,26 @@ export const SEO = ({
         <meta name="author" content="Xala Technologies AS" />
         
         {/* Additional Meta Tags */}
-        <meta name="robots" content="index, follow" />
-        <meta name="googlebot" content="index, follow" />
-        <meta name="theme-color" content="#6E3BF4" />
+        <meta name="robots" content={noIndex ? 'noindex, follow' : 'index, follow'} />
         <meta name="format-detection" content="telephone=no" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        
-        {/* Bing Webmaster Tools */}
-        <meta name="msvalidate.01" content="YOUR-BING-VERIFICATION-CODE" />
-        
-        {/* Yandex Webmaster Tools */}
-        <meta name="yandex-verification" content="YOUR-YANDEX-VERIFICATION-CODE" />
+
+        {/* theme-color intentionally omitted: index.html owns it, and declaring
+            it in both places drifted (#0F1117 there vs #6E3BF4 here).
+
+            Bing/Yandex verification tags likewise removed — they emitted the
+            literal strings YOUR-BING-VERIFICATION-CODE and
+            YOUR-YANDEX-VERIFICATION-CODE into every page. Add them back only
+            with real values. */}
 
         {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content={ogType} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={ogImage} />
-        <meta property="og:locale" content={language === 'no' ? 'nb_NO' : 'en_US'} />
-        <meta property="og:locale:alternate" content={language === 'no' ? 'en_US' : 'nb_NO'} />
+        <meta property="og:image" content={absoluteOgImage} />
+        <meta property="og:locale" content={ogLocale} />
         <meta property="og:site_name" content="Xala Technologies AS" />
 
         {/* Twitter */}
@@ -170,21 +171,18 @@ export const SEO = ({
         <meta property="twitter:url" content={canonicalUrl} />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content={ogImage} />
-        <meta name="twitter:creator" content="@NorChaiin" />
-        <meta name="twitter:site" content="@NorChaiin" />
+        <meta property="twitter:image" content={absoluteOgImage} />
 
-        {/* LinkedIn */}
-        <meta property="linkedin:card" content="summary_large_image" />
-        <meta property="linkedin:title" content={title} />
-        <meta property="linkedin:description" content={description} />
-        <meta property="linkedin:image" content={ogImage} />
-
-        {/* Canonical and Alternate Language URLs */}
+        {/* Canonical. No per-language hreflang alternates: one URL serves all
+            three languages via client-side switching, so the previous
+            /no/<pageId> and /en/<pageId> alternates pointed at URLs that have
+            never existed and would be reported as 404s. */}
         <link rel="canonical" href={canonicalUrl} />
-        <link rel="alternate" hrefLang="no" href={alternateLanguageUrls.no} />
-        <link rel="alternate" hrefLang="en" href={alternateLanguageUrls.en} />
-        <link rel="alternate" hrefLang="x-default" href={alternateLanguageUrls.en} />
+        <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
+
+        {/* Answer engines: the machine-readable summary of the whole site. */}
+        <link rel="alternate" type="text/plain" href={`${SITE_ORIGIN}/llms.txt`} title="llms.txt" />
+        <link rel="alternate" type="application/rss+xml" href={`${SITE_ORIGIN}/blogg/rss.xml`} title="Xala Technologies — fagartikler" />
 
         {/* Structured Data */}
         {getSchemaMarkup().map((schema, index) => (
@@ -193,9 +191,6 @@ export const SEO = ({
           </script>
         ))}
       </Helmet>
-
-      {/* Analytics Integration */}
-      {analytics && <Analytics {...analytics} />}
     </>
   );
 };

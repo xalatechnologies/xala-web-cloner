@@ -64,8 +64,10 @@ export default function TeamTeaser() {
         </div>
         
         <div className="text-center">
-          <Link 
-            to="/om-oss/team" 
+          {/* /om-oss/team has never had a route or a TeamPage component; the
+              team is presented on /om-oss. */}
+          <Link
+            to="/om-oss"
             className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-primary-foreground bg-primary hover:bg-primary/90 transition-colors"
           >
             {t('teasers.team.viewFullTeam')}
