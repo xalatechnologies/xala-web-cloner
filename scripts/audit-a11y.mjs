@@ -57,6 +57,12 @@ const ROUTES = [
       for (const el of document.querySelectorAll('a, button, [role="button"]')) {
         const r = el.getBoundingClientRect();
         if (r.width === 0 && r.height === 0) continue;
+        // Skip anything deliberately removed from the accessibility tree. A
+        // card's cover image link is aria-hidden with tabIndex -1 because the
+        // title carries a stretched link over the whole card; it is never
+        // reachable or announced, so "unnamed" is not a defect.
+        if (el.closest('[aria-hidden="true"]')) continue;
+        if (el.getAttribute('tabindex') === '-1') continue;
         const name = (
           el.getAttribute('aria-label') ||
           el.getAttribute('title') ||

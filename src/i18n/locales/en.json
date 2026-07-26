@@ -537,5 +537,16 @@
   "workProcess": {
     "title": "How we work",
     "description": "From the first meeting to the finished solution we follow a structured process."
+  },
+  "proof": {
+    "eyebrow": "References",
+    "title": "Systems running where downtime is not an option",
+    "description": "We have delivered for government agencies, health trusts and municipalities — and we maintain the solutions after launch.",
+    "stats": {
+      "projects": "Projects delivered",
+      "experience": "Years of experience",
+      "users": "End users served"
+    },
+    "viewAll": "See all {{count}} case studies"
   }
 }

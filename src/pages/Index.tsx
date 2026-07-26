@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar';
 import VideoHero from '../components/hero/VideoHero';
 import Clients from '../components/Clients';
+import ProofTeaser from '../components/teasers/ProofTeaser';
 import ValueProps from '../components/ValueProps';
 import Footer from '../components/Footer';
 import ServicesTeaser from '../components/teasers/ServicesTeaser';
@@ -34,6 +35,7 @@ const Index = () => {
       <main id="main" className="flex-1">
         <VideoHero words={getHeroWords()} />
         <Clients />
+        <ProofTeaser />
         <ValueProps />
         <ServicesTeaser />
         <ProductsTeaser />
