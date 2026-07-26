@@ -43,9 +43,9 @@ const CoreProducts = () => {
       <div className="container">
         <div className="flex flex-col gap-12">
           <div className="flex flex-col gap-4 text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               {sectionTitle}
-            </h2>
+            </h1>
             <p className="text-lg leading-8 text-muted-foreground max-w-3xl mx-auto">
               {sectionDescription}
             </p>

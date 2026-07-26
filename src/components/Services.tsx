@@ -39,9 +39,9 @@ const Services = () => {
         <div className="container">
           <div className="flex flex-col gap-16">
             <div className="flex flex-col gap-6 text-center max-w-3xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
                 {sectionTitle}
-              </h2>
+              </h1>
               <p className="text-xl leading-8 text-muted-foreground">
                 {sectionDescription}
               </p>

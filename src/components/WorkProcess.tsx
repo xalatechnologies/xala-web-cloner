@@ -116,9 +116,9 @@ const WorkProcess = () => {
         <div className="text-center mb-12 md:mb-20 animate-fade-in">
           {/* Explicit light text: the section is dark in both colour schemes,
               so text-foreground would be unreadable in light mode. */}
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6">
+          <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6">
             {section?.title || t('workProcess.title', 'What is our job?')}
-          </h2>
+          </h1>
           {(section?.description ?? t('workProcess.description', '')) && (
             <p className="text-stone-300 max-w-2xl mx-auto text-base md:text-lg px-4">
               {section?.description || t('workProcess.description', '')}
