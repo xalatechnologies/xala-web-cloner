@@ -7,23 +7,22 @@ import ServicesTeaser from '../components/teasers/ServicesTeaser';
 import ProductsTeaser from '../components/teasers/ProductsTeaser';
 import NorchainSection from '../components/NorchainSection';
 import ProcessTeaser from '../components/teasers/ProcessTeaser';
-// import TeamTeaser from '../components/teasers/TeamTeaser';
 import TechTeaser from '../components/teasers/TechTeaser';
 import ContactTeaser from '../components/teasers/ContactTeaser';
+import FinalCTA from '../components/FinalCTA';
 import { useTranslation } from 'react-i18next';
 
 const Index = () => {
   const { i18n } = useTranslation();
 
-  // Dynamic words that change based on language
   const getHeroWords = () => {
-    return i18n.language === 'en'
-      ? ["AI", "cloud", "apps", "data"]
-      : ["AI", "sky", "apper", "data"];
+    if (i18n.language === 'en') return ['AI', 'cloud', 'apps', 'data'];
+    if (i18n.language === 'ar') return ['الذكاء', 'السحابة', 'التطبيقات', 'البيانات'];
+    return ['AI', 'sky', 'apper', 'data'];
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-xala-primary">
+    <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
       <div className="flex-1">
         <VideoHero words={getHeroWords()} />
@@ -33,9 +32,9 @@ const Index = () => {
         <ProductsTeaser />
         <NorchainSection />
         <ProcessTeaser />
-        {/* <TeamTeaser /> */}
         <TechTeaser />
         <ContactTeaser />
+        <FinalCTA />
       </div>
       <Footer />
     </div>
