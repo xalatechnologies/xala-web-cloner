@@ -52,7 +52,7 @@ export function ChatInput({
       {/* focus-within used undefined xala-primary utilities, so focusing the
           input produced no border change and a ring with no colour — the
           keyboard focus indicator was effectively missing. */}
-      <div className="relative flex items-end overflow-hidden rounded-2xl border border-gray-200/50 bg-white/80 backdrop-blur-sm shadow-sm focus-within:border-primary/50 focus-within:ring-2 focus-within:ring-primary/20 dark:bg-background dark:border-border dark:focus-within:border-primary/70">
+      <div className="relative flex items-end overflow-hidden rounded-2xl border border-stone-200/50 bg-white/80 backdrop-blur-sm shadow-sm focus-within:border-primary/50 focus-within:ring-2 focus-within:ring-primary/20 dark:bg-background dark:border-border dark:focus-within:border-primary/70">
         <TextareaAutosize
           ref={textareaRef}
           value={message}

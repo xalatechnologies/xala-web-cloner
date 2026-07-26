@@ -105,11 +105,11 @@ const WorkProcess = () => {
     // section rendered with no background at all — leaving its purple/cyan glow
     // blobs floating on the page background. Restored as a dark section using
     // the same slate gradient NorchainSection already uses.
-    <section id="work-process" className="py-12 md:py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+    <section id="work-process" className="py-12 md:py-24 bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-48 md:w-64 h-48 md:h-64 bg-purple-500/30 rounded-full filter blur-3xl animate-float-1"></div>
+        <div className="absolute top-1/4 left-1/4 w-48 md:w-64 h-48 md:h-64 bg-orange-500/30 rounded-full filter blur-3xl animate-float-1"></div>
         <div className="absolute bottom-1/4 right-1/4 w-48 md:w-64 h-48 md:h-64 bg-primary/30 rounded-full filter blur-3xl animate-float-2"></div>
-        <div className="absolute top-1/2 left-1/2 w-48 md:w-64 h-48 md:h-64 bg-cyan-500/30 rounded-full filter blur-3xl animate-float-3"></div>
+        <div className="absolute top-1/2 left-1/2 w-48 md:w-64 h-48 md:h-64 bg-amber-500/30 rounded-full filter blur-3xl animate-float-3"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -120,7 +120,7 @@ const WorkProcess = () => {
             {section?.title || t('workProcess.title', 'What is our job?')}
           </h2>
           {(section?.description ?? t('workProcess.description', '')) && (
-            <p className="text-slate-300 max-w-2xl mx-auto text-base md:text-lg px-4">
+            <p className="text-stone-300 max-w-2xl mx-auto text-base md:text-lg px-4">
               {section?.description || t('workProcess.description', '')}
             </p>
           )}

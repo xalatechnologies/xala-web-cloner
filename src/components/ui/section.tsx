@@ -21,7 +21,7 @@ const TONE: Record<SectionTone, string> = {
   muted: 'bg-muted/30 text-foreground',
   // Dark in both colour schemes, so its contents must use light text. Matches
   // NorchainSection, which established this treatment.
-  dark: 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white',
+  dark: 'bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 text-white',
 };
 
 const SIZE: Record<SectionSize, string> = {
@@ -42,6 +42,12 @@ interface SectionProps {
   className?: string;
   /** id of the heading that names this section, for screen readers. */
   labelledBy?: string;
+  /**
+   * Wrap children in the standard container. Set false when the section already
+   * has its own inner wrapper, so migrating an existing section changes only
+   * its rhythm and tone and not its measure.
+   */
+  container?: boolean;
 }
 
 export const Section = ({
@@ -53,6 +59,7 @@ export const Section = ({
   reveal = true,
   className,
   labelledBy,
+  container = true,
 }: SectionProps) => {
   const { ref, inView, reduced } = useInView<HTMLElement>();
   const animate = reveal && !reduced;
@@ -72,7 +79,11 @@ export const Section = ({
         className,
       )}
     >
-      <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">{children}</div>
+      {container ? (
+        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">{children}</div>
+      ) : (
+        children
+      )}
     </section>
   );
 };

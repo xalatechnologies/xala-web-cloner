@@ -26,9 +26,9 @@ const ServiceBackground = () => (
     </div>
 
     {/* Gradient orbs */}
-    <div className="absolute w-[500px] h-[500px] rounded-full bg-blue-500/5 blur-3xl -top-[250px] -left-[250px] animate-galaxy-spin" />
-    <div className="absolute w-[400px] h-[400px] rounded-full bg-purple-500/5 blur-3xl -bottom-[200px] -right-[200px] animate-galaxy-spin" style={{ animationDelay: '-20s' }} />
-    <div className="absolute w-[300px] h-[300px] rounded-full bg-cyan-500/5 blur-3xl top-1/2 right-[10%] animate-galaxy-spin" style={{ animationDelay: '-40s' }} />
+    <div className="absolute w-[500px] h-[500px] rounded-full bg-orange-600/5 blur-3xl -top-[250px] -left-[250px] animate-galaxy-spin" />
+    <div className="absolute w-[400px] h-[400px] rounded-full bg-orange-500/5 blur-3xl -bottom-[200px] -right-[200px] animate-galaxy-spin" style={{ animationDelay: '-20s' }} />
+    <div className="absolute w-[300px] h-[300px] rounded-full bg-amber-500/5 blur-3xl top-1/2 right-[10%] animate-galaxy-spin" style={{ animationDelay: '-40s' }} />
   </div>
 );
 

@@ -68,7 +68,7 @@ describe('Section rhythm', () => {
     render(<Section tone="dark">b</Section>);
     // A dark section in both colour schemes must not rely on text-foreground.
     expect(sectionEl().className).toContain('text-white');
-    expect(sectionEl().className).toContain('from-slate-900');
+    expect(sectionEl().className).toContain('from-stone-900');
   });
 
   it('renders its children inside a container', () => {

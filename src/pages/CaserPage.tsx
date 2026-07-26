@@ -22,28 +22,34 @@ import {
 } from '@/data/caser-page-entries';
 
 // ─── Sector color map ─────────────────────────────────────────────────────────
+/**
+ * Sector badges stay categorical: nine sectors need nine tellable-apart hues,
+ * and an all-warm ramp would collapse them into one another. They are pulled
+ * toward the warm end of the wheel where the palette allows, and each entry
+ * uses a single hue for text, fill and border so a badge reads as one thing.
+ */
 const SECTOR_COLORS: Record<string, string> = {
-  'Public Sector':       'text-blue-400 bg-blue-500/10 border-blue-500/25',
-  'Aviation':            'text-sky-400 bg-sky-500/10 border-sky-500/25',
-  'Finance':             'text-emerald-400 bg-emerald-500/10 border-emerald-500/25',
-  'Healthcare':          'text-rose-400 bg-rose-500/10 border-rose-500/25',
-  'Legal / Tech':        'text-purple-400 bg-purple-500/10 border-purple-500/25',
-  'Public Transport':    'text-orange-400 bg-orange-500/10 border-orange-500/25',
-  'Energy':              'text-yellow-400 bg-yellow-500/10 border-yellow-500/25',
-  'NGO / International': 'text-cyan-400 bg-cyan-500/10 border-cyan-500/25',
-  'Telecom':             'text-indigo-400 bg-indigo-500/10 border-indigo-500/25',
+  'Public Sector':       'text-amber-300 bg-amber-500/10 border-amber-500/25',
+  'Aviation':            'text-sky-300 bg-sky-500/10 border-sky-500/25',
+  'Finance':             'text-emerald-300 bg-emerald-500/10 border-emerald-500/25',
+  'Healthcare':          'text-rose-300 bg-rose-500/10 border-rose-500/25',
+  'Legal / Tech':        'text-violet-300 bg-violet-500/10 border-violet-500/25',
+  'Public Transport':    'text-orange-300 bg-orange-500/10 border-orange-500/25',
+  'Energy':              'text-yellow-300 bg-yellow-500/10 border-yellow-500/25',
+  'NGO / International': 'text-teal-300 bg-teal-500/10 border-teal-500/25',
+  'Telecom':             'text-fuchsia-300 bg-fuchsia-500/10 border-fuchsia-500/25',
 };
 
 const SECTOR_DOT: Record<string, string> = {
-  'Public Sector':       'bg-blue-400',
+  'Public Sector':       'bg-amber-400',
   'Aviation':            'bg-sky-400',
   'Finance':             'bg-emerald-400',
   'Healthcare':          'bg-rose-400',
-  'Legal / Tech':        'bg-purple-400',
+  'Legal / Tech':        'bg-violet-400',
   'Public Transport':    'bg-orange-400',
   'Energy':              'bg-yellow-400',
-  'NGO / International': 'bg-cyan-400',
-  'Telecom':             'bg-indigo-400',
+  'NGO / International': 'bg-teal-400',
+  'Telecom':             'bg-fuchsia-400',
 };
 
 // ─── Case Card ─────────────────────────────────────────────────────────────────

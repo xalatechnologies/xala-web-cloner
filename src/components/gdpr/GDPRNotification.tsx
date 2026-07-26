@@ -53,7 +53,7 @@ export function GDPRNotification() {
       )}
     >
       {/* Solid dark background for guaranteed contrast */}
-      <div className="absolute inset-0 bg-slate-900 border-t border-slate-700" />
+      <div className="absolute inset-0 bg-stone-900 border-t border-stone-700" />
 
       <div className="relative container mx-auto p-4 md:p-6">
         <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-6">
@@ -71,7 +71,7 @@ export function GDPRNotification() {
                   {content.title}
                 </h3>
               </div>
-              <p className="text-sm text-slate-300 leading-relaxed max-w-3xl">
+              <p className="text-sm text-stone-300 leading-relaxed max-w-3xl">
                 {content.content}{' '}
                 <Link
                   to="/cookies"
@@ -88,7 +88,7 @@ export function GDPRNotification() {
             <Button
               onClick={handleDecline}
               variant="outline"
-              className="flex-1 lg:flex-none border-slate-600 text-white hover:bg-slate-800 hover:text-white bg-transparent"
+              className="flex-1 lg:flex-none border-stone-600 text-white hover:bg-stone-800 hover:text-white bg-transparent"
             >
               {content.declineText}
             </Button>

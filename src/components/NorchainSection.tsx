@@ -45,7 +45,7 @@ export default function NorchainSection() {
     ];
 
     return (
-        <section className="py-20 md:py-28 bg-gradient-to-b from-slate-900 to-slate-800 relative overflow-hidden section-styled">
+        <section className="py-20 md:py-28 bg-gradient-to-b from-stone-900 to-stone-800 relative overflow-hidden section-styled">
             {/* Background elements */}
             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-repeat opacity-5" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
@@ -59,10 +59,10 @@ export default function NorchainSection() {
                     <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
                         {t('norchain.title')}
                     </h2>
-                    <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-4 leading-relaxed">
+                    <p className="text-lg md:text-xl text-stone-300 max-w-3xl mx-auto mb-4 leading-relaxed">
                         {t('norchain.subtitle')}
                     </p>
-                    <p className="text-base text-slate-400">
+                    <p className="text-base text-stone-400">
                         {t('norchain.subtext')}
                     </p>
                 </div>
@@ -72,7 +72,7 @@ export default function NorchainSection() {
                     {stats.map((stat, index) => (
                         <div key={index} className="text-center p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
                             <div className="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.value}</div>
-                            <div className="text-base text-slate-300">{stat.label}</div>
+                            <div className="text-base text-stone-300">{stat.label}</div>
                         </div>
                     ))}
                 </div>
@@ -90,7 +90,7 @@ export default function NorchainSection() {
                                     <IconComponent className="w-6 h-6 text-primary" />
                                 </div>
                                 <h3 className="text-xl md:text-2xl font-bold text-white mb-3">{feature.title}</h3>
-                                <p className="text-base md:text-lg text-slate-300 leading-relaxed">{feature.description}</p>
+                                <p className="text-base md:text-lg text-stone-300 leading-relaxed">{feature.description}</p>
                             </div>
                         );
                     })}

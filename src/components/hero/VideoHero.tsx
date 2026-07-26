@@ -35,23 +35,44 @@ function DynamicWord({ words, interval = 2500 }: { words: string[]; interval?: n
   )
 }
 
-export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/hero-bg.svg', words }: VideoHeroProps) {
+export default function VideoHero({ videoSrc, poster = '/hero-bg.svg', words }: VideoHeroProps) {
   const { t } = useTranslation()
   const navigate = useNavigate()
 
   return (
-    <section id="home" className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
-      {/* Background video */}
+    /*
+     * pt-32 clears the fixed navbar. Without it the h1 rendered underneath the
+     * nav links, which is invisible while the bar is transparent at scroll 0.
+     *
+     * Height is 88vh rather than 100dvh: at full viewport height the content
+     * plus the trust bar overflowed, pushing the headline below the fold on
+     * load, so the first thing a visitor saw was an empty page.
+     */
+    <section
+      id="home"
+      className="relative min-h-[88vh] flex items-center justify-center overflow-hidden pt-32 pb-20"
+    >
+      {/* Background */}
       <div className="absolute inset-0">
-        <video
-          className="h-full w-full object-cover"
-          src={videoSrc}
-          poster={poster}
-          autoPlay
-          loop
-          muted
-          playsInline
-        />
+        {/* Rendered only when a video is actually supplied. The default used to
+            be /videos/xala.mp4, which does not exist — every page load fetched
+            it and 404'd. The poster carries the background on its own. */}
+        {videoSrc ? (
+          <video
+            className="h-full w-full object-cover"
+            src={videoSrc}
+            poster={poster}
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        ) : (
+          <div
+            className="h-full w-full bg-cover bg-center"
+            style={{ backgroundImage: `url(${poster})` }}
+          />
+        )}
         {/* 
           Light mode: frosted white glass overlay — text is dark (foreground) 
           Dark mode: deep dark overlay — text is light (foreground)
@@ -89,7 +110,7 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
           <br className="hidden sm:block" />
           {' '}{t('hero.heroText.to', 'til å')}{' '}
           {t('hero.heroText.create', 'skape')}{' '}
-          <span className="text-muted-foreground/60">
+          <span className="text-primary">
             {t('hero.heroText.positiveChange', 'positiv endring')}
           </span>
         </motion.h1>
@@ -113,7 +134,7 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
         >
           <button
             onClick={() => navigate('/kontakt')}
-            className="group inline-flex items-center gap-2 px-8 py-3.5 text-base font-semibold rounded-xl bg-foreground text-background hover:opacity-90 transition-all duration-300 shadow-lg"
+            className="group inline-flex items-center gap-2 px-8 py-3.5 text-base font-semibold rounded-xl bg-primary text-primary-foreground hover:shadow-[0_0_32px_hsl(var(--primary)/0.35)] transition-all duration-300 shadow-lg"
           >
             {t('hero.bookMeeting', 'Book et møte')}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -131,7 +152,7 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.8 }}
-          className="mt-20 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[11px] text-muted-foreground/50 uppercase tracking-[0.2em] font-medium"
+          className="mt-14 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[11px] text-muted-foreground uppercase tracking-[0.2em] font-semibold"
         >
           <span>ISO 27001</span>
           <span className="w-1 h-1 rounded-full bg-border" />
@@ -149,7 +170,7 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
           const next = document.getElementById('clients')
           next?.scrollIntoView({ behavior: 'smooth' })
         }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 p-2 text-muted-foreground/40 hover:text-muted-foreground transition-colors"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 p-2 text-muted-foreground/70 hover:text-foreground transition-colors"
         aria-label={t('hero.scrollToNext', 'Scroll ned')}
       >
         <ChevronDown className="w-6 h-6 animate-bounce" />
