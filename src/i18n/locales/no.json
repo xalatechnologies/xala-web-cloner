@@ -537,5 +537,16 @@
   "workProcess": {
     "title": "Hvordan vi jobber",
     "description": "Fra første møte til ferdig løsning følger vi en strukturert prosess."
+  },
+  "proof": {
+    "eyebrow": "Referanser",
+    "title": "Systemer i drift hos dem som ikke kan ha nedetid",
+    "description": "Vi har levert til statlige etater, helseforetak og kommuner — og forvalter løsningene videre etter lansering.",
+    "stats": {
+      "projects": "Leverte prosjekter",
+      "experience": "Års erfaring",
+      "users": "Sluttbrukere betjent"
+    },
+    "viewAll": "Se alle {{count}} kundecaser"
   }
 }
