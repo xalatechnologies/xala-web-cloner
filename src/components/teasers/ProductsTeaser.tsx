@@ -1,67 +1,121 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { FileText, ClipboardList, Boxes, ChevronRight, Sparkles } from 'lucide-react';
 
 export default function ProductsTeaser() {
   const { t } = useTranslation();
-  
+
   const products = [
     {
-      title: t('teasers.products.fylleut.title'),
-      description: t('teasers.products.fylleut.description'),
-      status: t('teasers.products.available')
+      title: 'Digilist',
+      description: t('products.digilist.description'),
+      status: t('products.digilist.status'),
+      statusType: 'available',
+      icon: ClipboardList,
+      url: 'https://digilist.no'
     },
     {
-      title: t('teasers.products.nextbid.title'),
-      description: t('teasers.products.nextbid.description'),
-      status: t('teasers.products.beta')
+      title: 'Digiskjema',
+      description: t('products.digiskjema.description'),
+      status: t('products.digiskjema.status'),
+      statusType: 'available',
+      icon: FileText,
+      url: 'https://digiskjema.no'
     },
     {
-      title: t('teasers.products.supplymantix.title'),
-      description: t('teasers.products.supplymantix.description'),
-      status: t('teasers.products.coming')
+      title: 'Xaheen',
+      description: t('products.xaheen.description'),
+      status: t('products.xaheen.status'),
+      statusType: 'available',
+      icon: Sparkles,
+      url: 'https://xaheen.com'
+    },
+    {
+      title: 'Norchain',
+      description: t('products.norchain.description'),
+      status: t('products.norchain.status'),
+      statusType: 'available',
+      icon: Boxes,
+      url: 'https://norchain.org'
     }
   ];
 
+  const getStatusClasses = (type: string) => {
+    switch (type) {
+      case 'available':
+        return 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300';
+      case 'beta':
+        return 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300';
+      default:
+        return 'bg-muted text-foreground';
+    }
+  };
+
   return (
-    <section className="py-12 md:py-16 bg-muted/30">
+    <section className="py-16 md:py-20 bg-muted/30 section-styled">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
             {t('teasers.products.title')}
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             {t('teasers.products.description')}
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {products.map((product, index) => (
-            <div key={index} className="p-6 rounded-lg border border-border bg-card hover:shadow-lg transition-shadow">
-              <div className="flex justify-between items-start mb-3">
-                <h3 className="text-lg font-semibold text-foreground">{product.title}</h3>
-                <span className={`px-2 py-1 text-xs rounded-full font-medium ${
-                  product.status === t('teasers.products.available') ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' :
-                  product.status === t('teasers.products.beta') ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300' :
-                  'bg-muted text-foreground'
-                }`}>
-                  {product.status}
-                </span>
-              </div>
-              <p className="text-sm text-muted-foreground">{product.description}</p>
-            </div>
-          ))}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          {products.map((product, index) => {
+            const IconComponent = product.icon;
+            return (
+              <a
+                key={index}
+                href={product.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-8 rounded-2xl border border-border bg-card hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 group relative overflow-hidden block"
+              >
+                {/* Gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/0 
+                                group-hover:from-primary/5 group-hover:via-transparent group-hover:to-primary/10 
+                                transition-all duration-500 pointer-events-none" />
+
+                <div className="relative z-10">
+                  {/* Icon aligned with title in a row */}
+                  <div className="flex items-center gap-4 mb-5">
+                    <div className="relative shrink-0">
+                      {/* Icon glow effect */}
+                      <div className="absolute inset-0 bg-primary/25 rounded-xl blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="relative p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
+                        <IconComponent className="w-8 h-8 text-primary group-hover:scale-110 transition-transform duration-300" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between gap-4">
+                        <h3 className="text-xl md:text-2xl font-bold text-card-foreground group-hover:text-primary transition-colors duration-300">
+                          {product.title}
+                        </h3>
+                        <span className={`px-3 py-1 text-xs rounded-full font-medium shrink-0 ${getStatusClasses(product.statusType)}`}>
+                          {product.status}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-base md:text-lg text-muted-foreground group-hover:text-foreground leading-relaxed transition-colors duration-300 pl-0 md:pl-[68px]">
+                    {product.description}
+                  </p>
+                </div>
+              </a>
+            );
+          })}
         </div>
-        
+
         <div className="text-center">
-          <Link 
-            to="/produkter" 
-            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-primary-foreground bg-primary hover:bg-primary/90 transition-colors"
+          <Link
+            to="/produkter"
+            className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-primary-foreground bg-primary hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             {t('teasers.products.viewAll')}
-            <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
+            <ChevronRight className="ms-3 h-5 w-5 rtl:rotate-180" />
           </Link>
         </div>
       </div>

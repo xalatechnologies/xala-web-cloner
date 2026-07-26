@@ -11,25 +11,25 @@
     "technology": "Teknologi",
     "technologyDescription": "Oppdag vår moderne teknologistack",
     "team": "Team",
-    "about": "Om Oss",
+    "about": "Om oss",
     "aboutDescription": "Lær mer om vårt selskap og vår misjon",
     "contact": "Kontakt",
     "contactDescription": "Kom i kontakt med vårt team"
   },
   "business": {
     "hero": {
-      "title": "Transformer Din Bedrift med Innovativ Teknologi",
-      "subtitle": "Strategisk Partnerskap for Digitalt Fremragende",
+      "title": "Transformer din bedrift med innovativ teknologi",
+      "subtitle": "Strategisk partnerskap for digitalt fremragende",
       "description": "Vi hjelper fremtidsrettede bedrifter med å utnytte moderne teknologi for å drive vekst, effektivitet og konkurransefortrinn i den digitale tidsalderen.",
       "cta": {
-        "primary": "Start Din Transformasjon",
-        "secondary": "Se Vårt Arbeid"
+        "primary": "Start din transformasjon",
+        "secondary": "Se vårt arbeid"
       },
       "value": {
-        "partnership": "Strategisk Partnerskap",
-        "transformation": "Digital Transformasjon",
-        "results": "Målbare Resultater",
-        "innovation": "Kontinuerlig Innovasjon"
+        "partnership": "Strategisk partnerskap",
+        "transformation": "Digital transformasjon",
+        "results": "Målbare resultater",
+        "innovation": "Kontinuerlig innovasjon"
       }
     },
     "navigation": {
@@ -41,7 +41,7 @@
     },
     "services": {
       "digitalTransformation": {
-        "title": "Digital Transformasjon",
+        "title": "Digital transformasjon",
         "challenge": "Eldre systemer som hindrer din bedrift?",
         "outcome": "Moderne, skalerbare løsninger som driver vekst",
         "approach": "Omfattende analyse og strategisk implementering",
@@ -65,7 +65,7 @@
         "investment": "Fra 75 000 NOK"
       },
       "modernWebApps": {
-        "title": "Moderne Webapplikasjoner",
+        "title": "Moderne webapplikasjoner",
         "challenge": "Utdaterte grensesnitt som påvirker brukeropplevelsen?",
         "outcome": "Raske, responsive applikasjoner som engasjerer brukere",
         "approach": "Moderne frontend med robust backend",
@@ -76,7 +76,7 @@
     "stories": {
       "title": "Suksesshistorier",
       "subtitle": "Reelle resultater for reelle bedrifter",
-      "cta": "Se Alle Caser",
+      "cta": "Se alle caser",
       "metrics": {
         "efficiency": "Effektivitetsøkning",
         "cost_savings": "Kostnadsbesparelser",
@@ -85,7 +85,7 @@
       }
     },
     "partnership": {
-      "title": "Strategisk Partnerskap",
+      "title": "Strategisk partnerskap",
       "subtitle": "Din suksess er vår suksess",
       "approach": {
         "consultation": {
@@ -93,25 +93,25 @@
           "description": "Vi begynner med en omfattende forståelse av dine bedriftsmål, utfordringer og muligheter."
         },
         "planning": {
-          "title": "Strategisk Planlegging",
+          "title": "Strategisk planlegging",
           "description": "Vårt team utvikler en detaljert veikart med klare milepæler, leveranser og suksessmål."
         },
         "implementation": {
-          "title": "Utførelse & Levering",
+          "title": "Utførelse & levering",
           "description": "Vi bygger og implementerer løsninger med kontinuerlige tilbakemeldingsløkker for å sikre samsvar med din visjon."
         },
         "optimization": {
-          "title": "Optimalisering & Vekst",
+          "title": "Optimalisering & vekst",
           "description": "Støtte etter lansering, ytelsesovervåking og løpende forbedringer for å maksimere avkastning."
         }
       }
     },
     "cta": {
       "consultation": {
-        "title": "Klar til å Transformere Din Bedrift?",
+        "title": "Klar til å transformere din bedrift?",
         "description": "Book en gratis konsultasjon for å diskutere ditt prosjekt og oppdage hvordan vi kan hjelpe deg med å nå dine mål.",
-        "button": "Book Gratis Konsultasjon",
-        "guarantee": "100% Tilfredshetsgaranti"
+        "button": "Book gratis konsultasjon",
+        "guarantee": "100% tilfredshetsgaranti"
       },
       "contact": {
         "business": "Bedriftshenvendelse",

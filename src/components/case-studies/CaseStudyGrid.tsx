@@ -1,11 +1,20 @@
 import CaseStudyCard from './CaseStudyCard';
 import { BaseGrid } from '../ui/base-grid';
-import type { Database } from '@/integrations/supabase/types';
-import type { GridConfig } from '@/types/section';
 
-type CaseStudy = Database['public']['Tables']['case_studies']['Row'] & {
-  case_study_metrics: Database['public']['Tables']['case_study_metrics']['Row'][];
-};
+interface GridConfig {
+  initialRows?: number;
+  cols?: number;
+}
+
+interface CaseStudy {
+  id: string;
+  title: string;
+  description: string | null;
+  image_url: string | null;
+  icon: string | null;
+  slug?: string | null;
+  case_study_metrics: any[];
+}
 
 interface CaseStudyGridProps extends GridConfig {
   caseStudies: CaseStudy[];
@@ -19,12 +28,13 @@ const CaseStudyGrid = ({ caseStudies, initialRows = 1, cols = 3 }: CaseStudyGrid
       description={study.description}
       imageUrl={study.image_url}
       icon={study.icon}
+      slug={study.slug ?? undefined}
       metrics={study.case_study_metrics}
     />
   ));
 
   return (
-    <BaseGrid 
+    <BaseGrid
       items={studyCards}
       initialRows={initialRows}
       cols={cols}

@@ -1,0 +1,429 @@
+{
+    "nav": {
+        "home": "Hjem",
+        "about": "Om oss",
+        "coreProducts": "Kjerneprodukter",
+        "technologies": "Teknologier",
+        "workProcess": "Arbeidsprosess",
+        "caseStudies": "Casestudier",
+        "team": "Team",
+        "contact": "Kontakt",
+        "services": "Tjenester",
+        "servicesDescription": "Komplett spektrum av teknologitjenester for moderne bedrifter",
+        "products": "Produkter",
+        "productsDescription": "Innovative AI-drevne løsninger som transformerer bransjer",
+        "cases": "Cases",
+        "casesDescription": "Utforsk våre vellykkede prosjektimplementeringer",
+        "workProcessDescription": "Vår strukturerte tilnærming fra idé til implementering",
+        "technology": "Teknologi",
+        "technologyDescription": "Banebrytende teknologier som driver din digitale transformasjon",
+        "aboutDescription": "Lær mer om vår misjon og ekspertise",
+        "contactDescription": "Ta kontakt for en uforpliktende samtale"
+    },
+    "Loading": "Laster",
+    "hero": {
+        "welcome": "Velkommen til fremtidens teknologi",
+        "title": "Bygger digital",
+        "excellence": "Eksellense",
+        "description": "Vi skaper innovative programvareløsninger som driver forretningsvekst og forvandler ideer til virkelighet. Vi utnytter banebrytende teknologi for å bygge morgendagens digitale landskap.",
+        "getInTouch": "Ta kontakt",
+        "ourProcess": "Vår prosess",
+        "aboutUs": "Om oss",
+        "heroText": {
+            "weUse": "Vi bruker",
+            "data": "data",
+            "to": "til å",
+            "create": "skape",
+            "positiveChange": "positiv endring"
+        },
+        "bookMeeting": "Book møte",
+        "scrollToNext": "Bla til neste seksjon",
+        "certifications": {
+            "iso": "ISO 27001 & 27701",
+            "gdpr": "GDPR-sertifisert",
+            "microsoft": "Microsoft Partner",
+            "aws": "AWS Partner"
+        }
+    },
+    "gdpr": {
+        "title": "Vi bruker informasjonskapsler",
+        "content": "Vi bruker informasjonskapsler for å forbedre din opplevelse på nettstedet vårt og for å analysere trafikk.",
+        "acceptAll": "Godta alle",
+        "essentialOnly": "Kun nødvendige",
+        "learnMore": "Les mer"
+    },
+    "clients": {
+        "title": "Stolte partnere",
+        "description": "Vi samarbeider med ledende aktører i ulike bransjer"
+    },
+    "caseStudies": {
+        "noResults": "Ingen casestudier funnet",
+        "showMore": "Vis mer",
+        "showLess": "Vis mindre"
+    },
+    "valueProps": {
+        "title": "Hvorfor velge Xala?",
+        "description": "Vi kombinerer teknisk ekspertise med forretningsforståelse for å levere løsninger som skaper reell verdi for din bedrift.",
+        "fastDelivery": {
+            "title": "Rask levering",
+            "description": "Vi leverer fungerende løsninger raskt med moderne teknologi og effektive arbeidsmetoder."
+        },
+        "scalableSolutions": {
+            "title": "Skalerbare løsninger",
+            "description": "Alle våre løsninger er bygget for å vokse med din bedrift og håndtere fremtidig vekst."
+        },
+        "expertise": {
+            "title": "Ekspertise",
+            "description": "Teamet vårt har dyp kompetanse innen AI, skyteknologi og moderne utvikling."
+        },
+        "fullService": {
+            "title": "Full service",
+            "description": "Fra idé til ferdig løsning - vi dekker hele prosessen med design, utvikling og utrulling."
+        }
+    },
+    "finalCTA": {
+        "title": "Klar til å transformere din bedrift?",
+        "description": "La oss diskutere hvordan vi kan hjelpe deg med å nå dine mål gjennom innovative teknologiske løsninger.",
+        "startConversation": "Start samtalen",
+        "viewCases": "Se våre cases",
+        "callUs": "Ring oss på",
+        "emailUs": "eller send epost til"
+    },
+    "teasers": {
+        "services": {
+            "title": "Våre tjenester",
+            "description": "Vi leverer komplette teknologiløsninger som driver forretningsvekst",
+            "viewAll": "Se alle tjenester",
+            "aiMachineLearning": {
+                "title": "AI & Maskinlæring",
+                "description": "Automatiser prosesser og få innsikt fra data med moderne AI-løsninger."
+            },
+            "cloudSolutions": {
+                "title": "Skyløsninger",
+                "description": "Sikker og skalerbar skyinfrastruktur med Azure og AWS."
+            },
+            "webDevelopment": {
+                "title": "Webutvikling",
+                "description": "Moderne nettsider og applikasjoner med React, Next.js og TypeScript."
+            },
+            "mobileDevelopment": {
+                "title": "Mobilutvikling",
+                "description": "Native og kryssplattform mobilapper for iOS og Android."
+            }
+        },
+        "products": {
+            "title": "Våre kjerneprodukter",
+            "description": "Ferdige løsninger som kan tilpasses dine behov",
+            "viewAll": "Se alle produkter",
+            "available": "Tilgjengelig",
+            "beta": "Beta",
+            "coming": "Kommer"
+        },
+        "process": {
+            "title": "Hvordan vi jobber",
+            "description": "Fra første møte til ferdig løsning følger vi en strukturert prosess som sikrer at vi leverer på tid, kost og kvalitet.",
+            "readProcess": "Les prosessen",
+            "steps": {
+                "mapping": "Kartlegging",
+                "mappingDesc": "Vi starter med å forstå din virksomhet, mål og utfordringer for å skape et solid fundament.",
+                "design": "Design",
+                "designDesc": "Vi designer brukeropplevelsen og arkitekturen som sikrer en intuitiv og skalerbar løsning.",
+                "development": "Utvikling",
+                "developmentDesc": "Vårt team utvikler løsningen med moderne teknologi og kontinuerlig kvalitetssikring.",
+                "delivery": "Levering",
+                "deliveryDesc": "Vi leverer, lanserer og sikrer en smidig overgang med opplæring og support."
+            }
+        },
+        "team": {
+            "title": "Møt teamet",
+            "description": "Menneskene bak Xala Technologies",
+            "viewFullTeam": "Se hele teamet"
+        },
+        "tech": {
+            "title": "Teknologiplattform",
+            "description": "Vi bygger på moderne teknologier som React, TypeScript, Next.js, Azure og AWS.",
+            "viewTechnology": "Se teknologi"
+        },
+        "contact": {
+            "title": "Klar for en prat?",
+            "description": "Vi svarer på alle henvendelser innen 24 timer. Ta kontakt for en uforpliktende samtale.",
+            "getInTouch": "Ta kontakt",
+            "responseTime": {
+                "title": "Svartid",
+                "value": "Innen 24 timer"
+            },
+            "contactInfo": {
+                "phone": {
+                    "title": "Telefon",
+                    "value": "+47 966 65 001"
+                },
+                "email": {
+                    "title": "E-post",
+                    "value": "info@xala.no"
+                }
+            }
+        }
+    },
+    "norchain": {
+        "badge": "Blockchain for Good",
+        "title": "NorChain OS",
+        "subtitle": "Det komplette blockchain-operativsystemet for digital handel",
+        "subtext": "12+ integrerte apper • Betalinger • Regnskap • Meldinger • Trading • Governance",
+        "exploreCta": "Utforsk NorChain",
+        "docsCta": "Dokumentasjon",
+        "features": {
+            "l1": {
+                "title": "NorChain L1",
+                "description": "Høyytelse blockchain med 3-sekunders finalisering og 10,000+ TPS kapasitet."
+            },
+            "norpay": {
+                "title": "NorPay",
+                "description": "Komplett betalingsinfrastruktur for Web3 - som Stripe for blockchain."
+            },
+            "norledger": {
+                "title": "NorLedger",
+                "description": "Første blockchain-forankrede regnskapssystem med daglige revisjonslogger."
+            },
+            "norchat": {
+                "title": "NorChat",
+                "description": "Web3 super-messenger som kombinerer chat, samtaler og sømløse betalinger."
+            },
+            "swap": {
+                "title": "Swap & DEX",
+                "description": "Komplett handelsøkosystem fra enkle byttinger til profesjonell trading."
+            },
+            "compliance": {
+                "title": "Samsvar",
+                "description": "Enterprise-grade compliance for KYC/AML og regulatoriske krav."
+            }
+        },
+        "stats": {
+            "nodes": "Globale noder",
+            "finality": "Finalisering",
+            "tps": "TPS kapasitet",
+            "uptime": "Oppetid"
+        }
+    },
+    "products": {
+        "digilist": {
+            "title": "Digilist",
+            "description": "Digital listehåndtering og sjekklister for kvalitetssikring og compliance i bedrifter.",
+            "status": "Tilgjengelig"
+        },
+        "digiskjema": {
+            "title": "Digiskjema",
+            "description": "Smart skjemabygger med AI-assistert utfylling og automatisert dokumentgenerering.",
+            "status": "Tilgjengelig"
+        },
+        "xaheen": {
+            "title": "Xaheen",
+            "description": "AI-drevet applikasjonsbygger som lar deg lage komplette webapplikasjoner med naturlig språk.",
+            "status": "Live"
+        },
+        "norchain": {
+            "title": "Norchain",
+            "description": "Komplett blockchain-operativsystem for digital handel med betalinger, regnskap og governance.",
+            "status": "Live"
+        }
+    },
+    "footer": {
+        "description": "Vi skaper innovative teknologiløsninger som driver forretningsvekst og digital transformasjon.",
+        "company": "Selskap",
+        "solutions": "Løsninger",
+        "productsHeader": "Produkter",
+        "location": "Nesbru, Norge",
+        "links": {
+            "about": "Om oss",
+            "team": "Team",
+            "careers": "Karriere",
+            "contact": "Kontakt",
+            "ai": "Kunstig intelligens",
+            "cloud": "Skyløsninger",
+            "web": "Webutvikling",
+            "mobile": "Mobilapper",
+            "privacy": "Personvern",
+            "terms": "Vilkår",
+            "cookies": "Cookies"
+        }
+    },
+    "contact": {
+        "title": "Kontakt oss",
+        "subtitle": "Vi hører gjerne fra deg",
+        "form": {
+            "name": {
+                "placeholder": "Ditt navn"
+            },
+            "email": {
+                "placeholder": "Din e-postadresse"
+            },
+            "subject": {
+                "placeholder": "Emne"
+            },
+            "message": {
+                "placeholder": "Skriv din melding her..."
+            },
+            "status": {
+                "send": "Send melding",
+                "sending": "Sender..."
+            },
+            "success": {
+                "title": "Melding sendt!",
+                "description": "Vi vil svare deg innen 24 timer."
+            },
+            "error": {
+                "title": "Noe gikk galt",
+                "description": "Vennligst prøv igjen eller kontakt oss direkte."
+            },
+            "validation": {
+                "name": {
+                    "min": "Navn må ha minst 2 tegn"
+                },
+                "email": {
+                    "invalid": "Vennligst oppgi en gyldig e-postadresse"
+                },
+                "subject": {
+                    "min": "Emne må ha minst 2 tegn"
+                },
+                "message": {
+                    "min": "Melding må ha minst 10 tegn"
+                }
+            }
+        }
+    },
+    "common": {
+        "showMore": "Vis mer",
+        "showLess": "Vis mindre"
+    },
+    "lastUpdated": "Sist oppdatert",
+    "categories": {
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "language": "Språk",
+        "cloud": "Sky",
+        "devops": "DevOps",
+        "database": "Database",
+        "ai": "AI"
+    },
+    "chat": {
+        "title": "Xala AI assistent",
+        "status": {
+            "thinking": "Tenker...",
+            "online": "Tilkoblet"
+        },
+        "input": {
+            "placeholder": "Skriv en melding...",
+            "button": "Chat med Xala AI"
+        },
+        "errors": {
+            "failed_to_send": "Kunne ikke sende melding"
+        }
+    },
+    "caserPage": {
+        "eyebrow": "Referanser & prosjekter",
+        "title": "Hva vi har levert",
+        "description": "Xala har samarbeidet med ledende norske og internasjonale organisasjoner om komplekse digitale plattformer, systemintegrasjoner og skybaserte løsninger.",
+        "stats": {
+            "projects": "Levererte prosjekter",
+            "experience": "Års erfaring",
+            "users": "Sluttbrukere betjent"
+        }
+    },
+    "caseStudy": {
+        "backToAll": "Alle caser",
+        "readMore": "Les case study",
+        "comingSoon": "Kommer snart",
+        "toc": {
+            "label": "Innhold",
+            "overview": "Oversikt",
+            "challenge": "Utfordringen",
+            "objectives": "Mål",
+            "solution": "Løsningen",
+            "architecture": "Arkitektur",
+            "tech": "Teknologi",
+            "integrations": "Integrasjoner",
+            "timeline": "Gjennomføring",
+            "outcomes": "Resultater",
+            "capabilities": "Kapabiliteter"
+        },
+        "sections": {
+            "overview": { "accent": "Executive Overview", "heading": "Prosjektoversikt" },
+            "challenge": { "accent": "Business Challenge", "heading": "Utfordringen" },
+            "objectives": { "accent": "Project Goals", "heading": "Prosjektmål" },
+            "solution": {
+                "accent": "What We Built",
+                "heading": "Løsningen",
+                "modules": "Leveranser",
+                "users": "Brukergrupper"
+            },
+            "architecture": {
+                "accent": "System Architecture",
+                "layers": {
+                    "presentation": "Presentasjonslag",
+                    "services": "Tjenestelaget",
+                    "integrations": "Integrasjonslag",
+                    "data": "Datalag",
+                    "infrastructure": "Infrastruktur",
+                    "security": "Sikkerhet & identitet"
+                }
+            },
+            "tech": { "accent": "Technology Stack", "heading": "Teknologistack" },
+            "integrations": { "accent": "Key Integrations", "heading": "Nøkkelintegrasjoner" },
+            "timeline": { "accent": "Delivery Approach", "heading": "Gjennomføring" },
+            "outcomes": { "accent": "Results & Impact", "heading": "Resultater og effekt" },
+            "capabilities": { "accent": "Delivered Capabilities", "heading": "Nøkkelfunksjoner levert" }
+        },
+        "meta": {
+            "client": "Klient",
+            "industry": "Bransje",
+            "period": "Periode",
+            "role": "Xala rolle",
+            "sector": "Sektor",
+            "deliveryModel": "Leveransemodell",
+            "partnerModel": "Partnermodell",
+            "duration": "Leveranseperiode",
+            "teamComposition": "Team­sammensetning",
+            "teamSize": "Estimert teamstørrelse",
+            "scope": "Omfang",
+            "coreTechnologies": "Kjerneteknologier",
+            "status": "Status",
+            "budget": "Budsjett"
+        },
+        "techCategories": {
+            "frontend": "Frontend",
+            "backend": "Backend",
+            "databases": "Databaser",
+            "cloud": "Cloud / Infrastruktur",
+            "identity": "Identitet & sikkerhet",
+            "integrations": "Integrasjoner",
+            "devops": "DevOps"
+        },
+        "archLayers": {
+            "presentation": "Presentasjonslag",
+            "services": "Tjenestelaget",
+            "integrations": "Integrasjonslag",
+            "data": "Datalag",
+            "infrastructure": "Infrastruktur",
+            "security": "Sikkerhet & identitet"
+        },
+        "cta": {
+            "accent": "Neste steg",
+            "heading": "Skal vi hjelpe deg med noe lignende?",
+            "description": "Ta kontakt for en uforpliktende samtale om din neste digitale utfordring.",
+            "contact": "Kontakt oss",
+            "allCases": "Alle caser"
+        }
+    },
+    "careers": {
+        "title": "Karriere hos Xala?",
+        "description": "Vi leter alltid etter talentfulle mennesker som vil være med på å bygge fremtiden. Send oss en åpen søknad!",
+        "openApplication": {
+            "title": "Åpen søknad",
+            "description": "Har du lyst til å jobbe hos oss, men ser ikke en stilling som passer deg akkurat nå? Vi tar imot åpne søknader hele året.",
+            "instructions": "Send oss en e-post med CV, søknad og en kort beskrivelse av deg selv og hvorfor du vil jobbe hos Xala.",
+            "sendEmail": "Send e-post til info@xala.no",
+            "emailLabel": "E-post:",
+            "emailSubject": "Åpen søknad - Xala Technologies",
+            "emailBody": "Hei,\n\nJeg sender inn en åpen søknad til Xala Technologies.\n\nMed vennlig hilsen"
+        }
+    }
+}

@@ -1,0 +1,953 @@
+{
+    "no": {
+        "privacy": {
+            "title": "Personvernerklæring",
+            "lastUpdated": "2025-01-15",
+            "sections": [
+                {
+                    "id": "intro",
+                    "title": "Innledning",
+                    "content": "Xala Technologies AS respekterer ditt personvern og er forpliktet til å beskytte dine personopplysninger. Denne personvernerklæringen beskriver hvordan vi samler inn, bruker, lagrer og beskytter din informasjon når du bruker våre tjenester.",
+                    "items": []
+                },
+                {
+                    "id": "collection",
+                    "title": "Innsamling av personopplysninger",
+                    "content": "Vi samler inn følgende typer informasjon:",
+                    "items": [
+                        {
+                            "id": "contact-info",
+                            "title": "Kontaktinformasjon",
+                            "content": "Navn, e-postadresse, telefonnummer og annen informasjon du oppgir når du fyller ut skjemaer på nettstedet vårt."
+                        },
+                        {
+                            "id": "usage-data",
+                            "title": "Bruksdata",
+                            "content": "Informasjon om hvordan du bruker nettstedet vårt, inkludert IP-adresse, nettlesertype, besøkstid og sidevisninger."
+                        },
+                        {
+                            "id": "cookies",
+                            "title": "Informasjonskapsler",
+                            "content": "Vi bruker informasjonskapsler for å forbedre brukeropplevelsen. Se vår informasjonskapselpolitikk for mer informasjon."
+                        }
+                    ]
+                },
+                {
+                    "id": "usage",
+                    "title": "Hvordan vi bruker dine personopplysninger",
+                    "content": "Vi bruker informasjonen til følgende formål:",
+                    "items": [
+                        {
+                            "id": "services",
+                            "title": "Levere tjenester",
+                            "content": "For å levere og forbedre våre tjenester, svare på henvendelser og kommunisere med deg."
+                        },
+                        {
+                            "id": "improvements",
+                            "title": "Forbedre tjenestene",
+                            "content": "For å analysere bruksmønstre og forbedre nettstedet og tjenestene våre."
+                        },
+                        {
+                            "id": "legal",
+                            "title": "Juridiske formål",
+                            "content": "For å overholde gjeldende lover og forskrifter, og for å beskytte våre rettigheter."
+                        }
+                    ]
+                },
+                {
+                    "id": "storage",
+                    "title": "Lagring og sikkerhet",
+                    "content": "Vi lagrer dine personopplysninger på sikre servere og bruker passende tekniske og organisatoriske tiltak for å beskytte dem mot uautorisert tilgang, tap eller ødeleggelse. Data lagres så lenge det er nødvendig for å oppfylle formålene beskrevet i denne erklæringen.",
+                    "items": []
+                },
+                {
+                    "id": "rights",
+                    "title": "Dine rettigheter",
+                    "content": "Du har følgende rettigheter:",
+                    "items": [
+                        {
+                            "id": "access",
+                            "title": "Innsyn",
+                            "content": "Du har rett til å få innsyn i hvilke personopplysninger vi behandler om deg."
+                        },
+                        {
+                            "id": "rectification",
+                            "title": "Retting",
+                            "content": "Du har rett til å få rettet feilaktige eller ufullstendige personopplysninger."
+                        },
+                        {
+                            "id": "deletion",
+                            "title": "Sletting",
+                            "content": "Du har rett til å kreve sletting av dine personopplysninger i visse tilfeller."
+                        },
+                        {
+                            "id": "portability",
+                            "title": "Dataportabilitet",
+                            "content": "Du har rett til å motta dine personopplysninger i et strukturt, alminnelig anvendt og maskinlesbart format."
+                        },
+                        {
+                            "id": "objection",
+                            "title": "Innsigelse",
+                            "content": "Du har rett til å gjøre innsigelse mot behandlingen av dine personopplysninger."
+                        }
+                    ]
+                },
+                {
+                    "id": "contact",
+                    "title": "Kontakt oss",
+                    "content": "Hvis du har spørsmål om denne personvernerklæringen eller ønsker å utøve dine rettigheter, kan du kontakte oss på:",
+                    "items": [
+                        {
+                            "id": "email",
+                            "title": "E-post",
+                            "content": "info@xala.no"
+                        },
+                        {
+                            "id": "address",
+                            "title": "Postadresse",
+                            "content": "Xala Technologies AS, Nesbru, Norge"
+                        }
+                    ]
+                }
+            ]
+        },
+        "terms": {
+            "title": "Vilkår for bruk",
+            "lastUpdated": "2025-01-15",
+            "sections": [
+                {
+                    "id": "acceptance",
+                    "title": "Aksept av vilkår",
+                    "content": "Ved å bruke nettstedet vårt og våre tjenester aksepterer du disse vilkårene. Hvis du ikke godtar vilkårene, må du ikke bruke tjenestene. Vi forbeholder oss retten til å endre disse vilkårene når som helst.",
+                    "items": []
+                },
+                {
+                    "id": "services",
+                    "title": "Beskrivelse av tjenester",
+                    "content": "Xala Technologies leverer følgende tjenester:",
+                    "items": [
+                        {
+                            "id": "consulting",
+                            "title": "Teknologikonsultering",
+                            "content": "Strategisk rådgivning og teknologisk veiledning for bedrifter."
+                        },
+                        {
+                            "id": "development",
+                            "title": "Utvikling",
+                            "content": "Utvikling av programvare, webapplikasjoner og digitale løsninger."
+                        },
+                        {
+                            "id": "solutions",
+                            "title": "Digitale løsninger",
+                            "content": "Komplette digitale løsninger tilpasset dine behov."
+                        }
+                    ]
+                },
+                {
+                    "id": "user-obligations",
+                    "title": "Brukerens forpliktelser",
+                    "content": "Når du bruker våre tjenester, forplikter du deg til:",
+                    "items": [
+                        {
+                            "id": "accurate-info",
+                            "title": "Nøyaktig informasjon",
+                            "content": "Å oppgi nøyaktig og oppdatert informasjon når det kreves."
+                        },
+                        {
+                            "id": "lawful-use",
+                            "title": "Lovlig bruk",
+                            "content": "Å bruke tjenestene kun til lovlige formål og i samsvar med disse vilkårene."
+                        },
+                        {
+                            "id": "no-harm",
+                            "title": "Ikke skade",
+                            "content": "Å ikke bruke tjenestene på en måte som kan skade, deaktivere eller overbelaste våre systemer."
+                        }
+                    ]
+                },
+                {
+                    "id": "intellectual-property",
+                    "title": "Intellektuell eiendom",
+                    "content": "Alt innhold på nettstedet, inkludert tekster, bilder, logoer og programvare, er beskyttet av opphavsrett og tilhører Xala Technologies AS eller våre lisensgivere. Du får ikke rett til å kopiere, modifisere eller distribuere dette innholdet uten vår skriftlige tillatelse.",
+                    "items": []
+                },
+                {
+                    "id": "liability",
+                    "title": "Ansvarsbegrensning",
+                    "content": "Xala Technologies er ikke ansvarlig for:",
+                    "items": [
+                        {
+                            "id": "indirect-damages",
+                            "title": "Indirekte skader",
+                            "content": "Indirekte tap, skader eller kostnader som følge av bruk eller manglende tilgang til tjenestene."
+                        },
+                        {
+                            "id": "third-party",
+                            "title": "Tredjepartstjenester",
+                            "content": "Handlinger eller tjenester fra tredjeparter som vi kan integrere med."
+                        },
+                        {
+                            "id": "data-loss",
+                            "title": "Datatap",
+                            "content": "Tap av data eller informasjon som følge av tekniske problemer eller vedlikehold."
+                        }
+                    ]
+                },
+                {
+                    "id": "termination",
+                    "title": "Oppsigelse",
+                    "content": "Vi forbeholder oss retten til å suspendere eller avslutte din tilgang til tjenestene umiddelbart uten varsel hvis du bryter disse vilkårene eller for andre legitime grunner.",
+                    "items": []
+                },
+                {
+                    "id": "changes",
+                    "title": "Endringer i vilkår",
+                    "content": "Vi forbeholder oss retten til å endre disse vilkårene når som helst. Endringer vil bli publisert på denne siden med oppdatert dato. Fortsatt bruk av tjenestene etter endringer betraktes som aksept av de nye vilkårene.",
+                    "items": []
+                },
+                {
+                    "id": "governing-law",
+                    "title": "Gjeldende lov",
+                    "content": "Disse vilkårene er underlagt norsk lov. Eventuelle tvister skal løses ved norske domstoler.",
+                    "items": []
+                }
+            ]
+        },
+        "cookies": {
+            "title": "Informasjonskapselpolitikk",
+            "lastUpdated": "2025-01-15",
+            "sections": [
+                {
+                    "id": "what",
+                    "title": "Hva er informasjonskapsler?",
+                    "content": "Informasjonskapsler (cookies) er små tekstfiler som lagres på enheten din (datamaskin, nettbrett eller mobil) når du besøker nettsteder. De hjelper nettstedet med å huske informasjon om besøket ditt, slik at nettstedet kan fungere bedre og gi deg en mer personlig opplevelse.",
+                    "items": []
+                },
+                {
+                    "id": "types",
+                    "title": "Typer informasjonskapsler vi bruker",
+                    "content": "Vi bruker følgende typer informasjonskapsler:",
+                    "items": [
+                        {
+                            "id": "essential",
+                            "title": "Nødvendige informasjonskapsler",
+                            "content": "Disse er nødvendige for at nettstedet skal fungere. De inkluderer informasjonskapsler som husker språkvalg og innloggingsstatus."
+                        },
+                        {
+                            "id": "analytics",
+                            "title": "Analytiske informasjonskapsler",
+                            "content": "Disse hjelper oss med å forstå hvordan besøkende bruker nettstedet ved å samle inn anonymisert informasjon om sidevisninger og bruksmønstre."
+                        },
+                        {
+                            "id": "functional",
+                            "title": "Funksjonelle informasjonskapsler",
+                            "content": "Disse husker dine preferanser og valg for å gi deg en mer tilpasset opplevelse, som for eksempel tema (lys/mørk modus)."
+                        }
+                    ]
+                },
+                {
+                    "id": "usage",
+                    "title": "Hvordan vi bruker informasjonskapsler",
+                    "content": "Vi bruker informasjonskapsler for å:",
+                    "items": [
+                        {
+                            "id": "functionality",
+                            "title": "Sikre funksjonalitet",
+                            "content": "Sikre at nettstedet fungerer som det skal og husker dine preferanser."
+                        },
+                        {
+                            "id": "analytics",
+                            "title": "Analysere bruk",
+                            "content": "Forstå hvordan besøkende bruker nettstedet for å forbedre brukeropplevelsen."
+                        },
+                        {
+                            "id": "personalization",
+                            "title": "Tilpasse opplevelsen",
+                            "content": "Tilpasse innholdet og funksjonaliteten basert på dine preferanser og tidligere interaksjoner."
+                        }
+                    ]
+                },
+                {
+                    "id": "third-party",
+                    "title": "Tredjeparts informasjonskapsler",
+                    "content": "Vi kan også bruke tjenester fra tredjeparter som setter informasjonskapsler på enheten din. Disse inkluderer:",
+                    "items": [
+                        {
+                            "id": "analytics-services",
+                            "title": "Analysetjenester",
+                            "content": "Tjenester som hjelper oss med å analysere nettstedets ytelse og bruk."
+                        },
+                        {
+                            "id": "social-media",
+                            "title": "Sosiale medier",
+                            "content": "Informasjonskapsler fra sosiale medieplattformer hvis du deler innhold fra nettstedet."
+                        }
+                    ]
+                },
+                {
+                    "id": "management",
+                    "title": "Hvordan administrere informasjonskapsler",
+                    "content": "Du kan kontrollere og administrere informasjonskapsler på flere måter:",
+                    "items": [
+                        {
+                            "id": "browser-settings",
+                            "title": "Nettleserinnstillinger",
+                            "content": "De fleste nettlesere lar deg se, slette og blokkere informasjonskapsler gjennom innstillingene. Merk at blokkering av alle informasjonskapsler kan påvirke nettstedets funksjonalitet."
+                        },
+                        {
+                            "id": "cookie-banner",
+                            "title": "Informasjonskapselbanner",
+                            "content": "Når du først besøker nettstedet, kan du velge hvilke typer informasjonskapsler du vil akseptere gjennom banneret som vises."
+                        }
+                    ]
+                },
+                {
+                    "id": "updates",
+                    "title": "Oppdateringer av denne politikken",
+                    "content": "Vi kan oppdatere denne informasjonskapselpolitikken fra tid til annen. Eventuelle endringer vil bli publisert på denne siden med en oppdatert dato. Vi anbefaler at du gjennomgår denne siden regelmessig for å holde deg informert om hvordan vi bruker informasjonskapsler.",
+                    "items": []
+                },
+                {
+                    "id": "contact",
+                    "title": "Kontakt oss",
+                    "content": "Hvis du har spørsmål om vår bruk av informasjonskapsler, kan du kontakte oss på info@xala.no.",
+                    "items": []
+                }
+            ]
+        }
+    },
+    "en": {
+        "privacy": {
+            "title": "Privacy Policy",
+            "lastUpdated": "2025-01-15",
+            "sections": [
+                {
+                    "id": "intro",
+                    "title": "Introduction",
+                    "content": "Xala Technologies AS respects your privacy and is committed to protecting your personal data. This privacy policy describes how we collect, use, store, and protect your information when you use our services.",
+                    "items": []
+                },
+                {
+                    "id": "collection",
+                    "title": "Collection of Personal Data",
+                    "content": "We collect the following types of information:",
+                    "items": [
+                        {
+                            "id": "contact-info",
+                            "title": "Contact Information",
+                            "content": "Name, email address, phone number, and other information you provide when filling out forms on our website."
+                        },
+                        {
+                            "id": "usage-data",
+                            "title": "Usage Data",
+                            "content": "Information about how you use our website, including IP address, browser type, visit duration, and page views."
+                        },
+                        {
+                            "id": "cookies",
+                            "title": "Cookies",
+                            "content": "We use cookies to improve user experience. See our cookie policy for more information."
+                        }
+                    ]
+                },
+                {
+                    "id": "usage",
+                    "title": "How We Use Your Personal Data",
+                    "content": "We use the information for the following purposes:",
+                    "items": [
+                        {
+                            "id": "services",
+                            "title": "Deliver Services",
+                            "content": "To deliver and improve our services, respond to inquiries, and communicate with you."
+                        },
+                        {
+                            "id": "improvements",
+                            "title": "Improve Services",
+                            "content": "To analyze usage patterns and improve our website and services."
+                        },
+                        {
+                            "id": "legal",
+                            "title": "Legal Purposes",
+                            "content": "To comply with applicable laws and regulations, and to protect our rights."
+                        }
+                    ]
+                },
+                {
+                    "id": "storage",
+                    "title": "Storage and Security",
+                    "content": "We store your personal data on secure servers and use appropriate technical and organizational measures to protect them against unauthorized access, loss, or destruction. Data is stored for as long as necessary to fulfill the purposes described in this policy.",
+                    "items": []
+                },
+                {
+                    "id": "rights",
+                    "title": "Your Rights",
+                    "content": "You have the following rights:",
+                    "items": [
+                        {
+                            "id": "access",
+                            "title": "Access",
+                            "content": "You have the right to access what personal data we process about you."
+                        },
+                        {
+                            "id": "rectification",
+                            "title": "Rectification",
+                            "content": "You have the right to have incorrect or incomplete personal data corrected."
+                        },
+                        {
+                            "id": "deletion",
+                            "title": "Deletion",
+                            "content": "You have the right to request deletion of your personal data in certain cases."
+                        },
+                        {
+                            "id": "portability",
+                            "title": "Data Portability",
+                            "content": "You have the right to receive your personal data in a structured, commonly used, and machine-readable format."
+                        },
+                        {
+                            "id": "objection",
+                            "title": "Objection",
+                            "content": "You have the right to object to the processing of your personal data."
+                        }
+                    ]
+                },
+                {
+                    "id": "contact",
+                    "title": "Contact Us",
+                    "content": "If you have questions about this privacy policy or wish to exercise your rights, you can contact us at:",
+                    "items": [
+                        {
+                            "id": "email",
+                            "title": "Email",
+                            "content": "info@xala.no"
+                        },
+                        {
+                            "id": "address",
+                            "title": "Postal Address",
+                            "content": "Xala Technologies AS, Nesbru, Norway"
+                        }
+                    ]
+                }
+            ]
+        },
+        "terms": {
+            "title": "Terms of Service",
+            "lastUpdated": "2025-01-15",
+            "sections": [
+                {
+                    "id": "acceptance",
+                    "title": "Acceptance of Terms",
+                    "content": "By using our website and services, you accept these terms. If you do not agree to the terms, you must not use the services. We reserve the right to change these terms at any time.",
+                    "items": []
+                },
+                {
+                    "id": "services",
+                    "title": "Description of Services",
+                    "content": "Xala Technologies provides the following services:",
+                    "items": [
+                        {
+                            "id": "consulting",
+                            "title": "Technology Consulting",
+                            "content": "Strategic advisory and technological guidance for businesses."
+                        },
+                        {
+                            "id": "development",
+                            "title": "Development",
+                            "content": "Development of software, web applications, and digital solutions."
+                        },
+                        {
+                            "id": "solutions",
+                            "title": "Digital Solutions",
+                            "content": "Complete digital solutions tailored to your needs."
+                        }
+                    ]
+                },
+                {
+                    "id": "user-obligations",
+                    "title": "User Obligations",
+                    "content": "When using our services, you agree to:",
+                    "items": [
+                        {
+                            "id": "accurate-info",
+                            "title": "Accurate Information",
+                            "content": "Provide accurate and up-to-date information when required."
+                        },
+                        {
+                            "id": "lawful-use",
+                            "title": "Lawful Use",
+                            "content": "Use the services only for lawful purposes and in accordance with these terms."
+                        },
+                        {
+                            "id": "no-harm",
+                            "title": "No Harm",
+                            "content": "Not use the services in a way that could harm, disable, or overload our systems."
+                        }
+                    ]
+                },
+                {
+                    "id": "intellectual-property",
+                    "title": "Intellectual Property",
+                    "content": "All content on the website, including texts, images, logos, and software, is protected by copyright and belongs to Xala Technologies AS or our licensors. You do not have the right to copy, modify, or distribute this content without our written permission.",
+                    "items": []
+                },
+                {
+                    "id": "liability",
+                    "title": "Limitation of Liability",
+                    "content": "Xala Technologies is not liable for:",
+                    "items": [
+                        {
+                            "id": "indirect-damages",
+                            "title": "Indirect Damages",
+                            "content": "Indirect losses, damages, or costs resulting from use or lack of access to the services."
+                        },
+                        {
+                            "id": "third-party",
+                            "title": "Third-Party Services",
+                            "content": "Actions or services from third parties that we may integrate with."
+                        },
+                        {
+                            "id": "data-loss",
+                            "title": "Data Loss",
+                            "content": "Loss of data or information due to technical problems or maintenance."
+                        }
+                    ]
+                },
+                {
+                    "id": "termination",
+                    "title": "Termination",
+                    "content": "We reserve the right to suspend or terminate your access to the services immediately without notice if you violate these terms or for other legitimate reasons.",
+                    "items": []
+                },
+                {
+                    "id": "changes",
+                    "title": "Changes to Terms",
+                    "content": "We reserve the right to change these terms at any time. Changes will be published on this page with an updated date. Continued use of the services after changes is considered acceptance of the new terms.",
+                    "items": []
+                },
+                {
+                    "id": "governing-law",
+                    "title": "Governing Law",
+                    "content": "These terms are subject to Norwegian law. Any disputes shall be resolved by Norwegian courts.",
+                    "items": []
+                }
+            ]
+        },
+        "cookies": {
+            "title": "Cookie Policy",
+            "lastUpdated": "2025-01-15",
+            "sections": [
+                {
+                    "id": "what",
+                    "title": "What are Cookies?",
+                    "content": "Cookies are small text files that are stored on your device (computer, tablet, or mobile) when you visit websites. They help the website remember information about your visit, so the website can function better and provide you with a more personalized experience.",
+                    "items": []
+                },
+                {
+                    "id": "types",
+                    "title": "Types of Cookies We Use",
+                    "content": "We use the following types of cookies:",
+                    "items": [
+                        {
+                            "id": "essential",
+                            "title": "Essential Cookies",
+                            "content": "These are necessary for the website to function. They include cookies that remember language preferences and login status."
+                        },
+                        {
+                            "id": "analytics",
+                            "title": "Analytics Cookies",
+                            "content": "These help us understand how visitors use the website by collecting anonymized information about page views and usage patterns."
+                        },
+                        {
+                            "id": "functional",
+                            "title": "Functional Cookies",
+                            "content": "These remember your preferences and choices to provide you with a more customized experience, such as theme (light/dark mode)."
+                        }
+                    ]
+                },
+                {
+                    "id": "usage",
+                    "title": "How We Use Cookies",
+                    "content": "We use cookies to:",
+                    "items": [
+                        {
+                            "id": "functionality",
+                            "title": "Ensure Functionality",
+                            "content": "Ensure the website functions as intended and remembers your preferences."
+                        },
+                        {
+                            "id": "analytics",
+                            "title": "Analyze Usage",
+                            "content": "Understand how visitors use the website to improve user experience."
+                        },
+                        {
+                            "id": "personalization",
+                            "title": "Personalize Experience",
+                            "content": "Customize content and functionality based on your preferences and previous interactions."
+                        }
+                    ]
+                },
+                {
+                    "id": "third-party",
+                    "title": "Third-Party Cookies",
+                    "content": "We may also use services from third parties that set cookies on your device. These include:",
+                    "items": [
+                        {
+                            "id": "analytics-services",
+                            "title": "Analytics Services",
+                            "content": "Services that help us analyze website performance and usage."
+                        },
+                        {
+                            "id": "social-media",
+                            "title": "Social Media",
+                            "content": "Cookies from social media platforms if you share content from the website."
+                        }
+                    ]
+                },
+                {
+                    "id": "management",
+                    "title": "How to Manage Cookies",
+                    "content": "You can control and manage cookies in several ways:",
+                    "items": [
+                        {
+                            "id": "browser-settings",
+                            "title": "Browser Settings",
+                            "content": "Most browsers allow you to view, delete, and block cookies through settings. Note that blocking all cookies may affect website functionality."
+                        },
+                        {
+                            "id": "cookie-banner",
+                            "title": "Cookie Banner",
+                            "content": "When you first visit the website, you can choose which types of cookies you want to accept through the banner that appears."
+                        }
+                    ]
+                },
+                {
+                    "id": "updates",
+                    "title": "Updates to This Policy",
+                    "content": "We may update this cookie policy from time to time. Any changes will be published on this page with an updated date. We recommend that you review this page regularly to stay informed about how we use cookies.",
+                    "items": []
+                },
+                {
+                    "id": "contact",
+                    "title": "Contact Us",
+                    "content": "If you have questions about our use of cookies, you can contact us at info@xala.no.",
+                    "items": []
+                }
+            ]
+        }
+    },
+    "ar": {
+        "privacy": {
+            "title": "سياسة الخصوصية",
+            "lastUpdated": "2025-01-15",
+            "sections": [
+                {
+                    "id": "intro",
+                    "title": "مقدمة",
+                    "content": "تحترم شركة زالا للتقنية خصوصيتك وتلتزم بحماية بياناتك الشخصية. توضح سياسة الخصوصية هذه كيفية جمع معلوماتك واستخدامها وتخزينها وحمايتها عند استخدام خدماتنا.",
+                    "items": []
+                },
+                {
+                    "id": "collection",
+                    "title": "جمع البيانات الشخصية",
+                    "content": "نجمع الأنواع التالية من المعلومات:",
+                    "items": [
+                        {
+                            "id": "contact-info",
+                            "title": "معلومات الاتصال",
+                            "content": "الاسم وعنوان البريد الإلكتروني ورقم الهاتف والمعلومات الأخرى التي تقدمها عند ملء النماذج على موقعنا."
+                        },
+                        {
+                            "id": "usage-data",
+                            "title": "بيانات الاستخدام",
+                            "content": "معلومات حول كيفية استخدامك لموقعنا، بما في ذلك عنوان IP ونوع المتصفح ومدة الزيارة ومشاهدات الصفحة."
+                        },
+                        {
+                            "id": "cookies",
+                            "title": "ملفات تعريف الارتباط",
+                            "content": "نستخدم ملفات تعريف الارتباط لتحسين تجربة المستخدم. راجع سياسة ملفات تعريف الارتباط للحصول على مزيد من المعلومات."
+                        }
+                    ]
+                },
+                {
+                    "id": "usage",
+                    "title": "كيف نستخدم بياناتك الشخصية",
+                    "content": "نستخدم المعلومات للأغراض التالية:",
+                    "items": [
+                        {
+                            "id": "services",
+                            "title": "تقديم الخدمات",
+                            "content": "لتقديم وتحسين خدماتنا والرد على الاستفسارات والتواصل معك."
+                        },
+                        {
+                            "id": "improvements",
+                            "title": "تحسين الخدمات",
+                            "content": "لتحليل أنماط الاستخدام وتحسين موقعنا وخدماتنا."
+                        },
+                        {
+                            "id": "legal",
+                            "title": "الأغراض القانونية",
+                            "content": "للامتثال للقوانين واللوائح المعمول بها وحماية حقوقنا."
+                        }
+                    ]
+                },
+                {
+                    "id": "storage",
+                    "title": "التخزين والأمان",
+                    "content": "نخزن بياناتك الشخصية على خوادم آمنة ونستخدم التدابير التقنية والتنظيمية المناسبة لحمايتها من الوصول غير المصرح به أو الفقدان أو التدمير. يتم تخزين البيانات طالما كان ذلك ضرورياً لتحقيق الأغراض الموضحة في هذه السياسة.",
+                    "items": []
+                },
+                {
+                    "id": "rights",
+                    "title": "حقوقك",
+                    "content": "لديك الحقوق التالية:",
+                    "items": [
+                        {
+                            "id": "access",
+                            "title": "الوصول",
+                            "content": "لديك الحق في الوصول إلى البيانات الشخصية التي نعالجها عنك."
+                        },
+                        {
+                            "id": "rectification",
+                            "title": "التصحيح",
+                            "content": "لديك الحق في تصحيح البيانات الشخصية غير الصحيحة أو غير الكاملة."
+                        },
+                        {
+                            "id": "deletion",
+                            "title": "الحذف",
+                            "content": "لديك الحق في طلب حذف بياناتك الشخصية في حالات معينة."
+                        },
+                        {
+                            "id": "portability",
+                            "title": "قابلية نقل البيانات",
+                            "content": "لديك الحق في استلام بياناتك الشخصية بتنسيق منظم وشائع وقابل للقراءة آلياً."
+                        },
+                        {
+                            "id": "objection",
+                            "title": "الاعتراض",
+                            "content": "لديك الحق في الاعتراض على معالجة بياناتك الشخصية."
+                        }
+                    ]
+                },
+                {
+                    "id": "contact",
+                    "title": "اتصل بنا",
+                    "content": "إذا كان لديك أسئلة حول سياسة الخصوصية هذه أو ترغب في ممارسة حقوقك، يمكنك الاتصال بنا على:",
+                    "items": [
+                        {
+                            "id": "email",
+                            "title": "البريد الإلكتروني",
+                            "content": "info@xala.no"
+                        },
+                        {
+                            "id": "address",
+                            "title": "العنوان البريدي",
+                            "content": "Xala Technologies AS، أوسلو، النرويج"
+                        }
+                    ]
+                }
+            ]
+        },
+        "terms": {
+            "title": "شروط الاستخدام",
+            "lastUpdated": "2025-01-15",
+            "sections": [
+                {
+                    "id": "acceptance",
+                    "title": "قبول الشروط",
+                    "content": "باستخدام موقعنا وخدماتنا، فإنك توافق على هذه الشروط. إذا كنت لا توافق على الشروط، يجب عليك عدم استخدام الخدمات. نحتفظ بالحق في تغيير هذه الشروط في أي وقت.",
+                    "items": []
+                },
+                {
+                    "id": "services",
+                    "title": "وصف الخدمات",
+                    "content": "تقدم زالا للتقنية الخدمات التالية:",
+                    "items": [
+                        {
+                            "id": "consulting",
+                            "title": "الاستشارات التقنية",
+                            "content": "الاستشارات الاستراتيجية والتوجيه التقني للشركات."
+                        },
+                        {
+                            "id": "development",
+                            "title": "التطوير",
+                            "content": "تطوير البرمجيات وتطبيقات الويب والحلول الرقمية."
+                        },
+                        {
+                            "id": "solutions",
+                            "title": "الحلول الرقمية",
+                            "content": "حلول رقمية كاملة مصممة خصيصاً لاحتياجاتك."
+                        }
+                    ]
+                },
+                {
+                    "id": "user-obligations",
+                    "title": "التزامات المستخدم",
+                    "content": "عند استخدام خدماتنا، فإنك توافق على:",
+                    "items": [
+                        {
+                            "id": "accurate-info",
+                            "title": "معلومات دقيقة",
+                            "content": "تقديم معلومات دقيقة ومحدثة عند الحاجة."
+                        },
+                        {
+                            "id": "lawful-use",
+                            "title": "الاستخدام القانوني",
+                            "content": "استخدام الخدمات فقط للأغراض القانونية ووفقاً لهذه الشروط."
+                        },
+                        {
+                            "id": "no-harm",
+                            "title": "عدم الإضرار",
+                            "content": "عدم استخدام الخدمات بطريقة قد تضر أو تعطل أو تثقل أنظمتنا."
+                        }
+                    ]
+                },
+                {
+                    "id": "intellectual-property",
+                    "title": "الملكية الفكرية",
+                    "content": "جميع المحتويات على الموقع، بما في ذلك النصوص والصور والشعارات والبرمجيات، محمية بحقوق الطبع والنشر وتنتمي إلى شركة زالا للتقنية أو المرخصين لدينا. ليس لديك الحق في نسخ أو تعديل أو توزيع هذا المحتوى دون إذننا الكتابي.",
+                    "items": []
+                },
+                {
+                    "id": "liability",
+                    "title": "حدود المسؤولية",
+                    "content": "شركة زالا للتقنية غير مسؤولة عن:",
+                    "items": [
+                        {
+                            "id": "indirect-damages",
+                            "title": "الأضرار غير المباشرة",
+                            "content": "الخسائر أو الأضرار أو التكاليف غير المباشرة الناتجة عن الاستخدام أو عدم الوصول إلى الخدمات."
+                        },
+                        {
+                            "id": "third-party",
+                            "title": "خدمات الطرف الثالث",
+                            "content": "الإجراءات أو الخدمات من أطراف ثالثة قد ندمج معها."
+                        },
+                        {
+                            "id": "data-loss",
+                            "title": "فقدان البيانات",
+                            "content": "فقدان البيانات أو المعلومات بسبب المشاكل التقنية أو الصيانة."
+                        }
+                    ]
+                },
+                {
+                    "id": "termination",
+                    "title": "الإنهاء",
+                    "content": "نحتفظ بالحق في تعليق أو إنهاء وصولك إلى الخدمات فوراً دون إشعار إذا انتهكت هذه الشروط أو لأسباب مشروعة أخرى.",
+                    "items": []
+                },
+                {
+                    "id": "changes",
+                    "title": "تغييرات الشروط",
+                    "content": "نحتفظ بالحق في تغيير هذه الشروط في أي وقت. سيتم نشر التغييرات على هذه الصفحة مع تاريخ محدث. يعتبر الاستمرار في استخدام الخدمات بعد التغييرات قبولاً للشروط الجديدة.",
+                    "items": []
+                },
+                {
+                    "id": "governing-law",
+                    "title": "القانون الحاكم",
+                    "content": "هذه الشروط تخضع للقانون النرويجي. يجب حل أي نزاعات من قبل المحاكم النرويجية.",
+                    "items": []
+                }
+            ]
+        },
+        "cookies": {
+            "title": "سياسة ملفات تعريف الارتباط",
+            "lastUpdated": "2025-01-15",
+            "sections": [
+                {
+                    "id": "what",
+                    "title": "ما هي ملفات تعريف الارتباط؟",
+                    "content": "ملفات تعريف الارتباط هي ملفات نصية صغيرة يتم تخزينها على جهازك (الكمبيوتر أو الجهاز اللوحي أو الهاتف المحمول) عند زيارة المواقع. تساعد الموقع على تذكر معلومات حول زيارتك، بحيث يمكن للموقع أن يعمل بشكل أفضل ويوفر لك تجربة أكثر تخصيصاً.",
+                    "items": []
+                },
+                {
+                    "id": "types",
+                    "title": "أنواع ملفات تعريف الارتباط التي نستخدمها",
+                    "content": "نستخدم الأنواع التالية من ملفات تعريف الارتباط:",
+                    "items": [
+                        {
+                            "id": "essential",
+                            "title": "ملفات تعريف الارتباط الأساسية",
+                            "content": "هذه ضرورية لكي يعمل الموقع. تتضمن ملفات تعريف الارتباط التي تتذكر تفضيلات اللغة وحالة تسجيل الدخول."
+                        },
+                        {
+                            "id": "analytics",
+                            "title": "ملفات تعريف الارتباط التحليلية",
+                            "content": "هذه تساعدنا على فهم كيفية استخدام الزوار للموقع من خلال جمع معلومات مجهولة حول مشاهدات الصفحة وأنماط الاستخدام."
+                        },
+                        {
+                            "id": "functional",
+                            "title": "ملفات تعريف الارتباط الوظيفية",
+                            "content": "هذه تتذكر تفضيلاتك وخياراتك لتوفير تجربة مخصصة أكثر، مثل المظهر (الوضع الفاتح/الداكن)."
+                        }
+                    ]
+                },
+                {
+                    "id": "usage",
+                    "title": "كيف نستخدم ملفات تعريف الارتباط",
+                    "content": "نستخدم ملفات تعريف الارتباط لـ:",
+                    "items": [
+                        {
+                            "id": "functionality",
+                            "title": "ضمان الوظائف",
+                            "content": "ضمان عمل الموقع كما هو مقصود وتذكر تفضيلاتك."
+                        },
+                        {
+                            "id": "analytics",
+                            "title": "تحليل الاستخدام",
+                            "content": "فهم كيفية استخدام الزوار للموقع لتحسين تجربة المستخدم."
+                        },
+                        {
+                            "id": "personalization",
+                            "title": "تخصيص التجربة",
+                            "content": "تخصيص المحتوى والوظائف بناءً على تفضيلاتك والتفاعلات السابقة."
+                        }
+                    ]
+                },
+                {
+                    "id": "third-party",
+                    "title": "ملفات تعريف الارتباط من أطراف ثالثة",
+                    "content": "قد نستخدم أيضاً خدمات من أطراف ثالثة تضع ملفات تعريف الارتباط على جهازك. تشمل هذه:",
+                    "items": [
+                        {
+                            "id": "analytics-services",
+                            "title": "خدمات التحليل",
+                            "content": "الخدمات التي تساعدنا على تحليل أداء الموقع واستخدامه."
+                        },
+                        {
+                            "id": "social-media",
+                            "title": "وسائل التواصل الاجتماعي",
+                            "content": "ملفات تعريف الارتباط من منصات وسائل التواصل الاجتماعي إذا شاركت محتوى من الموقع."
+                        }
+                    ]
+                },
+                {
+                    "id": "management",
+                    "title": "كيفية إدارة ملفات تعريف الارتباط",
+                    "content": "يمكنك التحكم في ملفات تعريف الارتباط وإدارتها بعدة طرق:",
+                    "items": [
+                        {
+                            "id": "browser-settings",
+                            "title": "إعدادات المتصفح",
+                            "content": "تسمح معظم المتصفحات بعرض ملفات تعريف الارتباط وحذفها وحظرها من خلال الإعدادات. لاحظ أن حظر جميع ملفات تعريف الارتباط قد يؤثر على وظائف الموقع."
+                        },
+                        {
+                            "id": "cookie-banner",
+                            "title": "بانر ملفات تعريف الارتباط",
+                            "content": "عند زيارتك الأولى للموقع، يمكنك اختيار أنواع ملفات تعريف الارتباط التي تريد قبولها من خلال البانر الذي يظهر."
+                        }
+                    ]
+                },
+                {
+                    "id": "updates",
+                    "title": "تحديثات هذه السياسة",
+                    "content": "قد نحدث سياسة ملفات تعريف الارتباط هذه من وقت لآخر. سيتم نشر أي تغييرات على هذه الصفحة مع تاريخ محدث. نوصي بمراجعة هذه الصفحة بانتظام للبقاء على اطلاع حول كيفية استخدامنا لملفات تعريف الارتباط.",
+                    "items": []
+                },
+                {
+                    "id": "contact",
+                    "title": "اتصل بنا",
+                    "content": "إذا كان لديك أسئلة حول استخدامنا لملفات تعريف الارتباط، يمكنك الاتصال بنا على info@xala.no.",
+                    "items": []
+                }
+            ]
+        }
+    }
+}

@@ -10,9 +10,9 @@ interface SEOContent {
 const seoContent: Record<Language, Record<PageId, SEOContent>> = {
   no: {
     home: {
-      title: 'Xala Technologies AS | Innovative Teknologiløsninger | Oslo',
+      title: 'Xala Technologies AS | Innovative Teknologiløsninger | Nesbru',
       description: 'Vi bygger innovative løsninger som driver vekst og forvandler ideer til virkelighet med banebrytende teknologi. Spesialister i AI, webapplikasjoner og enterprise-systemer.',
-      keywords: 'Xala Technologies, teknologiløsninger, AI-utvikling, webapplikasjoner, enterprise-systemer, Oslo, Norge, innovativ teknologi, digital transformasjon'
+      keywords: 'Xala Technologies, teknologiløsninger, AI-utvikling, webapplikasjoner, enterprise-systemer, Nesbru, Norge, innovativ teknologi, digital transformasjon'
     },
     services: {
       title: 'Våre Tjenester | Xala Technologies AS | AI og Webapplikasjoner',
@@ -22,7 +22,7 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
     team: {
       title: 'Vårt Team | Xala Technologies AS | Eksperter i Teknologi',
       description: 'Møt vårt dedikerte team av teknologieksperter og utviklere. Vi kombinerer erfaring og innovasjon for å levere fremragende resultater.',
-      keywords: 'teknologieksperter, utviklerteam, IT-konsulenter, teknologiledelse, Oslo, Norge'
+      keywords: 'teknologieksperter, utviklerteam, IT-konsulenter, teknologiledelse, Nesbru, Norge'
     },
     products: {
       title: 'Produkter | Xala Technologies AS | Innovative Løsninger',
@@ -30,16 +30,16 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
       keywords: 'teknologiprodukter, AI-løsninger, enterprise-systemer, digitale verktøy, programvareløsninger'
     },
     contact: {
-      title: 'Kontakt Oss | Xala Technologies AS | Oslo',
+      title: 'Kontakt Oss | Xala Technologies AS | Nesbru',
       description: 'Ta kontakt med Xala Technologies AS for å diskutere dine teknologibehov. Vi er her for å hjelpe deg med din digitale transformasjon.',
-      keywords: 'kontakt, teknologikonsultasjon, IT-rådgivning, Oslo, Norge'
+      keywords: 'kontakt, teknologikonsultasjon, IT-rådgivning, Nesbru, Norge'
     }
   },
   en: {
     home: {
-      title: 'Xala Technologies AS | Innovative Technology Solutions | Oslo',
+      title: 'Xala Technologies AS | Innovative Technology Solutions | Nesbru',
       description: 'We build innovative solutions that drive growth and transform ideas into reality with cutting-edge technology. Specialists in AI, web applications, and enterprise systems.',
-      keywords: 'Xala Technologies, technology solutions, AI development, web applications, enterprise systems, Oslo, Norway, innovative technology, digital transformation'
+      keywords: 'Xala Technologies, technology solutions, AI development, web applications, enterprise systems, Nesbru, Norway, innovative technology, digital transformation'
     },
     services: {
       title: 'Our Services | Xala Technologies AS | AI and Web Applications',
@@ -49,7 +49,7 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
     team: {
       title: 'Our Team | Xala Technologies AS | Technology Experts',
       description: 'Meet our dedicated team of technology experts and developers. We combine experience and innovation to deliver outstanding results.',
-      keywords: 'technology experts, development team, IT consultants, technology leadership, Oslo, Norway'
+      keywords: 'technology experts, development team, IT consultants, technology leadership, Nesbru, Norway'
     },
     products: {
       title: 'Products | Xala Technologies AS | Innovative Solutions',
@@ -57,9 +57,9 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
       keywords: 'technology products, AI solutions, enterprise systems, digital tools, software solutions'
     },
     contact: {
-      title: 'Contact Us | Xala Technologies AS | Oslo',
+      title: 'Contact Us | Xala Technologies AS | Nesbru',
       description: 'Get in touch with Xala Technologies AS to discuss your technology needs. We\'re here to help with your digital transformation.',
-      keywords: 'contact, technology consultation, IT consulting, Oslo, Norway'
+      keywords: 'contact, technology consultation, IT consulting, Nesbru, Norway'
     }
   }
 };

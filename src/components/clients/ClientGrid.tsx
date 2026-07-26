@@ -1,8 +1,10 @@
 import ClientCard from './ClientCard';
-import ExpandableGrid from '../ui/expandable-grid';
-import type { Database } from '@/integrations/supabase/types';
 
-type Client = Database['public']['Tables']['clients']['Row'];
+interface Client {
+  id: string;
+  name: string;
+  logo_url: string;
+}
 
 interface ClientGridProps {
   clients: Client[];

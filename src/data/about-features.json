@@ -1,0 +1,80 @@
+{
+    "no": [
+        {
+            "id": "innovation",
+            "title": "Innovasjon",
+            "description": "Vi driver kontinuerlig innovasjon for å holde kundene våre i forkant av teknologiutviklingen.",
+            "icon": "Lightbulb"
+        },
+        {
+            "id": "expertise",
+            "title": "Ekspertise",
+            "description": "Vårt team består av erfarne utviklere og konsulenter med dyp teknisk kompetanse.",
+            "icon": "Award"
+        },
+        {
+            "id": "partnership",
+            "title": "Partnerskap",
+            "description": "Vi bygger langsiktige partnerskap med våre kunder basert på tillit og felles suksess.",
+            "icon": "Handshake"
+        },
+        {
+            "id": "quality",
+            "title": "Kvalitet",
+            "description": "Vi leverer løsninger av høyeste kvalitet med fokus på sikkerhet og ytelse.",
+            "icon": "Shield"
+        }
+    ],
+    "en": [
+        {
+            "id": "innovation",
+            "title": "Innovation",
+            "description": "We drive continuous innovation to keep our customers ahead of technology developments.",
+            "icon": "Lightbulb"
+        },
+        {
+            "id": "expertise",
+            "title": "Expertise",
+            "description": "Our team consists of experienced developers and consultants with deep technical expertise.",
+            "icon": "Award"
+        },
+        {
+            "id": "partnership",
+            "title": "Partnership",
+            "description": "We build long-term partnerships with our customers based on trust and mutual success.",
+            "icon": "Handshake"
+        },
+        {
+            "id": "quality",
+            "title": "Quality",
+            "description": "We deliver solutions of the highest quality with focus on security and performance.",
+            "icon": "Shield"
+        }
+    ],
+    "ar": [
+        {
+            "id": "innovation",
+            "title": "الابتكار",
+            "description": "ندفع الابتكار المستمر للحفاظ على عملائنا في طليعة التطورات التقنية.",
+            "icon": "Lightbulb"
+        },
+        {
+            "id": "expertise",
+            "title": "الخبرة",
+            "description": "يتكون فريقنا من مطورين ومستشارين ذوي خبرة عميقة في المجال التقني.",
+            "icon": "Award"
+        },
+        {
+            "id": "partnership",
+            "title": "الشراكة",
+            "description": "نبني شراكات طويلة الأمد مع عملائنا مبنية على الثقة والنجاح المتبادل.",
+            "icon": "Handshake"
+        },
+        {
+            "id": "quality",
+            "title": "الجودة",
+            "description": "نقدم حلولاً بأعلى جودة مع التركيز على الأمان والأداء.",
+            "icon": "Shield"
+        }
+    ]
+}

@@ -1,0 +1,98 @@
+[
+    {
+        "id": "react",
+        "name": "React",
+        "category": "frontend",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+    },
+    {
+        "id": "typescript",
+        "name": "TypeScript",
+        "category": "language",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+    },
+    {
+        "id": "nodejs",
+        "name": "Node.js",
+        "category": "backend",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+    },
+    {
+        "id": "python",
+        "name": "Python",
+        "category": "language",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+    },
+    {
+        "id": "go",
+        "name": "Go",
+        "category": "language",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg"
+    },
+    {
+        "id": "rust",
+        "name": "Rust",
+        "category": "language",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg"
+    },
+    {
+        "id": "aws",
+        "name": "AWS",
+        "category": "cloud",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg"
+    },
+    {
+        "id": "azure",
+        "name": "Azure",
+        "category": "cloud",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg"
+    },
+    {
+        "id": "gcp",
+        "name": "Google Cloud",
+        "category": "cloud",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"
+    },
+    {
+        "id": "docker",
+        "name": "Docker",
+        "category": "devops",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+    },
+    {
+        "id": "kubernetes",
+        "name": "Kubernetes",
+        "category": "devops",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg"
+    },
+    {
+        "id": "postgresql",
+        "name": "PostgreSQL",
+        "category": "database",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+    },
+    {
+        "id": "mongodb",
+        "name": "MongoDB",
+        "category": "database",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+    },
+    {
+        "id": "redis",
+        "name": "Redis",
+        "category": "database",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg"
+    },
+    {
+        "id": "tensorflow",
+        "name": "TensorFlow",
+        "category": "ai",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
+    },
+    {
+        "id": "pytorch",
+        "name": "PyTorch",
+        "category": "ai",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg"
+    }
+]

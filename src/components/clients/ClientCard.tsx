@@ -13,18 +13,17 @@ const ClientCard = ({ name, logoUrl }: ClientCardProps) => {
     : originalUrl;
   const [src, setSrc] = useState(preferPng);
   const [triedSvg, setTriedSvg] = useState(false);
+
   return (
-    <div 
-      className="group relative h-24 flex items-center justify-center p-4 rounded-xl hover:shadow-card transition-all duration-500"
-    >
+    <div className="group relative h-24 flex items-center justify-center p-4 rounded-xl transition-all duration-500">
       <div className="absolute inset-0 rounded-xl client-card" />
-      
+
       {!imgError ? (
         <div className="relative w-full h-full flex items-center justify-center p-2">
-          <div className="w-full h-full flex items-center justify-center rounded-md client-logo-container">
+          <div className="w-full h-full flex items-center justify-center rounded-lg client-logo-container p-3">
             <img
               src={src}
-              alt={name}
+              alt=""
               onError={() => {
                 if (!triedSvg && originalUrl !== src) {
                   setTriedSvg(true);
@@ -33,7 +32,7 @@ const ClientCard = ({ name, logoUrl }: ClientCardProps) => {
                 }
                 setImgError(true);
               }}
-              className="h-14 sm:h-16 w-auto object-contain transition-transform duration-700 ease-out group-hover:scale-110"
+              className="h-12 sm:h-14 w-auto object-contain transition-transform duration-700 ease-out group-hover:scale-110"
               loading="lazy"
             />
           </div>
@@ -45,12 +44,6 @@ const ClientCard = ({ name, logoUrl }: ClientCardProps) => {
           </span>
         </div>
       )}
-
-      <div className="absolute bottom-1 left-0 w-full text-center opacity-0 transform translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
-        <span className="text-sm text-muted-foreground font-medium">
-          {name}
-        </span>
-      </div>
     </div>
   );
 };

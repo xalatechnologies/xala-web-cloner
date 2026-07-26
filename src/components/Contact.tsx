@@ -1,36 +1,16 @@
 import { useTranslation } from 'react-i18next';
-import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
-import type { Database } from '@/integrations/supabase/types';
+import { useSection } from '@/hooks/use-section';
 import { ContactInfo } from './contact/ContactInfo';
 import { SocialLinks } from './contact/SocialLinks';
 import { ContactForm } from './contact/ContactForm';
 import MainLayout from './layouts/MainLayout';
 
-type SupportedLanguage = Database['public']['Enums']['supported_language'];
-
 const Contact = () => {
   const { t, i18n } = useTranslation();
-
-  // Fetch section data based on current language
-  const { data: section } = useQuery({
-    queryKey: ['contact-section', i18n.language],
-    queryFn: async () => {
-      const currentLang = i18n.language.toLowerCase() as SupportedLanguage;
-      const { data, error } = await supabase
-        .from('sections')
-        .select('*')
-        .eq('section_name', 'contact')
-        .eq('language', currentLang)
-        .maybeSingle();
-
-      if (error) throw error;
-      return data;
-    },
-  });
+  const { data: section } = useSection('contact');
 
   return (
-    <MainLayout 
+    <MainLayout
       pageId="contact"
       language={i18n.language}
       analytics={{
@@ -54,13 +34,13 @@ const Contact = () => {
               {section?.description || t('contact.description')}
             </p>
           </div>
-          
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
-            <div className="lg:w-[400px] space-y-8">
+
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 overflow-hidden">
+            <div className="w-full lg:w-[400px] lg:shrink-0 space-y-4 lg:space-y-8">
               <ContactInfo />
               <SocialLinks />
             </div>
-            <div className="flex-1">
+            <div className="flex-1 min-w-0 overflow-hidden">
               <ContactForm />
             </div>
           </div>
