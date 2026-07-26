@@ -11,8 +11,11 @@ interface UseLocalizedDataOptions {
   enabled?: boolean;
 }
 
+/** A data file is either a flat array or an object keyed by language. */
+type LocalizedSource = unknown[] | Record<string, unknown[]>;
+
 // Maps query keys to their data sources
-const dataMap: Record<string, any> = {
+const dataMap: Record<string, LocalizedSource> = {
   services: servicesData,
   products: productsData,
   clients: clientsData,

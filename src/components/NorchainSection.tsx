@@ -45,7 +45,7 @@ export default function NorchainSection() {
     ];
 
     return (
-        <section className="py-20 md:py-28 bg-gradient-to-b from-slate-900 to-slate-800 relative overflow-hidden section-styled">
+        <section className="py-20 md:py-28 bg-gradient-to-b from-stone-900 to-stone-800 relative overflow-hidden section-styled">
             {/* Background elements */}
             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-repeat opacity-5" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
@@ -53,16 +53,16 @@ export default function NorchainSection() {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <span className="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                    <span className="inline-block px-4 py-1 bg-[hsl(32_58%_56%/0.15)] text-[hsl(32_58%_56%)] rounded-full text-sm font-medium mb-4">
                         {t('norchain.badge')}
                     </span>
                     <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
                         {t('norchain.title')}
                     </h2>
-                    <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-4 leading-relaxed">
+                    <p className="text-lg md:text-xl text-stone-300 max-w-3xl mx-auto mb-4 leading-relaxed">
                         {t('norchain.subtitle')}
                     </p>
-                    <p className="text-base text-slate-400">
+                    <p className="text-base text-stone-400">
                         {t('norchain.subtext')}
                     </p>
                 </div>
@@ -72,7 +72,7 @@ export default function NorchainSection() {
                     {stats.map((stat, index) => (
                         <div key={index} className="text-center p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
                             <div className="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.value}</div>
-                            <div className="text-base text-slate-300">{stat.label}</div>
+                            <div className="text-base text-stone-300">{stat.label}</div>
                         </div>
                     ))}
                 </div>
@@ -90,7 +90,7 @@ export default function NorchainSection() {
                                     <IconComponent className="w-6 h-6 text-primary" />
                                 </div>
                                 <h3 className="text-xl md:text-2xl font-bold text-white mb-3">{feature.title}</h3>
-                                <p className="text-base md:text-lg text-slate-300 leading-relaxed">{feature.description}</p>
+                                <p className="text-base md:text-lg text-stone-300 leading-relaxed">{feature.description}</p>
                             </div>
                         );
                     })}

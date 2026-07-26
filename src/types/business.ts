@@ -335,15 +335,28 @@ export class BusinessDataValidator {
  */
 export class BusinessContentUtils {
   /**
-   * Generates SEO-friendly slug from title
+   * Generates SEO-friendly slug from title.
+   *
+   * Norwegian characters are transliterated (ø→o, æ→ae, å→a) rather than
+   * dropped: stripping them turned "Løsning" into "lsning". Other accented
+   * latin letters fold via NFD (é→e, ü→u). Remaining punctuation is removed
+   * rather than hyphenated, so "Special!@#Characters" stays one word.
+   *
+   * Trailing hyphens are stripped with a hyphen-aware trim — plain trim() only
+   * removes whitespace, which by this point has already become hyphens.
    */
   static generateSlug(title: string): string {
     return title
       .toLowerCase()
-      .replace(/[^a-z0-9 -]/g, '') // Remove special characters
-      .replace(/\s+/g, '-') // Replace spaces with hyphens
-      .replace(/-+/g, '-') // Replace multiple hyphens with single
-      .trim();
+      .replace(/ø/g, 'o')
+      .replace(/æ/g, 'ae')
+      .replace(/å/g, 'a')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '') // strip combining accents
+      .replace(/[^a-z0-9 -]/g, '') // remove remaining special characters
+      .replace(/\s+/g, '-') // replace spaces with hyphens
+      .replace(/-+/g, '-') // collapse repeated hyphens
+      .replace(/^-+|-+$/g, ''); // trim leading/trailing hyphens
   }
   
   /**

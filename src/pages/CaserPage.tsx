@@ -22,29 +22,43 @@ import {
 } from '@/data/caser-page-entries';
 
 // ─── Sector color map ─────────────────────────────────────────────────────────
+/**
+ * Sector badges stay categorical: nine sectors need nine tellable-apart hues,
+ * and an all-warm ramp would collapse them into one another. They are pulled
+ * toward the warm end of the wheel where the palette allows, and each entry
+ * uses a single hue for text, fill and border so a badge reads as one thing.
+ */
 const SECTOR_COLORS: Record<string, string> = {
-  'Public Sector':       'text-blue-400 bg-blue-500/10 border-blue-500/25',
-  'Aviation':            'text-sky-400 bg-sky-500/10 border-sky-500/25',
-  'Finance':             'text-emerald-400 bg-emerald-500/10 border-emerald-500/25',
-  'Healthcare':          'text-rose-400 bg-rose-500/10 border-rose-500/25',
-  'Legal / Tech':        'text-purple-400 bg-purple-500/10 border-purple-500/25',
-  'Public Transport':    'text-orange-400 bg-orange-500/10 border-orange-500/25',
-  'Energy':              'text-yellow-400 bg-yellow-500/10 border-yellow-500/25',
-  'NGO / International': 'text-cyan-400 bg-cyan-500/10 border-cyan-500/25',
-  'Telecom':             'text-indigo-400 bg-indigo-500/10 border-indigo-500/25',
+  'Public Sector':       'text-amber-800 dark:text-amber-300 bg-amber-500/10 border-amber-500/30',
+  'Aviation':            'text-sky-700 dark:text-sky-300 bg-sky-500/10 border-sky-500/30',
+  'Finance':             'text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 border-emerald-500/30',
+  'Healthcare':          'text-rose-700 dark:text-rose-300 bg-rose-500/10 border-rose-500/30',
+  'Legal / Tech':        'text-violet-700 dark:text-violet-300 bg-violet-500/10 border-violet-500/30',
+  'Public Transport':    'text-orange-700 dark:text-orange-300 bg-orange-500/10 border-orange-500/30',
+  'Energy':              'text-yellow-700 dark:text-yellow-300 bg-yellow-500/10 border-yellow-500/30',
+  'NGO / International': 'text-teal-700 dark:text-teal-300 bg-teal-500/10 border-teal-500/30',
+  'Telecom':             'text-fuchsia-700 dark:text-fuchsia-300 bg-fuchsia-500/10 border-fuchsia-500/30',
 };
 
 const SECTOR_DOT: Record<string, string> = {
-  'Public Sector':       'bg-blue-400',
+  'Public Sector':       'bg-amber-400',
   'Aviation':            'bg-sky-400',
   'Finance':             'bg-emerald-400',
   'Healthcare':          'bg-rose-400',
-  'Legal / Tech':        'bg-purple-400',
+  'Legal / Tech':        'bg-violet-400',
   'Public Transport':    'bg-orange-400',
   'Energy':              'bg-yellow-400',
-  'NGO / International': 'bg-cyan-400',
-  'Telecom':             'bg-indigo-400',
+  'NGO / International': 'bg-teal-400',
+  'Telecom':             'bg-fuchsia-400',
 };
+
+/**
+ * Sector is a closed taxonomy used as the filter key, the colour-map key and
+ * the visible label. Only the label is translated — keeping the raw English
+ * value as the key means filtering, colours and the data file all stay in sync.
+ */
+const sectorKey = (sector: string) =>
+  `caserPage.sectors.${sector.toLowerCase().replace(' / ', '_').replace(/ /g, '_')}`;
 
 // ─── Case Card ─────────────────────────────────────────────────────────────────
 function CaseCard({ entry, index }: { entry: CaserEntry; index: number }) {
@@ -71,14 +85,14 @@ function CaseCard({ entry, index }: { entry: CaserEntry; index: number }) {
           'absolute top-4 left-4 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full border',
           sectorColor
         )}>
-          {entry.sector}
+          {t(sectorKey(entry.sector), entry.sector)}
         </span>
 
         {/* Full case badge */}
         {isLinked && (
           <span className="absolute top-4 right-4 flex items-center gap-1.5 text-xs font-bold text-primary bg-primary/10 border border-primary/30 px-3 py-1.5 rounded-full">
             <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-            Full case
+            {t('caserPage.fullCase')}
           </span>
         )}
 
@@ -101,12 +115,12 @@ function CaseCard({ entry, index }: { entry: CaserEntry; index: number }) {
 
       {/* Content */}
       <div className="p-6 flex flex-col flex-1">
-        <h3 className={cn(
+        <h2 className={cn(
           'text-xl font-bold mb-3 leading-tight transition-colors duration-200',
           isLinked ? 'text-foreground group-hover:text-primary' : 'text-muted-foreground'
         )}>
           {entry.title}
-        </h3>
+        </h2>
 
         <p className="text-sm leading-relaxed text-muted-foreground flex-1 line-clamp-3 mb-5">
           {entry.description}
@@ -176,6 +190,7 @@ function FilterSidebar({
   resultCount: number;
   totalCount: number;
 }) {
+  const { t } = useTranslation();
   const [techOpen, setTechOpen] = useState(true);
 
   return (
@@ -186,9 +201,9 @@ function FilterSidebar({
         <div className="flex items-center justify-between">
           <p className="text-sm font-bold text-foreground">
             {hasFilters ? (
-              <><span className="text-primary">{resultCount}</span> <span className="text-muted-foreground font-normal">of {totalCount} cases</span></>
+              <><span className="text-primary">{resultCount}</span> <span className="text-muted-foreground font-normal">/ {totalCount} {t('caserPage.cases')}</span></>
             ) : (
-              <><span className="text-primary">{totalCount}</span> <span className="text-muted-foreground font-normal">cases total</span></>
+              <><span className="text-primary">{totalCount}</span> <span className="text-muted-foreground font-normal">{t('caserPage.casesTotal')}</span></>
             )}
           </p>
           {hasFilters && (
@@ -197,15 +212,15 @@ function FilterSidebar({
               className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors font-semibold"
             >
               <X className="h-3.5 w-3.5" />
-              Clear all
+              {t('caserPage.clearAll')}
             </button>
           )}
         </div>
 
         {/* Sector */}
         <div>
-          <p className="text-xs font-black uppercase tracking-widest text-muted-foreground/50 mb-4">
-            Sector
+          <p className="text-xs font-black uppercase tracking-widest text-muted-foreground mb-4">
+            {t('caserPage.sector')}
           </p>
           <div className="space-y-1">
             <button
@@ -217,7 +232,7 @@ function FilterSidebar({
                   : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
               )}
             >
-              <span>All sectors</span>
+              <span>{t('caserPage.allSectors')}</span>
               <span className={cn(
                 'text-xs font-bold px-2 py-0.5 rounded-lg',
                 activeSector === null ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground'
@@ -242,7 +257,7 @@ function FilterSidebar({
                 >
                   <span className="flex items-center gap-2.5">
                     <span className={cn('h-2 w-2 rounded-full shrink-0', dot)} />
-                    {sector}
+                    {t(sectorKey(sector), sector)}
                   </span>
                   <span className="text-xs font-bold bg-muted text-muted-foreground px-2 py-0.5 rounded-lg">
                     {count}
@@ -262,8 +277,8 @@ function FilterSidebar({
             onClick={() => setTechOpen(v => !v)}
             className="w-full flex items-center justify-between mb-4"
           >
-            <p className="text-xs font-black uppercase tracking-widest text-muted-foreground/50">
-              Technology
+            <p className="text-xs font-black uppercase tracking-widest text-muted-foreground">
+              {t('caserPage.technology')}
               {activeTags.size > 0 && (
                 <span className="ml-2 bg-primary text-primary-foreground text-[10px] font-black px-1.5 py-0.5 rounded-full">
                   {activeTags.size}
@@ -271,8 +286,8 @@ function FilterSidebar({
               )}
             </p>
             {techOpen
-              ? <ChevronUp className="h-4 w-4 text-muted-foreground/50" />
-              : <ChevronDown className="h-4 w-4 text-muted-foreground/50" />
+              ? <ChevronUp className="h-4 w-4 text-muted-foreground" />
+              : <ChevronDown className="h-4 w-4 text-muted-foreground" />
             }
           </button>
           <AnimatePresence>
@@ -325,6 +340,7 @@ function MobileFilterBar({
   clearAll: () => void;
   hasFilters: boolean;
 }) {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
 
   return (
@@ -333,14 +349,14 @@ function MobileFilterBar({
         <button
           onClick={() => setOpen(v => !v)}
           className={cn(
-            'shrink-0 flex items-center gap-2 text-sm font-bold px-4 py-2.5 rounded-xl border transition-all',
+            'shrink-0 flex items-center gap-2 text-sm font-bold px-4 py-3 rounded-xl border transition-all',
             open || hasFilters
               ? 'bg-primary text-primary-foreground border-primary'
               : 'bg-card border-border text-foreground'
           )}
         >
           <SlidersHorizontal className="h-4 w-4" />
-          Filters
+          {t('caserPage.filters')}
           {hasFilters && (
             <span className="bg-primary-foreground/20 text-primary-foreground text-xs font-black px-1.5 py-0.5 rounded-full leading-none">
               {(activeSector ? 1 : 0) + activeTags.size}
@@ -351,7 +367,7 @@ function MobileFilterBar({
         <button
           onClick={() => setActiveSector(null)}
           className={cn(
-            'shrink-0 text-sm font-bold px-4 py-2.5 rounded-xl border transition-all',
+            'shrink-0 text-sm font-bold px-4 py-3 rounded-xl border transition-all',
             activeSector === null
               ? 'bg-primary text-primary-foreground border-primary'
               : 'bg-card border-border text-muted-foreground hover:text-foreground'
@@ -364,13 +380,13 @@ function MobileFilterBar({
             key={sector}
             onClick={() => setActiveSector(activeSector === sector ? null : sector)}
             className={cn(
-              'shrink-0 text-sm font-bold px-4 py-2.5 rounded-xl border transition-all whitespace-nowrap',
+              'shrink-0 text-sm font-bold px-4 py-3 rounded-xl border transition-all whitespace-nowrap',
               activeSector === sector
                 ? 'bg-primary text-primary-foreground border-primary'
                 : 'bg-card border-border text-muted-foreground hover:text-foreground'
             )}
           >
-            {sector}
+            {t(sectorKey(sector), sector)}
           </button>
         ))}
       </div>
@@ -386,7 +402,7 @@ function MobileFilterBar({
           >
             <div className="bg-card border border-border rounded-2xl p-5">
               <div className="flex items-center justify-between mb-4">
-                <p className="text-sm font-black uppercase tracking-widest text-muted-foreground/50">Technology</p>
+                <p className="text-sm font-black uppercase tracking-widest text-muted-foreground">{t('caserPage.technology')}</p>
                 {hasFilters && (
                   <button onClick={clearAll} className="text-sm text-primary font-bold">Clear all</button>
                 )}
@@ -426,7 +442,11 @@ export default function CaserPage() {
   const toggleTag = (tag: string) => {
     setActiveTags(prev => {
       const next = new Set(prev);
-      next.has(tag) ? next.delete(tag) : next.add(tag);
+      if (next.has(tag)) {
+        next.delete(tag);
+      } else {
+        next.add(tag);
+      }
       return next;
     });
   };
@@ -464,6 +484,8 @@ export default function CaserPage() {
 
       <div className="min-h-screen flex flex-col bg-background">
         <Navbar />
+
+        <main id="main" className="flex-1">
 
         {/* ── Hero ─────────────────────────────────────────────────────── */}
         <section className="relative overflow-hidden pt-32 pb-24 border-b border-border">
@@ -530,7 +552,8 @@ export default function CaserPage() {
               type="text"
               value={search}
               onChange={e => setSearch(e.target.value)}
-              placeholder="Search by client, technology, or sector…"
+              placeholder={t('caserPage.searchPlaceholder')}
+              aria-label={t('caserPage.searchPlaceholder')}
               className="w-full h-14 pl-12 pr-12 bg-card border border-border rounded-2xl text-base text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-all font-medium"
             />
             {search && (
@@ -582,9 +605,9 @@ export default function CaserPage() {
                   ) : (
                     <>
                       <span className="font-black text-foreground text-lg">{caserEntries.length}</span>
-                      <span className="text-muted-foreground"> cases</span>
+                      <span className="text-muted-foreground"> {t('caserPage.cases')}</span>
                       <span className="mx-2 text-border">·</span>
-                      <span className="font-bold text-primary">{linkedCount} with full case studies</span>
+                      <span className="font-bold text-primary">{linkedCount} {t('caserPage.withFullCase')}</span>
                     </>
                   )}
                 </p>
@@ -615,7 +638,7 @@ export default function CaserPage() {
                       onClick={clearAll}
                       className="text-sm font-bold text-muted-foreground hover:text-foreground transition-colors px-2"
                     >
-                      Clear all
+                      {t('caserPage.clearAll')}
                     </button>
                   </div>
                 )}
@@ -639,7 +662,7 @@ export default function CaserPage() {
                       className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3 rounded-xl font-bold text-base hover:bg-primary/90 transition-colors"
                     >
                       <X className="h-4 w-4" />
-                      Clear all filters
+                      {t('caserPage.clearAllFilters')}
                     </button>
                   </motion.div>
                 ) : (
@@ -668,6 +691,8 @@ export default function CaserPage() {
             </div>
           </div>
         </div>
+
+        </main>
 
         <Footer />
       </div>

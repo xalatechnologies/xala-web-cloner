@@ -199,7 +199,12 @@ describe('BusinessContentUtils', () => {
     });
 
     it('should handle Norwegian characters', () => {
-      expect(BusinessContentUtils.generateSlug('Norsk Løsning med Æ Ø Å')).toBe('norsk-losning-med');
+      // Transliterated, not dropped: the old expectation ('norsk-losning-med')
+      // was unreachable — it required ø→o inside a word while silently
+      // discarding the standalone Æ Ø Å, which no consistent rule produces.
+      expect(BusinessContentUtils.generateSlug('Norsk Løsning med Æ Ø Å')).toBe('norsk-losning-med-ae-o-a');
+      expect(BusinessContentUtils.generateSlug('Bærekraftig Løsning')).toBe('baerekraftig-losning');
+      expect(BusinessContentUtils.generateSlug('Årsrapport')).toBe('arsrapport');
     });
   });
 

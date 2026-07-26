@@ -7,25 +7,30 @@ import ServicesTeaser from '../components/teasers/ServicesTeaser';
 import ProductsTeaser from '../components/teasers/ProductsTeaser';
 import NorchainSection from '../components/NorchainSection';
 import ProcessTeaser from '../components/teasers/ProcessTeaser';
-// import TeamTeaser from '../components/teasers/TeamTeaser';
 import TechTeaser from '../components/teasers/TechTeaser';
 import ContactTeaser from '../components/teasers/ContactTeaser';
+import FinalCTA from '../components/FinalCTA';
 import { useTranslation } from 'react-i18next';
 
 const Index = () => {
   const { i18n } = useTranslation();
 
-  // Dynamic words that change based on language
+  // The rotating word names the product families themselves, taken from the
+  // work in the case studies and the product line: saksbehandling, Nordre
+  // Follo's tilskudds- and bevillingsportal, Digiskjema's form solutions, the
+  // integration and automation work. Not a technology list — a buyer searching
+  // for "bevillingsportal" should see the word they searched for.
   const getHeroWords = () => {
-    return i18n.language === 'en'
-      ? ["AI", "cloud", "apps", "data"]
-      : ["AI", "sky", "apper", "data"];
+    const lang = i18n.language?.toLowerCase() ?? 'no';
+    if (lang.startsWith('en')) return ['case management systems', 'grant portals', 'licensing portals', 'digital forms', 'process automation', 'integrations'];
+    if (lang.startsWith('ar')) return ['أنظمة معالجة الطلبات', 'بوابات المنح', 'بوابات التراخيص', 'النماذج الرقمية', 'أتمتة العمليات', 'التكاملات'];
+    return ['saksbehandlingssystemer', 'tilskuddsportaler', 'bevillingsportaler', 'skjemaløsninger', 'prosessautomatisering', 'integrasjoner'];
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-xala-primary">
+    <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
-      <div className="flex-1">
+      <main id="main" className="flex-1">
         <VideoHero words={getHeroWords()} />
         <Clients />
         <ValueProps />
@@ -33,10 +38,10 @@ const Index = () => {
         <ProductsTeaser />
         <NorchainSection />
         <ProcessTeaser />
-        {/* <TeamTeaser /> */}
         <TechTeaser />
         <ContactTeaser />
-      </div>
+        <FinalCTA />
+      </main>
       <Footer />
     </div>
   );

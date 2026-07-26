@@ -88,11 +88,18 @@ export default function BloggPage() {
               Ingen artikler her ennå.
             </p>
           ) : (
-            <div className="grid gap-6 md:grid-cols-2">
+            <>
+              {/* PostCard renders an h3, which is right on the post page where
+                  it sits under "Relaterte artikler". Here it would jump straight
+                  from the page h1, so the grid gets its own heading — visually
+                  hidden, since the page title already says what these are. */}
+              <h2 className="sr-only">Alle artikler</h2>
+              <div className="grid gap-6 md:grid-cols-2">
               {visible.map((post, index) => (
                 <PostCard key={`${post.lang}/${post.slug}`} post={post} featured={index === 0 && !activeTag} />
-              ))}
-            </div>
+                ))}
+              </div>
+            </>
           )}
         </div>
       </main>

@@ -6,6 +6,14 @@ interface GridConfig {
   cols?: number;
 }
 
+/** Mirrors CaseStudyCard's `metrics` contract, which is the only consumer. */
+export interface CaseStudyMetric {
+  id: string;
+  name: string;
+  value: string;
+  category: string;
+}
+
 interface CaseStudy {
   id: string;
   title: string;
@@ -13,7 +21,7 @@ interface CaseStudy {
   image_url: string | null;
   icon: string | null;
   slug?: string | null;
-  case_study_metrics: any[];
+  case_study_metrics: CaseStudyMetric[];
 }
 
 interface CaseStudyGridProps extends GridConfig {

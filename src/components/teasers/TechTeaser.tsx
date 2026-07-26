@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ChevronRight } from 'lucide-react';
+import { Section } from '@/components/ui/section';
 
 export default function TechTeaser() {
   const { t } = useTranslation();
@@ -60,7 +61,7 @@ export default function TechTeaser() {
   ];
 
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden bg-gradient-to-b from-background via-muted/30 to-background section-styled">
+    <Section tone="muted" size="md" styled container={false}>
       {/* Animated background grid */}
       <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]">
         <div className="absolute inset-0" style={{
@@ -71,7 +72,7 @@ export default function TechTeaser() {
 
       {/* Floating orbs */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-48 h-48 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      <div className="absolute bottom-20 right-10 w-48 h-48 bg-amber-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -143,10 +144,10 @@ export default function TechTeaser() {
             className="inline-flex items-center px-8 py-4 text-base font-medium rounded-xl text-primary-foreground bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transform hover:-translate-y-1"
           >
             {t('teasers.tech.viewTechnology')}
-            <ChevronRight className="ms-3 h-5 w-5 rtl:rotate-180" />
+            <ChevronRight className="ms-3 h-5 w-5" />
           </Link>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

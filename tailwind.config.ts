@@ -20,6 +20,11 @@ export default {
       },
     },
     extend: {
+      boxShadow: {
+        soft: "var(--shadow-sm)",
+        card: "var(--shadow-md)",
+        lift: "var(--shadow-lg)",
+      },
       colors: {
         // Core semantic tokens mapped to CSS variables
         border: "hsl(var(--border))",
@@ -56,6 +61,9 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        surface: "hsl(var(--surface))",
+        elevated: "hsl(var(--elevated))",
+        "border-strong": "hsl(var(--border-strong))",
         
         // Enhanced semantic colors
         success: {

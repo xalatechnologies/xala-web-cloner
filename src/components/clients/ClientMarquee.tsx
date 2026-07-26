@@ -1,11 +1,16 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, type CSSProperties } from 'react';
 import ClientCard from './ClientCard';
 
+/**
+ * Matches an entry in src/data/clients.json. The keys are camelCase there —
+ * the snake_case names this used to declare made every logo resolve to
+ * undefined, so the marquee rendered name-only cards.
+ */
 interface Client {
   id: string;
   name: string;
-  logo_url: string;
-  website_url?: string;
+  logoUrl: string;
+  websiteUrl?: string;
 }
 
 interface ClientMarqueeProps {
@@ -75,7 +80,14 @@ function MarqueeRow({ items, reverse, duration, scale = 1, opacity = 1 }: { item
   };
 
   return (
-    <div className="marquee overflow-hidden" style={{ ['--marquee-duration' as any]: `${duration}s`, transform: `scale(${scale})`, opacity }}>
+    <div
+      className="marquee overflow-hidden"
+      style={{
+        '--marquee-duration': `${duration}s`,
+        transform: `scale(${scale})`,
+        opacity,
+      } as CSSProperties}
+    >
       <div
         ref={containerRef}
         className={`marquee-inner`}
@@ -88,7 +100,7 @@ function MarqueeRow({ items, reverse, duration, scale = 1, opacity = 1 }: { item
         <div className={`marquee-row ${reverse ? 'marquee-row-reverse' : ''}`} style={{ animationPlayState: isDragging ? 'paused' as const : 'running' }}>
           {items.map((client, i) => (
             <div key={`${client.id}-${i}-${reverse ? 'rev' : 'fwd'}`} className="w-[280px]">
-              <ClientCard name={client.name} logoUrl={client.logo_url} />
+              <ClientCard name={client.name} logoUrl={client.logoUrl} />
             </div>
           ))}
         </div>

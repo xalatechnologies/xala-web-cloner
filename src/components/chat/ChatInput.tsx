@@ -49,7 +49,10 @@ export function ChatInput({
 
   return (
     <form onSubmit={handleSubmit} className="relative">
-      <div className="relative flex items-end overflow-hidden rounded-2xl border border-gray-200/50 bg-white/80 backdrop-blur-sm shadow-sm focus-within:border-xala-primary/50 focus-within:ring-2 focus-within:ring-xala-primary/20 dark:bg-background dark:border-border dark:focus-within:border-xala-primary/70">
+      {/* focus-within used undefined xala-primary utilities, so focusing the
+          input produced no border change and a ring with no colour — the
+          keyboard focus indicator was effectively missing. */}
+      <div className="relative flex items-end overflow-hidden rounded-2xl border border-stone-200/50 bg-white/80 backdrop-blur-sm shadow-sm focus-within:border-primary/50 focus-within:ring-2 focus-within:ring-primary/20 dark:bg-background dark:border-border dark:focus-within:border-primary/70">
         <TextareaAutosize
           ref={textareaRef}
           value={message}
@@ -70,7 +73,9 @@ export function ChatInput({
           disabled={!message.trim() || disabled}
           className={cn(
             'absolute bottom-2 right-2 flex h-8 w-8 items-center justify-center rounded-full',
-            'bg-primary text-primary-foreground dark:bg-gradient-to-b dark:from-xala-primary dark:via-xala-secondary dark:to-xala-primary',
+            // The dark: gradient had undefined colour stops, so it painted a
+            // transparent image over bg-primary. Dropped, not re-coloured.
+            'bg-primary text-primary-foreground',
             'transition-all duration-200 ease-out',
             'hover:shadow-md hover:scale-105 active:scale-95',
             'disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100'

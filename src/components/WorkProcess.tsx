@@ -53,7 +53,7 @@ const WorkProcess = () => {
                   <Icon className="w-6 h-6 md:w-8 md:h-8" />
                 </div>
               </div>
-              <h3 className="text-lg md:text-xl font-semibold text-primary">{process.title}</h3>
+              <h2 className="text-lg md:text-xl font-semibold text-primary">{process.title}</h2>
             </div>
 
             <p className="text-sm md:text-base text-muted-foreground">{process.description}</p>
@@ -64,7 +64,7 @@ const WorkProcess = () => {
         {index < totalProcesses - 1 && (process.step_number === 3 ? (
           <div className="flex flex-col items-center md:hidden py-4 text-primary">
             <div className="relative">
-              <div className="absolute inset-0 bg-xala-accent/20 blur-lg transform scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-primary/20 blur-lg transform scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative">
                 <ArrowDown className="w-6 h-6 animate-float" />
               </div>
@@ -76,7 +76,7 @@ const WorkProcess = () => {
             {/* Down arrow for mobile */}
             <div className="flex flex-col items-center md:hidden py-4 text-primary">
               <div className="relative">
-                <div className="absolute inset-0 bg-xala-accent/20 blur-lg transform scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-primary/20 blur-lg transform scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative">
                   <ArrowDown className="w-6 h-6 animate-float" />
                 </div>
@@ -101,20 +101,26 @@ const WorkProcess = () => {
   };
 
   return (
-    <section id="work-process" className="py-12 md:py-24 bg-gradient-to-br from-xala-primary via-xala-secondary to-xala-primary relative overflow-hidden">
+    // All three gradient stops referenced undefined xala-* colours, so this
+    // section rendered with no background at all — leaving its purple/cyan glow
+    // blobs floating on the page background. Restored as a dark section using
+    // the same slate gradient NorchainSection already uses.
+    <section id="work-process" className="py-12 md:py-24 bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-48 md:w-64 h-48 md:h-64 bg-purple-500/30 rounded-full filter blur-3xl animate-float-1"></div>
+        <div className="absolute top-1/4 left-1/4 w-48 md:w-64 h-48 md:h-64 bg-orange-500/30 rounded-full filter blur-3xl animate-float-1"></div>
         <div className="absolute bottom-1/4 right-1/4 w-48 md:w-64 h-48 md:h-64 bg-primary/30 rounded-full filter blur-3xl animate-float-2"></div>
-        <div className="absolute top-1/2 left-1/2 w-48 md:w-64 h-48 md:h-64 bg-cyan-500/30 rounded-full filter blur-3xl animate-float-3"></div>
+        <div className="absolute top-1/2 left-1/2 w-48 md:w-64 h-48 md:h-64 bg-amber-500/30 rounded-full filter blur-3xl animate-float-3"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-12 md:mb-20 animate-fade-in">
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 md:mb-6">
+          {/* Explicit light text: the section is dark in both colour schemes,
+              so text-foreground would be unreadable in light mode. */}
+          <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6">
             {section?.title || t('workProcess.title', 'What is our job?')}
-          </h2>
+          </h1>
           {(section?.description ?? t('workProcess.description', '')) && (
-            <p className="text-xala-text/80 max-w-2xl mx-auto text-base md:text-lg px-4">
+            <p className="text-stone-300 max-w-2xl mx-auto text-base md:text-lg px-4">
               {section?.description || t('workProcess.description', '')}
             </p>
           )}

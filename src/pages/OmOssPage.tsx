@@ -7,9 +7,9 @@ export default function OmOssPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="pt-20 flex-1">
+      <main id="main" className="pt-20 flex-1">
         <About />
-      </div>
+      </main>
       <Footer />
     </div>
   );

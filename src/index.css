@@ -36,6 +36,14 @@
   .heading {
     font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     font-feature-settings: "cv05" 1;
+
+    /* Norwegian compounds are long: "Informasjonskapselpolitikk" is 26
+       characters and at text-4xl it overflowed the viewport on a 390px screen,
+       giving the whole page a horizontal scrollbar. Headings now break and
+       hyphenate rather than push the layout wider. hyphens: auto uses the lang
+       attribute, which Navbar keeps in sync with the active language. */
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   /* Ensure all text elements use DigiList Inter font with cv05 feature */
@@ -54,44 +62,60 @@
   }
 }
 
-:root {
-  /* Light theme - Xala Brand Colors */
-  --background: 0 0% 99%;
-  /* #FCFCFC - Slightly warmer white */
-  --foreground: 0 0% 9%;
-  /* #171717 - Text Primary */
+/* ===========================================
+   Palette: bronze on warm graphite.
 
-  --muted: 120 5% 96%;
-  /* Slight green tint for muted */
-  --muted-foreground: 0 0% 36%;
-  /* #5B5B5B - Text Muted */
+   The previous brand green (#7ED956) measured 1.73:1 against white, so
+   text-primary was unreadable in light mode and failed WCAG AA by a wide
+   margin. Every value below is contrast-checked: the accent clears 4.5:1 on
+   its own background in both schemes, and body text clears 15:1.
+
+   The neutrals are warm rather than blue-grey — paper and graphite, not white
+   and slate — so the accent sits inside a warm family instead of fighting
+   a cool one.
+   =========================================== */
+
+:root {
+  /* Light theme — warm paper */
+  --background: 36 33% 97%;
+  /* #FAF6F0 - warm paper, not clinical white */
+  --foreground: 24 20% 12%;
+  /* #251D18 - espresso. 15.6:1 on paper */
+
+  --muted: 34 25% 93%;
+  --muted-foreground: 26 12% 38%;
+  /* #6D5F55 - 5.8:1 on paper */
 
   --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 9%;
+  --popover-foreground: 24 20% 12%;
 
   --card: 0 0% 100%;
-  /* #FFFFFF - Surface / White BG */
-  --card-foreground: 0 0% 9%;
-  /* #171717 - Text Primary */
+  --card-foreground: 24 20% 12%;
 
-  --border: 120 5% 90%;
-  /* Light border with subtle green */
-  --input: 120 5% 90%;
+  /* Elevation scale. One step per level of "above the page", so a card on a
+     section on the background reads as three distinct planes instead of two
+     near-identical ones. Verified: body text holds 16.6:1 on card, the bronze
+     accent 6.4:1. */
+  --surface: 34 25% 94%;
+  --elevated: 0 0% 100%;
 
-  /* Primary accent - Xala Brand Green */
-  --primary: 100 64% 60%;
-  /* #7ED956 - Xala Brand Green */
-  --primary-foreground: 0 0% 9%;
-  /* Dark text for contrast on green */
+  --border: 32 18% 86%;
+  --border-strong: 30 16% 78%;
+  --input: 32 18% 86%;
 
-  --secondary: 100 55% 50%;
-  /* Darker green for hover states */
-  --secondary-foreground: 0 0% 100%;
-  /* White for contrast */
+  /* Accent — bronze. Deep enough to carry white text and to be read as text. */
+  --primary: 28 52% 34%;
+  /* #84542A - bronze, 6.0:1 on paper */
+  --primary-foreground: 36 33% 98%;
+  /* Warm white on bronze */
 
-  --accent: 100 64% 60%;
-  /* Same as primary */
-  --accent-foreground: 0 0% 9%;
+  --secondary: 24 45% 26%;
+  /* Deeper bronze, for pressed and hover states */
+  --secondary-foreground: 36 33% 98%;
+
+  --accent: 36 55% 42%;
+  /* Warm brass — the subtler note, for highlights rather than actions */
+  --accent-foreground: 24 20% 12%;
 
   /* Semantic colors */
   --destructive: 0 84.2% 60.2%;
@@ -106,63 +130,74 @@
   --info: 221 83% 53%;
   --info-foreground: 0 0% 98%;
 
-  --ring: 100 64% 60%;
-  /* Match primary green */
+  --ring: 28 52% 34%;
 
-  /* Unified gradient system with Xala colors */
-  --gradient-start: 100 64% 60%;
-  /* Xala Green */
-  --gradient-middle: 0 0% 100%;
-  /* White */
-  --gradient-end: 120 5% 96%;
-  /* Muted surface */
+  --gradient-start: 28 52% 34%;
+  --gradient-middle: 36 33% 97%;
+  --gradient-end: 34 25% 93%;
 
-  /* Charts */
-  --chart-1: 100 64% 60%;
-  /* Xala Green */
-  --chart-2: 120 5% 96%;
-  --chart-3: 197 37% 24%;
-  --chart-4: 43 74% 66%;
-  --chart-5: 27 87% 67%;
+  /* Charts: a bronze-to-brass ramp with two warm neutrals, so a series reads
+     as one family rather than five unrelated hues. */
+  --chart-1: 28 52% 38%;
+  --chart-2: 36 55% 45%;
+  --chart-3: 14 40% 34%;
+  --chart-4: 42 45% 50%;
+  --chart-5: 26 14% 42%;
 
-  /* Enhanced gradients */
-  --hero-gradient: radial-gradient(1200px 600px at 20% 0%, rgba(126, 217, 86, 0.15) 0%, #FFFFFF 60%);
-  --highlight-gradient: radial-gradient(900px 500px at 80% 50%, rgba(126, 217, 86, 0.2) 0%, transparent 60%);
-  --footer-gradient: radial-gradient(1000px 520px at 50% 100%, rgba(126, 217, 86, 0.1) 0%, #FFFFFF 55%);
+  /* Ambient washes. Kept low-alpha: the accent should feel like warmth in the
+     room, not a coloured overlay. */
+  /* Shadows carry a little of the palette's warmth. Pure black over warm
+     neutrals reads as a grey smudge rather than depth. */
+  --shadow-sm: 0 1px 2px hsl(24 30% 12% / 0.06), 0 1px 1px hsl(24 30% 12% / 0.04);
+  --shadow-md: 0 4px 12px hsl(24 30% 12% / 0.08), 0 1px 3px hsl(24 30% 12% / 0.06);
+  --shadow-lg: 0 12px 32px hsl(24 30% 12% / 0.10), 0 4px 8px hsl(24 30% 12% / 0.06);
+
+  --hero-gradient: radial-gradient(1200px 600px at 20% 0%, hsl(28 52% 34% / 0.10) 0%, hsl(36 33% 97%) 62%);
+  --highlight-gradient: radial-gradient(900px 500px at 80% 50%, hsl(36 55% 42% / 0.12) 0%, transparent 60%);
+  --footer-gradient: radial-gradient(1000px 520px at 50% 100%, hsl(28 52% 34% / 0.08) 0%, hsl(36 33% 97%) 55%);
 }
 
 .dark {
-  /* Dark theme - Premium dark with Xala Brand Green */
-  --background: 222 20% 6%;
-  /* Rich dark with subtle blue tint */
-  --foreground: 0 0% 98%;
-  /* Near white for excellent readability */
+  /* Dark theme — warm graphite. The neutrals carry a little red/orange so the
+     page reads as warm charcoal rather than the blue-black it used to be. */
+  --background: 20 14% 7%;
+  /* #14110F - warm near-black */
+  --foreground: 36 20% 96%;
+  /* #F7F5F3 - 17.3:1 on background */
 
-  --muted: 220 15% 12%;
-  --muted-foreground: 0 0% 70%;
+  --muted: 22 12% 10%;
+  --muted-foreground: 30 8% 62%;
+  /* #A69E96 - 7.1:1 on background */
 
-  --popover: 222 20% 8%;
-  --popover-foreground: 0 0% 98%;
+  --popover: 22 12% 10%;
+  --popover-foreground: 36 20% 96%;
 
-  --card: 222 15% 10%;
-  --card-foreground: 0 0% 98%;
+  --card: 24 11% 13%;
+  --card-foreground: 36 20% 96%;
 
-  --border: 220 10% 18%;
-  --input: 220 10% 18%;
+  /* Dark had muted at 14% sitting *lighter* than card at 10%, so a card on a
+     muted section appeared to sink into it. The scale now rises: background 7,
+     surface 10, card 13, elevated 17. Text holds 14.8:1 on card. */
+  --surface: 22 12% 10%;
+  --elevated: 24 10% 17%;
 
-  /* Primary - Brighter Xala green for dark mode visibility */
-  --primary: 100 70% 55%;
-  /* Brighter green for dark backgrounds */
-  --primary-foreground: 0 0% 9%;
-  /* Dark text for contrast */
+  --border: 24 9% 20%;
+  --border-strong: 26 10% 28%;
+  --input: 24 9% 20%;
 
-  --secondary: 100 55% 40%;
-  /* Darker green for secondary */
-  --secondary-foreground: 0 0% 98%;
-  /* White for contrast */
+  /* Bronze, lifted here so it holds up against near-black */
+  --primary: 32 58% 56%;
+  /* #D0934E - bronze, 7.0:1 on background */
+  --primary-foreground: 24 20% 10%;
+  /* Dark warm text on bronze - 6.6:1 */
 
-  --accent: 220 15% 15%;
-  --accent-foreground: 0 0% 98%;
+  --secondary: 26 40% 34%;
+  --secondary-foreground: 36 20% 96%;
+
+  /* accent is a surface here, not the hot colour — it is what hover states sit
+     on. The warm highlight is --highlight below. */
+  --accent: 24 10% 16%;
+  --accent-foreground: 36 20% 96%;
 
   /* Semantic colors for dark */
   --destructive: 0 62.8% 50%;
@@ -177,16 +212,26 @@
   --info: 221 83% 60%;
   --info-foreground: 0 0% 98%;
 
-  --ring: 100 70% 55%;
-  /* Match primary green */
+  --ring: 32 58% 56%;
 
-  /* Unified gradient system for dark with Xala green */
-  --gradient-start: 100 70% 55%;
-  /* Xala green */
-  --gradient-middle: 222 20% 6%;
-  /* Dark background */
-  --gradient-end: 220 15% 12%;
-  /* Muted dark */
+  --gradient-start: 32 58% 56%;
+  --gradient-middle: 20 14% 7%;
+  --gradient-end: 24 10% 14%;
+
+  --chart-1: 32 58% 56%;
+  --chart-2: 40 62% 58%;
+  --chart-3: 14 45% 45%;
+  --chart-4: 44 50% 58%;
+  --chart-5: 30 8% 55%;
+
+  /* Deeper and more opaque on dark, where shadows do more of the separating. */
+  --shadow-sm: 0 1px 2px hsl(20 30% 2% / 0.5);
+  --shadow-md: 0 4px 14px hsl(20 30% 2% / 0.55), 0 1px 3px hsl(20 30% 2% / 0.4);
+  --shadow-lg: 0 16px 40px hsl(20 30% 2% / 0.6), 0 4px 10px hsl(20 30% 2% / 0.45);
+
+  --hero-gradient: radial-gradient(1200px 600px at 20% 0%, hsl(32 58% 56% / 0.14) 0%, hsl(20 14% 7%) 62%);
+  --highlight-gradient: radial-gradient(900px 500px at 80% 50%, hsl(40 62% 58% / 0.10) 0%, transparent 60%);
+  --footer-gradient: radial-gradient(1000px 520px at 50% 100%, hsl(32 58% 56% / 0.10) 0%, hsl(20 14% 7%) 55%);
 }
 
 /* ===========================================
@@ -342,7 +387,7 @@
 
   /* Dark mode: client cards with subtle neutral background */
   .dark .client-card {
-    @apply bg-neutral-200/95 border-neutral-300/50 shadow-lg rounded-xl;
+    @apply bg-stone-200/95 border-stone-300/50 shadow-lg rounded-xl;
   }
 
   /* Logo containers inside client cards */
@@ -783,10 +828,18 @@ textarea {
   text-align: left;
 }
 
-/* RTL flex direction adjustments */
-[dir="rtl"] .flex-row:not(.rtl-preserve) {
-  flex-direction: row-reverse;
-}
+/* No flex-direction overrides for RTL.
+ *
+ * `dir="rtl"` already reverses the visual order of a `flex-direction: row`
+ * container — that is what the property is for. Adding `row-reverse` on top
+ * reverses it a second time, so the layout lands back in LTR order while the
+ * text runs right-to-left. That is exactly what was happening in the header:
+ * the logo sat on the left of the Arabic page, where the last item belongs.
+ *
+ * The rules that did it are deleted rather than narrowed. If a specific row
+ * genuinely needs to stay in source order regardless of direction, give it
+ * .rtl-preserve, which is still defined below.
+ */
 
 /* RTL margin/padding adjustments using logical properties */
 [dir="rtl"] .ml-auto {
@@ -804,16 +857,32 @@ textarea {
   transform: scaleX(-1);
 }
 
+/* Arrows and chevrons point the other way in a right-to-left page.
+ *
+ * Done once here rather than as on each icon: there were
+ * eighteen directional icons and only six carried the class, so "next" arrows
+ * pointed backwards across most of the Arabic site.
+ *
+ * `scale` rather than `transform: scaleX(-1)` on purpose — Tailwind builds
+ * hover effects like group-hover:translate-x-0.5 out of the `transform`
+ * property, and overriding it here would silently kill them. `scale` is its own
+ * property and composes instead of clobbering.
+ */
+[dir="rtl"] .lucide-arrow-right,
+[dir="rtl"] .lucide-arrow-left,
+[dir="rtl"] .lucide-chevron-right,
+[dir="rtl"] .lucide-chevron-left {
+  scale: -1 1;
+}
+
 /* Preserve certain flex layouts in RTL */
 .rtl-preserve {
   flex-direction: row !important;
 }
 
-/* RTL navigation adjustments */
-[dir="rtl"] nav .gap-6,
-[dir="rtl"] nav .gap-4 {
-  flex-direction: row-reverse;
-}
+/* (The [dir="rtl"] nav .gap-6 / .gap-4 row-reverse rules lived here. They
+ * matched the header's own "flex items-center justify-between gap-6" container
+ * and double-flipped it — see the note above.) */
 
 /* Ensure icons in buttons stay correctly positioned */
 [dir="rtl"] .inline-flex.items-center .ml-2,

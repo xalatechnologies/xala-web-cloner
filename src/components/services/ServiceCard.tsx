@@ -51,8 +51,8 @@ const ServiceCard = ({ icon, title, description, image, language = 'en' }: Servi
             <div className="absolute inset-0 bg-primary/20 rounded-xl blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             {IconComponent && <IconComponent className="w-7 h-7 relative z-10" />}
           </div>
-          <h3 className={`service-card-title ${isNorwegian ? 'no' : ''}`} dangerouslySetInnerHTML={{ __html: processedTitle }}>
-          </h3>
+          <h2 className={`service-card-title ${isNorwegian ? 'no' : ''}`} dangerouslySetInnerHTML={{ __html: processedTitle }}>
+          </h2>
         </div>
 
         <p className="service-card-description">

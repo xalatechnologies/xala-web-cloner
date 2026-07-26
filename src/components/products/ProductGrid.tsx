@@ -1,13 +1,16 @@
 import ProductCard from './ProductCard';
 import ExpandableGrid from '../ui/expandable-grid';
 
+/** Matches an entry in src/data/products.json. */
 export interface ProductItem {
   id: string;
   title: string;
   description: string;
+  /** products.json has no image field today; kept optional for future data. */
   image_url?: string;
   icon?: string | null;
   url?: string;
+  features?: string[];
 }
 
 interface ProductGridProps {

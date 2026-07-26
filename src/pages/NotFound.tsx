@@ -9,7 +9,7 @@ export default function NotFound() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center space-y-8">
+      <main id="main" className="text-center space-y-8">
         <h1 className="text-9xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
           404
         </h1>
@@ -27,7 +27,7 @@ export default function NotFound() {
           <ArrowLeft className="w-4 h-4" />
           {t('common.goBack')}
         </Button>
-      </div>
+      </main>
     </div>
   );
 }

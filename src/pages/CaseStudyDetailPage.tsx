@@ -328,7 +328,7 @@ function HeroSection({ cs }: { cs: NonNullable<ReturnType<typeof caseStudyBySlug
             {/* card header */}
             <div className="bg-primary/8 border-b border-border px-6 py-4">
               <p className="text-xs font-bold uppercase tracking-widest text-primary">
-                Project Details
+                {t('caseStudy.projectDetails')}
               </p>
             </div>
             <div className="p-6 space-y-6">
@@ -539,10 +539,10 @@ function SolutionSection({
 // ─── Architecture ─────────────────────────────────────────────────────────────
 const LAYER_STYLES = [
   { pill: 'bg-primary/12 border-primary/25 text-primary', dot: 'bg-primary' },
-  { pill: 'bg-blue-500/12 border-blue-500/25 text-blue-400', dot: 'bg-blue-500' },
-  { pill: 'bg-purple-500/12 border-purple-500/25 text-purple-400', dot: 'bg-purple-500' },
+  { pill: 'bg-orange-600/12 border-blue-500/25 text-blue-400', dot: 'bg-orange-600' },
+  { pill: 'bg-orange-500/12 border-purple-500/25 text-purple-400', dot: 'bg-orange-500' },
   { pill: 'bg-orange-500/12 border-orange-500/25 text-orange-400', dot: 'bg-orange-500' },
-  { pill: 'bg-cyan-500/12 border-cyan-500/25 text-cyan-400', dot: 'bg-cyan-500' },
+  { pill: 'bg-amber-500/12 border-cyan-500/25 text-cyan-400', dot: 'bg-amber-500' },
   { pill: 'bg-rose-500/12 border-rose-500/25 text-rose-400', dot: 'bg-rose-500' },
 ];
 
@@ -631,7 +631,7 @@ function ArchitectureSection({
             <ul className="space-y-2.5">
               {items!.map((item, j) => (
                 <li key={j} className="text-sm text-foreground/70 flex gap-2 items-start leading-relaxed">
-                  <span className="text-primary shrink-0 mt-1 text-[10px]">●</span>
+                  <span aria-hidden className="text-primary shrink-0 mt-1 text-[10px]">●</span>
                   {item}
                 </li>
               ))}
@@ -645,11 +645,11 @@ function ArchitectureSection({
 
 // ─── Tech Stack ───────────────────────────────────────────────────────────────
 const TECH_STYLES = [
-  { pill: 'text-blue-300 border-blue-500/30 bg-blue-500/10', header: 'text-blue-400', dot: 'bg-blue-500' },
+  { pill: 'text-blue-300 border-blue-500/30 bg-orange-600/10', header: 'text-blue-400', dot: 'bg-orange-600' },
   { pill: 'text-green-300 border-green-500/30 bg-green-500/10', header: 'text-green-400', dot: 'bg-green-500' },
   { pill: 'text-orange-300 border-orange-500/30 bg-orange-500/10', header: 'text-orange-400', dot: 'bg-orange-500' },
-  { pill: 'text-cyan-300 border-cyan-500/30 bg-cyan-500/10', header: 'text-cyan-400', dot: 'bg-cyan-500' },
-  { pill: 'text-purple-300 border-purple-500/30 bg-purple-500/10', header: 'text-purple-400', dot: 'bg-purple-500' },
+  { pill: 'text-cyan-300 border-cyan-500/30 bg-amber-500/10', header: 'text-cyan-400', dot: 'bg-amber-500' },
+  { pill: 'text-purple-300 border-purple-500/30 bg-orange-500/10', header: 'text-purple-400', dot: 'bg-orange-500' },
   { pill: 'text-rose-300 border-rose-500/30 bg-rose-500/10', header: 'text-rose-400', dot: 'bg-rose-500' },
   { pill: 'text-yellow-300 border-yellow-500/30 bg-yellow-500/10', header: 'text-yellow-400', dot: 'bg-yellow-500' },
 ];

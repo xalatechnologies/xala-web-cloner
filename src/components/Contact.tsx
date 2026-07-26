@@ -3,23 +3,18 @@ import { useSection } from '@/hooks/use-section';
 import { ContactInfo } from './contact/ContactInfo';
 import { SocialLinks } from './contact/SocialLinks';
 import { ContactForm } from './contact/ContactForm';
-import MainLayout from './layouts/MainLayout';
 
 const Contact = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { data: section } = useSection('contact');
 
+  // Head tags come from RouteSEO; analytics is mounted once, app-wide, in
+  // App.tsx — this component used to be the site's only analytics mount point.
+  // The dark: gradient stops referenced undefined xala-* colours and rendered
+  // transparent, so they are dropped rather than re-coloured.
   return (
-    <MainLayout
-      pageId="contact"
-      language={i18n.language}
-      analytics={{
-        googleAnalyticsId: "G-NFGNKJDHHW",
-        microsoftClarityId: "q15abxku18",
-        plausibleDomain: 'xala.no'
-      }}
-    >
-      <section id="contact" className="relative py-24 overflow-hidden bg-background dark:bg-gradient-to-b dark:from-xala-primary dark:to-xala-secondary hero-gradient">
+    <>
+      <section id="contact" className="relative py-24 overflow-hidden bg-background hero-gradient">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -left-1/4 -top-1/4 w-1/2 h-1/2 bg-primary/10 rounded-full blur-3xl animate-float-1"></div>
           <div className="absolute -right-1/4 -bottom-1/4 w-1/2 h-1/2 bg-primary/10 rounded-full blur-3xl animate-float-2"></div>
@@ -27,9 +22,9 @@ const Contact = () => {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
               {section?.title || t('contact.title')}
-            </h2>
+            </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               {section?.description || t('contact.description')}
             </p>
@@ -46,7 +41,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
-    </MainLayout>
+    </>
   );
 };
 

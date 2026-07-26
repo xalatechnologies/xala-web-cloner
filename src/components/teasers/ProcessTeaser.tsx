@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Search, Palette, Code2, Rocket, ChevronRight, ArrowRight } from 'lucide-react';
+import { Section } from '@/components/ui/section';
 
 export default function ProcessTeaser() {
   const { t } = useTranslation();
@@ -37,7 +38,7 @@ export default function ProcessTeaser() {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-background relative overflow-hidden section-styled">
+    <Section tone="default" size="md" styled container={false}>
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
@@ -120,10 +121,10 @@ export default function ProcessTeaser() {
             className="inline-flex items-center px-8 py-4 text-base font-medium rounded-xl text-primary-foreground bg-primary hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             {t('teasers.process.readProcess')}
-            <ChevronRight className="ms-3 h-5 w-5 rtl:rotate-180" />
+            <ChevronRight className="ms-3 h-5 w-5" />
           </Link>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

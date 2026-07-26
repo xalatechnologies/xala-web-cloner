@@ -23,7 +23,7 @@ const About = () => {
           <div className="flex justify-center mb-12 sm:mb-16">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-4xl w-full">
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="p-6 rounded-lg bg-xala-secondary/20">
+              <div key={i} className="p-6 rounded-lg bg-muted">
                 <Skeleton className="h-12 w-12 mb-4" />
                 <Skeleton className="h-6 w-48 mb-2" />
                 <Skeleton className="h-4 w-full" />
@@ -46,7 +46,7 @@ const About = () => {
     <section id="about" className="py-12 sm:py-16 lg:py-20 bg-background hero-gradient">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4 text-foreground">{aboutSection?.title}</h2>
+          <h1 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4 text-foreground">{aboutSection?.title}</h1>
           <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto px-4 sm:px-0">{aboutSection?.description}</p>
         </div>
 

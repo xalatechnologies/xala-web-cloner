@@ -3,7 +3,9 @@ import ExpandableGrid from '../ui/expandable-grid';
 
 interface AboutFeatureGridProps {
   features: {
-    icon: React.ReactNode;
+    /** Icon *key* (e.g. 'brain'), resolved through AboutFeatureCard's iconMap —
+     *  not a rendered node, which is what this used to declare. */
+    icon: string;
     title: string;
     description: string;
   }[];

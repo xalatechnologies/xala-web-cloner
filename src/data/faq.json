@@ -1,0 +1,128 @@
+{
+  "no": [
+    {
+      "id": "kostnad",
+      "question": "Hva koster et prosjekt hos Xala Technologies?",
+      "answer": "Det avhenger av omfang, men vi starter alltid med et kort kartleggingsmøte og gir deretter et estimat med tydelige forutsetninger. Mindre integrasjoner og avgrensede leveranser starter typisk rundt 150 000 kroner, mens større fagsystemer løper over flere måneder. Vi fakturerer per time eller på fastpris per delleveranse — du velger hva som passer anskaffelsen din best."
+    },
+    {
+      "id": "tid",
+      "question": "Hvor lang tid tar et typisk prosjekt?",
+      "answer": "En avgrenset leveranse tar vanligvis 6–12 uker fra oppstart til produksjon. Større fagsystemer deles opp i delleveranser som settes i drift underveis, slik at du får verdi før hele prosjektet er ferdig. Vi setter opp miljøer og leveranseløp i første sprint, så du ser fungerende programvare tidlig."
+    },
+    {
+      "id": "offentlig",
+      "question": "Jobber dere med offentlig sektor og offentlige anskaffelser?",
+      "answer": "Ja. Størstedelen av porteføljen vår er offentlig sektor — blant annet Digitaliseringsdirektoratet (Altinn), Statistisk sentralbyrå, Norsk helsenett, Sykehuspartner og Nordre Follo kommune. Vi er vant til krav om universell utforming, arkivering, sikkerhet og dokumentasjon, og vi kan svare på konkurransegrunnlag og delta i dialogkonferanser."
+    },
+    {
+      "id": "overta",
+      "question": "Kan dere overta og modernisere et eksisterende system?",
+      "answer": "Ja, og det er noe av det vi gjør oftest. Vi starter med en gjennomgang av kode, data og integrasjoner, og foreslår en vei videre som ikke krever full stopp i driften. Vanligvis moderniserer vi stegvis bak et uendret grensesnitt, slik at brukerne ikke merker overgangen før den er trygg."
+    },
+    {
+      "id": "teknologi",
+      "question": "Hvilke teknologier jobber dere med?",
+      "answer": "Frontend i React og TypeScript, backend i Node.js, Python, Go eller Rust avhengig av oppgaven, og drift på Azure, AWS eller Google Cloud med Docker og Kubernetes. Vi bruker PostgreSQL som standard database, og TensorFlow eller PyTorch der maskinlæring er en del av løsningen."
+    },
+    {
+      "id": "gdpr",
+      "question": "Hvordan håndterer dere personvern og GDPR?",
+      "answer": "Personvern legges inn i arkitekturen, ikke på slutten. Vi kartlegger hvilke personopplysninger løsningen faktisk trenger, minimerer innsamlingen, dokumenterer behandlingsgrunnlag og setter opp sletterutiner. Vi inngår databehandleravtale, og for offentlige kunder holder vi data innenfor EU/EØS."
+    },
+    {
+      "id": "forvaltning",
+      "question": "Tilbyr dere drift og forvaltning etter at løsningen er levert?",
+      "answer": "Ja. De fleste kundene våre fortsetter med en forvaltningsavtale som dekker oppdateringer, sikkerhetsfikser, overvåking og videreutvikling. Vi kan også overlevere til deres eget utviklingsteam med dokumentasjon og opplæring hvis det er ønsket — vi låser ingen inn."
+    },
+    {
+      "id": "sted",
+      "question": "Hvor holder dere til, og jobber dere med kunder utenfor Asker?",
+      "answer": "Vi sitter i Nesbruveien 75 på Nesbru i Asker, og jobber med kunder i hele Norge samt internasjonale oppdrag for blant annet UNICEF, UN OCHA og USAID. Vi kombinerer digitale møter med fysisk oppmøte i workshops og milepælsmøter der det gir mest verdi."
+    }
+  ],
+  "en": [
+    {
+      "id": "kostnad",
+      "question": "What does a project with Xala Technologies cost?",
+      "answer": "It depends on scope, but we always begin with a short discovery meeting and then give an estimate with stated assumptions. Smaller integrations and well-bounded deliveries typically start around NOK 150,000, while larger line-of-business systems run over several months. We bill hourly or at a fixed price per increment — whichever suits your procurement better."
+    },
+    {
+      "id": "tid",
+      "question": "How long does a typical project take?",
+      "answer": "A bounded delivery usually takes 6–12 weeks from kickoff to production. Larger systems are split into increments that go live along the way, so you get value before the whole project is finished. We set up environments and the delivery pipeline in the first sprint, so you see working software early."
+    },
+    {
+      "id": "offentlig",
+      "question": "Do you work with the public sector and public procurement?",
+      "answer": "Yes. Most of our portfolio is public sector — including the Norwegian Digitalisation Agency (Altinn), Statistics Norway, Norsk helsenett, Sykehuspartner and Nordre Follo municipality. We are used to requirements for accessibility, archiving, security and documentation, and we can respond to tender documents and take part in dialogue conferences."
+    },
+    {
+      "id": "overta",
+      "question": "Can you take over and modernise an existing system?",
+      "answer": "Yes, and it is one of the things we do most often. We start by reviewing the code, the data and the integrations, then propose a path forward that does not require downtime. Usually we modernise in steps behind an unchanged interface, so users do not notice the transition until it is safe."
+    },
+    {
+      "id": "teknologi",
+      "question": "Which technologies do you work with?",
+      "answer": "React and TypeScript on the front end, Node.js, Python, Go or Rust on the back end depending on the task, and hosting on Azure, AWS or Google Cloud with Docker and Kubernetes. PostgreSQL is our default database, and we use TensorFlow or PyTorch where machine learning is part of the solution."
+    },
+    {
+      "id": "gdpr",
+      "question": "How do you handle privacy and GDPR?",
+      "answer": "Privacy goes into the architecture, not on at the end. We map which personal data the solution actually needs, minimise collection, document the legal basis and set up deletion routines. We sign a data processing agreement, and for public sector clients we keep data inside the EU/EEA."
+    },
+    {
+      "id": "forvaltning",
+      "question": "Do you offer operations and maintenance after delivery?",
+      "answer": "Yes. Most of our clients continue with a maintenance agreement covering updates, security fixes, monitoring and further development. We can also hand over to your own engineering team with documentation and training if you prefer — we do not lock anyone in."
+    },
+    {
+      "id": "sted",
+      "question": "Where are you based, and do you work with clients outside Asker?",
+      "answer": "We are at Nesbruveien 75 in Nesbru, Asker, and work with clients across Norway as well as international assignments for UNICEF, UN OCHA and USAID among others. We combine remote meetings with being on site for workshops and milestone reviews where that adds most value."
+    }
+  ],
+  "ar": [
+    {
+      "id": "kostnad",
+      "question": "ما تكلفة المشروع مع زالا تكنولوجيز؟",
+      "answer": "تعتمد التكلفة على نطاق العمل، لكننا نبدأ دائماً بجلسة استكشاف قصيرة ثم نقدّم تقديراً بافتراضات واضحة. تبدأ عمليات التكامل الصغيرة والمشاريع المحددة عادةً من نحو 150 ألف كرونة نرويجية، أما الأنظمة الكبيرة فتمتد على عدة أشهر. نحاسب بالساعة أو بسعر ثابت لكل مرحلة، حسب ما يناسب إجراءات الشراء لديكم."
+    },
+    {
+      "id": "tid",
+      "question": "كم يستغرق المشروع النموذجي؟",
+      "answer": "يستغرق التسليم المحدد النطاق عادةً من 6 إلى 12 أسبوعاً من الانطلاق حتى الإنتاج. أما الأنظمة الأكبر فتُقسَّم إلى مراحل تُشغَّل تدريجياً، لتحصلوا على قيمة قبل انتهاء المشروع بالكامل. نجهّز البيئات وخط التسليم في الدورة الأولى لترَوا برمجيات تعمل مبكراً."
+    },
+    {
+      "id": "offentlig",
+      "question": "هل تعملون مع القطاع العام والمناقصات الحكومية؟",
+      "answer": "نعم. معظم أعمالنا في القطاع العام، ومنها الهيئة النرويجية للرقمنة (ألتين)، وهيئة الإحصاء النرويجية، والشبكة الصحية النرويجية، وسيكهوسبارتنر، وبلدية نوردره فولو. نحن معتادون على متطلبات إمكانية الوصول والأرشفة والأمن والتوثيق، ويمكننا الرد على وثائق المناقصات والمشاركة في مؤتمرات الحوار."
+    },
+    {
+      "id": "overta",
+      "question": "هل يمكنكم تولّي نظام قائم وتحديثه؟",
+      "answer": "نعم، وهذا من أكثر ما نقوم به. نبدأ بمراجعة الكود والبيانات وعمليات التكامل، ثم نقترح مساراً لا يتطلب إيقاف التشغيل. غالباً نحدّث تدريجياً خلف واجهة لم تتغير، بحيث لا يلاحظ المستخدمون الانتقال حتى يصبح آمناً."
+    },
+    {
+      "id": "teknologi",
+      "question": "ما التقنيات التي تعملون بها؟",
+      "answer": "React وTypeScript في الواجهة الأمامية، وNode.js أو Python أو Go أو Rust في الخلفية حسب المهمة، والتشغيل على Azure أو AWS أو Google Cloud مع Docker وKubernetes. نعتمد PostgreSQL كقاعدة بيانات افتراضية، ونستخدم TensorFlow أو PyTorch عند وجود تعلم آلي في الحل."
+    },
+    {
+      "id": "gdpr",
+      "question": "كيف تتعاملون مع الخصوصية واللائحة العامة لحماية البيانات؟",
+      "answer": "نضع الخصوصية في التصميم لا في نهايته. نحدّد البيانات الشخصية التي يحتاجها الحل فعلاً، ونقلّل الجمع، ونوثّق الأساس القانوني، ونضع سياسات للحذف. نوقّع اتفاقية معالجة بيانات، ونحفظ بيانات عملاء القطاع العام داخل الاتحاد الأوروبي والمنطقة الاقتصادية الأوروبية."
+    },
+    {
+      "id": "forvaltning",
+      "question": "هل تقدّمون التشغيل والصيانة بعد التسليم؟",
+      "answer": "نعم. يستمر معظم عملائنا باتفاقية صيانة تشمل التحديثات وإصلاحات الأمن والمراقبة والتطوير المستمر. ويمكننا أيضاً تسليم العمل لفريقكم الداخلي مع التوثيق والتدريب إذا رغبتم — فنحن لا نحتكر أحداً."
+    },
+    {
+      "id": "sted",
+      "question": "أين مقرّكم، وهل تعملون مع عملاء خارج أسكر؟",
+      "answer": "مقرّنا في Nesbruveien 75 في نيسبرو بأسكر، ونعمل مع عملاء في كل أنحاء النرويج وكذلك مهام دولية لجهات منها يونيسف ومكتب الأمم المتحدة لتنسيق الشؤون الإنسانية والوكالة الأمريكية للتنمية الدولية. نمزج الاجتماعات الرقمية بالحضور الفعلي في ورش العمل ومراجعات المراحل حيث يكون ذلك أكثر قيمة."
+    }
+  ]
+}

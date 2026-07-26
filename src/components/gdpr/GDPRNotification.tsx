@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Cookie, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { CONSENT_KEY, setConsent } from './consent';
 
 export function GDPRNotification() {
   const { t } = useTranslation();
@@ -11,7 +12,7 @@ export function GDPRNotification() {
 
   // Check if user has already accepted GDPR
   useEffect(() => {
-    const hasAcceptedGDPR = localStorage.getItem('gdpr-accepted');
+    const hasAcceptedGDPR = localStorage.getItem(CONSENT_KEY);
     if (!hasAcceptedGDPR) {
       // Small delay for better UX
       const timer = setTimeout(() => setShowNotification(true), 1000);
@@ -28,13 +29,15 @@ export function GDPRNotification() {
     learnMore: t('gdpr.learnMore')
   };
 
+  // Routed through setConsent so the analytics mount actually reacts to the
+  // choice — writing localStorage directly left the banner decorative.
   const handleAccept = () => {
-    localStorage.setItem('gdpr-accepted', 'true');
+    setConsent('all');
     setShowNotification(false);
   };
 
   const handleDecline = () => {
-    localStorage.setItem('gdpr-accepted', 'essential-only');
+    setConsent('essential');
     setShowNotification(false);
   };
 
@@ -50,7 +53,7 @@ export function GDPRNotification() {
       )}
     >
       {/* Solid dark background for guaranteed contrast */}
-      <div className="absolute inset-0 bg-slate-900 border-t border-slate-700" />
+      <div className="absolute inset-0 bg-stone-900 border-t border-stone-700" />
 
       <div className="relative container mx-auto p-4 md:p-6">
         <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-6">
@@ -58,21 +61,21 @@ export function GDPRNotification() {
           {/* Icon and content */}
           <div className="flex items-start gap-4 flex-1">
             <div className="shrink-0 p-3 rounded-xl bg-primary/20 hidden sm:block">
-              <Cookie className="w-6 h-6 text-primary" />
+              <Cookie className="w-6 h-6 text-[hsl(32_58%_56%)]" />
             </div>
 
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
-                <Shield className="w-4 h-4 text-primary sm:hidden" />
+                <Shield className="w-4 h-4 text-[hsl(32_58%_56%)] sm:hidden" />
                 <h3 className="font-semibold text-white text-lg">
                   {content.title}
                 </h3>
               </div>
-              <p className="text-sm text-slate-300 leading-relaxed max-w-3xl">
+              <p className="text-sm text-stone-300 leading-relaxed max-w-3xl">
                 {content.content}{' '}
                 <Link
                   to="/cookies"
-                  className="text-primary hover:underline font-medium"
+                  className="text-[hsl(32_58%_56%)] hover:underline font-medium"
                 >
                   {content.learnMore}
                 </Link>
@@ -85,7 +88,7 @@ export function GDPRNotification() {
             <Button
               onClick={handleDecline}
               variant="outline"
-              className="flex-1 lg:flex-none border-slate-600 text-white hover:bg-slate-800 hover:text-white bg-transparent"
+              className="flex-1 lg:flex-none border-stone-600 text-white hover:bg-stone-800 hover:text-white bg-transparent"
             >
               {content.declineText}
             </Button>

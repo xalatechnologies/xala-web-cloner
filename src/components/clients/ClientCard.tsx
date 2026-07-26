@@ -23,7 +23,7 @@ const ClientCard = ({ name, logoUrl }: ClientCardProps) => {
           <div className="w-full h-full flex items-center justify-center rounded-lg client-logo-container p-3">
             <img
               src={src}
-              alt=""
+              alt={name}
               onError={() => {
                 if (!triedSvg && originalUrl !== src) {
                   setTriedSvg(true);
