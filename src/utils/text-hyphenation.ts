@@ -36,17 +36,14 @@ const shy = (...parts: string[]): string => parts.join(SHY);
  * a wrong break point reads worse than no break at all.
  */
 const NORWEGIAN_BREAKS: Record<string, string> = {
-  'Digital Transformasjon': `Digital ${shy('Trans', 'for', 'masjon')}`,
-  'AI & Automatisering': `AI & ${shy('Auto', 'ma', 'ti', 'se', 'ring')}`,
-  Bedriftsintegrasjon: shy('Bedrifts', 'inte', 'grasjon'),
-  'Moderne Webapplikasjoner': `Moderne ${shy('Web', 'appli', 'ka', 'sjo', 'ner')}`,
-  Programvareutvikling: shy('Program', 'vare', 'ut', 'vikling'),
-  Applikasjonsutvikling: shy('Appli', 'kasjons', 'ut', 'vikling'),
-  Teknologikonsultering: shy('Teknologi', 'konsul', 'tering'),
-  Systemintegrasjon: shy('System', 'inte', 'grasjon'),
-  Cybersikkerhet: shy('Cyber', 'sikkerhet'),
-  'Skyløsninger': shy('Sky', 'løsninger'),
+  Saksbehandlingssystemer: shy('Saks', 'behandlings', 'systemer'),
+  'Tilskudds- og bevillingsportaler': `Tilskudds- og ${shy('bevillings', 'portaler')}`,
+  'Modernisering av fagsystemer': `${shy('Moderni', 'sering')} av ${shy('fag', 'systemer')}`,
+  'Automatisering og AI': `${shy('Automati', 'sering')} og AI`,
+  'Forvaltning, drift og sikkerhet': `${shy('Forvalt', 'ning')}, drift og ${shy('sikker', 'het')}`,
+  Integrasjoner: shy('Inte', 'grasjoner'),
 };
+
 
 function isNorwegian(language: string): boolean {
   const lang = language?.toLowerCase() ?? '';

@@ -29,7 +29,7 @@
         "services": {
             "id": "services-no",
             "title": "Våre tjenester",
-            "description": "Vi tilbyr et bredt spekter av teknologitjenester for å møte dine behov."
+            "description": "Seks områder vi leverer i, alle rettet mot samme sak: at en prosess går fra innsending til vedtak uten å stoppe underveis."
         },
         "products": {
             "id": "products-no",
@@ -95,7 +95,7 @@
         "services": {
             "id": "services-en",
             "title": "Our Services",
-            "description": "We offer a wide range of technology services to meet your needs."
+            "description": "Six areas we deliver in, all pointed at the same thing: getting a process from submission to decision without it stalling on the way."
         },
         "products": {
             "id": "products-en",
@@ -161,7 +161,7 @@
         "services": {
             "id": "services-ar",
             "title": "خدماتنا",
-            "description": "نقدم مجموعة واسعة من الخدمات التقنية لتلبية احتياجاتك."
+            "description": "ستة مجالات نعمل فيها، جميعها تخدم الهدف نفسه: أن تسير العملية من التقديم إلى القرار دون أن تتوقّف في الطريق."
         },
         "products": {
             "id": "products-ar",

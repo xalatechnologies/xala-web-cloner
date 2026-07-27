@@ -1,116 +1,116 @@
 {
     "no": [
         {
-            "id": "consulting-no",
-            "title": "Teknologikonsultering",
-            "description": "Strategisk rådgivning og implementeringsstøtte for digital transformasjon. Vi hjelper deg med å velge riktig teknologi og arkitektur for dine behov.",
-            "icon": "Lightbulb"
+            "id": "saksbehandling-no",
+            "title": "Saksbehandlingssystemer",
+            "description": "Fagsystemer som tar en sak fra innsending til vedtak: køer i stedet for innbokser, sporbare beslutninger, og arkivering som følger av saksgangen framfor å være en jobb til slutt.",
+            "icon": "Workflow"
         },
         {
-            "id": "ai-no",
-            "title": "AI & Maskinlæring",
-            "description": "Utvikling av intelligente løsninger med kunstig intelligens og maskinlæring. Fra chatbots til prediktiv analyse.",
-            "icon": "Brain"
+            "id": "portaler-no",
+            "title": "Tilskudds- og bevillingsportaler",
+            "description": "Søknadsløsninger søkerne kommer gjennom uten å ringe. Skjemaer som validerer mot regelverket, lagrer underveis, og gir saksbehandleren et komplett grunnlag.",
+            "icon": "ClipboardList"
         },
         {
-            "id": "blockchain-no",
-            "title": "Blockchain & Web3",
-            "description": "Skreddersydde blockchain-løsninger for sporbarhet, sikkerhet og desentraliserte applikasjoner.",
-            "icon": "Link"
+            "id": "integrasjon-no",
+            "title": "Integrasjoner",
+            "description": "Koblinger mot Altinn, Folkeregisteret, Enhetsregisteret, ID-porten, Maskinporten og Noark — bygget for at nedetid hos andre er en normaltilstand, ikke et unntak.",
+            "icon": "Network"
         },
         {
-            "id": "cloud-no",
-            "title": "Skyløsninger",
-            "description": "Cloud-arkitektur, migrering og drift på ledende skyplattformer som AWS, Azure og GCP.",
-            "icon": "Cloud"
+            "id": "modernisering-no",
+            "title": "Modernisering av fagsystemer",
+            "description": "Vi bytter ut modul for modul bak en fasade, slik at driften går mens systemet endres. Dere møter avhengighetene én om gangen i stedet for alle på lanseringsdagen.",
+            "icon": "Layers"
         },
         {
-            "id": "integration-no",
-            "title": "Systemintegrasjon",
-            "description": "Sømløs integrasjon mellom eksisterende systemer og nye løsninger. API-utvikling og datautveksling.",
-            "icon": "Plug"
+            "id": "automatisering-no",
+            "title": "Automatisering og AI",
+            "description": "Vi automatiserer det som følger av regler — frister, purringer, kontroll av vedlegg, oppslag i registre — og lar skjønnet ligge hos saksbehandleren. Et vedtak skal kunne forklares.",
+            "icon": "Sparkles"
         },
         {
-            "id": "security-no",
-            "title": "Cybersikkerhet",
-            "description": "Sikkerhetsvurderinger, penetrasjonstesting og implementering av robuste sikkerhetstiltak.",
-            "icon": "Shield"
+            "id": "forvaltning-no",
+            "title": "Forvaltning, drift og sikkerhet",
+            "description": "Vi forvalter det vi bygger. Driftbarhet, universell utforming og sikkerhet er designvalg hos oss, ikke noe som kommer etterpå — og vi er ISO 27001-sertifisert.",
+            "icon": "ShieldCheck"
         }
     ],
     "en": [
         {
-            "id": "consulting-en",
-            "title": "Technology Consulting",
-            "description": "Strategic advisory and implementation support for digital transformation. We help you choose the right technology and architecture for your needs.",
-            "icon": "Lightbulb"
+            "id": "saksbehandling-en",
+            "title": "Case management systems",
+            "description": "Systems that take a case from submission to decision: queues rather than inboxes, traceable decisions, and archiving that falls out of the process instead of being a job at the end.",
+            "icon": "Workflow"
         },
         {
-            "id": "ai-en",
-            "title": "AI & Machine Learning",
-            "description": "Development of intelligent solutions with artificial intelligence and machine learning. From chatbots to predictive analytics.",
-            "icon": "Brain"
+            "id": "portaler-en",
+            "title": "Grant and licensing portals",
+            "description": "Application solutions people get through without phoning in. Forms that validate against the regulation, save as you go, and hand the caseworker a complete basis to decide on.",
+            "icon": "ClipboardList"
         },
         {
-            "id": "blockchain-en",
-            "title": "Blockchain & Web3",
-            "description": "Custom blockchain solutions for traceability, security, and decentralized applications.",
-            "icon": "Link"
+            "id": "integrasjon-en",
+            "title": "Integrations",
+            "description": "Connections to Altinn, the National Population Register, the Register of Legal Entities, ID-porten, Maskinporten and Noark — built on the assumption that other people's downtime is normal, not exceptional.",
+            "icon": "Network"
         },
         {
-            "id": "cloud-en",
-            "title": "Cloud Solutions",
-            "description": "Cloud architecture, migration, and operations on leading cloud platforms like AWS, Azure, and GCP.",
-            "icon": "Cloud"
+            "id": "modernisering-en",
+            "title": "Legacy system modernisation",
+            "description": "We replace one module at a time behind a facade, so the service keeps running while the system changes. You meet the dependencies one by one rather than all of them on launch day.",
+            "icon": "Layers"
         },
         {
-            "id": "integration-en",
-            "title": "System Integration",
-            "description": "Seamless integration between existing systems and new solutions. API development and data exchange.",
-            "icon": "Plug"
+            "id": "automatisering-en",
+            "title": "Automation and AI",
+            "description": "We automate what follows from rules — deadlines, reminders, checking attachments, register lookups — and leave judgement with the caseworker. A decision has to be explainable.",
+            "icon": "Sparkles"
         },
         {
-            "id": "security-en",
-            "title": "Cybersecurity",
-            "description": "Security assessments, penetration testing, and implementation of robust security measures.",
-            "icon": "Shield"
+            "id": "forvaltning-en",
+            "title": "Operations, support and security",
+            "description": "We keep running what we build. Operability, accessibility and security are design decisions here rather than afterthoughts — and we are ISO 27001 certified.",
+            "icon": "ShieldCheck"
         }
     ],
     "ar": [
         {
-            "id": "consulting-ar",
-            "title": "استشارات تقنية",
-            "description": "استشارات استراتيجية ودعم التنفيذ للتحول الرقمي. نساعدك في اختيار التقنية والهندسة المعمارية المناسبة لاحتياجاتك.",
-            "icon": "Lightbulb"
+            "id": "saksbehandling-ar",
+            "title": "أنظمة إدارة القضايا",
+            "description": "أنظمة تأخذ القضية من التقديم إلى القرار: قوائم انتظار بدل صناديق البريد، وقرارات قابلة للتتبّع، وأرشفة تنتج عن سير العمل بدل أن تكون مهمة في النهاية.",
+            "icon": "Workflow"
         },
         {
-            "id": "ai-ar",
-            "title": "الذكاء الاصطناعي والتعلم الآلي",
-            "description": "تطوير حلول ذكية باستخدام الذكاء الاصطناعي والتعلم الآلي. من روبوتات المحادثة إلى التحليلات التنبؤية.",
-            "icon": "Brain"
+            "id": "portaler-ar",
+            "title": "بوابات المنح والتراخيص",
+            "description": "حلول تقديم يجتازها المتقدّمون دون الحاجة للاتصال. نماذج تتحقّق من اللوائح، وتحفظ أثناء التعبئة، وتمنح موظف الحالة أساساً كاملاً لاتخاذ القرار.",
+            "icon": "ClipboardList"
         },
         {
-            "id": "blockchain-ar",
-            "title": "البلوكتشين والويب 3",
-            "description": "حلول بلوكتشين مخصصة للتتبع والأمان والتطبيقات اللامركزية.",
-            "icon": "Link"
+            "id": "integrasjon-ar",
+            "title": "التكاملات",
+            "description": "اتصالات مع Altinn وسجل السكان وسجل المنشآت وID-porten وMaskinporten وNoark — مبنية على أساس أن تعطّل الأنظمة الأخرى حالة طبيعية لا استثناء.",
+            "icon": "Network"
         },
         {
-            "id": "cloud-ar",
-            "title": "الحلول السحابية",
-            "description": "هندسة السحابة والترحيل والعمليات على منصات السحابة الرائدة مثل AWS وAzure وGCP.",
-            "icon": "Cloud"
+            "id": "modernisering-ar",
+            "title": "تحديث الأنظمة القائمة",
+            "description": "نستبدل وحدة تلو الأخرى خلف واجهة، فيستمر التشغيل بينما يتغيّر النظام. تواجهون الاعتماديات واحدة تلو الأخرى بدل مواجهتها كلها يوم الإطلاق.",
+            "icon": "Layers"
         },
         {
-            "id": "integration-ar",
-            "title": "تكامل الأنظمة",
-            "description": "تكامل سلس بين الأنظمة القائمة والحلول الجديدة. تطوير واجهات البرمجة وتبادل البيانات.",
-            "icon": "Plug"
+            "id": "automatisering-ar",
+            "title": "الأتمتة والذكاء الاصطناعي",
+            "description": "نؤتمت ما ينتج عن القواعد — المواعيد والتذكيرات وفحص المرفقات والاستعلام من السجلات — ونترك التقدير لموظف الحالة. القرار يجب أن يكون قابلاً للتفسير.",
+            "icon": "Sparkles"
         },
         {
-            "id": "security-ar",
-            "title": "الأمن السيبراني",
-            "description": "تقييمات الأمان واختبار الاختراق وتنفيذ إجراءات أمنية قوية.",
-            "icon": "Shield"
+            "id": "forvaltning-ar",
+            "title": "التشغيل والدعم والأمن",
+            "description": "نواصل تشغيل ما نبنيه. قابلية التشغيل وإمكانية الوصول والأمن قرارات تصميمية لدينا لا أمور لاحقة — ونحن حاصلون على شهادة ISO 27001.",
+            "icon": "ShieldCheck"
         }
     ]
 }

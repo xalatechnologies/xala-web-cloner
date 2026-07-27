@@ -49,9 +49,9 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
     services: {
       title: 'Tjenester | Xala Technologies',
       description:
-        'Teknologikonsultering, AI og maskinlæring, blockchain og Web3, skyløsninger, systemintegrasjon og cybersikkerhet — levert av norske utviklere i Asker.',
+        'Saksbehandlingssystemer, tilskudds- og bevillingsportaler, integrasjoner mot nasjonale felleskomponenter, modernisering av fagsystemer, automatisering og forvaltning.',
       keywords:
-        'teknologikonsultering, AI og maskinlæring, blockchain, Web3, skyløsninger, systemintegrasjon, cybersikkerhet, IT-tjenester Norge'
+        'saksbehandlingssystem, tilskuddsportal, bevillingsportal, integrasjon Altinn, Maskinporten, modernisering fagsystem, automatisering saksbehandling, systemutvikling offentlig sektor'
     },
     products: {
       title: 'Produkter | Xala Technologies',
@@ -148,9 +148,9 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
     services: {
       title: 'Services | Xala Technologies',
       description:
-        'Technology consulting, AI and machine learning, blockchain and Web3, cloud solutions, system integration and cybersecurity — delivered by Norwegian engineers.',
+        'Case management systems, grant and licensing portals, integrations with Norwegian national components, legacy modernisation, automation and long-term operations.',
       keywords:
-        'technology consulting, AI, machine learning, blockchain, Web3, cloud solutions, system integration, cybersecurity, IT services Norway'
+        'case management system, grant portal, licensing portal, Altinn integration, Maskinporten, legacy modernisation, caseworking automation, public sector software Norway'
     },
     products: {
       title: 'Products | Xala Technologies',
@@ -244,8 +244,8 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
     services: {
       title: 'خدماتنا | زالا تكنولوجيز',
       description:
-        'استشارات تقنية، ذكاء اصطناعي وتعلم آلي، بلوك تشين وويب 3، حلول سحابية، تكامل أنظمة وأمن سيبراني — بخبرة مهندسين نرويجيين.',
-      keywords: 'استشارات تقنية, ذكاء اصطناعي, تعلم آلي, بلوك تشين, ويب 3, حلول سحابية, تكامل الأنظمة, الأمن السيبراني'
+        'أنظمة إدارة القضايا، بوابات المنح والتراخيص، التكامل مع المكوّنات الوطنية النرويجية، تحديث الأنظمة القائمة، الأتمتة والتشغيل طويل الأمد.',
+      keywords: 'نظام إدارة القضايا, بوابة المنح, بوابة التراخيص, تكامل Altinn, Maskinporten, تحديث الأنظمة, أتمتة المعالجة, برمجيات القطاع العام'
     },
     products: {
       title: 'منتجاتنا | زالا تكنولوجيز',

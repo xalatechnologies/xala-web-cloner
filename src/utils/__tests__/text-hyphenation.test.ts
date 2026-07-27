@@ -31,25 +31,25 @@ describe('processServiceTitle', () => {
   });
 
   it('inserts soft hyphens only in words it has been told about', () => {
-    expect(processServiceTitle('Teknologikonsultering', 'no')).toBe(
-      `Teknologi${SHY}konsul${SHY}tering`
+    expect(processServiceTitle('Saksbehandlingssystemer', 'no')).toBe(
+      `Saks${SHY}behandlings${SHY}systemer`
     );
     // No entry: returned as-is rather than guessed at.
     expect(processServiceTitle('Et helt ukjent ord', 'no')).toBe('Et helt ukjent ord');
   });
 
   it('emits real soft-hyphen characters, not HTML entities', () => {
-    const processed = processServiceTitle('Systemintegrasjon', 'no');
+    const processed = processServiceTitle('Integrasjoner', 'no');
     expect(processed).not.toContain('&shy;');
     expect(processed).toContain(SHY);
   });
 
   it('treats nb and nn as Norwegian, and everything else as not', () => {
     for (const lang of ['no', 'nb', 'nn', 'nb-NO']) {
-      expect(processServiceTitle('Cybersikkerhet', lang)).toContain(SHY);
+      expect(processServiceTitle('Integrasjoner', lang)).toContain(SHY);
     }
     for (const lang of ['en', 'ar', 'en-GB', '']) {
-      expect(processServiceTitle('Cybersikkerhet', lang)).toBe('Cybersikkerhet');
+      expect(processServiceTitle('Integrasjoner', lang)).toBe('Integrasjoner');
     }
   });
 
@@ -57,6 +57,8 @@ describe('processServiceTitle', () => {
     // Soft hyphens are invisible to find-in-page and to a crawler's text
     // extraction only if they are the sole addition. Anything else would
     // change the indexed text.
-    expect(processServiceTitle('Skyløsninger', 'no').replace(/­/g, '')).toBe('Skyløsninger');
+    expect(processServiceTitle('Saksbehandlingssystemer', 'no').replace(/­/g, '')).toBe(
+      'Saksbehandlingssystemer'
+    );
   });
 });
