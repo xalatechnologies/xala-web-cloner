@@ -36,7 +36,8 @@ const SECTOR_COLORS: Record<string, string> = {
   'Healthcare':          'text-rose-700 dark:text-rose-300 bg-rose-500/10 border-rose-500/30',
   'Legal / Tech':        'text-violet-700 dark:text-violet-300 bg-violet-500/10 border-violet-500/30',
   'Public Transport':    'text-orange-700 dark:text-orange-300 bg-orange-500/10 border-orange-500/30',
-  'Energy':              'text-yellow-700 dark:text-yellow-300 bg-yellow-500/10 border-yellow-500/30',
+  // yellow-700 measured 4.48:1 on its own tint — under 4.5 by a hair. 800 clears it.
+  'Energy':              'text-yellow-800 dark:text-yellow-300 bg-yellow-500/10 border-yellow-500/30',
   'NGO / International': 'text-teal-700 dark:text-teal-300 bg-teal-500/10 border-teal-500/30',
   'Telecom':             'text-fuchsia-700 dark:text-fuchsia-300 bg-fuchsia-500/10 border-fuchsia-500/30',
 };

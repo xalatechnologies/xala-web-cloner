@@ -538,13 +538,18 @@ function SolutionSection({
 }
 
 // ─── Architecture ─────────────────────────────────────────────────────────────
+/**
+ * One hue per architecture layer. Same correction as TECH_STYLES above: these
+ * were 400-level text colours on white cards, measuring 1.8:1 to 2.6:1, with
+ * the hues scrambled against their own dots and tints.
+ */
 const LAYER_STYLES = [
   { pill: 'bg-primary/12 border-primary/25 text-primary', dot: 'bg-primary' },
-  { pill: 'bg-orange-600/12 border-blue-500/25 text-blue-400', dot: 'bg-orange-600' },
-  { pill: 'bg-orange-500/12 border-purple-500/25 text-purple-400', dot: 'bg-orange-500' },
-  { pill: 'bg-orange-500/12 border-orange-500/25 text-orange-400', dot: 'bg-orange-500' },
-  { pill: 'bg-amber-500/12 border-cyan-500/25 text-cyan-400', dot: 'bg-amber-500' },
-  { pill: 'bg-rose-500/12 border-rose-500/25 text-rose-400', dot: 'bg-rose-500' },
+  { pill: 'bg-sky-500/12 border-sky-500/25 text-sky-700 dark:text-sky-300', dot: 'bg-sky-500' },
+  { pill: 'bg-violet-500/12 border-violet-500/25 text-violet-700 dark:text-violet-300', dot: 'bg-violet-500' },
+  { pill: 'bg-orange-500/12 border-orange-500/25 text-orange-700 dark:text-orange-300', dot: 'bg-orange-500' },
+  { pill: 'bg-teal-500/12 border-teal-500/25 text-teal-700 dark:text-teal-300', dot: 'bg-teal-500' },
+  { pill: 'bg-rose-500/12 border-rose-500/25 text-rose-700 dark:text-rose-300', dot: 'bg-rose-500' },
 ];
 
 function ArchitectureSection({
@@ -645,14 +650,31 @@ function ArchitectureSection({
 }
 
 // ─── Tech Stack ───────────────────────────────────────────────────────────────
+/**
+ * One hue per technology category, legible in both colour schemes.
+ *
+ * These were 300-level text colours — made for dark backgrounds — on cards that
+ * are `bg-card`, which is white in light mode. Measured from the rendered
+ * pixels the pills came in between 1.24:1 and 1.8:1 against a required 4.5:1:
+ * pale blue on white, invisible in daylight and fine in dark mode, which is
+ * presumably why nobody caught it.
+ *
+ * The hues were also scrambled — blue text with an orange dot on an orange
+ * tint, cyan text with an amber dot — the residue of a half-finished migration
+ * to the bronze palette. Each entry is one hue again.
+ *
+ * The -700 / dark:-300 pairing is the same approach the sector badges on
+ * /caser already use: categorical colour that flips with the scheme rather than
+ * one set of values hoping to work on both.
+ */
 const TECH_STYLES = [
-  { pill: 'text-blue-300 border-blue-500/30 bg-orange-600/10', header: 'text-blue-400', dot: 'bg-orange-600' },
-  { pill: 'text-green-300 border-green-500/30 bg-green-500/10', header: 'text-green-400', dot: 'bg-green-500' },
-  { pill: 'text-orange-300 border-orange-500/30 bg-orange-500/10', header: 'text-orange-400', dot: 'bg-orange-500' },
-  { pill: 'text-cyan-300 border-cyan-500/30 bg-amber-500/10', header: 'text-cyan-400', dot: 'bg-amber-500' },
-  { pill: 'text-purple-300 border-purple-500/30 bg-orange-500/10', header: 'text-purple-400', dot: 'bg-orange-500' },
-  { pill: 'text-rose-300 border-rose-500/30 bg-rose-500/10', header: 'text-rose-400', dot: 'bg-rose-500' },
-  { pill: 'text-yellow-300 border-yellow-500/30 bg-yellow-500/10', header: 'text-yellow-400', dot: 'bg-yellow-500' },
+  { pill: 'text-amber-800 dark:text-amber-300 border-amber-500/30 bg-amber-500/10', header: 'text-amber-800 dark:text-amber-400', dot: 'bg-amber-500' },
+  { pill: 'text-emerald-700 dark:text-emerald-300 border-emerald-500/30 bg-emerald-500/10', header: 'text-emerald-700 dark:text-emerald-400', dot: 'bg-emerald-500' },
+  { pill: 'text-orange-700 dark:text-orange-300 border-orange-500/30 bg-orange-500/10', header: 'text-orange-700 dark:text-orange-400', dot: 'bg-orange-500' },
+  { pill: 'text-sky-700 dark:text-sky-300 border-sky-500/30 bg-sky-500/10', header: 'text-sky-700 dark:text-sky-400', dot: 'bg-sky-500' },
+  { pill: 'text-violet-700 dark:text-violet-300 border-violet-500/30 bg-violet-500/10', header: 'text-violet-700 dark:text-violet-400', dot: 'bg-violet-500' },
+  { pill: 'text-rose-700 dark:text-rose-300 border-rose-500/30 bg-rose-500/10', header: 'text-rose-700 dark:text-rose-400', dot: 'bg-rose-500' },
+  { pill: 'text-teal-700 dark:text-teal-300 border-teal-500/30 bg-teal-500/10', header: 'text-teal-700 dark:text-teal-400', dot: 'bg-teal-500' },
 ];
 
 function TechStackSection({

@@ -124,7 +124,14 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          className="max-w-2xl mx-auto text-lg sm:text-xl text-muted-foreground font-light mb-10 leading-relaxed"
+          /*
+            Not muted-foreground, and not font-light. Over the hero video this
+            measured 4.28:1 where 20px non-bold text needs 4.5, and 300-weight
+            strokes over moving footage are hard to read at any ratio. 75%
+            foreground keeps it subordinate to the headline while staying
+            legible in both schemes.
+          */
+          className="max-w-2xl mx-auto text-lg sm:text-xl text-foreground/75 mb-10 leading-relaxed"
         >
           {t('hero.subtitle', 'Norsk systemutviklingshus. Skreddersydd programvare, AI-løsninger og skyarkitektur for offentlig sektor og næringsliv.')}
         </motion.p>
