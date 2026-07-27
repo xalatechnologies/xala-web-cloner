@@ -1,4 +1,5 @@
-import { Brain, Rocket, Users, Code2, LucideIcon } from 'lucide-react';
+import * as Icons from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 
 interface AboutFeatureCardProps {
   title: string;
@@ -6,38 +7,33 @@ interface AboutFeatureCardProps {
   icon: string;
 }
 
-const iconMap: Record<string, LucideIcon> = {
-  brain: Brain,
-  rocket: Rocket,
-  users: Users,
-  code: Code2,
-};
-
+/**
+ * One of the commitments this company holds to.
+ *
+ * The icon is looked up in lucide by name, the way every other data-driven
+ * component here does it. It used to consult a four-entry map keyed on
+ * lowercase names — brain, rocket, users, code — while the data supplied
+ * Lightbulb, Award, Handshake and Shield. Nothing ever matched, so all four
+ * cards fell through to the same fallback and the page showed one brain icon
+ * four times.
+ *
+ * h3, not h2: these sit under the section's own heading.
+ */
 const AboutFeatureCard = ({ title, description, icon }: AboutFeatureCardProps) => {
-  const Icon = iconMap[icon.toLowerCase()] || Brain;
+  const Icon = (Icons[icon as keyof typeof Icons] as LucideIcon) || Icons.CircleDot;
 
   return (
-    <div 
-      className="group h-full p-4 sm:p-6 rounded-xl bg-card border border-border hover:border-primary/50 
-                transition-all duration-500 hover:transform hover:-translate-y-1
-                hover:shadow-lg hover:shadow-primary/10"
-    >
-      <div className="flex flex-col h-full">
-        <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
-          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-[linear-gradient(135deg,hsla(var(--primary),0.12),transparent)] 
-                      flex items-center justify-center text-primary transition-all duration-500">
-            <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
-          </div>
-          <h2 className="text-lg sm:text-xl font-semibold text-primary">
-            {title}
-          </h2>
-        </div>
-        
-        <p className="text-sm sm:text-base text-muted-foreground transition-colors">
-          {description}
-        </p>
-      </div>
-    </div>
+    <article className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 md:p-7">
+      <span className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
+        <Icon className="h-5 w-5" aria-hidden="true" />
+      </span>
+
+      <h3 className="text-lg font-semibold text-foreground md:text-xl">{title}</h3>
+
+      <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
+        {description}
+      </p>
+    </article>
   );
 };
 

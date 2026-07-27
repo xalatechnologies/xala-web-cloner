@@ -69,7 +69,8 @@
   },
   "clients": {
     "title": "Trusted by Leading Companies",
-    "description": "We partner with industry leaders across various sectors"
+    "description": "We partner with industry leaders across various sectors",
+    "eyebrow": "Clients"
   },
   "caseStudies": {
     "noResults": "No case studies found",
@@ -384,7 +385,39 @@
     "ctaTitle": "Facing something similar?",
     "ctaDescription": "Tell us what you are dealing with, and we will say what we would do first — and what we would leave until later.",
     "ctaContact": "Contact us",
-    "ctaProcess": "How we work"
+    "ctaProcess": "How we work",
+    "tags": {
+      "apis": "APIs",
+      "birth_registration": "Birth registration",
+      "case_management": "Case management",
+      "child_protection": "Child protection",
+      "communication_platform": "Communication platform",
+      "enterprise": "Enterprise",
+      "enterprise_services": "Enterprise services",
+      "healthcare": "Healthcare",
+      "humanitarian": "Humanitarian",
+      "humanitarian_logistics": "Humanitarian logistics",
+      "humanitarian_tech": "Humanitarian tech",
+      "industrial_iot": "Industrial IoT",
+      "integration": "Integration",
+      "integrations": "Integrations",
+      "java_migration": "Java migration",
+      "mapping": "Mapping",
+      "modernization": "Modernisation",
+      "monitoring": "Monitoring",
+      "municipality": "Municipality",
+      "public_sector": "Public sector",
+      "real_time": "Real-time",
+      "reintegration": "Reintegration",
+      "secure_access": "Secure access",
+      "secure_case_workflows": "Secure case workflows",
+      "secure_data": "Secure data",
+      "security": "Security",
+      "smart_mobility": "Smart mobility",
+      "transport_tech": "Transport tech",
+      "workflow_portals": "Workflow portals",
+      "workflow_systems": "Workflow systems"
+    }
   },
   "caseStudy": {
     "backToAll": "All cases",
@@ -560,7 +593,7 @@
     "eyebrow": "Process"
   },
   "proof": {
-    "eyebrow": "References",
+    "eyebrow": "Results",
     "title": "Systems running where downtime is not an option",
     "description": "We have delivered for government agencies, health trusts and municipalities — and we maintain the solutions after launch.",
     "stats": {
@@ -631,5 +664,15 @@
   },
   "cta": {
     "eyebrow": "Next step"
+  },
+  "about": {
+    "eyebrow": "About the company",
+    "principlesTitle": "What we hold to",
+    "facts": {
+      "founded": "Founded",
+      "orgnr": "Company number",
+      "location": "Head office",
+      "certification": "Certification"
+    }
   }
 }

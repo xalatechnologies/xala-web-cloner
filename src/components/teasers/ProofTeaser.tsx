@@ -24,15 +24,11 @@ const STATS = [
   { value: '5M+', key: 'proof.stats.users', fallback: 'Sluttbrukere betjent' },
 ] as const;
 
-/** Named on the case index already; shown here as the reference list. */
-const REFERENCES = [
-  'Altinn',
-  'Statistisk sentralbyrå',
-  'Norsk helsenett',
-  'Nordre Follo kommune',
-  'Sykehuspartner',
-  'SpareBank 1',
-];
+/*
+ * The named-reference chips that used to sit here are gone. The client wall
+ * directly above now renders every client's name as text, so this repeated six
+ * of them a few hundred pixels lower, under the same "Referanser" eyebrow.
+ */
 
 export default function ProofTeaser() {
   const { t } = useTranslation();
@@ -42,7 +38,7 @@ export default function ProofTeaser() {
     <Section tone="default" size="md" labelledBy="proof-heading">
       <div className="mx-auto max-w-3xl text-center">
         <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
-          {t('proof.eyebrow', 'Referanser')}
+          {t('proof.eyebrow', 'Resultater')}
         </p>
         <h2
           id="proof-heading"
@@ -77,16 +73,6 @@ export default function ProofTeaser() {
         ))}
       </dl>
 
-      <ul className="mx-auto mt-10 flex max-w-4xl flex-wrap items-center justify-center gap-2.5">
-        {REFERENCES.map((name) => (
-          <li
-            key={name}
-            className="rounded-full border border-border bg-muted/40 px-4 py-2 text-sm font-medium text-foreground/80"
-          >
-            {name}
-          </li>
-        ))}
-      </ul>
 
       <div className="mt-12 text-center">
         <Link

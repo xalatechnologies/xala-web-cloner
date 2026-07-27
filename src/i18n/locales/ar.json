@@ -69,7 +69,8 @@
   },
   "clients": {
     "title": "شركاء موثوقون",
-    "description": "نتعاون مع رواد الصناعة في مختلف القطاعات"
+    "description": "نتعاون مع رواد الصناعة في مختلف القطاعات",
+    "eyebrow": "المراجع"
   },
   "caseStudies": {
     "noResults": "لم يتم العثور على دراسات حالة",
@@ -384,7 +385,39 @@
     "ctaTitle": "هل تواجهون تحدّياً مشابهاً؟",
     "ctaDescription": "أخبرونا بما تواجهونه، وسنقول لكم ما الذي سنبدأ به — وما الذي سنؤجّله.",
     "ctaContact": "اتصل بنا",
-    "ctaProcess": "كيف نعمل"
+    "ctaProcess": "كيف نعمل",
+    "tags": {
+      "apis": "واجهات برمجية",
+      "birth_registration": "تسجيل المواليد",
+      "case_management": "إدارة القضايا",
+      "child_protection": "حماية الطفل",
+      "communication_platform": "منصة اتصال",
+      "enterprise": "مؤسسات",
+      "enterprise_services": "خدمات مؤسسية",
+      "healthcare": "الصحة",
+      "humanitarian": "إنساني",
+      "humanitarian_logistics": "لوجستيات إنسانية",
+      "humanitarian_tech": "تقنية إنسانية",
+      "industrial_iot": "إنترنت الأشياء الصناعي",
+      "integration": "تكامل",
+      "integrations": "تكاملات",
+      "java_migration": "ترحيل Java",
+      "mapping": "رسم الخرائط",
+      "modernization": "تحديث",
+      "monitoring": "مراقبة",
+      "municipality": "بلدية",
+      "public_sector": "القطاع العام",
+      "real_time": "الزمن الحقيقي",
+      "reintegration": "إعادة الإدماج",
+      "secure_access": "وصول آمن",
+      "secure_case_workflows": "مسارات قضايا آمنة",
+      "secure_data": "بيانات آمنة",
+      "security": "الأمن",
+      "smart_mobility": "تنقّل ذكي",
+      "transport_tech": "تقنية النقل",
+      "workflow_portals": "بوابات سير العمل",
+      "workflow_systems": "أنظمة سير العمل"
+    }
   },
   "caseStudy": {
     "backToAll": "جميع الحالات",
@@ -560,7 +593,7 @@
     "eyebrow": "العملية"
   },
   "proof": {
-    "eyebrow": "مراجع",
+    "eyebrow": "النتائج",
     "title": "أنظمة تعمل حيث لا مجال للتوقف",
     "description": "نفّذنا لهيئات حكومية ومؤسسات صحية وبلديات — ونتولّى صيانة الحلول بعد الإطلاق.",
     "stats": {
@@ -631,5 +664,15 @@
   },
   "cta": {
     "eyebrow": "الخطوة التالية"
+  },
+  "about": {
+    "eyebrow": "عن الشركة",
+    "principlesTitle": "ما نلتزم به",
+    "facts": {
+      "founded": "تأسست",
+      "orgnr": "رقم السجل",
+      "location": "المقر الرئيسي",
+      "certification": "الشهادة"
+    }
   }
 }

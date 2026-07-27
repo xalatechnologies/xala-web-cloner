@@ -69,7 +69,8 @@
   },
   "clients": {
     "title": "Stolte partnere",
-    "description": "Vi samarbeider med ledende aktører i ulike bransjer"
+    "description": "Vi samarbeider med ledende aktører i ulike bransjer",
+    "eyebrow": "Referanser"
   },
   "caseStudies": {
     "noResults": "Ingen casestudier funnet",
@@ -384,7 +385,39 @@
     "ctaTitle": "Har dere en lignende oppgave?",
     "ctaDescription": "Fortell oss hva dere står i, så sier vi hva vi ville gjort først — og hva vi ville ventet med.",
     "ctaContact": "Kontakt oss",
-    "ctaProcess": "Slik vi jobber"
+    "ctaProcess": "Slik vi jobber",
+    "tags": {
+      "apis": "API-er",
+      "birth_registration": "Fødselsregistrering",
+      "case_management": "Saksbehandling",
+      "child_protection": "Barnevern",
+      "communication_platform": "Kommunikasjonsplattform",
+      "enterprise": "Virksomhet",
+      "enterprise_services": "Virksomhetstjenester",
+      "healthcare": "Helse",
+      "humanitarian": "Humanitær",
+      "humanitarian_logistics": "Humanitær logistikk",
+      "humanitarian_tech": "Humanitær teknologi",
+      "industrial_iot": "Industriell IoT",
+      "integration": "Integrasjon",
+      "integrations": "Integrasjoner",
+      "java_migration": "Java-migrering",
+      "mapping": "Kartlegging",
+      "modernization": "Modernisering",
+      "monitoring": "Overvåking",
+      "municipality": "Kommune",
+      "public_sector": "Offentlig sektor",
+      "real_time": "Sanntid",
+      "reintegration": "Reintegrering",
+      "secure_access": "Sikker tilgang",
+      "secure_case_workflows": "Sikker saksflyt",
+      "secure_data": "Sikre data",
+      "security": "Sikkerhet",
+      "smart_mobility": "Smart mobilitet",
+      "transport_tech": "Transportteknologi",
+      "workflow_portals": "Saksportaler",
+      "workflow_systems": "Saksbehandlingssystemer"
+    }
   },
   "caseStudy": {
     "backToAll": "Alle caser",
@@ -560,7 +593,7 @@
     "eyebrow": "Prosess"
   },
   "proof": {
-    "eyebrow": "Referanser",
+    "eyebrow": "Resultater",
     "title": "Systemer i drift hos dem som ikke kan ha nedetid",
     "description": "Vi har levert til statlige etater, helseforetak og kommuner — og forvalter løsningene videre etter lansering.",
     "stats": {
@@ -631,5 +664,15 @@
   },
   "cta": {
     "eyebrow": "Neste steg"
+  },
+  "about": {
+    "eyebrow": "Om selskapet",
+    "principlesTitle": "Det vi holder oss til",
+    "facts": {
+      "founded": "Etablert",
+      "orgnr": "Organisasjonsnummer",
+      "location": "Hovedkontor",
+      "certification": "Sertifisering"
+    }
   }
 }

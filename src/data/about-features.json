@@ -1,80 +1,80 @@
 {
     "no": [
         {
-            "id": "innovation",
-            "title": "Innovasjon",
-            "description": "Vi driver kontinuerlig innovasjon for å holde kundene våre i forkant av teknologiutviklingen.",
-            "icon": "Lightbulb"
+            "id": "forvaltning",
+            "title": "Vi forvalter det vi bygger",
+            "description": "Vi blir værende etter lansering. Et system som skal driftes i ti år designes annerledes enn ett som skal demonstreres én gang — og det er den forskjellen kunden betaler for.",
+            "icon": "ShieldCheck"
         },
         {
-            "id": "expertise",
-            "title": "Ekspertise",
-            "description": "Vårt team består av erfarne utviklere og konsulenter med dyp teknisk kompetanse.",
-            "icon": "Award"
+            "id": "etapper",
+            "title": "Vi leverer i etapper",
+            "description": "Hver etappe gir noe som virker. Det gjør estimatene på den neste realistiske, og gir dere en reell exit hvis samarbeidet ikke fungerer.",
+            "icon": "Layers"
         },
         {
-            "id": "partnership",
-            "title": "Partnerskap",
-            "description": "Vi bygger langsiktige partnerskap med våre kunder basert på tillit og felles suksess.",
-            "icon": "Handshake"
+            "id": "uu",
+            "title": "Universell utforming fra start",
+            "description": "WCAG 2.2 AA er et krav for offentlige tjenester, ikke en ambisjon — og vesentlig billigere å bygge inn enn å rette i etterkant.",
+            "icon": "Accessibility"
         },
         {
-            "id": "quality",
-            "title": "Kvalitet",
-            "description": "Vi leverer løsninger av høyeste kvalitet med fokus på sikkerhet og ytelse.",
-            "icon": "Shield"
+            "id": "sikkerhet",
+            "title": "Sikkerhet som designvalg",
+            "description": "Vi er ISO 27001-sertifisert og jobber med personopplysninger i systemer som ikke tåler nedetid. Sporbarhet og tilgangsstyring er del av datamodellen.",
+            "icon": "Lock"
         }
     ],
     "en": [
         {
-            "id": "innovation",
-            "title": "Innovation",
-            "description": "We drive continuous innovation to keep our customers ahead of technology developments.",
-            "icon": "Lightbulb"
+            "id": "forvaltning",
+            "title": "We keep running what we build",
+            "description": "We stay on after launch. A system meant to run for ten years is designed differently from one meant to be demonstrated once — and that difference is what a client is paying for.",
+            "icon": "ShieldCheck"
         },
         {
-            "id": "expertise",
-            "title": "Expertise",
-            "description": "Our team consists of experienced developers and consultants with deep technical expertise.",
-            "icon": "Award"
+            "id": "etapper",
+            "title": "We deliver in stages",
+            "description": "Each stage produces something that works. That makes the estimate for the next one realistic, and gives you a real exit if the collaboration is not working.",
+            "icon": "Layers"
         },
         {
-            "id": "partnership",
-            "title": "Partnership",
-            "description": "We build long-term partnerships with our customers based on trust and mutual success.",
-            "icon": "Handshake"
+            "id": "uu",
+            "title": "Accessibility from the start",
+            "description": "WCAG 2.2 AA is a requirement for public services, not an ambition — and considerably cheaper to build in than to retrofit.",
+            "icon": "Accessibility"
         },
         {
-            "id": "quality",
-            "title": "Quality",
-            "description": "We deliver solutions of the highest quality with focus on security and performance.",
-            "icon": "Shield"
+            "id": "sikkerhet",
+            "title": "Security as a design decision",
+            "description": "We are ISO 27001 certified and work with personal data in systems that cannot afford downtime. Traceability and access control are part of the data model.",
+            "icon": "Lock"
         }
     ],
     "ar": [
         {
-            "id": "innovation",
-            "title": "الابتكار",
-            "description": "ندفع الابتكار المستمر للحفاظ على عملائنا في طليعة التطورات التقنية.",
-            "icon": "Lightbulb"
+            "id": "forvaltning",
+            "title": "نواصل تشغيل ما نبنيه",
+            "description": "نبقى بعد الإطلاق. النظام المصمّم للعمل عشر سنوات يُصمّم بطريقة تختلف عن نظام يُعرض مرة واحدة — وهذا الفارق هو ما يدفع العميل مقابله.",
+            "icon": "ShieldCheck"
         },
         {
-            "id": "expertise",
-            "title": "الخبرة",
-            "description": "يتكون فريقنا من مطورين ومستشارين ذوي خبرة عميقة في المجال التقني.",
-            "icon": "Award"
+            "id": "etapper",
+            "title": "نسلّم على مراحل",
+            "description": "كل مرحلة تنتج شيئاً يعمل. هذا يجعل تقدير المرحلة التالية واقعياً، ويمنحكم مخرجاً حقيقياً إن لم يفلح التعاون.",
+            "icon": "Layers"
         },
         {
-            "id": "partnership",
-            "title": "الشراكة",
-            "description": "نبني شراكات طويلة الأمد مع عملائنا مبنية على الثقة والنجاح المتبادل.",
-            "icon": "Handshake"
+            "id": "uu",
+            "title": "إمكانية الوصول من البداية",
+            "description": "معيار WCAG 2.2 AA شرط للخدمات العامة لا طموح — وبناؤه من البداية أرخص بكثير من تصحيحه لاحقاً.",
+            "icon": "Accessibility"
         },
         {
-            "id": "quality",
-            "title": "الجودة",
-            "description": "نقدم حلولاً بأعلى جودة مع التركيز على الأمان والأداء.",
-            "icon": "Shield"
+            "id": "sikkerhet",
+            "title": "الأمن قرار تصميمي",
+            "description": "نحن حاصلون على ISO 27001 ونتعامل مع بيانات شخصية في أنظمة لا تحتمل التوقّف. التتبّع وإدارة الوصول جزء من نموذج البيانات.",
+            "icon": "Lock"
         }
     ]
 }

@@ -6,45 +6,53 @@ import { Skeleton } from './ui/skeleton';
 
 interface AboutProps {
   /**
-   * Heading level for the section title. The page hosting this section
-   * owns the h1; this stays an h1 only where the section leads the page.
+   * Heading level for the section title. The page hosting this section owns the
+   * h1; this stays an h1 only where the section leads the page.
    */
   headingLevel?: 'h1' | 'h2';
 }
 
+/**
+ * Who this company is, stated in facts rather than adjectives.
+ *
+ * The section was four cards reading "Vi driver kontinuerlig innovasjon", "Vårt
+ * team består av erfarne utviklere" and so on — sentences that would be true of
+ * any consultancy anywhere, which is another way of saying they carry no
+ * information. Every one of them was centred under a left-aligned page header,
+ * and all four rendered the same brain icon.
+ *
+ * The facts strip below the intro is deliberate and not decoration. An answer
+ * engine asked "who builds case management systems in Norway" needs
+ * attributable specifics — an organisation number, a founding year, a place, a
+ * certification — and those were previously only in the JSON-LD, never in the
+ * text a crawler quotes from. Stating them visibly puts the same claims in both
+ * places, which is the condition for being treated as a known entity rather
+ * than an anonymous supplier.
+ */
+const FACTS = [
+  { key: 'about.facts.founded', value: '2018', fallback: 'Etablert' },
+  { key: 'about.facts.orgnr', value: '920 972 454', fallback: 'Organisasjonsnummer' },
+  { key: 'about.facts.location', value: 'Nesbru, Asker', fallback: 'Hovedkontor' },
+  { key: 'about.facts.certification', value: 'ISO 27001', fallback: 'Sertifisering' },
+] as const;
+
 const About = ({ headingLevel = 'h1' }: AboutProps = {}) => {
   const { t } = useTranslation();
   const { data: aboutSection } = useSection('about');
-  const Heading = headingLevel;
   const { data: visionSection } = useSection('vision');
-  const { data: features, isLoading: isFeaturesLoading } = useAboutFeatures();
-
-  const isLoading = isFeaturesLoading;
+  const { data: features, isLoading } = useAboutFeatures();
+  const Heading = headingLevel;
 
   if (isLoading) {
     return (
-      <section id="about" className="py-12 sm:py-16 lg:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 sm:mb-12">
-            <Skeleton className="h-8 w-64 mx-auto mb-4" />
-            <Skeleton className="h-4 w-96 mx-auto" />
-          </div>
-          <div className="flex justify-center mb-12 sm:mb-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-4xl w-full">
+      <section id="about" className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <Skeleton className="mb-4 h-9 w-72" />
+          <Skeleton className="h-4 w-full max-w-2xl" />
+          <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2">
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="p-6 rounded-lg bg-muted">
-                <Skeleton className="h-12 w-12 mb-4" />
-                <Skeleton className="h-6 w-48 mb-2" />
-                <Skeleton className="h-4 w-full" />
-                <Skeleton className="h-4 w-3/4 mt-1" />
-              </div>
+              <Skeleton key={i} className="h-44 rounded-2xl" />
             ))}
-            </div>
-          </div>
-          <div className="max-w-3xl mx-auto">
-            <Skeleton className="h-8 w-48 mx-auto mb-4" />
-            <Skeleton className="h-4 w-full mx-auto" />
-            <Skeleton className="h-4 w-5/6 mx-auto mt-2" />
           </div>
         </div>
       </section>
@@ -52,15 +60,43 @@ const About = ({ headingLevel = 'h1' }: AboutProps = {}) => {
   }
 
   return (
-    <section id="about" className="py-12 sm:py-16 lg:py-20 bg-background hero-gradient">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8 sm:mb-12">
-          <Heading className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4 text-foreground">{aboutSection?.title}</Heading>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto px-4 sm:px-0">{aboutSection?.description}</p>
+    <section id="about" className="bg-background py-16 md:py-24" aria-labelledby="about-heading">
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl">
+          <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+            {t('about.eyebrow', 'Om selskapet')}
+          </p>
+          <Heading
+            id="about-heading"
+            className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+          >
+            {aboutSection?.title}
+          </Heading>
+          {aboutSection?.description && (
+            <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+              {aboutSection.description}
+            </p>
+          )}
         </div>
 
-        <div className="flex justify-center mb-12 sm:mb-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-4xl w-full">
+        <dl className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border lg:grid-cols-4">
+          {FACTS.map((fact) => (
+            <div key={fact.key} className="bg-card p-5 md:p-6">
+              <dt className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                {t(fact.key, fact.fallback)}
+              </dt>
+              <dd className="mt-2 text-xl font-bold tracking-tight text-foreground md:text-2xl">
+                {fact.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+
+        <div className="mt-16">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+            {t('about.principlesTitle', 'Det vi holder oss til')}
+          </h2>
+          <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
             {features?.map((feature) => (
               <AboutFeatureCard
                 key={feature.id}
@@ -73,15 +109,15 @@ const About = ({ headingLevel = 'h1' }: AboutProps = {}) => {
         </div>
 
         {visionSection && (
-          <div className="mt-12 sm:mt-20 p-4 sm:p-8 rounded-xl sm:rounded-2xl bg-card border border-border dark:bg-gradient-to-r dark:from-[#9b87f5]/10 dark:via-[#D946EF]/10 dark:to-[#0EA5E9]/10">
-            <div className="max-w-3xl mx-auto text-center space-y-4 sm:space-y-6">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-foreground">
-                {visionSection.title}
-              </h3>
-              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                {visionSection.description}
-              </p>
-            </div>
+          <div className="mt-16 rounded-2xl border border-border bg-muted/40 p-8 md:p-12">
+            {/* Was a purple-to-magenta-to-blue gradient in dark mode, left over
+                from the palette before the bronze one. */}
+            <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+              {visionSection.title}
+            </h2>
+            <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+              {visionSection.description}
+            </p>
           </div>
         )}
       </div>

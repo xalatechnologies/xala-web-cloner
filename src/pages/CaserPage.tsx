@@ -63,6 +63,18 @@ const SECTOR_DOT: Record<string, string> = {
 const sectorKey = (sector: string) =>
   `caserPage.sectors.${sector.toLowerCase().replace(' / ', '_').replace(/ /g, '_')}`;
 
+/**
+ * Same arrangement for tags, for the same reason: the raw English string is the
+ * filter key, the colour-map key and the value in the data file, so only the
+ * label is translated.
+ *
+ * Technology names and proper nouns — Azure, React, SharePoint, ID-porten —
+ * deliberately have no entry. i18next falls back to the key's own text, which
+ * is already what they should read in every language.
+ */
+const tagKey = (tag: string) =>
+  `caserPage.tags.${tag.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '')}`;
+
 // ─── Case Card ─────────────────────────────────────────────────────────────────
 function CaseCard({ entry, index }: { entry: CaserEntry; index: number }) {
   const { t, i18n } = useTranslation();
@@ -141,7 +153,7 @@ function CaseCard({ entry, index }: { entry: CaserEntry; index: number }) {
               key={tag}
               className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-muted border border-border/60 text-muted-foreground"
             >
-              {tag}
+              {t(tagKey(tag), tag)}
             </span>
           ))}
           {entry.tags.length > 3 && (
@@ -249,7 +261,14 @@ function FilterSidebar({
               </span>
             </button>
 
-            {ALL_SECTORS.map((sector) => {
+            {/*
+              Only sectors that have cases. 'Juss og teknologi' rendered with a
+              count of 0 — a filter offering to show nothing, which is a dead
+              control dressed up as a choice.
+            */}
+            {ALL_SECTORS.filter((sector) =>
+              caserEntries.some((entry) => entry.sector === sector)
+            ).map((sector) => {
               const count = caserEntries.filter(e => e.sector === sector).length;
               const dot = SECTOR_DOT[sector] ?? 'bg-primary';
               return (
@@ -319,7 +338,7 @@ function FilterSidebar({
                           : 'bg-muted/50 text-muted-foreground border-border/60 hover:border-primary/40 hover:text-foreground'
                       )}
                     >
-                      {tag}
+                      {t(tagKey(tag), tag)}
                     </button>
                   ))}
                 </div>
@@ -427,7 +446,7 @@ function MobileFilterBar({
                         : 'bg-muted text-muted-foreground border-border hover:border-primary/40 hover:text-foreground'
                     )}
                   >
-                    {tag}
+                    {t(tagKey(tag), tag)}
                   </button>
                 ))}
               </div>
@@ -483,13 +502,17 @@ export default function CaserPage() {
         e.description,
         localizedCardExcerpt(e.slug, i18n.language) ?? '',
         e.sector,
+        t(sectorKey(e.sector), e.sector),
         ...e.tags,
+        // Both forms: the raw tag is the filter key, but the chip on the card
+        // shows the translated label, and typing what you can see has to work.
+        ...e.tags.map((tag) => t(tagKey(tag), tag)),
       ]
         .join(' ')
         .toLowerCase();
       return haystack.includes(q);
     });
-  }, [activeSector, activeTags, search, i18n.language]);
+  }, [activeSector, activeTags, search, i18n.language, t]);
 
   const linkedCount = caserEntries.filter(e => e.slug).length;
 
@@ -535,7 +558,7 @@ export default function CaserPage() {
             /slik-vi-jobber — and pushed the first case card below the fold on
             a laptop.
           */}
-          <div className="container max-w-6xl relative">
+          <div className="container relative mx-auto px-4">
             <div className="max-w-3xl">
               <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
                 {t('caserPage.eyebrow')}
@@ -579,7 +602,7 @@ export default function CaserPage() {
         </section>
 
         {/* ── Body ─────────────────────────────────────────────────────── */}
-        <div className="container max-w-7xl py-12 flex-1">
+        <div className="container mx-auto flex-1 px-4 py-12">
 
           {/* Search bar */}
           <div className="relative mb-10 max-w-2xl">
@@ -670,7 +693,7 @@ export default function CaserPage() {
                         onClick={() => toggleTag(tag)}
                         className="flex items-center gap-1.5 text-sm font-semibold bg-muted text-muted-foreground border border-border px-3 py-1.5 rounded-xl hover:border-primary/40 transition-colors"
                       >
-                        {tag}
+                        {t(tagKey(tag), tag)}
                         <X className="h-3.5 w-3.5" />
                       </button>
                     ))}
@@ -736,7 +759,7 @@ export default function CaserPage() {
           aria-labelledby="caser-cta"
           className="border-t border-border bg-muted/40 py-14 md:py-20"
         >
-          <div className="container mx-auto grid max-w-7xl gap-8 px-4 lg:grid-cols-12 lg:items-end">
+          <div className="container mx-auto grid gap-8 px-4 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
               <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
                 {t('caserPage.ctaEyebrow', 'Neste steg')}
