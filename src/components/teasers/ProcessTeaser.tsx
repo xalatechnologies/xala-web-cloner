@@ -1,130 +1,95 @@
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Search, Palette, Code2, Rocket, ChevronRight, ArrowRight } from 'lucide-react';
-import { Section } from '@/components/ui/section';
+import { ArrowRight } from 'lucide-react';
+import * as Icons from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+import workProcessData from '@/data/work-process.json';
 
+type Language = 'no' | 'en' | 'ar';
+
+/**
+ * The delivery process, on the front page.
+ *
+ * Reads work-process.json, the same file /slik-vi-jobber renders. Its own
+ * hardcoded list had four steps — Kartlegging, Design, Utvikling, Levering —
+ * against the five in the data file, under different names. So the homepage
+ * described a four-stage process and the page it linked to described a
+ * different five-stage one.
+ */
 export default function ProcessTeaser() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const steps = [
-    {
-      number: '01',
-      title: t('teasers.process.steps.mapping'),
-      description: t('teasers.process.steps.mappingDesc'),
-      icon: Search,
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      number: '02',
-      title: t('teasers.process.steps.design'),
-      description: t('teasers.process.steps.designDesc'),
-      icon: Palette,
-      color: 'from-violet-500 to-purple-500'
-    },
-    {
-      number: '03',
-      title: t('teasers.process.steps.development'),
-      description: t('teasers.process.steps.developmentDesc'),
-      icon: Code2,
-      color: 'from-emerald-500 to-green-500'
-    },
-    {
-      number: '04',
-      title: t('teasers.process.steps.delivery'),
-      description: t('teasers.process.steps.deliveryDesc'),
-      icon: Rocket,
-      color: 'from-emerald-500 to-green-500'
-    }
-  ];
+  const language: Language = useMemo(() => {
+    const lang = i18n.language?.toLowerCase() ?? 'no';
+    return lang.startsWith('ar') ? 'ar' : lang.startsWith('en') ? 'en' : 'no';
+  }, [i18n.language]);
+
+  const steps = workProcessData[language] ?? workProcessData.no;
+  const iconFor = (name: string): LucideIcon =>
+    (Icons[name as keyof typeof Icons] as LucideIcon) || Icons.CircleDot;
 
   return (
-    <Section tone="default" size="md" styled container={false}>
-      {/* Background decorations */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Header */}
-        <div className="mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+    <section
+      id="process-teaser"
+      aria-labelledby="process-teaser-heading"
+      className="border-y border-border bg-muted/30 py-16 md:py-24"
+    >
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl">
+          <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+            {t('teasers.process.eyebrow', 'Prosess')}
+          </p>
+          <h2
+            id="process-teaser-heading"
+            className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+          >
             {t('teasers.process.title')}
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
             {t('teasers.process.description')}
           </p>
         </div>
 
-        {/* Process Flow */}
-        <div className="relative">
-          {/* Connection line - visible on desktop */}
-          <div className="hidden lg:block absolute top-24 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-blue-500 via-violet-500 via-emerald-500 to-orange-500 opacity-30" />
-
-          {/* Steps grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-            {steps.map((step, index) => {
-              const IconComponent = step.icon;
-              return (
-                <div key={index} className="relative group">
-                  {/* Arrow connector on mobile/tablet */}
-                  {index < steps.length - 1 && (
-                    <div className="hidden md:block lg:hidden absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-muted-foreground/30">
-                      <ArrowRight className="w-6 h-6 rotate-90" />
-                    </div>
-                  )}
-
-                  <div className="flex flex-col items-center text-center">
-                    {/* Step number and icon */}
-                    <div className="relative mb-6">
-                      {/* Background glow */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${step.color} rounded-2xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 scale-150`} />
-
-                      {/* Icon container */}
-                      <div className={`relative w-20 h-20 rounded-2xl bg-gradient-to-br ${step.color} p-0.5 group-hover:scale-110 transition-transform duration-500`}>
-                        <div className="w-full h-full rounded-2xl bg-background flex items-center justify-center">
-                          <IconComponent className="w-8 h-8 text-foreground group-hover:text-primary transition-colors duration-300" />
-                        </div>
-                      </div>
-
-                      {/* Step number badge */}
-                      <div className={`absolute -top-2 -right-2 w-8 h-8 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center text-white text-xs font-bold shadow-lg`}>
-                        {step.number}
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
-                      {step.title}
-                    </h3>
-                    <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                      {step.description}
-                    </p>
-                  </div>
-
-                  {/* Arrow connector on desktop */}
-                  {index < steps.length - 1 && (
-                    <div className="hidden lg:block absolute top-24 -right-3 transform translate-x-1/2 text-muted-foreground/40 z-10">
-                      <ChevronRight className="w-6 h-6" />
-                    </div>
-                  )}
+        <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {steps.map((step) => {
+            const Icon = iconFor(step.icon);
+            return (
+              <li
+                key={step.id}
+                className="flex h-full flex-col rounded-2xl border border-border bg-card p-5"
+              >
+                <div className="flex items-center gap-3">
+                  <span
+                    aria-hidden="true"
+                    className="text-2xl font-bold leading-none tracking-tight text-primary"
+                  >
+                    {String(step.step_number).padStart(2, '0')}
+                  </span>
+                  <Icon className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
                 </div>
-              );
-            })}
-          </div>
-        </div>
+                <h3 className="mt-4 font-semibold text-foreground">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {step.description}
+                </p>
+              </li>
+            );
+          })}
+        </ol>
 
-        {/* CTA */}
-        <div className="text-center mt-16">
+        <div className="mt-10">
           <Link
             to="/slik-vi-jobber"
-            className="inline-flex items-center px-8 py-4 text-base font-medium rounded-xl text-primary-foreground bg-primary hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            className="group inline-flex min-h-12 items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold uppercase tracking-[0.1em] text-primary-foreground transition-all hover:shadow-[0_0_32px_hsl(var(--primary)/0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
-            {t('teasers.process.readProcess')}
-            <ChevronRight className="ms-3 h-5 w-5" />
+            {t('teasers.process.viewAll', 'Slik vi jobber')}
+            <ArrowRight
+              className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+              aria-hidden="true"
+            />
           </Link>
         </div>
       </div>
-    </Section>
+    </section>
   );
 }

@@ -45,6 +45,7 @@ import {
   STATIC_ROUTES,
   blogSitemapEntries,
   caseStudySitemapEntries,
+  productSitemapEntries,
   escapeXml,
   renderLlmsTxt,
   renderRss,
@@ -53,6 +54,7 @@ import {
 } from "../src/lib/blog/feeds";
 import type { BlogPost } from "../src/lib/blog/types";
 import { caseStudies } from "../src/data/case-studies/index";
+import productsData from "../src/data/products.json";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CONTENT_DIR = path.join(ROOT, "src", "content", "blog");
@@ -350,6 +352,35 @@ function main(): void {
     );
   }
 
+  // A file per product page, with that product's own title and description.
+  // They cannot go through STATIC_ROUTES: every /produkter/* path resolves to
+  // the same pageId, so all four would have shipped the same <title>.
+  for (const product of productsData.no) {
+    if (!product.slug) continue;
+    const url = `${SITE_ORIGIN}/produkter/${product.slug}`;
+    write(
+      path.join(DIST, "produkter", product.slug, "index.html"),
+      renderHead(shell, {
+        title: `${product.title} | ${ORGANIZATION}`,
+        description: product.description,
+        canonical: url,
+        ogType: "website",
+        jsonLd: {
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "@id": `${url}#product`,
+          name: product.title,
+          description: product.description,
+          url,
+          applicationCategory: "BusinessApplication",
+          operatingSystem: "Web",
+          publisher: { "@id": ORG_ID },
+          ...(product.features?.length ? { featureList: product.features } : {}),
+        },
+      }),
+    );
+  }
+
   write(path.join(DIST, "404.html"), shell);
 
   write(path.join(DIST, "blogg", "rss.xml"), renderRss(posts));
@@ -382,6 +413,10 @@ function main(): void {
     renderSitemap([
       ...staticSitemapEntries(today),
       ...caseStudySitemapEntries(caseStudySlugs, today),
+      ...productSitemapEntries(
+        productsData.no.filter((p) => p.slug).map((p) => p.slug as string),
+        today,
+      ),
       ...blogSitemapEntries(posts),
     ]),
   );

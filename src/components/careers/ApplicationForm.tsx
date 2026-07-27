@@ -16,6 +16,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { useToast } from '@/components/ui/use-toast';
+import { formEndpoint, submitForm } from '@/lib/forms/submit';
 
 interface ApplicationFormProps {
   /** Discipline titles offered in the role field, in the reader's language. */
@@ -62,42 +63,45 @@ export const ApplicationForm = ({ roles, contactEmail }: ApplicationFormProps) =
     defaultValues: { name: '', email: '', role: '', portfolio: '', message: '' },
   });
 
-  const onSubmit = (values: Values) => {
-    try {
-      const subject = encodeURIComponent(
-        t('careers.mailSubjectRole', 'Åpen søknad: {{role}}', { role: values.role })
-      );
-      const body = encodeURIComponent(
-        [
-          `Navn: ${values.name}`,
-          `E-post: ${values.email}`,
-          `Rolle: ${values.role}`,
-          values.portfolio ? `Portefølje: ${values.portfolio}` : null,
-          '',
-          values.message,
-          '',
-          t('careers.form.attachReminder', 'Husk å legge ved CV-en din før du sender.'),
-        ]
-          .filter((line) => line !== null)
-          .join('\n')
-      );
+  const posts = Boolean(formEndpoint());
 
-      window.open(`mailto:${contactEmail}?subject=${subject}&body=${body}`, '_self');
+  const onSubmit = async (values: Values) => {
+    const lines = [
+      `Navn: ${values.name}`,
+      `E-post: ${values.email}`,
+      `Rolle: ${values.role}`,
+      values.portfolio ? `Portefolje: ${values.portfolio}` : null,
+      '',
+      values.message,
+    ].filter((line): line is string => line !== null);
+
+    try {
+      const outcome = await submitForm(
+        { form: 'careers', ...values },
+        {
+          to: contactEmail,
+          subject: t('careers.mailSubjectRole', 'Apen soknad: {{role}}', { role: values.role }),
+          body: `${lines.join('\n')}\n\n${t('careers.form.attachReminder', '')}`,
+        }
+      );
 
       toast({
-        title: t('careers.form.success.title', 'Søknaden er klar til å sendes'),
-        description: t(
-          'careers.form.success.description',
-          'Vi har åpnet e-postprogrammet ditt. Legg ved CV-en og send, så hører du fra oss.'
-        ),
+        title:
+          outcome === 'posted'
+            ? t('careers.form.sent.title', 'Soknaden er sendt')
+            : t('careers.form.success.title', 'Soknaden er klar til a sendes'),
+        description:
+          outcome === 'posted'
+            ? t('careers.form.sent.description', 'Takk. Vi tar kontakt hvis vi har noe som passer.')
+            : t('careers.form.success.description', ''),
       });
       form.reset();
     } catch (error) {
       console.error('Application submission error:', error);
       toast({
-        title: t('careers.form.error.title', 'Vi fikk ikke åpnet e-postprogrammet'),
+        title: t('careers.form.error.title', 'Vi fikk ikke sendt soknaden'),
         description: t('careers.form.error.description', {
-          defaultValue: 'Send søknaden direkte til {{email}} i stedet.',
+          defaultValue: 'Send soknaden direkte til {{email}} i stedet.',
           email: contactEmail,
         }),
         variant: 'destructive',
@@ -221,15 +225,21 @@ export const ApplicationForm = ({ roles, contactEmail }: ApplicationFormProps) =
           />
 
           <p className="rounded-xl border border-border bg-muted/40 p-4 text-sm text-muted-foreground">
-            {t(
-              'careers.form.cvNote',
-              'Vi tar imot CV som vedlegg. Når du trykker send, åpnes e-postprogrammet ditt med søknaden ferdig utfylt, og der legger du ved CV-en før du sender.'
-            )}
+            {posts ? t('careers.form.cvNotePosted', '') : t('careers.form.cvNote', '')}
           </p>
 
-          <Button type="submit" size="lg" className="w-full gap-2 sm:w-auto">
+          <Button
+            type="submit"
+            size="lg"
+            className="w-full gap-2 sm:w-auto"
+            disabled={form.formState.isSubmitting}
+          >
             <Send className="h-4 w-4" aria-hidden="true" />
-            {t('careers.form.submit', 'Fortsett til e-post')}
+            {form.formState.isSubmitting
+              ? t('careers.form.submitting', 'Sender ...')
+              : posts
+                ? t('careers.form.submitPost', 'Send soknad')
+                : t('careers.form.submit', 'Fortsett til e-post')}
           </Button>
         </form>
       </Form>

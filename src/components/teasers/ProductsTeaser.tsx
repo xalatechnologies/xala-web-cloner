@@ -1,108 +1,112 @@
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { FileText, ClipboardList, Boxes, ChevronRight, Sparkles } from 'lucide-react';
-import { Section } from '@/components/ui/section';
-import { SurfaceCard, CardIcon } from '@/components/ui/surface-card';
+import { ArrowRight } from 'lucide-react';
+import * as Icons from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+import productsData from '@/data/products.json';
 
+type Language = 'no' | 'en' | 'ar';
+
+/**
+ * The products, on the front page.
+ *
+ * Reads products.json, the same file /produkter renders and the same file each
+ * product page is generated from. It used to hold its own hardcoded copy of the
+ * list, with its own icons, its own status labels and its own external URLs —
+ * including https://digiskjema.no and https://xaheen.com, neither of which
+ * resolves. So the homepage sent people to a connection error while the
+ * products page, fixed separately, sent them to a working page. Two lists
+ * describing the same four things will always drift; there is one now.
+ */
 export default function ProductsTeaser() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const products = [
-    {
-      title: 'Digilist',
-      description: t('products.digilist.description'),
-      status: t('products.digilist.status'),
-      statusType: 'available',
-      icon: ClipboardList,
-      url: 'https://digilist.no'
-    },
-    {
-      title: 'Digiskjema',
-      description: t('products.digiskjema.description'),
-      status: t('products.digiskjema.status'),
-      statusType: 'available',
-      icon: FileText,
-      url: 'https://digiskjema.no'
-    },
-    {
-      title: 'Xaheen',
-      description: t('products.xaheen.description'),
-      status: t('products.xaheen.status'),
-      statusType: 'available',
-      icon: Sparkles,
-      url: 'https://xaheen.com'
-    },
-    {
-      title: 'Norchain',
-      description: t('products.norchain.description'),
-      status: t('products.norchain.status'),
-      statusType: 'available',
-      icon: Boxes,
-      url: 'https://norchain.org'
-    }
-  ];
+  const language: Language = useMemo(() => {
+    const lang = i18n.language?.toLowerCase() ?? 'no';
+    return lang.startsWith('ar') ? 'ar' : lang.startsWith('en') ? 'en' : 'no';
+  }, [i18n.language]);
 
-  const getStatusClasses = (type: string) => {
-    switch (type) {
-      case 'available':
-        return 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300';
-      case 'beta':
-        return 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300';
-      default:
-        return 'bg-muted text-foreground';
-    }
-  };
+  const products = productsData[language] ?? productsData.no;
+  const iconFor = (name?: string | null): LucideIcon =>
+    (Icons[name as keyof typeof Icons] as LucideIcon) || Icons.Package;
 
   return (
-    <Section tone="muted" size="sm" styled container={false}>
+    <section
+      id="products-teaser"
+      aria-labelledby="products-teaser-heading"
+      className="border-y border-border bg-muted/30 py-16 md:py-24"
+    >
       <div className="container mx-auto px-4">
-        <div className="mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+        <div className="max-w-3xl">
+          <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+            {t('teasers.products.eyebrow', 'Produkter')}
+          </p>
+          <h2
+            id="products-teaser-heading"
+            className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+          >
             {t('teasers.products.title')}
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
             {t('teasers.products.description')}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {products.map((product, index) => {
-            const IconComponent = product.icon;
+        <ul className="mt-12 grid gap-5 md:grid-cols-2">
+          {products.map((product) => {
+            const Icon = iconFor(product.icon);
+            const comingSoon = product.status === 'coming-soon';
             return (
-              <SurfaceCard key={index} href={product.url}>
-                <div className="flex items-center gap-4 mb-5">
-                  <CardIcon>
-                    <IconComponent className="w-8 h-8 text-primary group-hover:scale-110 transition-transform duration-300" />
-                  </CardIcon>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between gap-4">
-                      <h3 className="text-xl md:text-2xl font-bold text-card-foreground group-hover:text-primary transition-colors duration-300">
-                        {product.title}
-                      </h3>
-                      <span className={`px-3 py-1 text-xs rounded-full font-medium shrink-0 ${getStatusClasses(product.statusType)}`}>
-                        {product.status}
+              <li key={product.id}>
+                <Link
+                  to={`/produkter/${product.slug}`}
+                  className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:p-7"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <h3 className="text-lg font-semibold text-foreground md:text-xl">
+                      {product.title}
+                    </h3>
+                    {comingSoon && (
+                      <span className="ms-auto shrink-0 rounded-full border border-border px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                        {t('products.comingSoon', 'Kommer')}
                       </span>
-                    </div>
+                    )}
                   </div>
-                </div>
-                <p className="text-base md:text-lg text-muted-foreground group-hover:text-foreground leading-relaxed transition-colors duration-300 pl-0 md:pl-[68px]">
-                  {product.description}
-                </p>
-              </SurfaceCard>
+
+                  <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground md:text-base">
+                    {product.description}
+                  </p>
+
+                  <span className="mt-6 inline-flex items-center gap-2 border-t border-border pt-4 text-sm font-semibold text-primary">
+                    {t('products.readMore', 'Les mer')}
+                    <ArrowRight
+                      className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                      aria-hidden="true"
+                    />
+                  </span>
+                </Link>
+              </li>
             );
           })}
-        </div>
+        </ul>
 
-        <div className="">
+        <div className="mt-10">
           <Link
             to="/produkter"
-            className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-primary-foreground bg-primary hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            className="group inline-flex min-h-12 items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold uppercase tracking-[0.1em] text-primary-foreground transition-all hover:shadow-[0_0_32px_hsl(var(--primary)/0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             {t('teasers.products.viewAll')}
-            <ChevronRight className="ms-3 h-5 w-5" />
+            <ArrowRight
+              className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+              aria-hidden="true"
+            />
           </Link>
         </div>
       </div>
-    </Section>
+    </section>
   );
 }

@@ -91,6 +91,16 @@ export function blogSitemapEntries(posts: BlogPost[]): SitemapEntry[] {
  * index — and for a while not even that, because the /caser/:slug route had been
  * dropped and every card 404'd.
  */
+/** One entry per product page, generated from products.json. */
+export function productSitemapEntries(slugs: string[], today: string): SitemapEntry[] {
+  return slugs.map((slug) => ({
+    loc: `${SITE_ORIGIN}/produkter/${slug}`,
+    lastmod: today,
+    changefreq: "monthly",
+    priority: "0.7",
+  }));
+}
+
 export function caseStudySitemapEntries(slugs: string[], today: string): SitemapEntry[] {
   return slugs.map((slug) => ({
     loc: `${SITE_ORIGIN}/caser/${slug}`,
@@ -124,10 +134,6 @@ export const STATIC_ROUTES = [
   { path: "/", priority: "1.0", changefreq: "weekly" },
   { path: "/tjenester", priority: "0.9", changefreq: "monthly" },
   { path: "/produkter", priority: "0.8", changefreq: "monthly" },
-  { path: "/produkter/digilist", priority: "0.8", changefreq: "monthly" },
-  { path: "/produkter/norchain", priority: "0.6", changefreq: "monthly" },
-  { path: "/produkter/xaheen", priority: "0.6", changefreq: "monthly" },
-  { path: "/produkter/digiskjema", priority: "0.6", changefreq: "monthly" },
   { path: "/caser", priority: "0.8", changefreq: "monthly" },
   { path: "/slik-vi-jobber", priority: "0.7", changefreq: "monthly" },
   { path: "/teknologi", priority: "0.7", changefreq: "monthly" },

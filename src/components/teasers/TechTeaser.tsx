@@ -1,153 +1,75 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ChevronRight } from 'lucide-react';
-import { Section } from '@/components/ui/section';
+import { ArrowRight } from 'lucide-react';
+import technologies from '@/data/technologies.json';
 
+/**
+ * The stack, on the front page.
+ *
+ * Reads technologies.json rather than keeping its own copy. The hardcoded list
+ * it used to hold still included AWS long after AWS was removed from the
+ * credentials strip in favour of Azure, which is what a second copy of a list
+ * always ends up doing.
+ *
+ * Logos are loaded from a CDN and are decorative; the name beside each one is
+ * the actual claim, and it is text.
+ */
 export default function TechTeaser() {
   const { t } = useTranslation();
 
-  const technologies = [
-    {
-      name: 'React',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-      color: 'from-cyan-400 to-blue-500'
-    },
-    {
-      name: 'TypeScript',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-      color: 'from-blue-500 to-blue-700'
-    },
-    {
-      name: 'Next.js',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
-      color: 'from-gray-600 to-gray-900',
-      darkInvert: true
-    },
-    {
-      name: 'Node.js',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-      color: 'from-green-500 to-emerald-600'
-    },
-    {
-      name: 'Python',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
-      color: 'from-yellow-400 to-blue-500'
-    },
-    {
-      name: 'Azure',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg',
-      color: 'from-blue-400 to-blue-600'
-    },
-    {
-      name: 'AWS',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg',
-      color: 'from-emerald-400 to-green-500'
-    },
-    {
-      name: 'PostgreSQL',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
-      color: 'from-blue-600 to-indigo-700'
-    },
-    {
-      name: 'Docker',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
-      color: 'from-blue-400 to-cyan-500'
-    },
-    {
-      name: 'Kubernetes',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg',
-      color: 'from-blue-500 to-indigo-600'
-    },
-  ];
-
   return (
-    <Section tone="muted" size="md" styled container={false}>
-      {/* Animated background grid */}
-      <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
-        }} />
-      </div>
-
-      {/* Floating orbs */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-48 h-48 bg-amber-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Header */}
-        <div className="mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-            <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-primary">Moderne tech stack</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+    <section
+      id="tech-teaser"
+      aria-labelledby="tech-teaser-heading"
+      className="py-16 md:py-24"
+    >
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl">
+          <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+            {t('teasers.tech.eyebrow', 'Teknologi')}
+          </p>
+          <h2
+            id="tech-teaser-heading"
+            className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+          >
             {t('teasers.tech.title')}
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
             {t('teasers.tech.description')}
           </p>
         </div>
 
-        {/* Tech grid with logos */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mb-16">
-          {technologies.map((tech, index) => (
-            <div
-              key={tech.name}
-              className="group relative"
-              style={{ animationDelay: `${index * 100}ms` }}
+        <ul className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+          {technologies.map((tech) => (
+            <li
+              key={tech.id}
+              className="flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-4"
             >
-              <div className="relative p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-2 cursor-default">
-                {/* Gradient glow on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${tech.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-500`} />
-
-                {/* Content */}
-                <div className="relative z-10 flex flex-col items-center text-center">
-                  <div className="w-14 h-14 mb-4 flex items-center justify-center">
-                    <img
-                      src={tech.logo}
-                      alt={tech.name}
-                      className={`w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300 ${tech.darkInvert ? 'dark:invert' : ''}`}
-                    />
-                  </div>
-                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
-                    {tech.name}
-                  </h3>
-                </div>
-              </div>
-            </div>
+              <img
+                src={tech.icon}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                className="h-6 w-6 shrink-0 object-contain"
+              />
+              <span className="truncate text-sm font-medium text-foreground">{tech.name}</span>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        {/* Stats row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          {[
-            { value: '10+', label: 'Års erfaring' },
-            { value: '50+', label: 'Prosjekter levert' },
-            { value: '99.9%', label: 'Oppetid' },
-            { value: '24/7', label: 'Support' }
-          ].map((stat, i) => (
-            <div key={i} className="text-center p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300">
-              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-cyan-500 bg-clip-text text-transparent mb-2">
-                {stat.value}
-              </div>
-              <div className="text-sm text-muted-foreground">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <div className="">
+        <div className="mt-10">
           <Link
             to="/teknologi"
-            className="inline-flex items-center px-8 py-4 text-base font-medium rounded-xl text-primary-foreground bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transform hover:-translate-y-1"
+            className="group inline-flex min-h-12 items-center gap-2 rounded-xl border border-border bg-card px-6 py-3 text-sm font-semibold uppercase tracking-[0.1em] text-foreground transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             {t('teasers.tech.viewTechnology')}
-            <ChevronRight className="ms-3 h-5 w-5" />
+            <ArrowRight
+              className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+              aria-hidden="true"
+            />
           </Link>
         </div>
       </div>
-    </Section>
+    </section>
   );
 }

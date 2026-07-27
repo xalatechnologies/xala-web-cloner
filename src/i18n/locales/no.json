@@ -134,7 +134,8 @@
       "viewAll": "Se alle produkter",
       "available": "Tilgjengelig",
       "beta": "Beta",
-      "coming": "Kommer"
+      "coming": "Kommer",
+      "eyebrow": "Produkter"
     },
     "process": {
       "title": "Hvordan vi jobber",
@@ -149,7 +150,9 @@
         "developmentDesc": "Vårt team utvikler løsningen med moderne teknologi og kontinuerlig kvalitetssikring.",
         "delivery": "Levering",
         "deliveryDesc": "Vi leverer, lanserer og sikrer en smidig overgang med opplæring og support."
-      }
+      },
+      "eyebrow": "Prosess",
+      "viewAll": "Slik vi jobber"
     },
     "team": {
       "title": "Møt teamet",
@@ -159,7 +162,8 @@
     "tech": {
       "title": "Teknologiplattform",
       "description": "Vi bygger på moderne teknologier som React, TypeScript, Next.js, Azure og AWS.",
-      "viewTechnology": "Se teknologi"
+      "viewTechnology": "Se teknologi",
+      "eyebrow": "Teknologi"
     },
     "contact": {
       "title": "Klar for en prat?",
@@ -585,8 +589,15 @@
         "description": "Vi har åpnet e-postprogrammet ditt. Legg ved CV-en og send, så hører du fra oss."
       },
       "error": {
-        "title": "Vi fikk ikke åpnet e-postprogrammet",
+        "title": "Vi fikk ikke sendt søknaden",
         "description": "Send søknaden direkte til {{email}} i stedet."
+      },
+      "submitPost": "Send søknad",
+      "submitting": "Sender …",
+      "cvNotePosted": "Legg ved CV-en i en e-post til oss etterpå, eller lenk til den over. Vi svarer på adressen du oppgir.",
+      "sent": {
+        "title": "Søknaden er sendt",
+        "description": "Takk. Vi tar kontakt hvis vi har noe som passer."
       }
     }
   },

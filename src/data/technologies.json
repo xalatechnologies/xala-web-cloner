@@ -12,6 +12,12 @@
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
     },
     {
+        "id": "dotnet",
+        "name": ".NET",
+        "category": "backend",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg"
+    },
+    {
         "id": "nodejs",
         "name": "Node.js",
         "category": "backend",
@@ -24,34 +30,10 @@
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
     },
     {
-        "id": "go",
-        "name": "Go",
-        "category": "language",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg"
-    },
-    {
-        "id": "rust",
-        "name": "Rust",
-        "category": "language",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg"
-    },
-    {
-        "id": "aws",
-        "name": "AWS",
-        "category": "cloud",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg"
-    },
-    {
         "id": "azure",
         "name": "Azure",
         "category": "cloud",
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg"
-    },
-    {
-        "id": "gcp",
-        "name": "Google Cloud",
-        "category": "cloud",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"
     },
     {
         "id": "docker",
@@ -72,27 +54,9 @@
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
     },
     {
-        "id": "mongodb",
-        "name": "MongoDB",
-        "category": "database",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-    },
-    {
         "id": "redis",
         "name": "Redis",
         "category": "database",
         "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg"
-    },
-    {
-        "id": "tensorflow",
-        "name": "TensorFlow",
-        "category": "ai",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
-    },
-    {
-        "id": "pytorch",
-        "name": "PyTorch",
-        "category": "ai",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg"
     }
 ]

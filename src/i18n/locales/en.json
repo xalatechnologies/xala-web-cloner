@@ -134,7 +134,8 @@
       "viewAll": "View all products",
       "available": "Available",
       "beta": "Beta",
-      "coming": "Coming"
+      "coming": "Coming",
+      "eyebrow": "Products"
     },
     "process": {
       "title": "How We Work",
@@ -149,7 +150,9 @@
         "developmentDesc": "Our team develops the solution with modern technology and continuous quality assurance.",
         "delivery": "Delivery",
         "deliveryDesc": "We deliver, launch and ensure a smooth transition with training and support."
-      }
+      },
+      "eyebrow": "Process",
+      "viewAll": "How we work"
     },
     "team": {
       "title": "Meet Our Team",
@@ -159,7 +162,8 @@
     "tech": {
       "title": "Technology Platform",
       "description": "We build on modern technologies like React, TypeScript, Next.js, Azure and AWS.",
-      "viewTechnology": "View technology"
+      "viewTechnology": "View technology",
+      "eyebrow": "Technology"
     },
     "contact": {
       "title": "Ready for a Chat?",
@@ -585,8 +589,15 @@
         "description": "We have opened your mail client. Attach your CV and send, and you will hear from us."
       },
       "error": {
-        "title": "We could not open your mail client",
+        "title": "We could not send your application",
         "description": "Send the application straight to {{email}} instead."
+      },
+      "submitPost": "Send application",
+      "submitting": "Sending …",
+      "cvNotePosted": "Send your CV in an email afterwards, or link to it above. We will reply to the address you give us.",
+      "sent": {
+        "title": "Your application has been sent",
+        "description": "Thank you. We will be in touch if something fits."
       }
     }
   },
