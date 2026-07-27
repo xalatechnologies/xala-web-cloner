@@ -15,7 +15,7 @@
         {
             "id": "integrasjon-no",
             "title": "Integrasjoner",
-            "description": "Koblinger mot Altinn, Folkeregisteret, Enhetsregisteret, ID-porten, Maskinporten og Noark — bygget for at nedetid hos andre er en normaltilstand, ikke et unntak.",
+            "description": "Koblinger mot Altinn, Folkeregisteret, Enhetsregisteret, ID-porten, Maskinporten og Noark. Vi bygger dem ut fra at nedetid hos andre er en normaltilstand, ikke et unntak.",
             "icon": "Network"
         },
         {
@@ -27,13 +27,13 @@
         {
             "id": "automatisering-no",
             "title": "Automatisering og AI",
-            "description": "Vi automatiserer det som følger av regler — frister, purringer, kontroll av vedlegg, oppslag i registre — og lar skjønnet ligge hos saksbehandleren. Et vedtak skal kunne forklares.",
+            "description": "Vi automatiserer det som følger av regler: frister, purringer, kontroll av vedlegg og oppslag i registre. Skjønnet ligger fortsatt hos saksbehandleren, og et vedtak skal alltid kunne forklares.",
             "icon": "Sparkles"
         },
         {
             "id": "forvaltning-no",
             "title": "Forvaltning, drift og sikkerhet",
-            "description": "Vi forvalter det vi bygger. Driftbarhet, universell utforming og sikkerhet er designvalg hos oss, ikke noe som kommer etterpå — og vi er ISO 27001-sertifisert.",
+            "description": "Vi forvalter det vi bygger. Driftbarhet, universell utforming og sikkerhet er designvalg hos oss, ikke noe som kommer etterpå. Vi er ISO 27001-sertifisert.",
             "icon": "ShieldCheck"
         }
     ],

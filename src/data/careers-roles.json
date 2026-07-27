@@ -18,7 +18,7 @@
             "id": "designer",
             "icon": "PenTool",
             "title": "UX- og UI-designer",
-            "description": "Du former hvordan en søknad, et vedtak eller en portal oppleves — for søkeren som vil bli ferdig, og for saksbehandleren som trenger et komplett grunnlag.",
+            "description": "Du former hvordan en søknad, et vedtak eller en portal oppleves, både for søkeren som vil bli ferdig og for saksbehandleren som trenger et komplett grunnlag.",
             "focus": ["Tjenestedesign", "Universell utforming", "Brukertesting", "Prototyping"]
         },
         {
@@ -32,7 +32,7 @@
             "id": "devops",
             "icon": "Cloud",
             "title": "DevOps og plattform",
-            "description": "Du eier veien fra kode til drift. Vi forvalter det vi bygger, så driftbarhet er en designbeslutning hos oss — ikke noe som kommer etterpå.",
+            "description": "Du eier veien fra kode til drift. Vi forvalter det vi bygger, så driftbarhet er en designbeslutning hos oss og ikke noe som kommer etterpå.",
             "focus": ["Azure", "CI/CD", "Infrastruktur som kode", "Overvåking"]
         },
         {

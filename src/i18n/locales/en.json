@@ -107,8 +107,8 @@
   },
   "teasers": {
     "services": {
-      "title": "Our Services",
-      "description": "We deliver complete technology solutions that drive business growth",
+      "title": "What we deliver",
+      "description": "From case management systems and portals to integrations and long-term operations — six areas all serving the same end.",
       "viewAll": "View all services",
       "aiMachineLearning": {
         "title": "AI & Machine Learning",
@@ -125,7 +125,8 @@
       "mobileDevelopment": {
         "title": "Mobile Development",
         "description": "Native and cross-platform mobile apps for iOS and Android."
-      }
+      },
+      "eyebrow": "Services"
     },
     "products": {
       "title": "Our Core Products",

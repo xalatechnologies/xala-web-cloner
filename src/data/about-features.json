@@ -3,7 +3,7 @@
         {
             "id": "forvaltning",
             "title": "Vi forvalter det vi bygger",
-            "description": "Vi blir værende etter lansering. Et system som skal driftes i ti år designes annerledes enn ett som skal demonstreres én gang — og det er den forskjellen kunden betaler for.",
+            "description": "Vi blir værende etter lansering. Et system som skal driftes i ti år, designes annerledes enn ett som skal demonstreres én gang. Det er den forskjellen kunden betaler for.",
             "icon": "ShieldCheck"
         },
         {
@@ -15,7 +15,7 @@
         {
             "id": "uu",
             "title": "Universell utforming fra start",
-            "description": "WCAG 2.2 AA er et krav for offentlige tjenester, ikke en ambisjon — og vesentlig billigere å bygge inn enn å rette i etterkant.",
+            "description": "WCAG 2.2 AA er et krav for offentlige tjenester, ikke en ambisjon. Det er dessuten vesentlig billigere å bygge inn enn å rette i etterkant.",
             "icon": "Accessibility"
         },
         {

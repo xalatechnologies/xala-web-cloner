@@ -32,14 +32,14 @@ const CAPABILITIES = [
     key: 'digilist.capabilities.booking',
     title: 'Booking og sesongtildeling',
     description:
-      'Enkeltbookinger og sesongtildeling i samme system — inkludert fordeling av treningstid mellom lag og foreninger.',
+      'Enkeltbookinger og sesongtildeling i samme system, inkludert fordeling av treningstid mellom lag og foreninger.',
   },
   {
     icon: 'Building2',
     key: 'digilist.capabilities.venues',
     title: 'Lokaler av alle slag',
     description:
-      'Idrettshaller, gymsaler, møterom, kulturhus, selskapslokaler og utstyr — samme flyt uansett hva som leies ut.',
+      'Idrettshaller, gymsaler, møterom, kulturhus, selskapslokaler og utstyr. Samme flyt uansett hva som leies ut.',
   },
   {
     icon: 'ShieldCheck',
@@ -53,21 +53,21 @@ const CAPABILITIES = [
     key: 'digilist.capabilities.caseflow',
     title: 'Søknad, vedtak og arkiv',
     description:
-      'Søknader som skal behandles går gjennom en saksflyt med sporbare vedtak og arkivering mot Noark.',
+      'Søknader som krever behandling går gjennom en saksflyt med sporbare vedtak og arkivering mot Noark.',
   },
   {
     icon: 'Receipt',
     key: 'digilist.capabilities.invoicing',
     title: 'Fakturering og betaling',
     description:
-      'Priser per leietakertype, automatisk fakturagrunnlag og betaling på nett — uten manuell etterregistrering.',
+      'Egne priser per leietakertype, automatisk fakturagrunnlag og betaling på nett, uten manuell etterregistrering.',
   },
   {
     icon: 'Accessibility',
     key: 'digilist.capabilities.compliance',
-    title: 'Krav som gjelder offentlig sektor',
+    title: 'Krav i offentlig sektor',
     description:
-      'Universell utforming etter WCAG 2.2 AA, GDPR-krav og dokumentasjon som holder i en anskaffelse.',
+      'Universell utforming etter WCAG 2.2 AA, krav i personvernforordningen og dokumentasjon som holder i en anskaffelse.',
   },
 ] as const;
 
@@ -94,12 +94,12 @@ export default function DigilistSection() {
             id="digilist-heading"
             className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
           >
-            {t('digilist.title', 'Digilist — booking og utleie for kommuner')}
+            {t('digilist.title', 'Digilist: booking og utleie av lokaler')}
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
             {t(
               'digilist.description',
-              'Kommuner og utleiere styrer fortsatt lokaler i regneark og e-post. Digilist samler booking, sesongtildeling, saksbehandling og fakturering ett sted — bygget for norske krav fra start.'
+              'Mange kommuner styrer fortsatt lokalene sine i regneark og på e-post. Digilist samler booking, sesongtildeling, saksbehandling og fakturering i ett system som er bygget for norske krav.'
             )}
           </p>
         </div>
@@ -112,13 +112,15 @@ export default function DigilistSection() {
                 key={capability.key}
                 className="flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50"
               >
-                <span className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <h3 className="text-lg font-semibold text-foreground">
-                  {t(`${capability.key}.title`, capability.title)}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <Icon className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <h3 className="text-lg font-semibold text-foreground">
+                    {t(`${capability.key}.title`, capability.title)}
+                  </h3>
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                   {t(`${capability.key}.description`, capability.description)}
                 </p>
               </li>
