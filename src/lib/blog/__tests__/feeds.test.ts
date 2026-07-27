@@ -113,7 +113,7 @@ describe("sitemap", () => {
     expect(xml).toContain('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
     expect(xml).toContain("<loc>https://xala.no</loc>");
     expect(xml).not.toContain("<loc>https://xala.no/</loc>");
-    expect([...xml.matchAll(/<url>/g)]).toHaveLength(15);
+    expect([...xml.matchAll(/<url>/g)]).toHaveLength(17);
   });
 });
 
