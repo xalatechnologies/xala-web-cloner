@@ -63,10 +63,26 @@ const ROUTES = [
         // reachable or announced, so "unnamed" is not a defect.
         if (el.closest('[aria-hidden="true"]')) continue;
         if (el.getAttribute('tabindex') === '-1') continue;
+        // An icon- or logo-only link takes its accessible name from the alt
+        // text of the image inside it — that is the whole point of alt on a
+        // linked image, and a name computation that ignores it reports every
+        // logo link on the site as unnamed.
+        const labelledBy = el.getAttribute('aria-labelledby');
+        const referenced = labelledBy
+          ? labelledBy
+              .split(/\s+/)
+              .map((id) => document.getElementById(id)?.textContent ?? '')
+              .join(' ')
+          : '';
+        const imageAlt = [...el.querySelectorAll('img[alt], svg[aria-label], svg > title')]
+          .map((node) => node.getAttribute('alt') ?? node.getAttribute('aria-label') ?? node.textContent ?? '')
+          .join(' ');
         const name = (
           el.getAttribute('aria-label') ||
+          referenced ||
           el.getAttribute('title') ||
           el.textContent ||
+          imageAlt ||
           ''
         ).trim();
         if (!name) add('control-unnamed', `<${el.tagName.toLowerCase()}> ${(el.className || '').toString().slice(0, 40)}`);
