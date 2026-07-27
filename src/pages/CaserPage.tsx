@@ -14,6 +14,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { cn } from '@/lib/utils';
+import { SITE_ORIGIN } from '@/lib/blog/seo';
 import {
   caserEntries,
   ALL_SECTORS,
@@ -477,9 +478,18 @@ export default function CaserPage() {
 
   return (
     <>
+      {/* This route is `selfManaged` in ROUTE_RULES, so RouteSEO deliberately
+          stays out of its way — which means the canonical has to be here.
+          Without it the page inherited index.html's homepage canonical and told
+          Google it was a duplicate of the front page. */}
       <Helmet>
         <title>{t('caserPage.title')} – Xala</title>
         <meta name="description" content={t('caserPage.description')} />
+        <link rel="canonical" href={`${SITE_ORIGIN}/caser`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_ORIGIN}/caser`} />
+        <meta property="og:title" content={`${t('caserPage.title')} – Xala`} />
+        <meta property="og:description" content={t('caserPage.description')} />
       </Helmet>
 
       <div className="min-h-screen flex flex-col bg-background">

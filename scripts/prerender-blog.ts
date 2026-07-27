@@ -27,9 +27,13 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 import { parsePosts, publishedPosts, relatedPosts } from "../src/lib/blog/posts";
+import { extractFaq, faqJsonLd } from "../src/lib/blog/toc";
+import { getPageSEO } from "../src/components/seo/seoContent";
+import { resolveRoute } from "../src/components/seo/routeRules";
 import {
   BLOG_PATH,
   ORGANIZATION,
+  ORG_ID,
   SITE_ORIGIN,
   absolute,
   articleJsonLd,
@@ -87,6 +91,8 @@ interface HeadFields {
   image?: string;
   ogType: "article" | "website";
   jsonLd: Record<string, unknown>;
+  /** Further schema blocks (FAQPage, …) emitted as their own script tags. */
+  extraJsonLd?: Record<string, unknown>[];
   publishedTime?: string;
 }
 
@@ -126,6 +132,11 @@ function renderHead(shell: string, fields: HeadFields): string {
       ? `<meta property="article:published_time" content="${fields.publishedTime}" />`
       : "",
     `<script type="application/ld+json">${JSON.stringify(fields.jsonLd)}</script>`,
+    // Separate blocks rather than one @graph: an FAQPage is a claim about the
+    // page, and keeping it standalone is what the rich-result tests expect.
+    ...(fields.extraJsonLd ?? []).map(
+      (block) => `<script type="application/ld+json">${JSON.stringify(block)}</script>`,
+    ),
   ]
     .filter(Boolean)
     .map((tag) => `    ${tag}`)
@@ -243,6 +254,12 @@ function main(): void {
           ogType: "article",
           publishedTime: post.date,
           jsonLd: articleJsonLd(post),
+          // The rendered page derives this from the body; the static HTML a
+          // crawler reads has to carry the same thing, or the FAQ only exists
+          // for visitors whose browser ran the bundle.
+          extraJsonLd: [faqJsonLd(postUrl(post), extractFaq(post.body))].filter(
+            (block): block is Record<string, unknown> => block !== null,
+          ),
         }),
         postArticleHtml(post, relatedPosts(all, post)),
       ),
@@ -259,7 +276,31 @@ function main(): void {
   // status line that was already sent.
   for (const route of STATIC_ROUTES) {
     if (route.path === "/") continue; // dist/index.html already is this
-    write(path.join(DIST, route.path.replace(/^\//, ""), "index.html"), shell);
+    // Each route gets its own title, description and canonical. Writing the
+    // untouched shell here meant every static page claimed the front page's
+    // title and canonical — for any crawler that does not run the bundle, the
+    // site looked like a dozen copies of the home page.
+    const copy = getPageSEO(resolveRoute(route.path).pageId, "no");
+    write(
+      path.join(DIST, route.path.replace(/^\//, ""), "index.html"),
+      renderHead(shell, {
+        title: copy.title,
+        description: copy.description,
+        canonical: `${SITE_ORIGIN}${route.path}`,
+        ogType: "website",
+        jsonLd: {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "@id": `${SITE_ORIGIN}${route.path}#webpage`,
+          url: `${SITE_ORIGIN}${route.path}`,
+          name: copy.title,
+          description: copy.description,
+          inLanguage: "nb-NO",
+          isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+          publisher: { "@id": ORG_ID },
+        },
+      }),
+    );
   }
   write(path.join(DIST, "404.html"), shell);
 

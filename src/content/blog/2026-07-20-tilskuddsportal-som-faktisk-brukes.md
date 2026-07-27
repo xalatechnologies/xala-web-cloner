@@ -5,7 +5,6 @@ description: "De fleste tilskuddsportaler feiler ikke på teknologi, men på skj
 date: 2026-07-20
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
-readingMinutes: 5
 tag: "Kommune"
 cover: "/images/blog/tilskuddsportal-som-faktisk-brukes.png"
 keywords: ["tilskuddsportal", "saksbehandling", "digitalisering kommune", "universell utforming", "skjemaløsning"]
@@ -46,3 +45,21 @@ Saksbehandleren trenger å se hva som venter, hva som haster, hva som mangler do
 For offentlige tjenester er WCAG 2.2 AA et krav, ikke en ambisjon. Det er også vesentlig billigere å bygge inn enn å rette i etterkant: tastaturnavigasjon, feilmeldinger som er knyttet til feltet de gjelder, og kontrast som holder, er arkitekturvalg like mye som designvalg.
 
 En portal som ikke kan brukes med skjermleser, kan ikke brukes av alle som har rett til å søke. Det er hele poenget med en offentlig tilskuddsordning.
+
+## Ofte stilte spørsmål
+
+### Hvor mange felt bør et tilskuddsskjema ha?
+
+Så få som mulig — still ett spørsmål per felt: påvirker svaret vedtaket? Hvis ikke, fjern det. Hvis svaret finnes i et register dere allerede har tilgang til, hent det heller enn å spørre. Organisasjonsnummer gir navn, adresse og roller fra Enhetsregisteret.
+
+### Må en tilskuddsportal oppfylle WCAG 2.2 AA?
+
+For offentlige tjenester er WCAG 2.2 AA et krav, ikke en ambisjon. Det er også vesentlig billigere å bygge inn enn å rette i etterkant — tastaturnavigasjon, feilmeldinger knyttet til feltet de gjelder, og kontrast som holder, er arkitekturvalg like mye som designvalg.
+
+### Hvorfor er automatisk lagring så viktig?
+
+Søknader om tilskudd fylles sjelden ut i én økt: vedlegg må hentes, styrevedtak fattes, budsjett avklares. En portal uten automatisk lagring straffer nettopp de grundigste søkerne. Lagre ved hvert feltbytte, vis når det sist ble lagret, og la søkeren komme tilbake via en lenke.
+
+### Hva trenger saksbehandleren på den andre siden?
+
+En kø, ikke en innboks. Saksbehandleren må se hva som venter, hva som haster, hva som mangler dokumentasjon og hvem som har gjort hva. Lander søknadene i en e-postboks eller et regneark, er problemet flyttet — ikke løst.

@@ -5,7 +5,6 @@ description: "En bevillingssak består mest av venting på andre instanser. Slik
 date: 2026-07-14
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
-readingMinutes: 5
 tag: "Kommune"
 cover: "/images/blog/bevillingsportal-fra-soknad-til-vedtak.png"
 keywords: ["bevillingsportal", "saksbehandlingssystem", "kommune", "automatisering", "offentlig sektor"]
@@ -48,3 +47,21 @@ Det krever at statusene er ærlige. «Under behandling» i tolv uker skaper fler
 Bevillingssaker er arkivpliktige. Bygger man portalen først og tenker arkiv etterpå, ender man med en integrasjon som skal rekonstruere en journalpost fra data som aldri ble strukturert for formålet.
 
 Noark-integrasjonen bør være en del av datamodellen fra start: hva er saken, hva er dokumentene, hva er partene. Da er arkivering en konsekvens av saksgangen, ikke en jobb på slutten.
+
+## Ofte stilte spørsmål
+
+### Hva bør en bevillingsportal automatisere?
+
+Alt rundt vurderingen: frister, purringer, statusvarsler til søkeren og dokumentasjon av hvem som gjorde hva og når. Selve skjønnsvurderingen skal ligge hos saksbehandleren. Det er dessuten rundt vurderingen mesteparten av tidsbruken faktisk ligger.
+
+### Hvordan håndterer man høringsuttalelser effektivt?
+
+Send dem parallelt, ikke sekvensielt. Politi, skatteetat og kommunens egne instanser har ingen grunn til å vente på hverandre, og en sekvensiell kjede gjør saksbehandlingstiden til summen av alle svartidene i stedet for den lengste.
+
+### Må en bevillingsportal integreres med arkivet?
+
+Ja — bevillingssaker er arkivpliktige. Noark-integrasjonen bør være en del av datamodellen fra start: hva er saken, hva er dokumentene, hva er partene. Bygger man portalen først og tenker arkiv etterpå, må integrasjonen rekonstruere journalposter fra data som aldri ble strukturert for formålet.
+
+### Hvordan reduserer vi antall henvendelser til servicetorget?
+
+Gi søkeren et statusfelt hun kan se selv. Statusene må være ærlige og bevege seg: «Under behandling» i tolv uker skaper flere telefoner enn ingen status i det hele tatt.

@@ -13,7 +13,7 @@ const ORIGIN = process.argv[2] ?? 'http://localhost:8080';
 
 const ROUTES = [
   '/', '/tjenester', '/produkter', '/caser', '/caser/altinn', '/slik-vi-jobber',
-  '/teknologi', '/om-oss', '/kontakt', '/karriere', '/blogg', '/privacy',
+  '/teknologi', '/om-oss', '/kontakt', '/karriere', '/blogg', '/blogg/tilskuddsportal-som-faktisk-brukes', '/privacy',
   '/terms', '/cookies', '/finnes-ikke-404',
 ];
 

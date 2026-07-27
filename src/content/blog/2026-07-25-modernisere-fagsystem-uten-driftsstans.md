@@ -5,7 +5,6 @@ description: "Strangler-mønsteret lar deg bytte ut et gammelt fagsystem modul f
 date: 2026-07-25
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
-readingMinutes: 4
 tag: "IT-leder"
 keywords: ["legacy modernisering", "systemutvikling offentlig sektor", "strangler pattern", "systemintegrasjon", "azure"]
 ---
@@ -46,4 +45,21 @@ Det gir også en reell exit: hvis samarbeidet ikke fungerer, har du et fungerend
 
 Et gammelt fagsystem er sjelden ett problem. Det er en samling avhengigheter som er blitt usynlige fordi de har fungert lenge. Strangler-mønsteret løser ikke det, men det gjør at du oppdager dem én om gangen, mens driften går.
 
-Står dere i en slik modernisering? Ta en uforpliktende prat med oss om hvordan vi ville kuttet den opp.
+
+## Ofte stilte spørsmål
+
+### Kan et fagsystem moderniseres uten driftsstans?
+
+Ja, men ikke ved å bytte alt på én gang. Strangler-mønsteret lar deg erstatte modul for modul bak en fasade, slik at driften går mens systemet endres. Du unngår ikke risikoen, men du møter den én avhengighet om gangen i stedet for alle samtidig.
+
+### Hvor bør vi begynne?
+
+Start med lesing, ikke skriving. Rapporter, oppslag og visninger kan flyttes uten å endre hvordan data oppstår, og de gir en reell produksjonstest av den nye plattformen før noe kritisk står på spill.
+
+### Hvordan finner vi integrasjonene ingen har dokumentert?
+
+Følg dataene: hvor kommer de inn, hvor går de ut, og hvem oppdager det hvis de stopper. Svaret på det siste spørsmålet er ofte det viktigste, fordi det peker på avhengigheter som er blitt usynlige nettopp fordi de har fungert lenge.
+
+### Hvilken kontraktsform passer for en modulvis modernisering?
+
+En modulvis leveranse passer dårlig med én stor fastpriskontrakt, og bedre med en avtale som gir rom for etapper — for eksempel SSA-S eller en smidig utviklingsavtale der omfanget avtales per leveranse. Da kan de første modulene finansiere læringen som gjør estimatene på de neste realistiske.

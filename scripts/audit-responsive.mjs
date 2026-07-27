@@ -15,7 +15,7 @@ const ORIGIN = process.argv[2] ?? 'http://localhost:8080';
 
 const ROUTES = [
   '/', '/tjenester', '/produkter', '/caser', '/caser/altinn', '/slik-vi-jobber',
-  '/teknologi', '/om-oss', '/kontakt', '/karriere', '/blogg', '/privacy',
+  '/teknologi', '/om-oss', '/kontakt', '/karriere', '/blogg', '/blogg/tilskuddsportal-som-faktisk-brukes', '/privacy',
   '/terms', '/cookies', '/finnes-ikke-404',
 ];
 
@@ -24,12 +24,25 @@ const VIEWPORTS = [
   { name: 'desktop', width: 1440, height: 900 },
 ];
 
-/** The minimum comfortable touch target, per WCAG 2.5.8 / platform guidance. */
-const MIN_TOUCH = 44;
+/**
+ * Two thresholds, because they are two different success criteria.
+ *
+ * WCAG 2.5.8 Target Size (Minimum) is level AA and asks for 24x24 CSS px. It
+ * exempts targets that are inline in a block of text — a link inside a sentence
+ * cannot be enlarged without breaking the line box, and the spec says so.
+ *
+ * WCAG 2.5.5 Target Size (Enhanced) is level AAA and asks for 44x44. The site
+ * targets AA, so falling short of 44 is worth knowing about but is not a
+ * failure. Reporting both under one 44px rule produced ~47 "findings" per run,
+ * nearly all of them inline text links that are conformant — noise that trains
+ * you to skip the report.
+ */
+const MIN_TOUCH_AA = 24;
+const MIN_TOUCH_AAA = 44;
 
 async function auditPage(page, route, viewport) {
   return page.evaluate(
-    ({ route, viewport, MIN_TOUCH }) => {
+    ({ route, viewport, MIN_TOUCH_AA, MIN_TOUCH_AAA }) => {
       const out = [];
       function add(kind, detail) { out.push({ route, viewport, kind, detail }); }
 
@@ -54,17 +67,40 @@ async function auditPage(page, route, viewport) {
       // Touch targets on anything interactive and visible.
       if (viewport === 'phone') {
         const seen = new Set();
+
+        /**
+         * Is this link inline in a run of text?
+         *
+         * The 2.5.8 exception. True when the parent holds text of its own
+         * beyond this link — i.e. the link sits in a sentence rather than
+         * standing alone as a control.
+         */
+        const isInlineInText = (el) => {
+          if (el.tagName !== 'A') return false;
+          if (getComputedStyle(el).display !== 'inline') return false;
+          const parent = el.parentElement;
+          if (!parent) return false;
+          const own = (parent.textContent || '').replace(el.textContent || '', '').trim();
+          return own.length > 0;
+        };
+
         document.querySelectorAll('a, button, [role="button"]').forEach((el) => {
           const r = el.getBoundingClientRect();
           if (r.width === 0 || r.height === 0) return;
           if (getComputedStyle(el).visibility === 'hidden') return;
-          if (r.height + 0.5 < MIN_TOUCH || r.width + 0.5 < MIN_TOUCH) {
-            const label = (el.getAttribute('aria-label') || el.textContent || '').trim().slice(0, 32);
-            const key = `${label}|${Math.round(r.width)}x${Math.round(r.height)}`;
-            if (seen.has(key)) return;
-            seen.add(key);
-            add('touch-target', `${Math.round(r.width)}x${Math.round(r.height)}px "${label}"`);
-          }
+
+          const short = Math.min(r.width, r.height);
+          if (short + 0.5 >= MIN_TOUCH_AAA) return;
+          if (isInlineInText(el)) return;
+
+          const label = (el.getAttribute('aria-label') || el.textContent || '').trim().slice(0, 32);
+          const key = `${label}|${Math.round(r.width)}x${Math.round(r.height)}`;
+          if (seen.has(key)) return;
+          seen.add(key);
+
+          const size = `${Math.round(r.width)}x${Math.round(r.height)}px "${label}"`;
+          // Below AA is a conformance failure; between AA and AAA is advice.
+          add(short + 0.5 < MIN_TOUCH_AA ? 'touch-target' : 'touch-target-aaa', size);
         });
       }
 
@@ -73,6 +109,10 @@ async function auditPage(page, route, viewport) {
         const smalls = new Set();
         document.querySelectorAll('p, span, a, li, div').forEach((el) => {
           if (!el.textContent?.trim() || el.children.length > 0) return;
+          // Decorative glyphs (bullets, separators) are legitimately small and
+          // are already hidden from assistive tech. They are not text anyone
+          // reads, so a legibility rule does not apply to them.
+          if (el.closest('[aria-hidden="true"], [aria-hidden]')) return;
           const size = parseFloat(getComputedStyle(el).fontSize);
           if (size > 0 && size < 11) {
             smalls.add(`${size}px "${el.textContent.trim().slice(0, 28)}"`);
@@ -83,7 +123,7 @@ async function auditPage(page, route, viewport) {
 
       return out;
     },
-    { route, viewport, MIN_TOUCH },
+    { route, viewport, MIN_TOUCH_AA, MIN_TOUCH_AAA },
   );
 }
 

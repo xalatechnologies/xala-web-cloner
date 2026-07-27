@@ -18,6 +18,7 @@ import {
   Star,
 } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import { SITE_ORIGIN } from '@/lib/blog/seo';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -178,7 +179,7 @@ function HeroSection({ cs }: { cs: NonNullable<ReturnType<typeof caseStudyBySlug
         >
           <Link
             to="/caser"
-            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors group"
+            className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors group"
           >
             <ArrowLeft className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform" />
             {t('caseStudy.backToAll')}
@@ -925,9 +926,15 @@ export default function CaseStudyDetailPage() {
 
   return (
     <>
+      {/* Canonical belongs here, not in RouteSEO: this route is `selfManaged`.
+          All 17 case studies previously inherited index.html's homepage
+          canonical, which asked Google to index none of them. */}
       <Helmet>
         <title>{cs.seo.title}</title>
         <meta name="description" content={cs.seo.description} />
+        <link rel="canonical" href={`${SITE_ORIGIN}/caser/${slug}`} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`${SITE_ORIGIN}/caser/${slug}`} />
         <meta property="og:title" content={cs.seo.title} />
         <meta property="og:description" content={cs.seo.description} />
       </Helmet>
