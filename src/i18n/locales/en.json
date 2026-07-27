@@ -536,7 +536,8 @@
   },
   "workProcess": {
     "title": "How we work",
-    "description": "From the first meeting to the finished solution we follow a structured process."
+    "description": "From the first meeting to the finished solution we follow a structured process.",
+    "eyebrow": "Process"
   },
   "proof": {
     "eyebrow": "References",
@@ -548,5 +549,17 @@
       "users": "End users served"
     },
     "viewAll": "See all {{count}} case studies"
+  },
+  "processPage": {
+    "eyebrow": "How we work",
+    "title": "From first conversation to system in production",
+    "description": "We deliver in stages rather than as one large handover. Each stage produces something that works, and something you can weigh before the next one starts.",
+    "faqTitle": "Before you start",
+    "faqDescription": "What people most want to know before getting in touch — cost, time, procurement, and who runs the solution afterwards.",
+    "ctaEyebrow": "Next step",
+    "ctaTitle": "Have an informal conversation",
+    "ctaDescription": "Tell us what you are dealing with, and we will say what we would do first — and what we would leave until later.",
+    "ctaContact": "Contact us",
+    "ctaCases": "See case studies"
   }
 }

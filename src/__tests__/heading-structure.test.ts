@@ -33,7 +33,9 @@ const PAGE_HEADING_OWNER: Record<string, string> = {
   '/produkter': 'components/CoreProducts.tsx',
   '/caser': 'pages/CaserPage.tsx',
   '/caser/:slug': 'pages/CaseStudyDetailPage.tsx',
-  '/slik-vi-jobber': 'components/WorkProcess.tsx',
+  // Moved out of WorkProcess: that component is a section of this page, not
+  // the page, and it now renders an h2 under the page's own h1.
+  '/slik-vi-jobber': 'pages/SlikViJobberPage.tsx',
   '/teknologi': 'components/Technologies.tsx',
   '/om-oss': 'components/About.tsx',
   '/kontakt': 'components/Contact.tsx',

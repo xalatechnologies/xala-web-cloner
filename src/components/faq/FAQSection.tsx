@@ -7,7 +7,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { generateFAQSchema } from '@/components/seo/sectionSchemas';
-import { faqsFor } from './faqs';
+import { faqsFor, faqsForTopic } from './faqs';
 
 /**
  * The questions buyers actually ask, answered on the page and mirrored as
@@ -21,18 +21,26 @@ import { faqsFor } from './faqs';
 interface FAQSectionProps {
   /** Rendered as the section heading; defaults to a translated fallback. */
   title?: string;
+  /** Show only these question ids, in this order. Omit for all of them. */
+  only?: readonly string[];
+  /** Overrides the default intro line under the heading. */
+  description?: string;
+  /** Anchor and landmark id, so two FAQ sections could coexist on one page. */
+  id?: string;
 }
 
-const FAQSection = ({ title }: FAQSectionProps) => {
+const FAQSection = ({ title, only, description, id = 'faq' }: FAQSectionProps) => {
   const { t, i18n } = useTranslation();
-  const faqs = faqsFor(i18n.language);
+  const faqs = only ? faqsForTopic(i18n.language, only) : faqsFor(i18n.language);
 
   if (!faqs.length) return null;
 
   const heading = title ?? t('faq.title', 'Ofte stilte spørsmål');
 
+  const headingId = `${id}-heading`;
+
   return (
-    <section id="faq" className="py-20 md:py-24 bg-muted/30" aria-labelledby="faq-heading">
+    <section id={id} className="py-20 md:py-24 bg-muted/30" aria-labelledby={headingId}>
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify(generateFAQSchema(faqs.map(({ question, answer }) => ({ question, answer }))))}
@@ -42,13 +50,14 @@ const FAQSection = ({ title }: FAQSectionProps) => {
       <div className="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2
-            id="faq-heading"
+            id={headingId}
             className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground"
           >
             {heading}
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            {t('faq.description', 'Svar på det folk spør oss om oftest. Finner du ikke svaret, ta kontakt.')}
+            {description ??
+              t('faq.description', 'Svar på det folk spør oss om oftest. Finner du ikke svaret, ta kontakt.')}
           </p>
         </div>
 

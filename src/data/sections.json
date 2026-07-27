@@ -48,7 +48,8 @@
         },
         "work-process": {
             "id": "work-process-no",
-            "title": "Hva er jobben vår?"
+            "title": "Fem etapper",
+            "description": "Hver etappe avsluttes med noe dere kan se på og ta stilling til, ikke en statusrapport."
         },
         "teams": {
             "id": "teams-no",
@@ -113,7 +114,8 @@
         },
         "work-process": {
             "id": "work-process-en",
-            "title": "What is our job?"
+            "title": "Five stages",
+            "description": "Each stage ends with something you can look at and decide on, not a status report."
         },
         "teams": {
             "id": "teams-en",
@@ -178,7 +180,8 @@
         },
         "work-process": {
             "id": "work-process-ar",
-            "title": "ما هي مهمتنا؟"
+            "title": "خمس مراحل",
+            "description": "تنتهي كل مرحلة بشيء يمكنكم الاطلاع عليه واتخاذ قرار بشأنه، لا بتقرير حالة."
         },
         "teams": {
             "id": "teams-ar",

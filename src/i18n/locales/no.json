@@ -536,7 +536,8 @@
   },
   "workProcess": {
     "title": "Hvordan vi jobber",
-    "description": "Fra første møte til ferdig løsning følger vi en strukturert prosess."
+    "description": "Fra første møte til ferdig løsning følger vi en strukturert prosess.",
+    "eyebrow": "Prosess"
   },
   "proof": {
     "eyebrow": "Referanser",
@@ -548,5 +549,17 @@
       "users": "Sluttbrukere betjent"
     },
     "viewAll": "Se alle {{count}} kundecaser"
+  },
+  "processPage": {
+    "eyebrow": "Slik vi jobber",
+    "title": "Fra første samtale til system i drift",
+    "description": "Vi leverer i etapper, ikke som én stor overlevering. Hver etappe gir noe som virker, og noe dere kan ta stilling til før den neste starter.",
+    "faqTitle": "Før dere setter i gang",
+    "faqDescription": "Det folk oftest vil vite før de tar kontakt — pris, tid, anskaffelse og hvem som drifter løsningen etterpå.",
+    "ctaEyebrow": "Neste steg",
+    "ctaTitle": "Ta en uforpliktende prat",
+    "ctaDescription": "Fortell oss hva dere står i, så sier vi hva vi ville gjort først — og hva vi ville ventet med.",
+    "ctaContact": "Kontakt oss",
+    "ctaCases": "Se kundecaser"
   }
 }
