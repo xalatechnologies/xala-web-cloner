@@ -109,9 +109,13 @@ function renderHead(shell: string, fields: HeadFields): string {
 
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(fields.title)}</title>`);
 
+  // Everything written here carries data-rh so react-helmet-async treats it as
+  // its own and replaces it on hydration. Without the attribute Helmet appends
+  // a second copy beside the prerendered one, and the page ships two canonicals
+  // — the exact defect this function exists to avoid, reintroduced one layer up.
   const replaceMeta = (attr: string, name: string, content: string) => {
     const pattern = new RegExp(`<meta\\s+${attr}=["']${name}["'][^>]*>`, "i");
-    const tag = `<meta ${attr}="${name}" content="${escapeHtml(content)}" />`;
+    const tag = `<meta ${attr}="${name}" content="${escapeHtml(content)}" data-rh="true" />`;
     html = pattern.test(html) ? html.replace(pattern, tag) : html.replace("</head>", `    ${tag}\n  </head>`);
   };
 
@@ -126,10 +130,10 @@ function renderHead(shell: string, fields: HeadFields): string {
   html = html.replace(/<link\s+rel=["']canonical["'][^>]*>/i, "");
 
   const extra = [
-    `<link rel="canonical" href="${escapeHtml(fields.canonical)}" />`,
+    `<link rel="canonical" href="${escapeHtml(fields.canonical)}" data-rh="true" />`,
     `<link rel="alternate" type="application/rss+xml" title="Blogg | ${escapeHtml(ORGANIZATION)}" href="${SITE_ORIGIN}${BLOG_PATH}/rss.xml" />`,
     fields.publishedTime
-      ? `<meta property="article:published_time" content="${fields.publishedTime}" />`
+      ? `<meta property="article:published_time" content="${fields.publishedTime}" data-rh="true" />`
       : "",
     `<script type="application/ld+json">${JSON.stringify(fields.jsonLd)}</script>`,
     // Separate blocks rather than one @graph: an FAQPage is a claim about the
