@@ -22,6 +22,7 @@ const OmOssPage = lazy(() => import('./pages/OmOssPage'));
 const KontaktPage = lazy(() => import('./pages/KontaktPage'));
 const KarrierePage = lazy(() => import('./pages/KarrierePage'));
 const CaseStudyDetailPage = lazy(() => import('./pages/CaseStudyDetailPage'));
+const TransparensPage = lazy(() => import('./pages/TransparensPage'));
 const BloggPage = lazy(() => import('./pages/BloggPage'));
 const BloggPostPage = lazy(() => import('./pages/BloggPostPage'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -64,6 +65,7 @@ const App = () => {
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/cookies" element={<CookiesPolicy />} />
+              <Route path="/transparens" element={<TransparensPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <GDPRNotification />

@@ -47,6 +47,7 @@ const PAGE_HEADING_OWNER: Record<string, string> = {
   '/privacy': 'components/layouts/LegalLayout.tsx',
   '/terms': 'components/layouts/LegalLayout.tsx',
   '/cookies': 'components/layouts/LegalLayout.tsx',
+  '/transparens': 'pages/TransparensPage.tsx',
 };
 
 /** framer-motion headings are still headings. */

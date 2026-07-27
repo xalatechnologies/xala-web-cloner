@@ -29,6 +29,7 @@ type PageId =
   | 'privacy'
   | 'terms'
   | 'cookies'
+  | 'transparens'
   | 'notFound';
 
 interface SEOContent {
@@ -130,6 +131,12 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
         'Hvilke informasjonskapsler nettstedet vårt bruker, hva de brukes til, og hvordan du styrer dem selv.',
       keywords: 'informasjonskapsler, cookies, sporing, samtykke, personvern'
     },
+    transparens: {
+      title: 'Åpenhet: oppetid, SLA og drift | Xala Technologies',
+      description:
+        'Hvordan Xala Technologies AS drifter det vi bygger: oppetids- og SLA-forpliktelser, sikkerhet og hvem du kontakter ved en hendelse.',
+      keywords: 'transparens, oppetid, SLA, driftsavtale, ISO 27001, sikkerhet, status'
+    },
     notFound: {
       title: 'Siden finnes ikke | Xala Technologies',
       description: 'Vi fant ikke siden du lette etter. Gå til forsiden, eller ta kontakt om du mener noe mangler.',
@@ -227,6 +234,12 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
       description: 'Which cookies this site uses, what they are used for, and how you can control them yourself.',
       keywords: 'cookies, tracking, consent, privacy'
     },
+    transparens: {
+      title: 'Transparency: Uptime, SLA and Operations | Xala Technologies',
+      description:
+        'How Xala Technologies AS runs what we build: uptime and SLA commitments, security practices, and who to contact if something breaks.',
+      keywords: 'transparency, uptime, SLA, operations agreement, ISO 27001, security, status'
+    },
     notFound: {
       title: 'Page Not Found | Xala Technologies',
       description: 'We could not find the page you were looking for. Head back to the front page, or get in touch.',
@@ -314,6 +327,12 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
       title: 'ملفات تعريف الارتباط | زالا تكنولوجيز',
       description: 'ملفات تعريف الارتباط التي يستخدمها الموقع، والغرض منها، وكيف يمكنك التحكم بها.',
       keywords: 'ملفات تعريف الارتباط, التتبع, الموافقة, الخصوصية'
+    },
+    transparens: {
+      title: 'الشفافية: التشغيل واتفاقية مستوى الخدمة | زالا تكنولوجيز',
+      description:
+        'كيف تُشغّل زالا تكنولوجيز ما تبنيه: التزامات وقت التشغيل واتفاقية مستوى الخدمة، ممارسات الأمن، ومن تتواصل معه عند حدوث عطل.',
+      keywords: 'الشفافية, وقت التشغيل, اتفاقية مستوى الخدمة, اتفاقية التشغيل, ISO 27001, الأمن, الحالة'
     },
     notFound: {
       title: 'الصفحة غير موجودة | زالا تكنولوجيز',

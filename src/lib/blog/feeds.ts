@@ -133,6 +133,7 @@ export const STATIC_ROUTES = [
   { path: "/privacy", priority: "0.3", changefreq: "yearly" },
   { path: "/terms", priority: "0.3", changefreq: "yearly" },
   { path: "/cookies", priority: "0.3", changefreq: "yearly" },
+  { path: "/transparens", priority: "0.5", changefreq: "monthly" },
 ];
 
 /**
@@ -220,6 +221,7 @@ const LLMS_PAGE_TITLES: Record<string, string> = {
   "/privacy": "Personvern",
   "/terms": "Vilkår",
   "/cookies": "Informasjonskapsler",
+  "/transparens": "Åpenhet",
 };
 
 export function staticSitemapEntries(today: string): SitemapEntry[] {

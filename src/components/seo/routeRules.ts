@@ -32,6 +32,7 @@ export const ROUTE_RULES: RouteRule[] = [
   { pattern: /^\/privacy\/?$/, pageId: 'privacy' },
   { pattern: /^\/terms\/?$/, pageId: 'terms' },
   { pattern: /^\/cookies\/?$/, pageId: 'cookies' },
+  { pattern: /^\/transparens\/?$/, pageId: 'transparens' },
 ];
 
 /** Anything unmatched is the 404 page, which must never be indexed. */
