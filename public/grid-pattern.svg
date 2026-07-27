@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <!--
+    Tiling grid used as a 5%-opacity texture behind dark sections.
+    currentColor is not available to a background-image, so the stroke is a
+    neutral that reads the same over the bronze and stone backdrops it sits on.
+  -->
+  <path d="M40 0H0V40" fill="none" stroke="#8a8078" stroke-width="1" />
+</svg>

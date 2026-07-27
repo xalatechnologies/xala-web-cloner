@@ -47,6 +47,11 @@ if [ -d src/content/blog ] && ls src/content/blog/*.md >/dev/null 2>&1; then
   [ -f dist/sitemap.xml ] || die "dist/sitemap.xml missing — the prerender step did not run."
 fi
 
+# Every URL the sitemap advertises must have a file behind it. A route the
+# prerender misses still renders in a browser but answers 404 to every crawler
+# that follows the sitemap — which is how all 17 case studies shipped.
+node scripts/verify-dist.mjs || die "dist/ does not serve every URL in its own sitemap."
+
 RELEASE="rel-$(date -u +%Y%m%d-%H%M%S)"
 RELEASE_DIR="${BASE_DIR}/releases/${RELEASE}"
 

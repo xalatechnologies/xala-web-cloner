@@ -306,6 +306,50 @@ function main(): void {
       }),
     );
   }
+  // Every case study needs a file of its own for the same reason the static
+  // routes do — more urgently, in fact, because these URLs are listed in the
+  // sitemap. Without a file, nginx answered /caser/<slug> with a 404 for all
+  // 17 of them: the page still rendered once React took over, so it looked
+  // fine in a browser, while every crawler that followed the sitemap was told
+  // the page does not exist.
+  for (const study of caseStudies) {
+    if (!study.slug) continue;
+    const url = `${SITE_ORIGIN}/caser/${study.slug}`;
+    write(
+      path.join(DIST, "caser", study.slug, "index.html"),
+      renderHead(shell, {
+        title: study.seo?.title ?? `${study.title} | ${ORGANIZATION}`,
+        description: study.seo?.description ?? study.summary,
+        canonical: url,
+        ogType: "article",
+        jsonLd: {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Article",
+              "@id": `${url}#article`,
+              headline: study.title,
+              description: study.seo?.description ?? study.summary,
+              inLanguage: "nb-NO",
+              publisher: { "@id": ORG_ID },
+              mainEntityOfPage: { "@type": "WebPage", "@id": url },
+              ...(study.client ? { about: { "@type": "Organization", name: study.client } } : {}),
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": `${url}#breadcrumb`,
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Forside", item: SITE_ORIGIN },
+                { "@type": "ListItem", position: 2, name: "Kundecaser", item: `${SITE_ORIGIN}/caser` },
+                { "@type": "ListItem", position: 3, name: study.title, item: url },
+              ],
+            },
+          ],
+        },
+      }),
+    );
+  }
+
   write(path.join(DIST, "404.html"), shell);
 
   write(path.join(DIST, "blogg", "rss.xml"), renderRss(posts));
