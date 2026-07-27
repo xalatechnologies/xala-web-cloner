@@ -378,7 +378,13 @@
       "energy": "Energy",
       "ngo_international": "NGO / international",
       "telecom": "Telecom"
-    }
+    },
+    "resultsHeading": "All case studies",
+    "ctaEyebrow": "Next step",
+    "ctaTitle": "Facing something similar?",
+    "ctaDescription": "Tell us what you are dealing with, and we will say what we would do first — and what we would leave until later.",
+    "ctaContact": "Contact us",
+    "ctaProcess": "How we work"
   },
   "caseStudy": {
     "backToAll": "All cases",
@@ -492,8 +498,8 @@
     "projectDetails": "Project details"
   },
   "careers": {
-    "title": "Careers at Xala?",
-    "description": "We are always looking for talented people who want to help build the future. Send us an open application!",
+    "title": "We accept open applications all year",
+    "description": "We do not post vacancies continuously, but we read every application. If your discipline is listed below, send us a few words about what you have worked on.",
     "openApplication": {
       "title": "Open Application",
       "description": "Want to work with us but don't see a position that fits you right now? We accept open applications year-round.",
@@ -502,7 +508,20 @@
       "emailLabel": "Email:",
       "emailSubject": "Open Application - Xala Technologies",
       "emailBody": "Hello,\n\nI am submitting an open application to Xala Technologies.\n\nBest regards"
-    }
+    },
+    "eyebrow": "Careers",
+    "rolesTitle": "The disciplines we hire in",
+    "rolesDescription": "Each link opens an email with the right subject line, so your application lands where it should.",
+    "applyFor": "Send an open application",
+    "howEyebrow": "How to apply",
+    "howTitle": "No forms, just an email",
+    "howDescription": "Send a CV and a few sentences about what you have built and what you want to work on next. Links to code, design or writing tell us more than a long cover letter.",
+    "noVacancyNote": "We do not advertise fixed vacancies here. An open application stays with us, and we get in touch when something fits.",
+    "generalApplication": "Apply for something else",
+    "emailLabel": "Email",
+    "mailSubjectRole": "Open application: {{role}}",
+    "mailSubjectGeneral": "Open application – Xala Technologies",
+    "mailBody": "Hello,\n\nI am sending an open application to Xala Technologies.\n\nMy CV and a short description of myself are attached.\n\nKind regards"
   },
   "faq": {
     "title": "Frequently asked questions",

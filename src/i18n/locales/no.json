@@ -378,7 +378,13 @@
       "energy": "Energi",
       "ngo_international": "NGO og internasjonalt",
       "telecom": "Telekom"
-    }
+    },
+    "resultsHeading": "Alle kundecaser",
+    "ctaEyebrow": "Neste steg",
+    "ctaTitle": "Har dere en lignende oppgave?",
+    "ctaDescription": "Fortell oss hva dere står i, så sier vi hva vi ville gjort først — og hva vi ville ventet med.",
+    "ctaContact": "Kontakt oss",
+    "ctaProcess": "Slik vi jobber"
   },
   "caseStudy": {
     "backToAll": "Alle caser",
@@ -492,8 +498,8 @@
     "projectDetails": "Prosjektdetaljer"
   },
   "careers": {
-    "title": "Karriere hos Xala?",
-    "description": "Vi leter alltid etter talentfulle mennesker som vil være med på å bygge fremtiden. Send oss en åpen søknad!",
+    "title": "Vi tar imot åpne søknader hele året",
+    "description": "Vi lyser ikke ut stillinger løpende, men vi leser alle søknader. Finner du disiplinen din under, send oss noen ord om hva du har jobbet med.",
     "openApplication": {
       "title": "Åpen søknad",
       "description": "Har du lyst til å jobbe hos oss, men ser ikke en stilling som passer deg akkurat nå? Vi tar imot åpne søknader hele året.",
@@ -502,7 +508,20 @@
       "emailLabel": "E-post:",
       "emailSubject": "Åpen søknad - Xala Technologies",
       "emailBody": "Hei,\n\nJeg sender inn en åpen søknad til Xala Technologies.\n\nMed vennlig hilsen"
-    }
+    },
+    "eyebrow": "Karriere",
+    "rolesTitle": "Disiplinene vi ansetter i",
+    "rolesDescription": "Hver lenke åpner en e-post med riktig emnefelt, så søknaden havner der den skal.",
+    "applyFor": "Send åpen søknad",
+    "howEyebrow": "Slik søker du",
+    "howTitle": "Ingen skjema, bare en e-post",
+    "howDescription": "Send CV og noen setninger om hva du har bygget og hva du vil jobbe mer med. Lenker til kode, design eller skriving sier oss mer enn en lang søknadstekst.",
+    "noVacancyNote": "Vi lyser ikke ut faste stillinger her. En åpen søknad blir liggende hos oss, og vi tar kontakt når vi har noe som passer.",
+    "generalApplication": "Søk på noe annet",
+    "emailLabel": "E-post",
+    "mailSubjectRole": "Åpen søknad: {{role}}",
+    "mailSubjectGeneral": "Åpen søknad – Xala Technologies",
+    "mailBody": "Hei,\n\nJeg sender en åpen søknad til Xala Technologies.\n\nCV og en kort beskrivelse av meg selv følger vedlagt.\n\nMed vennlig hilsen"
   },
   "faq": {
     "title": "Ofte stilte spørsmål",

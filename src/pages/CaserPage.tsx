@@ -116,12 +116,12 @@ function CaseCard({ entry, index }: { entry: CaserEntry; index: number }) {
 
       {/* Content */}
       <div className="p-6 flex flex-col flex-1">
-        <h2 className={cn(
+        <h3 className={cn(
           'text-xl font-bold mb-3 leading-tight transition-colors duration-200',
           isLinked ? 'text-foreground group-hover:text-primary' : 'text-muted-foreground'
         )}>
           {entry.title}
-        </h2>
+        </h3>
 
         <p className="text-sm leading-relaxed text-muted-foreground flex-1 line-clamp-3 mb-5">
           {entry.description}
@@ -498,7 +498,7 @@ export default function CaserPage() {
         <main id="main" className="flex-1">
 
         {/* ── Hero ─────────────────────────────────────────────────────── */}
-        <section className="relative overflow-hidden pt-32 pb-24 border-b border-border">
+        <section className="relative overflow-hidden border-b border-border pb-16 pt-28 md:pb-20">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-primary/5 rounded-full blur-[120px]" />
             <div className="absolute top-20 left-1/4 w-80 h-80 bg-primary/3 rounded-full blur-3xl" />
@@ -511,24 +511,29 @@ export default function CaserPage() {
             />
           </div>
 
+          {/*
+            Left-aligned, at the same type scale as every other page heading on
+            the site. This hero ran to text-8xl font-black and centred, which
+            made /caser look like a different site from /tjenester and
+            /slik-vi-jobber — and pushed the first case card below the fold on
+            a laptop.
+          */}
           <div className="container max-w-6xl relative">
-            <div className="max-w-3xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-primary mb-6">
-                <span className="h-px w-10 bg-primary" />
+            <div className="max-w-3xl">
+              <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
                 {t('caserPage.eyebrow')}
-                <span className="h-px w-10 bg-primary" />
-              </div>
+              </p>
 
-              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight text-foreground mb-6 leading-[1.0]">
+              <h1 className="mb-6 text-4xl font-bold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
                 {t('caserPage.title')}
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
                 {t('caserPage.description')}
               </p>
             </div>
 
             {/* Stats */}
-            <div className="mt-16 grid grid-cols-3 gap-5 max-w-2xl mx-auto">
+            <dl className="mt-12 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
               {[
                 { value: '15+', key: 'caserPage.stats.projects' },
                 { value: '10+', key: 'caserPage.stats.experience' },
@@ -539,13 +544,18 @@ export default function CaserPage() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + i * 0.1 }}
-                  className="bg-card border border-border rounded-2xl p-6 text-center hover:border-primary/30 transition-colors"
+                  className="rounded-2xl border border-border bg-card p-6 text-center transition-colors hover:border-primary/30"
                 >
-                  <p className="text-5xl font-black text-primary leading-none mb-3">{stat.value}</p>
-                  <p className="text-sm font-semibold text-muted-foreground">{t(stat.key)}</p>
+                  <dt className="sr-only">{t(stat.key)}</dt>
+                  <dd>
+                    <span className="block text-4xl font-bold leading-none tracking-tight text-primary md:text-5xl">
+                      {stat.value}
+                    </span>
+                    <span className="mt-2 block text-sm text-muted-foreground">{t(stat.key)}</span>
+                  </dd>
                 </motion.div>
               ))}
-            </div>
+            </dl>
           </div>
 
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
@@ -603,6 +613,9 @@ export default function CaserPage() {
 
             {/* Grid area */}
             <div className="flex-1 min-w-0">
+              {/* Card titles are h3; without this the outline jumps h1 -> h3.
+                  Hidden because the hero above already names these. */}
+              <h2 className="sr-only">{t('caserPage.resultsHeading', 'Alle kundecaser')}</h2>
 
               {/* Result / active filter bar */}
               <div className="flex items-start justify-between gap-4 mb-8">
@@ -701,6 +714,42 @@ export default function CaserPage() {
             </div>
           </div>
         </div>
+
+        <section
+          aria-labelledby="caser-cta"
+          className="border-t border-border bg-muted/40 py-14 md:py-20"
+        >
+          <div className="container mx-auto grid max-w-7xl gap-8 px-4 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-8">
+              <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+                {t('caserPage.ctaEyebrow', 'Neste steg')}
+              </p>
+              <h2 id="caser-cta" className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
+                {t('caserPage.ctaTitle', 'Har dere en lignende oppgave?')}
+              </h2>
+              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+                {t(
+                  'caserPage.ctaDescription',
+                  'Fortell oss hva dere står i, så sier vi hva vi ville gjort først — og hva vi ville ventet med.'
+                )}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3 lg:col-span-4 lg:justify-end">
+              <Link
+                to="/kontakt"
+                className="inline-flex min-h-12 items-center rounded-xl bg-primary px-6 py-3 text-sm font-semibold uppercase tracking-[0.1em] text-primary-foreground transition-all hover:shadow-[0_0_32px_hsl(var(--primary)/0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                {t('caserPage.ctaContact', 'Kontakt oss')}
+              </Link>
+              <Link
+                to="/slik-vi-jobber"
+                className="inline-flex min-h-12 items-center rounded-xl border border-border bg-card px-6 py-3 text-sm font-semibold uppercase tracking-[0.1em] text-foreground transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                {t('caserPage.ctaProcess', 'Slik vi jobber')}
+              </Link>
+            </div>
+          </div>
+        </section>
 
         </main>
 

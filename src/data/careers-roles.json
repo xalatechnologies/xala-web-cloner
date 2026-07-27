@@ -1,0 +1,134 @@
+{
+    "no": [
+        {
+            "id": "systemutvikler",
+            "icon": "Server",
+            "title": "Systemutvikler",
+            "description": "Du bygger saksbehandlingssystemer og integrasjoner som skal stå i drift i mange år. Mye .NET og C#, mot Azure og nasjonale felleskomponenter.",
+            "focus": [".NET og C#", "Azure", "API og integrasjon", "Datamodellering"]
+        },
+        {
+            "id": "frontendutvikler",
+            "icon": "Code2",
+            "title": "Frontend-utvikler",
+            "description": "Du lager grensesnittene saksbehandlere og innbyggere faktisk bruker. Universell utforming er et krav hos oss, ikke en opprydding til slutt.",
+            "focus": ["React og TypeScript", "WCAG 2.2 AA", "Designsystemer", "Skjemaflyt"]
+        },
+        {
+            "id": "designer",
+            "icon": "PenTool",
+            "title": "UX- og UI-designer",
+            "description": "Du former hvordan en søknad, et vedtak eller en portal oppleves — for søkeren som vil bli ferdig, og for saksbehandleren som trenger et komplett grunnlag.",
+            "focus": ["Tjenestedesign", "Universell utforming", "Brukertesting", "Prototyping"]
+        },
+        {
+            "id": "tester",
+            "icon": "ClipboardCheck",
+            "title": "Tester og QA",
+            "description": "Du finner det som ikke tåler produksjon før innbyggerne gjør det. Både funksjonell testing, testautomatisering og tilgjengelighetstesting.",
+            "focus": ["Testautomatisering", "Tilgjengelighetstesting", "Testledelse", "Regresjon"]
+        },
+        {
+            "id": "devops",
+            "icon": "Cloud",
+            "title": "DevOps og plattform",
+            "description": "Du eier veien fra kode til drift. Vi forvalter det vi bygger, så driftbarhet er en designbeslutning hos oss — ikke noe som kommer etterpå.",
+            "focus": ["Azure", "CI/CD", "Infrastruktur som kode", "Overvåking"]
+        },
+        {
+            "id": "radgiver",
+            "icon": "Users",
+            "title": "Rådgiver og prosjektleder",
+            "description": "Du står mellom kunden og teamet: kartlegger behov, styrer leveranser i etapper og kjenner rammene rundt offentlige anskaffelser.",
+            "focus": ["Offentlige anskaffelser", "Leveranseledelse", "Kravarbeid", "Arkitekturforståelse"]
+        }
+    ],
+    "en": [
+        {
+            "id": "systemutvikler",
+            "icon": "Server",
+            "title": "Software engineer",
+            "description": "You build case management systems and integrations meant to stay in production for years. Mostly .NET and C#, against Azure and Norwegian national components.",
+            "focus": [".NET and C#", "Azure", "APIs and integration", "Data modelling"]
+        },
+        {
+            "id": "frontendutvikler",
+            "icon": "Code2",
+            "title": "Frontend engineer",
+            "description": "You build the interfaces caseworkers and citizens actually use. Accessibility is a requirement here, not a clean-up at the end.",
+            "focus": ["React and TypeScript", "WCAG 2.2 AA", "Design systems", "Form flows"]
+        },
+        {
+            "id": "designer",
+            "icon": "PenTool",
+            "title": "UX and UI designer",
+            "description": "You shape how an application, a decision or a portal feels — for the applicant who wants to be done, and for the caseworker who needs a complete basis to decide on.",
+            "focus": ["Service design", "Universal design", "User testing", "Prototyping"]
+        },
+        {
+            "id": "tester",
+            "icon": "ClipboardCheck",
+            "title": "Tester and QA",
+            "description": "You find what will not survive production before citizens do. Functional testing, test automation and accessibility testing alike.",
+            "focus": ["Test automation", "Accessibility testing", "Test management", "Regression"]
+        },
+        {
+            "id": "devops",
+            "icon": "Cloud",
+            "title": "DevOps and platform",
+            "description": "You own the path from code to production. We keep running what we build, so operability is a design decision here rather than an afterthought.",
+            "focus": ["Azure", "CI/CD", "Infrastructure as code", "Monitoring"]
+        },
+        {
+            "id": "radgiver",
+            "icon": "Users",
+            "title": "Advisor and project lead",
+            "description": "You sit between client and team: mapping needs, running delivery in stages, and knowing the rules around public procurement.",
+            "focus": ["Public procurement", "Delivery management", "Requirements", "Architecture literacy"]
+        }
+    ],
+    "ar": [
+        {
+            "id": "systemutvikler",
+            "icon": "Server",
+            "title": "مهندس برمجيات",
+            "description": "تبني أنظمة إدارة القضايا والتكاملات المصمَّمة للبقاء في التشغيل سنوات. غالباً ‎.NET‎ وC#‎، مع Azure والمكوّنات الوطنية النرويجية.",
+            "focus": [".NET وC#", "Azure", "واجهات برمجية وتكامل", "نمذجة البيانات"]
+        },
+        {
+            "id": "frontendutvikler",
+            "icon": "Code2",
+            "title": "مهندس واجهات أمامية",
+            "description": "تبني الواجهات التي يستخدمها الموظفون والمواطنون فعلياً. إمكانية الوصول شرط لدينا، لا تصحيح في النهاية.",
+            "focus": ["React وTypeScript", "WCAG 2.2 AA", "أنظمة التصميم", "تدفّق النماذج"]
+        },
+        {
+            "id": "designer",
+            "icon": "PenTool",
+            "title": "مصمّم تجربة وواجهة",
+            "description": "تصوغ كيف يبدو الطلب أو القرار أو البوابة — لمقدّم الطلب الذي يريد الإنجاز، ولموظف الحالة الذي يحتاج أساساً كاملاً لاتخاذ القرار.",
+            "focus": ["تصميم الخدمات", "التصميم الشامل", "اختبار المستخدمين", "النماذج الأولية"]
+        },
+        {
+            "id": "tester",
+            "icon": "ClipboardCheck",
+            "title": "مختبِر وضمان جودة",
+            "description": "تكتشف ما لا يصمد في الإنتاج قبل أن يكتشفه المواطنون. اختبار وظيفي وأتمتة اختبارات واختبار إمكانية الوصول.",
+            "focus": ["أتمتة الاختبارات", "اختبار إمكانية الوصول", "إدارة الاختبار", "اختبار الانحدار"]
+        },
+        {
+            "id": "devops",
+            "icon": "Cloud",
+            "title": "DevOps ومنصّات",
+            "description": "تملك المسار من الشيفرة إلى التشغيل. نحن نواصل تشغيل ما نبنيه، لذا قابلية التشغيل قرار تصميمي لدينا لا أمر لاحق.",
+            "focus": ["Azure", "CI/CD", "البنية ككود", "المراقبة"]
+        },
+        {
+            "id": "radgiver",
+            "icon": "Users",
+            "title": "مستشار وقائد مشروع",
+            "description": "تقف بين العميل والفريق: تحديد الاحتياجات وإدارة التسليم على مراحل ومعرفة قواعد المشتريات العامة.",
+            "focus": ["المشتريات العامة", "إدارة التسليم", "تحليل المتطلبات", "فهم معماري"]
+        }
+    ]
+}
