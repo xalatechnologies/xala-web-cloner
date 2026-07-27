@@ -330,6 +330,10 @@
     "detailsHeading": "Contact details",
     "formHeading": "Send us a message"
   },
+  "bookDemo": {
+    "title": "Book a demo",
+    "description": "Tell us about your needs and we will show you how Xala Technologies can help."
+  },
   "common": {
     "showMore": "Show More",
     "showLess": "Show Less",

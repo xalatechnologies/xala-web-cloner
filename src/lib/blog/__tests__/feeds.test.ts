@@ -110,6 +110,14 @@ describe("sitemap", () => {
     expect(locs.some((l) => l.endsWith("/services"))).toBe(false);
   });
 
+  // XWEB-4: /book-demo had no STATIC_ROUTES entry, so the prerender never
+  // wrote dist/book-demo/index.html and nginx answered every request for it
+  // with a real 404.
+  it("includes /book-demo", () => {
+    const locs = staticSitemapEntries("2026-07-25").map((e) => e.loc);
+    expect(locs).toContain("https://xala.no/book-demo");
+  });
+
   it("renders valid sitemap XML with no trailing slash on the origin", () => {
     const entries = [...staticSitemapEntries("2026-07-25"), ...blogSitemapEntries(posts())];
     const xml = renderSitemap(entries);
@@ -118,6 +126,7 @@ describe("sitemap", () => {
     expect(xml).not.toContain("<loc>https://xala.no/</loc>");
     expect(entries.map((e) => e.loc)).toContain("https://xala.no/priser");
     expect(entries.map((e) => e.loc)).not.toContain("https://xala.no/pris");
+    expect(entries.map((e) => e.loc)).toContain("https://xala.no/book-demo");
     expect([...xml.matchAll(/<url>/g)]).toHaveLength(entries.length);
   });
 });

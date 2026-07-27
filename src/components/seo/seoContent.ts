@@ -24,6 +24,7 @@ type PageId =
   | 'technology'
   | 'about'
   | 'contact'
+  | 'bookDemo'
   | 'careers'
   | 'blog'
   | 'blogPost'
@@ -102,6 +103,12 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
       description:
         'Ta kontakt med Xala Technologies AS i Asker. Fortell oss om prosjektet, så svarer vi med hvordan vi kan hjelpe.',
       keywords: 'kontakt, teknologikonsultasjon, IT-rådgivning, tilbud, Asker, Nesbru, Norge'
+    },
+    bookDemo: {
+      title: 'Book en demo | Xala Technologies',
+      description:
+        'Book en demo av løsningene til Xala Technologies. Fortell oss om behovet ditt, så viser vi hvordan vi kan hjelpe.',
+      keywords: 'book demo, produktdemo, demo, Xala Technologies, Asker, Norge'
     },
     careers: {
       title: 'Ledige stillinger og karriere | Xala',
@@ -209,6 +216,12 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
         'Get in touch with Xala Technologies AS in Asker, Norway. Tell us about your project and we will reply with how we can help.',
       keywords: 'contact, technology consultation, IT consulting, request a quote, Asker, Nesbru, Norway'
     },
+    bookDemo: {
+      title: 'Book a demo | Xala Technologies',
+      description:
+        'Book a demo of Xala Technologies solutions. Tell us about your needs and we will show you how we can help.',
+      keywords: 'book demo, product demo, request a demo, Xala Technologies, Asker, Norway'
+    },
     careers: {
       title: 'Careers | Xala Technologies',
       description:
@@ -304,6 +317,11 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
       title: 'اتصل بنا | زالا تكنولوجيز',
       description: 'تواصل مع زالا تكنولوجيز في أسكر بالنرويج. أخبرنا عن مشروعك وسنوضح لك كيف يمكننا المساعدة.',
       keywords: 'اتصل بنا, استشارة تقنية, استشارات تقنية معلومات, عرض سعر, النرويج'
+    },
+    bookDemo: {
+      title: 'احجز عرضًا توضيحيًا | زالا تكنولوجيز',
+      description: 'احجز عرضًا توضيحيًا لحلول زالا تكنولوجيز. أخبرنا عن احتياجاتك وسنوضح لك كيف يمكننا المساعدة.',
+      keywords: 'حجز عرض توضيحي, عرض المنتج, زالا تكنولوجيز, النرويج'
     },
     careers: {
       title: 'الوظائف | زالا تكنولوجيز',

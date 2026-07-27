@@ -33,6 +33,7 @@ export const ROUTE_RULES: RouteRule[] = [
   { pattern: /^\/teknologi\/?$/, pageId: 'technology' },
   { pattern: /^\/om-oss\/?$/, pageId: 'about' },
   { pattern: /^\/kontakt\/?$/, pageId: 'contact' },
+  { pattern: /^\/book-demo\/?$/, pageId: 'bookDemo' },
   { pattern: /^\/karriere\/?$/, pageId: 'careers' },
   { pattern: /^\/blogg\/?$/, pageId: 'blog', selfManaged: true },
   { pattern: /^\/blogg\/[^/]+\/?$/, pageId: 'blogPost', ogType: 'article', selfManaged: true },
