@@ -42,6 +42,8 @@ const PAGE_HEADING_OWNER: Record<string, string> = {
   '/om-oss': 'components/About.tsx',
   '/kontakt': 'components/Contact.tsx',
   '/karriere': 'pages/KarrierePage.tsx',
+  '/status': 'pages/StatusPage.tsx',
+  '/transparency': 'pages/TransparencyPage.tsx',
   '/blogg': 'pages/BloggPage.tsx',
   '/blogg/:slug': 'pages/BloggPostPage.tsx',
   '/privacy': 'components/layouts/LegalLayout.tsx',
