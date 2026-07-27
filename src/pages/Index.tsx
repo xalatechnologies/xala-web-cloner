@@ -1,7 +1,6 @@
 import Navbar from '../components/Navbar';
 import VideoHero from '../components/hero/VideoHero';
 import Clients from '../components/Clients';
-import ProofTeaser from '../components/teasers/ProofTeaser';
 import ValueProps from '../components/ValueProps';
 import Footer from '../components/Footer';
 import ServicesTeaser from '../components/teasers/ServicesTeaser';
@@ -11,7 +10,6 @@ import ProcessTeaser from '../components/teasers/ProcessTeaser';
 import TechTeaser from '../components/teasers/TechTeaser';
 import BlogTeaser from '../components/teasers/BlogTeaser';
 import ContactTeaser from '../components/teasers/ContactTeaser';
-import FinalCTA from '../components/FinalCTA';
 import { useTranslation } from 'react-i18next';
 
 const Index = () => {
@@ -35,7 +33,6 @@ const Index = () => {
       <main id="main" className="flex-1">
         <VideoHero words={getHeroWords()} />
         <Clients />
-        <ProofTeaser />
         <ValueProps />
         <ServicesTeaser />
         <ProductsTeaser />
@@ -43,8 +40,15 @@ const Index = () => {
         <ProcessTeaser />
         <TechTeaser />
         <BlogTeaser />
+        {/*
+          One closing call to action, not two. ContactTeaser ("Klar for en
+          prat?") was immediately followed by FinalCTA ("Klar til å
+          transformere din bedrift?") — the same ask twice in a row, and the
+          second one in the vaguest language on the page. ContactTeaser stays
+          because it carries the actual contact details; FinalCTA is still
+          available for pages that need a closing band.
+        */}
         <ContactTeaser />
-        <FinalCTA />
       </main>
       <Footer />
     </div>

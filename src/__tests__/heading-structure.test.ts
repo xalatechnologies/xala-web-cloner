@@ -33,6 +33,7 @@ const PAGE_HEADING_OWNER: Record<string, string> = {
   // under it. Services keeps an h1 default for any page it leads.
   '/tjenester': 'pages/TjenesterPage.tsx',
   '/produkter': 'pages/ProdukterPage.tsx',
+  '/produkter/:slug': 'pages/ProduktDetaljPage.tsx',
   '/caser': 'pages/CaserPage.tsx',
   '/caser/:slug': 'pages/CaseStudyDetailPage.tsx',
   // Moved out of WorkProcess: that component is a section of this page, not

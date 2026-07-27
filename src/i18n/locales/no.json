@@ -250,7 +250,9 @@
       "status": "Live"
     },
     "title": "Våre kjerneprodukter",
-    "description": "Ferdige løsninger som kan tilpasses dine behov."
+    "description": "Ferdige løsninger som kan tilpasses dine behov.",
+    "comingSoon": "Kommer",
+    "readMore": "Les mer"
   },
   "footer": {
     "description": "Vi skaper innovative teknologiløsninger som driver forretningsvekst og digital transformasjon.",
@@ -549,14 +551,44 @@
     "rolesDescription": "Hver lenke åpner en e-post med riktig emnefelt, så søknaden havner der den skal.",
     "applyFor": "Send åpen søknad",
     "howEyebrow": "Slik søker du",
-    "howTitle": "Ingen skjema, bare en e-post",
-    "howDescription": "Send CV og noen setninger om hva du har bygget og hva du vil jobbe mer med. Lenker til kode, design eller skriving sier oss mer enn en lang søknadstekst.",
+    "howTitle": "Send søknaden herfra",
+    "howDescription": "Fyll ut skjemaet, så er søknaden ferdig formulert når e-postprogrammet ditt åpner seg. Da legger du ved CV-en og sender.",
     "noVacancyNote": "Vi lyser ikke ut faste stillinger her. En åpen søknad blir liggende hos oss, og vi tar kontakt når vi har noe som passer.",
     "generalApplication": "Søk på noe annet",
     "emailLabel": "E-post",
     "mailSubjectRole": "Åpen søknad: {{role}}",
     "mailSubjectGeneral": "Åpen søknad – Xala Technologies",
-    "mailBody": "Hei,\n\nJeg sender en åpen søknad til Xala Technologies.\n\nCV og en kort beskrivelse av meg selv følger vedlagt.\n\nMed vennlig hilsen"
+    "mailBody": "Hei,\n\nJeg sender en åpen søknad til Xala Technologies.\n\nCV og en kort beskrivelse av meg selv følger vedlagt.\n\nMed vennlig hilsen",
+    "form": {
+      "name": "Navn",
+      "email": "E-post",
+      "role": "Hva søker du på?",
+      "rolePlaceholder": "Velg rolle",
+      "roleOther": "Noe annet",
+      "portfolio": "Lenke til kode, design eller tekst",
+      "optional": "(valgfritt)",
+      "portfolioHelp": "GitHub, en portefølje eller noe du har skrevet. Det sier oss ofte mer enn søknadsteksten.",
+      "message": "Om deg",
+      "messageHelp": "Hva har du bygget, og hva vil du jobbe mer med? Noen setninger holder.",
+      "cvNote": "Vi tar imot CV som vedlegg. Når du trykker send, åpnes e-postprogrammet ditt med søknaden ferdig utfylt, og der legger du ved CV-en før du sender.",
+      "submit": "Fortsett til e-post",
+      "attachReminder": "Husk å legge ved CV-en din før du sender.",
+      "validation": {
+        "name": "Skriv inn navnet ditt.",
+        "email": "Skriv inn en gyldig e-postadresse.",
+        "role": "Velg hvilken rolle du søker på.",
+        "portfolio": "Lenken må være en fullstendig nettadresse.",
+        "message": "Skriv noen setninger om hva du har jobbet med."
+      },
+      "success": {
+        "title": "Søknaden er klar til å sendes",
+        "description": "Vi har åpnet e-postprogrammet ditt. Legg ved CV-en og send, så hører du fra oss."
+      },
+      "error": {
+        "title": "Vi fikk ikke åpnet e-postprogrammet",
+        "description": "Send søknaden direkte til {{email}} i stedet."
+      }
+    }
   },
   "faq": {
     "title": "Ofte stilte spørsmål",
@@ -710,5 +742,13 @@
         "description": "Universell utforming etter WCAG 2.2 AA, krav i personvernforordningen og dokumentasjon som holder i en anskaffelse."
       }
     }
+  },
+  "productPage": {
+    "back": "Alle produkter",
+    "features": "Dette inngår",
+    "visit": "Besøk nettstedet",
+    "ctaTitle": "Vil dere se det i praksis?",
+    "ctaDescription": "Ta kontakt, så viser vi hvordan produktet løser oppgaven dere står i.",
+    "ctaContact": "Kontakt oss"
   }
 }

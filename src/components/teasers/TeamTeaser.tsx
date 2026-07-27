@@ -36,8 +36,8 @@ export default function TeamTeaser() {
 
   return (
     <section className="py-12 md:py-16 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+      <div className="container mx-auto px-4">
+        <div className="mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             {t('teasers.team.title')}
           </h2>
@@ -49,7 +49,7 @@ export default function TeamTeaser() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12 mb-12">
           {teamRoles.map((item, index) => (
             <div key={index} className="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-card text-card-foreground border border-border p-8 sm:p-10 lg:p-12 transition-all duration-300 hover:border-primary/40 hover:shadow-lg dark:bg-gradient-to-br dark:from-white/10 dark:to-white/5 dark:border-white/20 min-h-[280px] sm:min-h-[320px] flex flex-col justify-center">
-              <div className="text-center">
+              <div className="">
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary mb-4 sm:mb-6">
                   {item.role}
                 </h3>
@@ -63,7 +63,7 @@ export default function TeamTeaser() {
           ))}
         </div>
         
-        <div className="text-center">
+        <div className="">
           {/* /om-oss/team has never had a route or a TeamPage component; the
               team is presented on /om-oss. */}
           <Link

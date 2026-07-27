@@ -65,17 +65,19 @@ export default function ServicesTeaser() {
                   to="/tjenester"
                   className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:p-7"
                 >
-                  <span className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
-                    <Icon className="h-5 w-5" aria-hidden="true" />
-                  </span>
-                  <h3 className="flex items-center gap-2 text-lg font-semibold text-foreground md:text-xl">
-                    {service.title}
-                    <ArrowRight
-                      className="h-4 w-4 shrink-0 text-primary opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100"
-                      aria-hidden="true"
-                    />
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
+                  <div className="flex items-center gap-3">
+                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <h3 className="flex items-center gap-2 text-lg font-semibold text-foreground md:text-xl">
+                      {service.title}
+                      <ArrowRight
+                        className="h-4 w-4 shrink-0 text-primary opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100"
+                        aria-hidden="true"
+                      />
+                    </h3>
+                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
                     {service.description}
                   </p>
                 </Link>

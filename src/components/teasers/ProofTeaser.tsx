@@ -36,45 +36,37 @@ export default function ProofTeaser() {
 
   return (
     <Section tone="default" size="md" labelledBy="proof-heading">
-      <div className="mx-auto max-w-3xl text-center">
+      <div className="max-w-3xl">
         <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
           {t('proof.eyebrow', 'Resultater')}
         </p>
         <h2
           id="proof-heading"
-          className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground"
+          className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
         >
           {t('proof.title', 'Systemer i drift hos dem som ikke kan ha nedetid')}
         </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground leading-relaxed">
+        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
           {t(
             'proof.description',
-            'Vi har levert til statlige etater, helseforetak og kommuner — og forvalter løsningene videre etter lansering.'
+            'Vi har levert til statlige etater, helseforetak og kommuner, og vi forvalter løsningene videre etter lansering.'
           )}
         </p>
       </div>
 
-      <dl className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3">
+      <dl className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-3">
         {STATS.map((stat) => (
-          <div
-            key={stat.key}
-            className="rounded-2xl border border-border bg-card p-8 text-center shadow-soft"
-          >
-            <dt className="sr-only">{t(stat.key, stat.fallback)}</dt>
-            <dd>
-              <span className="block text-4xl md:text-5xl font-bold tracking-tight text-primary">
-                {stat.value}
-              </span>
-              <span className="mt-2 block text-sm text-muted-foreground">
-                {t(stat.key, stat.fallback)}
-              </span>
+          <div key={stat.key} className="bg-card p-6 md:p-8">
+            <dt className="text-sm text-muted-foreground">{t(stat.key, stat.fallback)}</dt>
+            <dd className="mt-2 text-4xl font-bold tracking-tight text-primary md:text-5xl">
+              {stat.value}
             </dd>
           </div>
         ))}
       </dl>
 
 
-      <div className="mt-12 text-center">
+      <div className="mt-10">
         <Link
           to="/caser"
           className="group inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-sm font-semibold uppercase tracking-[0.1em] text-primary-foreground transition-all duration-200 hover:shadow-[0_0_32px_hsl(var(--primary)/0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"

@@ -26,11 +26,15 @@ const Footer = () => {
     { name: t('footer.links.cookies') || 'Cookies', href: '/cookies' },
   ];
 
+  // Every product points at its own page on this site. Two of the four
+  // external domains (xaheen.com, digiskjema.no) do not resolve at all, so
+  // linking outward sent people to a connection error from every page — and
+  // for the two that do resolve it handed the authority to another domain.
   const products = [
-    { name: 'Digilist', href: 'https://digilist.no', external: true },
-    { name: 'Digiskjema', href: 'https://digiskjema.no', external: true },
-    { name: 'Xaheen', href: 'https://xaheen.com', external: true },
-    { name: 'Norchain', href: 'https://norchain.org', external: true },
+    { name: 'Digilist', href: '/produkter/digilist', soon: false },
+    { name: 'Digiskjema', href: '/produkter/digiskjema', soon: true },
+    { name: 'Xaheen', href: '/produkter/xaheen', soon: true },
+    { name: 'Norchain', href: '/produkter/norchain', soon: false },
   ];
 
   // Localized section headers
@@ -130,16 +134,18 @@ const Footer = () => {
             <h3 className="text-base font-semibold text-white uppercase tracking-wider mb-4">{sectionHeaders.products}</h3>
             <ul className="space-y-3">
               {products.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-base text-stone-300 hover:text-primary transition-colors duration-200 min-h-11 inline-flex items-center gap-1"
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className="text-base text-stone-300 hover:text-primary transition-colors duration-200 min-h-11 inline-flex items-center gap-2"
                   >
                     {link.name}
-                    <span className="text-xs">↗</span>
-                  </a>
+                    {link.soon && (
+                      <span className="rounded-full border border-stone-600 px-2 py-0.5 text-[11px] uppercase tracking-wider text-stone-400">
+                        {t('products.comingSoon', 'Kommer')}
+                      </span>
+                    )}
+                  </Link>
                 </li>
               ))}
             </ul>

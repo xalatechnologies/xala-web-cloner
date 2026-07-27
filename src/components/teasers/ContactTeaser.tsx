@@ -31,7 +31,7 @@ export default function ContactTeaser() {
           className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/10 blur-3xl"
         />
 
-        <div className="relative mx-auto max-w-3xl text-center">
+        <div className="relative max-w-3xl">
           <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
             {t('teasers.contact.eyebrow', 'Kontakt')}
           </p>
@@ -41,12 +41,12 @@ export default function ContactTeaser() {
           >
             {t('teasers.contact.title')}
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground leading-relaxed">
+          <p className="mt-5 max-w-2xl text-lg text-muted-foreground leading-relaxed">
             {t('teasers.contact.description')}
           </p>
         </div>
 
-        <div className="relative mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-4 md:grid-cols-3">
+        <div className="relative mt-12 grid grid-cols-1 gap-4 md:grid-cols-3">
           {DETAILS.map(({ icon: Icon, titleKey, valueKey, ltr }) => (
             <div
               key={titleKey}
@@ -66,7 +66,7 @@ export default function ContactTeaser() {
           ))}
         </div>
 
-        <div className="relative mt-12 text-center">
+        <div className="relative mt-12">
           <Link
             to="/kontakt"
             className="group inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-sm font-semibold uppercase tracking-[0.1em] text-primary-foreground transition-all duration-200 hover:shadow-[0_0_32px_hsl(var(--primary)/0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"

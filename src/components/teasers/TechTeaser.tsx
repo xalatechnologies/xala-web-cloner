@@ -75,9 +75,9 @@ export default function TechTeaser() {
       <div className="absolute bottom-20 right-10 w-48 h-48 bg-amber-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
             <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
             <span className="text-sm font-medium text-primary">Moderne tech stack</span>
@@ -85,7 +85,7 @@ export default function TechTeaser() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
             {t('teasers.tech.title')}
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
             {t('teasers.tech.description')}
           </p>
         </div>
@@ -138,7 +138,7 @@ export default function TechTeaser() {
         </div>
 
         {/* CTA */}
-        <div className="text-center">
+        <div className="">
           <Link
             to="/teknologi"
             className="inline-flex items-center px-8 py-4 text-base font-medium rounded-xl text-primary-foreground bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transform hover:-translate-y-1"

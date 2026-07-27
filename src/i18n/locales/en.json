@@ -250,7 +250,9 @@
       "status": "Live"
     },
     "title": "Our core products",
-    "description": "Ready-made solutions that adapt to your needs."
+    "description": "Ready-made solutions that adapt to your needs.",
+    "comingSoon": "Soon",
+    "readMore": "Read more"
   },
   "footer": {
     "description": "We create innovative technology solutions that drive business growth and digital transformation.",
@@ -549,14 +551,44 @@
     "rolesDescription": "Each link opens an email with the right subject line, so your application lands where it should.",
     "applyFor": "Send an open application",
     "howEyebrow": "How to apply",
-    "howTitle": "No forms, just an email",
-    "howDescription": "Send a CV and a few sentences about what you have built and what you want to work on next. Links to code, design or writing tell us more than a long cover letter.",
+    "howTitle": "Apply from here",
+    "howDescription": "Fill in the form and the application is already written when your mail client opens. Attach your CV there and send.",
     "noVacancyNote": "We do not advertise fixed vacancies here. An open application stays with us, and we get in touch when something fits.",
     "generalApplication": "Apply for something else",
     "emailLabel": "Email",
     "mailSubjectRole": "Open application: {{role}}",
     "mailSubjectGeneral": "Open application – Xala Technologies",
-    "mailBody": "Hello,\n\nI am sending an open application to Xala Technologies.\n\nMy CV and a short description of myself are attached.\n\nKind regards"
+    "mailBody": "Hello,\n\nI am sending an open application to Xala Technologies.\n\nMy CV and a short description of myself are attached.\n\nKind regards",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "role": "What are you applying for?",
+      "rolePlaceholder": "Choose a role",
+      "roleOther": "Something else",
+      "portfolio": "Link to code, design or writing",
+      "optional": "(optional)",
+      "portfolioHelp": "GitHub, a portfolio, or something you have written. It usually tells us more than the covering text.",
+      "message": "About you",
+      "messageHelp": "What have you built, and what do you want to work on next? A few sentences is plenty.",
+      "cvNote": "We accept a CV as an attachment. When you press send, your mail client opens with the application already written, and you attach the CV there before sending.",
+      "submit": "Continue to email",
+      "attachReminder": "Remember to attach your CV before sending.",
+      "validation": {
+        "name": "Enter your name.",
+        "email": "Enter a valid email address.",
+        "role": "Choose the role you are applying for.",
+        "portfolio": "The link has to be a full web address.",
+        "message": "Write a few sentences about what you have worked on."
+      },
+      "success": {
+        "title": "Your application is ready to send",
+        "description": "We have opened your mail client. Attach your CV and send, and you will hear from us."
+      },
+      "error": {
+        "title": "We could not open your mail client",
+        "description": "Send the application straight to {{email}} instead."
+      }
+    }
   },
   "faq": {
     "title": "Frequently asked questions",
@@ -710,5 +742,13 @@
         "description": "Accessibility to WCAG 2.2 AA, GDPR obligations, and documentation that holds up in a procurement."
       }
     }
+  },
+  "productPage": {
+    "back": "All products",
+    "features": "What it includes",
+    "visit": "Visit the site",
+    "ctaTitle": "Want to see it in practice?",
+    "ctaDescription": "Get in touch and we will show how the product solves the problem you have.",
+    "ctaContact": "Contact us"
   }
 }

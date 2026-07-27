@@ -20,6 +20,8 @@ export const ROUTE_RULES: RouteRule[] = [
   { pattern: /^\/$/, pageId: 'home' },
   { pattern: /^\/tjenester\/?$/, pageId: 'services' },
   { pattern: /^\/produkter\/?$/, pageId: 'products' },
+  // The product pages own their head tags, including SoftwareApplication schema.
+  { pattern: /^\/produkter\/[^/]+\/?$/, pageId: 'products', selfManaged: true },
   { pattern: /^\/caser\/?$/, pageId: 'cases', selfManaged: true },
   { pattern: /^\/caser\/[^/]+\/?$/, pageId: 'caseStudy', ogType: 'article', selfManaged: true },
   { pattern: /^\/slik-vi-jobber\/?$/, pageId: 'process' },

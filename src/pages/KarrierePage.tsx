@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import rolesData from '@/data/careers-roles.json';
 import { PageHeader } from '../components/layouts/PageFrame';
+import ApplicationForm from '../components/careers/ApplicationForm';
 
 type Language = 'no' | 'en' | 'ar';
 
@@ -98,13 +99,14 @@ export default function KarrierePage() {
                     href={mailtoFor(role)}
                     className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-all hover:border-primary/50 hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   >
-                    <span className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
-                    </span>
+                    <div className="flex items-center gap-3">
+                      <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
+                        <Icon className="h-5 w-5" aria-hidden="true" />
+                      </span>
+                      <h3 className="text-lg font-semibold text-foreground md:text-xl">{role.title}</h3>
+                    </div>
 
-                    <h3 className="text-xl font-semibold text-foreground">{role.title}</h3>
-
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
                       {role.description}
                     </p>
 
@@ -138,17 +140,17 @@ export default function KarrierePage() {
           className="border-t border-border bg-muted/40 py-14 md:py-20"
         >
           <div className="container mx-auto grid gap-10 px-4 lg:grid-cols-12">
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-5">
               <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
                 {t('careers.howEyebrow', 'Slik søker du')}
               </p>
               <h2 id="soknad-heading" className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
-                {t('careers.howTitle', 'Ingen skjema, bare en e-post')}
+                {t('careers.howTitle', 'Send søknaden herfra')}
               </h2>
-              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
                 {t(
                   'careers.howDescription',
-                  'Send CV og noen setninger om hva du har bygget og hva du vil jobbe mer med. Lenker til kode, design eller skriving sier oss mer enn en lang søknadstekst.'
+                  'Fyll ut skjemaet, så er søknaden ferdig formulert når e-postprogrammet ditt åpner seg. Da legger du ved CV-en og sender.'
                 )}
               </p>
               <p className="mt-4 text-sm text-muted-foreground">
@@ -157,22 +159,16 @@ export default function KarrierePage() {
                   'Vi lyser ikke ut faste stillinger her. En åpen søknad blir liggende hos oss, og vi tar kontakt når vi har noe som passer.'
                 )}
               </p>
-            </div>
-
-            <div className="lg:col-span-5 lg:justify-self-end">
-              <a
-                href={mailtoFor()}
-                className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold uppercase tracking-[0.1em] text-primary-foreground transition-all hover:shadow-[0_0_32px_hsl(var(--primary)/0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-              >
-                <Mail className="h-4 w-4" aria-hidden="true" />
-                {t('careers.generalApplication', 'Søk på noe annet')}
-              </a>
-              <p className="mt-4 text-sm text-muted-foreground">
+              <p className="mt-6 text-sm text-muted-foreground">
                 {t('careers.emailLabel', 'E-post')}:{' '}
                 <a href={`mailto:${CONTACT}`} className="text-primary hover:underline">
                   {CONTACT}
                 </a>
               </p>
+            </div>
+
+            <div className="lg:col-span-7">
+              <ApplicationForm roles={roles.map((role) => role.title)} contactEmail={CONTACT} />
             </div>
           </div>
         </section>

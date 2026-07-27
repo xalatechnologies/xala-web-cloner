@@ -79,8 +79,12 @@ export const Section = ({
         className,
       )}
     >
+      {/* px-4 only, matching every hand-written container on the site. The
+          responsive sm:px-6 lg:px-8 pushed sections wrapped in <Section> 16px
+          further in than their neighbours, so headings on the homepage sat on
+          two different left edges. */}
       {container ? (
-        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">{children}</div>
+        <div className="container relative mx-auto px-4">{children}</div>
       ) : (
         children
       )}

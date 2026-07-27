@@ -55,12 +55,12 @@ export default function ProductsTeaser() {
 
   return (
     <Section tone="muted" size="sm" styled container={false}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+      <div className="container mx-auto px-4">
+        <div className="mb-12">
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
             {t('teasers.products.title')}
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
             {t('teasers.products.description')}
           </p>
         </div>
@@ -93,7 +93,7 @@ export default function ProductsTeaser() {
           })}
         </div>
 
-        <div className="text-center">
+        <div className="">
           <Link
             to="/produkter"
             className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-primary-foreground bg-primary hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"

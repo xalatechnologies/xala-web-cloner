@@ -1,0 +1,182 @@
+{
+    "norchain": {
+        "slug": "norchain",
+        "no": {
+            "tagline": "Blockchain-infrastruktur bygget i Norge",
+            "intro": "Norchain er et komplett blockchain-operativsystem. Det består av en egen L1-infrastruktur, betalingsløsningen NorPay og NorLedger for sporbarhet, og det er bygget for virksomheter som trenger etterprøvbare transaksjoner uten å sette bort kontrollen.",
+            "sections": [
+                {
+                    "heading": "Hva det består av",
+                    "body": "L1-infrastrukturen er kjernen. NorPay håndterer betalinger, NorLedger gir en sporbar hovedbok, og smartkontrakter binder det sammen."
+                },
+                {
+                    "heading": "Hvem det er for",
+                    "body": "Virksomheter som må kunne dokumentere hva som skjedde, når det skjedde og hvem som gjorde det, uten å stole på en tredjepart for revisjonssporet."
+                }
+            ]
+        },
+        "en": {
+            "tagline": "Blockchain infrastructure built in Norway",
+            "intro": "Norchain is a complete blockchain operating system: its own L1 infrastructure, the NorPay payment layer and NorLedger for traceability, built for organisations that need verifiable transactions without handing over control.",
+            "sections": [
+                {
+                    "heading": "What it consists of",
+                    "body": "The L1 infrastructure is the core. NorPay handles payments, NorLedger provides a traceable ledger, and smart contracts tie them together."
+                },
+                {
+                    "heading": "Who it is for",
+                    "body": "Organisations that have to be able to document what happened, when, and who did it, without trusting a third party for the audit trail."
+                }
+            ]
+        },
+        "ar": {
+            "tagline": "بنية بلوك تشين مبنية في النرويج",
+            "intro": "Norchain نظام تشغيل بلوك تشين متكامل: بنية L1 خاصة، وطبقة الدفع NorPay، وNorLedger للتتبّع، مبني لمؤسسات تحتاج معاملات قابلة للتحقّق دون التنازل عن السيطرة.",
+            "sections": [
+                {
+                    "heading": "ممّ يتكوّن",
+                    "body": "بنية L1 هي النواة. تتولّى NorPay المدفوعات، ويوفّر NorLedger سجلاً قابلاً للتتبّع، وتربطها العقود الذكية معاً."
+                },
+                {
+                    "heading": "لمن هو",
+                    "body": "للمؤسسات التي يجب أن توثّق ما حدث ومتى ومَن قام به، دون الاعتماد على طرف ثالث لمسار التدقيق."
+                }
+            ]
+        }
+    },
+    "xaheen": {
+        "slug": "xaheen",
+        "no": {
+            "tagline": "AI-drevet utviklingsplattform",
+            "intro": "Xaheen AI Builder er en utviklingsplattform som bruker AI til å ta unna det repetitive i programvareutvikling: kodeassistanse, testing, kodeanalyse og integrasjon mot CI/CD.",
+            "sections": [
+                {
+                    "heading": "Status",
+                    "body": "Xaheen er under utvikling og ikke lansert ennå. Vi bruker den internt i egne prosjekter mens den modnes."
+                },
+                {
+                    "heading": "Hva den gjør",
+                    "body": "Assisterer med kode, genererer og kjører tester, analyserer kodebasen og kobler seg på eksisterende CI/CD-oppsett."
+                }
+            ]
+        },
+        "en": {
+            "tagline": "AI-assisted development platform",
+            "intro": "Xaheen AI Builder is a development platform that uses AI for the repetitive part of building software: code assistance, testing, code analysis and CI/CD integration.",
+            "sections": [
+                {
+                    "heading": "Status",
+                    "body": "Xaheen is in development and not launched yet. We use it internally on our own projects while it matures."
+                },
+                {
+                    "heading": "What it does",
+                    "body": "Assists with code, generates and runs tests, analyses the codebase, and connects to existing CI/CD setups."
+                }
+            ]
+        },
+        "ar": {
+            "tagline": "منصة تطوير مدعومة بالذكاء الاصطناعي",
+            "intro": "Xaheen AI Builder منصة تطوير تستخدم الذكاء الاصطناعي للجزء المتكرّر من بناء البرمجيات: مساعدة الشيفرة والاختبار وتحليل الشيفرة والتكامل مع CI/CD.",
+            "sections": [
+                {
+                    "heading": "الحالة",
+                    "body": "Xaheen قيد التطوير ولم تُطلق بعد. نستخدمها داخلياً في مشاريعنا بينما تنضج."
+                },
+                {
+                    "heading": "ماذا تفعل",
+                    "body": "تساعد في كتابة الشيفرة، وتولّد الاختبارات وتشغّلها، وتحلّل قاعدة الشيفرة، وترتبط بإعدادات CI/CD القائمة."
+                }
+            ]
+        }
+    },
+    "digilist": {
+        "slug": "digilist",
+        "no": {
+            "tagline": "Booking og utleie av lokaler",
+            "intro": "Digilist samler booking, sesongtildeling, saksbehandling og fakturering i ett system, bygget for norske kommuner og utleiere.",
+            "sections": [
+                {
+                    "heading": "Hva det løser",
+                    "body": "Mange kommuner styrer lokalene sine i regneark og på e-post. Digilist gir én oversikt over hva som er ledig, hvem som har søkt, hva som er vedtatt og hva som skal faktureres."
+                },
+                {
+                    "heading": "Bygget for norske krav",
+                    "body": "Innlogging med ID-porten, arkivering mot Noark, universell utforming etter WCAG 2.2 AA og dokumentasjon som holder i en anskaffelse."
+                }
+            ]
+        },
+        "en": {
+            "tagline": "Booking and venue hire",
+            "intro": "Digilist brings booking, seasonal allocation, casework and invoicing into one system, built for Norwegian municipalities and venue operators.",
+            "sections": [
+                {
+                    "heading": "What it solves",
+                    "body": "Many municipalities run their facilities out of spreadsheets and email. Digilist gives one view of what is free, who applied, what was decided and what needs invoicing."
+                },
+                {
+                    "heading": "Built for Norwegian requirements",
+                    "body": "ID-porten sign-in, Noark archiving, accessibility to WCAG 2.2 AA, and documentation that holds up in a procurement."
+                }
+            ]
+        },
+        "ar": {
+            "tagline": "الحجز وتأجير المرافق",
+            "intro": "يجمع Digilist الحجز والتوزيع الموسمي ومعالجة الطلبات والفوترة في نظام واحد، مبنيّ للبلديات والجهات المؤجّرة النرويجية.",
+            "sections": [
+                {
+                    "heading": "ما الذي يحلّه",
+                    "body": "تدير بلديات كثيرة مرافقها عبر جداول البيانات والبريد. يمنح Digilist رؤية واحدة لما هو متاح ومَن تقدّم وما تقرّر وما يجب فوترته."
+                },
+                {
+                    "heading": "مبنيّ للمتطلبات النرويجية",
+                    "body": "تسجيل الدخول عبر ID-porten، والأرشفة وفق Noark، وإمكانية الوصول وفق WCAG 2.2 AA، وتوثيق يصمد في عملية شراء عامة."
+                }
+            ]
+        }
+    },
+    "digiskjema": {
+        "slug": "digiskjema",
+        "no": {
+            "tagline": "Skjemaer som fanger manglene med én gang",
+            "intro": "Digiskjema er en skjemaløsning for offentlig sektor. Poenget er at søkeren får vite hva som mangler mens hun fortsatt fyller ut, i stedet for tre uker senere i et avslagsbrev.",
+            "sections": [
+                {
+                    "heading": "Status",
+                    "body": "Digiskjema er under utvikling og ikke lansert ennå."
+                },
+                {
+                    "heading": "Hvorfor det er bygget slik",
+                    "body": "Regler for hva som er gyldig legges ett sted, ikke spredt i frontend-koden. Da kan de endres når retningslinjene endres, uten en ny utrulling."
+                }
+            ]
+        },
+        "en": {
+            "tagline": "Forms that catch what is missing straight away",
+            "intro": "Digiskjema is a forms solution for the public sector. The point is that an applicant learns what is missing while still filling the form in, rather than three weeks later in a rejection letter.",
+            "sections": [
+                {
+                    "heading": "Status",
+                    "body": "Digiskjema is in development and not launched yet."
+                },
+                {
+                    "heading": "Why it is built this way",
+                    "body": "The rules for what counts as valid live in one place rather than scattered through frontend code, so they can change when the guidance changes without a new deployment."
+                }
+            ]
+        },
+        "ar": {
+            "tagline": "نماذج تكتشف النواقص فوراً",
+            "intro": "Digiskjema حلّ نماذج للقطاع العام. الفكرة أن يعرف مقدّم الطلب ما ينقصه وهو ما يزال يملأ النموذج، لا بعد ثلاثة أسابيع في خطاب رفض.",
+            "sections": [
+                {
+                    "heading": "الحالة",
+                    "body": "Digiskjema قيد التطوير ولم يُطلق بعد."
+                },
+                {
+                    "heading": "لماذا بُني هكذا",
+                    "body": "قواعد الصلاحية موجودة في مكان واحد لا موزّعة في شيفرة الواجهة، فيمكن تغييرها عند تغيّر الإرشادات دون نشر جديد."
+                }
+            ]
+        }
+    }
+}

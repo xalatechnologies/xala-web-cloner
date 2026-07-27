@@ -15,6 +15,7 @@ const Terms = lazy(() => import('./pages/Terms'));
 const CookiesPolicy = lazy(() => import('./pages/CookiesPolicy'));
 const TjenesterPage = lazy(() => import('./pages/TjenesterPage'));
 const ProdukterPage = lazy(() => import('./pages/ProdukterPage'));
+const ProduktDetaljPage = lazy(() => import('./pages/ProduktDetaljPage'));
 const CaserPage = lazy(() => import('./pages/CaserPage'));
 const SlikViJobberPage = lazy(() => import('./pages/SlikViJobberPage'));
 const TeknologiPage = lazy(() => import('./pages/TeknologiPage'));
@@ -48,6 +49,7 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/tjenester" element={<TjenesterPage />} />
               <Route path="/produkter" element={<ProdukterPage />} />
+              <Route path="/produkter/:slug" element={<ProduktDetaljPage />} />
               <Route path="/caser" element={<CaserPage />} />
               {/* Restored: the squash-merge of #7 dropped this route while
                   CaseStudyCard and CaserPage kept linking to /caser/:slug,

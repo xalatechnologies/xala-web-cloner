@@ -45,13 +45,13 @@ export default function ProcessTeaser() {
         <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="mb-12">
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
             {t('teasers.process.title')}
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
             {t('teasers.process.description')}
           </p>
         </div>

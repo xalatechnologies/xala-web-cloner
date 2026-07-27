@@ -16,15 +16,15 @@ export default function FinalCTA() {
   const { t } = useTranslation();
 
   return (
-    <Section tone="dark" size="md" labelledBy="final-cta-heading" className="text-center">
-      <div className="mx-auto max-w-3xl">
+    <Section tone="dark" size="md" labelledBy="final-cta-heading">
+      <div className="max-w-3xl">
         <h2
           id="final-cta-heading"
           className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white"
         >
           {t('finalCTA.title')}
         </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-lg text-stone-300 leading-relaxed">
+        <p className="mt-5 max-w-2xl text-lg text-stone-300 leading-relaxed">
           {t('finalCTA.description')}
         </p>
 

@@ -86,7 +86,7 @@ export default function DigilistSection() {
         <div className="max-w-3xl">
           <p className="mb-5 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
             {t('digilist.eyebrow', 'Vårt produkt')}
-            <span className="rounded-full border border-primary/40 bg-primary/10 px-2.5 py-1 text-[10px] tracking-[0.14em]">
+            <span className="rounded-full border border-primary/40 bg-primary/10 px-2.5 py-1 text-[11px] tracking-[0.14em]">
               {t('digilist.badge', 'I drift')}
             </span>
           </p>

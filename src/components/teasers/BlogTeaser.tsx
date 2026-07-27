@@ -37,7 +37,7 @@ export default function BlogTeaser() {
 
   return (
     <Section tone="muted" size="md" labelledBy="blog-teaser-heading">
-      <div className="mx-auto max-w-3xl text-center">
+      <div className="max-w-3xl">
         <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
           {t('teasers.blog.eyebrow', 'Fagartikler')}
         </p>
@@ -47,7 +47,7 @@ export default function BlogTeaser() {
         >
           {t('teasers.blog.title', 'Det vi skriver om')}
         </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground leading-relaxed">
+        <p className="mt-5 max-w-2xl text-lg text-muted-foreground leading-relaxed">
           {t('teasers.blog.description', 'Erfaringer fra prosjektene våre — arkitektur, modernisering og digitalisering av saksbehandling.')}
         </p>
       </div>
@@ -70,7 +70,7 @@ export default function BlogTeaser() {
         ))}
       </div>
 
-      <div className="mt-12 text-center">
+      <div className="mt-10">
         <Link
           to="/blogg"
           className="group inline-flex items-center gap-2 rounded-xl border border-border bg-card px-8 py-4 text-sm font-semibold uppercase tracking-[0.1em] text-foreground transition-all duration-200 hover:border-primary/50 hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
