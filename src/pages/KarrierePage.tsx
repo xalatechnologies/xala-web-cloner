@@ -83,7 +83,7 @@ export default function KarrierePage() {
           >
             {t('careers.rolesTitle', 'Disiplinene vi ansetter i')}
           </h2>
-          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-4 max-w-2xl section-lead">
             {t(
               'careers.rolesDescription',
               'Hver lenke åpner en e-post med riktig emnefelt, så søknaden havner der den skal.'
@@ -100,13 +100,13 @@ export default function KarrierePage() {
                     className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-all hover:border-primary/50 hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   >
                     <div className="flex items-center gap-3">
-                      <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
-                        <Icon className="h-5 w-5" aria-hidden="true" />
+                      <span className="card-icon group-hover:bg-primary/20">
+                        <Icon aria-hidden="true" />
                       </span>
-                      <h3 className="text-lg font-semibold text-foreground md:text-xl">{role.title}</h3>
+                      <h3 className="card-heading">{role.title}</h3>
                     </div>
 
-                    <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    <p className="mt-4 flex-1 card-body">
                       {role.description}
                     </p>
 
@@ -114,7 +114,7 @@ export default function KarrierePage() {
                       {role.focus.map((item) => (
                         <li
                           key={item}
-                          className="rounded-full border border-border bg-muted/40 px-3 py-1 text-xs font-medium text-foreground/80"
+                          className="rounded-full border border-border bg-muted/40 px-3 py-1 text-sm font-medium text-foreground/80"
                         >
                           {item}
                         </li>
@@ -141,13 +141,13 @@ export default function KarrierePage() {
         >
           <div className="container mx-auto grid gap-10 px-4 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+              <p className="eyebrow">
                 {t('careers.howEyebrow', 'Slik søker du')}
               </p>
-              <h2 id="soknad-heading" className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
+              <h2 id="soknad-heading" className="mt-3 subsection-heading">
                 {t('careers.howTitle', 'Send søknaden herfra')}
               </h2>
-              <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+              <p className="mt-4 section-lead">
                 {t(
                   'careers.howDescription',
                   'Fyll ut skjemaet, så er søknaden ferdig formulert når e-postprogrammet ditt åpner seg. Da legger du ved CV-en og sender.'

@@ -51,17 +51,17 @@ const WorkProcess = ({ headingLevel = 'h2' }: WorkProcessProps) => {
     <section id="work-process" className="py-16 md:py-24" aria-labelledby="work-process-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl">
-          <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+          <p className="mb-5 eyebrow">
             {t('workProcess.eyebrow', 'Prosess')}
           </p>
           <Heading
             id="work-process-heading"
-            className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+            className="section-heading"
           >
             {section?.title || t('workProcess.title', 'Hvordan vi jobber')}
           </Heading>
           {(section?.description ?? t('workProcess.description', '')) && (
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-5 max-w-2xl section-lead">
               {section?.description || t('workProcess.description', '')}
             </p>
           )}
@@ -94,7 +94,7 @@ const WorkProcess = ({ headingLevel = 'h2' }: WorkProcessProps) => {
                   </div>
 
                   <div className="md:col-span-3">
-                    <h3 className="flex items-center gap-3 text-xl font-semibold text-foreground md:text-2xl">
+                    <h3 className="flex items-center gap-3 card-heading md:text-2xl">
                       <Icon className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
                       {process.title}
                     </h3>

@@ -141,7 +141,7 @@ const Footer = () => {
                   >
                     {link.name}
                     {link.soon && (
-                      <span className="rounded-full border border-stone-600 px-2 py-0.5 text-[11px] uppercase tracking-wider text-stone-400">
+                      <span className="rounded-full border border-stone-600 px-2 py-0.5 text-xs uppercase tracking-wider text-stone-400">
                         {t('products.comingSoon', 'Kommer')}
                       </span>
                     )}

@@ -51,7 +51,7 @@ export default function ShareLinks({ url, title, label = 'Del artikkelen' }: Sha
 
   return (
     <div>
-      <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">{label}</p>
+      <p className="mb-3 eyebrow">{label}</p>
       <div className="flex flex-wrap gap-2">
         {targets.map((target) => (
           <a

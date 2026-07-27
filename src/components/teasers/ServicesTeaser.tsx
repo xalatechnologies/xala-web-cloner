@@ -42,16 +42,16 @@ export default function ServicesTeaser() {
     >
       <div className="container mx-auto px-4">
         <div className="max-w-3xl">
-          <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+          <p className="mb-5 eyebrow">
             {t('teasers.services.eyebrow', 'Tjenester')}
           </p>
           <h2
             id="services-teaser-heading"
-            className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+            className="section-heading"
           >
             {t('teasers.services.title')}
           </h2>
-          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-5 section-lead">
             {t('teasers.services.description')}
           </p>
         </div>
@@ -66,10 +66,10 @@ export default function ServicesTeaser() {
                   className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:p-7"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    <span className="card-icon group-hover:bg-primary/20">
+                      <Icon aria-hidden="true" />
                     </span>
-                    <h3 className="flex items-center gap-2 text-lg font-semibold text-foreground md:text-xl">
+                    <h3 className="flex items-center gap-2 card-heading">
                       {service.title}
                       <ArrowRight
                         className="h-4 w-4 shrink-0 text-primary opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100"
@@ -77,7 +77,7 @@ export default function ServicesTeaser() {
                       />
                     </h3>
                   </div>
-                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+                  <p className="mt-4 card-body">
                     {service.description}
                   </p>
                 </Link>

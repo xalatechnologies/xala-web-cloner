@@ -31,12 +31,12 @@ interface PageHeaderProps {
 export function PageHeader({ eyebrow, title, description, tight = true }: PageHeaderProps) {
   return (
     <header className={`container mx-auto px-4 pt-14 md:pt-20 ${tight ? 'pb-2 md:pb-4' : 'pb-10 md:pb-14'}`}>
-      <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">{eyebrow}</p>
-      <h1 className="max-w-[20ch] text-4xl font-bold leading-[1.1] tracking-tight md:text-5xl lg:text-6xl">
+      <p className="mb-5 eyebrow">{eyebrow}</p>
+      <h1 className="max-w-[20ch] page-heading">
         {title}
       </h1>
       {description && (
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">{description}</p>
+        <p className="mt-6 max-w-2xl section-lead">{description}</p>
       )}
     </header>
   );
@@ -78,13 +78,13 @@ export function PageCTA({
     <section aria-labelledby={id} className="border-t border-border bg-muted/40 py-14 md:py-20">
       <div className="container mx-auto grid gap-8 px-4 lg:grid-cols-12 lg:items-end">
         <div className="lg:col-span-8">
-          <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+          <p className="eyebrow">
             {eyebrow ?? t('cta.eyebrow', 'Neste steg')}
           </p>
-          <h2 id={id} className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 id={id} className="mt-3 subsection-heading">
             {title}
           </h2>
-          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-4 max-w-2xl section-lead">
             {description}
           </p>
           {children}

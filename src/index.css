@@ -148,6 +148,24 @@
      room, not a coloured overlay. */
   /* Shadows carry a little of the palette's warmth. Pure black over warm
      neutrals reads as a grey smudge rather than depth. */
+  /* ── Type scale ─────────────────────────────────────────────────────────
+     Sizes as tokens rather than per-component Tailwind classes. The site had
+     ten distinct size/weight pairs for h2 alone before this existed, each one
+     a reasonable-looking local decision. A token is the thing that makes a
+     scale enforceable instead of aspirational. */
+  --ds-text-eyebrow: 0.75rem;      /* 12px, uppercase label */
+  --ds-text-body-sm: 0.875rem;     /* 14px, the floor for anything read */
+  --ds-text-body: 1rem;            /* 16px */
+  --ds-text-lead: 1.125rem;        /* 18px, rising to 20px at md */
+  --ds-text-card: 1.5rem;          /* 24px, card heading */
+  --ds-text-subsection: 1.875rem;  /* 30px */
+  --ds-text-section: 3rem;         /* 48px, section heading at lg */
+  --ds-text-page: 3.75rem;         /* 60px, page h1 at lg */
+
+  --ds-tracking-eyebrow: 0.24em;
+  --ds-leading-tight: 1.1;
+  --ds-leading-relaxed: 1.7;
+
   --shadow-sm: 0 1px 2px hsl(24 30% 12% / 0.06), 0 1px 1px hsl(24 30% 12% / 0.04);
   --shadow-md: 0 4px 12px hsl(24 30% 12% / 0.08), 0 1px 3px hsl(24 30% 12% / 0.06);
   --shadow-lg: 0 12px 32px hsl(24 30% 12% / 0.10), 0 4px 8px hsl(24 30% 12% / 0.06);
@@ -359,6 +377,78 @@
 
 /* Premium component utilities */
 @layer components {
+  /*
+   * The type scale, in one place.
+   *
+   * Measured across fifteen routes, the site had ten distinct size/weight
+   * combinations for h2 alone, nine for paragraphs and four for h1 — including
+   * an h2 rendered at 11px. Every one was a per-component decision that looked
+   * reasonable on its own page. Named classes make the scale a thing components
+   * refer to rather than re-derive.
+   */
+  .eyebrow {
+    @apply font-bold uppercase text-primary;
+    font-size: var(--ds-text-eyebrow);
+    letter-spacing: var(--ds-tracking-eyebrow);
+  }
+
+  /* The heading that names a page section. */
+  .section-heading {
+    @apply font-bold tracking-tight text-foreground;
+    /* Floor raised from 30px to 36px: the reference section reads at 36-48px
+       and the smaller floor made half the page headings look secondary. */
+    font-size: clamp(2.25rem, 4vw, var(--ds-text-section));
+    line-height: var(--ds-leading-tight);
+  }
+
+  /* A heading inside a section. */
+  .subsection-heading {
+    @apply font-bold tracking-tight text-foreground;
+    font-size: clamp(1.5rem, 2.5vw, var(--ds-text-subsection));
+    line-height: 1.2;
+  }
+
+  /* A heading on a card. */
+  .card-heading {
+    @apply font-semibold text-foreground;
+    font-size: var(--ds-text-card);
+    line-height: 1.35;
+  }
+
+  /* Body copy that introduces a section. */
+  .section-lead {
+    @apply text-muted-foreground;
+    font-size: clamp(var(--ds-text-lead), 1.6vw, 1.25rem);
+    line-height: var(--ds-leading-relaxed);
+  }
+
+  /* Body copy inside a card. Cards were using text-sm, text-base and
+     text-lg interchangeably, which read as three different densities on one
+     page. */
+  .card-body {
+    @apply text-muted-foreground;
+    font-size: clamp(var(--ds-text-body), 1.3vw, var(--ds-text-lead));
+    line-height: var(--ds-leading-relaxed);
+  }
+
+  /* Icon plate on a card. 32px glyph in a 56px plate, matching the section
+     this scale was taken from. Icons at 20px read as decoration; at 32px they
+     carry the card. */
+  .card-icon {
+    @apply inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors;
+  }
+  .card-icon svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  /* The page h1. One size, everywhere. */
+  .page-heading {
+    @apply font-bold tracking-tight text-foreground;
+    font-size: clamp(2.25rem, 5vw, var(--ds-text-page));
+    line-height: var(--ds-leading-tight);
+  }
+
   .glass {
     @apply bg-white/10 backdrop-blur-md border border-white/20;
   }

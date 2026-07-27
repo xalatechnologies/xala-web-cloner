@@ -96,7 +96,7 @@ export default function BloggPostPage() {
               </Link>
             </nav>
             {post.tag && (
-              <span className="shrink-0 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+              <span className="shrink-0 eyebrow">
                 {post.tag}
               </span>
             )}
@@ -105,7 +105,7 @@ export default function BloggPostPage() {
           <div className="grid gap-x-10 gap-y-12 lg:grid-cols-[minmax(0,1fr)_18rem] xl:gap-x-16 xl:grid-cols-[minmax(0,1fr)_20rem]">
             <div className="min-w-0">
               <header>
-                <h1 className="max-w-[22ch] text-4xl font-bold leading-[1.1] tracking-tight md:text-5xl lg:text-[3.25rem]">
+                <h1 className="max-w-[22ch] page-heading">
                   {post.title}
                 </h1>
                 <p className="mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">
@@ -136,7 +136,7 @@ export default function BloggPostPage() {
                       decoding="async"
                     />
                   </div>
-                  <figcaption className="mt-3 text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                  <figcaption className="mt-3 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
                     {post.tag ?? 'Illustrasjon'}
                   </figcaption>
                 </figure>
@@ -163,7 +163,7 @@ export default function BloggPostPage() {
                 <aside aria-labelledby="relevant-heading" className="mt-14 max-w-[68ch] border-t border-border pt-8">
                   <h2
                     id="relevant-heading"
-                    className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary"
+                    className="mb-5 eyebrow"
                   >
                     Relevant hos oss
                   </h2>
@@ -200,7 +200,7 @@ export default function BloggPostPage() {
 
                 {related.length > 0 && (
                   <div>
-                    <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+                    <p className="mb-4 eyebrow">
                       Relaterte artikler
                     </p>
                     <ul className="flex flex-col divide-y divide-border border-y border-border">
@@ -210,7 +210,7 @@ export default function BloggPostPage() {
                             to={`${BLOG_PATH}/${item.slug}`}
                             className="group flex flex-col gap-1.5 py-3.5"
                           >
-                            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                            <span className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
                               {item.tag ?? 'Artikkel'}
                             </span>
                             <span className="text-[1.05rem] font-medium leading-snug text-foreground transition-colors group-hover:text-primary">
@@ -234,11 +234,11 @@ export default function BloggPostPage() {
         <section aria-labelledby="artikkel-cta" className="border-t border-border bg-muted/40 py-14 md:py-20">
           <div className="container mx-auto grid gap-8 px-4 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
-              <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-primary">Neste steg</p>
-              <h2 id="artikkel-cta" className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
+              <p className="eyebrow">Neste steg</p>
+              <h2 id="artikkel-cta" className="mt-3 subsection-heading">
                 Står dere i noe av dette?
               </h2>
-              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              <p className="mt-4 max-w-2xl section-lead">
                 {ORGANIZATION} bygger saksbehandlingssystemer, portaler og integrasjoner for offentlig
                 sektor og næringsliv — og forvalter dem videre etter lansering. Ta en uforpliktende prat.
               </p>
@@ -262,7 +262,7 @@ export default function BloggPostPage() {
 
         {related.length > 0 && (
           <section className="container mx-auto px-4 py-14 md:py-20" aria-labelledby="relaterte">
-            <h2 id="relaterte" className="mb-8 text-2xl font-bold tracking-tight md:text-3xl">
+            <h2 id="relaterte" className="mb-8 subsection-heading">
               Fortsett å lese
             </h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

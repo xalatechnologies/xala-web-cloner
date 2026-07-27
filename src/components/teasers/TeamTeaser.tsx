@@ -54,7 +54,7 @@ export default function TeamTeaser() {
                   {item.role}
                 </h3>
                 {item.description && (
-                  <p className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed px-2">
+                  <p className="text-sm sm:text-base lg:section-lead px-2">
                     {item.description}
                   </p>
                 )}

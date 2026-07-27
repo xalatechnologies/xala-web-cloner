@@ -25,13 +25,13 @@ const AboutFeatureCard = ({ title, description, icon }: AboutFeatureCardProps) =
   return (
     <article className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 md:p-7">
       <div className="flex items-center gap-3">
-        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
-          <Icon className="h-5 w-5" aria-hidden="true" />
+        <span className="card-icon group-hover:bg-primary/20">
+          <Icon aria-hidden="true" />
         </span>
-        <h3 className="text-lg font-semibold text-foreground md:text-xl">{title}</h3>
+        <h3 className="card-heading">{title}</h3>
       </div>
 
-      <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+      <p className="mt-4 card-body">
         {description}
       </p>
     </article>

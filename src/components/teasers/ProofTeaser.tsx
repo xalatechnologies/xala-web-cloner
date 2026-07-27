@@ -37,16 +37,16 @@ export default function ProofTeaser() {
   return (
     <Section tone="default" size="md" labelledBy="proof-heading">
       <div className="max-w-3xl">
-        <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+        <p className="mb-5 eyebrow">
           {t('proof.eyebrow', 'Resultater')}
         </p>
         <h2
           id="proof-heading"
-          className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+          className="section-heading"
         >
           {t('proof.title', 'Systemer i drift hos dem som ikke kan ha nedetid')}
         </h2>
-        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+        <p className="mt-5 max-w-2xl section-lead">
           {t(
             'proof.description',
             'Vi har levert til statlige etater, helseforetak og kommuner, og vi forvalter løsningene videre etter lansering.'

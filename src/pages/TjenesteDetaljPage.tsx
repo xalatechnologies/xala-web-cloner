@@ -164,14 +164,14 @@ export default function TjenesteDetaljPage() {
 
         <header className="container mx-auto px-4 pb-4 pt-6">
           <div className="flex items-center gap-3">
-            <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-              <Icon className="h-6 w-6" aria-hidden="true" />
+            <span className="card-icon">
+              <Icon aria-hidden="true" />
             </span>
-            <h1 className="text-4xl font-bold leading-[1.1] tracking-tight md:text-5xl lg:text-6xl">
+            <h1 className="page-heading">
               {copy.title}
             </h1>
           </div>
-          <p className="mt-6 max-w-[62ch] text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-6 max-w-[62ch] section-lead">
             {copy.intro}
           </p>
         </header>
@@ -183,11 +183,11 @@ export default function TjenesteDetaljPage() {
           <div className="container mx-auto px-4">
             <h2
               id="problem-heading"
-              className="max-w-[24ch] text-2xl font-bold tracking-tight text-foreground md:text-3xl"
+              className="max-w-[24ch] subsection-heading"
             >
               {copy.problemHeading}
             </h2>
-            <p className="mt-5 max-w-[62ch] text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-5 max-w-[62ch] section-lead">
               {copy.problem}
             </p>
           </div>
@@ -196,7 +196,7 @@ export default function TjenesteDetaljPage() {
         <section aria-labelledby="capability-heading" className="container mx-auto px-4 py-14 md:py-20">
           <h2
             id="capability-heading"
-            className="text-2xl font-bold tracking-tight text-foreground md:text-3xl"
+            className="subsection-heading"
           >
             {copy.capabilityHeading}
           </h2>
@@ -206,7 +206,7 @@ export default function TjenesteDetaljPage() {
                 key={capability.title}
                 className="rounded-2xl border border-border bg-card p-6 md:p-7"
               >
-                <h3 className="text-lg font-semibold text-foreground md:text-xl">
+                <h3 className="card-heading">
                   {capability.title}
                 </h3>
                 <p className="mt-3 leading-relaxed text-muted-foreground">{capability.body}</p>
@@ -223,7 +223,7 @@ export default function TjenesteDetaljPage() {
             <div className="container mx-auto px-4">
               <h2
                 id="features-heading"
-                className="text-2xl font-bold tracking-tight text-foreground md:text-3xl"
+                className="subsection-heading"
               >
                 {t('servicePage.featuresTitle', 'Funksjonalitet')}
               </h2>
@@ -248,7 +248,7 @@ export default function TjenesteDetaljPage() {
           <section aria-labelledby="children-heading" className="container mx-auto px-4 py-14 md:py-20">
             <h2
               id="children-heading"
-              className="text-2xl font-bold tracking-tight text-foreground md:text-3xl"
+              className="subsection-heading"
             >
               {t('servicePage.childrenTitle', 'Løsninger vi bygger på denne plattformen')}
             </h2>
@@ -261,7 +261,7 @@ export default function TjenesteDetaljPage() {
                       to={`/tjenester/${child.slug}`}
                       className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50"
                     >
-                      <span className="flex items-center gap-2 text-lg font-semibold text-foreground">
+                      <span className="flex items-center gap-2 card-heading">
                         {childCopy.title}
                         <ArrowRight
                           className="h-4 w-4 text-primary transition-transform group-hover:translate-x-0.5"
@@ -287,7 +287,7 @@ export default function TjenesteDetaljPage() {
             <div className="container mx-auto px-4">
               <h2
                 id="cases-heading"
-                className="text-2xl font-bold tracking-tight text-foreground md:text-3xl"
+                className="subsection-heading"
               >
                 {t('servicePage.casesTitle', 'Vi har gjort dette før')}
               </h2>
@@ -298,8 +298,8 @@ export default function TjenesteDetaljPage() {
                       to={`/caser/${entry.slug}`}
                       className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50"
                     >
-                      <h3 className="text-lg font-semibold text-foreground">{entry.title}</h3>
-                      <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                      <h3 className="card-heading">{entry.title}</h3>
+                      <p className="mt-4 flex-1 card-body">
                         {localizedCardExcerpt(entry.slug, i18n.language) ?? entry.description}
                       </p>
                       <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">
@@ -318,13 +318,13 @@ export default function TjenesteDetaljPage() {
         )}
 
         <section aria-labelledby="faq-heading" className="container mx-auto px-4 py-14 md:py-20">
-          <h2 id="faq-heading" className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+          <h2 id="faq-heading" className="subsection-heading">
             {t('servicePage.faqTitle', 'Ofte stilte spørsmål')}
           </h2>
           <dl className="mt-10 max-w-[70ch] divide-y divide-border border-y border-border">
             {copy.faq.map((item) => (
               <div key={item.question} className="py-6">
-                <dt className="text-lg font-semibold text-foreground">{item.question}</dt>
+                <dt className="card-heading">{item.question}</dt>
                 <dd className="mt-3 leading-relaxed text-muted-foreground">{item.answer}</dd>
               </div>
             ))}
@@ -332,7 +332,7 @@ export default function TjenesteDetaljPage() {
 
           {related.length > 0 && (
             <div className="mt-12">
-              <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+              <p className="eyebrow">
                 {t('servicePage.readMore', 'Les mer om dette')}
               </p>
               <ul className="mt-5 flex flex-col gap-2.5">

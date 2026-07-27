@@ -44,7 +44,7 @@ export default function PostCard({ post, featured = false }: PostCardProps) {
           <span>{post.readingMinutes} min</span>
         </div>
 
-        <h3 className={`font-semibold leading-snug ${featured ? 'text-2xl md:text-3xl' : 'text-xl'}`}>
+        <h3 className={`card-heading leading-snug ${featured ? 'md:text-2xl' : ''}`}>
           <Link to={`${BLOG_PATH}/${post.slug}`} className="after:absolute after:inset-0 hover:underline">
             {post.title}
           </Link>

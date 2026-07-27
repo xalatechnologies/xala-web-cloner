@@ -136,7 +136,7 @@ function CaseCard({ entry, index }: { entry: CaserEntry; index: number }) {
       {/* Content */}
       <div className="p-6 flex flex-col flex-1">
         <h3 className={cn(
-          'text-xl font-bold mb-3 leading-tight transition-colors duration-200',
+          'card-heading mb-3 leading-tight transition-colors duration-200',
           isLinked ? 'text-foreground group-hover:text-primary' : 'text-muted-foreground'
         )}>
           {entry.title}
@@ -151,13 +151,13 @@ function CaseCard({ entry, index }: { entry: CaserEntry; index: number }) {
           {entry.tags.slice(0, 3).map((tag) => (
             <span
               key={tag}
-              className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-muted border border-border/60 text-muted-foreground"
+              className="text-sm font-medium px-2.5 py-1 rounded-lg bg-muted border border-border/60 text-muted-foreground"
             >
               {t(tagKey(tag), tag)}
             </span>
           ))}
           {entry.tags.length > 3 && (
-            <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-muted border border-border/60 text-muted-foreground">
+            <span className="text-sm font-medium px-2.5 py-1 rounded-lg bg-muted border border-border/60 text-muted-foreground">
               +{entry.tags.length - 3}
             </span>
           )}
@@ -239,7 +239,7 @@ function FilterSidebar({
 
         {/* Sector */}
         <div>
-          <p className="text-xs font-black uppercase tracking-widest text-muted-foreground mb-4">
+          <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">
             {t('caserPage.sector')}
           </p>
           <div className="space-y-1">
@@ -304,10 +304,10 @@ function FilterSidebar({
             onClick={() => setTechOpen(v => !v)}
             className="w-full flex items-center justify-between mb-4"
           >
-            <p className="text-xs font-black uppercase tracking-widest text-muted-foreground">
+            <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
               {t('caserPage.technology')}
               {activeTags.size > 0 && (
-                <span className="ml-2 bg-primary text-primary-foreground text-[10px] font-black px-1.5 py-0.5 rounded-full">
+                <span className="ml-2 bg-primary text-primary-foreground text-xs font-bold px-1.5 py-0.5 rounded-full">
                   {activeTags.size}
                 </span>
               )}
@@ -385,7 +385,7 @@ function MobileFilterBar({
           <SlidersHorizontal className="h-4 w-4" />
           {t('caserPage.filters')}
           {hasFilters && (
-            <span className="bg-primary-foreground/20 text-primary-foreground text-xs font-black px-1.5 py-0.5 rounded-full leading-none">
+            <span className="bg-primary-foreground/20 text-primary-foreground text-xs font-bold px-1.5 py-0.5 rounded-full leading-none">
               {(activeSector ? 1 : 0) + activeTags.size}
             </span>
           )}
@@ -429,7 +429,7 @@ function MobileFilterBar({
           >
             <div className="bg-card border border-border rounded-2xl p-5">
               <div className="flex items-center justify-between mb-4">
-                <p className="text-sm font-black uppercase tracking-widest text-muted-foreground">{t('caserPage.technology')}</p>
+                <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">{t('caserPage.technology')}</p>
                 {hasFilters && (
                   <button onClick={clearAll} className="text-sm text-primary font-bold">Clear all</button>
                 )}
@@ -553,21 +553,21 @@ export default function CaserPage() {
 
           {/*
             Left-aligned, at the same type scale as every other page heading on
-            the site. This hero ran to text-8xl font-black and centred, which
+            the site. This hero ran to text-8xl font-bold and centred, which
             made /caser look like a different site from /tjenester and
             /slik-vi-jobber — and pushed the first case card below the fold on
             a laptop.
           */}
           <div className="container relative mx-auto px-4">
             <div className="max-w-3xl">
-              <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+              <p className="mb-5 eyebrow">
                 {t('caserPage.eyebrow')}
               </p>
 
-              <h1 className="mb-6 text-4xl font-bold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
+              <h1 className="mb-6 page-heading">
                 {t('caserPage.title')}
               </h1>
-              <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              <p className="max-w-2xl section-lead">
                 {t('caserPage.description')}
               </p>
             </div>
@@ -662,12 +662,12 @@ export default function CaserPage() {
                 <p className="text-base text-muted-foreground leading-tight">
                   {hasFilters ? (
                     <>
-                      <span className="font-black text-foreground text-lg">{filtered.length}</span>
+                      <span className="font-bold text-foreground text-lg">{filtered.length}</span>
                       <span className="text-muted-foreground"> of {caserEntries.length} cases match</span>
                     </>
                   ) : (
                     <>
-                      <span className="font-black text-foreground text-lg">{caserEntries.length}</span>
+                      <span className="font-bold text-foreground text-lg">{caserEntries.length}</span>
                       <span className="text-muted-foreground"> {t('caserPage.cases')}</span>
                       <span className="mx-2 text-border">·</span>
                       <span className="font-bold text-primary">{linkedCount} {t('caserPage.withFullCase')}</span>
@@ -718,7 +718,7 @@ export default function CaserPage() {
                     className="text-center py-32 bg-card border border-border rounded-2xl"
                   >
                     <div className="text-5xl mb-5">🔍</div>
-                    <p className="text-2xl font-black text-foreground mb-2">No cases found</p>
+                    <p className="text-2xl font-bold text-foreground mb-2">No cases found</p>
                     <p className="text-base text-muted-foreground mb-8">Try adjusting your search or removing some filters</p>
                     <button
                       onClick={clearAll}
@@ -761,13 +761,13 @@ export default function CaserPage() {
         >
           <div className="container mx-auto grid gap-8 px-4 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
-              <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+              <p className="eyebrow">
                 {t('caserPage.ctaEyebrow', 'Neste steg')}
               </p>
-              <h2 id="caser-cta" className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
+              <h2 id="caser-cta" className="mt-3 subsection-heading">
                 {t('caserPage.ctaTitle', 'Har dere en lignende oppgave?')}
               </h2>
-              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              <p className="mt-4 max-w-2xl section-lead">
                 {t(
                   'caserPage.ctaDescription',
                   'Fortell oss hva dere står i, så sier vi hva vi ville gjort først — og hva vi ville ventet med.'

@@ -22,18 +22,25 @@
             "icon": "Code"
         },
         {
-            "id": "deploy-no",
+            "id": "testing-no",
             "step_number": 4,
+            "title": "Testing og kvalitetssikring",
+            "description": "Vi tester funksjonelt, automatisert og for tilgjengelighet før noe når produksjon, ikke etter at brukerne har meldt fra.",
+            "icon": "ClipboardCheck"
+        },
+        {
+            "id": "deploy-no",
+            "step_number": 5,
             "title": "Lansering",
             "description": "Vi sørger for en smidig lansering med grundig testing og kontinuerlig støtte etter go-live.",
             "icon": "Rocket"
         },
         {
             "id": "iterate-no",
-            "step_number": 5,
-            "title": "Forbedring",
-            "description": "Vi følger opp med kontinuerlig forbedring basert på tilbakemeldinger og nye muligheter.",
-            "icon": "RefreshCw"
+            "step_number": 6,
+            "title": "Forvaltning og forbedring",
+            "description": "Vi blir værende etter lansering: oppdateringer, sikkerhetsfikser, overvåking og videreutvikling når regelverket endrer seg.",
+            "icon": "ShieldCheck"
         }
     ],
     "en": [
@@ -59,18 +66,25 @@
             "icon": "Code"
         },
         {
-            "id": "deploy-en",
+            "id": "testing-en",
             "step_number": 4,
+            "title": "Testing and quality assurance",
+            "description": "We test functionally, automatically and for accessibility before anything reaches production, rather than after users report it.",
+            "icon": "ClipboardCheck"
+        },
+        {
+            "id": "deploy-en",
+            "step_number": 5,
             "title": "Launch",
             "description": "We ensure a smooth launch with thorough testing and continuous support after go-live.",
             "icon": "Rocket"
         },
         {
             "id": "iterate-en",
-            "step_number": 5,
-            "title": "Improvement",
-            "description": "We follow up with continuous improvement based on feedback and new opportunities.",
-            "icon": "RefreshCw"
+            "step_number": 6,
+            "title": "Support and improvement",
+            "description": "We stay on after launch: updates, security fixes, monitoring and further development as the regulation changes.",
+            "icon": "ShieldCheck"
         }
     ],
     "ar": [
@@ -96,18 +110,25 @@
             "icon": "Code"
         },
         {
-            "id": "deploy-ar",
+            "id": "testing-ar",
             "step_number": 4,
+            "title": "الاختبار وضمان الجودة",
+            "description": "نختبر وظيفياً وآلياً ولإمكانية الوصول قبل وصول أي شيء إلى الإنتاج، لا بعد أن يبلّغ المستخدمون.",
+            "icon": "ClipboardCheck"
+        },
+        {
+            "id": "deploy-ar",
+            "step_number": 5,
             "title": "الإطلاق",
             "description": "نضمن إطلاقاً سلساً مع اختبار شامل ودعم مستمر بعد الانطلاق.",
             "icon": "Rocket"
         },
         {
             "id": "iterate-ar",
-            "step_number": 5,
-            "title": "التحسين",
-            "description": "نتابع بتحسين مستمر بناءً على الملاحظات والفرص الجديدة.",
-            "icon": "RefreshCw"
+            "step_number": 6,
+            "title": "التشغيل والتحسين",
+            "description": "نبقى بعد الإطلاق: تحديثات وإصلاحات أمنية ومراقبة وتطوير مع تغيّر اللوائح.",
+            "icon": "ShieldCheck"
         }
     ]
 }

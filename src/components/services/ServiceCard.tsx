@@ -49,10 +49,10 @@ const ServiceCard = ({
   return (
     <article className="flex h-full flex-col rounded-2xl border border-border bg-card p-6 md:p-7">
       <div className="flex items-center gap-3">
-        <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-          <Icon className="h-5 w-5" aria-hidden="true" />
+        <span className="card-icon group-hover:bg-primary/20">
+          <Icon aria-hidden="true" />
         </span>
-        <h3 className={`text-xl font-semibold text-foreground ${isNorwegian ? 'hyphenate-no' : ''}`}>
+        <h3 className={`card-heading ${isNorwegian ? 'hyphenate-no' : ''}`}>
           {slug ? (
             <Link
               to={`/tjenester/${slug}`}
@@ -82,7 +82,7 @@ const ServiceCard = ({
                     />
                   )}
                 </span>
-                <span className="mt-1 block text-sm leading-relaxed text-muted-foreground">
+                <span className="mt-2 block card-body">
                   {platform.description}
                 </span>
               </>

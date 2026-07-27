@@ -46,16 +46,16 @@ const Clients = () => {
     <section id="clients" className="border-y border-border bg-muted/30 py-16 md:py-24" aria-labelledby="clients-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl">
-          <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+          <p className="mb-5 eyebrow">
             {t('clients.eyebrow', 'Referanser')}
           </p>
           <h2
             id="clients-heading"
-            className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+            className="section-heading"
           >
             {section?.title || t('clients.title')}
           </h2>
-          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-5 section-lead">
             {section?.description || t('clients.description')}
           </p>
         </div>

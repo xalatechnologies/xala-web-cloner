@@ -146,7 +146,7 @@ const Navbar = () => {
                     lang={lang.code}
                     aria-label={lang.name}
                     aria-current={activeLang === lang.code ? 'true' : undefined}
-                    className={`min-h-11 px-2.5 text-[11px] font-bold tracking-[0.12em] transition-colors ${FOCUS} ${
+                    className={`min-h-11 px-2.5 text-xs font-bold tracking-[0.12em] transition-colors ${FOCUS} ${
                       activeLang === lang.code
                         ? 'bg-primary/15 text-primary'
                         : 'text-muted-foreground hover:text-foreground'
@@ -211,7 +211,7 @@ const Navbar = () => {
             </div>
 
             <div className="flex-1 flex flex-col justify-center px-8">
-              <p className="mb-8 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+              <p className="mb-8 eyebrow">
                 Xala Technologies
               </p>
 
@@ -227,7 +227,7 @@ const Navbar = () => {
                       accessible name of the link becomes "01 Hjem". */}
                   <span
                     aria-hidden
-                    className="text-[11px] font-bold tabular-nums text-muted-foreground/70"
+                    className="text-xs font-bold tabular-nums text-muted-foreground/70"
                   >
                     {ordinal(index)}
                   </span>

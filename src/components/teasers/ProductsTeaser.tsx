@@ -39,16 +39,16 @@ export default function ProductsTeaser() {
     >
       <div className="container mx-auto px-4">
         <div className="max-w-3xl">
-          <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+          <p className="mb-5 eyebrow">
             {t('teasers.products.eyebrow', 'Produkter')}
           </p>
           <h2
             id="products-teaser-heading"
-            className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+            className="section-heading"
           >
             {t('teasers.products.title')}
           </h2>
-          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-5 section-lead">
             {t('teasers.products.description')}
           </p>
         </div>
@@ -64,20 +64,20 @@ export default function ProductsTeaser() {
                   className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:p-7"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    <span className="card-icon group-hover:bg-primary/20">
+                      <Icon aria-hidden="true" />
                     </span>
-                    <h3 className="text-lg font-semibold text-foreground md:text-xl">
+                    <h3 className="card-heading">
                       {product.title}
                     </h3>
                     {comingSoon && (
-                      <span className="ms-auto shrink-0 rounded-full border border-border px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                      <span className="ms-auto shrink-0 rounded-full border border-border px-2.5 py-1 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
                         {t('products.comingSoon', 'Kommer')}
                       </span>
                     )}
                   </div>
 
-                  <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground md:text-base">
+                  <p className="mt-4 flex-1 card-body md:text-base">
                     {product.description}
                   </p>
 

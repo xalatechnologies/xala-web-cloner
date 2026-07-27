@@ -25,34 +25,34 @@ export default function TechTeaser() {
     >
       <div className="container mx-auto px-4">
         <div className="max-w-3xl">
-          <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+          <p className="mb-5 eyebrow">
             {t('teasers.tech.eyebrow', 'Teknologi')}
           </p>
           <h2
             id="tech-teaser-heading"
-            className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+            className="section-heading"
           >
             {t('teasers.tech.title')}
           </h2>
-          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-5 section-lead">
             {t('teasers.tech.description')}
           </p>
         </div>
 
-        <ul className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+        <ul className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
           {technologies.map((tech) => (
             <li
               key={tech.id}
-              className="flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-4"
+              className="flex flex-col items-center justify-center gap-4 rounded-2xl border border-border bg-card p-6 text-center transition-colors hover:border-primary/50"
             >
               <img
                 src={tech.icon}
                 alt=""
                 loading="lazy"
                 decoding="async"
-                className="h-6 w-6 shrink-0 object-contain"
+                className="h-10 w-10 shrink-0 object-contain"
               />
-              <span className="truncate text-sm font-medium text-foreground">{tech.name}</span>
+              <span className="card-heading">{tech.name}</span>
             </li>
           ))}
         </ul>

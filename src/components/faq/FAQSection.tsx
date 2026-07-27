@@ -51,7 +51,7 @@ const FAQSection = ({ title, only, description, id = 'faq' }: FAQSectionProps) =
         <div className="mb-12 text-center">
           <h2
             id={headingId}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground"
+            className="section-heading"
           >
             {heading}
           </h2>

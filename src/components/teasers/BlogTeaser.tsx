@@ -38,16 +38,16 @@ export default function BlogTeaser() {
   return (
     <Section tone="muted" size="md" labelledBy="blog-teaser-heading">
       <div className="max-w-3xl">
-        <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+        <p className="mb-5 eyebrow">
           {t('teasers.blog.eyebrow', 'Fagartikler')}
         </p>
         <h2
           id="blog-teaser-heading"
-          className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground"
+          className="section-heading"
         >
           {t('teasers.blog.title', 'Det vi skriver om')}
         </h2>
-        <p className="mt-5 max-w-2xl text-lg text-muted-foreground leading-relaxed">
+        <p className="mt-5 max-w-2xl section-lead">
           {t('teasers.blog.description', 'Erfaringer fra prosjektene våre — arkitektur, modernisering og digitalisering av saksbehandling.')}
         </p>
       </div>

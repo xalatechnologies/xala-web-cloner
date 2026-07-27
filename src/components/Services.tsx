@@ -62,16 +62,16 @@ const Services = ({ headingLevel = 'h1' }: ServicesProps) => {
                 left-aligned, and two stacked centred blocks read as two
                 unrelated pages glued together. */}
             <div className="flex flex-col gap-5 max-w-3xl">
-              <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+              <p className="eyebrow">
                 {t('services.eyebrow', 'Hva vi leverer')}
               </p>
               <Heading
                 id="services-heading"
-                className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground"
+                className="section-heading"
               >
                 {sectionTitle}
               </Heading>
-              <p className="text-lg leading-relaxed text-muted-foreground">
+              <p className="section-lead">
                 {sectionDescription}
               </p>
             </div>

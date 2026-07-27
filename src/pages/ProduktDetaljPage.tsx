@@ -99,19 +99,19 @@ export default function ProduktDetaljPage() {
 
         <header className="container mx-auto px-4 pb-4 pt-6 md:pb-6">
           <div className="flex items-center gap-3">
-            <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-              <Icon className="h-6 w-6" aria-hidden="true" />
+            <span className="card-icon">
+              <Icon aria-hidden="true" />
             </span>
             <h1 className="text-4xl font-bold leading-[1.1] tracking-tight md:text-5xl">
               {product.title}
             </h1>
             {!isLive && (
-              <span className="rounded-full border border-border px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+              <span className="rounded-full border border-border px-3 py-1 text-sm font-medium uppercase tracking-[0.14em] text-muted-foreground">
                 {t('products.comingSoon', 'Kommer')}
               </span>
             )}
           </div>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-6 max-w-2xl section-lead">
             {copy.tagline}
           </p>
         </header>
@@ -148,7 +148,7 @@ export default function ProduktDetaljPage() {
 
             {product.features?.length ? (
               <aside className="lg:col-span-5">
-                <h2 className="text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+                <h2 className="subsection-heading">
                   {t('productPage.features', 'Dette inngår')}
                 </h2>
                 <ul className="mt-5 divide-y divide-border border-y border-border">

@@ -20,7 +20,7 @@ export default function FinalCTA() {
       <div className="max-w-3xl">
         <h2
           id="final-cta-heading"
-          className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white"
+          className="section-heading text-white"
         >
           {t('finalCTA.title')}
         </h2>

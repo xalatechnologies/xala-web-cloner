@@ -87,7 +87,7 @@ export default function TjenesterPage() {
           <div className="container mx-auto px-4">
             <h2
               id="tjenester-neste"
-              className="text-2xl font-bold tracking-tight md:text-3xl"
+              className="subsection-heading"
             >
               {t('servicesPage.nextTitle', 'Videre herfra')}
             </h2>
@@ -98,14 +98,14 @@ export default function TjenesterPage() {
                     to={step.to}
                     className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   >
-                    <span className="flex items-center gap-2 text-lg font-semibold text-foreground">
+                    <span className="flex items-center gap-2 card-heading">
                       {t(`${step.key}.title`, step.fallbackTitle)}
                       <ArrowRight
                         className="h-4 w-4 text-primary transition-transform group-hover:translate-x-0.5"
                         aria-hidden="true"
                       />
                     </span>
-                    <span className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    <span className="mt-3 card-body">
                       {t(`${step.key}.blurb`, step.fallbackBlurb)}
                     </span>
                   </Link>

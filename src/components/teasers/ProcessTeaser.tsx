@@ -37,39 +37,43 @@ export default function ProcessTeaser() {
     >
       <div className="container mx-auto px-4">
         <div className="max-w-3xl">
-          <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+          <p className="mb-5 eyebrow">
             {t('teasers.process.eyebrow', 'Prosess')}
           </p>
           <h2
             id="process-teaser-heading"
-            className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+            className="section-heading"
           >
             {t('teasers.process.title')}
           </h2>
-          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-5 section-lead">
             {t('teasers.process.description')}
           </p>
         </div>
 
-        <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <ol className="mt-12 grid gap-5 md:grid-cols-2">
           {steps.map((step) => {
             const Icon = iconFor(step.icon);
             return (
               <li
                 key={step.id}
-                className="flex h-full flex-col rounded-2xl border border-border bg-card p-5"
+                className="flex h-full flex-col rounded-2xl border border-border bg-card p-6 md:p-7"
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-4">
+                  {/* Number, icon and title on one line: the number is the
+                      card's index, not a heading of its own. */}
                   <span
                     aria-hidden="true"
-                    className="text-2xl font-bold leading-none tracking-tight text-primary"
+                    className="text-3xl font-bold leading-none tracking-tight text-primary"
                   >
                     {String(step.step_number).padStart(2, '0')}
                   </span>
-                  <Icon className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                  <span className="card-icon">
+                    <Icon aria-hidden="true" />
+                  </span>
+                  <h3 className="card-heading">{step.title}</h3>
                 </div>
-                <h3 className="mt-4 font-semibold text-foreground">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-4 card-body">
                   {step.description}
                 </p>
               </li>

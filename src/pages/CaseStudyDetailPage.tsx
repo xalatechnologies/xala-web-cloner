@@ -61,7 +61,7 @@ function StickyTOC({ activeId }: { activeId: string }) {
   return (
     <aside className="hidden xl:block w-56 shrink-0">
       <div className="sticky top-28">
-        <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground/60 mb-4 px-3">
+        <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60 mb-4 px-3">
           {t('caseStudy.toc.label')}
         </p>
         {/* Progress bar */}
@@ -129,7 +129,7 @@ function SectionHeading({
           {accent}
         </p>
       )}
-      <h2 className="text-3xl font-extrabold text-foreground tracking-tight leading-tight">
+      <h2 className="subsection-heading leading-tight">
         {children}
       </h2>
     </div>
@@ -220,7 +220,7 @@ function HeroSection({ cs }: { cs: NonNullable<ReturnType<typeof caseStudyBySlug
             )}
 
             {/* title */}
-            <h1 className="text-5xl sm:text-6xl font-black tracking-tight text-foreground mb-6 leading-[1.05]">
+            <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-foreground mb-6 leading-[1.05]">
               {cs.title}
             </h1>
             <p className="text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl">
@@ -246,7 +246,7 @@ function HeroSection({ cs }: { cs: NonNullable<ReturnType<typeof caseStudyBySlug
                   <span className="h-px w-6 bg-primary inline-block" />
                   {t('caseStudy.sections.overview.accent')}
                 </p>
-                <h2 className="text-2xl font-extrabold text-foreground tracking-tight leading-tight mb-4">
+                <h2 className="text-2xl font-bold text-foreground tracking-tight leading-tight mb-4">
                   {t('caseStudy.sections.overview.heading')}
                 </h2>
                 <p className="text-base text-foreground/80 leading-relaxed">
@@ -259,13 +259,13 @@ function HeroSection({ cs }: { cs: NonNullable<ReturnType<typeof caseStudyBySlug
                   <span className="h-px w-6 bg-destructive inline-block" />
                   {t('caseStudy.sections.challenge.accent')}
                 </p>
-                <h2 className="text-2xl font-extrabold text-foreground tracking-tight leading-tight mb-4">
+                <h2 className="text-2xl font-bold text-foreground tracking-tight leading-tight mb-4">
                   {t('caseStudy.sections.challenge.heading')}
                 </h2>
                 <ul className="space-y-3">
                   {cs.challenge.slice(0, 3).map((item, index) => (
                     <li key={index} className="flex gap-3 items-start">
-                      <span className="shrink-0 h-6 w-6 rounded-full bg-destructive/10 border border-destructive/30 text-[11px] font-black flex items-center justify-center text-destructive mt-0.5">
+                      <span className="shrink-0 h-6 w-6 rounded-full bg-destructive/10 border border-destructive/30 text-xs font-bold flex items-center justify-center text-destructive mt-0.5">
                         {index + 1}
                       </span>
                       <p className="text-base text-foreground/80 leading-relaxed">
@@ -637,7 +637,7 @@ function ArchitectureSection({
             <ul className="space-y-2.5">
               {items!.map((item, j) => (
                 <li key={j} className="text-sm text-foreground/70 flex gap-2 items-start leading-relaxed">
-                  <span aria-hidden className="text-primary shrink-0 mt-1 text-[10px]">●</span>
+                  <span aria-hidden className="text-primary shrink-0 mt-1 text-xs">●</span>
                   {item}
                 </li>
               ))}
@@ -720,7 +720,7 @@ function TechStackSection({
                 {items!.map((item, j) => (
                   <span
                     key={j}
-                    className={cn('text-xs px-3 py-1.5 rounded-full border font-semibold', style.pill)}
+                    className={cn('text-sm px-3 py-1.5 rounded-full border font-medium', style.pill)}
                   >
                     {item}
                   </span>
@@ -754,7 +754,7 @@ function IntegrationsSection({ integrations }: { integrations: string[] }) {
               transition={{ delay: i * 0.06 }}
               className="flex gap-4 bg-card border border-border rounded-xl p-5 hover:border-primary/35 hover:shadow-md transition-all group"
             >
-              <div className="shrink-0 h-11 w-11 rounded-xl bg-primary/10 border border-primary/25 flex items-center justify-center text-primary font-black text-lg group-hover:bg-primary/15 transition-colors">
+              <div className="shrink-0 h-11 w-11 rounded-xl bg-primary/10 border border-primary/25 flex items-center justify-center text-primary font-bold text-lg group-hover:bg-primary/15 transition-colors">
                 ⇄
               </div>
               <div>
@@ -799,11 +799,11 @@ function TimelineSection({
               className="relative"
             >
               {/* number bubble */}
-              <div className="absolute -left-14 top-4 h-10 w-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-black z-10 ring-4 ring-background shadow-lg shadow-primary/30">
+              <div className="absolute -left-14 top-4 h-10 w-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold z-10 ring-4 ring-background shadow-lg shadow-primary/30">
                 {i + 1}
               </div>
               <div className="bg-card border border-border rounded-xl p-6 hover:border-primary/35 hover:shadow-md transition-all">
-                <h3 className="font-bold text-foreground mb-2 text-lg">{phase.phase}</h3>
+                <h3 className="card-heading mb-2">{phase.phase}</h3>
                 <p className="text-base text-foreground/70 leading-relaxed">{phase.description}</p>
               </div>
             </motion.div>
@@ -884,7 +884,7 @@ function CTASection({ title }: { title: string }) {
             <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
             {t('caseStudy.cta.accent')}
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-foreground mb-4 leading-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 leading-tight">
             {t('caseStudy.cta.heading')}
           </h2>
           <p className="text-lg text-muted-foreground mb-10 max-w-lg mx-auto leading-relaxed">

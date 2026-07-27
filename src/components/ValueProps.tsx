@@ -51,7 +51,7 @@ export default function ValueProps() {
                   <CardIcon>
                     <IconComponent className="w-8 h-8 text-primary group-hover:scale-110 transition-transform duration-300" />
                   </CardIcon>
-                  <h3 className="text-xl md:text-2xl font-bold text-card-foreground group-hover:text-primary transition-colors duration-300">
+                  <h3 className="card-heading group-hover:text-primary transition-colors duration-300">
                     {value.title}
                   </h3>
                 </div>

@@ -53,7 +53,7 @@ export default function ArticleToc({ headings, label = 'I denne artikkelen' }: A
 
   return (
     <nav aria-label={label}>
-      <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">{label}</p>
+      <p className="mb-4 eyebrow">{label}</p>
       <ul className="flex flex-col border-l border-border">
         {headings.map((heading) => {
           const isActive = heading.id === activeId;

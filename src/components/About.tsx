@@ -63,17 +63,17 @@ const About = ({ headingLevel = 'h1' }: AboutProps = {}) => {
     <section id="about" className="bg-background py-16 md:py-24" aria-labelledby="about-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl">
-          <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+          <p className="mb-5 eyebrow">
             {t('about.eyebrow', 'Om selskapet')}
           </p>
           <Heading
             id="about-heading"
-            className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+            className="section-heading"
           >
             {aboutSection?.title}
           </Heading>
           {aboutSection?.description && (
-            <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-5 section-lead">
               {aboutSection.description}
             </p>
           )}
@@ -82,7 +82,7 @@ const About = ({ headingLevel = 'h1' }: AboutProps = {}) => {
         <dl className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border lg:grid-cols-4">
           {FACTS.map((fact) => (
             <div key={fact.key} className="bg-card p-5 md:p-6">
-              <dt className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+              <dt className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
                 {t(fact.key, fact.fallback)}
               </dt>
               <dd className="mt-2 text-xl font-bold tracking-tight text-foreground md:text-2xl">
@@ -93,7 +93,7 @@ const About = ({ headingLevel = 'h1' }: AboutProps = {}) => {
         </dl>
 
         <div className="mt-16">
-          <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+          <h2 className="subsection-heading">
             {t('about.principlesTitle', 'Det vi holder oss til')}
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
@@ -112,10 +112,10 @@ const About = ({ headingLevel = 'h1' }: AboutProps = {}) => {
           <div className="mt-16 rounded-2xl border border-border bg-muted/40 p-8 md:p-12">
             {/* Was a purple-to-magenta-to-blue gradient in dark mode, left over
                 from the palette before the bronze one. */}
-            <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+            <h2 className="subsection-heading">
               {visionSection.title}
             </h2>
-            <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-4 max-w-3xl section-lead">
               {visionSection.description}
             </p>
           </div>

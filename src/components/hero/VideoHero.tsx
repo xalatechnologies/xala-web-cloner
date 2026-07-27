@@ -183,7 +183,7 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
           ].map((item) => (
             <li
               key={item}
-              className="rounded-full border border-border bg-card/70 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-foreground/80 backdrop-blur-sm"
+              className="rounded-full border border-border bg-card/70 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-foreground/80 backdrop-blur-sm"
             >
               {item}
             </li>

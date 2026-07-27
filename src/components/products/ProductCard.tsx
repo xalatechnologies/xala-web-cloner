@@ -32,12 +32,12 @@ const ProductCard = ({ title, description, icon, to, comingSoon }: ProductCardPr
   const body = (
     <>
       <div className="flex items-center gap-3">
-        <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
-          <Icon className="h-5 w-5" aria-hidden="true" />
+        <span className="card-icon group-hover:bg-primary/20">
+          <Icon aria-hidden="true" />
         </span>
-        <h3 className="text-xl font-semibold text-foreground">{title}</h3>
+        <h3 className="card-heading">{title}</h3>
         {comingSoon && (
-          <span className="rounded-full border border-border px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+          <span className="rounded-full border border-border px-2.5 py-1 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
             {t('products.comingSoon', 'Kommer')}
           </span>
         )}

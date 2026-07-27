@@ -94,13 +94,13 @@ export default function BloggPage() {
             <span aria-hidden="true"> / </span>
             <span aria-current="page">Blogg</span>
           </nav>
-          <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+          <p className="mb-5 eyebrow">
             Fagartikler
           </p>
-          <h1 className="max-w-[18ch] text-4xl font-bold leading-[1.1] tracking-tight md:text-5xl lg:text-6xl">
+          <h1 className="max-w-[18ch] page-heading">
             Erfaringer fra systemer i drift
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">{DESCRIPTION}</p>
+          <p className="mt-6 max-w-2xl section-lead">{DESCRIPTION}</p>
         </header>
 
         <div className="container mx-auto px-4">
@@ -173,7 +173,7 @@ export default function BloggPage() {
 
             <p
               aria-live="polite"
-              className="mt-4 flex items-baseline justify-between text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground"
+              className="mt-4 flex items-baseline justify-between text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground"
             >
               <span>
                 {filtered.length === posts.length
@@ -237,20 +237,20 @@ export default function BloggPage() {
                         <div className="order-1 lg:order-2 lg:col-span-2">
                           <div className="flex items-start gap-4 lg:block">
                             {post.tag && (
-                              <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
+                              <span className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
                                 {post.tag}
                               </span>
                             )}
                             <time
                               dateTime={post.date}
-                              className="block text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground lg:mt-2"
+                              className="block text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground lg:mt-2"
                             >
                               {formatDate(post.date, post.lang)}
                             </time>
                           </div>
                         </div>
                         <div className={`order-3 ${post.cover ? 'lg:col-span-7' : 'lg:col-span-10'}`}>
-                          <h3 className="text-2xl font-bold leading-tight tracking-tight transition-transform duration-300 group-hover:translate-x-1 md:text-3xl">
+                          <h3 className="subsection-heading leading-tight transition-transform duration-300 group-hover:translate-x-1">
                             {post.title}
                             <ArrowUpRight
                               className="ml-2 inline-block h-5 w-5 -translate-x-2 align-baseline text-primary opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
@@ -260,7 +260,7 @@ export default function BloggPage() {
                           <p className="mt-3 max-w-[60ch] leading-relaxed text-muted-foreground">
                             {post.description}
                           </p>
-                          <p className="mt-4 flex flex-wrap items-center gap-3 text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                          <p className="mt-4 flex flex-wrap items-center gap-3 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
                             <span>{post.author}</span>
                             <span aria-hidden="true" className="h-3 w-px bg-border-strong" />
                             <span>{post.readingMinutes} min lesetid</span>
