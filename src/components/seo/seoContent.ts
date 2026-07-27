@@ -24,6 +24,8 @@ type PageId =
   | 'about'
   | 'contact'
   | 'careers'
+  | 'status'
+  | 'transparency'
   | 'blog'
   | 'blogPost'
   | 'privacy'
@@ -100,6 +102,18 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
       description:
         'Vil du utvikle programvare hos oss? Se åpne stillinger i Xala Technologies og hvordan det er å jobbe i teamet vårt i Asker.',
       keywords: 'karriere, jobb, stillinger, utviklerjobb, systemutvikler, Asker, Norge, IT-jobb'
+    },
+    status: {
+      title: 'Driftsstatus | Xala Technologies',
+      description:
+        'Hvordan Xala Technologies følger opp driften av løsningene vi har levert, varsler ved hendelser, og rapporterer oppetid til kundene.',
+      keywords: 'driftsstatus, oppetid, hendelser, drift, forvaltning, SLA'
+    },
+    transparency: {
+      title: 'Åpenhet om drift og sikkerhet | Xala Technologies',
+      description:
+        'Åpenhet om oppetids- og SLA-forpliktelser, ISO 27001-sertifisering og hvordan sikkerhet er forankret i det vi leverer.',
+      keywords: 'åpenhet, SLA, oppetid, ISO 27001, sikkerhet, forvaltning'
     },
     blog: {
       title: 'Fagartikler | Xala Technologies',
@@ -200,6 +214,18 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
         'Want to build software with us? See open roles at Xala Technologies and what it is like to work in our team in Asker.',
       keywords: 'careers, jobs, open roles, developer job, software engineer, Asker, Norway, IT jobs'
     },
+    status: {
+      title: 'Status | Xala Technologies',
+      description:
+        'How Xala Technologies follows up the operation of the solutions we deliver, alerts on incidents, and reports uptime to clients.',
+      keywords: 'status, uptime, incidents, operations, maintenance, SLA'
+    },
+    transparency: {
+      title: 'Transparency on Operations | Xala Technologies',
+      description:
+        'Openness about our uptime and SLA commitments, ISO 27001 certification, and how security is built into what we deliver.',
+      keywords: 'transparency, SLA, uptime, ISO 27001, security, operations'
+    },
     blog: {
       title: 'Articles | Xala Technologies',
       description:
@@ -288,6 +314,18 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
       title: 'الوظائف | زالا تكنولوجيز',
       description: 'هل ترغب في تطوير البرمجيات معنا؟ تعرّف على الوظائف المتاحة في زالا تكنولوجيز وطبيعة العمل في فريقنا.',
       keywords: 'وظائف, فرص عمل, مطور برمجيات, مهندس برمجيات, النرويج'
+    },
+    status: {
+      title: 'حالة التشغيل | زالا تكنولوجيز',
+      description:
+        'كيف تتابع زالا تكنولوجيز تشغيل الحلول التي نقدمها، وتنبّه العملاء عند وقوع حوادث، وتُبلغهم بمعدل التشغيل بانتظام.',
+      keywords: 'حالة التشغيل, معدل التشغيل, الحوادث, التشغيل, الصيانة'
+    },
+    transparency: {
+      title: 'الشفافية في التشغيل والأمن | زالا تكنولوجيز',
+      description:
+        'شفافية حول التزامات معدل التشغيل واتفاقيات مستوى الخدمة، وشهادة ISO 27001، وكيف يُبنى الأمن في كل ما نقدمه.',
+      keywords: 'الشفافية, اتفاقية مستوى الخدمة, معدل التشغيل, آيزو 27001, الأمن'
     },
     blog: {
       title: 'مقالات | زالا تكنولوجيز',

@@ -27,6 +27,8 @@ export const ROUTE_RULES: RouteRule[] = [
   { pattern: /^\/om-oss\/?$/, pageId: 'about' },
   { pattern: /^\/kontakt\/?$/, pageId: 'contact' },
   { pattern: /^\/karriere\/?$/, pageId: 'careers' },
+  { pattern: /^\/status\/?$/, pageId: 'status' },
+  { pattern: /^\/transparency\/?$/, pageId: 'transparency' },
   { pattern: /^\/blogg\/?$/, pageId: 'blog', selfManaged: true },
   { pattern: /^\/blogg\/[^/]+\/?$/, pageId: 'blogPost', ogType: 'article', selfManaged: true },
   { pattern: /^\/privacy\/?$/, pageId: 'privacy' },
