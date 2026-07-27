@@ -772,6 +772,9 @@
     "ctaDescription": "Tell us what you have today and we will say what we would do first and what we would leave until later.",
     "ctaContact": "Contact us",
     "ctaProcess": "How we work",
-    "deepDive": "See the full service"
+    "deepDive": "See the full service",
+    "featuresTitle": "Functionality",
+    "childrenTitle": "Solutions we build on this platform",
+    "readMoreCategory": "See the full service"
   }
 }

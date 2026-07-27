@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
 import * as Icons from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import Navbar from '../components/Navbar';
@@ -27,6 +27,7 @@ interface FaqItem {
   answer: string;
 }
 interface LocalisedPage {
+  features?: string[];
   title: string;
   metaTitle: string;
   metaDescription: string;
@@ -40,6 +41,9 @@ interface LocalisedPage {
 interface ServicePage {
   slug: string;
   icon: string;
+  kind?: 'category' | 'platform';
+  parent?: string;
+  children?: string[];
   caseSlugs: string[];
   postSlugs: string[];
   no: LocalisedPage;
@@ -82,6 +86,14 @@ export default function TjenesteDetaljPage() {
   const copy = page[language] ?? page.no;
   const url = `${SITE_ORIGIN}/tjenester/${page.slug}`;
   const Icon = (Icons[page.icon as keyof typeof Icons] as LucideIcon) || Icons.CircleDot;
+
+  const pageMap = servicePages as Record<string, ServicePage>;
+  const localised = (candidate: ServicePage) => candidate[language] ?? candidate.no;
+
+  const children = (page.children ?? [])
+    .map((childSlug) => pageMap[childSlug])
+    .filter((child): child is ServicePage => Boolean(child));
+  const parent = page.parent ? pageMap[page.parent] : undefined;
 
   const cases = page.caseSlugs
     .map((caseSlug) => caserEntries.find((entry) => entry.slug === caseSlug))
@@ -137,7 +149,7 @@ export default function TjenesteDetaljPage() {
       <main id="main" className="flex-1 pt-20">
         <div className="container mx-auto px-4 pt-10">
           <Link
-            to="/tjenester"
+            to={parent ? `/tjenester/${parent.slug}` : '/tjenester'}
             className="group inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
           >
             <ArrowLeft
@@ -145,7 +157,7 @@ export default function TjenesteDetaljPage() {
               aria-hidden="true"
             />
             <span className="underline-offset-4 group-hover:underline">
-              {t('servicePage.back', 'Alle tjenester')}
+              {parent ? localised(parent).title : t('servicePage.back', 'Alle tjenester')}
             </span>
           </Link>
         </div>
@@ -202,6 +214,70 @@ export default function TjenesteDetaljPage() {
             ))}
           </ul>
         </section>
+
+        {copy.features && copy.features.length > 0 && (
+          <section
+            aria-labelledby="features-heading"
+            className="border-t border-border bg-muted/30 py-14 md:py-20"
+          >
+            <div className="container mx-auto px-4">
+              <h2
+                id="features-heading"
+                className="text-2xl font-bold tracking-tight text-foreground md:text-3xl"
+              >
+                {t('servicePage.featuresTitle', 'Funksjonalitet')}
+              </h2>
+              {/*
+                A concrete list, not adjectives. This is the part a buyer
+                compares against a competitor's page and the part an answer
+                engine can lift verbatim when asked what the thing does.
+              */}
+              <ul className="mt-10 grid gap-x-8 gap-y-3 md:grid-cols-2 lg:grid-cols-3">
+                {copy.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3">
+                    <Check className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                    <span className="leading-relaxed text-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
+
+        {children.length > 0 && (
+          <section aria-labelledby="children-heading" className="container mx-auto px-4 py-14 md:py-20">
+            <h2
+              id="children-heading"
+              className="text-2xl font-bold tracking-tight text-foreground md:text-3xl"
+            >
+              {t('servicePage.childrenTitle', 'Løsninger vi bygger på denne plattformen')}
+            </h2>
+            <ul className="mt-10 grid gap-5 md:grid-cols-3">
+              {children.map((child) => {
+                const childCopy = localised(child);
+                return (
+                  <li key={child.slug}>
+                    <Link
+                      to={`/tjenester/${child.slug}`}
+                      className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50"
+                    >
+                      <span className="flex items-center gap-2 text-lg font-semibold text-foreground">
+                        {childCopy.title}
+                        <ArrowRight
+                          className="h-4 w-4 text-primary transition-transform group-hover:translate-x-0.5"
+                          aria-hidden="true"
+                        />
+                      </span>
+                      <span className="mt-3 line-clamp-4 text-sm leading-relaxed text-muted-foreground">
+                        {childCopy.intro}
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        )}
 
         {cases.length > 0 && (
           <section

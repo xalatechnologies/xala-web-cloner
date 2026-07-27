@@ -33,7 +33,13 @@ const Services = ({ headingLevel = 'h1' }: ServicesProps) => {
       );
     }
 
-    return <ServiceGrid services={services} language={currentLanguage} initialRows={2} cols={3} />;
+    return (
+      <ServiceGrid
+        services={services}
+        language={currentLanguage}
+        readMoreLabel={t('servicePage.readMoreCategory', 'Se hele tjenesten')}
+      />
+    );
   };
 
   const Heading = headingLevel;

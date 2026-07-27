@@ -17,6 +17,9 @@ interface ServiceCardProps {
   icon?: string;
   platforms?: ServicePlatform[];
   language?: string;
+  /** Landing page for this category. */
+  slug?: string;
+  readMoreLabel?: string;
 }
 
 /**
@@ -31,7 +34,15 @@ interface ServiceCardProps {
  * link from here is what makes this page the hub of the topic rather than a
  * page that merely mentions it.
  */
-const ServiceCard = ({ title, description, icon, platforms = [], language = 'no' }: ServiceCardProps) => {
+const ServiceCard = ({
+  title,
+  description,
+  icon,
+  platforms = [],
+  language = 'no',
+  slug,
+  readMoreLabel,
+}: ServiceCardProps) => {
   const Icon = (Icons[icon as keyof typeof Icons] as LucideIcon) || Icons.CircleDot;
   const isNorwegian = /^(no|nb|nn)/.test(language.toLowerCase());
 
@@ -42,7 +53,16 @@ const ServiceCard = ({ title, description, icon, platforms = [], language = 'no'
           <Icon className="h-5 w-5" aria-hidden="true" />
         </span>
         <h3 className={`text-xl font-semibold text-foreground ${isNorwegian ? 'hyphenate-no' : ''}`}>
-          {processServiceTitle(title, language)}
+          {slug ? (
+            <Link
+              to={`/tjenester/${slug}`}
+              className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+            >
+              {processServiceTitle(title, language)}
+            </Link>
+          ) : (
+            processServiceTitle(title, language)
+          )}
         </h3>
       </div>
 
@@ -84,6 +104,19 @@ const ServiceCard = ({ title, description, icon, platforms = [], language = 'no'
             );
           })}
         </ul>
+      )}
+
+      {slug && (
+        <Link
+          to={`/tjenester/${slug}`}
+          className="group mt-6 inline-flex items-center gap-2 border-t border-border pt-4 text-sm font-semibold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+        >
+          {readMoreLabel}
+          <ArrowRight
+            className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+            aria-hidden="true"
+          />
+        </Link>
       )}
     </article>
   );

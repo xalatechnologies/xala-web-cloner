@@ -21,7 +21,8 @@
                     "description": "Andre ordninger som følger samme mønster: innsending, vurdering, vedtak, arkiv.",
                     "slug": "saksbehandlingssystem"
                 }
-            ]
+            ],
+            "slug": "saksbehandlingsplattform"
         },
         {
             "id": "saas",
@@ -41,7 +42,8 @@
                     "title": "Digitale markedsplasser",
                     "description": "Tilbud, etterspørsel og oppgjør i samme plattform, med roller per aktørtype."
                 }
-            ]
+            ],
+            "slug": "saas-applikasjonsutvikling"
         },
         {
             "id": "integrasjon",
@@ -62,7 +64,8 @@
                     "title": "API-plattform",
                     "description": "Egne API-er med tilgangsstyring, versjonering og dokumentasjon andre kan bygge på."
                 }
-            ]
+            ],
+            "slug": "systemintegrasjon"
         },
         {
             "id": "modernisering",
@@ -82,7 +85,8 @@
                     "title": "Teknisk gjeld og opprydding",
                     "description": "Kartlegging av avhengigheter ingen har dokumentert, før noe røres."
                 }
-            ]
+            ],
+            "slug": "modernisering-av-fagsystemer"
         },
         {
             "id": "automatisering",
@@ -102,7 +106,8 @@
                     "title": "Beslutningsstøtte",
                     "description": "Forslag til saksbehandleren, med begrunnelsen synlig og mulig å overprøve."
                 }
-            ]
+            ],
+            "slug": "automatisering-og-ai"
         },
         {
             "id": "forvaltning",
@@ -122,7 +127,8 @@
                     "title": "Universell utforming",
                     "description": "WCAG 2.2 AA bygget inn fra start, ikke rettet i etterkant."
                 }
-            ]
+            ],
+            "slug": "forvaltning-og-drift"
         }
     ],
     "en": [
@@ -147,7 +153,8 @@
                     "description": "Other schemes following the same pattern: submission, assessment, decision, archive.",
                     "slug": "saksbehandlingssystem"
                 }
-            ]
+            ],
+            "slug": "saksbehandlingsplattform"
         },
         {
             "id": "saas",
@@ -167,7 +174,8 @@
                     "title": "Digital marketplaces",
                     "description": "Supply, demand and settlement in one platform, with roles per participant type."
                 }
-            ]
+            ],
+            "slug": "saas-applikasjonsutvikling"
         },
         {
             "id": "integrasjon",
@@ -188,7 +196,8 @@
                     "title": "API platform",
                     "description": "Your own APIs with access control, versioning and documentation others can build on."
                 }
-            ]
+            ],
+            "slug": "systemintegrasjon"
         },
         {
             "id": "modernisering",
@@ -208,7 +217,8 @@
                     "title": "Technical debt",
                     "description": "Mapping the dependencies nobody documented, before anything is touched."
                 }
-            ]
+            ],
+            "slug": "modernisering-av-fagsystemer"
         },
         {
             "id": "automatisering",
@@ -228,7 +238,8 @@
                     "title": "Decision support",
                     "description": "Suggestions for the caseworker, with the reasoning visible and open to override."
                 }
-            ]
+            ],
+            "slug": "automatisering-og-ai"
         },
         {
             "id": "forvaltning",
@@ -248,7 +259,8 @@
                     "title": "Accessibility",
                     "description": "WCAG 2.2 AA built in from the start rather than retrofitted."
                 }
-            ]
+            ],
+            "slug": "forvaltning-og-drift"
         }
     ],
     "ar": [
@@ -273,7 +285,8 @@
                     "description": "برامج أخرى تتبع النمط نفسه: تقديم، تقييم، قرار، أرشفة.",
                     "slug": "saksbehandlingssystem"
                 }
-            ]
+            ],
+            "slug": "saksbehandlingsplattform"
         },
         {
             "id": "saas",
@@ -293,7 +306,8 @@
                     "title": "أسواق رقمية",
                     "description": "العرض والطلب والتسوية في منصة واحدة، بأدوار لكل نوع مشارك."
                 }
-            ]
+            ],
+            "slug": "saas-applikasjonsutvikling"
         },
         {
             "id": "integrasjon",
@@ -314,7 +328,8 @@
                     "title": "منصة واجهات برمجية",
                     "description": "واجهات خاصة بكم بإدارة وصول وإصدارات وتوثيق يبني عليه الآخرون."
                 }
-            ]
+            ],
+            "slug": "systemintegrasjon"
         },
         {
             "id": "modernisering",
@@ -334,7 +349,8 @@
                     "title": "الدين التقني",
                     "description": "حصر الاعتماديات غير الموثّقة قبل المساس بأي شيء."
                 }
-            ]
+            ],
+            "slug": "modernisering-av-fagsystemer"
         },
         {
             "id": "automatisering",
@@ -354,7 +370,8 @@
                     "title": "دعم القرار",
                     "description": "اقتراحات لموظف الحالة مع إظهار المبرّر وإمكانية تجاوزه."
                 }
-            ]
+            ],
+            "slug": "automatisering-og-ai"
         },
         {
             "id": "forvaltning",
@@ -374,7 +391,8 @@
                     "title": "إمكانية الوصول",
                     "description": "WCAG 2.2 AA مبنيّ من البداية لا مصحّحاً لاحقاً."
                 }
-            ]
+            ],
+            "slug": "forvaltning-og-drift"
         }
     ]
 }

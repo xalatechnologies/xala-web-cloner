@@ -8,17 +8,19 @@ export interface Service {
   icon: string;
   /** The platform types built under this category. */
   platforms?: { title: string; description: string; slug?: string }[];
+  /** Landing page for this category. */
+  slug?: string;
 }
 
 interface ServiceGridProps {
   services: Service[];
+  /** Label for each category's read-more link. */
+  readMoreLabel?: string;
   /** Active UI language, used for Norwegian title hyphenation. */
   language?: string;
-  initialRows?: number;
-  cols?: number;
 }
 
-const ServiceGrid = ({ services, language, initialRows, cols }: ServiceGridProps) => {
+const ServiceGrid = ({ services, language, readMoreLabel }: ServiceGridProps) => {
   const serviceCards = services.map((service) => (
     <ServiceCard
       key={service.id}
@@ -26,6 +28,8 @@ const ServiceGrid = ({ services, language, initialRows, cols }: ServiceGridProps
       title={service.title}
       description={service.description}
       platforms={service.platforms}
+      slug={service.slug}
+      readMoreLabel={readMoreLabel}
       language={language}
     />
   ));

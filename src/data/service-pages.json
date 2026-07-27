@@ -62,6 +62,16 @@
                     "question": "Hvem drifter systemet etterpå?",
                     "answer": "Vi gjør det, hvis dere vil. De fleste kundene våre fortsetter med en forvaltningsavtale. Vi kan også overlevere til deres eget utviklingsteam med dokumentasjon og opplæring."
                 }
+            ],
+            "features": [
+                "Saksregister med søk, filtre og lagrede visninger",
+                "Roller og tilgangsstyring per saksområde",
+                "Vedtaksmaler med begrunnelse og hjemmelshenvisning",
+                "Frist- og purrestyring med varsling",
+                "Noark-arkivering av sak, dokumenter og parter",
+                "Oppslag mot Enhetsregisteret og Folkeregisteret",
+                "Full historikk: hvem endret hva, når",
+                "Statusside for søkeren, uten innlogging der det er mulig"
             ]
         },
         "en": {
@@ -115,6 +125,16 @@
                     "question": "Who runs it afterwards?",
                     "answer": "We do, if you want. Most of our clients continue with a support agreement. We can also hand over to your own team with documentation and training."
                 }
+            ],
+            "features": [
+                "Case register with search, filters and saved views",
+                "Roles and access control per case area",
+                "Decision templates with reasoning and legal basis",
+                "Deadline and reminder handling with notifications",
+                "Noark archiving of case, documents and parties",
+                "Lookups against the business and population registers",
+                "Full history: who changed what, when",
+                "A status page for the applicant, without sign-in where possible"
             ]
         },
         "ar": {
@@ -168,8 +188,20 @@
                     "question": "مَن يشغّله بعد ذلك؟",
                     "answer": "نحن، إن أردتم. يواصل معظم عملائنا باتفاقية تشغيل، ويمكننا أيضاً التسليم لفريقكم مع التوثيق والتدريب."
                 }
+            ],
+            "features": [
+                "سجل قضايا ببحث ومرشّحات وعروض محفوظة",
+                "أدوار وإدارة وصول لكل مجال",
+                "قوالب قرارات مع التبرير والسند القانوني",
+                "إدارة المواعيد والتذكيرات مع الإشعارات",
+                "أرشفة Noark للقضية والوثائق والأطراف",
+                "استعلامات من سجلّي المنشآت والسكان",
+                "تاريخ كامل: مَن غيّر ماذا ومتى",
+                "صفحة حالة للمتقدّم دون تسجيل دخول حيثما أمكن"
             ]
-        }
+        },
+        "kind": "platform",
+        "parent": "saksbehandlingsplattform"
     },
     "tilskuddsportal": {
         "slug": "tilskuddsportal",
@@ -227,6 +259,16 @@
                     "question": "Kan søkerne logge inn med ID-porten?",
                     "answer": "Ja. Innlogging med ID-porten gir også tilgang til opplysninger dere ellers måtte be søkeren oppgi manuelt."
                 }
+            ],
+            "features": [
+                "Skjemabygger med regelbasert validering",
+                "Automatisk lagring og gjenopptakelse via lenke",
+                "Vedleggshåndtering med filtypekontroll",
+                "Forhåndsutfylling fra Enhetsregisteret",
+                "Vurderingsskjema og poengsetting for saksbehandler",
+                "Tildelingsbrev og avslagsbrev fra mal",
+                "Rapportering og innsyn i tildelte midler",
+                "Flere ordninger i samme portal, som konfigurasjon"
             ]
         },
         "en": {
@@ -276,6 +318,16 @@
                     "question": "Can applicants sign in with ID-porten?",
                     "answer": "Yes, which also gives access to details you would otherwise ask the applicant to supply."
                 }
+            ],
+            "features": [
+                "Form builder with rule-based validation",
+                "Autosave and resume via link",
+                "Attachment handling with file-type checks",
+                "Prefill from the Register of Legal Entities",
+                "Assessment forms and scoring for the caseworker",
+                "Award and rejection letters from templates",
+                "Reporting and transparency on allocated funds",
+                "Several schemes in one portal, as configuration"
             ]
         },
         "ar": {
@@ -325,8 +377,20 @@
                     "question": "هل يمكن الدخول عبر ID-porten؟",
                     "answer": "نعم، وهو يتيح أيضاً بيانات كنتم ستطلبونها من المتقدّم يدوياً."
                 }
+            ],
+            "features": [
+                "منشئ نماذج بتحقّق قائم على القواعد",
+                "حفظ تلقائي واستئناف عبر رابط",
+                "إدارة المرفقات مع فحص أنواع الملفات",
+                "تعبئة مسبقة من سجل المنشآت",
+                "نماذج تقييم وتسجيل نقاط لموظف الحالة",
+                "خطابات المنح والرفض من قوالب",
+                "تقارير وشفافية حول الأموال الممنوحة",
+                "عدّة برامج في بوابة واحدة كإعداد"
             ]
-        }
+        },
+        "kind": "platform",
+        "parent": "saksbehandlingsplattform"
     },
     "bevillingsportal": {
         "slug": "bevillingsportal",
@@ -384,6 +448,16 @@
                     "question": "Dekker portalen både skjenke- og salgsbevilling?",
                     "answer": "Ja, og også kunnskapsprøver, eierskifter og midlertidige bevillinger. De deler saksgang og skiller seg i regelverk."
                 }
+            ],
+            "features": [
+                "Søknad om skjenke- og salgsbevilling",
+                "Parallell utsending av høringer med frist",
+                "Automatisk purring på manglende uttalelser",
+                "Kunnskapsprøver og eierskifter",
+                "Midlertidige og enkeltanledningsbevillinger",
+                "Vedtak med begrunnelse og klageadgang",
+                "Statusvarsler til søkeren underveis",
+                "Noark-arkivering av hele saksgangen"
             ]
         },
         "en": {
@@ -433,6 +507,16 @@
                     "question": "Does it cover both serving and sales licences?",
                     "answer": "Yes, along with knowledge tests, changes of ownership and temporary licences. They share a case flow and differ in regulation."
                 }
+            ],
+            "features": [
+                "Applications for serving and sales licences",
+                "Parallel consultation requests with deadlines",
+                "Automatic chasing of missing statements",
+                "Knowledge tests and changes of ownership",
+                "Temporary and single-occasion licences",
+                "Decisions with reasoning and right of appeal",
+                "Status notifications to the applicant",
+                "Noark archiving of the whole case flow"
             ]
         },
         "ar": {
@@ -482,8 +566,20 @@
                     "question": "هل تغطّي تراخيص التقديم والبيع معاً؟",
                     "answer": "نعم، وكذلك اختبارات المعرفة وتغيّر الملكية والتراخيص المؤقتة."
                 }
+            ],
+            "features": [
+                "طلبات تراخيص التقديم والبيع",
+                "إرسال متوازٍ للاستشارات بمواعيد",
+                "ملاحقة تلقائية للردود الناقصة",
+                "اختبارات المعرفة وتغيّر الملكية",
+                "تراخيص مؤقتة ولمناسبة واحدة",
+                "قرارات مع التبرير وحق التظلّم",
+                "إشعارات حالة للمتقدّم",
+                "أرشفة Noark لكامل المسار"
             ]
-        }
+        },
+        "kind": "platform",
+        "parent": "saksbehandlingsplattform"
     },
     "integrasjoner": {
         "slug": "integrasjoner",
@@ -543,6 +639,16 @@
                     "question": "Jobber dere med Maskinporten?",
                     "answer": "Ja, både Maskinporten for maskin-til-maskin og ID-porten for innbyggerinnlogging, i tillegg til Altinn, Folkeregisteret, Enhetsregisteret og Noark."
                 }
+            ],
+            "features": [
+                "ID-porten for innbyggerinnlogging",
+                "Maskinporten for maskin-til-maskin",
+                "Altinn for innsending og meldinger",
+                "Folkeregisteret og Enhetsregisteret",
+                "Noark 5 for arkivering",
+                "Kontrakter og scopes dokumentert per tjeneste",
+                "Feilhåndtering med forståelige meldinger",
+                "Overvåking av tredjeparter dere er avhengige av"
             ]
         },
         "en": {
@@ -592,6 +698,16 @@
                     "question": "Do you work with Maskinporten?",
                     "answer": "Yes, both Maskinporten for machine-to-machine and ID-porten for citizen sign-in, alongside Altinn, the registers and Noark."
                 }
+            ],
+            "features": [
+                "ID-porten for citizen sign-in",
+                "Maskinporten for machine-to-machine",
+                "Altinn for submissions and messaging",
+                "The population and business registers",
+                "Noark 5 archiving",
+                "Contracts and scopes documented per service",
+                "Error handling with intelligible messages",
+                "Monitoring of the third parties you depend on"
             ]
         },
         "ar": {
@@ -641,6 +757,1165 @@
                     "question": "هل تعملون مع Maskinporten؟",
                     "answer": "نعم، وكذلك ID-porten، إضافة إلى Altinn والسجلات وNoark."
                 }
+            ],
+            "features": [
+                "ID-porten لدخول المواطنين",
+                "Maskinporten للتكامل الآلي",
+                "Altinn للتقديم والرسائل",
+                "سجلّا السكان والمنشآت",
+                "أرشفة Noark 5",
+                "العقود والنطاقات موثّقة لكل خدمة",
+                "معالجة أخطاء برسائل مفهومة",
+                "مراقبة الأطراف الثالثة التي تعتمدون عليها"
+            ]
+        },
+        "kind": "platform",
+        "parent": "systemintegrasjon"
+    },
+    "saas-applikasjonsutvikling": {
+        "slug": "saas-applikasjonsutvikling",
+        "icon": "Boxes",
+        "kind": "category",
+        "children": [],
+        "caseSlugs": [
+            "furst-forum",
+            "telia-telecommunications-platform"
+        ],
+        "postSlugs": [],
+        "no": {
+            "title": "SaaS-applikasjonsutvikling",
+            "metaTitle": "SaaS-applikasjonsutvikling og flerleietakerplattformer | Xala Technologies",
+            "metaDescription": "Vi bygger flerleietakerplattformer der én løsning driftes for mange kunder, med egne data, egen konfigurasjon og felles drift.",
+            "intro": "En SaaS-plattform er ikke det samme som et system med mange brukere. Forskjellen er at hver kunde har sine egne data, sin egen konfigurasjon og ofte sitt eget regelverk, mens dere drifter én kodebase.",
+            "problemHeading": "Der det blir dyrt senere",
+            "problem": "Flerleietakerskap som legges på i etterkant, er blant de dyreste omskrivingene som finnes. Datamodellen må skille kundene fra første rad, tilgangsstyringen må vite hvilken leietaker en forespørsel gjelder, og konfigurasjon må være data i stedet for kode.",
+            "capabilityHeading": "Hva vi bygger inn",
+            "capabilities": [
+                {
+                    "title": "Isolasjon per leietaker",
+                    "body": "Data skilles på databasenivå, ikke bare i spørringene. Det er forskjellen på en feil som gir tom skjerm og en feil som viser en kunde en annen kundes data."
+                },
+                {
+                    "title": "Konfigurasjon som data",
+                    "body": "Priser, roller, skjemaer og regler settes per kunde uten utrulling. Ellers blir hver ny kunde et utviklingsprosjekt."
+                },
+                {
+                    "title": "Onboarding uten oss",
+                    "body": "En ny kunde skal kunne settes opp av dere selv. Er svaret alltid \"vi må lage det\", skalerer ikke plattformen."
+                },
+                {
+                    "title": "Felles drift, delt kostnad",
+                    "body": "Én kodebase, én overvåking, én sikkerhetsoppdatering. Det er hele grunnen til å bygge SaaS i stedet for én installasjon per kunde."
+                },
+                {
+                    "title": "Betaling og fakturering",
+                    "body": "Abonnement, forbruk eller per transaksjon, med fakturagrunnlag som stemmer uten manuell etterregistrering."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "Hva skiller en SaaS-plattform fra et vanlig system?",
+                    "answer": "Flere kunder deler samme drift og kodebase, men ikke data. Det stiller krav til isolasjon, konfigurerbarhet og onboarding som et enkeltkundesystem aldri møter."
+                },
+                {
+                    "question": "Kan en eksisterende løsning gjøres til SaaS?",
+                    "answer": "Ofte, men det er en reell omskriving av datamodellen og tilgangsstyringen. Vi kartlegger hva som må endres før vi anbefaler det."
+                },
+                {
+                    "question": "Hvem eier koden?",
+                    "answer": "Dere, hvis det er en kundeleveranse. Bygger vi videre på et av våre egne produkter, avtaler vi lisens i stedet."
+                },
+                {
+                    "question": "Kan plattformen driftes i Norge?",
+                    "answer": "Ja. Vi drifter på Azure med norske regioner der det er et krav, og dokumenterer databehandling for anskaffelsen."
+                }
+            ],
+            "features": [
+                "Isolasjon per leietaker på databasenivå",
+                "Konfigurasjon per kunde uten ny utrulling",
+                "Roller og tilgangsstyring per leietaker",
+                "Onboarding-flyt dere kan kjøre selv",
+                "Abonnement, forbruk eller transaksjonsbasert fakturering",
+                "Flerspråklig grensesnitt",
+                "Felles overvåking og logging på tvers av kunder",
+                "API for integrasjon mot kundenes egne systemer"
+            ]
+        },
+        "en": {
+            "title": "SaaS application development",
+            "metaTitle": "SaaS application development and multi-tenant platforms | Xala Technologies",
+            "metaDescription": "We build multi-tenant platforms where one solution serves many customers, each with its own data and configuration, on shared operations.",
+            "intro": "A SaaS platform is not the same as a system with many users. The difference is that each customer has its own data, its own configuration and often its own rules, while you operate one codebase.",
+            "problemHeading": "Where it gets expensive later",
+            "problem": "Multi-tenancy retrofitted afterwards is among the most expensive rewrites there is. The data model has to separate customers from the first row, and configuration has to be data rather than code.",
+            "capabilityHeading": "What we build in",
+            "capabilities": [
+                {
+                    "title": "Isolation per tenant",
+                    "body": "Data is separated at the database level, not only in queries. That is the difference between a bug that shows an empty screen and a bug that shows one customer another customer data."
+                },
+                {
+                    "title": "Configuration as data",
+                    "body": "Prices, roles, forms and rules are set per customer without a deployment. Otherwise every new customer becomes a development project."
+                },
+                {
+                    "title": "Onboarding without us",
+                    "body": "You should be able to set up a new customer yourselves. If the answer is always \"we have to build that\", the platform does not scale."
+                },
+                {
+                    "title": "Shared operations",
+                    "body": "One codebase, one monitoring setup, one security update. That is the whole reason to build SaaS rather than an installation per customer."
+                },
+                {
+                    "title": "Billing",
+                    "body": "Subscription, usage or per transaction, with an invoice basis that adds up without manual re-entry."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "What separates a SaaS platform from an ordinary system?",
+                    "answer": "Many customers share operations and a codebase, but not data. That imposes demands on isolation, configurability and onboarding a single-customer system never meets."
+                },
+                {
+                    "question": "Can an existing solution be made into SaaS?",
+                    "answer": "Often, but it is a real rewrite of the data model and access control. We map what has to change before recommending it."
+                },
+                {
+                    "question": "Who owns the code?",
+                    "answer": "You do, if it is a client delivery. If we build on one of our own products, we agree a licence instead."
+                },
+                {
+                    "question": "Can it run in Norway?",
+                    "answer": "Yes. We run on Azure in Norwegian regions where that is a requirement, and document data processing for the procurement."
+                }
+            ],
+            "features": [
+                "Tenant isolation at the database level",
+                "Per-customer configuration without redeployment",
+                "Roles and access control per tenant",
+                "An onboarding flow you can run yourselves",
+                "Subscription, usage or transaction billing",
+                "Multilingual interface",
+                "Shared monitoring and logging across customers",
+                "An API for integration with customers own systems"
+            ]
+        },
+        "ar": {
+            "title": "تطوير تطبيقات SaaS",
+            "metaTitle": "تطوير تطبيقات SaaS ومنصات متعدّدة المستأجرين | Xala Technologies",
+            "metaDescription": "نبني منصات متعدّدة المستأجرين يخدم فيها حلّ واحد عملاء كثيرين، لكل منهم بياناته وإعداداته، على تشغيل مشترك.",
+            "intro": "منصة SaaS ليست نظاماً بمستخدمين كثر. الفرق أن لكل عميل بياناته وإعداداته وغالباً قواعده، بينما تشغّلون أنتم قاعدة شيفرة واحدة.",
+            "problemHeading": "أين تصبح مكلفة لاحقاً",
+            "problem": "إضافة تعدّد المستأجرين لاحقاً من أغلى عمليات إعادة الكتابة. يجب أن يفصل نموذج البيانات العملاء من الصف الأول، وأن يكون الإعداد بيانات لا شيفرة.",
+            "capabilityHeading": "ما الذي نبنيه",
+            "capabilities": [
+                {
+                    "title": "عزل لكل مستأجر",
+                    "body": "تُفصل البيانات على مستوى قاعدة البيانات لا في الاستعلامات فقط."
+                },
+                {
+                    "title": "الإعداد كبيانات",
+                    "body": "الأسعار والأدوار والنماذج والقواعد تُضبط لكل عميل دون نشر جديد."
+                },
+                {
+                    "title": "تهيئة دون تدخّلنا",
+                    "body": "ينبغي أن تتمكّنوا من إعداد عميل جديد بأنفسكم."
+                },
+                {
+                    "title": "تشغيل مشترك",
+                    "body": "قاعدة شيفرة واحدة ومراقبة واحدة وتحديث أمني واحد."
+                },
+                {
+                    "title": "الفوترة",
+                    "body": "اشتراك أو استهلاك أو لكل معاملة، بأساس فوترة صحيح دون إدخال يدوي."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "ما الذي يميّز منصة SaaS عن نظام عادي؟",
+                    "answer": "يتشارك عملاء كثيرون التشغيل وقاعدة الشيفرة لا البيانات."
+                },
+                {
+                    "question": "هل يمكن تحويل حل قائم إلى SaaS؟",
+                    "answer": "غالباً، لكنها إعادة كتابة فعلية لنموذج البيانات وإدارة الوصول."
+                },
+                {
+                    "question": "مَن يملك الشيفرة؟",
+                    "answer": "أنتم، إن كانت تسليماً للعميل."
+                },
+                {
+                    "question": "هل يمكن التشغيل في النرويج؟",
+                    "answer": "نعم، على Azure في مناطق نرويجية عند الطلب."
+                }
+            ],
+            "features": [
+                "عزل المستأجرين على مستوى قاعدة البيانات",
+                "إعداد لكل عميل دون نشر",
+                "أدوار وإدارة وصول لكل مستأجر",
+                "مسار تهيئة تديرونه بأنفسكم",
+                "فوترة بالاشتراك أو الاستهلاك أو المعاملة",
+                "واجهة متعدّدة اللغات",
+                "مراقبة وتسجيل مشترك",
+                "واجهة برمجية للتكامل مع أنظمة العملاء"
+            ]
+        }
+    },
+    "saksbehandlingsplattform": {
+        "slug": "saksbehandlingsplattform",
+        "icon": "Workflow",
+        "kind": "category",
+        "children": [
+            "tilskuddsportal",
+            "bevillingsportal",
+            "saksbehandlingssystem"
+        ],
+        "caseSlugs": [
+            "nordre-follo-tilskuddsportal-bevillingsportal",
+            "altinn"
+        ],
+        "postSlugs": [
+            "automatisering-av-saksbehandling-hva-boer-og-ikke"
+        ],
+        "no": {
+            "title": "Saksbehandlingsplattform",
+            "metaTitle": "Saksbehandlingsplattform for kommuner og etater | Xala Technologies",
+            "metaDescription": "Vi bygger saksbehandlingsplattformer for tilskudd, bevillinger og andre ordninger som går fra søknad til vedtak, med Noark-arkivering og ID-porten.",
+            "intro": "De fleste ordninger en kommune forvalter følger samme mønster: noen søker, noen vurderer, noen fatter et vedtak, og alt skal arkiveres. En saksbehandlingsplattform bygger det mønsteret én gang og lar ordningene være konfigurasjon.",
+            "problemHeading": "Hvorfor én plattform i stedet for tre systemer",
+            "problem": "Kommuner ender ofte med et system per ordning, kjøpt til ulik tid av ulike avdelinger. Da må hvert av dem integreres mot arkivet, mot ID-porten og mot registrene, og hver integrasjon må forvaltes for seg. Kostnaden ligger ikke i det første systemet, den ligger i det tredje.",
+            "capabilityHeading": "Hva plattformen gir",
+            "capabilities": [
+                {
+                    "title": "Ett sett integrasjoner",
+                    "body": "Arkiv, innlogging og registeroppslag bygges én gang og gjenbrukes av alle ordningene."
+                },
+                {
+                    "title": "Ordninger som konfigurasjon",
+                    "body": "Nytt regelverk gir nytt skjema og nye regler, ikke et nytt system."
+                },
+                {
+                    "title": "Én arbeidsflate for saksbehandleren",
+                    "body": "Samme kø, samme søk, samme historikk uansett hvilken ordning saken tilhører."
+                },
+                {
+                    "title": "Felles vedtaksmaler",
+                    "body": "Begrunnelse, hjemmel og klageadgang håndteres likt på tvers, som også er et krav i forvaltningsloven."
+                },
+                {
+                    "title": "Ett sted å oppdatere sikkerheten",
+                    "body": "En sikkerhetsfiks gjelder alle ordningene samtidig."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "Hva slags ordninger passer på en slik plattform?",
+                    "answer": "Alt som følger mønsteret søknad, vurdering, vedtak, arkiv. Tilskudd og bevillinger er de vanligste, men også dispensasjoner, godkjenninger og tilsyn passer."
+                },
+                {
+                    "question": "Kan vi starte med én ordning?",
+                    "answer": "Ja, og det anbefaler vi. Første ordning betaler for plattformen, og den andre koster en brøkdel fordi integrasjonene allerede står."
+                },
+                {
+                    "question": "Hvordan henger dette sammen med arkivet vårt?",
+                    "answer": "Noark-integrasjonen ligger i plattformen, ikke i hver enkelt ordning. Sak, dokumenter og parter struktureres for arkivet fra start."
+                },
+                {
+                    "question": "Må innbyggerne logge inn?",
+                    "answer": "Der saken krever identifisering, ja, med ID-porten. Der den ikke gjør det, bør de slippe."
+                }
+            ],
+            "features": [
+                "Felles saksmodell for alle ordninger",
+                "Skjemabygger med regelbasert validering",
+                "ID-porten og Maskinporten",
+                "Noark 5-arkivering",
+                "Vedtaksmaler med hjemmel og klageadgang",
+                "Frist-, purre- og varslingsmotor",
+                "Roller og tilgangsstyring per ordning",
+                "Statusinnsyn for søkeren",
+                "Rapportering på tvers av ordninger",
+                "Full sporbarhet og historikk"
+            ]
+        },
+        "en": {
+            "title": "Case management platform",
+            "metaTitle": "Case management platform for municipalities and agencies | Xala Technologies",
+            "metaDescription": "We build case management platforms for grants, licences and other schemes that run from application to decision, with Noark archiving and ID-porten.",
+            "intro": "Most schemes a municipality administers follow the same pattern: someone applies, someone assesses, someone decides, and all of it is archived. A platform builds that pattern once and makes the schemes configuration.",
+            "problemHeading": "Why one platform rather than three systems",
+            "problem": "Municipalities often end up with one system per scheme, bought at different times by different departments. Each then needs its own integration with the archive, with ID-porten and with the registers. The cost is not in the first system, it is in the third.",
+            "capabilityHeading": "What the platform gives you",
+            "capabilities": [
+                {
+                    "title": "One set of integrations",
+                    "body": "Archive, sign-in and register lookups are built once and reused by every scheme."
+                },
+                {
+                    "title": "Schemes as configuration",
+                    "body": "New regulation means a new form and new rules, not a new system."
+                },
+                {
+                    "title": "One work surface",
+                    "body": "The same queue, search and history whichever scheme a case belongs to."
+                },
+                {
+                    "title": "Shared decision templates",
+                    "body": "Reasoning, legal basis and right of appeal handled consistently, which is also what the law requires."
+                },
+                {
+                    "title": "One place to patch",
+                    "body": "A security fix applies to every scheme at once."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "What kinds of scheme suit this?",
+                    "answer": "Anything following the application, assessment, decision, archive pattern. Grants and licences are the most common, but exemptions, approvals and inspections fit too."
+                },
+                {
+                    "question": "Can we start with one scheme?",
+                    "answer": "Yes, and we recommend it. The first scheme pays for the platform and the second costs a fraction because the integrations already stand."
+                },
+                {
+                    "question": "How does this relate to our archive?",
+                    "answer": "Noark integration sits in the platform rather than in each scheme, and cases are structured for the archive from the start."
+                },
+                {
+                    "question": "Do citizens have to sign in?",
+                    "answer": "Where the case requires identification, yes, with ID-porten. Where it does not, they should not have to."
+                }
+            ],
+            "features": [
+                "A shared case model across schemes",
+                "Form builder with rule-based validation",
+                "ID-porten and Maskinporten",
+                "Noark 5 archiving",
+                "Decision templates with legal basis and appeal",
+                "Deadline, reminder and notification engine",
+                "Roles and access control per scheme",
+                "Status visibility for the applicant",
+                "Cross-scheme reporting",
+                "Full traceability and history"
+            ]
+        },
+        "ar": {
+            "title": "منصة إدارة القضايا",
+            "metaTitle": "منصة إدارة القضايا للبلديات والجهات | Xala Technologies",
+            "metaDescription": "نبني منصات إدارة قضايا للمنح والتراخيص وغيرها ممّا يسير من الطلب إلى القرار، بأرشفة Noark وID-porten.",
+            "intro": "تتبع معظم البرامج التي تديرها البلدية النمط نفسه: أحدهم يتقدّم، وآخر يقيّم، وثالث يقرّر، ويُؤرشف كل ذلك. تبني المنصة هذا النمط مرة واحدة وتجعل البرامج إعداداً.",
+            "problemHeading": "لماذا منصة واحدة بدل ثلاثة أنظمة",
+            "problem": "تنتهي البلديات غالباً بنظام لكل برنامج، اشترتها أقسام مختلفة في أوقات مختلفة. عندها يحتاج كل نظام تكاملاته الخاصة. التكلفة ليست في النظام الأول بل في الثالث.",
+            "capabilityHeading": "ما تمنحه المنصة",
+            "capabilities": [
+                {
+                    "title": "مجموعة تكاملات واحدة",
+                    "body": "يُبنى الأرشيف والدخول والاستعلامات مرة واحدة وتعيد كل البرامج استخدامها."
+                },
+                {
+                    "title": "البرامج كإعداد",
+                    "body": "لائحة جديدة تعني نموذجاً وقواعد جديدة لا نظاماً جديداً."
+                },
+                {
+                    "title": "واجهة عمل واحدة",
+                    "body": "القائمة والبحث والتاريخ نفسها مهما كان البرنامج."
+                },
+                {
+                    "title": "قوالب قرارات مشتركة",
+                    "body": "التبرير والسند وحق التظلّم تُعالَج بالطريقة نفسها."
+                },
+                {
+                    "title": "مكان واحد للتحديث",
+                    "body": "إصلاح أمني واحد يشمل كل البرامج."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "أي البرامج تناسب هذه المنصة؟",
+                    "answer": "كل ما يتبع نمط الطلب والتقييم والقرار والأرشفة."
+                },
+                {
+                    "question": "هل نبدأ ببرنامج واحد؟",
+                    "answer": "نعم، ونوصي بذلك. الأول يدفع ثمن المنصة والثاني يكلّف جزءاً يسيراً."
+                },
+                {
+                    "question": "ما علاقة هذا بأرشيفنا؟",
+                    "answer": "تكامل Noark في المنصة لا في كل برنامج."
+                },
+                {
+                    "question": "هل يجب أن يسجّل المواطنون الدخول؟",
+                    "answer": "حيث تتطلّب القضية التحقّق، نعم عبر ID-porten."
+                }
+            ],
+            "features": [
+                "نموذج قضايا مشترك",
+                "منشئ نماذج بتحقّق قائم على القواعد",
+                "ID-porten وMaskinporten",
+                "أرشفة Noark 5",
+                "قوالب قرارات بالسند وحق التظلّم",
+                "محرّك مواعيد وتذكيرات وإشعارات",
+                "أدوار وإدارة وصول لكل برنامج",
+                "إظهار الحالة للمتقدّم",
+                "تقارير عبر البرامج",
+                "تتبّع وتاريخ كاملان"
+            ]
+        }
+    },
+    "systemintegrasjon": {
+        "slug": "systemintegrasjon",
+        "icon": "Network",
+        "kind": "category",
+        "children": [
+            "integrasjoner"
+        ],
+        "caseSlugs": [
+            "altinn",
+            "norsk-helsenett-healthcare-infrastructure"
+        ],
+        "postSlugs": [
+            "integrasjoner-mot-nasjonale-felleskomponenter"
+        ],
+        "no": {
+            "title": "Systemintegrasjon",
+            "metaTitle": "Systemintegrasjon mot Altinn, ID-porten og fagsystemer | Xala Technologies",
+            "metaDescription": "Vi kobler sammen fagsystemer, registre og nasjonale felleskomponenter, og bygger integrasjonene slik at nedetid hos andre ikke stopper saksgangen.",
+            "intro": "Et system som ikke snakker med noe annet, finnes knapt i offentlig sektor. Integrasjonene er derfor sjelden en detalj i prosjektet. De er ofte det prosjektet faktisk handler om, og de er der de fleste forsinkelsene oppstår.",
+            "problemHeading": "Der prosjekter sporer av",
+            "problem": "Tilgang til felleskomponentene er en prosess med avtaler, roller og godkjenninger, ikke en konfigurasjon. Starter søknadene i sprint to, blir tilgangen den kritiske stien. Og testmiljøene ligner produksjon uten å være det, så noe oppfører seg alltid annerledes første gang det møter ekte data.",
+            "capabilityHeading": "Slik bygger vi integrasjoner",
+            "capabilities": [
+                {
+                    "title": "Antatt utilgjengelig",
+                    "body": "Vi spør for hvert oppslag om saksgangen kan fortsette uten det. Kan den det, blokkerer vi ikke innsending."
+                },
+                {
+                    "title": "Én oversikt over avhengigheter",
+                    "body": "Hvilke tjenester kalles, med hvilke scopes, mot hvilke avtaler, og hvem eier dem. Det er første spørsmål i en sikkerhetsgjennomgang."
+                },
+                {
+                    "title": "Cache-strategi per register",
+                    "body": "Enhetsregisteret og Folkeregisteret har ulike krav og skal ikke dele strategi."
+                },
+                {
+                    "title": "Feilmeldinger folk forstår",
+                    "body": "\"Teknisk feil\" gir telefoner. En melding som sier hva som skjedde og at søknaden er lagret, gjør det ikke."
+                },
+                {
+                    "title": "Overvåking av det dere ikke eier",
+                    "body": "Dere skal oppdage at en ekstern tjeneste er nede før innbyggerne melder det."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "Hvilke felleskomponenter jobber dere med?",
+                    "answer": "Altinn, ID-porten, Maskinporten, Folkeregisteret, Enhetsregisteret og Noark. Vi har levert integrasjoner mot disse i produksjon."
+                },
+                {
+                    "question": "Kan dere integrere mot fagsystemet vårt?",
+                    "answer": "Som regel ja, også når det er gammelt og dårlig dokumentert. Vi begynner med å følge dataene: hvor kommer de inn, hvor går de ut, og hvem oppdager det hvis de stopper."
+                },
+                {
+                    "question": "Hva med systemer uten API?",
+                    "answer": "Da finnes det som regel en database, en filutveksling eller en eksportjobb. Vi bygger en fasade foran det gamle i stedet for å vente på at leverandøren lager et API."
+                },
+                {
+                    "question": "Hvor lang tid tar tilgangssøknadene?",
+                    "answer": "Det varierer, men de bør startes samtidig med utviklingen. Vi hjelper til med søknadene og med å beskrive hvilke scopes dere faktisk trenger."
+                }
+            ],
+            "features": [
+                "ID-porten, Maskinporten og Altinn",
+                "Folkeregisteret og Enhetsregisteret",
+                "Noark 5-arkivintegrasjon",
+                "API-gateway med tilgangsstyring",
+                "Meldingskø for asynkron utveksling",
+                "Retry, timeout og fallback per tjeneste",
+                "Avhengighetsoversikt med scopes og avtaler",
+                "Overvåking og varsling ved nedetid hos tredjepart"
+            ]
+        },
+        "en": {
+            "title": "System integration",
+            "metaTitle": "System integration with Altinn, ID-porten and legacy systems | Xala Technologies",
+            "metaDescription": "We connect line-of-business systems, registers and national components, and build the integrations so that downtime elsewhere does not stop the case.",
+            "intro": "A system that talks to nothing else barely exists in the public sector. Integrations are rarely a detail of the project; they are often what the project is, and where most delays arise.",
+            "problemHeading": "Where projects derail",
+            "problem": "Access to the national components is a process of agreements, roles and approvals, not a configuration. Start the applications in sprint two and access becomes the critical path.",
+            "capabilityHeading": "How we build integrations",
+            "capabilities": [
+                {
+                    "title": "Assume unavailable",
+                    "body": "For every lookup we ask whether the case can proceed without it. If it can, we do not block submission."
+                },
+                {
+                    "title": "One dependency list",
+                    "body": "Which services are called, with which scopes, under which agreements, and who owns them."
+                },
+                {
+                    "title": "A cache strategy per register",
+                    "body": "The business and population registers have different rules and should not share one."
+                },
+                {
+                    "title": "Errors people understand",
+                    "body": "\"Technical error\" generates calls. A message saying what happened and that the application is saved does not."
+                },
+                {
+                    "title": "Monitoring what you do not own",
+                    "body": "You should know an external service is down before citizens report it."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "Which national components do you work with?",
+                    "answer": "Altinn, ID-porten, Maskinporten, the population and business registers, and Noark, all in production."
+                },
+                {
+                    "question": "Can you integrate with our legacy system?",
+                    "answer": "Usually yes, including when it is old and poorly documented. We start by following the data."
+                },
+                {
+                    "question": "What about systems with no API?",
+                    "answer": "There is usually a database, a file exchange or an export job. We build a facade in front of the old system rather than waiting for a vendor API."
+                },
+                {
+                    "question": "How long do access applications take?",
+                    "answer": "It varies, but they should start alongside development. We help with the applications and with describing the scopes you actually need."
+                }
+            ],
+            "features": [
+                "ID-porten, Maskinporten and Altinn",
+                "The population and business registers",
+                "Noark 5 archive integration",
+                "API gateway with access control",
+                "Message queue for asynchronous exchange",
+                "Retry, timeout and fallback per service",
+                "Dependency list with scopes and agreements",
+                "Monitoring and alerting on third-party downtime"
+            ]
+        },
+        "ar": {
+            "title": "تكامل الأنظمة",
+            "metaTitle": "تكامل الأنظمة مع Altinn وID-porten والأنظمة القائمة | Xala Technologies",
+            "metaDescription": "نربط الأنظمة المؤسسية والسجلات والمكوّنات الوطنية، ونبني التكاملات بحيث لا يوقف تعطّل الآخرين سير القضية.",
+            "intro": "يكاد لا يوجد في القطاع العام نظام لا يتحدّث مع غيره. لذا فالتكاملات نادراً ما تكون تفصيلاً، وغالباً هي المشروع نفسه.",
+            "problemHeading": "أين تنحرف المشاريع",
+            "problem": "الوصول إلى المكوّنات الوطنية عملية اتفاقيات وأدوار وموافقات لا إعداداً.",
+            "capabilityHeading": "كيف نبني التكاملات",
+            "capabilities": [
+                {
+                    "title": "افترض عدم التوفّر",
+                    "body": "نسأل عن كل استعلام إن كانت القضية تستمر بدونه."
+                },
+                {
+                    "title": "قائمة اعتماديات واحدة",
+                    "body": "أي الخدمات تُستدعى وبأي نطاقات وتحت أي اتفاقيات."
+                },
+                {
+                    "title": "استراتيجية تخزين لكل سجل",
+                    "body": "لسجلّي المنشآت والسكان قواعد مختلفة."
+                },
+                {
+                    "title": "رسائل خطأ مفهومة",
+                    "body": "\"خطأ تقني\" يولّد اتصالات، والرسالة الواضحة لا."
+                },
+                {
+                    "title": "مراقبة ما لا تملكونه",
+                    "body": "ينبغي أن تعرفوا بتعطّل خدمة خارجية قبل أن يبلّغ المواطنون."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "مع أي مكوّنات وطنية تعملون؟",
+                    "answer": "Altinn وID-porten وMaskinporten والسجلات وNoark، جميعها في الإنتاج."
+                },
+                {
+                    "question": "هل يمكنكم التكامل مع نظامنا القديم؟",
+                    "answer": "غالباً نعم، حتى لو كان قديماً وضعيف التوثيق."
+                },
+                {
+                    "question": "وماذا عن أنظمة بلا واجهة برمجية؟",
+                    "answer": "عادة توجد قاعدة بيانات أو تبادل ملفات، ونبني واجهة أمام القديم."
+                },
+                {
+                    "question": "كم تستغرق طلبات الوصول؟",
+                    "answer": "يتفاوت، لكن ينبغي أن تبدأ مع التطوير."
+                }
+            ],
+            "features": [
+                "ID-porten وMaskinporten وAltinn",
+                "سجلّا السكان والمنشآت",
+                "تكامل أرشيف Noark 5",
+                "بوابة واجهات بإدارة وصول",
+                "طابور رسائل للتبادل غير المتزامن",
+                "إعادة محاولة ومهلة وبديل لكل خدمة",
+                "قائمة اعتماديات بالنطاقات والاتفاقيات",
+                "مراقبة وتنبيه عند تعطّل طرف ثالث"
+            ]
+        }
+    },
+    "modernisering-av-fagsystemer": {
+        "slug": "modernisering-av-fagsystemer",
+        "icon": "Layers",
+        "kind": "category",
+        "children": [],
+        "caseSlugs": [
+            "ssb-legacy-system-modernization",
+            "altinn"
+        ],
+        "postSlugs": [
+            "modernisere-fagsystem-uten-driftsstans"
+        ],
+        "no": {
+            "title": "Modernisering av fagsystemer",
+            "metaTitle": "Modernisering av fagsystemer uten driftsstans | Xala Technologies",
+            "metaDescription": "Vi moderniserer fagsystemer modul for modul bak en fasade, slik at driften går mens systemet byttes ut.",
+            "intro": "Et gammelt fagsystem er sjelden ett problem. Det er en samling avhengigheter som er blitt usynlige fordi de har fungert lenge. Modernisering handler først om å finne dem, og deretter om å bytte ut én om gangen mens alt annet fortsetter å virke.",
+            "problemHeading": "Hvorfor store omskrivinger feiler",
+            "problem": "Den vanligste planen er å bygge det nye ved siden av det gamle og bytte på en gitt dato. Den datoen kommer sjelden, fordi det gamle systemet gjør flere ting enn noen husker, og fordi alt må være ferdig samtidig. Risikoen samles på ett punkt i stedet for å fordeles.",
+            "capabilityHeading": "Slik gjør vi det",
+            "capabilities": [
+                {
+                    "title": "Fasade først",
+                    "body": "En fasade foran det gamle systemet gjør at klienter slutter å kalle det direkte. Etter det kan innmaten byttes uten at noen merker det."
+                },
+                {
+                    "title": "Start med lesing",
+                    "body": "Rapporter og oppslag kan flyttes uten å endre hvordan data oppstår. Det gir en reell produksjonstest før noe kritisk står på spill."
+                },
+                {
+                    "title": "Følg dataene",
+                    "body": "Hvor kommer de inn, hvor går de ut, og hvem oppdager det hvis de stopper. Svaret på det siste peker på integrasjonene ingen har dokumentert."
+                },
+                {
+                    "title": "Én modul om gangen",
+                    "body": "Hver modul gir noe som virker, og gjør estimatet på den neste mer realistisk."
+                },
+                {
+                    "title": "Anskaffelsen må tåle etapper",
+                    "body": "En modulvis leveranse passer dårlig med én stor fastpriskontrakt, og bedre med en avtale der omfanget avtales per leveranse."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "Kan systemet være i drift mens dere jobber?",
+                    "answer": "Ja, det er hele poenget med metoden. Vi bytter modul for modul bak en fasade i stedet for å erstatte alt på én dato."
+                },
+                {
+                    "question": "Hvor begynner dere?",
+                    "answer": "Med lesing framfor skriving. Rapporter og visninger kan flyttes uten å endre hvordan data oppstår, og gir en test i produksjon tidlig."
+                },
+                {
+                    "question": "Hva om vi ikke vet hva systemet gjør?",
+                    "answer": "Det er det vanlige. Vi følger dataene inn og ut og kartlegger avhengighetene før noe røres. Kartleggingen er ofte den mest verdifulle leveransen i seg selv."
+                },
+                {
+                    "question": "Hvilken kontraktsform passer?",
+                    "answer": "En avtale som gir rom for etapper, for eksempel SSA-S eller en smidig utviklingsavtale. Da finansierer de første modulene læringen som gjør estimatene på de neste realistiske."
+                }
+            ],
+            "features": [
+                "Kartlegging av avhengigheter og dataflyt",
+                "Fasade foran eksisterende system",
+                "Modulvis migrasjon med produksjon i drift",
+                "Flytting fra lokal drift til Azure",
+                "Datamigrasjon med avstemming",
+                "Parallellkjøring og sammenligning av resultater",
+                "Rullende utrulling med mulighet for tilbakerulling",
+                "Dokumentasjon og overlevering underveis"
+            ]
+        },
+        "en": {
+            "title": "Legacy system modernisation",
+            "metaTitle": "Legacy system modernisation without downtime | Xala Technologies",
+            "metaDescription": "We modernise line-of-business systems module by module behind a facade, so the service keeps running while the system is replaced.",
+            "intro": "An old system is rarely one problem. It is a set of dependencies that became invisible because they worked for years. Modernisation is first about finding them, then replacing one at a time while everything else keeps working.",
+            "problemHeading": "Why big rewrites fail",
+            "problem": "The usual plan is to build the new alongside the old and switch on a date. That date rarely arrives, because the old system does more than anyone remembers and everything has to be finished at once.",
+            "capabilityHeading": "How we do it",
+            "capabilities": [
+                {
+                    "title": "Facade first",
+                    "body": "A facade in front of the old system stops clients calling it directly. After that the internals can change unnoticed."
+                },
+                {
+                    "title": "Start with reads",
+                    "body": "Reports and lookups move without changing how data is created, giving a real production test before anything critical is at stake."
+                },
+                {
+                    "title": "Follow the data",
+                    "body": "Where it enters, where it leaves, and who notices if it stops. The last question points at the undocumented integrations."
+                },
+                {
+                    "title": "One module at a time",
+                    "body": "Each module produces something that works and makes the next estimate more realistic."
+                },
+                {
+                    "title": "The contract has to allow stages",
+                    "body": "Module-by-module delivery suits an agreement where scope is set per delivery rather than one large fixed price."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "Can the system stay in production while you work?",
+                    "answer": "Yes, that is the point of the method."
+                },
+                {
+                    "question": "Where do you start?",
+                    "answer": "With reads rather than writes, which gives an early production test."
+                },
+                {
+                    "question": "What if we do not know what the system does?",
+                    "answer": "That is the normal case. We follow the data in and out and map dependencies before anything is touched."
+                },
+                {
+                    "question": "What contract form suits?",
+                    "answer": "One that allows stages, such as SSA-S or an agile development agreement."
+                }
+            ],
+            "features": [
+                "Dependency and data-flow mapping",
+                "Facade in front of the existing system",
+                "Module-by-module migration with production running",
+                "Move from on-premises to Azure",
+                "Data migration with reconciliation",
+                "Parallel running and result comparison",
+                "Rolling deployment with rollback",
+                "Documentation and handover as you go"
+            ]
+        },
+        "ar": {
+            "title": "تحديث الأنظمة القائمة",
+            "metaTitle": "تحديث الأنظمة القائمة دون توقّف | Xala Technologies",
+            "metaDescription": "نحدّث الأنظمة المؤسسية وحدة تلو الأخرى خلف واجهة، فيستمر التشغيل بينما يُستبدل النظام.",
+            "intro": "النظام القديم نادراً ما يكون مشكلة واحدة. إنه مجموعة اعتماديات صارت غير مرئية لأنها عملت سنوات.",
+            "problemHeading": "لماذا تفشل عمليات إعادة الكتابة الكبرى",
+            "problem": "الخطة المعتادة هي بناء الجديد بجانب القديم والتبديل في تاريخ محدّد، وهو تاريخ نادراً ما يأتي.",
+            "capabilityHeading": "كيف نفعلها",
+            "capabilities": [
+                {
+                    "title": "الواجهة أولاً",
+                    "body": "واجهة أمام النظام القديم توقف استدعاءه مباشرة."
+                },
+                {
+                    "title": "ابدأ بالقراءة",
+                    "body": "تنتقل التقارير دون تغيير كيفية نشوء البيانات."
+                },
+                {
+                    "title": "اتبع البيانات",
+                    "body": "من أين تدخل وإلى أين تخرج ومَن يلاحظ إن توقّفت."
+                },
+                {
+                    "title": "وحدة واحدة في كل مرة",
+                    "body": "كل وحدة تنتج شيئاً يعمل وتجعل التقدير التالي أدقّ."
+                },
+                {
+                    "title": "العقد يجب أن يسمح بالمراحل",
+                    "body": "التسليم على وحدات يناسب اتفاقاً يُحدَّد نطاقه لكل تسليم."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "هل يبقى النظام يعمل أثناء ذلك؟",
+                    "answer": "نعم، وهذا جوهر الأسلوب."
+                },
+                {
+                    "question": "من أين تبدأون؟",
+                    "answer": "بالقراءة قبل الكتابة."
+                },
+                {
+                    "question": "وإن كنّا لا نعرف ما يفعله النظام؟",
+                    "answer": "هذه الحالة المعتادة، ونبدأ بتتبّع البيانات."
+                },
+                {
+                    "question": "أي شكل تعاقدي يناسب؟",
+                    "answer": "ما يسمح بالمراحل مثل SSA-S أو اتفاق تطوير مرن."
+                }
+            ],
+            "features": [
+                "حصر الاعتماديات وتدفّق البيانات",
+                "واجهة أمام النظام القائم",
+                "ترحيل وحدة تلو الأخرى مع استمرار الإنتاج",
+                "الانتقال إلى Azure",
+                "ترحيل البيانات مع المطابقة",
+                "تشغيل متوازٍ ومقارنة النتائج",
+                "نشر تدريجي مع إمكانية التراجع",
+                "توثيق وتسليم أثناء العمل"
+            ]
+        }
+    },
+    "automatisering-og-ai": {
+        "slug": "automatisering-og-ai",
+        "icon": "Sparkles",
+        "kind": "category",
+        "children": [],
+        "caseSlugs": [
+            "altinn"
+        ],
+        "postSlugs": [
+            "automatisering-av-saksbehandling-hva-boer-og-ikke"
+        ],
+        "no": {
+            "title": "Automatisering og AI",
+            "metaTitle": "Automatisering av saksbehandling og AI i offentlig sektor | Xala Technologies",
+            "metaDescription": "Vi automatiserer det som følger av regler, og lar skjønnet ligge hos saksbehandleren. Vedtak skal alltid kunne forklares.",
+            "intro": "Automatisering i saksbehandling handler sjelden om å erstatte saksbehandleren. Det handler om å ta bort alt som ikke krever et menneske, slik at tiden går med til vurderingene som faktisk gjør det.",
+            "problemHeading": "Skillet som avgjør",
+            "problem": "Skillet går ikke ved hvor komplisert oppgaven er, men ved om utfallet kan utledes av regelverket alene. Kan det det, bør det automatiseres. Krever det skjønn, skal mennesket ha både informasjonen og tiden til å utøve det.",
+            "capabilityHeading": "Hva vi automatiserer",
+            "capabilities": [
+                {
+                    "title": "Alt rundt vurderingen",
+                    "body": "Frister, purringer, statusvarsler, kontroll av vedlegg og oppslag i registre. Det er også der mesteparten av tidsbruken ligger."
+                },
+                {
+                    "title": "Regler som kan forklares",
+                    "body": "En regelmotor som kan produsere \"avslag fordi X\" er langt mer verdt enn en som bare produserer \"avslag\". Det er også et krav den dagen noen klager."
+                },
+                {
+                    "title": "Mennesket i sløyfa som designvalg",
+                    "body": "Hundre forhåndsutfylte forslag med en godkjenn-knapp gir formell kontroll, ikke reell. Saksbehandleren må se hva systemet la vekt på og ha tid til å overprøve."
+                },
+                {
+                    "title": "Måling på liggetid",
+                    "body": "Antall automatiserte steg sier lite. Tiden fra innsending til svar sier alt."
+                },
+                {
+                    "title": "AI der det er forsvarlig",
+                    "body": "Forslag, uttrekk og sortering, med begrunnelsen synlig. Ikke vedtak uten sporbar hjemmel."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "Kan vi fatte helautomatiske vedtak?",
+                    "answer": "Ja, det er tillatt i norsk forvaltning, men de må kunne begrunnes. Reglene må være uttrykt slik at de kan gjengis i klartekst, ikke bare kjøres."
+                },
+                {
+                    "question": "Hvordan måler vi effekten?",
+                    "answer": "På liggetid fra innsending til svar, ikke på antall automatiserte steg. De to henger mindre sammen enn man tror."
+                },
+                {
+                    "question": "Bruker dere språkmodeller?",
+                    "answer": "Der de gir noe et regelverk ikke kan gi, som uttrekk fra fritekst eller sortering av henvendelser. Ikke til å fatte vedtak."
+                },
+                {
+                    "question": "Hva med personvern?",
+                    "answer": "Automatisert behandling av personopplysninger krever et rettslig grunnlag og informasjon til den registrerte. Vi bygger sporbarhet og innsyn inn fra start."
+                }
+            ],
+            "features": [
+                "Regelmotor med forklarbare utfall",
+                "Automatisk frist- og purrestyring",
+                "Kontroll og klassifisering av vedlegg",
+                "Forhåndsutfylling fra registre",
+                "Køstyring og prioritering for saksbehandler",
+                "Uttrekk av data fra fritekst og dokumenter",
+                "Beslutningsstøtte med synlig begrunnelse",
+                "Full sporbarhet for etterprøving og klage"
+            ]
+        },
+        "en": {
+            "title": "Automation and AI",
+            "metaTitle": "Automating casework and AI in the public sector | Xala Technologies",
+            "metaDescription": "We automate what follows from rules and leave judgement with the caseworker. A decision must always be explainable.",
+            "intro": "Automation in casework is rarely about replacing the caseworker. It is about removing everything that does not require a person, so the time goes on the judgements that do.",
+            "problemHeading": "The distinction that decides it",
+            "problem": "The line is not how complicated the task is, but whether the outcome follows from the regulation alone. If it does, automate it. If it needs discretion, the person needs both the information and the time to exercise it.",
+            "capabilityHeading": "What we automate",
+            "capabilities": [
+                {
+                    "title": "Everything around the assessment",
+                    "body": "Deadlines, reminders, status notices, attachment checks and register lookups."
+                },
+                {
+                    "title": "Rules that can be explained",
+                    "body": "An engine that produces \"rejected because X\" is worth far more than one producing \"rejected\"."
+                },
+                {
+                    "title": "A human in the loop by design",
+                    "body": "A hundred prefilled proposals with an approve button is formal control, not real control."
+                },
+                {
+                    "title": "Measure elapsed time",
+                    "body": "The number of automated steps says little. The time from submission to answer says everything."
+                },
+                {
+                    "title": "AI where it is defensible",
+                    "body": "Suggestions, extraction and sorting, with the reasoning visible. Not decisions without a traceable basis."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "Can we make fully automated decisions?",
+                    "answer": "Yes, Norwegian administrative law allows it, but they must be justifiable."
+                },
+                {
+                    "question": "How do we measure the effect?",
+                    "answer": "On elapsed time from submission to answer, not on the number of automated steps."
+                },
+                {
+                    "question": "Do you use language models?",
+                    "answer": "Where they give something rules cannot, such as extraction from free text. Not for making decisions."
+                },
+                {
+                    "question": "What about privacy?",
+                    "answer": "Automated processing of personal data needs a legal basis and information to the data subject. We build traceability in from the start."
+                }
+            ],
+            "features": [
+                "Rules engine with explainable outcomes",
+                "Automatic deadline and reminder handling",
+                "Attachment checking and classification",
+                "Prefill from registers",
+                "Queue handling and prioritisation",
+                "Data extraction from free text and documents",
+                "Decision support with visible reasoning",
+                "Full traceability for review and appeal"
+            ]
+        },
+        "ar": {
+            "title": "الأتمتة والذكاء الاصطناعي",
+            "metaTitle": "أتمتة معالجة القضايا والذكاء الاصطناعي في القطاع العام | Xala Technologies",
+            "metaDescription": "نؤتمت ما ينتج عن القواعد ونترك التقدير لموظف الحالة. يجب أن يكون القرار قابلاً للتفسير دائماً.",
+            "intro": "الأتمتة في معالجة القضايا نادراً ما تعني استبدال الموظف، بل إزالة ما لا يحتاج إنساناً.",
+            "problemHeading": "الفارق الحاسم",
+            "problem": "الحدّ ليس في تعقيد المهمة بل في إمكان استنتاج النتيجة من اللائحة وحدها.",
+            "capabilityHeading": "ما الذي نؤتمته",
+            "capabilities": [
+                {
+                    "title": "كل ما يحيط بالتقييم",
+                    "body": "المواعيد والتذكيرات والإشعارات وفحص المرفقات والاستعلامات."
+                },
+                {
+                    "title": "قواعد قابلة للتفسير",
+                    "body": "محرّك ينتج \"رفض بسبب كذا\" أثمن بكثير من محرّك ينتج \"رفض\"."
+                },
+                {
+                    "title": "الإنسان في الحلقة بالتصميم",
+                    "body": "مئة اقتراح جاهز وزرّ موافقة رقابة شكلية لا فعلية."
+                },
+                {
+                    "title": "قِس زمن الإنجاز",
+                    "body": "عدد الخطوات المؤتمتة يقول القليل، وزمن الردّ يقول كل شيء."
+                },
+                {
+                    "title": "ذكاء اصطناعي حيث يصحّ",
+                    "body": "اقتراحات واستخراج وفرز مع إظهار المبرّر، لا قرارات بلا سند."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "هل يمكن إصدار قرارات مؤتمتة بالكامل؟",
+                    "answer": "نعم يسمح القانون النرويجي بذلك، لكن يجب تبريرها."
+                },
+                {
+                    "question": "كيف نقيس الأثر؟",
+                    "answer": "بزمن الإنجاز من التقديم إلى الردّ."
+                },
+                {
+                    "question": "هل تستخدمون نماذج لغوية؟",
+                    "answer": "حيث تقدّم ما لا تقدّمه القواعد، لا لإصدار القرارات."
+                },
+                {
+                    "question": "وماذا عن الخصوصية؟",
+                    "answer": "تحتاج المعالجة المؤتمتة سنداً قانونياً وإعلاماً لصاحب البيانات."
+                }
+            ],
+            "features": [
+                "محرّك قواعد بنتائج قابلة للتفسير",
+                "إدارة تلقائية للمواعيد والتذكيرات",
+                "فحص المرفقات وتصنيفها",
+                "تعبئة مسبقة من السجلات",
+                "إدارة القوائم وترتيب الأولويات",
+                "استخراج البيانات من النصوص والمستندات",
+                "دعم قرار بمبرّر ظاهر",
+                "تتبّع كامل للمراجعة والتظلّم"
+            ]
+        }
+    },
+    "forvaltning-og-drift": {
+        "slug": "forvaltning-og-drift",
+        "icon": "ShieldCheck",
+        "kind": "category",
+        "children": [],
+        "caseSlugs": [
+            "norsk-helsenett-healthcare-infrastructure",
+            "sykehuspartner-forskningsportal"
+        ],
+        "postSlugs": [],
+        "no": {
+            "title": "Forvaltning, drift og sikkerhet",
+            "metaTitle": "Forvaltning og drift av fagsystemer | Xala Technologies",
+            "metaDescription": "Vi forvalter det vi bygger: oppdateringer, sikkerhetsfikser, overvåking og videreutvikling etter lansering. ISO 27001-sertifisert.",
+            "intro": "Et system som skal driftes i ti år, designes annerledes enn ett som skal demonstreres én gang. Vi blir værende etter lansering, og det er ikke en ettertanke. Det er grunnen til at driftbarhet er et designvalg hos oss.",
+            "problemHeading": "Hvorfor lansering er midtveis",
+            "problem": "De fleste kostnadene i et fagsystems levetid kommer etter at det er satt i drift. Likevel planlegges de fleste prosjekter som om lansering er målstreken. Da blir overvåking, logging og oppdateringsrutiner noe som legges på i etterkant, der det er dyrest.",
+            "capabilityHeading": "Hva en forvaltningsavtale dekker",
+            "capabilities": [
+                {
+                    "title": "Oppdateringer og sikkerhetsfikser",
+                    "body": "Avhengigheter oppdateres løpende, ikke når noe har skjedd. Sikkerhetsvarsler følges opp innen avtalte frister."
+                },
+                {
+                    "title": "Overvåking og varsling",
+                    "body": "Dere skal vite at noe er galt før brukerne melder det, også når feilen ligger hos en tredjepart dere er avhengige av."
+                },
+                {
+                    "title": "Videreutvikling",
+                    "body": "Regelverk endres, og systemet må følge med. Det er lettere med et team som allerede kjenner koden."
+                },
+                {
+                    "title": "Dokumentasjon som holdes ved like",
+                    "body": "Arkitektur, avhengigheter og driftsrutiner oppdateres når systemet endres, ikke ved prosjektslutt."
+                },
+                {
+                    "title": "Exit uten innlåsing",
+                    "body": "Vi kan overlevere til deres eget team med dokumentasjon og opplæring. Vi låser ingen inn."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "Må vi ha forvaltningsavtale?",
+                    "answer": "Nei. De fleste kundene våre velger det, men vi kan også overlevere til deres eget utviklingsteam med dokumentasjon og opplæring."
+                },
+                {
+                    "question": "Er dere sertifisert?",
+                    "answer": "Ja, vi er ISO 27001-sertifisert. Vi følger også kravene i personvernforordningen og bygger sporbarhet inn i datamodellen."
+                },
+                {
+                    "question": "Hva med responstider?",
+                    "answer": "De avtales i forvaltningsavtalen, med ulike frister for sikkerhetshendelser, driftsstans og ordinære henvendelser."
+                },
+                {
+                    "question": "Kan dere drifte i norske regioner?",
+                    "answer": "Ja. Vi drifter på Azure og kan legge både data og behandling i norske regioner der det er et krav i anskaffelsen."
+                }
+            ],
+            "features": [
+                "Oppdatering av avhengigheter og sikkerhetsfikser",
+                "Overvåking, logging og varsling",
+                "Avtalte responstider per hendelsestype",
+                "Videreutvikling etter regelverksendringer",
+                "Vedlikeholdt arkitektur- og driftsdokumentasjon",
+                "Sikkerhetskopiering og gjenopprettingstest",
+                "Tilgangsstyring og revisjonsspor",
+                "Overlevering til eget team ved behov"
+            ]
+        },
+        "en": {
+            "title": "Operations, support and security",
+            "metaTitle": "Operations and support for line-of-business systems | Xala Technologies",
+            "metaDescription": "We keep running what we build: updates, security fixes, monitoring and further development after launch. ISO 27001 certified.",
+            "intro": "A system meant to run for ten years is designed differently from one meant to be demonstrated once. We stay on after launch, and that is not an afterthought.",
+            "problemHeading": "Why launch is halfway",
+            "problem": "Most of the cost over a system lifetime comes after it goes live, yet most projects are planned as though launch is the finish line.",
+            "capabilityHeading": "What a support agreement covers",
+            "capabilities": [
+                {
+                    "title": "Updates and security fixes",
+                    "body": "Dependencies are updated continuously rather than after an incident."
+                },
+                {
+                    "title": "Monitoring and alerting",
+                    "body": "You should know something is wrong before users report it, including when the fault is with a third party."
+                },
+                {
+                    "title": "Further development",
+                    "body": "Regulation changes and the system has to follow, which is easier with a team that already knows the code."
+                },
+                {
+                    "title": "Documentation kept current",
+                    "body": "Architecture, dependencies and operational routines are updated when the system changes."
+                },
+                {
+                    "title": "Exit without lock-in",
+                    "body": "We can hand over to your own team with documentation and training."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "Do we have to take a support agreement?",
+                    "answer": "No. Most clients choose to, but we can hand over to your own team."
+                },
+                {
+                    "question": "Are you certified?",
+                    "answer": "Yes, ISO 27001. We also follow GDPR and build traceability into the data model."
+                },
+                {
+                    "question": "What about response times?",
+                    "answer": "Agreed in the support contract, with different deadlines for security incidents and ordinary requests."
+                },
+                {
+                    "question": "Can you host in Norwegian regions?",
+                    "answer": "Yes, on Azure, with both data and processing in Norwegian regions where the procurement requires it."
+                }
+            ],
+            "features": [
+                "Dependency updates and security fixes",
+                "Monitoring, logging and alerting",
+                "Agreed response times per incident type",
+                "Further development after regulatory change",
+                "Maintained architecture and operations documentation",
+                "Backup and restore testing",
+                "Access control and audit trail",
+                "Handover to your own team when wanted"
+            ]
+        },
+        "ar": {
+            "title": "التشغيل والدعم والأمن",
+            "metaTitle": "تشغيل ودعم الأنظمة المؤسسية | Xala Technologies",
+            "metaDescription": "نواصل تشغيل ما نبنيه: التحديثات وإصلاحات الأمن والمراقبة والتطوير بعد الإطلاق. حاصلون على ISO 27001.",
+            "intro": "النظام المصمّم للعمل عشر سنوات يُصمّم بطريقة مختلفة عن نظام يُعرض مرة واحدة.",
+            "problemHeading": "لماذا الإطلاق منتصف الطريق",
+            "problem": "معظم التكلفة عبر عمر النظام تأتي بعد التشغيل، ومع ذلك تُخطَّط المشاريع كأن الإطلاق خط النهاية.",
+            "capabilityHeading": "ما تغطّيه اتفاقية التشغيل",
+            "capabilities": [
+                {
+                    "title": "التحديثات وإصلاحات الأمن",
+                    "body": "تُحدَّث الاعتماديات باستمرار لا بعد وقوع حادث."
+                },
+                {
+                    "title": "المراقبة والتنبيه",
+                    "body": "ينبغي أن تعرفوا بالخلل قبل أن يبلّغ المستخدمون."
+                },
+                {
+                    "title": "التطوير المستمر",
+                    "body": "تتغيّر اللوائح ويجب أن يتبعها النظام."
+                },
+                {
+                    "title": "توثيق محدَّث",
+                    "body": "تُحدَّث المعمارية والاعتماديات وإجراءات التشغيل مع تغيّر النظام."
+                },
+                {
+                    "title": "خروج دون احتكار",
+                    "body": "يمكننا التسليم لفريقكم مع التوثيق والتدريب."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "هل اتفاقية التشغيل إلزامية؟",
+                    "answer": "لا، لكن معظم عملائنا يختارونها."
+                },
+                {
+                    "question": "هل أنتم معتمدون؟",
+                    "answer": "نعم، ISO 27001، ونلتزم بالقواعد الأوروبية لحماية البيانات."
+                },
+                {
+                    "question": "وماذا عن أزمنة الاستجابة؟",
+                    "answer": "تُتّفق في العقد بمواعيد مختلفة حسب نوع الحادث."
+                },
+                {
+                    "question": "هل يمكن التشغيل في مناطق نرويجية؟",
+                    "answer": "نعم على Azure عند اشتراط ذلك."
+                }
+            ],
+            "features": [
+                "تحديث الاعتماديات وإصلاحات الأمن",
+                "مراقبة وتسجيل وتنبيه",
+                "أزمنة استجابة متّفق عليها",
+                "تطوير بعد التغيّرات التنظيمية",
+                "توثيق معماري وتشغيلي محدَّث",
+                "نسخ احتياطي واختبار استعادة",
+                "إدارة وصول ومسار تدقيق",
+                "تسليم لفريقكم عند الحاجة"
             ]
         }
     }
