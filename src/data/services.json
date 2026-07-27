@@ -1,116 +1,380 @@
 {
     "no": [
         {
-            "id": "saksbehandling-no",
-            "title": "Saksbehandlingssystemer",
-            "description": "Fagsystemer som tar en sak fra innsending til vedtak: køer i stedet for innbokser, sporbare beslutninger, og arkivering som følger av saksgangen framfor å være en jobb til slutt.",
-            "icon": "Workflow"
+            "id": "saksbehandlingsplattform",
+            "title": "Saksbehandlingsplattform",
+            "description": "Plattformer som tar en sak fra innsending til vedtak, med sporbare beslutninger og arkivering mot Noark.",
+            "icon": "Workflow",
+            "platforms": [
+                {
+                    "title": "Tilskuddsportal",
+                    "description": "Søknad, vurdering og vedtak for tilskuddsordninger, med kø for saksbehandleren.",
+                    "slug": "tilskuddsportal"
+                },
+                {
+                    "title": "Bevillingsportal",
+                    "description": "Skjenke- og salgsbevillinger med parallelle høringer og automatiske purringer.",
+                    "slug": "bevillingsportal"
+                },
+                {
+                    "title": "Søknads- og vedtaksløsninger",
+                    "description": "Andre ordninger som følger samme mønster: innsending, vurdering, vedtak, arkiv.",
+                    "slug": "saksbehandlingssystem"
+                }
+            ]
         },
         {
-            "id": "portaler-no",
-            "title": "Tilskudds- og bevillingsportaler",
-            "description": "Søknadsløsninger søkerne kommer gjennom uten å ringe. Skjemaer som validerer mot regelverket, lagrer underveis, og gir saksbehandleren et komplett grunnlag.",
-            "icon": "ClipboardList"
+            "id": "saas",
+            "title": "SaaS-applikasjonsutvikling",
+            "description": "Flerleietakerplattformer der samme løsning driftes for mange kunder, med egne data og egen konfigurasjon per kunde.",
+            "icon": "Boxes",
+            "platforms": [
+                {
+                    "title": "Booking- og utleieplattform",
+                    "description": "Booking, sesongtildeling og fakturering av lokaler og utstyr. Digilist er bygget slik."
+                },
+                {
+                    "title": "Skjemaplattform",
+                    "description": "Skjemaer som validerer mot regelverket underveis. Digiskjema er bygget slik."
+                },
+                {
+                    "title": "Digitale markedsplasser",
+                    "description": "Tilbud, etterspørsel og oppgjør i samme plattform, med roller per aktørtype."
+                }
+            ]
         },
         {
-            "id": "integrasjon-no",
-            "title": "Integrasjoner",
-            "description": "Koblinger mot Altinn, Folkeregisteret, Enhetsregisteret, ID-porten, Maskinporten og Noark. Vi bygger dem ut fra at nedetid hos andre er en normaltilstand, ikke et unntak.",
-            "icon": "Network"
+            "id": "integrasjon",
+            "title": "Systemintegrasjon",
+            "description": "Koblinger mot registre, fagsystemer og nasjonale felleskomponenter, bygget for at nedetid hos andre er en normaltilstand.",
+            "icon": "Network",
+            "platforms": [
+                {
+                    "title": "Nasjonale felleskomponenter",
+                    "description": "Altinn, ID-porten, Maskinporten, Folkeregisteret, Enhetsregisteret og Noark.",
+                    "slug": "integrasjoner"
+                },
+                {
+                    "title": "Fagsystemintegrasjon",
+                    "description": "Kobling mot systemene dere allerede har, uten å bytte dem ut først."
+                },
+                {
+                    "title": "API-plattform",
+                    "description": "Egne API-er med tilgangsstyring, versjonering og dokumentasjon andre kan bygge på."
+                }
+            ]
         },
         {
-            "id": "modernisering-no",
+            "id": "modernisering",
             "title": "Modernisering av fagsystemer",
-            "description": "Vi bytter ut modul for modul bak en fasade, slik at driften går mens systemet endres. Dere møter avhengighetene én om gangen i stedet for alle på lanseringsdagen.",
-            "icon": "Layers"
+            "description": "Vi bytter ut modul for modul bak en fasade, slik at driften går mens systemet endres.",
+            "icon": "Layers",
+            "platforms": [
+                {
+                    "title": "Fra lokal drift til sky",
+                    "description": "Flytting til Azure i etapper, med lesing før skriving."
+                },
+                {
+                    "title": "Strangler-migrasjon",
+                    "description": "Ny funksjonalitet bygges utenfor det gamle systemet og overtar gradvis."
+                },
+                {
+                    "title": "Teknisk gjeld og opprydding",
+                    "description": "Kartlegging av avhengigheter ingen har dokumentert, før noe røres."
+                }
+            ]
         },
         {
-            "id": "automatisering-no",
+            "id": "automatisering",
             "title": "Automatisering og AI",
-            "description": "Vi automatiserer det som følger av regler: frister, purringer, kontroll av vedlegg og oppslag i registre. Skjønnet ligger fortsatt hos saksbehandleren, og et vedtak skal alltid kunne forklares.",
-            "icon": "Sparkles"
+            "description": "Vi automatiserer det som følger av regler, og lar skjønnet ligge hos saksbehandleren.",
+            "icon": "Sparkles",
+            "platforms": [
+                {
+                    "title": "Regelmotor",
+                    "description": "Regler uttrykt slik at de kan gjengis i klartekst, ikke bare kjøres."
+                },
+                {
+                    "title": "Dokument- og skjemabehandling",
+                    "description": "Kontroll av vedlegg, uttrekk av data og forhåndsutfylling fra registre."
+                },
+                {
+                    "title": "Beslutningsstøtte",
+                    "description": "Forslag til saksbehandleren, med begrunnelsen synlig og mulig å overprøve."
+                }
+            ]
         },
         {
-            "id": "forvaltning-no",
+            "id": "forvaltning",
             "title": "Forvaltning, drift og sikkerhet",
-            "description": "Vi forvalter det vi bygger. Driftbarhet, universell utforming og sikkerhet er designvalg hos oss, ikke noe som kommer etterpå. Vi er ISO 27001-sertifisert.",
-            "icon": "ShieldCheck"
+            "description": "Vi forvalter det vi bygger. Driftbarhet, universell utforming og sikkerhet er designvalg, ikke noe som kommer etterpå.",
+            "icon": "ShieldCheck",
+            "platforms": [
+                {
+                    "title": "Forvaltningsavtale",
+                    "description": "Oppdateringer, sikkerhetsfikser, overvåking og videreutvikling etter lansering."
+                },
+                {
+                    "title": "Sikkerhet og personvern",
+                    "description": "ISO 27001-sertifisert. Tilgangsstyring og sporbarhet som del av datamodellen."
+                },
+                {
+                    "title": "Universell utforming",
+                    "description": "WCAG 2.2 AA bygget inn fra start, ikke rettet i etterkant."
+                }
+            ]
         }
     ],
     "en": [
         {
-            "id": "saksbehandling-en",
-            "title": "Case management systems",
-            "description": "Systems that take a case from submission to decision: queues rather than inboxes, traceable decisions, and archiving that falls out of the process instead of being a job at the end.",
-            "icon": "Workflow"
+            "id": "saksbehandlingsplattform",
+            "title": "Case management platform",
+            "description": "Platforms that take a case from submission to decision, with traceable decisions and Noark archiving.",
+            "icon": "Workflow",
+            "platforms": [
+                {
+                    "title": "Grant portal",
+                    "description": "Application, assessment and decision for grant schemes, with a queue for the caseworker.",
+                    "slug": "tilskuddsportal"
+                },
+                {
+                    "title": "Licensing portal",
+                    "description": "Serving and sales licences with parallel consultations and automatic chasing.",
+                    "slug": "bevillingsportal"
+                },
+                {
+                    "title": "Application and decision solutions",
+                    "description": "Other schemes following the same pattern: submission, assessment, decision, archive.",
+                    "slug": "saksbehandlingssystem"
+                }
+            ]
         },
         {
-            "id": "portaler-en",
-            "title": "Grant and licensing portals",
-            "description": "Application solutions people get through without phoning in. Forms that validate against the regulation, save as you go, and hand the caseworker a complete basis to decide on.",
-            "icon": "ClipboardList"
+            "id": "saas",
+            "title": "SaaS application development",
+            "description": "Multi-tenant platforms where one solution serves many customers, each with its own data and configuration.",
+            "icon": "Boxes",
+            "platforms": [
+                {
+                    "title": "Booking and hire platform",
+                    "description": "Booking, seasonal allocation and invoicing of venues and equipment. Digilist is built this way."
+                },
+                {
+                    "title": "Forms platform",
+                    "description": "Forms that validate against the regulation as they are filled in. Digiskjema is built this way."
+                },
+                {
+                    "title": "Digital marketplaces",
+                    "description": "Supply, demand and settlement in one platform, with roles per participant type."
+                }
+            ]
         },
         {
-            "id": "integrasjon-en",
-            "title": "Integrations",
-            "description": "Connections to Altinn, the National Population Register, the Register of Legal Entities, ID-porten, Maskinporten and Noark — built on the assumption that other people's downtime is normal, not exceptional.",
-            "icon": "Network"
+            "id": "integrasjon",
+            "title": "System integration",
+            "description": "Connections to registers, line-of-business systems and national components, built on the assumption that downtime elsewhere is normal.",
+            "icon": "Network",
+            "platforms": [
+                {
+                    "title": "National components",
+                    "description": "Altinn, ID-porten, Maskinporten, the Population Register, the Register of Legal Entities and Noark.",
+                    "slug": "integrasjoner"
+                },
+                {
+                    "title": "Line-of-business integration",
+                    "description": "Connecting to the systems you already have, without replacing them first."
+                },
+                {
+                    "title": "API platform",
+                    "description": "Your own APIs with access control, versioning and documentation others can build on."
+                }
+            ]
         },
         {
-            "id": "modernisering-en",
+            "id": "modernisering",
             "title": "Legacy system modernisation",
-            "description": "We replace one module at a time behind a facade, so the service keeps running while the system changes. You meet the dependencies one by one rather than all of them on launch day.",
-            "icon": "Layers"
+            "description": "We replace one module at a time behind a facade, so the service keeps running while the system changes.",
+            "icon": "Layers",
+            "platforms": [
+                {
+                    "title": "On-premises to cloud",
+                    "description": "Moving to Azure in stages, reading before writing."
+                },
+                {
+                    "title": "Strangler migration",
+                    "description": "New functionality is built outside the old system and takes over gradually."
+                },
+                {
+                    "title": "Technical debt",
+                    "description": "Mapping the dependencies nobody documented, before anything is touched."
+                }
+            ]
         },
         {
-            "id": "automatisering-en",
+            "id": "automatisering",
             "title": "Automation and AI",
-            "description": "We automate what follows from rules — deadlines, reminders, checking attachments, register lookups — and leave judgement with the caseworker. A decision has to be explainable.",
-            "icon": "Sparkles"
+            "description": "We automate what follows from rules and leave judgement with the caseworker.",
+            "icon": "Sparkles",
+            "platforms": [
+                {
+                    "title": "Rules engine",
+                    "description": "Rules expressed so they can be stated in plain language, not only executed."
+                },
+                {
+                    "title": "Document and form processing",
+                    "description": "Attachment checks, data extraction and prefill from registers."
+                },
+                {
+                    "title": "Decision support",
+                    "description": "Suggestions for the caseworker, with the reasoning visible and open to override."
+                }
+            ]
         },
         {
-            "id": "forvaltning-en",
+            "id": "forvaltning",
             "title": "Operations, support and security",
-            "description": "We keep running what we build. Operability, accessibility and security are design decisions here rather than afterthoughts — and we are ISO 27001 certified.",
-            "icon": "ShieldCheck"
+            "description": "We keep running what we build. Operability, accessibility and security are design decisions rather than afterthoughts.",
+            "icon": "ShieldCheck",
+            "platforms": [
+                {
+                    "title": "Support agreement",
+                    "description": "Updates, security fixes, monitoring and further development after launch."
+                },
+                {
+                    "title": "Security and privacy",
+                    "description": "ISO 27001 certified. Access control and traceability as part of the data model."
+                },
+                {
+                    "title": "Accessibility",
+                    "description": "WCAG 2.2 AA built in from the start rather than retrofitted."
+                }
+            ]
         }
     ],
     "ar": [
         {
-            "id": "saksbehandling-ar",
-            "title": "أنظمة إدارة القضايا",
-            "description": "أنظمة تأخذ القضية من التقديم إلى القرار: قوائم انتظار بدل صناديق البريد، وقرارات قابلة للتتبّع، وأرشفة تنتج عن سير العمل بدل أن تكون مهمة في النهاية.",
-            "icon": "Workflow"
+            "id": "saksbehandlingsplattform",
+            "title": "منصة إدارة القضايا",
+            "description": "منصات تأخذ القضية من التقديم إلى القرار، بقرارات قابلة للتتبّع وأرشفة وفق Noark.",
+            "icon": "Workflow",
+            "platforms": [
+                {
+                    "title": "بوابة المنح",
+                    "description": "التقديم والتقييم والقرار لبرامج المنح، مع قائمة انتظار لموظف الحالة.",
+                    "slug": "tilskuddsportal"
+                },
+                {
+                    "title": "بوابة التراخيص",
+                    "description": "تراخيص التقديم والبيع باستشارات متوازية وملاحقة تلقائية.",
+                    "slug": "bevillingsportal"
+                },
+                {
+                    "title": "حلول الطلبات والقرارات",
+                    "description": "برامج أخرى تتبع النمط نفسه: تقديم، تقييم، قرار، أرشفة.",
+                    "slug": "saksbehandlingssystem"
+                }
+            ]
         },
         {
-            "id": "portaler-ar",
-            "title": "بوابات المنح والتراخيص",
-            "description": "حلول تقديم يجتازها المتقدّمون دون الحاجة للاتصال. نماذج تتحقّق من اللوائح، وتحفظ أثناء التعبئة، وتمنح موظف الحالة أساساً كاملاً لاتخاذ القرار.",
-            "icon": "ClipboardList"
+            "id": "saas",
+            "title": "تطوير تطبيقات SaaS",
+            "description": "منصات متعدّدة المستأجرين يخدم فيها حلّ واحد عملاء كثيرين، لكل منهم بياناته وإعداداته.",
+            "icon": "Boxes",
+            "platforms": [
+                {
+                    "title": "منصة الحجز والتأجير",
+                    "description": "الحجز والتوزيع الموسمي وفوترة المرافق والمعدّات. Digilist مبنيّ هكذا."
+                },
+                {
+                    "title": "منصة النماذج",
+                    "description": "نماذج تتحقّق من اللوائح أثناء التعبئة. Digiskjema مبنيّ هكذا."
+                },
+                {
+                    "title": "أسواق رقمية",
+                    "description": "العرض والطلب والتسوية في منصة واحدة، بأدوار لكل نوع مشارك."
+                }
+            ]
         },
         {
-            "id": "integrasjon-ar",
-            "title": "التكاملات",
-            "description": "اتصالات مع Altinn وسجل السكان وسجل المنشآت وID-porten وMaskinporten وNoark — مبنية على أساس أن تعطّل الأنظمة الأخرى حالة طبيعية لا استثناء.",
-            "icon": "Network"
+            "id": "integrasjon",
+            "title": "تكامل الأنظمة",
+            "description": "اتصالات مع السجلات والأنظمة المؤسسية والمكوّنات الوطنية، مبنية على أن تعطّل الآخرين حالة طبيعية.",
+            "icon": "Network",
+            "platforms": [
+                {
+                    "title": "المكوّنات الوطنية",
+                    "description": "Altinn وID-porten وMaskinporten وسجل السكان وسجل المنشآت وNoark.",
+                    "slug": "integrasjoner"
+                },
+                {
+                    "title": "تكامل الأنظمة المؤسسية",
+                    "description": "الربط بالأنظمة القائمة لديكم دون استبدالها أولاً."
+                },
+                {
+                    "title": "منصة واجهات برمجية",
+                    "description": "واجهات خاصة بكم بإدارة وصول وإصدارات وتوثيق يبني عليه الآخرون."
+                }
+            ]
         },
         {
-            "id": "modernisering-ar",
+            "id": "modernisering",
             "title": "تحديث الأنظمة القائمة",
-            "description": "نستبدل وحدة تلو الأخرى خلف واجهة، فيستمر التشغيل بينما يتغيّر النظام. تواجهون الاعتماديات واحدة تلو الأخرى بدل مواجهتها كلها يوم الإطلاق.",
-            "icon": "Layers"
+            "description": "نستبدل وحدة تلو الأخرى خلف واجهة، فيستمر التشغيل بينما يتغيّر النظام.",
+            "icon": "Layers",
+            "platforms": [
+                {
+                    "title": "من التشغيل المحلي إلى السحابة",
+                    "description": "الانتقال إلى Azure على مراحل، بالقراءة قبل الكتابة."
+                },
+                {
+                    "title": "ترحيل تدريجي",
+                    "description": "تُبنى الوظائف الجديدة خارج النظام القديم وتتولّى تدريجياً."
+                },
+                {
+                    "title": "الدين التقني",
+                    "description": "حصر الاعتماديات غير الموثّقة قبل المساس بأي شيء."
+                }
+            ]
         },
         {
-            "id": "automatisering-ar",
+            "id": "automatisering",
             "title": "الأتمتة والذكاء الاصطناعي",
-            "description": "نؤتمت ما ينتج عن القواعد — المواعيد والتذكيرات وفحص المرفقات والاستعلام من السجلات — ونترك التقدير لموظف الحالة. القرار يجب أن يكون قابلاً للتفسير.",
-            "icon": "Sparkles"
+            "description": "نؤتمت ما ينتج عن القواعد ونترك التقدير لموظف الحالة.",
+            "icon": "Sparkles",
+            "platforms": [
+                {
+                    "title": "محرّك قواعد",
+                    "description": "قواعد مصاغة بحيث يمكن سردها بلغة واضحة لا تنفيذها فقط."
+                },
+                {
+                    "title": "معالجة المستندات والنماذج",
+                    "description": "فحص المرفقات واستخراج البيانات والتعبئة المسبقة من السجلات."
+                },
+                {
+                    "title": "دعم القرار",
+                    "description": "اقتراحات لموظف الحالة مع إظهار المبرّر وإمكانية تجاوزه."
+                }
+            ]
         },
         {
-            "id": "forvaltning-ar",
+            "id": "forvaltning",
             "title": "التشغيل والدعم والأمن",
-            "description": "نواصل تشغيل ما نبنيه. قابلية التشغيل وإمكانية الوصول والأمن قرارات تصميمية لدينا لا أمور لاحقة — ونحن حاصلون على شهادة ISO 27001.",
-            "icon": "ShieldCheck"
+            "description": "نواصل تشغيل ما نبنيه. قابلية التشغيل وإمكانية الوصول والأمن قرارات تصميمية لا أمور لاحقة.",
+            "icon": "ShieldCheck",
+            "platforms": [
+                {
+                    "title": "اتفاقية تشغيل",
+                    "description": "التحديثات وإصلاحات الأمن والمراقبة والتطوير بعد الإطلاق."
+                },
+                {
+                    "title": "الأمن والخصوصية",
+                    "description": "حاصلون على ISO 27001. إدارة الوصول والتتبّع جزء من نموذج البيانات."
+                },
+                {
+                    "title": "إمكانية الوصول",
+                    "description": "WCAG 2.2 AA مبنيّ من البداية لا مصحّحاً لاحقاً."
+                }
+            ]
         }
     ]
 }

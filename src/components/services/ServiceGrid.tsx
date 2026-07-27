@@ -1,5 +1,4 @@
 import ServiceCard from './ServiceCard';
-import ExpandableGrid from '../ui/expandable-grid';
 
 /** Shape of an entry in src/data/services.json. */
 export interface Service {
@@ -7,12 +6,8 @@ export interface Service {
   title: string;
   description: string;
   icon: string;
-  /**
-   * Optional illustration. Most services have none — the card is icon-led, and
-   * a required field here forced every entry to name an image file, which is
-   * how six paths that were never in public/ ended up shipped.
-   */
-  image?: string;
+  /** The platform types built under this category. */
+  platforms?: { title: string; description: string; slug?: string }[];
 }
 
 interface ServiceGridProps {
@@ -30,19 +25,13 @@ const ServiceGrid = ({ services, language, initialRows, cols }: ServiceGridProps
       icon={service.icon}
       title={service.title}
       description={service.description}
-      image={service.image || undefined}
+      platforms={service.platforms}
       language={language}
     />
   ));
 
   return (
-    <div className="mt-12">
-      <ExpandableGrid 
-        items={serviceCards}
-        initialRows={initialRows}
-        cols={cols}
-      />
-    </div>
+    <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{serviceCards}</div>
   );
 };
 

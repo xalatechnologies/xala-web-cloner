@@ -42,6 +42,9 @@ const NORWEGIAN_BREAKS: Record<string, string> = {
   'Automatisering og AI': `${shy('Automati', 'sering')} og AI`,
   'Forvaltning, drift og sikkerhet': `${shy('Forvalt', 'ning')}, drift og ${shy('sikker', 'het')}`,
   Integrasjoner: shy('Inte', 'grasjoner'),
+  Saksbehandlingsplattform: shy('Saks', 'behandlings', 'plattform'),
+  'SaaS-applikasjonsutvikling': `SaaS-${shy('appli', 'kasjons', 'ut', 'vikling')}`,
+  Systemintegrasjon: shy('System', 'inte', 'grasjon'),
 };
 
 

@@ -49,7 +49,7 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
     services: {
       title: 'Tjenester | Xala Technologies',
       description:
-        'Saksbehandlingssystemer, tilskudds- og bevillingsportaler, integrasjoner mot nasjonale felleskomponenter, modernisering av fagsystemer, automatisering og forvaltning.',
+        'Saksbehandlingsplattform, SaaS-applikasjonsutvikling, systemintegrasjon, modernisering av fagsystemer, automatisering og forvaltning. Vi bygger tilskuddsportaler, bevillingsportaler og integrasjoner mot Altinn og ID-porten.',
       keywords:
         'saksbehandlingssystem, tilskuddsportal, bevillingsportal, integrasjon Altinn, Maskinporten, modernisering fagsystem, automatisering saksbehandling, systemutvikling offentlig sektor'
     },
@@ -148,7 +148,7 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
     services: {
       title: 'Services | Xala Technologies',
       description:
-        'Case management systems, grant and licensing portals, integrations with Norwegian national components, legacy modernisation, automation and long-term operations.',
+        'Case management platforms, SaaS application development, system integration, legacy modernisation, automation and long-term operations. We build grant portals, licensing portals and integrations with Altinn and ID-porten.',
       keywords:
         'case management system, grant portal, licensing portal, Altinn integration, Maskinporten, legacy modernisation, caseworking automation, public sector software Norway'
     },

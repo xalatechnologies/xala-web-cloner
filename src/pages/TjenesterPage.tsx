@@ -12,7 +12,6 @@ import { PageHeader } from '../components/layouts/PageFrame';
 import { generateServicesSchema } from '@/components/seo/sectionSchemas';
 import { ORGANIZATION, ORG_ID, SITE_ORIGIN } from '@/lib/blog/seo';
 import servicesData from '@/data/services.json';
-import servicePages from '@/data/service-pages.json';
 
 type Language = 'no' | 'en' | 'ar';
 
@@ -80,51 +79,6 @@ export default function TjenesterPage() {
 
         <Services headingLevel="h2" />
 
-        {/*
-          The head terms, linked from the hub. Six cards on one page compete
-          with each other for a query; a page per term does not.
-        */}
-        <section
-          aria-labelledby="tjenester-dybde"
-          className="border-t border-border py-14 md:py-20"
-        >
-          <div className="container mx-auto px-4">
-            <h2
-              id="tjenester-dybde"
-              className="text-2xl font-bold tracking-tight md:text-3xl"
-            >
-              {t('servicesPage.deepDiveTitle', 'Gå i dybden')}
-            </h2>
-            <ul className="mt-8 grid gap-4 md:grid-cols-2">
-              {Object.entries(servicePages).map(([slug, page]) => {
-                const localised = page as unknown as Record<
-                  Language,
-                  { title: string; intro: string }
-                >;
-                const copy = localised[language] ?? localised.no;
-                return (
-                  <li key={slug}>
-                    <Link
-                      to={`/tjenester/${slug}`}
-                      className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                    >
-                      <span className="flex items-center gap-2 text-lg font-semibold text-foreground">
-                        {copy.title}
-                        <ArrowRight
-                          className="h-4 w-4 text-primary transition-transform group-hover:translate-x-0.5"
-                          aria-hidden="true"
-                        />
-                      </span>
-                      <span className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted-foreground">
-                        {copy.intro}
-                      </span>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </section>
 
         <section
           aria-labelledby="tjenester-neste"
