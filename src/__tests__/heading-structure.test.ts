@@ -32,14 +32,14 @@ const PAGE_HEADING_OWNER: Record<string, string> = {
   // Like /slik-vi-jobber: the h1 moved to the page, and Services renders an h2
   // under it. Services keeps an h1 default for any page it leads.
   '/tjenester': 'pages/TjenesterPage.tsx',
-  '/produkter': 'components/CoreProducts.tsx',
+  '/produkter': 'pages/ProdukterPage.tsx',
   '/caser': 'pages/CaserPage.tsx',
   '/caser/:slug': 'pages/CaseStudyDetailPage.tsx',
   // Moved out of WorkProcess: that component is a section of this page, not
   // the page, and it now renders an h2 under the page's own h1.
   '/slik-vi-jobber': 'pages/SlikViJobberPage.tsx',
-  '/teknologi': 'components/Technologies.tsx',
-  '/om-oss': 'components/About.tsx',
+  '/teknologi': 'pages/TeknologiPage.tsx',
+  '/om-oss': 'pages/OmOssPage.tsx',
   '/kontakt': 'components/Contact.tsx',
   '/karriere': 'pages/KarrierePage.tsx',
   '/blogg': 'pages/BloggPage.tsx',
@@ -51,6 +51,16 @@ const PAGE_HEADING_OWNER: Record<string, string> = {
 
 /** framer-motion headings are still headings. */
 const H1_PATTERN = /<(motion\.)?h1[\s>]/;
+
+/**
+ * `<PageHeader>` is the shared page frame, and rendering one is how most pages
+ * now emit their h1. Counting it here keeps the map pointing at the page a
+ * reader would look for rather than redirecting six routes at one layout file;
+ * the frame's own h1 is asserted separately below, so the indirection cannot
+ * hide its absence.
+ */
+const PAGE_HEADER_PATTERN = /<PageHeader[\s/>]/;
+const ownsAnH1 = (source: string) => H1_PATTERN.test(source) || PAGE_HEADER_PATTERN.test(source);
 
 function declaredRoutes(): string[] {
   const app = readFileSync(join(SRC, 'App.tsx'), 'utf8');
@@ -78,10 +88,17 @@ describe('heading structure', () => {
 
   it('renders an h1 in each of those owners', () => {
     const without = Object.entries(PAGE_HEADING_OWNER)
-      .filter(([, file]) => !H1_PATTERN.test(readFileSync(join(SRC, file), 'utf8')))
+      .filter(([, file]) => !ownsAnH1(readFileSync(join(SRC, file), 'utf8')))
       .map(([route, file]) => `${route} (${file})`);
 
     expect(without, `page components with no <h1>:\n  ${without.join('\n  ')}`).toEqual([]);
+  });
+
+  it('renders exactly one h1 in the shared page frame', () => {
+    // Every page that delegates its heading here depends on this being true,
+    // and being true exactly once.
+    const frame = readFileSync(join(SRC, 'components/layouts/PageFrame.tsx'), 'utf8');
+    expect(frame.match(/<h1[\s>]/g) ?? []).toHaveLength(1);
   });
 
   it('does not put an h1 in a component used as a homepage section', () => {

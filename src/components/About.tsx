@@ -4,9 +4,18 @@ import AboutFeatureCard from './about/AboutFeatureCard';
 import { useAboutFeatures } from '@/hooks/use-about-features';
 import { Skeleton } from './ui/skeleton';
 
-const About = () => {
+interface AboutProps {
+  /**
+   * Heading level for the section title. The page hosting this section
+   * owns the h1; this stays an h1 only where the section leads the page.
+   */
+  headingLevel?: 'h1' | 'h2';
+}
+
+const About = ({ headingLevel = 'h1' }: AboutProps = {}) => {
   const { t } = useTranslation();
   const { data: aboutSection } = useSection('about');
+  const Heading = headingLevel;
   const { data: visionSection } = useSection('vision');
   const { data: features, isLoading: isFeaturesLoading } = useAboutFeatures();
 
@@ -46,7 +55,7 @@ const About = () => {
     <section id="about" className="py-12 sm:py-16 lg:py-20 bg-background hero-gradient">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12">
-          <h1 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4 text-foreground">{aboutSection?.title}</h1>
+          <Heading className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4 text-foreground">{aboutSection?.title}</Heading>
           <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto px-4 sm:px-0">{aboutSection?.description}</p>
         </div>
 

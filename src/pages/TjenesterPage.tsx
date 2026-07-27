@@ -8,6 +8,7 @@ import Services from '../components/Services';
 import FAQSection from '../components/faq/FAQSection';
 import { FAQ_TOPICS } from '../components/faq/faqs';
 import Footer from '../components/Footer';
+import { PageHeader } from '../components/layouts/PageFrame';
 import { generateServicesSchema } from '@/components/seo/sectionSchemas';
 import { ORGANIZATION, ORG_ID, SITE_ORIGIN } from '@/lib/blog/seo';
 import servicesData from '@/data/services.json';
@@ -67,20 +68,14 @@ export default function TjenesterPage() {
       <Navbar />
 
       <main id="main" className="flex-1 pt-20">
-        <header className="container mx-auto px-4 pb-2 pt-14 md:pb-4 md:pt-20">
-          <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
-            {t('servicesPage.eyebrow', 'Tjenester')}
-          </p>
-          <h1 className="max-w-[20ch] text-4xl font-bold leading-[1.1] tracking-tight md:text-5xl lg:text-6xl">
-            {t('servicesPage.title', 'Systemer som skal stå i mange år')}
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            {t(
-              'servicesPage.description',
-              'Vi bygger saksbehandlingssystemer, portaler og integrasjoner for offentlig sektor og næringsliv — og forvalter dem videre etter lansering.'
-            )}
-          </p>
-        </header>
+        <PageHeader
+          eyebrow={t('servicesPage.eyebrow', 'Tjenester')}
+          title={t('servicesPage.title', 'Systemer som skal stå i mange år')}
+          description={t(
+            'servicesPage.description',
+            'Vi bygger saksbehandlingssystemer, portaler og integrasjoner for offentlig sektor og næringsliv — og forvalter dem videre etter lansering.'
+          )}
+        />
 
         <Services headingLevel="h2" />
 

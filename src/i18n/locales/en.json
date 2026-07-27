@@ -601,5 +601,35 @@
         "blurb": "The platforms our solutions rest on, and why."
       }
     }
+  },
+  "productsPage": {
+    "eyebrow": "Products",
+    "title": "Finished solutions we already run",
+    "description": "Three products built from the same parts we use in client projects — and maintained the same way.",
+    "ctaTitle": "Does any of this fit?",
+    "ctaDescription": "The products adapt. Tell us what you need and we will say whether it is a configuration or a project.",
+    "ctaContact": "Contact us",
+    "ctaServices": "See services"
+  },
+  "technologyPage": {
+    "eyebrow": "Technology",
+    "title": "Choices we have to defend in five years",
+    "description": "We pick boring where it counts. A line-of-business system outlives the frameworks that were fashionable when it was built.",
+    "ctaTitle": "Wondering whether this fits?",
+    "ctaDescription": "We are happy to go through what you have today, and what is worth replacing first.",
+    "ctaContact": "Contact us",
+    "ctaCases": "See case studies"
+  },
+  "aboutPage": {
+    "eyebrow": "About us",
+    "title": "A small firm that keeps running what it builds",
+    "description": "We deliver to government agencies, health trusts and municipalities — and stay on after launch.",
+    "ctaTitle": "Want to know more?",
+    "ctaDescription": "Have an informal conversation, or see what we have delivered for others in the same position.",
+    "ctaContact": "Contact us",
+    "ctaCareers": "Work with us"
+  },
+  "cta": {
+    "eyebrow": "Next step"
   }
 }

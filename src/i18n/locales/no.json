@@ -601,5 +601,35 @@
         "blurb": "Plattformene løsningene står på, og hvorfor."
       }
     }
+  },
+  "productsPage": {
+    "eyebrow": "Produkter",
+    "title": "Ferdige løsninger vi allerede drifter",
+    "description": "Tre produkter bygget av de samme delene vi bruker i kundeprosjekter — og forvaltet på samme måte.",
+    "ctaTitle": "Passer noe av dette til dere?",
+    "ctaDescription": "Produktene tilpasses. Fortell oss hva dere trenger, så sier vi om det er en tilpasning eller et prosjekt.",
+    "ctaContact": "Kontakt oss",
+    "ctaServices": "Se tjenester"
+  },
+  "technologyPage": {
+    "eyebrow": "Teknologi",
+    "title": "Valg vi må kunne forsvare om fem år",
+    "description": "Vi velger kjedelig der det teller. Et fagsystem lever lenger enn rammeverkene som var populære da det ble bygget.",
+    "ctaTitle": "Lurer dere på om dette passer?",
+    "ctaDescription": "Vi går gjerne gjennom hva dere har i dag, og hva som er verdt å bytte ut først.",
+    "ctaContact": "Kontakt oss",
+    "ctaCases": "Se kundecaser"
+  },
+  "aboutPage": {
+    "eyebrow": "Om oss",
+    "title": "Et lite hus som forvalter det det bygger",
+    "description": "Vi leverer til statlige etater, helseforetak og kommuner — og blir værende etter lansering.",
+    "ctaTitle": "Vil dere vite mer?",
+    "ctaDescription": "Ta en uforpliktende prat, eller se hva vi har levert til andre i samme situasjon.",
+    "ctaContact": "Kontakt oss",
+    "ctaCareers": "Jobbe hos oss"
+  },
+  "cta": {
+    "eyebrow": "Neste steg"
   }
 }

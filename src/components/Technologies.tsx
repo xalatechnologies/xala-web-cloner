@@ -3,9 +3,18 @@ import { useSection } from "@/hooks/use-section";
 import TechnologyGrid from './technologies/TechnologyGrid';
 import technologiesData from '@/data/technologies.json';
 
-const Technologies = () => {
+interface TechnologiesProps {
+  /**
+   * Heading level for the section title. The page hosting this section
+   * owns the h1; this stays an h1 only where the section leads the page.
+   */
+  headingLevel?: 'h1' | 'h2';
+}
+
+const Technologies = ({ headingLevel = 'h1' }: TechnologiesProps = {}) => {
   const { t } = useTranslation();
   const { data: section } = useSection('technologies');
+  const Heading = headingLevel;
 
   // Technologies are language-independent (just icons and names)
   const technologies = technologiesData;
@@ -35,9 +44,9 @@ const Technologies = () => {
     <section className="py-12 sm:py-16 lg:py-20 bg-background highlight-gradient">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16 animate-fade-in">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-foreground">
+          <Heading className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-foreground">
             {section?.title || t('technologies.title', 'Technologies We Use')}
-          </h1>
+          </Heading>
           <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto px-4 sm:px-6">
             {section?.description || t('technologies.description', '')}
           </p>

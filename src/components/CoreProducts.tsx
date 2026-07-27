@@ -5,9 +5,18 @@ import productsData from '@/data/products.json';
 
 type Language = 'no' | 'en' | 'ar';
 
-const CoreProducts = () => {
+interface CoreProductsProps {
+  /**
+   * Heading level for the section title. The page hosting this section
+   * owns the h1; this stays an h1 only where the section leads the page.
+   */
+  headingLevel?: 'h1' | 'h2';
+}
+
+const CoreProducts = ({ headingLevel = 'h1' }: CoreProductsProps = {}) => {
   const { t, i18n } = useTranslation();
   const { data: section } = useSection('core-products');
+  const Heading = headingLevel;
 
   // Normalize language
   const lang = i18n.language?.toLowerCase() as Language;
@@ -43,9 +52,9 @@ const CoreProducts = () => {
       <div className="container">
         <div className="flex flex-col gap-12">
           <div className="flex flex-col gap-4 text-center">
-            <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <Heading className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               {sectionTitle}
-            </h1>
+            </Heading>
             <p className="text-lg leading-8 text-muted-foreground max-w-3xl mx-auto">
               {sectionDescription}
             </p>

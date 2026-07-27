@@ -6,6 +6,7 @@ import { ArrowRight, Mail } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import rolesData from '@/data/careers-roles.json';
+import { PageHeader } from '../components/layouts/PageFrame';
 
 type Language = 'no' | 'en' | 'ar';
 
@@ -62,20 +63,14 @@ export default function KarrierePage() {
       <Navbar />
 
       <main id="main" className="flex-1 pt-20">
-        <header className="container mx-auto px-4 pb-2 pt-14 md:pb-4 md:pt-20">
-          <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
-            {t('careers.eyebrow', 'Karriere')}
-          </p>
-          <h1 className="max-w-[20ch] text-4xl font-bold leading-[1.1] tracking-tight md:text-5xl lg:text-6xl">
-            {t('careers.title', 'Vi tar imot åpne søknader hele året')}
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            {t(
-              'careers.description',
-              'Vi lyser ikke ut stillinger løpende, men vi leser alle søknader. Finner du disiplinen din under, send oss noen ord om hva du har jobbet med.'
-            )}
-          </p>
-        </header>
+        <PageHeader
+          eyebrow={t('careers.eyebrow', 'Karriere')}
+          title={t('careers.title', 'Vi tar imot åpne søknader hele året')}
+          description={t(
+            'careers.description',
+            'Vi lyser ikke ut stillinger løpende, men vi leser alle søknader. Finner du disiplinen din under, send oss noen ord om hva du har jobbet med.'
+          )}
+        />
 
         <section
           aria-labelledby="roller-heading"
