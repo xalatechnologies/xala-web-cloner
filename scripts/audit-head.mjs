@@ -10,7 +10,7 @@ import { chromium } from 'playwright';
 
 const BASE = process.env.BASE ?? 'http://localhost:5199';
 const ROUTES = process.env.ROUTES?.split(',') ?? [
-  '/', '/tjenester', '/produkter', '/caser', '/caser/altinn',
+  '/', '/tjenester', '/tjenester/saksbehandlingssystem', '/produkter', '/caser', '/caser/altinn',
   '/slik-vi-jobber', '/teknologi', '/om-oss', '/kontakt', '/karriere',
   '/blogg', '/blogg/tilskuddsportal-som-faktisk-brukes', '/privacy', '/terms', '/cookies',
 ];

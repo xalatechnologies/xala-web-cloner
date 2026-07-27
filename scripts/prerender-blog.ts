@@ -46,6 +46,7 @@ import {
   blogSitemapEntries,
   caseStudySitemapEntries,
   productSitemapEntries,
+  serviceSitemapEntries,
   escapeXml,
   renderLlmsTxt,
   renderRss,
@@ -55,6 +56,7 @@ import {
 import type { BlogPost } from "../src/lib/blog/types";
 import { caseStudies } from "../src/data/case-studies/index";
 import productsData from "../src/data/products.json";
+import servicePages from "../src/data/service-pages.json";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CONTENT_DIR = path.join(ROOT, "src", "content", "blog");
@@ -352,6 +354,46 @@ function main(): void {
     );
   }
 
+  // A file per service landing page, each with its own title, description and
+  // FAQ schema. These are the pages meant to rank for the head terms, so they
+  // must exist as files rather than only as client-side routes.
+  for (const [slug, page] of Object.entries(servicePages)) {
+    const copy = (page as { no: { metaTitle: string; metaDescription: string; title: string; faq: { question: string; answer: string }[] } }).no;
+    const url = `${SITE_ORIGIN}/tjenester/${slug}`;
+    write(
+      path.join(DIST, "tjenester", slug, "index.html"),
+      renderHead(shell, {
+        title: copy.metaTitle,
+        description: copy.metaDescription,
+        canonical: url,
+        ogType: "website",
+        jsonLd: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": `${url}#service`,
+          name: copy.title,
+          description: copy.metaDescription,
+          url,
+          provider: { "@id": ORG_ID },
+          areaServed: { "@type": "Country", name: "Norge" },
+          serviceType: copy.title,
+        },
+        extraJsonLd: [
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "@id": `${url}#faq`,
+            mainEntity: copy.faq.map((item) => ({
+              "@type": "Question",
+              name: item.question,
+              acceptedAnswer: { "@type": "Answer", text: item.answer },
+            })),
+          },
+        ],
+      }),
+    );
+  }
+
   // A file per product page, with that product's own title and description.
   // They cannot go through STATIC_ROUTES: every /produkter/* path resolves to
   // the same pageId, so all four would have shipped the same <title>.
@@ -413,6 +455,7 @@ function main(): void {
     renderSitemap([
       ...staticSitemapEntries(today),
       ...caseStudySitemapEntries(caseStudySlugs, today),
+      ...serviceSitemapEntries(Object.keys(servicePages), today),
       ...productSitemapEntries(
         productsData.no.filter((p) => p.slug).map((p) => p.slug as string),
         today,

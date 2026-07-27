@@ -16,6 +16,7 @@ const CookiesPolicy = lazy(() => import('./pages/CookiesPolicy'));
 const TjenesterPage = lazy(() => import('./pages/TjenesterPage'));
 const ProdukterPage = lazy(() => import('./pages/ProdukterPage'));
 const ProduktDetaljPage = lazy(() => import('./pages/ProduktDetaljPage'));
+const TjenesteDetaljPage = lazy(() => import('./pages/TjenesteDetaljPage'));
 const CaserPage = lazy(() => import('./pages/CaserPage'));
 const SlikViJobberPage = lazy(() => import('./pages/SlikViJobberPage'));
 const TeknologiPage = lazy(() => import('./pages/TeknologiPage'));
@@ -48,6 +49,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/tjenester" element={<TjenesterPage />} />
+              <Route path="/tjenester/:slug" element={<TjenesteDetaljPage />} />
               <Route path="/produkter" element={<ProdukterPage />} />
               <Route path="/produkter/:slug" element={<ProduktDetaljPage />} />
               <Route path="/caser" element={<CaserPage />} />

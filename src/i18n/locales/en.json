@@ -678,7 +678,8 @@
         "title": "The technology we build on",
         "blurb": "The platforms our solutions rest on, and why."
       }
-    }
+    },
+    "deepDiveTitle": "Go deeper"
   },
   "productsPage": {
     "eyebrow": "Products",
@@ -761,5 +762,16 @@
     "ctaTitle": "Want to see it in practice?",
     "ctaDescription": "Get in touch and we will show how the product solves the problem you have.",
     "ctaContact": "Contact us"
+  },
+  "servicePage": {
+    "back": "All services",
+    "casesTitle": "We have done this before",
+    "faqTitle": "Frequently asked questions",
+    "readMore": "Read more on this",
+    "ctaTitle": "Are you dealing with this now?",
+    "ctaDescription": "Tell us what you have today and we will say what we would do first and what we would leave until later.",
+    "ctaContact": "Contact us",
+    "ctaProcess": "How we work",
+    "deepDive": "See the full service"
   }
 }

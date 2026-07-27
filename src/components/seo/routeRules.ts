@@ -19,6 +19,8 @@ export interface RouteRule {
 export const ROUTE_RULES: RouteRule[] = [
   { pattern: /^\/$/, pageId: 'home' },
   { pattern: /^\/tjenester\/?$/, pageId: 'services' },
+  // The landing pages own their head tags, including Service and FAQPage schema.
+  { pattern: /^\/tjenester\/[^/]+\/?$/, pageId: 'services', selfManaged: true },
   { pattern: /^\/produkter\/?$/, pageId: 'products' },
   // The product pages own their head tags, including SoftwareApplication schema.
   { pattern: /^\/produkter\/[^/]+\/?$/, pageId: 'products', selfManaged: true },

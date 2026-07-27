@@ -1,0 +1,647 @@
+{
+    "saksbehandlingssystem": {
+        "slug": "saksbehandlingssystem",
+        "icon": "Workflow",
+        "caseSlugs": [
+            "nordre-follo-tilskuddsportal-bevillingsportal",
+            "altinn",
+            "ssb-legacy-system-modernization"
+        ],
+        "postSlugs": [
+            "automatisering-av-saksbehandling-hva-boer-og-ikke",
+            "modernisere-fagsystem-uten-driftsstans"
+        ],
+        "no": {
+            "title": "Saksbehandlingssystem",
+            "metaTitle": "Saksbehandlingssystem for kommuner og etater | Xala Technologies",
+            "metaDescription": "Vi bygger saksbehandlingssystemer som tar en sak fra innsending til vedtak, med sporbare beslutninger, arkivering mot Noark og integrasjon mot nasjonale felleskomponenter.",
+            "intro": "Et saksbehandlingssystem skal gjøre én ting godt: ta en sak fra den kommer inn til den er avgjort, uten at noe faller mellom to stoler underveis. Vi bygger slike systemer for kommuner, statlige etater og helseforetak, og vi forvalter dem videre etter lansering.",
+            "problemHeading": "Der det som regel går galt",
+            "problem": "De fleste saksbehandlingssystemer feiler ikke på teknologi. De feiler fordi søknadene lander i en e-postboks, fordi ingen kan se hva som er bestemt eller av hvem, og fordi arkivering ble tenkt på til slutt i stedet for underveis. Da blir systemet et sted saker oppbevares, ikke et sted de behandles.",
+            "capabilityHeading": "Hva vi bygger inn",
+            "capabilities": [
+                {
+                    "title": "Kø, ikke innboks",
+                    "body": "Saksbehandleren ser hva som venter, hva som haster og hva som mangler dokumentasjon. Det er en arbeidsflate, ikke en rapport."
+                },
+                {
+                    "title": "Sporbare vedtak",
+                    "body": "Hvem gjorde hva, når, og på hvilket grunnlag. Det er det første noen spør om ved en klage, og det er for sent å legge inn etterpå."
+                },
+                {
+                    "title": "Arkivering som følger saksgangen",
+                    "body": "Noark-integrasjonen er en del av datamodellen fra start: hva er saken, hva er dokumentene, hva er partene. Da er arkivering en konsekvens, ikke en jobb på slutten."
+                },
+                {
+                    "title": "Oppslag i registre",
+                    "body": "Organisasjonsnummer gir navn, adresse og roller fra Enhetsregisteret. Å be søkeren skrive det inn på nytt er å be dem gjøre en jobb systemet kan gjøre bedre."
+                },
+                {
+                    "title": "Automatisering med skjønnet i behold",
+                    "body": "Frister, purringer, statusvarsler og kontroll av vedlegg automatiseres. Skjønnsvurderingen blir liggende hos saksbehandleren."
+                },
+                {
+                    "title": "Universell utforming",
+                    "body": "WCAG 2.2 AA er et krav for offentlige tjenester, og vesentlig billigere å bygge inn enn å rette i etterkant."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "Hvor lang tid tar det å få et saksbehandlingssystem i drift?",
+                    "answer": "Det avhenger av omfanget, men vi leverer i etapper i stedet for som én stor overlevering. Første etappe gir som regel noe som kan brukes i produksjon i løpet av noen måneder, og hver etappe gjør estimatet på den neste mer realistisk."
+                },
+                {
+                    "question": "Kan dere integrere mot fagsystemet vi allerede har?",
+                    "answer": "Ja. Det er som regel dét oppgaven faktisk består i. Vi kartlegger hvilke systemer som utveksler data i dag, hvem som oppdager det hvis noe stopper, og bygger integrasjonene ut fra at nedetid hos andre er en normaltilstand."
+                },
+                {
+                    "question": "Må systemet arkivere etter Noark?",
+                    "answer": "For arkivpliktige saker, ja. Vi legger Noark-integrasjonen inn i datamodellen fra start, fordi en integrasjon som skal rekonstruere journalposter fra data som aldri ble strukturert for formålet, blir dyr og skjør."
+                },
+                {
+                    "question": "Hvem drifter systemet etterpå?",
+                    "answer": "Vi gjør det, hvis dere vil. De fleste kundene våre fortsetter med en forvaltningsavtale. Vi kan også overlevere til deres eget utviklingsteam med dokumentasjon og opplæring."
+                }
+            ]
+        },
+        "en": {
+            "title": "Case management system",
+            "metaTitle": "Case management systems for Norwegian municipalities | Xala Technologies",
+            "metaDescription": "We build case management systems that take a case from submission to decision, with traceable decisions, Noark archiving and integration with Norwegian national components.",
+            "intro": "A case management system has one job: take a case from arrival to decision without anything falling through the gaps. We build them for municipalities, government agencies and health trusts, and we keep running them after launch.",
+            "problemHeading": "Where it usually goes wrong",
+            "problem": "Most case management systems do not fail on technology. They fail because applications land in an inbox, because nobody can see what was decided or by whom, and because archiving was considered at the end rather than throughout.",
+            "capabilityHeading": "What we build in",
+            "capabilities": [
+                {
+                    "title": "A queue, not an inbox",
+                    "body": "The caseworker sees what is waiting, what is urgent and what lacks documentation. It is a work surface, not a report."
+                },
+                {
+                    "title": "Traceable decisions",
+                    "body": "Who did what, when, and on what basis. It is the first thing anyone asks in an appeal, and too late to add afterwards."
+                },
+                {
+                    "title": "Archiving that follows the process",
+                    "body": "Noark integration is part of the data model from the start, so archiving is a consequence rather than a job at the end."
+                },
+                {
+                    "title": "Register lookups",
+                    "body": "An organisation number yields name, address and roles from the Register of Legal Entities. Asking the applicant to retype it is asking them to do work the system does better."
+                },
+                {
+                    "title": "Automation that leaves judgement alone",
+                    "body": "Deadlines, reminders, status notices and attachment checks are automated. The discretionary assessment stays with the caseworker."
+                },
+                {
+                    "title": "Accessibility",
+                    "body": "WCAG 2.2 AA is a requirement for public services, and considerably cheaper to build in than to retrofit."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "How long does it take to get a case management system into production?",
+                    "answer": "It depends on scope, but we deliver in stages rather than as one large handover. The first stage usually produces something usable in production within a few months, and each stage makes the next estimate more realistic."
+                },
+                {
+                    "question": "Can you integrate with the system we already have?",
+                    "answer": "Yes, and that is usually what the task actually consists of. We map which systems exchange data today and who notices if something stops."
+                },
+                {
+                    "question": "Does the system have to archive to Noark?",
+                    "answer": "For archivable cases, yes. We put Noark integration into the data model from the start, because an integration that has to reconstruct journal entries from data never structured for it becomes expensive and fragile."
+                },
+                {
+                    "question": "Who runs it afterwards?",
+                    "answer": "We do, if you want. Most of our clients continue with a support agreement. We can also hand over to your own team with documentation and training."
+                }
+            ]
+        },
+        "ar": {
+            "title": "نظام إدارة القضايا",
+            "metaTitle": "أنظمة إدارة القضايا للبلديات النرويجية | Xala Technologies",
+            "metaDescription": "نبني أنظمة إدارة قضايا تأخذ القضية من التقديم إلى القرار، بقرارات قابلة للتتبّع وأرشفة وفق Noark وتكامل مع المكوّنات الوطنية النرويجية.",
+            "intro": "لنظام إدارة القضايا مهمة واحدة: أخذ القضية من وصولها إلى البتّ فيها دون أن يسقط شيء بين الثغرات. نبنيها للبلديات والجهات الحكومية والمؤسسات الصحية، ونواصل تشغيلها بعد الإطلاق.",
+            "problemHeading": "أين يحدث الخلل عادة",
+            "problem": "معظم أنظمة إدارة القضايا لا تفشل تقنياً. تفشل لأن الطلبات تصل إلى صندوق بريد، ولأن لا أحد يرى ما تقرّر ومَن قرّره، ولأن الأرشفة جاءت في النهاية بدل أن تكون جزءاً من المسار.",
+            "capabilityHeading": "ما الذي نبنيه",
+            "capabilities": [
+                {
+                    "title": "قائمة انتظار لا صندوق بريد",
+                    "body": "يرى موظف الحالة ما ينتظر وما هو عاجل وما تنقصه الوثائق."
+                },
+                {
+                    "title": "قرارات قابلة للتتبّع",
+                    "body": "مَن فعل ماذا ومتى وعلى أي أساس. هذا أول ما يُسأل عنه عند التظلّم."
+                },
+                {
+                    "title": "أرشفة تنتج عن المسار",
+                    "body": "تكامل Noark جزء من نموذج البيانات منذ البداية، فتصبح الأرشفة نتيجة لا مهمة أخيرة."
+                },
+                {
+                    "title": "الاستعلام من السجلات",
+                    "body": "رقم المنشأة يعطي الاسم والعنوان والأدوار من سجل المنشآت."
+                },
+                {
+                    "title": "أتمتة تُبقي التقدير للإنسان",
+                    "body": "تُؤتمت المواعيد والتذكيرات والإشعارات وفحص المرفقات، ويبقى التقدير لموظف الحالة."
+                },
+                {
+                    "title": "إمكانية الوصول",
+                    "body": "معيار WCAG 2.2 AA شرط للخدمات العامة، وبناؤه من البداية أرخص بكثير."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "كم يستغرق تشغيل نظام إدارة القضايا؟",
+                    "answer": "يعتمد على النطاق، لكننا نسلّم على مراحل. المرحلة الأولى تنتج عادة شيئاً قابلاً للاستخدام خلال أشهر قليلة."
+                },
+                {
+                    "question": "هل يمكنكم التكامل مع النظام القائم لدينا؟",
+                    "answer": "نعم، وغالباً ما تكون هذه هي المهمة الفعلية."
+                },
+                {
+                    "question": "هل يجب أن يؤرشف النظام وفق Noark؟",
+                    "answer": "للقضايا الخاضعة للأرشفة، نعم، ونضع التكامل في نموذج البيانات منذ البداية."
+                },
+                {
+                    "question": "مَن يشغّله بعد ذلك؟",
+                    "answer": "نحن، إن أردتم. يواصل معظم عملائنا باتفاقية تشغيل، ويمكننا أيضاً التسليم لفريقكم مع التوثيق والتدريب."
+                }
+            ]
+        }
+    },
+    "tilskuddsportal": {
+        "slug": "tilskuddsportal",
+        "icon": "ClipboardList",
+        "caseSlugs": [
+            "nordre-follo-tilskuddsportal-bevillingsportal"
+        ],
+        "postSlugs": [
+            "tilskuddsportal-som-faktisk-brukes"
+        ],
+        "no": {
+            "title": "Tilskuddsportal",
+            "metaTitle": "Tilskuddsportal for kommuner og fylkeskommuner | Xala Technologies",
+            "metaDescription": "Vi bygger tilskuddsportaler der søkerne kommer gjennom uten å ringe, og saksbehandleren får et komplett grunnlag å fatte vedtak på.",
+            "intro": "En tilskuddsordning har to brukergrupper med motsatte behov. Søkeren vil bli ferdig. Saksbehandleren vil ha et komplett grunnlag. En portal som løser den ene på bekostning av den andre, flytter bare arbeidet et annet sted.",
+            "problemHeading": "Hvorfor portaler blir stående ubrukt",
+            "problem": "De fleste tilskuddsportaler feiler ikke på teknologi, men på skjemaet. Papirskjemaet blir digitalisert som det er, med felt som er samlet opp gjennom mange år og som ingen tør fjerne. Resultatet er telefoner til servicetorget og mangelfulle søknader som må returneres.",
+            "capabilityHeading": "Fire valg som avgjør utfallet",
+            "capabilities": [
+                {
+                    "title": "Spør bare om det som påvirker vedtaket",
+                    "body": "Gå gjennom hvert felt og still ett spørsmål: påvirker svaret vedtaket? Hvis ikke, fjern det. Finnes svaret i et register dere har tilgang til, hent det i stedet."
+                },
+                {
+                    "title": "Lagre underveis",
+                    "body": "Søknader fylles sjelden ut i én økt. Vedlegg må hentes, styrevedtak må fattes. Uten automatisk lagring straffes nettopp de grundige søkerne."
+                },
+                {
+                    "title": "Valider mot regelverket, ikke bare mot datatypen",
+                    "body": "Reglene for hva som er gyldig legges ett sted, ikke spredt i frontend-koden. Da kan de endres når retningslinjene endres, uten en ny utrulling."
+                },
+                {
+                    "title": "Gi saksbehandleren en kø",
+                    "body": "Det siste steget glemmes oftest. Lander søknadene i en e-postboks eller et regneark, er problemet flyttet og ikke løst."
+                },
+                {
+                    "title": "Universell utforming fra start",
+                    "body": "En portal som ikke kan brukes med skjermleser, kan ikke brukes av alle som har rett til å søke. Det er hele poenget med en offentlig tilskuddsordning."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "Hvor mange felt bør et tilskuddsskjema ha?",
+                    "answer": "Så få som mulig. Still ett spørsmål per felt: påvirker svaret vedtaket? Hvis ikke, fjern det. Organisasjonsnummer gir navn, adresse og roller fra Enhetsregisteret uten at søkeren skriver dem inn."
+                },
+                {
+                    "question": "Kan portalen håndtere flere tilskuddsordninger?",
+                    "answer": "Ja. Ordningene deler som regel saksgang og skiller seg i regelverk og skjema, så vi bygger dem som konfigurasjon i stedet for som separate løsninger."
+                },
+                {
+                    "question": "Må en tilskuddsportal oppfylle WCAG 2.2 AA?",
+                    "answer": "For offentlige tjenester er det et krav, ikke en ambisjon. Det er også vesentlig billigere å bygge inn enn å rette i etterkant."
+                },
+                {
+                    "question": "Kan søkerne logge inn med ID-porten?",
+                    "answer": "Ja. Innlogging med ID-porten gir også tilgang til opplysninger dere ellers måtte be søkeren oppgi manuelt."
+                }
+            ]
+        },
+        "en": {
+            "title": "Grant portal",
+            "metaTitle": "Grant portals for Norwegian municipalities | Xala Technologies",
+            "metaDescription": "We build grant portals applicants get through without phoning in, and that hand the caseworker a complete basis to decide on.",
+            "intro": "A grant scheme has two user groups with opposite needs. The applicant wants to be finished. The caseworker wants a complete basis. A portal that serves one at the expense of the other just moves the work elsewhere.",
+            "problemHeading": "Why portals end up unused",
+            "problem": "Most grant portals fail on the form rather than the technology. The paper form is digitised as it stands, with fields accumulated over years that nobody dares remove.",
+            "capabilityHeading": "Four choices that decide the outcome",
+            "capabilities": [
+                {
+                    "title": "Ask only what affects the decision",
+                    "body": "Ask one question of every field: does the answer change the outcome? If not, remove it. If the answer is in a register you can reach, fetch it."
+                },
+                {
+                    "title": "Save as you go",
+                    "body": "Applications are rarely completed in one sitting. Without autosave you penalise exactly the most thorough applicants."
+                },
+                {
+                    "title": "Validate against the regulation, not just the data type",
+                    "body": "Validity rules live in one place rather than scattered through frontend code, so they change when the guidance changes without a deployment."
+                },
+                {
+                    "title": "Give the caseworker a queue",
+                    "body": "The last step is the one most often forgotten. If applications land in an inbox or a spreadsheet, the problem has moved rather than been solved."
+                },
+                {
+                    "title": "Accessibility from the start",
+                    "body": "A portal that cannot be used with a screen reader cannot be used by everyone entitled to apply."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "How many fields should a grant form have?",
+                    "answer": "As few as possible. Ask one question of every field: does the answer change the decision?"
+                },
+                {
+                    "question": "Can the portal handle several schemes?",
+                    "answer": "Yes. Schemes usually share a case flow and differ in regulation and form, so we build them as configuration rather than separate solutions."
+                },
+                {
+                    "question": "Does a grant portal have to meet WCAG 2.2 AA?",
+                    "answer": "For public services it is a requirement, and cheaper to build in than to retrofit."
+                },
+                {
+                    "question": "Can applicants sign in with ID-porten?",
+                    "answer": "Yes, which also gives access to details you would otherwise ask the applicant to supply."
+                }
+            ]
+        },
+        "ar": {
+            "title": "بوابة المنح",
+            "metaTitle": "بوابات المنح للبلديات النرويجية | Xala Technologies",
+            "metaDescription": "نبني بوابات منح يجتازها المتقدّمون دون الحاجة للاتصال، وتمنح موظف الحالة أساساً كاملاً لاتخاذ القرار.",
+            "intro": "لبرنامج المنح فئتان لهما احتياجان متعاكسان. المتقدّم يريد الإنجاز، وموظف الحالة يريد أساساً كاملاً.",
+            "problemHeading": "لماذا تبقى البوابات دون استخدام",
+            "problem": "تفشل معظم بوابات المنح في النموذج لا في التقنية. يُرقمن النموذج الورقي كما هو، بحقول تراكمت عبر السنين ولا أحد يجرؤ على حذفها.",
+            "capabilityHeading": "أربعة خيارات تحسم النتيجة",
+            "capabilities": [
+                {
+                    "title": "اسأل فقط عمّا يؤثّر في القرار",
+                    "body": "اطرح سؤالاً واحداً على كل حقل: هل يغيّر الجواب النتيجة؟ إن لم يكن، احذفه."
+                },
+                {
+                    "title": "احفظ أثناء التعبئة",
+                    "body": "نادراً ما تُملأ الطلبات في جلسة واحدة. غياب الحفظ التلقائي يعاقب أكثر المتقدّمين دقّة."
+                },
+                {
+                    "title": "تحقّق من اللوائح لا من نوع البيانات فقط",
+                    "body": "قواعد الصلاحية في مكان واحد، فتتغيّر مع تغيّر الإرشادات دون نشر جديد."
+                },
+                {
+                    "title": "امنح موظف الحالة قائمة انتظار",
+                    "body": "الخطوة الأخيرة هي الأكثر نسياناً. إن وصلت الطلبات إلى صندوق بريد، فقد انتقلت المشكلة ولم تُحلّ."
+                },
+                {
+                    "title": "إمكانية الوصول من البداية",
+                    "body": "بوابة لا تُستخدم بقارئ الشاشة لا يستطيع استخدامها كل من له حق التقديم."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "كم حقلاً ينبغي أن يضمّ نموذج المنحة؟",
+                    "answer": "أقل ما يمكن. اسأل عن كل حقل: هل يغيّر الجواب القرار؟"
+                },
+                {
+                    "question": "هل تدعم البوابة عدّة برامج منح؟",
+                    "answer": "نعم. تتشارك البرامج عادة مسار المعالجة وتختلف في اللوائح والنموذج، فنبنيها كإعداد لا كحلول منفصلة."
+                },
+                {
+                    "question": "هل يجب أن تلبّي البوابة معيار WCAG 2.2 AA؟",
+                    "answer": "للخدمات العامة هو شرط، وبناؤه من البداية أرخص من تصحيحه لاحقاً."
+                },
+                {
+                    "question": "هل يمكن الدخول عبر ID-porten؟",
+                    "answer": "نعم، وهو يتيح أيضاً بيانات كنتم ستطلبونها من المتقدّم يدوياً."
+                }
+            ]
+        }
+    },
+    "bevillingsportal": {
+        "slug": "bevillingsportal",
+        "icon": "FileCheck2",
+        "caseSlugs": [
+            "nordre-follo-tilskuddsportal-bevillingsportal"
+        ],
+        "postSlugs": [
+            "bevillingsportal-fra-soknad-til-vedtak"
+        ],
+        "no": {
+            "title": "Bevillingsportal",
+            "metaTitle": "Bevillingsportal for kommuner | Xala Technologies",
+            "metaDescription": "Vi bygger bevillingsportaler for skjenke- og salgsbevillinger, med parallelle høringer, sporbare vedtak og arkivering mot Noark.",
+            "intro": "Bevillingssaker er blant de mest sammensatte sakene en kommune behandler. De involverer flere instanser, har frister som løper parallelt, og ender i et vedtak som må kunne begrunnes.",
+            "problemHeading": "Hvor tiden faktisk går",
+            "problem": "Tiden går sjelden med til selve vurderingen. Den går med til å vente på uttalelser, purre på dem som ikke har svart, og svare på telefoner fra søkere som ikke vet hvor saken står.",
+            "capabilityHeading": "Det som er verdt å bygge",
+            "capabilities": [
+                {
+                    "title": "Skjemaet skal fange manglene med én gang",
+                    "body": "En bevillingssøknad som mangler dokumentasjon, oppdages best mens søkeren fortsatt fyller ut, ikke tre uker senere."
+                },
+                {
+                    "title": "Høringene er parallelle, ikke sekvensielle",
+                    "body": "Politi, skatteetat og kommunens egne instanser har ingen grunn til å vente på hverandre. En sekvensiell kjede gjør saksbehandlingstiden til summen av alle svartidene i stedet for den lengste."
+                },
+                {
+                    "title": "Automatiser purringen, ikke vurderingen",
+                    "body": "Frister, purringer, statusvarsler og dokumentasjon av hvem som gjorde hva automatiseres. Det er også der mesteparten av tidsbruken ligger."
+                },
+                {
+                    "title": "Søkeren skal se status uten å ringe",
+                    "body": "Et statusfelt søkeren kan se selv fjerner en betydelig andel av henvendelsene til servicetorget. Det krever at statusene er ærlige."
+                },
+                {
+                    "title": "Arkivering er et krav, ikke et vedlegg",
+                    "body": "Bevillingssaker er arkivpliktige. Noark-integrasjonen bør være del av datamodellen fra start."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "Hva kan automatiseres i en bevillingssak?",
+                    "answer": "Alt rundt vurderingen: frister, purringer, statusvarsler og dokumentasjon av hvem som gjorde hva og når. Selve skjønnsvurderingen skal ligge hos saksbehandleren."
+                },
+                {
+                    "question": "Hvordan håndteres høringsuttalelser?",
+                    "answer": "Parallelt. Instansene varsles samtidig, og systemet purrer automatisk på dem som ikke har svart innen fristen."
+                },
+                {
+                    "question": "Må en bevillingsportal integreres med arkivet?",
+                    "answer": "Ja, bevillingssaker er arkivpliktige. Vi legger Noark-integrasjonen inn i datamodellen fra start i stedet for å rekonstruere journalposter i etterkant."
+                },
+                {
+                    "question": "Dekker portalen både skjenke- og salgsbevilling?",
+                    "answer": "Ja, og også kunnskapsprøver, eierskifter og midlertidige bevillinger. De deler saksgang og skiller seg i regelverk."
+                }
+            ]
+        },
+        "en": {
+            "title": "Licensing portal",
+            "metaTitle": "Licensing portals for Norwegian municipalities | Xala Technologies",
+            "metaDescription": "We build licensing portals for alcohol serving and sales licences, with parallel consultations, traceable decisions and Noark archiving.",
+            "intro": "Licensing cases are among the most involved a municipality handles. They involve several bodies, run parallel deadlines, and end in a decision that has to be justifiable.",
+            "problemHeading": "Where the time actually goes",
+            "problem": "The time rarely goes on the assessment itself. It goes on waiting for statements, chasing those who have not replied, and answering calls from applicants who do not know where their case stands.",
+            "capabilityHeading": "What is worth building",
+            "capabilities": [
+                {
+                    "title": "The form should catch what is missing immediately",
+                    "body": "A licence application missing documentation is best caught while the applicant is still filling it in, not three weeks later."
+                },
+                {
+                    "title": "Consultations are parallel, not sequential",
+                    "body": "Police, tax authorities and the municipality have no reason to wait for each other. A sequential chain makes the processing time the sum of every reply time rather than the longest."
+                },
+                {
+                    "title": "Automate the chasing, not the assessment",
+                    "body": "Deadlines, reminders, status notices and the record of who did what. That is also where most of the time goes."
+                },
+                {
+                    "title": "The applicant should see status without calling",
+                    "body": "A status field the applicant can see removes a substantial share of calls to the service desk, provided the statuses are honest."
+                },
+                {
+                    "title": "Archiving is a requirement, not an attachment",
+                    "body": "Licensing cases are archivable. Noark integration belongs in the data model from the start."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "What can be automated in a licensing case?",
+                    "answer": "Everything around the assessment: deadlines, reminders, status notices and the record of who did what and when. The discretionary judgement stays with the caseworker."
+                },
+                {
+                    "question": "How are consultation statements handled?",
+                    "answer": "In parallel. Bodies are notified at the same time and the system chases those who have not replied by the deadline."
+                },
+                {
+                    "question": "Does a licensing portal have to integrate with the archive?",
+                    "answer": "Yes, licensing cases are archivable, and we put Noark integration into the data model from the start."
+                },
+                {
+                    "question": "Does it cover both serving and sales licences?",
+                    "answer": "Yes, along with knowledge tests, changes of ownership and temporary licences. They share a case flow and differ in regulation."
+                }
+            ]
+        },
+        "ar": {
+            "title": "بوابة التراخيص",
+            "metaTitle": "بوابات التراخيص للبلديات النرويجية | Xala Technologies",
+            "metaDescription": "نبني بوابات تراخيص لتراخيص التقديم والبيع، باستشارات متوازية وقرارات قابلة للتتبّع وأرشفة وفق Noark.",
+            "intro": "قضايا التراخيص من أكثر ما تعالجه البلدية تعقيداً. تشارك فيها جهات عدّة، ولها مواعيد متوازية، وتنتهي بقرار يجب تبريره.",
+            "problemHeading": "أين يذهب الوقت فعلاً",
+            "problem": "نادراً ما يذهب الوقت في التقييم نفسه، بل في انتظار الردود وملاحقة المتأخّرين والردّ على اتصالات المتقدّمين.",
+            "capabilityHeading": "ما يستحق البناء",
+            "capabilities": [
+                {
+                    "title": "النموذج يكتشف النواقص فوراً",
+                    "body": "يُكتشف نقص الوثائق وقت التعبئة لا بعد ثلاثة أسابيع."
+                },
+                {
+                    "title": "الاستشارات متوازية لا متتابعة",
+                    "body": "لا سبب لأن تنتظر الشرطة والضرائب والبلدية بعضها. التتابع يجعل المدة مجموع أوقات الردّ لا أطولها."
+                },
+                {
+                    "title": "أتمتة الملاحقة لا التقييم",
+                    "body": "المواعيد والتذكيرات والإشعارات وسجل مَن فعل ماذا، وهنا يذهب معظم الوقت."
+                },
+                {
+                    "title": "يرى المتقدّم الحالة دون اتصال",
+                    "body": "حقل حالة يراه المتقدّم يزيل جزءاً كبيراً من الاتصالات، شرط أن تكون الحالات صادقة."
+                },
+                {
+                    "title": "الأرشفة شرط لا مرفق",
+                    "body": "قضايا التراخيص خاضعة للأرشفة، وتكامل Noark ينتمي إلى نموذج البيانات منذ البداية."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "ما الذي يمكن أتمتته في قضية ترخيص؟",
+                    "answer": "كل ما يحيط بالتقييم: المواعيد والتذكيرات والإشعارات وسجل الإجراءات. يبقى التقدير لموظف الحالة."
+                },
+                {
+                    "question": "كيف تُعالج ردود الاستشارة؟",
+                    "answer": "بالتوازي. تُخطر الجهات معاً ويلاحق النظام مَن لم يردّ."
+                },
+                {
+                    "question": "هل يجب التكامل مع الأرشيف؟",
+                    "answer": "نعم، والقضايا خاضعة للأرشفة، ونضع تكامل Noark في نموذج البيانات منذ البداية."
+                },
+                {
+                    "question": "هل تغطّي تراخيص التقديم والبيع معاً؟",
+                    "answer": "نعم، وكذلك اختبارات المعرفة وتغيّر الملكية والتراخيص المؤقتة."
+                }
+            ]
+        }
+    },
+    "integrasjoner": {
+        "slug": "integrasjoner",
+        "icon": "Network",
+        "caseSlugs": [
+            "altinn",
+            "norsk-helsenett-healthcare-infrastructure",
+            "ssb-legacy-system-modernization"
+        ],
+        "postSlugs": [
+            "integrasjoner-mot-nasjonale-felleskomponenter"
+        ],
+        "no": {
+            "title": "Integrasjoner",
+            "metaTitle": "Integrasjoner mot Altinn, ID-porten og Folkeregisteret | Xala Technologies",
+            "metaDescription": "Vi bygger integrasjoner mot nasjonale felleskomponenter: Altinn, ID-porten, Maskinporten, Folkeregisteret, Enhetsregisteret og Noark.",
+            "intro": "De fleste fagsystemer i offentlig sektor er avhengige av data de ikke eier selv. Integrasjonene mot de nasjonale felleskomponentene er derfor ikke en detalj i prosjektet, de er ofte det prosjektet faktisk handler om.",
+            "problemHeading": "Det som overrasker folk",
+            "problem": "Tilgang er en prosess, ikke en konfigurasjon. Avtaler, roller og godkjenninger tar tid, og starter man søknadene i sprint to, blir tilgangen den kritiske stien i prosjektet. Testmiljøene ligner produksjon, men har andre datasett, andre responstider og andre feilmoduser.",
+            "capabilityHeading": "Slik bygger vi dem",
+            "capabilities": [
+                {
+                    "title": "Nedetid hos andre er en normaltilstand",
+                    "body": "Vi stiller to spørsmål for hvert oppslag: kan saksgangen fortsette uten det, og hva ser brukeren? Data kan ofte hentes senere og saken merkes som ufullstendig."
+                },
+                {
+                    "title": "Cache det som er trygt å cache",
+                    "body": "Enhetsregisteret endrer seg sjelden i løpet av en saksbehandling. Folkeregisteret kan endre seg når som helst og har strengere krav til oppbevaring. En felles cache-strategi for begge ender galt."
+                },
+                {
+                    "title": "Skriv ned hva løsningen er avhengig av",
+                    "body": "Få prosjekter har en samlet oversikt over hvilke eksterne tjenester løsningen kaller, med hvilke scopes og mot hvilke avtaler. Det er det første noen spør etter ved en sikkerhetsgjennomgang."
+                },
+                {
+                    "title": "Feilmeldinger som ikke sender folk til telefonen",
+                    "body": "\"Teknisk feil\" skaper henvendelser. \"Vi får ikke kontakt med Folkeregisteret akkurat nå, søknaden din er lagret\" gjør det ikke."
+                },
+                {
+                    "title": "Maskinporten og ID-porten fra start",
+                    "body": "Autentisering og autorisasjon er arkitekturvalg. De er dyre å legge på et system som ble bygget uten dem."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "Hvor lang tid tar det å få tilgang til felleskomponentene?",
+                    "answer": "Regn med at tilgang er en prosess med avtaler, roller og godkjenninger. Vi starter søknadene tidlig og parallelt med utviklingen, ellers blir tilgangen den kritiske stien."
+                },
+                {
+                    "question": "Hva skjer når Altinn eller Folkeregisteret er nede?",
+                    "answer": "Vi bygger ut fra at det kommer til å skje. Der saksgangen kan fortsette uten oppslaget, fortsetter den, og saken merkes som ufullstendig i stedet for å blokkere innsending."
+                },
+                {
+                    "question": "Kan vi mellomlagre data fra registrene?",
+                    "answer": "Det avhenger av registeret. Enhetsregisteret tåler mellomlagring godt gjennom en saksbehandling. Folkeregisteret har strengere krav, og de to bør ikke dele strategi."
+                },
+                {
+                    "question": "Jobber dere med Maskinporten?",
+                    "answer": "Ja, både Maskinporten for maskin-til-maskin og ID-porten for innbyggerinnlogging, i tillegg til Altinn, Folkeregisteret, Enhetsregisteret og Noark."
+                }
+            ]
+        },
+        "en": {
+            "title": "Integrations",
+            "metaTitle": "Integrations with Altinn, ID-porten and the Population Register | Xala Technologies",
+            "metaDescription": "We build integrations with Norwegian national components: Altinn, ID-porten, Maskinporten, the Population Register, the Register of Legal Entities and Noark.",
+            "intro": "Most public-sector systems depend on data they do not own. Integrations with the national components are therefore not a detail of the project; they are often what the project actually is.",
+            "problemHeading": "What surprises people",
+            "problem": "Access is a process, not a configuration. Agreements, roles and approvals take time, and starting the applications in sprint two makes access the critical path. Test environments resemble production but have different data, response times and failure modes.",
+            "capabilityHeading": "How we build them",
+            "capabilities": [
+                {
+                    "title": "Downtime elsewhere is normal",
+                    "body": "We ask two questions of every lookup: can the case proceed without it, and what does the user see?"
+                },
+                {
+                    "title": "Cache what is safe to cache",
+                    "body": "The Register of Legal Entities rarely changes during a case. The Population Register can change at any time and has stricter retention rules. One strategy for both ends badly."
+                },
+                {
+                    "title": "Write down what the solution depends on",
+                    "body": "Few projects have a single list of the external services they call, with which scopes and under which agreements. It is the first thing asked for in a security review."
+                },
+                {
+                    "title": "Errors that do not send people to the phone",
+                    "body": "\"Technical error\" generates calls. \"We cannot reach the Population Register right now, your application is saved\" does not."
+                },
+                {
+                    "title": "Maskinporten and ID-porten from the start",
+                    "body": "Authentication and authorisation are architectural choices, and expensive to add to a system built without them."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "How long does access to the national components take?",
+                    "answer": "Expect a process of agreements, roles and approvals. We start the applications early and in parallel with development, or access becomes the critical path."
+                },
+                {
+                    "question": "What happens when Altinn or the Population Register is down?",
+                    "answer": "We build on the assumption that it will be. Where the case can proceed without the lookup, it does, and the case is flagged as incomplete rather than blocking submission."
+                },
+                {
+                    "question": "Can we cache register data?",
+                    "answer": "It depends on the register. The Register of Legal Entities tolerates caching well through a case; the Population Register has stricter rules, and the two should not share a strategy."
+                },
+                {
+                    "question": "Do you work with Maskinporten?",
+                    "answer": "Yes, both Maskinporten for machine-to-machine and ID-porten for citizen sign-in, alongside Altinn, the registers and Noark."
+                }
+            ]
+        },
+        "ar": {
+            "title": "التكاملات",
+            "metaTitle": "التكامل مع Altinn وID-porten وسجل السكان | Xala Technologies",
+            "metaDescription": "نبني تكاملات مع المكوّنات الوطنية النرويجية: Altinn وID-porten وMaskinporten وسجل السكان وسجل المنشآت وNoark.",
+            "intro": "تعتمد معظم أنظمة القطاع العام على بيانات لا تملكها. لذا فالتكاملات ليست تفصيلاً في المشروع، بل غالباً هي المشروع نفسه.",
+            "problemHeading": "ما يفاجئ الناس",
+            "problem": "الوصول عملية لا إعداد. الاتفاقيات والأدوار والموافقات تستغرق وقتاً. وبيئات الاختبار تشبه الإنتاج لكن ببيانات وأزمنة استجابة وأنماط أعطال مختلفة.",
+            "capabilityHeading": "كيف نبنيها",
+            "capabilities": [
+                {
+                    "title": "تعطّل الآخرين حالة طبيعية",
+                    "body": "نسأل عن كل استعلام: هل تستمر القضية بدونه، وماذا يرى المستخدم؟"
+                },
+                {
+                    "title": "خزّن مؤقتاً ما يصحّ تخزينه",
+                    "body": "سجل المنشآت نادراً ما يتغيّر خلال القضية، وسجل السكان قد يتغيّر في أي وقت وله قواعد أشدّ."
+                },
+                {
+                    "title": "دوّن ما يعتمد عليه الحل",
+                    "body": "قليل من المشاريع لديها قائمة واحدة بالخدمات الخارجية المستدعاة ونطاقاتها واتفاقياتها."
+                },
+                {
+                    "title": "رسائل خطأ لا تدفع الناس للهاتف",
+                    "body": "\"خطأ تقني\" يولّد اتصالات، أما \"لا نصل إلى سجل السكان الآن، وطلبك محفوظ\" فلا."
+                },
+                {
+                    "title": "Maskinporten وID-porten من البداية",
+                    "body": "المصادقة والتفويض خياران معماريان، وإضافتهما لاحقاً مكلفة."
+                }
+            ],
+            "faq": [
+                {
+                    "question": "كم يستغرق الحصول على الوصول؟",
+                    "answer": "توقّعوا عملية اتفاقيات وأدوار وموافقات. نبدأ الطلبات مبكراً وبالتوازي مع التطوير."
+                },
+                {
+                    "question": "ماذا يحدث عند تعطّل Altinn أو سجل السكان؟",
+                    "answer": "نبني على افتراض حدوث ذلك. حيث يمكن للقضية أن تستمر، تستمر وتُعلَّم كغير مكتملة بدل حجب التقديم."
+                },
+                {
+                    "question": "هل يمكن تخزين بيانات السجلات مؤقتاً؟",
+                    "answer": "يعتمد على السجل، ولا ينبغي أن يتشارك السجلّان الاستراتيجية نفسها."
+                },
+                {
+                    "question": "هل تعملون مع Maskinporten؟",
+                    "answer": "نعم، وكذلك ID-porten، إضافة إلى Altinn والسجلات وNoark."
+                }
+            ]
+        }
+    }
+}

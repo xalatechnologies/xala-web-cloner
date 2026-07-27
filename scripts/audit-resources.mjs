@@ -9,7 +9,7 @@ import { chromium } from 'playwright';
 
 const BASE = process.env.BASE ?? 'https://xala.no';
 const ROUTES = [
-  '/', '/tjenester', '/produkter', '/caser', '/caser/altinn', '/slik-vi-jobber',
+  '/', '/tjenester', '/tjenester/saksbehandlingssystem', '/produkter', '/caser', '/caser/altinn', '/slik-vi-jobber',
   '/teknologi', '/om-oss', '/kontakt', '/karriere', '/blogg',
   '/blogg/tilskuddsportal-som-faktisk-brukes', '/privacy', '/terms', '/cookies',
 ];

@@ -678,7 +678,8 @@
         "title": "Teknologien vi bygger på",
         "blurb": "Plattformene løsningene står på, og hvorfor."
       }
-    }
+    },
+    "deepDiveTitle": "Gå i dybden"
   },
   "productsPage": {
     "eyebrow": "Produkter",
@@ -761,5 +762,16 @@
     "ctaTitle": "Vil dere se det i praksis?",
     "ctaDescription": "Ta kontakt, så viser vi hvordan produktet løser oppgaven dere står i.",
     "ctaContact": "Kontakt oss"
+  },
+  "servicePage": {
+    "back": "Alle tjenester",
+    "casesTitle": "Vi har gjort dette før",
+    "faqTitle": "Ofte stilte spørsmål",
+    "readMore": "Les mer om dette",
+    "ctaTitle": "Står dere i dette nå?",
+    "ctaDescription": "Fortell oss hva dere har i dag, så sier vi hva vi ville gjort først og hva vi ville ventet med.",
+    "ctaContact": "Kontakt oss",
+    "ctaProcess": "Slik vi jobber",
+    "deepDive": "Se hele tjenesten"
   }
 }

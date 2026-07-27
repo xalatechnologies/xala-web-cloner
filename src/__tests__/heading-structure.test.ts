@@ -32,6 +32,7 @@ const PAGE_HEADING_OWNER: Record<string, string> = {
   // Like /slik-vi-jobber: the h1 moved to the page, and Services renders an h2
   // under it. Services keeps an h1 default for any page it leads.
   '/tjenester': 'pages/TjenesterPage.tsx',
+  '/tjenester/:slug': 'pages/TjenesteDetaljPage.tsx',
   '/produkter': 'pages/ProdukterPage.tsx',
   '/produkter/:slug': 'pages/ProduktDetaljPage.tsx',
   '/caser': 'pages/CaserPage.tsx',

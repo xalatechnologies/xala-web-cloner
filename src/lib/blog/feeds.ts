@@ -91,6 +91,16 @@ export function blogSitemapEntries(posts: BlogPost[]): SitemapEntry[] {
  * index — and for a while not even that, because the /caser/:slug route had been
  * dropped and every card 404'd.
  */
+/** One entry per service landing page, generated from service-pages.json. */
+export function serviceSitemapEntries(slugs: string[], today: string): SitemapEntry[] {
+  return slugs.map((slug) => ({
+    loc: `${SITE_ORIGIN}/tjenester/${slug}`,
+    lastmod: today,
+    changefreq: "monthly",
+    priority: "0.9",
+  }));
+}
+
 /** One entry per product page, generated from products.json. */
 export function productSitemapEntries(slugs: string[], today: string): SitemapEntry[] {
   return slugs.map((slug) => ({
