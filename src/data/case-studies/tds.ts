@@ -45,8 +45,7 @@ export const tdsCaseStudy: CaseStudy = {
     'React & TypeScript',
     'Workflow automation',
   ],
-  logoUrl: '/clients/tds.png',
-  imageUrl: '/clients/tds.png',
+  logoUrl: undefined,
 
   summary:
     'Transport services depend on digital platforms that can coordinate workflows, handle operational data, and support multiple stakeholders efficiently. Xala contributed to the Taxi Portal for Transport Data Systems (TDS), supporting architecture, development, integrations, testing, and deployment-related activities for a transport platform designed to improve operational structure and digital service delivery.',

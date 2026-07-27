@@ -4,43 +4,37 @@
             "id": "consulting-no",
             "title": "Teknologikonsultering",
             "description": "Strategisk rådgivning og implementeringsstøtte for digital transformasjon. Vi hjelper deg med å velge riktig teknologi og arkitektur for dine behov.",
-            "icon": "Lightbulb",
-            "image": "/images/services/consulting.jpg"
+            "icon": "Lightbulb"
         },
         {
             "id": "ai-no",
             "title": "AI & Maskinlæring",
             "description": "Utvikling av intelligente løsninger med kunstig intelligens og maskinlæring. Fra chatbots til prediktiv analyse.",
-            "icon": "Brain",
-            "image": "/images/services/ai.jpg"
+            "icon": "Brain"
         },
         {
             "id": "blockchain-no",
             "title": "Blockchain & Web3",
             "description": "Skreddersydde blockchain-løsninger for sporbarhet, sikkerhet og desentraliserte applikasjoner.",
-            "icon": "Link",
-            "image": "/images/services/blockchain.jpg"
+            "icon": "Link"
         },
         {
             "id": "cloud-no",
             "title": "Skyløsninger",
             "description": "Cloud-arkitektur, migrering og drift på ledende skyplattformer som AWS, Azure og GCP.",
-            "icon": "Cloud",
-            "image": "/images/services/cloud.jpg"
+            "icon": "Cloud"
         },
         {
             "id": "integration-no",
             "title": "Systemintegrasjon",
             "description": "Sømløs integrasjon mellom eksisterende systemer og nye løsninger. API-utvikling og datautveksling.",
-            "icon": "Plug",
-            "image": "/images/services/integration.jpg"
+            "icon": "Plug"
         },
         {
             "id": "security-no",
             "title": "Cybersikkerhet",
             "description": "Sikkerhetsvurderinger, penetrasjonstesting og implementering av robuste sikkerhetstiltak.",
-            "icon": "Shield",
-            "image": "/images/services/security.jpg"
+            "icon": "Shield"
         }
     ],
     "en": [
@@ -48,43 +42,37 @@
             "id": "consulting-en",
             "title": "Technology Consulting",
             "description": "Strategic advisory and implementation support for digital transformation. We help you choose the right technology and architecture for your needs.",
-            "icon": "Lightbulb",
-            "image": "/images/services/consulting.jpg"
+            "icon": "Lightbulb"
         },
         {
             "id": "ai-en",
             "title": "AI & Machine Learning",
             "description": "Development of intelligent solutions with artificial intelligence and machine learning. From chatbots to predictive analytics.",
-            "icon": "Brain",
-            "image": "/images/services/ai.jpg"
+            "icon": "Brain"
         },
         {
             "id": "blockchain-en",
             "title": "Blockchain & Web3",
             "description": "Custom blockchain solutions for traceability, security, and decentralized applications.",
-            "icon": "Link",
-            "image": "/images/services/blockchain.jpg"
+            "icon": "Link"
         },
         {
             "id": "cloud-en",
             "title": "Cloud Solutions",
             "description": "Cloud architecture, migration, and operations on leading cloud platforms like AWS, Azure, and GCP.",
-            "icon": "Cloud",
-            "image": "/images/services/cloud.jpg"
+            "icon": "Cloud"
         },
         {
             "id": "integration-en",
             "title": "System Integration",
             "description": "Seamless integration between existing systems and new solutions. API development and data exchange.",
-            "icon": "Plug",
-            "image": "/images/services/integration.jpg"
+            "icon": "Plug"
         },
         {
             "id": "security-en",
             "title": "Cybersecurity",
             "description": "Security assessments, penetration testing, and implementation of robust security measures.",
-            "icon": "Shield",
-            "image": "/images/services/security.jpg"
+            "icon": "Shield"
         }
     ],
     "ar": [
@@ -92,43 +80,37 @@
             "id": "consulting-ar",
             "title": "استشارات تقنية",
             "description": "استشارات استراتيجية ودعم التنفيذ للتحول الرقمي. نساعدك في اختيار التقنية والهندسة المعمارية المناسبة لاحتياجاتك.",
-            "icon": "Lightbulb",
-            "image": "/images/services/consulting.jpg"
+            "icon": "Lightbulb"
         },
         {
             "id": "ai-ar",
             "title": "الذكاء الاصطناعي والتعلم الآلي",
             "description": "تطوير حلول ذكية باستخدام الذكاء الاصطناعي والتعلم الآلي. من روبوتات المحادثة إلى التحليلات التنبؤية.",
-            "icon": "Brain",
-            "image": "/images/services/ai.jpg"
+            "icon": "Brain"
         },
         {
             "id": "blockchain-ar",
             "title": "البلوكتشين والويب 3",
             "description": "حلول بلوكتشين مخصصة للتتبع والأمان والتطبيقات اللامركزية.",
-            "icon": "Link",
-            "image": "/images/services/blockchain.jpg"
+            "icon": "Link"
         },
         {
             "id": "cloud-ar",
             "title": "الحلول السحابية",
             "description": "هندسة السحابة والترحيل والعمليات على منصات السحابة الرائدة مثل AWS وAzure وGCP.",
-            "icon": "Cloud",
-            "image": "/images/services/cloud.jpg"
+            "icon": "Cloud"
         },
         {
             "id": "integration-ar",
             "title": "تكامل الأنظمة",
             "description": "تكامل سلس بين الأنظمة القائمة والحلول الجديدة. تطوير واجهات البرمجة وتبادل البيانات.",
-            "icon": "Plug",
-            "image": "/images/services/integration.jpg"
+            "icon": "Plug"
         },
         {
             "id": "security-ar",
             "title": "الأمن السيبراني",
             "description": "تقييمات الأمان واختبار الاختراق وتنفيذ إجراءات أمنية قوية.",
-            "icon": "Shield",
-            "image": "/images/services/security.jpg"
+            "icon": "Shield"
         }
     ]
 }

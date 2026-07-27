@@ -7,7 +7,12 @@ export interface Service {
   title: string;
   description: string;
   icon: string;
-  image: string;
+  /**
+   * Optional illustration. Most services have none — the card is icon-led, and
+   * a required field here forced every entry to name an image file, which is
+   * how six paths that were never in public/ ended up shipped.
+   */
+  image?: string;
 }
 
 interface ServiceGridProps {

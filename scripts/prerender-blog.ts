@@ -135,11 +135,11 @@ function renderHead(shell: string, fields: HeadFields): string {
     fields.publishedTime
       ? `<meta property="article:published_time" content="${fields.publishedTime}" data-rh="true" />`
       : "",
-    `<script type="application/ld+json">${JSON.stringify(fields.jsonLd)}</script>`,
+    `<script type="application/ld+json" data-rh="true">${JSON.stringify(fields.jsonLd)}</script>`,
     // Separate blocks rather than one @graph: an FAQPage is a claim about the
     // page, and keeping it standalone is what the rich-result tests expect.
     ...(fields.extraJsonLd ?? []).map(
-      (block) => `<script type="application/ld+json">${JSON.stringify(block)}</script>`,
+      (block) => `<script type="application/ld+json" data-rh="true">${JSON.stringify(block)}</script>`,
     ),
   ]
     .filter(Boolean)

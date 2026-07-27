@@ -2,7 +2,8 @@ export interface CaserEntry {
   id: string;
   title: string;
   description: string;
-  imageUrl: string;
+  /** Client logo. Optional: not every client has one in public/clients/. */
+  imageUrl?: string;
   slug?: string;
   sector: string;
   tags: string[];
@@ -174,7 +175,6 @@ export const caserEntries: CaserEntry[] = [
     title: 'TDS – Taxi Portal',
     description:
       'Delivering a digital transport platform for taxi workflows, operational coordination, backend services, and scalable mobility support.',
-    imageUrl: '/clients/tds.png',
     slug: 'tds-taxi-portal',
     sector: 'Public Transport',
     tags: ['.NET', 'SQL Server', 'Azure', 'Transport Tech', 'Workflow Systems'],

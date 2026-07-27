@@ -62,15 +62,13 @@ const Footer = () => {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <Link to="/" className="inline-flex items-center min-h-11 mb-6">
-              <img
-                src="/xala-logo-white.svg"
-                alt="Xala Technologies"
-                className="h-10"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                }}
-              />
-              <span className="text-2xl font-bold text-white">Xala Technologies</span>
+              {/* The footer bar is dark in both themes, so it always takes the
+                  light-on-dark mark — the same file the navbar uses in dark
+                  mode. The previous src (/xala-logo-white.svg) has never
+                  existed: an onError handler hid the broken image, so the only
+                  symptom was a 404 on every page load and a footer showing the
+                  company name twice once you removed the handler. */}
+              <img src="/logo-xala-dark.svg" alt="Xala Technologies" className="h-10 w-auto" />
             </Link>
             <p className="text-base md:text-lg text-stone-300 mb-6 max-w-sm leading-relaxed">
               {description}
