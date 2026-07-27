@@ -38,3 +38,7 @@ To verify the changes:
 3. Test both English and Norwegian language versions
 
 The list item titles should now properly display the correct colors in both light and dark modes.
+
+## Superseded
+
+The brand palette moved off Polkadot magenta/amber to a single Xala green (`#7ED956`) for `--primary` in both themes. Legal page list item titles now use `text-primary dark:text-primary` — the same color in both modes, not the magenta/amber split described above.

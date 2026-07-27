@@ -157,10 +157,6 @@ The repository includes `public/.htaccess`; Vite copies it into `dist/`, so HTTP
 
 ## Email (contact form)
 
-Contact form emails are sent via **One.com SMTP** in the Supabase Edge Function `contact-notification`:
-
-- **Host:** `send.one.com` (port 587)  
-- **User:** `website@xala.no`  
-- **Password:** Stored in Supabase secrets as `SMTP_PASSWORD`
+The contact form has no backend: submitting it opens a `mailto:info@xala.no` link with the message pre-filled, so the visitor's own mail client sends it. There is no SMTP or Supabase Edge Function involved.
 
 This is separate from SSH/SFTP/FTP; no changes here are needed for deployment.

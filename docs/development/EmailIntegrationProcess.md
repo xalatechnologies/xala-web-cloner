@@ -1,5 +1,9 @@
 # Email Integration Process
 
+## Superseded
+
+Supabase has been removed from the project. The contact form no longer uses an Edge Function, database trigger, or Resend — it opens a `mailto:info@xala.no` link and lets the visitor's mail client send it. The process below is kept for history only.
+
 ## Overview
 Implement email sending functionality for contact form submissions using Supabase Edge Functions and database triggers.
 
