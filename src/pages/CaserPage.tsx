@@ -14,6 +14,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { cn } from '@/lib/utils';
+import { localizedCardExcerpt } from '@/data/case-studies/localized';
 import { SITE_ORIGIN } from '@/lib/blog/seo';
 import {
   caserEntries,
@@ -64,8 +65,13 @@ const sectorKey = (sector: string) =>
 
 // ─── Case Card ─────────────────────────────────────────────────────────────────
 function CaseCard({ entry, index }: { entry: CaserEntry; index: number }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const isLinked = Boolean(entry.slug);
+  // The Norwegian and Arabic blurbs live on the case study itself and were
+  // already written; this list's own `description` is English only. Prefer the
+  // translated one, and keep the entry's text for the rare card with no study
+  // behind it.
+  const description = localizedCardExcerpt(entry.slug, i18n.language) ?? entry.description;
   const sectorColor = SECTOR_COLORS[entry.sector] ?? 'text-primary bg-primary/10 border-primary/20';
 
   const inner = (
@@ -125,7 +131,7 @@ function CaseCard({ entry, index }: { entry: CaserEntry; index: number }) {
         </h3>
 
         <p className="text-sm leading-relaxed text-muted-foreground flex-1 line-clamp-3 mb-5">
-          {entry.description}
+          {description}
         </p>
 
         {/* Tags */}
@@ -435,7 +441,7 @@ function MobileFilterBar({
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function CaserPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [search, setSearch] = useState('');
   const [activeSector, setActiveSector] = useState<string | null>(null);
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set());
@@ -466,14 +472,24 @@ export default function CaserPage() {
     return caserEntries.filter(e => {
       if (activeSector && e.sector !== activeSector) return false;
       if (activeTags.size > 0 && !e.tags.some(t => activeTags.has(t))) return false;
-      if (q &&
-        !e.title.toLowerCase().includes(q) &&
-        !e.description.toLowerCase().includes(q) &&
-        !e.sector.toLowerCase().includes(q) &&
-        !e.tags.some(tg => tg.toLowerCase().includes(q))) return false;
-      return true;
+      if (!q) return true;
+
+      // Search what the reader can see, not only the English source text.
+      // The cards render a translated blurb, so matching solely on
+      // e.description meant a Norwegian visitor could type a word visible on a
+      // card and be told there were no results.
+      const haystack = [
+        e.title,
+        e.description,
+        localizedCardExcerpt(e.slug, i18n.language) ?? '',
+        e.sector,
+        ...e.tags,
+      ]
+        .join(' ')
+        .toLowerCase();
+      return haystack.includes(q);
     });
-  }, [activeSector, activeTags, search]);
+  }, [activeSector, activeTags, search, i18n.language]);
 
   const linkedCount = caserEntries.filter(e => e.slug).length;
 
