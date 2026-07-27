@@ -11,21 +11,21 @@
     "services": "Tjenester",
     "servicesDescription": "Komplett spektrum av teknologitjenester for moderne bedrifter",
     "products": "Produkter",
-    "productsDescription": "Innovative AI-drevne løsninger som transformerer bransjer",
+    "productsDescription": "Digilist, Digiskjema, Xaheen og Norchain",
     "cases": "Cases",
     "casesDescription": "Utforsk våre vellykkede prosjektimplementeringer",
     "workProcessDescription": "Vår strukturerte tilnærming fra idé til implementering",
     "technology": "Teknologi",
-    "technologyDescription": "Banebrytende teknologier som driver din digitale transformasjon",
+    "technologyDescription": ".NET, Azure og React, og hvorfor vi velger som vi gjør",
     "aboutDescription": "Lær mer om vår misjon og ekspertise",
     "contactDescription": "Ta kontakt for en uforpliktende samtale"
   },
   "Loading": "Laster",
   "hero": {
-    "welcome": "Velkommen til fremtidens teknologi",
+    "welcome": "Systemutvikling for offentlig sektor",
     "title": "Bygger digital",
     "excellence": "Eksellense",
-    "description": "Vi skaper innovative programvareløsninger som driver forretningsvekst og forvandler ideer til virkelighet. Vi utnytter banebrytende teknologi for å bygge morgendagens digitale landskap.",
+    "description": "Vi bygger saksbehandlingssystemer, portaler og integrasjoner for offentlig sektor og næringsliv, og vi forvalter dem videre etter lansering.",
     "getInTouch": "Ta kontakt",
     "ourProcess": "Vår prosess",
     "aboutUs": "Om oss",
@@ -79,7 +79,7 @@
   },
   "valueProps": {
     "title": "Hvorfor velge Xala?",
-    "description": "Vi kombinerer teknisk ekspertise med forretningsforståelse for å levere løsninger som skaper reell verdi for din bedrift.",
+    "description": "Fire ting vi holder oss til, og som avgjør hvordan leveransene våre ser ut i praksis.",
     "fastDelivery": {
       "title": "Rask levering",
       "description": "Vi leverer fungerende løsninger raskt med moderne teknologi og effektive arbeidsmetoder."
@@ -130,7 +130,7 @@
     },
     "products": {
       "title": "Våre kjerneprodukter",
-      "description": "Ferdige løsninger som kan tilpasses dine behov",
+      "description": "Fire produkter bygget av de samme delene vi bruker i kundeprosjekter.",
       "viewAll": "Se alle produkter",
       "available": "Tilgjengelig",
       "beta": "Beta",
@@ -254,7 +254,7 @@
       "status": "Live"
     },
     "title": "Våre kjerneprodukter",
-    "description": "Ferdige løsninger som kan tilpasses dine behov.",
+    "description": "Fire produkter bygget av de samme delene vi bruker i kundeprosjekter.",
     "comingSoon": "Kommer",
     "readMore": "Les mer"
   },
@@ -700,7 +700,7 @@
   },
   "aboutPage": {
     "eyebrow": "Om oss",
-    "title": "Et lite hus som forvalter det det bygger",
+    "title": "Vi bygger systemer og blir værende etterpå",
     "description": "Vi leverer til statlige etater, helseforetak og kommuner, og vi blir værende etter lansering.",
     "ctaTitle": "Vil dere vite mer?",
     "ctaDescription": "Ta en uforpliktende prat, eller se hva vi har levert til andre i samme situasjon.",

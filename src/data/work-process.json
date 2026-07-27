@@ -11,7 +11,7 @@
             "id": "design-no",
             "step_number": 2,
             "title": "Design",
-            "description": "Basert på innsikten designer vi løsninger som adresserer dine spesifikke behov med fokus på brukervennlighet.",
+            "description": "Vi tegner løsningen sammen med dem som skal bruke den, og tester skjemaflyt og saksflyt før noe blir bygget.",
             "icon": "Palette"
         },
         {
@@ -48,7 +48,7 @@
             "id": "design-en",
             "step_number": 2,
             "title": "Design",
-            "description": "Based on insights, we design solutions that address your specific needs with focus on user experience.",
+            "description": "We design the solution together with the people who will use it, and test form and case flows before anything is built.",
             "icon": "Palette"
         },
         {
@@ -85,7 +85,7 @@
             "id": "design-ar",
             "step_number": 2,
             "title": "التصميم",
-            "description": "بناءً على الرؤى، نصمم حلولاً تعالج احتياجاتك المحددة مع التركيز على تجربة المستخدم.",
+            "description": "نصمّم الحل مع من سيستخدمه، ونختبر تدفّق النماذج والقضايا قبل بناء أي شيء.",
             "icon": "Palette"
         },
         {

@@ -9,7 +9,7 @@
         "about": {
             "id": "about-no",
             "title": "Om Xala Technologies",
-            "description": "Xala Technologies er et norsk teknologiselskap som spesialiserer seg på innovative digitale løsninger. Vi kombinerer dyp teknisk ekspertise med forretningsforståelse for å levere løsninger som skaper reell verdi."
+            "description": "Xala Technologies er et norsk systemutviklingshus. Vi bygger saksbehandlingssystemer, portaler og integrasjoner for offentlig sektor og næringsliv, og vi forvalter løsningene videre etter lansering."
         },
         "vision": {
             "id": "vision-no",
@@ -75,7 +75,7 @@
         "about": {
             "id": "about-en",
             "title": "About Xala Technologies",
-            "description": "Xala Technologies is a Norwegian technology company specializing in innovative digital solutions. We combine deep technical expertise with business understanding to deliver solutions that create real value."
+            "description": "Xala Technologies is a Norwegian software development firm. We build case management systems, portals and integrations for the public sector and private industry, and we keep running them after launch."
         },
         "vision": {
             "id": "vision-en",
@@ -141,7 +141,7 @@
         "about": {
             "id": "about-ar",
             "title": "عن شركة زالا للتقنية",
-            "description": "زالا للتقنية هي شركة تقنية نرويجية متخصصة في الحلول الرقمية المبتكرة. نجمع بين الخبرة التقنية العميقة وفهم الأعمال لتقديم حلول تخلق قيمة حقيقية."
+            "description": "Xala Technologies شركة نرويجية لتطوير البرمجيات. نبني أنظمة إدارة القضايا والبوابات والتكاملات للقطاع العام والخاص، ونواصل تشغيل الحلول بعد الإطلاق."
         },
         "vision": {
             "id": "vision-ar",

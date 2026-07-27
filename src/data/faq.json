@@ -3,7 +3,7 @@
         {
             "id": "kostnad",
             "question": "Hva koster et prosjekt hos Xala Technologies?",
-            "answer": "Det avhenger av omfang, men vi starter alltid med et kort kartleggingsmøte og gir deretter et estimat med tydelige forutsetninger. Mindre integrasjoner og avgrensede leveranser starter typisk rundt 150 000 kroner, mens større fagsystemer løper over flere måneder. Vi fakturerer per time eller på fastpris per delleveranse — du velger hva som passer anskaffelsen din best."
+            "answer": "Det avhenger av omfang, men vi starter alltid med et kort kartleggingsmøte og gir deretter et estimat med tydelige forutsetninger. Mindre integrasjoner og avgrensede leveranser starter typisk rundt 150 000 kroner, mens større fagsystemer løper over flere måneder. Vi fakturerer per time eller på fastpris per delleveranse, og dere velger hva som passer anskaffelsen best."
         },
         {
             "id": "tid",
@@ -13,7 +13,7 @@
         {
             "id": "offentlig",
             "question": "Jobber dere med offentlig sektor og offentlige anskaffelser?",
-            "answer": "Ja. Størstedelen av porteføljen vår er offentlig sektor — blant annet Digitaliseringsdirektoratet (Altinn), Statistisk sentralbyrå, Norsk helsenett, Sykehuspartner og Nordre Follo kommune. Vi er vant til krav om universell utforming, arkivering, sikkerhet og dokumentasjon, og vi kan svare på konkurransegrunnlag og delta i dialogkonferanser."
+            "answer": "Ja. Størstedelen av porteføljen vår er offentlig sektor, blant annet Digitaliseringsdirektoratet (Altinn), Statistisk sentralbyrå, Norsk helsenett, Sykehuspartner og Nordre Follo kommune. Vi er vant til krav om universell utforming, arkivering, sikkerhet og dokumentasjon, og vi kan svare på konkurransegrunnlag og delta i dialogkonferanser."
         },
         {
             "id": "overta",
@@ -33,7 +33,7 @@
         {
             "id": "forvaltning",
             "question": "Tilbyr dere drift og forvaltning etter at løsningen er levert?",
-            "answer": "Ja. De fleste kundene våre fortsetter med en forvaltningsavtale som dekker oppdateringer, sikkerhetsfikser, overvåking og videreutvikling. Vi kan også overlevere til deres eget utviklingsteam med dokumentasjon og opplæring hvis det er ønsket — vi låser ingen inn."
+            "answer": "Ja. De fleste kundene våre fortsetter med en forvaltningsavtale som dekker oppdateringer, sikkerhetsfikser, overvåking og videreutvikling. Vi kan også overlevere til deres eget utviklingsteam med dokumentasjon og opplæring hvis det er ønsket. Vi låser ingen inn."
         },
         {
             "id": "sted",

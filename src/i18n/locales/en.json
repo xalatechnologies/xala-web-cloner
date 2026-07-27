@@ -11,21 +11,21 @@
     "services": "Services",
     "servicesDescription": "Complete spectrum of technology services for modern businesses",
     "products": "Products",
-    "productsDescription": "Innovative AI-powered solutions transforming industries",
+    "productsDescription": "Digilist, Digiskjema, Xaheen and Norchain",
     "cases": "Cases",
     "casesDescription": "Explore our successful project implementations",
     "workProcessDescription": "Our structured approach from idea to implementation",
     "technology": "Technology",
-    "technologyDescription": "Cutting-edge technologies powering your digital transformation",
+    "technologyDescription": ".NET, Azure and React, and why we choose as we do",
     "aboutDescription": "Learn about our mission and expertise",
     "contactDescription": "Get in touch for a non-committal conversation"
   },
   "Loading": "Loading",
   "hero": {
-    "welcome": "Welcome to the Future of Technology",
+    "welcome": "Software development for the public sector",
     "title": "Building Digital",
     "excellence": "Excellence",
-    "description": "We create innovative software solutions that drive business growth and transform ideas into reality. Leveraging cutting-edge technology to build tomorrow's digital landscape.",
+    "description": "We build case management systems, portals and integrations for the public sector and private industry, and we keep running them after launch.",
     "getInTouch": "Get in touch",
     "ourProcess": "Our Process",
     "aboutUs": "About us",
@@ -79,7 +79,7 @@
   },
   "valueProps": {
     "title": "Why Choose Xala?",
-    "description": "We combine technical expertise with business acumen to deliver solutions that create real value for your business.",
+    "description": "Four things we hold to, and which decide what our deliveries look like in practice.",
     "fastDelivery": {
       "title": "Fast Delivery",
       "description": "We deliver working solutions quickly with modern technology and efficient working methods."
@@ -130,7 +130,7 @@
     },
     "products": {
       "title": "Our Core Products",
-      "description": "Ready-made solutions that can be customized to your needs",
+      "description": "Four products built from the same parts we use in client projects.",
       "viewAll": "View all products",
       "available": "Available",
       "beta": "Beta",
@@ -254,7 +254,7 @@
       "status": "Live"
     },
     "title": "Our core products",
-    "description": "Ready-made solutions that adapt to your needs.",
+    "description": "Four products built from the same parts we use in client projects.",
     "comingSoon": "Soon",
     "readMore": "Read more"
   },
@@ -700,7 +700,7 @@
   },
   "aboutPage": {
     "eyebrow": "About us",
-    "title": "A small firm that keeps running what it builds",
+    "title": "We build systems and stay on afterwards",
     "description": "We deliver to government agencies, health trusts and municipalities — and stay on after launch.",
     "ctaTitle": "Want to know more?",
     "ctaDescription": "Have an informal conversation, or see what we have delivered for others in the same position.",
