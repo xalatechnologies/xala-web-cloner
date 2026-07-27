@@ -150,3 +150,45 @@ export type {
   Certification,
   Project
 };
+
+interface ServiceOffering {
+  id: string;
+  title: string;
+  description: string;
+}
+
+/**
+ * The service catalogue, as machine-readable offerings.
+ *
+ * Generated from the same services.json the page renders, for the reason the
+ * FAQ schema is generated from the visible questions: structured data that is
+ * authored separately from the content drifts from it, and an answer engine
+ * quoting a service the page does not list is worse than one quoting nothing.
+ *
+ * `OfferCatalog` rather than a bare list of Services — it ties each offering to
+ * the organisation that provides it, which is the fact a "who does X in
+ * Norway" query is actually looking for.
+ */
+export const generateServicesSchema = (
+  services: ServiceOffering[],
+  { url, organizationId, name }: { url: string; organizationId: string; name: string }
+) => ({
+  '@context': 'https://schema.org',
+  '@type': 'OfferCatalog',
+  '@id': `${url}#catalog`,
+  name,
+  url,
+  numberOfItems: services.length,
+  itemListElement: services.map((service, index) => ({
+    '@type': 'Offer',
+    position: index + 1,
+    itemOffered: {
+      '@type': 'Service',
+      '@id': `${url}#${service.id}`,
+      name: service.title,
+      description: service.description,
+      provider: { '@id': organizationId },
+      areaServed: { '@type': 'Country', name: 'Norge' },
+    },
+  })),
+});

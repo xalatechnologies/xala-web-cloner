@@ -1,116 +1,68 @@
 /**
- * Text hyphenation utilities for Norwegian language
- * 
- * This module provides functions to automatically insert soft hyphens
- * in Norwegian words to improve line breaking and prevent overflow.
+ * Break hints for long Norwegian compound words.
+ *
+ * Norwegian builds nouns by concatenation — "saksbehandlingssystem",
+ * "tilskuddsforvaltning" — and a card heading holding one of those will either
+ * overflow its column or break at an arbitrary character. A soft hyphen tells
+ * the browser where the word may split.
+ *
+ * ## Why this file no longer guesses
+ *
+ * It used to derive break points from three regexes. The third had two capture
+ * groups, so the callback's fourth parameter received the match *offset*
+ * rather than a group — and `if (p3 !== undefined)` was therefore always true.
+ * Every Norwegian service title on the site rendered with that offset spliced
+ * into it:
+ *
+ *     Teknologikonsultering  ->  Teknolo{shy}4giko{shy}8nsulteri{shy}16ng
+ *
+ * It shipped that way because the result went through dangerouslySetInnerHTML,
+ * where `&shy;` became a real soft hyphen and the digits became visible text
+ * that nothing was checking.
+ *
+ * Deciding where a Norwegian compound may split is a dictionary problem, not a
+ * regex one. This now hyphenates only words it has been told about and returns
+ * everything else untouched; the `hyphens: auto` already set on headings
+ * handles the rest using the browser's own dictionary.
  */
+
+/** U+00AD, as a character rather than an entity, so the result is text. */
+const SHY = '­';
+
+const shy = (...parts: string[]): string => parts.join(SHY);
 
 /**
- * Inserts soft hyphens (&shy;) in Norwegian words at appropriate breaking points
- * 
- * @param text - The text to process
- * @param language - The language code (defaults to 'no' for Norwegian)
- * @returns The text with soft hyphens inserted
+ * Hand-checked break points. Add an entry when a title actually overflows —
+ * a wrong break point reads worse than no break at all.
  */
-export function insertSoftHyphens(text: string, language: string = 'no'): string {
-  if (language !== 'no' && language !== 'nb' && language !== 'nn') {
-    return text;
-  }
+const NORWEGIAN_BREAKS: Record<string, string> = {
+  'Digital Transformasjon': `Digital ${shy('Trans', 'for', 'masjon')}`,
+  'AI & Automatisering': `AI & ${shy('Auto', 'ma', 'ti', 'se', 'ring')}`,
+  Bedriftsintegrasjon: shy('Bedrifts', 'inte', 'grasjon'),
+  'Moderne Webapplikasjoner': `Moderne ${shy('Web', 'appli', 'ka', 'sjo', 'ner')}`,
+  Programvareutvikling: shy('Program', 'vare', 'ut', 'vikling'),
+  Applikasjonsutvikling: shy('Appli', 'kasjons', 'ut', 'vikling'),
+  Teknologikonsultering: shy('Teknologi', 'konsul', 'tering'),
+  Systemintegrasjon: shy('System', 'inte', 'grasjon'),
+  Cybersikkerhet: shy('Cyber', 'sikkerhet'),
+  'Skyløsninger': shy('Sky', 'løsninger'),
+};
 
-  // Common Norwegian word breaking patterns
-  const breakingPatterns = [
-    // Compound word patterns (common in Norwegian)
-    /([a-zæøå]{3,})([A-ZÆØÅ][a-zæøå]*)/g, // camelCase boundaries
-    // Consonant clusters that can be broken
-    /([a-zæøå]{2,})(sk|st|sp|sn|sm|sl|sr|sv|sf|sg|sc|sh|sj|sk|sl|sm|sn|sp|sr|st|sv)([a-zæøå]{2,})/gi,
-    // Vowel-consonant patterns
-    /([aeiouyæøåAEIOUYÆØÅ]{1,2})([bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ][aeiouyæøåAEIOUYÆØÅ])/gi,
-  ];
-
-  let result = text;
-
-  // Apply breaking patterns
-  for (const pattern of breakingPatterns) {
-    result = result.replace(pattern, (match, p1, p2, p3) => {
-      // For compound words with camelCase
-      if (p3 !== undefined) {
-        return `${p1}${p2}&shy;${p3}`;
-      }
-      // For consonant clusters
-      else if (p2 && p3 === undefined) {
-        return `${p1}&shy;${p2}`;
-      }
-      return match;
-    });
-  }
-
-  return result;
+function isNorwegian(language: string): boolean {
+  const lang = language?.toLowerCase() ?? '';
+  return lang.startsWith('no') || lang.startsWith('nb') || lang.startsWith('nn');
 }
 
 /**
- * Processes service titles for better display in cards
- * 
- * @param title - The original title
- * @param language - The language code
- * @returns The processed title with appropriate hyphenation
+ * A title with soft hyphens where a compound is known to break.
+ *
+ * Returns the input unchanged for other languages, and for any Norwegian
+ * title with no entry above.
  */
 export function processServiceTitle(title: string, language: string = 'en'): string {
-  // For Norwegian, we want to add hyphenation hints
-  if (language === 'no' || language === 'nb' || language === 'nn') {
-    // Specific handling for known long Norwegian service titles
-    const norwegianTitleMap: Record<string, string> = {
-      'Digital Transformasjon': 'Digital Trans&shy;for&shy;masjon',
-      'AI & Automatisering': 'AI & Auto&shy;ma&shy;ti&shy;se&shy;ring',
-      'Bedriftsintegrasjon': 'Bedrifts&shy;inte&shy;grasjon',
-      'Moderne Webapplikasjoner': 'Moderne Web&shy;appli&shy;ka&shy;sjo&shy;ner',
-      'Programvareutvikling': 'Program&shy;vare&shy;ut&shy;vikling',
-      'Applikasjonsutvikling': 'Appli&shy;kasjons&shy;ut&shy;vikling',
-    };
-
-    // Check if we have a specific mapping
-    if (norwegianTitleMap[title]) {
-      return norwegianTitleMap[title];
-    }
-
-    // Otherwise apply general hyphenation
-    return insertSoftHyphens(title, language);
-  }
-
-  // For other languages, return as is
-  return title;
+  if (!isNorwegian(language)) return title;
+  return NORWEGIAN_BREAKS[title] ?? title;
 }
 
-/**
- * CSS class for Norwegian text that enables hyphenation
- * 
- * Usage: Add this class to elements containing Norwegian text
- */
-export const norwegianHyphenationClass = "hyphenate-no";
-
-/**
- * CSS styles for Norwegian hyphenation
- * 
- * Should be included in your main CSS file:
- * 
- * .hyphenate-no {
- *   hyphens: auto;
- *   word-break: break-word;
- *   overflow-wrap: break-word;
- * }
- */
-export const norwegianHyphenationStyles = `
-  .hyphenate-no {
-    hyphens: auto;
-    word-break: break-word;
-    overflow-wrap: break-word;
-    -webkit-hyphens: auto;
-    -ms-hyphens: auto;
-  }
-  
-  /* Ensure proper hyphenation works in all browsers */
-  @media screen and (-webkit-min-device-pixel-ratio: 0) {
-    .hyphenate-no {
-      word-break: break-word;
-    }
-  }
-`;
+/** Class that turns on the browser's own hyphenation. Defined in index.css. */
+export const norwegianHyphenationClass = 'hyphenate-no';

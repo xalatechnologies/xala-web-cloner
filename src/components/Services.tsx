@@ -5,7 +5,15 @@ import servicesData from '@/data/services.json';
 
 type Language = 'no' | 'en' | 'ar';
 
-const Services = () => {
+interface ServicesProps {
+  /**
+   * Heading level for the section title. The page that hosts this section owns
+   * the h1; this stays an h1 only where the section leads the page.
+   */
+  headingLevel?: 'h1' | 'h2';
+}
+
+const Services = ({ headingLevel = 'h1' }: ServicesProps) => {
   const { t, i18n } = useTranslation();
   const { data: section } = useSection('services');
 
@@ -28,6 +36,8 @@ const Services = () => {
     return <ServiceGrid services={services} language={currentLanguage} initialRows={2} cols={3} />;
   };
 
+  const Heading = headingLevel;
+
   // Section data with fallbacks
   const sectionTitle = section?.title || t('services.title', 'Our Services');
   const sectionDescription = section?.description || t('services.description', '');
@@ -35,14 +45,27 @@ const Services = () => {
   // Head tags come from RouteSEO, mounted once per route in App.tsx.
   return (
     <>
-      <section id="services" className="py-24 bg-background hero-gradient dark:bg-background">
+      <section
+        id="services"
+        className="pb-16 pt-10 md:pb-24 md:pt-14 bg-background hero-gradient dark:bg-background"
+        aria-labelledby="services-heading"
+      >
         <div className="container">
-          <div className="flex flex-col gap-16">
-            <div className="flex flex-col gap-6 text-center max-w-3xl mx-auto">
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+          <div className="flex flex-col gap-12">
+            {/* Left-aligned rather than centred: the page header above it is
+                left-aligned, and two stacked centred blocks read as two
+                unrelated pages glued together. */}
+            <div className="flex flex-col gap-5 max-w-3xl">
+              <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+                {t('services.eyebrow', 'Hva vi leverer')}
+              </p>
+              <Heading
+                id="services-heading"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground"
+              >
                 {sectionTitle}
-              </h1>
-              <p className="text-xl leading-8 text-muted-foreground">
+              </Heading>
+              <p className="text-lg leading-relaxed text-muted-foreground">
                 {sectionDescription}
               </p>
             </div>

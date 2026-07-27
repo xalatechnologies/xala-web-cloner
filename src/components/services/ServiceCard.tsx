@@ -51,8 +51,15 @@ const ServiceCard = ({ icon, title, description, image, language = 'en' }: Servi
             <div className="absolute inset-0 bg-primary/20 rounded-xl blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             {IconComponent && <IconComponent className="w-7 h-7 relative z-10" />}
           </div>
-          <h2 className={`service-card-title ${isNorwegian ? 'no' : ''}`} dangerouslySetInnerHTML={{ __html: processedTitle }}>
-          </h2>
+          {/*
+            Rendered as text, not as HTML. The title comes from a data file and
+            went through dangerouslySetInnerHTML purely to turn `&shy;` into a
+            soft hyphen — the break hints are real U+00AD characters now, so
+            React can render them directly and the injection surface is gone.
+
+            h3, not h2: these sit under the section's own heading.
+          */}
+          <h3 className={`service-card-title ${isNorwegian ? 'no' : ''}`}>{processedTitle}</h3>
         </div>
 
         <p className="service-card-description">

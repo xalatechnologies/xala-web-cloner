@@ -527,7 +527,8 @@
   },
   "services": {
     "title": "Våre tjenester",
-    "description": "Vi leverer komplette teknologiløsninger som driver forretningsvekst."
+    "description": "Vi leverer komplette teknologiløsninger som driver forretningsvekst.",
+    "eyebrow": "Hva vi leverer"
   },
   "technologies": {
     "title": "Teknologiplattform",
@@ -561,5 +562,25 @@
     "ctaDescription": "Fortell oss hva dere står i, så sier vi hva vi ville gjort først — og hva vi ville ventet med.",
     "ctaContact": "Kontakt oss",
     "ctaCases": "Se kundecaser"
+  },
+  "servicesPage": {
+    "eyebrow": "Tjenester",
+    "title": "Systemer som skal stå i mange år",
+    "description": "Vi bygger saksbehandlingssystemer, portaler og integrasjoner for offentlig sektor og næringsliv — og forvalter dem videre etter lansering.",
+    "nextTitle": "Videre herfra",
+    "next": {
+      "process": {
+        "title": "Slik vi jobber",
+        "blurb": "Fem etapper, og hva hver av dem gir dere."
+      },
+      "cases": {
+        "title": "Kundecaser",
+        "blurb": "Hva vi har levert til stat, helse og kommune."
+      },
+      "tech": {
+        "title": "Teknologien vi bygger på",
+        "blurb": "Plattformene løsningene står på, og hvorfor."
+      }
+    }
   }
 }

@@ -29,7 +29,9 @@ const SRC = resolve(__dirname, '..');
  */
 const PAGE_HEADING_OWNER: Record<string, string> = {
   '/': 'components/hero/VideoHero.tsx',
-  '/tjenester': 'components/Services.tsx',
+  // Like /slik-vi-jobber: the h1 moved to the page, and Services renders an h2
+  // under it. Services keeps an h1 default for any page it leads.
+  '/tjenester': 'pages/TjenesterPage.tsx',
   '/produkter': 'components/CoreProducts.tsx',
   '/caser': 'pages/CaserPage.tsx',
   '/caser/:slug': 'pages/CaseStudyDetailPage.tsx',
