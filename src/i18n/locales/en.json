@@ -321,7 +321,8 @@
     "showLess": "Show Less",
     "tryAgain": "Try again",
     "goHome": "Go to front page",
-    "goBack": "Go back"
+    "goBack": "Go back",
+    "newTab": "(opens in a new tab)"
   },
   "lastUpdated": "Last updated",
   "categories": {
@@ -673,6 +674,40 @@
       "orgnr": "Company number",
       "location": "Head office",
       "certification": "Certification"
+    }
+  },
+  "digilist": {
+    "eyebrow": "Our product",
+    "badge": "In production",
+    "title": "Digilist — booking and venue hire for municipalities",
+    "description": "Municipalities and venue operators still run their facilities out of spreadsheets and email. Digilist brings booking, seasonal allocation, casework and invoicing into one place — built for Norwegian requirements from the start.",
+    "visit": "Visit digilist.no",
+    "allProducts": "All products",
+    "capabilities": {
+      "booking": {
+        "title": "Booking and seasonal allocation",
+        "description": "One-off bookings and seasonal allocation in the same system — including dividing training time between clubs and associations."
+      },
+      "venues": {
+        "title": "Venues of every kind",
+        "description": "Sports halls, gyms, meeting rooms, cultural centres, function rooms and equipment — the same flow whatever is being hired out."
+      },
+      "login": {
+        "title": "ID-porten sign-in",
+        "description": "Secure sign-in for citizens and associations, with roles for caseworkers and operations staff."
+      },
+      "caseflow": {
+        "title": "Application, decision and archive",
+        "description": "Applications that need assessment run through a casework flow with traceable decisions and Noark archiving."
+      },
+      "invoicing": {
+        "title": "Invoicing and payment",
+        "description": "Pricing per renter category, automatic invoice basis and online payment — with no manual re-entry afterwards."
+      },
+      "compliance": {
+        "title": "What the public sector requires",
+        "description": "Accessibility to WCAG 2.2 AA, GDPR obligations, and documentation that holds up in a procurement."
+      }
     }
   }
 }

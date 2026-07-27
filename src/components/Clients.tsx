@@ -46,11 +46,12 @@ const Clients = () => {
         </div>
 
         {/*
-          A wrapping row rather than a fixed grid. Fifteen clients in four
-          columns leaves one cell empty, and an empty bordered box reads as a
-          client that failed to load.
+          Five columns, because there are fifteen clients: three full rows with
+          no gap left at the end. A wrapping flex row sized to its content
+          stopped short of the right edge and left the section looking
+          unfinished.
         */}
-        <ul className="mt-12 flex flex-wrap gap-x-4 gap-y-2">
+        <ul className="mt-12 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {clientsData.map((client) => (
             <li key={client.id}>
               <ClientLogo name={client.name} logoUrl={client.logoUrl} websiteUrl={client.websiteUrl} />

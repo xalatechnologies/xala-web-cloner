@@ -1,0 +1,154 @@
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import { ArrowRight, ExternalLink } from 'lucide-react';
+import * as Icons from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+
+/**
+ * Digilist on the front page.
+ *
+ * Replaces the Norchain block, which claimed the homepage's product slot while
+ * being the least commercially active of the three. Norchain keeps its entry on
+ * /produkter — this is about which product gets the attention of someone who
+ * lands on the front page, not about dropping anything.
+ *
+ * ## What is deliberately not here
+ *
+ * Numbers. digilist.no publishes figures — admin time saved, share of bookings
+ * on mobile, organisations onboarded — but those are attributed to named
+ * customers in testimonials on that site. Restating them here, stripped of the
+ * customer they belong to, turns a specific claim into a general one this page
+ * cannot support. Capabilities are verifiable from the product; outcomes belong
+ * with the customer who reported them.
+ *
+ * The capability list doubles as the AEO surface: "sesongtildeling",
+ * "ID-porten", "Noark" and "SSA-L" are the terms a municipality actually
+ * searches, and each is stated as plain text rather than buried in an image or
+ * a carousel.
+ */
+const CAPABILITIES = [
+  {
+    icon: 'CalendarRange',
+    key: 'digilist.capabilities.booking',
+    title: 'Booking og sesongtildeling',
+    description:
+      'Enkeltbookinger og sesongtildeling i samme system — inkludert fordeling av treningstid mellom lag og foreninger.',
+  },
+  {
+    icon: 'Building2',
+    key: 'digilist.capabilities.venues',
+    title: 'Lokaler av alle slag',
+    description:
+      'Idrettshaller, gymsaler, møterom, kulturhus, selskapslokaler og utstyr — samme flyt uansett hva som leies ut.',
+  },
+  {
+    icon: 'ShieldCheck',
+    key: 'digilist.capabilities.login',
+    title: 'Innlogging med ID-porten',
+    description:
+      'Sikker innlogging for innbyggere og foreninger, med roller for saksbehandlere og driftspersonell.',
+  },
+  {
+    icon: 'FileCheck2',
+    key: 'digilist.capabilities.caseflow',
+    title: 'Søknad, vedtak og arkiv',
+    description:
+      'Søknader som skal behandles går gjennom en saksflyt med sporbare vedtak og arkivering mot Noark.',
+  },
+  {
+    icon: 'Receipt',
+    key: 'digilist.capabilities.invoicing',
+    title: 'Fakturering og betaling',
+    description:
+      'Priser per leietakertype, automatisk fakturagrunnlag og betaling på nett — uten manuell etterregistrering.',
+  },
+  {
+    icon: 'Accessibility',
+    key: 'digilist.capabilities.compliance',
+    title: 'Krav som gjelder offentlig sektor',
+    description:
+      'Universell utforming etter WCAG 2.2 AA, GDPR-krav og dokumentasjon som holder i en anskaffelse.',
+  },
+] as const;
+
+export default function DigilistSection() {
+  const { t } = useTranslation();
+  const iconFor = (name: string): LucideIcon =>
+    (Icons[name as keyof typeof Icons] as LucideIcon) || Icons.CircleDot;
+
+  return (
+    <section
+      id="digilist"
+      aria-labelledby="digilist-heading"
+      className="border-y border-border bg-background py-16 md:py-24"
+    >
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl">
+          <p className="mb-5 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
+            {t('digilist.eyebrow', 'Vårt produkt')}
+            <span className="rounded-full border border-primary/40 bg-primary/10 px-2.5 py-1 text-[10px] tracking-[0.14em]">
+              {t('digilist.badge', 'I drift')}
+            </span>
+          </p>
+          <h2
+            id="digilist-heading"
+            className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+          >
+            {t('digilist.title', 'Digilist — booking og utleie for kommuner')}
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+            {t(
+              'digilist.description',
+              'Kommuner og utleiere styrer fortsatt lokaler i regneark og e-post. Digilist samler booking, sesongtildeling, saksbehandling og fakturering ett sted — bygget for norske krav fra start.'
+            )}
+          </p>
+        </div>
+
+        <ul className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {CAPABILITIES.map((capability) => {
+            const Icon = iconFor(capability.icon);
+            return (
+              <li
+                key={capability.key}
+                className="flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50"
+              >
+                <span className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <Icon className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <h3 className="text-lg font-semibold text-foreground">
+                  {t(`${capability.key}.title`, capability.title)}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {t(`${capability.key}.description`, capability.description)}
+                </p>
+              </li>
+            );
+          })}
+        </ul>
+
+        <div className="mt-10 flex flex-wrap gap-3">
+          <a
+            href="https://digilist.no"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold uppercase tracking-[0.1em] text-primary-foreground transition-all hover:shadow-[0_0_32px_hsl(var(--primary)/0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            {t('digilist.visit', 'Besøk digilist.no')}
+            <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            <span className="sr-only">{t('common.newTab', '(åpnes i ny fane)')}</span>
+          </a>
+          <Link
+            to="/produkter"
+            className="group inline-flex min-h-12 items-center gap-2 rounded-xl border border-border bg-card px-6 py-3 text-sm font-semibold uppercase tracking-[0.1em] text-foreground transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            {t('digilist.allProducts', 'Alle produkter')}
+            <ArrowRight
+              className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+              aria-hidden="true"
+            />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}

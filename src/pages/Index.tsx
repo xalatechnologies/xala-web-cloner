@@ -6,7 +6,7 @@ import ValueProps from '../components/ValueProps';
 import Footer from '../components/Footer';
 import ServicesTeaser from '../components/teasers/ServicesTeaser';
 import ProductsTeaser from '../components/teasers/ProductsTeaser';
-import NorchainSection from '../components/NorchainSection';
+import DigilistSection from '../components/DigilistSection';
 import ProcessTeaser from '../components/teasers/ProcessTeaser';
 import TechTeaser from '../components/teasers/TechTeaser';
 import BlogTeaser from '../components/teasers/BlogTeaser';
@@ -39,7 +39,7 @@ const Index = () => {
         <ValueProps />
         <ServicesTeaser />
         <ProductsTeaser />
-        <NorchainSection />
+        <DigilistSection />
         <ProcessTeaser />
         <TechTeaser />
         <BlogTeaser />

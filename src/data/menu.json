@@ -41,6 +41,12 @@
             "name": "Kontakt",
             "href": "/kontakt",
             "sortOrder": 7
+        },
+        {
+            "id": "careers-no",
+            "name": "Karriere",
+            "href": "/karriere",
+            "sortOrder": 8
         }
     ],
     "en": [
@@ -85,6 +91,12 @@
             "name": "Contact",
             "href": "/kontakt",
             "sortOrder": 7
+        },
+        {
+            "id": "careers-en",
+            "name": "Careers",
+            "href": "/karriere",
+            "sortOrder": 8
         }
     ],
     "ar": [
@@ -129,6 +141,12 @@
             "name": "اتصل بنا",
             "href": "/kontakt",
             "sortOrder": 7
+        },
+        {
+            "id": "careers-ar",
+            "name": "الوظائف",
+            "href": "/karriere",
+            "sortOrder": 8
         }
     ]
 }
