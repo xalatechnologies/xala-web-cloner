@@ -45,7 +45,7 @@
         {
             "id": "kostnad",
             "question": "What does a project with Xala Technologies cost?",
-            "answer": "It depends on scope, but we always begin with a short discovery meeting and then give an estimate with stated assumptions. Smaller integrations and well-bounded deliveries typically start around NOK 150,000, while larger line-of-business systems run over several months. We bill hourly or at a fixed price per increment — whichever suits your procurement better."
+            "answer": "It depends on scope, but we always begin with a short discovery meeting and then give an estimate with stated assumptions. Smaller integrations and well-bounded deliveries typically start around NOK 150,000, while larger line-of-business systems run over several months. We bill hourly or at a fixed price per increment, whichever suits your procurement better."
         },
         {
             "id": "tid",
@@ -55,7 +55,7 @@
         {
             "id": "offentlig",
             "question": "Do you work with the public sector and public procurement?",
-            "answer": "Yes. Most of our portfolio is public sector — including the Norwegian Digitalisation Agency (Altinn), Statistics Norway, Norsk helsenett, Sykehuspartner and Nordre Follo municipality. We are used to requirements for accessibility, archiving, security and documentation, and we can respond to tender documents and take part in dialogue conferences."
+            "answer": "Yes. Most of our portfolio is public sector, including the Norwegian Digitalisation Agency (Altinn), Statistics Norway, Norsk helsenett, Sykehuspartner and Nordre Follo municipality. We are used to requirements for accessibility, archiving, security and documentation, and we can respond to tender documents and take part in dialogue conferences."
         },
         {
             "id": "overta",
@@ -75,7 +75,7 @@
         {
             "id": "forvaltning",
             "question": "Do you offer operations and maintenance after delivery?",
-            "answer": "Yes. Most of our clients continue with a maintenance agreement covering updates, security fixes, monitoring and further development. We can also hand over to your own engineering team with documentation and training if you prefer — we do not lock anyone in."
+            "answer": "Yes. Most of our clients continue with a maintenance agreement covering updates, security fixes, monitoring and further development. We can also hand over to your own engineering team with documentation and training if you prefer, we do not lock anyone in."
         },
         {
             "id": "sted",
@@ -117,7 +117,7 @@
         {
             "id": "forvaltning",
             "question": "هل تقدّمون التشغيل والصيانة بعد التسليم؟",
-            "answer": "نعم. يستمر معظم عملائنا باتفاقية صيانة تشمل التحديثات وإصلاحات الأمن والمراقبة والتطوير المستمر. ويمكننا أيضاً تسليم العمل لفريقكم الداخلي مع التوثيق والتدريب إذا رغبتم — فنحن لا نحتكر أحداً."
+            "answer": "نعم. يستمر معظم عملائنا باتفاقية صيانة تشمل التحديثات وإصلاحات الأمن والمراقبة والتطوير المستمر. ويمكننا أيضاً تسليم العمل لفريقكم الداخلي مع التوثيق والتدريب إذا رغبتم، فنحن لا نحتكر أحداً."
         },
         {
             "id": "sted",

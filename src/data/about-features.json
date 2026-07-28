@@ -29,7 +29,7 @@
         {
             "id": "forvaltning",
             "title": "We keep running what we build",
-            "description": "We stay on after launch. A system meant to run for ten years is designed differently from one meant to be demonstrated once — and that difference is what a client is paying for.",
+            "description": "We stay on after launch. A system meant to run for ten years is designed differently from one meant to be demonstrated once, and that difference is what a client is paying for.",
             "icon": "ShieldCheck"
         },
         {
@@ -41,7 +41,7 @@
         {
             "id": "uu",
             "title": "Accessibility from the start",
-            "description": "WCAG 2.2 AA is a requirement for public services, not an ambition — and considerably cheaper to build in than to retrofit.",
+            "description": "WCAG 2.2 AA is a requirement for public services, not an ambition, and considerably cheaper to build in than to retrofit.",
             "icon": "Accessibility"
         },
         {
@@ -55,7 +55,7 @@
         {
             "id": "forvaltning",
             "title": "نواصل تشغيل ما نبنيه",
-            "description": "نبقى بعد الإطلاق. النظام المصمّم للعمل عشر سنوات يُصمّم بطريقة تختلف عن نظام يُعرض مرة واحدة — وهذا الفارق هو ما يدفع العميل مقابله.",
+            "description": "نبقى بعد الإطلاق. النظام المصمّم للعمل عشر سنوات يُصمّم بطريقة تختلف عن نظام يُعرض مرة واحدة، وهذا الفارق هو ما يدفع العميل مقابله.",
             "icon": "ShieldCheck"
         },
         {
@@ -67,7 +67,7 @@
         {
             "id": "uu",
             "title": "إمكانية الوصول من البداية",
-            "description": "معيار WCAG 2.2 AA شرط للخدمات العامة لا طموح — وبناؤه من البداية أرخص بكثير من تصحيحه لاحقاً.",
+            "description": "معيار WCAG 2.2 AA شرط للخدمات العامة لا طموح، وبناؤه من البداية أرخص بكثير من تصحيحه لاحقاً.",
             "icon": "Accessibility"
         },
         {

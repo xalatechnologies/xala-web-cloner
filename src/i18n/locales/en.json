@@ -46,7 +46,7 @@
       "microsoft": "Microsoft Partner",
       "aws": "AWS Partner"
     },
-    "subtitle": "We digitalise case handling and business processes for the public sector and enterprise — from application to decision. Custom systems, automation and integrations.",
+    "subtitle": "We digitalise case handling and business processes for the public sector and enterprise, from application to decision. Custom systems, automation and integrations.",
     "viewCases": "See our work",
     "credentials": {
       "label": "Certifications and standards",
@@ -108,7 +108,7 @@
   "teasers": {
     "services": {
       "title": "What we deliver",
-      "description": "From case management systems and portals to integrations and long-term operations — six areas all serving the same end.",
+      "description": "From case management systems and portals to integrations and long-term operations, six areas all serving the same end.",
       "viewAll": "View all services",
       "aiMachineLearning": {
         "title": "AI & Machine Learning",
@@ -188,7 +188,7 @@
     "blog": {
       "eyebrow": "Articles",
       "title": "What we write about",
-      "description": "Lessons from our projects — architecture, modernisation and digitalising case handling.",
+      "description": "Lessons from our projects, architecture, modernisation and digitalising case handling.",
       "viewAll": "See all articles"
     }
   },
@@ -391,7 +391,7 @@
     "resultsHeading": "All case studies",
     "ctaEyebrow": "Next step",
     "ctaTitle": "Facing something similar?",
-    "ctaDescription": "Tell us what you are dealing with, and we will say what we would do first — and what we would leave until later.",
+    "ctaDescription": "Tell us what you are dealing with, and we will say what we would do first, and what we would leave until later.",
     "ctaContact": "Contact us",
     "ctaProcess": "How we work",
     "tags": {
@@ -640,7 +640,7 @@
   "proof": {
     "eyebrow": "Results",
     "title": "Systems running where downtime is not an option",
-    "description": "We have delivered for government agencies, health trusts and municipalities — and we maintain the solutions after launch.",
+    "description": "We have delivered for government agencies, health trusts and municipalities, and we maintain the solutions after launch.",
     "stats": {
       "projects": "Projects delivered",
       "experience": "Years of experience",
@@ -653,17 +653,17 @@
     "title": "From first conversation to system in production",
     "description": "We deliver in stages rather than as one large handover. Each stage produces something that works, and something you can weigh before the next one starts.",
     "faqTitle": "Before you start",
-    "faqDescription": "What people most want to know before getting in touch — cost, time, procurement, and who runs the solution afterwards.",
+    "faqDescription": "What people most want to know before getting in touch: cost, time, procurement, and who runs the solution afterwards.",
     "ctaEyebrow": "Next step",
     "ctaTitle": "Have an informal conversation",
-    "ctaDescription": "Tell us what you are dealing with, and we will say what we would do first — and what we would leave until later.",
+    "ctaDescription": "Tell us what you are dealing with, and we will say what we would do first, and what we would leave until later.",
     "ctaContact": "Contact us",
     "ctaCases": "See case studies"
   },
   "servicesPage": {
     "eyebrow": "Services",
     "title": "Systems built to last years",
-    "description": "We build case management systems, portals and integrations for the public sector and private industry — and keep running them after launch.",
+    "description": "We build case management systems, portals and integrations for the public sector and private industry, and keep running them after launch.",
     "nextTitle": "Where to next",
     "next": {
       "process": {
@@ -684,7 +684,7 @@
   "productsPage": {
     "eyebrow": "Products",
     "title": "Finished solutions we already run",
-    "description": "Three products built from the same parts we use in client projects — and maintained the same way.",
+    "description": "Three products built from the same parts we use in client projects, and maintained the same way.",
     "ctaTitle": "Does any of this fit?",
     "ctaDescription": "The products adapt. Tell us what you need and we will say whether it is a configuration or a project.",
     "ctaContact": "Contact us",
@@ -702,7 +702,7 @@
   "aboutPage": {
     "eyebrow": "About us",
     "title": "We build systems and stay on afterwards",
-    "description": "We deliver to government agencies, health trusts and municipalities — and stay on after launch.",
+    "description": "We deliver to government agencies, health trusts and municipalities, and stay on after launch.",
     "ctaTitle": "Want to know more?",
     "ctaDescription": "Have an informal conversation, or see what we have delivered for others in the same position.",
     "ctaContact": "Contact us",
@@ -724,18 +724,18 @@
   "digilist": {
     "eyebrow": "Our product",
     "badge": "In production",
-    "title": "Digilist — booking and venue hire for municipalities",
-    "description": "Municipalities and venue operators still run their facilities out of spreadsheets and email. Digilist brings booking, seasonal allocation, casework and invoicing into one place — built for Norwegian requirements from the start.",
+    "title": "Digilist, booking and venue hire for municipalities",
+    "description": "Municipalities and venue operators still run their facilities out of spreadsheets and email. Digilist brings booking, seasonal allocation, casework and invoicing into one place, built for Norwegian requirements from the start.",
     "visit": "Visit digilist.no",
     "allProducts": "All products",
     "capabilities": {
       "booking": {
         "title": "Booking and seasonal allocation",
-        "description": "One-off bookings and seasonal allocation in the same system — including dividing training time between clubs and associations."
+        "description": "One-off bookings and seasonal allocation in the same system, including dividing training time between clubs and associations."
       },
       "venues": {
         "title": "Venues of every kind",
-        "description": "Sports halls, gyms, meeting rooms, cultural centres, function rooms and equipment — the same flow whatever is being hired out."
+        "description": "Sports halls, gyms, meeting rooms, cultural centres, function rooms and equipment. The same flow whatever is being hired out."
       },
       "login": {
         "title": "ID-porten sign-in",
@@ -747,7 +747,7 @@
       },
       "invoicing": {
         "title": "Invoicing and payment",
-        "description": "Pricing per renter category, automatic invoice basis and online payment — with no manual re-entry afterwards."
+        "description": "Pricing per renter category, automatic invoice basis and online payment, with no manual re-entry afterwards."
       },
       "compliance": {
         "title": "What the public sector requires",
