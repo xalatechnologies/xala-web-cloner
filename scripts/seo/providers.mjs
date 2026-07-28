@@ -18,6 +18,15 @@ import { env } from './env.mjs';
 export const MARKET = {
   dataforseoLocation: 2578, // Norway
   dataforseoLanguage: 'no',
+  /**
+   * The Labs endpoints reject 'no' and require 'nb'.
+   *
+   * The SERP endpoint accepts either, so this looked correct until Labs
+   * returned "Invalid Field: 'language_code'" for every call. Norway offers
+   * exactly one Labs language — Norwegian (Bokmål) = nb — which is confirmable
+   * from /v3/dataforseo_labs/locations_and_languages rather than guessable.
+   */
+  dataforseoLabsLanguage: 'nb',
   serpapiLocation: 'Norway',
   hl: 'no',
   gl: 'no',
@@ -110,7 +119,7 @@ export const dataforseo = {
     const items = await this._post('/v3/dataforseo_labs/google/keyword_ideas/live', {
       keywords: seeds,
       location_code: MARKET.dataforseoLocation,
-      language_code: MARKET.dataforseoLanguage,
+      language_code: MARKET.dataforseoLabsLanguage,
       include_serp_info: false,
       limit,
     });
@@ -122,7 +131,7 @@ export const dataforseo = {
     const items = await this._post('/v3/dataforseo_labs/google/keyword_suggestions/live', {
       keyword: seed,
       location_code: MARKET.dataforseoLocation,
-      language_code: MARKET.dataforseoLanguage,
+      language_code: MARKET.dataforseoLabsLanguage,
       limit,
     });
     return items.map(shapeKeyword);
@@ -139,7 +148,7 @@ export const dataforseo = {
     const items = await this._post('/v3/dataforseo_labs/google/ranked_keywords/live', {
       target: domain,
       location_code: MARKET.dataforseoLocation,
-      language_code: MARKET.dataforseoLanguage,
+      language_code: MARKET.dataforseoLabsLanguage,
       limit,
       order_by: ['keyword_data.keyword_info.search_volume,desc'],
     });

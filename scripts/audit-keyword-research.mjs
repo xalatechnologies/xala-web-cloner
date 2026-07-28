@@ -80,9 +80,88 @@ const COMPETITORS = [
   'resp.no',
 ];
 
+/**
+ * Relevance, because volume alone produces a useless list.
+ *
+ * The first working run returned 626 keywords with real Norwegian volume and
+ * the top of the list was "visma" (60500), "minvakt" (14800), "ølsalg lørdag"
+ * (8100) and "haaland lønn" (3600). All real searches; none of them anything
+ * this company could or should rank for. Two failure modes produced that:
+ *
+ *   - Competitor brand terms. minflyt.no ranks for Visma product names because
+ *     it is part of that ecosystem. We are not, and chasing a competitor's
+ *     brand is chasing a query whose searcher already knows who they want.
+ *   - Seeds that leak into consumer intent. "skjenkebevilling" is a municipal
+ *     licensing term to us and a question about when you can buy beer to
+ *     everyone else, so it dragged in ølsalg, vinmonopolet and opening hours.
+ *
+ * A keyword has to look like something a public-sector buyer would type. That
+ * is a cruder test than semantic relevance, and it is the one that turns this
+ * from a volume dump into a list someone can act on.
+ */
+const RELEVANT = [
+  'saksbehandl', 'tilskudd', 'bevilling', 'integrasjon', 'altinn', 'id-porten',
+  'maskinporten', 'noark', 'arkiv', 'fagsystem', 'kommune', 'offentlig',
+  'digitaliser', 'systemutvikl', 'saas', 'skyløsning', 'automatiser',
+  'kunstig intelligens', ' ai ', 'wcag', 'universell utforming', 'iso 27001',
+  'gdpr', 'personvern', 'anskaffelse', 'ssa-', 'folkeregister', 'enhetsregister',
+  'portal', 'selvbetjening', 'innbygger', 'etat', 'forvaltning', 'vedtak',
+  'søknadsbehandling', 'utvikling av', 'programvare', 'systemleverandør',
+];
+
+/** Competitor and unrelated brands: their traffic is not available to us. */
+const BRAND_NOISE = [
+  'visma', 'minflyt', 'minvakt', 'min vakt', 'elevportal', 'flyt skole',
+  'flyt timeplan', 'flyt ressursstyring', 'unit4', 'tieto', 'evry', 'sikri',
+  'acos', 'elements', 'public360', 'websak',
+];
+
+/**
+ * "Tilskudd" is two different words.
+ *
+ * In public administration it is a grant or subsidy — the thing a
+ * tilskuddsportal administers. In everyday Norwegian it is a dietary
+ * supplement, and that meaning owns most of the search volume: krom tilskudd,
+ * kobber tilskudd, ZMA, GABA, tilskudd til sau. A keyword tool cannot tell
+ * these apart because they are spelled identically, so the substances get
+ * named explicitly. Real grant schemes (IMDi, Bufdir, Landbruksdirektoratet)
+ * stay, because those are the queries a public-sector buyer actually makes.
+ */
+const SUPPLEMENT_NOISE = [
+  'krom', 'kobber', 'zma', 'gaba', 'magnesium', 'sink', 'jern', 'kalsium',
+  'vitamin', 'omega', 'protein', 'kreatin', 'kosttilskudd', 'sau', 'hest',
+  'hund', 'katt', 'ku ', 'kylling', 'fôr', 'for til', 'selen', 'jod', 'biotin',
+];
+
+/** Consumer intent that municipal-licensing seeds drag in. */
+const CONSUMER_NOISE = [
+  'ølsalg', 'vinmonopolet', 'øl ', 'alkohol', 'åpningstid', 'lønn', 'haaland',
+  'bergen fiber', 'klatresenter', 'storm ', 'pent no', 'kod bergen', 'timeplan',
+];
+
+/** Queries about the word itself, not about buying anything. */
+const LINGUISTIC_NOISE = ['på engelsk', 'engelsk', 'betyr', 'definisjon', 'synonym', 'wikipedia'];
+
+function isRelevant(keyword) {
+  const k = ` ${keyword.toLowerCase()} `;
+  if (BRAND_NOISE.some((b) => k.includes(b))) return false;
+  if (CONSUMER_NOISE.some((c) => k.includes(c))) return false;
+  if (LINGUISTIC_NOISE.some((l) => k.includes(l))) return false;
+  if (k.includes('tilskudd') && SUPPLEMENT_NOISE.some((n) => k.includes(n))) return false;
+  // "skoleportalen", "foreldreportalen" — school systems, a different market.
+  if (/\b(skole|elev|foreldre|barnehage)/.test(k)) return false;
+  return RELEVANT.some((r) => k.includes(r));
+}
+
+let apiFailures = 0;
+let rejected = 0;
 const seen = new Map();
 const record = (kw, source) => {
   if (!kw.keyword || !kw.volume) return; // zero volume is not a keyword
+  if (!isRelevant(kw.keyword)) {
+    rejected += 1;
+    return;
+  }
   const existing = seen.get(kw.keyword);
   if (existing) {
     existing.sources.add(source);
@@ -98,6 +177,7 @@ console.log(`  ideas from ${SEEDS.length} seed terms…`);
 try {
   for (const kw of await dataforseo.keywordIdeas(SEEDS, LIMIT)) record(kw, 'ideas');
 } catch (error) {
+  apiFailures += 1;
   console.log(`    failed: ${error.message.slice(0, 120)}`);
 }
 console.log(`    ${seen.size} keywords with measurable volume so far`);
@@ -109,6 +189,7 @@ for (const seed of SEEDS) {
     for (const kw of await dataforseo.keywordSuggestions(seed, 60)) record(kw, 'suggestions');
     console.log(`    ${seed.padEnd(32)} +${seen.size - before}`);
   } catch (error) {
+    apiFailures += 1;
     console.log(`    ${seed.padEnd(32)} failed: ${error.message.slice(0, 60)}`);
   }
 }
@@ -125,6 +206,7 @@ for (const domain of COMPETITORS) {
     }
     console.log(`    ${domain.padEnd(26)} ${rows.length} ranked keywords`);
   } catch (error) {
+    apiFailures += 1;
     console.log(`    ${domain.padEnd(26)} failed: ${error.message.slice(0, 60)}`);
   }
 }
@@ -165,7 +247,8 @@ const show = (rows, n = 25) => {
   }
 };
 
-console.log(`\n\n  ${all.length} keywords with real Norwegian search volume`);
+console.log(`\n\n  ${all.length} relevant keywords with real Norwegian search volume`);
+console.log(`  (${rejected} rejected as competitor brands, consumer intent, or off-topic)`);
 console.log(`  (+ = not currently in scripts/seo/keywords.json)\n`);
 
 console.log('  Best opportunities overall:');
@@ -187,11 +270,28 @@ for (const kw of competitorOnly.slice(0, 20)) {
   );
 }
 
-const zeroVolume = [...tracked].filter((k) => !seen.has(k));
-if (zeroVolume.length) {
-  console.log(`\n  Tracked keywords with no measurable volume (${zeroVolume.length}) —`);
-  console.log('  no page can rank for a search nobody makes:');
-  for (const k of zeroVolume) console.log(`    ${k}`);
+/**
+ * "We measured and found nothing" and "we failed to measure" are different
+ * results, and only one of them is a finding.
+ *
+ * The first run of this reported all 28 tracked keywords as having no
+ * measurable volume — "no page can rank for a search nobody makes" — when in
+ * fact every API call had failed on a bad language code and nothing had been
+ * measured at all. A report that confidently states a conclusion it did not
+ * earn is worse than one that errors out.
+ */
+if (apiFailures) {
+  console.log(`\n  ${apiFailures} API call(s) failed. Not reporting zero-volume keywords:`);
+  console.log('  an unmeasured keyword and a keyword with no volume look identical');
+  console.log('  from here, and only one of them means anything.');
+  process.exitCode = 1;
+} else {
+  const zeroVolume = [...tracked].filter((k) => !seen.has(k));
+  if (zeroVolume.length) {
+    console.log(`\n  Tracked keywords with no measurable volume (${zeroVolume.length}) —`);
+    console.log('  no page can rank for a search nobody makes:');
+    for (const k of zeroVolume) console.log(`    ${k}`);
+  }
 }
 
 mkdirSync(resolve(process.cwd(), 'seo-data'), { recursive: true });

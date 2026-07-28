@@ -365,6 +365,25 @@
           "ahead": []
         }
       ]
+    },
+    {
+      "date": "2026-07-28",
+      "provider": "DataForSEO",
+      "rows": [
+        {
+          "keyword": "tilskuddsportal",
+          "target": "/tjenester/tilskuddsportal",
+          "intent": "commercial",
+          "position": null,
+          "url": null,
+          "onTarget": null,
+          "ahead": [
+            "helsedirektoratet.no",
+            "tilskudd.bergen.kommune.no",
+            "tilskuddsportalen.no"
+          ]
+        }
+      ]
     }
   ]
 }
