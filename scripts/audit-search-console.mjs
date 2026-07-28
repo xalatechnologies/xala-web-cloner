@@ -107,6 +107,9 @@ if (pages.length) {
   }
 }
 
+const inspected = [];
+const notIndexed = [];
+
 if (doInspect) {
   // The URL Inspection API is rate-limited to roughly 2000/day and is slow, so
   // this is opt-in rather than part of every run.
@@ -114,10 +117,11 @@ if (doInspect) {
   const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
   console.log(`\n  Index status for ${urls.length} sitemap URLs (slow, rate-limited):\n`);
 
-  const notIndexed = [];
+
   for (const url of urls) {
     try {
       const status = await searchConsole.inspect(url);
+      inspected.push(status);
       if (status.verdict !== 'PASS') {
         notIndexed.push(status);
         console.log(`    ${status.verdict.padEnd(8)} ${status.coverage.padEnd(38)} ${url.replace('https://xala.no', '') || '/'}`);
@@ -135,8 +139,17 @@ if (doInspect) {
   console.log('\n  Add --inspect to check which sitemap URLs Google has actually indexed.\n');
 }
 
+/**
+ * Index coverage is the headline, so it is persisted even when --inspect was
+ * not run — as null, which the report reads as "not checked" rather than as
+ * "nothing wrong".
+ */
+const index = doInspect
+  ? { checked: inspected.length, notIndexed: notIndexed.map((s) => ({ url: s.url, coverage: s.coverage })) }
+  : null;
+
 mkdirSync(resolve(process.cwd(), 'seo-data'), { recursive: true });
 writeFileSync(
   resolve(process.cwd(), 'seo-data/search-console.json'),
-  JSON.stringify({ startDate, endDate, queries, pages }, null, 2) + '\n'
+  JSON.stringify({ startDate, endDate, queries, pages, index }, null, 2) + '\n'
 );

@@ -194,11 +194,43 @@ if (console_?.queries?.length) {
 
   add('info', `${impressions} impressions, ${clicks} clicks over ${console_.startDate} → ${console_.endDate}`, '', '');
 } else if (console_) {
+  /**
+   * No query data is not automatically a defect.
+   *
+   * A property verified today has no history, and reporting that as critical
+   * every morning trains people to ignore the report. The signal that actually
+   * matters on a young property is whether Google has found the pages at all,
+   * which is what the index check answers.
+   */
   add(
-    'critical',
-    'Search Console returns no data',
-    'Either the site has no impressions at all, or GSC_SITE_URL does not match the verified property, or the service account was never added as a user.',
-    'Check Settings → Users and permissions in Search Console.'
+    'info',
+    'No Search Console query data yet — expected on a newly verified property',
+    '',
+    ''
+  );
+}
+
+if (console_?.index) {
+  const { checked, notIndexed } = console_.index;
+  if (notIndexed.length) {
+    const unknown = notIndexed.filter((u) => /ukjent|unknown/i.test(u.coverage));
+    add(
+      'critical',
+      `${notIndexed.length} of ${checked} sitemap URLs are not indexed`,
+      unknown.length
+        ? `${unknown.length} of them are unknown to Google entirely — not crawled and rejected, never seen. A page Google has not fetched cannot rank for anything, whatever is written on it.`
+        : 'These were crawled but not indexed, which usually means thin or duplicate content rather than a discovery problem.',
+      notIndexed.slice(0, 20).map((u) => `${u.url.replace('https://xala.no', '') || '/'} — ${u.coverage}`).join('\n')
+    );
+  } else {
+    add('info', `all ${checked} sitemap URLs are indexed`, '', '');
+  }
+} else if (console_) {
+  add(
+    'high',
+    'Index coverage has not been checked',
+    'Whether Google has actually fetched these URLs is the one thing a sitemap cannot tell you, and this repo has already shipped 17 pages that rendered fine and returned 404 to crawlers.',
+    'Run: npm run seo:console -- --inspect'
   );
 }
 
