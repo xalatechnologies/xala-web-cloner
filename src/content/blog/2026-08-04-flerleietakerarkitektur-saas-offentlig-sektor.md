@@ -6,7 +6,7 @@ date: 2026-08-04
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
-cover: "/images/blog/flerleietakerarkitektur-saas-offentlig-sektor.png"
+cover: "/images/blog/flerleietakerarkitektur-saas-offentlig-sektor.webp"
 keywords: ["flerleietaker", "multi-tenant", "SaaS offentlig sektor", "driftskostnad", "programvarearkitektur"]
 lang: no
 draft: false

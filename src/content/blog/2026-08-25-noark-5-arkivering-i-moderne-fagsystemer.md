@@ -6,7 +6,7 @@ date: 2026-08-25
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
-cover: "/images/blog/noark-5-arkivering-i-moderne-fagsystemer.png"
+cover: "/images/blog/noark-5-arkivering-i-moderne-fagsystemer.webp"
 keywords: ["Noark 5", "arkivering", "arkivplikt", "journalføring", "saksbehandling", "offentlig sektor"]
 lang: no
 draft: false

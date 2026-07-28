@@ -6,7 +6,7 @@ date: 2026-07-02
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "IT-leder"
-cover: "/images/blog/automatisering-av-saksbehandling-hva-boer-og-ikke.png"
+cover: "/images/blog/automatisering-av-saksbehandling-hva-boer-og-ikke.webp"
 keywords: ["prosessautomatisering", "saksbehandling", "forvaltningsloven", "digitalisering", "offentlig sektor"]
 lang: no
 draft: false

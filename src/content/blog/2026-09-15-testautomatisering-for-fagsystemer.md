@@ -6,7 +6,7 @@ date: 2026-09-15
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
-cover: "/images/blog/testautomatisering-for-fagsystemer.png"
+cover: "/images/blog/testautomatisering-for-fagsystemer.webp"
 keywords: ["testautomatisering", "regresjonstesting", "kvalitetssikring", "fagsystem", "tilgjengelighetstesting"]
 lang: no
 draft: false

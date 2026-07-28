@@ -6,7 +6,7 @@ date: 2026-07-20
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Kommune"
-cover: "/images/blog/tilskuddsportal-som-faktisk-brukes.png"
+cover: "/images/blog/tilskuddsportal-som-faktisk-brukes.webp"
 keywords: ["tilskuddsportal", "saksbehandling", "digitalisering kommune", "universell utforming", "skjemaløsning"]
 lang: no
 draft: false

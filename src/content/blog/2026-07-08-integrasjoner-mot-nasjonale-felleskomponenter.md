@@ -6,7 +6,7 @@ date: 2026-07-08
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
-cover: "/images/blog/integrasjoner-mot-nasjonale-felleskomponenter.png"
+cover: "/images/blog/integrasjoner-mot-nasjonale-felleskomponenter.webp"
 keywords: ["systemintegrasjon", "altinn", "folkeregisteret", "ks fiks", "maskinporten", "offentlig sektor"]
 lang: no
 draft: false

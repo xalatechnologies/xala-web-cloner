@@ -6,7 +6,7 @@ date: 2026-09-22
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "IT-leder"
-cover: "/images/blog/iso-27001-i-praksis-for-utviklingsprosjekter.png"
+cover: "/images/blog/iso-27001-i-praksis-for-utviklingsprosjekter.webp"
 keywords: ["ISO 27001", "informasjonssikkerhet", "SOC 2", "sikkerhet", "anskaffelse", "sporbarhet"]
 lang: no
 draft: false

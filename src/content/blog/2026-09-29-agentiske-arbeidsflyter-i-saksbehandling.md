@@ -6,7 +6,7 @@ date: 2026-09-29
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "IT-leder"
-cover: "/images/blog/agentiske-arbeidsflyter-i-saksbehandling.png"
+cover: "/images/blog/agentiske-arbeidsflyter-i-saksbehandling.webp"
 keywords: ["agentiske arbeidsflyter", "AI-agenter", "saksbehandling", "automatisering", "forvaltningsloven", "KI i offentlig sektor"]
 lang: no
 draft: false

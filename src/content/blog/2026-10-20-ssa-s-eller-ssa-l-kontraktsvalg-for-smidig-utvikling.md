@@ -6,7 +6,7 @@ date: 2026-10-20
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "IT-leder"
-cover: "/images/blog/ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling.png"
+cover: "/images/blog/ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling.webp"
 keywords: ["SSA-S", "SSA-L", "offentlige anskaffelser", "smidig utvikling", "kontrakt", "statens standardavtaler"]
 lang: no
 draft: false

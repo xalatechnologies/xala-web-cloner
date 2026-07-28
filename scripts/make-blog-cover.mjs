@@ -72,6 +72,10 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" v
 
 const tmp = `/tmp/cover-${slug}.svg`;
 writeFileSync(tmp, svg);
-const out = join('public', 'images', 'blog', `${slug}.png`);
-execFileSync('rsvg-convert', ['-w', '1200', '-h', '630', tmp, '-o', out]);
+// WebP, not PNG: these are flat-colour typographic images and WebP holds them
+// at roughly a quarter the bytes. Seventeen covers came to 1.3 MB as PNG.
+const png = `/tmp/cover-${slug}.png`;
+execFileSync('rsvg-convert', ['-w', '1200', '-h', '630', tmp, '-o', png]);
+const out = join('public', 'images', 'blog', `${slug}.webp`);
+execFileSync('magick', [png, '-quality', '82', out]);
 console.log(`cover: ${out}`);

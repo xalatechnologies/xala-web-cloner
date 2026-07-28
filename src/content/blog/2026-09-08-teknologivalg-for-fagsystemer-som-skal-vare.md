@@ -6,7 +6,7 @@ date: 2026-09-08
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
-cover: "/images/blog/teknologivalg-for-fagsystemer-som-skal-vare.png"
+cover: "/images/blog/teknologivalg-for-fagsystemer-som-skal-vare.webp"
 keywords: ["teknologivalg", ".NET", "React", "TypeScript", "arkitektur", "teknisk gjeld", "fagsystem"]
 lang: no
 draft: false

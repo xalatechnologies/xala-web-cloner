@@ -6,7 +6,7 @@ date: 2026-08-18
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
-cover: "/images/blog/id-porten-eller-maskinporten-hva-velger-du.png"
+cover: "/images/blog/id-porten-eller-maskinporten-hva-velger-du.webp"
 keywords: ["ID-porten", "Maskinporten", "autentisering", "Digdir", "felleskomponenter", "OAuth"]
 lang: no
 draft: false

@@ -6,7 +6,7 @@ date: 2026-08-11
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
-cover: "/images/blog/wcag-2-2-aa-i-praksis-for-fagsystemer.png"
+cover: "/images/blog/wcag-2-2-aa-i-praksis-for-fagsystemer.webp"
 keywords: ["WCAG 2.2 AA", "universell utforming", "tilgjengelighet", "offentlig sektor", "skjemaløsning"]
 lang: no
 draft: false

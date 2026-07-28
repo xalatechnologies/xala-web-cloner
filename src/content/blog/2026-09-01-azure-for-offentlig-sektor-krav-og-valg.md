@@ -6,7 +6,7 @@ date: 2026-09-01
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "IT-leder"
-cover: "/images/blog/azure-for-offentlig-sektor-krav-og-valg.png"
+cover: "/images/blog/azure-for-offentlig-sektor-krav-og-valg.webp"
 keywords: ["Azure", "offentlig sektor", "databehandleravtale", "norske regioner", "GDPR", "skytjenester"]
 lang: no
 draft: false

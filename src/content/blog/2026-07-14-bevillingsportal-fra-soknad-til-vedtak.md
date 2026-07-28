@@ -6,7 +6,7 @@ date: 2026-07-14
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Kommune"
-cover: "/images/blog/bevillingsportal-fra-soknad-til-vedtak.png"
+cover: "/images/blog/bevillingsportal-fra-soknad-til-vedtak.webp"
 keywords: ["bevillingsportal", "saksbehandlingssystem", "kommune", "automatisering", "offentlig sektor"]
 lang: no
 draft: false

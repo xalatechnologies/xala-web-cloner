@@ -6,7 +6,7 @@ date: 2026-10-06
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "IT-leder"
-cover: "/images/blog/sprakmodeller-i-offentlig-forvaltning-hva-som-krever-avklaring.png"
+cover: "/images/blog/sprakmodeller-i-offentlig-forvaltning-hva-som-krever-avklaring.webp"
 keywords: ["språkmodeller", "LLM", "KI offentlig sektor", "personvern", "behandlingsgrunnlag", "Claude"]
 lang: no
 draft: false

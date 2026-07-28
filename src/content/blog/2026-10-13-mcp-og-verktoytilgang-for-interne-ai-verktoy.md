@@ -6,7 +6,7 @@ date: 2026-10-13
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
-cover: "/images/blog/mcp-og-verktoytilgang-for-interne-ai-verktoy.png"
+cover: "/images/blog/mcp-og-verktoytilgang-for-interne-ai-verktoy.webp"
 keywords: ["Model Context Protocol", "MCP", "Claude", "AI-verktøy", "integrasjon", "tilgangsstyring"]
 lang: no
 draft: false
