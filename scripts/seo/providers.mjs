@@ -210,7 +210,17 @@ export const searchConsole = {
     const now = Math.floor(Date.now() / 1000);
     const claim = {
       iss: env('GSC_CLIENT_EMAIL'),
-      scope: 'https://www.googleapis.com/auth/webmasters.readonly',
+      /**
+       * Read-write, not readonly.
+       *
+       * Reading rankings needs only webmasters.readonly, and that is what this
+       * asked for — until submitting a sitemap returned
+       * ACCESS_TOKEN_SCOPE_INSUFFICIENT. The property's only registered
+       * sitemap was http://www.xala.no/sitemap.xml, submitted in 2015 and
+       * carrying an error, which is a large part of why Google had never seen
+       * the current URLs.
+       */
+      scope: 'https://www.googleapis.com/auth/webmasters',
       aud: 'https://oauth2.googleapis.com/token',
       exp: now + 3600,
       iat: now,
