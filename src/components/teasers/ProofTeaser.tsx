@@ -36,7 +36,7 @@ export default function ProofTeaser() {
 
   return (
     <Section tone="default" size="md" labelledBy="proof-heading">
-      <div className="max-w-3xl">
+      <div className="section-header">
         <p className="mb-5 eyebrow">
           {t('proof.eyebrow', 'Resultater')}
         </p>
@@ -46,7 +46,7 @@ export default function ProofTeaser() {
         >
           {t('proof.title', 'Systemer i drift hos dem som ikke kan ha nedetid')}
         </h2>
-        <p className="mt-5 max-w-2xl section-lead">
+        <p className="section-lead mt-5 max-w-[52ch]">
           {t(
             'proof.description',
             'Vi har levert til statlige etater, helseforetak og kommuner, og vi forvalter løsningene videre etter lansering.'

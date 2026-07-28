@@ -62,7 +62,7 @@ const About = ({ headingLevel = 'h1' }: AboutProps = {}) => {
   return (
     <section id="about" className="bg-background py-16 md:py-24" aria-labelledby="about-heading">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl">
+        <div className="section-header">
           <p className="mb-5 eyebrow">
             {t('about.eyebrow', 'Om selskapet')}
           </p>
@@ -73,7 +73,7 @@ const About = ({ headingLevel = 'h1' }: AboutProps = {}) => {
             {aboutSection?.title}
           </Heading>
           {aboutSection?.description && (
-            <p className="mt-5 section-lead">
+            <p className="section-lead mt-5 max-w-[52ch]">
               {aboutSection.description}
             </p>
           )}

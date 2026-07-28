@@ -83,7 +83,7 @@ export default function DigilistSection() {
       className="border-y border-border bg-background py-16 md:py-24"
     >
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl">
+        <div className="section-header">
           <p className="mb-5 flex items-center gap-3 eyebrow">
             {t('digilist.eyebrow', 'Vårt produkt')}
             <span className="rounded-full border border-primary/40 bg-primary/10 px-2.5 py-1 text-xs tracking-[0.14em]">
@@ -96,7 +96,7 @@ export default function DigilistSection() {
           >
             {t('digilist.title', 'Digilist: booking og utleie av lokaler')}
           </h2>
-          <p className="mt-5 section-lead">
+          <p className="section-lead mt-5 max-w-[52ch]">
             {t(
               'digilist.description',
               'Mange kommuner styrer fortsatt lokalene sine i regneark og på e-post. Digilist samler booking, sesongtildeling, saksbehandling og fakturering i ett system som er bygget for norske krav.'

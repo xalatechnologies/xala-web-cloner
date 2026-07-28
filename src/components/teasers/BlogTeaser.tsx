@@ -37,7 +37,7 @@ export default function BlogTeaser() {
 
   return (
     <Section tone="muted" size="md" labelledBy="blog-teaser-heading">
-      <div className="max-w-3xl">
+      <div className="section-header">
         <p className="mb-5 eyebrow">
           {t('teasers.blog.eyebrow', 'Fagartikler')}
         </p>
@@ -47,7 +47,7 @@ export default function BlogTeaser() {
         >
           {t('teasers.blog.title', 'Det vi skriver om')}
         </h2>
-        <p className="mt-5 max-w-2xl section-lead">
+        <p className="section-lead mt-5 max-w-[52ch]">
           {t('teasers.blog.description', 'Erfaringer fra prosjektene våre — arkitektur, modernisering og digitalisering av saksbehandling.')}
         </p>
       </div>

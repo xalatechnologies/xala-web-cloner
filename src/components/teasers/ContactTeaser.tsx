@@ -31,7 +31,7 @@ export default function ContactTeaser() {
           className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/10 blur-3xl"
         />
 
-        <div className="relative max-w-3xl">
+        <div className="relative section-header">
           <p className="mb-5 eyebrow">
             {t('teasers.contact.eyebrow', 'Kontakt')}
           </p>
@@ -41,7 +41,7 @@ export default function ContactTeaser() {
           >
             {t('teasers.contact.title')}
           </h2>
-          <p className="mt-5 max-w-2xl section-lead">
+          <p className="section-lead mt-5 max-w-[52ch]">
             {t('teasers.contact.description')}
           </p>
         </div>

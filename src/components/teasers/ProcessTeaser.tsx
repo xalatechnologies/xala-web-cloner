@@ -36,7 +36,7 @@ export default function ProcessTeaser() {
       className="border-y border-border bg-muted/30 py-16 md:py-24"
     >
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl">
+        <div className="section-header">
           <p className="mb-5 eyebrow">
             {t('teasers.process.eyebrow', 'Prosess')}
           </p>
@@ -46,7 +46,7 @@ export default function ProcessTeaser() {
           >
             {t('teasers.process.title')}
           </h2>
-          <p className="mt-5 section-lead">
+          <p className="section-lead mt-5 max-w-[52ch]">
             {t('teasers.process.description')}
           </p>
         </div>

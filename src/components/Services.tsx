@@ -60,9 +60,10 @@ const Services = ({ headingLevel = 'h1' }: ServicesProps) => {
           <div className="flex flex-col gap-12">
             {/* Left-aligned rather than centred: the page header above it is
                 left-aligned, and two stacked centred blocks read as two
-                unrelated pages glued together. */}
-            <div className="flex flex-col gap-5 max-w-3xl">
-              <p className="eyebrow">
+                unrelated pages glued together. The lead sits beside the heading
+                from lg up so the intro spans the same width as the cards. */}
+            <div className="section-header">
+              <p className="mb-5 eyebrow">
                 {t('services.eyebrow', 'Hva vi leverer')}
               </p>
               <Heading
@@ -71,7 +72,7 @@ const Services = ({ headingLevel = 'h1' }: ServicesProps) => {
               >
                 {sectionTitle}
               </Heading>
-              <p className="section-lead">
+              <p className="section-lead mt-5 max-w-[52ch]">
                 {sectionDescription}
               </p>
             </div>

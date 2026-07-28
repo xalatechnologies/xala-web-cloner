@@ -45,7 +45,7 @@ const Clients = () => {
   return (
     <section id="clients" className="border-y border-border bg-muted/30 py-16 md:py-24" aria-labelledby="clients-heading">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl">
+        <div className="section-header">
           <p className="mb-5 eyebrow">
             {t('clients.eyebrow', 'Referanser')}
           </p>
@@ -55,7 +55,7 @@ const Clients = () => {
           >
             {section?.title || t('clients.title')}
           </h2>
-          <p className="mt-5 section-lead">
+          <p className="section-lead mt-5 max-w-[52ch]">
             {section?.description || t('clients.description')}
           </p>
         </div>

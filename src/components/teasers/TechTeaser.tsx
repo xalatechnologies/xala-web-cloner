@@ -24,7 +24,7 @@ export default function TechTeaser() {
       className="py-16 md:py-24"
     >
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl">
+        <div className="section-header">
           <p className="mb-5 eyebrow">
             {t('teasers.tech.eyebrow', 'Teknologi')}
           </p>
@@ -34,7 +34,7 @@ export default function TechTeaser() {
           >
             {t('teasers.tech.title')}
           </h2>
-          <p className="mt-5 section-lead">
+          <p className="section-lead mt-5 max-w-[52ch]">
             {t('teasers.tech.description')}
           </p>
         </div>

@@ -50,7 +50,7 @@ const WorkProcess = ({ headingLevel = 'h2' }: WorkProcessProps) => {
   return (
     <section id="work-process" className="py-16 md:py-24" aria-labelledby="work-process-heading">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl">
+        <div className="section-header">
           <p className="mb-5 eyebrow">
             {t('workProcess.eyebrow', 'Prosess')}
           </p>
@@ -61,7 +61,7 @@ const WorkProcess = ({ headingLevel = 'h2' }: WorkProcessProps) => {
             {section?.title || t('workProcess.title', 'Hvordan vi jobber')}
           </Heading>
           {(section?.description ?? t('workProcess.description', '')) && (
-            <p className="mt-5 max-w-2xl section-lead">
+            <p className="section-lead mt-5 max-w-[52ch]">
               {section?.description || t('workProcess.description', '')}
             </p>
           )}
