@@ -433,11 +433,14 @@ function main(): void {
     (study): study is typeof study & { slug: string } => Boolean(study.slug),
   );
   const caseStudySlugs = routableCaseStudies.map((study) => study.slug);
+  // The Norwegian summary where one exists. llms.txt is a Norwegian document
+  // and was quoting English case summaries, which is the same defect the case
+  // index had: the translations were written and then not read.
   const llmsCaseStudies = routableCaseStudies.map((study) => ({
     slug: study.slug,
     title: study.title,
     client: study.client,
-    summary: study.summary,
+    summary: study.translations?.no?.summary ?? study.summary,
   }));
 
   // llms.txt, unless one is committed under public/ — Vite copies public/ into
@@ -447,7 +450,22 @@ function main(): void {
   if (fs.existsSync(path.join(ROOT, "public", "llms.txt"))) {
     console.log("prerender: public/llms.txt is committed — keeping it, not regenerating");
   } else {
-    write(llmsPath, renderLlmsTxt(posts, llmsCaseStudies));
+    // The service and product pages are what this file exists to advertise:
+    // they answer a specific question each, and they were missing entirely
+    // while llms.txt listed only the top-level navigation.
+    const llmsServices = Object.entries(servicePages).map(([slug, page]) => {
+      const copy = (page as { no: { title: string; intro: string } }).no;
+      return { slug, title: copy.title, summary: copy.intro };
+    });
+    const llmsProducts = productsData.no
+      .filter((product) => product.slug)
+      .map((product) => ({
+        slug: product.slug as string,
+        title: product.title,
+        summary: product.description,
+      }));
+
+    write(llmsPath, renderLlmsTxt(posts, llmsCaseStudies, llmsServices, llmsProducts));
   }
 
   write(

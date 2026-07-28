@@ -178,25 +178,60 @@ export interface LlmsCaseStudy {
   summary?: string;
 }
 
+/** A service or product page, as llms.txt needs it. */
+export interface LlmsPage {
+  slug: string;
+  title: string;
+  summary: string;
+}
+
 /** Collapses whitespace and trims to one readable line. */
 function oneLine(text: string, max = 180): string {
   const flat = text.replace(/\s+/g, " ").trim();
   return flat.length > max ? `${flat.slice(0, max - 1).trimEnd()}…` : flat;
 }
 
-export function renderLlmsTxt(posts: BlogPost[], caseStudies: LlmsCaseStudy[] = []): string {
+export function renderLlmsTxt(
+  posts: BlogPost[],
+  caseStudies: LlmsCaseStudy[] = [],
+  services: LlmsPage[] = [],
+  products: LlmsPage[] = []
+): string {
   const lines = [
     `# ${ORGANIZATION}`,
     "",
-    "> Norsk systemutviklingshus i Asker. Skreddersydd programvare, Microsoft 365 og SharePoint,",
-    "> Azure og Power Platform, systemintegrasjon og AI-løsninger for offentlig sektor og næringsliv.",
+    "> Norsk systemutviklingshus. Vi bygger saksbehandlingssystemer, tilskudds- og",
+    "> bevillingsportaler, integrasjoner mot nasjonale felleskomponenter og SaaS-plattformer",
+    "> for offentlig sektor og næringsliv, og vi forvalter dem videre etter lansering.",
     "",
     `Organisasjonsnummer: 920972454. Nesbruveien 75, 1394 Nesbru, Asker, Norge.`,
+    "ISO 27001-sertifisert. Løsninger bygget mot ID-porten, Maskinporten, Altinn, Folkeregisteret,",
+    "Enhetsregisteret og Noark 5, med universell utforming etter WCAG 2.2 AA.",
     "",
     "## Sider",
     "",
     ...STATIC_ROUTES.map((r) => `- [${LLMS_PAGE_TITLES[r.path] ?? r.path}](${SITE_ORIGIN}${r.path === "/" ? "" : r.path})`),
     "",
+    // The pages written to answer a specific question come first: they are the
+    // ones an engine should cite when asked what this company does, and they
+    // were entirely absent from this file while it listed only the top-level
+    // navigation.
+    ...(services.length
+      ? [
+          "## Tjenester i detalj",
+          "",
+          ...services.map((page) => `- [${page.title}](${SITE_ORIGIN}/tjenester/${page.slug}): ${oneLine(page.summary)}`),
+          "",
+        ]
+      : []),
+    ...(products.length
+      ? [
+          "## Produkter",
+          "",
+          ...products.map((page) => `- [${page.title}](${SITE_ORIGIN}/produkter/${page.slug}): ${oneLine(page.summary)}`),
+          "",
+        ]
+      : []),
     // Named references are the most quotable thing on the site, so they are
     // stated here rather than left for a crawler to find behind the /caser index.
     ...(caseStudies.length
