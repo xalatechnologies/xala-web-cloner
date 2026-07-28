@@ -162,6 +162,85 @@ function renderBody(shell: string, inner: string): string {
   return shell.replace(pattern, `<div id="root">${inner}</div>`);
 }
 
+/**
+ * The main navigation, rendered into the static HTML of every page.
+ *
+ * A crawler that fetches https://xala.no/ and does not run JavaScript saw an
+ * empty <div id="root"> and zero <a href>. Google does render JS, but rendering
+ * is queued and can lag crawling by days, and until it happens there is nothing
+ * to follow — a large part of why 37 of 61 URLs were "unknown to Google"
+ * despite every one being linked from the rendered navigation.
+ *
+ * This is the same set of links the rendered header carries, present before the
+ * bundle runs. React replaces #root on mount, exactly as it already does on
+ * /blogg.
+ */
+interface NavLink { href: string; label: string }
+
+const MAIN_NAV: NavLink[] = [
+  { href: "/tjenester", label: "Tjenester" },
+  { href: "/produkter", label: "Produkter" },
+  { href: "/caser", label: "Kundecaser" },
+  { href: "/blogg", label: "Fagartikler" },
+  { href: "/slik-vi-jobber", label: "Slik vi jobber" },
+  { href: "/teknologi", label: "Teknologi" },
+  { href: "/om-oss", label: "Om oss" },
+  { href: "/karriere", label: "Karriere" },
+  { href: "/kontakt", label: "Kontakt" },
+];
+
+interface ServicePageLink { slug: string; title: string }
+interface ProductLink { slug: string; title: string }
+interface CaseLink { slug: string; title: string }
+
+/**
+ * What is on screen before the bundle runs.
+ *
+ * On a throttled connection this is visible from about 300ms to 1600ms — the
+ * window that used to be a blank white screen, since nothing painted until
+ * 2.1s. Showing the heading that early is a straight improvement; showing it
+ * as unstyled black-on-white markup next to a bare <ul> of sixty links is not,
+ * because it reads as a broken page rather than a loading one.
+ *
+ * Styles are inline and few. The stylesheet is render-blocking so it has in
+ * fact loaded by this point, but relying on generated utility class names from
+ * a file this script does not read would break silently the first time the
+ * build renamed one. These few declarations only have to survive ~1.3s.
+ *
+ * The links shown here are the site's main navigation, and they are genuinely
+ * visible — not a sixty-link block hidden behind clip-rect. That version was
+ * written first and is the thing not to do: markup a crawler reads and a
+ * visitor never sees is cloaking, whatever the intent, and "it is the same as
+ * the real nav" is exactly what every cloaked page claims.
+ *
+ * The deep URLs — seventeen articles, ten service pages, four products,
+ * seventeen case studies — are reached through the sitemap, which is what a
+ * sitemap is for and which is already working: thirteen of them moved from
+ * "unknown to Google" to "discovered" within two hours of submission.
+ */
+function staticRouteHtml(heading: string, description: string, links: NavLink[]): string {
+  const page =
+    "min-height:100vh;background:#0b0b0d;color:#f5f5f4;font-family:Inter,system-ui,sans-serif;" +
+    "display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:3rem 1.5rem;text-align:center";
+  const h1 = "font-size:clamp(1.75rem,5vw,3rem);font-weight:700;line-height:1.15;margin:0;max-width:20ch";
+  const lead = "margin:0;max-width:52ch;color:#a1a1aa;line-height:1.6";
+  const navStyle = "display:flex;flex-wrap:wrap;gap:0.25rem 1.5rem;justify-content:center;margin-top:0.5rem";
+  const linkStyle = "color:#d6a15e;text-decoration:none;font-size:0.95rem";
+
+  const nav =
+    `<nav aria-label="Hovedmeny" style="${navStyle}">` +
+    links.map((l) => `<a href="${escapeHtml(l.href)}" style="${linkStyle}">${escapeHtml(l.label)}</a>`).join("") +
+    `</nav>`;
+
+  return (
+    `<div style="${page}">` +
+    `<h1 style="${h1}">${escapeHtml(heading)}</h1>` +
+    `<p style="${lead}">${escapeHtml(description)}</p>` +
+    nav +
+    `</div>`
+  );
+}
+
 function postArticleHtml(post: BlogPost, related: BlogPost[]): string {
   const cover = post.cover
     ? `<img src="${escapeHtml(post.cover)}" alt="" width="1200" height="675" />`
@@ -282,8 +361,25 @@ function main(): void {
   // a site that answers 200 for everything as having unbounded duplicate
   // content, and the NotFound page React renders afterwards does not undo the
   // status line that was already sent.
+  /**
+   * The front page last, and deliberately after the loop.
+   *
+   * dist/index.html is the shell every other page is rendered from, so it can
+   * only be rewritten once that is no longer needed. Skipping it entirely — as
+   * this did — left the single most important page for crawl discovery with an
+   * empty <div id="root"> and no links to follow, which is exactly where a
+   * crawler starts.
+   */
+  {
+    const copy = getPageSEO("home", "no");
+    write(
+      path.join(DIST, "index.html"),
+      renderBody(shell, staticRouteHtml(copy.title.split(" | ")[0], copy.description, MAIN_NAV)),
+    );
+  }
+
   for (const route of STATIC_ROUTES) {
-    if (route.path === "/") continue; // dist/index.html already is this
+    if (route.path === "/") continue; // written above, from the untouched shell
     // Each route gets its own title, description and canonical. Writing the
     // untouched shell here meant every static page claimed the front page's
     // title and canonical — for any crawler that does not run the bundle, the
@@ -291,6 +387,7 @@ function main(): void {
     const copy = getPageSEO(resolveRoute(route.path).pageId, "no");
     write(
       path.join(DIST, route.path.replace(/^\//, ""), "index.html"),
+      renderBody(
       renderHead(shell, {
         title: copy.title,
         description: copy.description,
@@ -308,6 +405,8 @@ function main(): void {
           publisher: { "@id": ORG_ID },
         },
       }),
+      staticRouteHtml(copy.title.split(" | ")[0], copy.description, MAIN_NAV),
+      ),
     );
   }
   // Every case study needs a file of its own for the same reason the static
