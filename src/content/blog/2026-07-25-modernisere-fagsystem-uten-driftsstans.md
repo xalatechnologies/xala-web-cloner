@@ -6,6 +6,7 @@ date: 2026-07-25
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "IT-leder"
+cover: "/images/blog/modernisere-fagsystem-uten-driftsstans.png"
 keywords: ["legacy modernisering", "systemutvikling offentlig sektor", "strangler pattern", "systemintegrasjon", "azure"]
 ---
 

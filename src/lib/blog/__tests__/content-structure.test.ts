@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { isPostFile, parsePost } from '../posts';
@@ -63,6 +63,18 @@ describe('published post structure', () => {
       for (const entry of schema!.mainEntity) {
         expect(post.body).toContain(entry.name);
       }
+    }
+  );
+
+  it.each(posts.map((post) => [post.slug, post] as const))(
+    '%s names a cover image that exists',
+    (_slug, post) => {
+      // One post shipped for weeks with the file generated and the frontmatter
+      // field never added, so the card rendered with a hole in it and nothing
+      // failed.
+      expect(post.cover, `${post.slug} has no cover`).toBeTruthy();
+      const file = resolve(__dirname, '../../../../public', post.cover!.replace(/^\//, ''));
+      expect(existsSync(file), `${post.cover} is not in public/`).toBe(true);
     }
   );
 
