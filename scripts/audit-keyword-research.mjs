@@ -28,7 +28,7 @@
  *
  * Costs roughly $0.05-0.15 per run depending on --limit.
  */
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { requireEnv } from './seo/env.mjs';
 import { dataforseo } from './seo/providers.mjs';
@@ -39,7 +39,7 @@ const flag = (name) => {
   return i === -1 ? undefined : args[i + 1];
 };
 const LIMIT = Number(flag('limit') ?? 200);
-const OUT = resolve(process.cwd(), 'seo-keyword-research.json');
+const OUT = resolve(process.cwd(), 'seo-data/keywords.json');
 
 requireEnv(dataforseo.keys, dataforseo.name, 'DataForSEO dashboard → API Access.');
 
@@ -194,6 +194,7 @@ if (zeroVolume.length) {
   for (const k of zeroVolume) console.log(`    ${k}`);
 }
 
+mkdirSync(resolve(process.cwd(), 'seo-data'), { recursive: true });
 writeFileSync(
   OUT,
   JSON.stringify(

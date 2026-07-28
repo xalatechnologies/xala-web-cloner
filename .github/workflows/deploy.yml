@@ -12,6 +12,10 @@ on:
     # auto-deployed — a whole day of posts silently never went live.
     paths-ignore:
       - ".github/**"
+      # Measurements, not site content. The daily SEO job commits here every
+      # morning and redeploying production for a JSON file nobody serves is
+      # pure churn — and every redeploy is a chance to ship a regression.
+      - "seo-data/**"
   workflow_dispatch: {}
 
 # One production deploy at a time; never cancel mid-rsync.
@@ -37,9 +41,18 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      # Fast, and it fails before anything is uploaded.
+      # The whole suite, not just the blog subset it used to run.
+      #
+      # This is the automated half of "keep the SEO good": 413 tests including
+      # the guards that titles fit a search result, that every post has an FAQ
+      # section and a cover that exists, that no icon silently falls back, that
+      # no internal link is dead, and that no server-side credential can reach
+      # the client bundle. All of those are regressions that would otherwise
+      # ship and only surface in a ranking report weeks later.
+      #
+      # Still fast (~3s) and still fails before anything is uploaded.
       - name: Test
-        run: pnpm exec vitest run src/lib/blog
+        run: pnpm exec vitest run
 
       - name: Configure SSH access to the VPS
         run: |

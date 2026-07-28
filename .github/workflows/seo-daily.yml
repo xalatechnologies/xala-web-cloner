@@ -1,0 +1,146 @@
+name: SEO daily
+
+# Measures where xala.no actually stands, every morning, and commits the result
+# so the series accumulates.
+#
+# The point is the trend, not the snapshot. A single ranking run tells you where
+# you are; a month of them tells you whether what you wrote last week worked,
+# which is the only thing that decides what to write next. That series has to
+# live in git — a trend that only exists on one laptop is not a trend.
+#
+# This job MEASURES. It does not edit the site.
+#
+# "Optimise automatically" is tempting and wrong here: an unattended job that
+# rewrites titles or content and pushes to production is one bad heuristic away
+# from a site nobody reviewed, and this repo has already had a change reach
+# production that rendered a blank homepage. The optimisation half is enforced
+# in the other direction — the test suite gates every deploy, so SEO quality
+# cannot silently regress — and this job's output is a prioritised list a human
+# acts on.
+on:
+  schedule:
+    # 05:30 UTC — after Google's overnight index churn, before the working day.
+    # Search Console data lags ~2 days regardless, so the hour is not critical.
+    - cron: "30 5 * * *"
+  workflow_dispatch:
+    inputs:
+      keywords:
+        description: "Also run keyword research (costs ~$0.10, normally weekly)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: seo-daily
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # Each step is `continue-on-error` and guarded on its secret existing.
+      # A provider that is not configured yet, or an API having a bad morning,
+      # should not stop the others from reporting — a partial measurement is
+      # worth more than a red X and no data.
+
+      - name: Rankings
+        id: rankings
+        if: ${{ env.DATAFORSEO_PASSWORD != '' }}
+        continue-on-error: true
+        env:
+          DATAFORSEO_LOGIN: ${{ secrets.DATAFORSEO_LOGIN }}
+          DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
+        run: |
+          # DataForSEO, not SerpAPI: 28 keywords daily is ~$1/month here and
+          # ~$8/month there, and SerpAPI's free tier is 100 searches — four days.
+          node scripts/audit-rankings.mjs | tee /tmp/rankings.txt
+
+      - name: Search Console
+        if: ${{ env.GSC_PRIVATE_KEY != '' }}
+        continue-on-error: true
+        env:
+          GSC_CLIENT_EMAIL: ${{ secrets.GSC_CLIENT_EMAIL }}
+          GSC_PRIVATE_KEY: ${{ secrets.GSC_PRIVATE_KEY }}
+          GSC_SITE_URL: ${{ secrets.GSC_SITE_URL }}
+        run: node scripts/audit-search-console.mjs | tee /tmp/console.txt
+
+      - name: Core Web Vitals (field data)
+        if: ${{ env.PAGESPEED_API_KEY != '' }}
+        continue-on-error: true
+        env:
+          PAGESPEED_API_KEY: ${{ secrets.PAGESPEED_API_KEY }}
+        run: node scripts/audit-pagespeed.mjs | tee /tmp/vitals.txt
+
+      - name: Keyword research
+        # Weekly on Monday, or on demand. The vocabulary of a market does not
+        # change daily, and this is the expensive call. The day check is in bash
+        # because GitHub expressions cannot ask what day it is.
+        if: ${{ env.DATAFORSEO_PASSWORD != '' }}
+        continue-on-error: true
+        env:
+          DATAFORSEO_LOGIN: ${{ secrets.DATAFORSEO_LOGIN }}
+          DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
+          ON_DEMAND: ${{ github.event.inputs.keywords }}
+        run: |
+          if [ "$ON_DEMAND" != "true" ] && [ "$(date -u +%u)" != "1" ]; then
+            echo "not Monday and not requested — skipping keyword research"
+            exit 0
+          fi
+          node scripts/audit-keyword-research.mjs | tee /tmp/keywords.txt
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "## SEO — $(date -u +%Y-%m-%d)"
+            echo ""
+            for f in rankings console vitals keywords; do
+              if [ -s "/tmp/$f.txt" ]; then
+                echo "<details><summary>$f</summary>"
+                echo ""
+                echo '```'
+                cat "/tmp/$f.txt"
+                echo '```'
+                echo ""
+                echo "</details>"
+                echo ""
+              fi
+            done
+            if ! ls /tmp/*.txt >/dev/null 2>&1; then
+              echo "No provider configured. Add repository secrets:"
+              echo "DATAFORSEO_LOGIN, DATAFORSEO_PASSWORD, PAGESPEED_API_KEY,"
+              echo "GSC_CLIENT_EMAIL, GSC_PRIVATE_KEY, GSC_SITE_URL"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit the series
+        if: always()
+        run: |
+          if [ -z "$(git status --porcelain seo-data)" ]; then
+            echo "no change in seo-data/ — nothing to commit"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add seo-data
+          git commit -m "chore(seo): measurements for $(date -u +%Y-%m-%d)"
+          # Rebase rather than force: a human push during the run must win.
+          git pull --rebase --autostash origin main
+          git push
+    env:
+      DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
+      GSC_PRIVATE_KEY: ${{ secrets.GSC_PRIVATE_KEY }}
+      PAGESPEED_API_KEY: ${{ secrets.PAGESPEED_API_KEY }}

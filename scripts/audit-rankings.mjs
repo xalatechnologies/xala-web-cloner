@@ -17,13 +17,13 @@
  * and $0.28 on SerpAPI at list price, so this is not something to put on a
  * five-minute loop.
  */
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { requireEnv } from './seo/env.mjs';
 import { dataforseo, serpapi } from './seo/providers.mjs';
 
 const SITE = 'xala.no';
-const HISTORY = resolve(process.cwd(), 'seo-rankings.json');
+const HISTORY = resolve(process.cwd(), 'seo-data/rankings.json');
 const KEYWORDS = JSON.parse(readFileSync(resolve(process.cwd(), 'scripts/seo/keywords.json'), 'utf8'));
 
 const args = process.argv.slice(2);
@@ -115,6 +115,7 @@ if (offTarget.length) {
 }
 
 // Append rather than overwrite: one run is a number, the series is the signal.
+mkdirSync(resolve(process.cwd(), 'seo-data'), { recursive: true });
 const history = existsSync(HISTORY) ? JSON.parse(readFileSync(HISTORY, 'utf8')) : { runs: [] };
 history.runs = history.runs.filter((run) => run.date !== stamp || run.provider !== provider.name);
 history.runs.push({ date: stamp, provider: provider.name, rows });
