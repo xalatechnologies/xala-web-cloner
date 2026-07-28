@@ -9,22 +9,7 @@ import PageLoader from './components/PageLoader';
 import RouteSEO from './components/seo/RouteSEO';
 import ConsentedAnalytics from './components/seo/ConsentedAnalytics';
 
-/**
- * The front page is imported eagerly; every other route stays lazy.
- *
- * Lazy-loading a route defers its chunk until the router knows it is needed,
- * which is right for /karriere and wrong for "/". The main bundle had to
- * download and execute before it could discover the home page's imports, so on
- * a phone the first bundle arrived at 128ms and nineteen more chunks all
- * started at 370ms — a whole round trip spent discovering files that are needed
- * on every single visit to the page most visitors land on.
- *
- * Eager here means those modules are in the first response instead of the
- * second. It costs the other routes a slightly larger initial bundle, which is
- * the right trade: they are reached by someone already on the site, with the
- * bundle cached.
- */
-import Home from './pages/Index';
+const Home = lazy(() => import('./pages/Index'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const Terms = lazy(() => import('./pages/Terms'));
 const CookiesPolicy = lazy(() => import('./pages/CookiesPolicy'));
