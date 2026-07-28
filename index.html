@@ -42,9 +42,12 @@
          route's own; without it every page would ship two canonicals. -->
     <link rel="canonical" href="https://xala.no/" data-rh="true" />
     
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Fonts are self-hosted. See src/fonts.css: two render-blocking requests
+         to fonts.googleapis.com became zero, and the visitor's IP address stops
+         being sent to a third party on every page load. Only the regular weight
+         of the latin subset is preloaded — the rest arrive with the stylesheet,
+         and unicode-range keeps Arabic off Norwegian pages entirely. -->
+    <link rel="preload" href="/fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
     
     <!-- Structured Data -->
     <script type="application/ld+json">

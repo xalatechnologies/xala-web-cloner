@@ -3,60 +3,60 @@
         "id": "react",
         "name": "React",
         "category": "frontend",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+        "icon": "/logos/tech/react.svg"
     },
     {
         "id": "typescript",
         "name": "TypeScript",
         "category": "language",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+        "icon": "/logos/tech/typescript.svg"
     },
     {
         "id": "dotnet",
         "name": ".NET",
         "category": "backend",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg"
+        "icon": "/logos/tech/dotnet.svg"
     },
     {
         "id": "nodejs",
         "name": "Node.js",
         "category": "backend",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+        "icon": "/logos/tech/nodejs.svg"
     },
     {
         "id": "python",
         "name": "Python",
         "category": "language",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+        "icon": "/logos/tech/python.svg"
     },
     {
         "id": "azure",
         "name": "Azure",
         "category": "cloud",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg"
+        "icon": "/logos/tech/azure.svg"
     },
     {
         "id": "docker",
         "name": "Docker",
         "category": "devops",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+        "icon": "/logos/tech/docker.svg"
     },
     {
         "id": "kubernetes",
         "name": "Kubernetes",
         "category": "devops",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg"
+        "icon": "/logos/tech/kubernetes.svg"
     },
     {
         "id": "postgresql",
         "name": "PostgreSQL",
         "category": "database",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+        "icon": "/logos/tech/postgresql.svg"
     },
     {
         "id": "redis",
         "name": "Redis",
         "category": "database",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg"
+        "icon": "/logos/tech/redis.svg"
     }
 ]

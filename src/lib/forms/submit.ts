@@ -11,13 +11,16 @@
  *    always works and needs no account, but it is visibly not a form
  *    submission: the visitor lands in their mail app and has to press send.
  *
- * The fallback exists so the form is never dead. It is not the intended
- * destination. Set the variable and it stops being used.
+ * The decision here is mailto, deliberately. The POST path would put enquiry
+ * and applicant details through whoever runs the endpoint, which is a processor
+ * relationship under GDPR and a data protection impact assessment nobody asked
+ * for. The mail client involves no third party at all, and for a firm whose
+ * pitch includes "we take personal data seriously", that consistency is worth
+ * more than the smoother submit animation.
  *
- * On personal data: the POST path means applicant details pass through whoever
- * runs the endpoint, which is a processor relationship under GDPR. The mailto
- * path involves no third party at all. Worth deciding deliberately rather than
- * by default.
+ * The endpoint branch stays because the day that calculus changes — a form that
+ * needs attachments, or volume that makes mailto impractical — it is a
+ * configuration change rather than a rewrite of both forms.
  */
 export type SubmitOutcome = 'posted' | 'mailto';
 

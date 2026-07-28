@@ -13,6 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useToast } from "@/components/ui/use-toast";
+import { submitForm } from '@/lib/forms/submit';
 
 export const ContactForm = () => {
   const { t, i18n } = useTranslation();
@@ -39,15 +40,18 @@ export const ContactForm = () => {
 
   const onSubmit = async (values: FormValues) => {
     try {
-      // Send email via mailto link as a simple, zero-backend approach.
-      // For production, replace with a form service like Formspree or Web3Forms.
-      const mailtoSubject = encodeURIComponent(`[xala.no] ${values.subject}`);
-      const mailtoBody = encodeURIComponent(
-        `Navn: ${values.name}\nE-post: ${values.email}\n\n${values.message}`
-      );
-      window.open(
-        `mailto:info@xala.no?subject=${mailtoSubject}&body=${mailtoBody}`,
-        '_self'
+      // Both forms on the site go through submitForm, so they behave the same
+      // way and there is one place to change if that ever needs to move off
+      // mailto. Today no endpoint is configured, so the browser's own mail
+      // client carries it and no applicant or enquiry data passes through a
+      // third party at all — which is the deliberate choice, not a stopgap.
+      await submitForm(
+        { form: 'contact', ...values },
+        {
+          to: 'info@xala.no',
+          subject: `[xala.no] ${values.subject}`,
+          body: `Navn: ${values.name}\nE-post: ${values.email}\n\n${values.message}`,
+        }
       );
 
       toast({
