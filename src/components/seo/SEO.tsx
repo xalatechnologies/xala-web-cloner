@@ -131,13 +131,14 @@ export const SEO = ({
   // og:image must be absolute — crawlers reject a bare path like /og-image.png.
   const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${SITE_ORIGIN}${ogImage}`;
 
-  const ogLocale = language === 'no' ? 'nb_NO' : language === 'ar' ? 'ar_AR' : 'en_US';
+  // html lang, og:locale, og:site_name, twitter:card, hreflang and the feed
+  // links live in UniversalHead, which every route gets — including the six
+  // that render their own Helmet instead of this component.
 
   return (
     <>
       <Helmet>
         {/* Primary Meta Tags */}
-        <html lang={language} />
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
@@ -163,26 +164,15 @@ export const SEO = ({
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={absoluteOgImage} />
-        <meta property="og:locale" content={ogLocale} />
-        <meta property="og:site_name" content="Xala Technologies AS" />
 
         {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={canonicalUrl} />
-        <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content={absoluteOgImage} />
+        <meta name="twitter:url" content={canonicalUrl} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={absoluteOgImage} />
 
-        {/* Canonical. No per-language hreflang alternates: one URL serves all
-            three languages via client-side switching, so the previous
-            /no/<pageId> and /en/<pageId> alternates pointed at URLs that have
-            never existed and would be reported as 404s. */}
+        {/* The hreflang pair that accompanies this is in UniversalHead. */}
         <link rel="canonical" href={canonicalUrl} />
-        <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
-
-        {/* Answer engines: the machine-readable summary of the whole site. */}
-        <link rel="alternate" type="text/plain" href={`${SITE_ORIGIN}/llms.txt`} title="llms.txt" />
-        <link rel="alternate" type="application/rss+xml" href={`${SITE_ORIGIN}/blogg/rss.xml`} title="Xala Technologies — fagartikler" />
 
         {/* Structured Data */}
         {getSchemaMarkup().map((schema, index) => (

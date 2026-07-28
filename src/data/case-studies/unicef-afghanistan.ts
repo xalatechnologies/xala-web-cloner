@@ -234,7 +234,7 @@ export const unicefAfghanistanCaseStudy: CaseStudy = {
   },
 
   seo: {
-    title: 'UNICEF Afghanistan Case Study | Xala Technologies',
+    title: 'UNICEF Afghanistan: barnevern og fødselsregister | Xala',
     description:
       'See how Xala supported UNICEF Afghanistan with a child protection and birth registration platform covering anti-trafficking workflows, reintegration support, reporting, and secure humanitarian case management.',
   },
@@ -272,7 +272,7 @@ export const unicefAfghanistanCaseStudy: CaseStudy = {
         'Sterkere koordinering mellom UNICEF, myndigheter og lokale humanitære partnere.',
       ],
       card: { excerpt: 'Barnebeskyttelses- og fødselsregistreringsplattform som støtter sårbare barns saksarbeidsflyter, sikker datahåndtering og humanitær rapportering.' },
-      seo: { description: 'Se hvordan Xala støttet UNICEF Afghanistan med en digital barnebeskyttelses- og fødselsregistreringsplattform, sikkert saksarbeid og humanitær koordinering.' },
+      seo: { description: 'Se hvordan Xala støttet UNICEF Afghanistan med en plattform for barnevern og fødselsregistrering, sikkert saksarbeid og humanitær koordinering.' },
     },
     ar: {
       subtitle: 'منصة لحماية الطفل وتسجيل المواليد تدعم سير عمل قضايا الأطفال الضعفاء والتعامل الآمن مع البيانات والتقارير الإنسانية',

@@ -202,7 +202,7 @@ export const teliaCaseStudy: CaseStudy = {
   },
 
   seo: {
-    title: 'Telia Case Study | Xala Technologies',
+    title: 'Telia Case Study | Xala',
     description:
       'See how Xala supported Telia with telecommunications platform services, enterprise integrations, backend development, and scalable digital service delivery.',
   },

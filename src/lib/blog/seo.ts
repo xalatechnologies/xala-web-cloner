@@ -12,6 +12,18 @@ import type { BlogPost } from "./types";
 export const SITE_ORIGIN = "https://xala.no";
 export const BLOG_PATH = "/blogg";
 export const ORGANIZATION = "Xala Technologies AS";
+
+/**
+ * The brand as it appears in a <title>, which is not the legal name.
+ *
+ * " | Xala Technologies AS" is twenty-four characters of a sixty-character
+ * budget spent on something the reader already knows by the time they see it.
+ * Every one of those characters is one the headline cannot use for the words
+ * someone searched for. "Xala" is the mark on the logo and is what the company
+ * is called; the full legal name stays in the Organization schema, where it
+ * belongs and costs nothing.
+ */
+export const BRAND = "Xala";
 export const ORG_ID = `${SITE_ORIGIN}/#organization`;
 
 export function postUrl(post: Pick<BlogPost, "slug">): string {
@@ -45,7 +57,7 @@ export interface PostMeta {
 
 export function postMeta(post: BlogPost): PostMeta {
   return {
-    title: `${post.title} | ${ORGANIZATION}`,
+    title: `${post.seoTitle ?? post.title} | ${BRAND}`,
     description: post.description,
     canonical: postUrl(post),
     image: absolute(post.cover),

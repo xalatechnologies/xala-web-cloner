@@ -1,6 +1,7 @@
 ---
 slug: integrasjoner-mot-nasjonale-felleskomponenter
 title: "Integrasjoner mot nasjonale felleskomponenter: det som tar tid"
+seoTitle: "Integrasjoner mot nasjonale felleskomponenter"
 description: "Altinn, Folkeregisteret og KS Fiks er godt dokumentert. Det som overrasker prosjektene er tilgangsstyring, testmiljøer og feilhåndtering."
 date: 2026-07-08
 author: "Ibrahim Rahmani"

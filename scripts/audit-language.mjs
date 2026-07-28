@@ -1,29 +1,33 @@
 /**
- * Finds English copy leaking onto the Norwegian and Arabic sites.
+ * Finds English copy leaking onto the Norwegian site.
  *
  * Written because none of the static checks can see this. A key can exist in
- * all three locale files, resolve cleanly, and still hold English text — which
- * is exactly what ten caseStudy.sections.*.accent labels were doing while
- * parity checks, the orphan-key guard and 160 tests all passed. The only way to
- * catch it is to render the page in the language and read it.
+ * every locale file, resolve cleanly, and still hold English text — which is
+ * exactly what ten caseStudy.sections.*.accent labels were doing while parity
+ * checks, the orphan-key guard and 160 tests all passed. The only way to catch
+ * it is to render the page and read it.
  *
- *   node scripts/audit-language.mjs http://localhost:8081
+ * It used to run twice, once labelled Norwegian and once Arabic, but it only
+ * ever set the *browser* locale — it never switched the app's language. Both
+ * passes rendered the same Norwegian page, and the second one reported a clean
+ * Arabic site that was never loaded. The site is Norwegian only now, so there
+ * is one pass and it says so.
+ *
+ *   node scripts/audit-language.mjs http://localhost:5210
  */
 import { chromium } from 'playwright';
 
 const ORIGIN = process.argv[2] ?? 'http://localhost:8080';
 
 const ROUTES = [
-  '/', '/tjenester', '/tjenester/saksbehandlingssystem', '/produkter', '/caser', '/caser/altinn', '/slik-vi-jobber',
+  '/', '/tjenester', '/tjenester/saksbehandlingssystem', '/tjenester/integrasjoner',
+  '/tjenester/automatisering-og-ai', '/produkter', '/produkter/digilist', '/produkter/xaheen',
+  '/produkter/norchain', '/produkter/digiskjema', '/caser', '/caser/altinn', '/slik-vi-jobber',
   '/teknologi', '/om-oss', '/kontakt', '/karriere', '/blogg', '/privacy',
   '/terms', '/cookies',
 ];
 
-/** Only the non-English locales — English pages are supposed to be English. */
-const LOCALES = [
-  { code: 'no', locale: 'nb-NO', label: 'Norwegian' },
-  { code: 'ar', locale: 'ar', label: 'Arabic' },
-];
+const LOCALES = [{ code: 'no', locale: 'nb-NO', label: 'Norwegian' }];
 
 /**
  * Function words that are distinctly English. Deliberately excludes words
@@ -90,9 +94,9 @@ const ALLOWED = [
 
   await browser.close();
 
-  console.log(`\n=== language audit: ${ROUTES.length} routes x ${LOCALES.length} non-English locales ===\n`);
+  console.log(`\n=== language audit: ${ROUTES.length} routes  ===\n`);
   if (!findings.length) {
-    console.log('  no English prose found on the Norwegian or Arabic pages');
+    console.log('  no English prose found on the Norwegian pages');
     process.exit(0);
   }
 

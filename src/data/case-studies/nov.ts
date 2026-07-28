@@ -287,7 +287,7 @@ export const novCaseStudy: CaseStudy = {
   },
 
   seo: {
-    title: 'NOV Case Study | Xala Technologies',
+    title: 'NOV Case Study | Xala',
     description:
       'See how Xala supported NOV with an industrial IoT platform using Azure IoT, MQTT, Service Bus, WebSockets, and SignalR for real-time monitoring and drilling equipment data transmission.',
   },

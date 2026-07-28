@@ -269,7 +269,7 @@ export const sykehuspartnerCaseStudy: CaseStudy = {
   },
 
   seo: {
-    title: 'Sykehuspartner Case Study | Xala Technologies',
+    title: 'Sykehuspartner Case Study | Xala',
     description:
       'See how Xala supported Sykehuspartner with a research portal, SharePoint and SPFx development, .NET Core APIs, Azure integrations, and healthcare collaboration platform modernization.',
   },

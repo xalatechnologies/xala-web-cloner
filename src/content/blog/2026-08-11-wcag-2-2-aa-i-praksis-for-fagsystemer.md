@@ -1,6 +1,7 @@
 ---
 slug: wcag-2-2-aa-i-praksis-for-fagsystemer
 title: "WCAG 2.2 AA i praksis: det som faktisk feller offentlige løsninger"
+seoTitle: "WCAG 2.2 AA i praksis for fagsystemer"
 description: "Kravet er kjent. Det som feller løsninger i en tilgjengelighetstest er som regel fire ting, og alle fire er arkitekturvalg."
 date: 2026-08-11
 author: "Ibrahim Rahmani"

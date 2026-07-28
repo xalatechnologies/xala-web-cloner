@@ -209,7 +209,7 @@ export const norskHelsenettCaseStudy: CaseStudy = {
   },
 
   seo: {
-    title: 'Norsk Helsenett Case Study | Xala Technologies',
+    title: 'Norsk Helsenett Case Study | Xala',
     description:
       'See how Xala supported Norsk Helsenett with secure healthcare infrastructure services, system integrations, backend development, and digital health platform delivery.',
   },

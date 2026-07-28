@@ -250,7 +250,7 @@ export const norwegianAirCaseStudy: CaseStudy = {
   },
 
   seo: {
-    title: 'Norwegian Air Shuttle Case Study | Xala Technologies',
+    title: 'Norwegian Air Shuttle: digital arbeidsplass | Xala',
     description:
       'See how Xala supported Norwegian Air Shuttle with enterprise architecture, SharePoint, Facebook Workplace, Active Directory, SAP SuccessFactors integrations, and digital workplace modernization.',
   },
@@ -289,7 +289,7 @@ export const norwegianAirCaseStudy: CaseStudy = {
         'Skalerbar integrasjonsarkitektur som enkelt kan utvides til fremtidige enterprise-systemer',
       ],
       card: { excerpt: 'Koblet SharePoint, Facebook Workplace, Active Directory og SAP SuccessFactors til en enhetlig digital arbeidsplass for et ledende europeisk flyselskap.' },
-      seo: { description: 'Se hvordan Xala integrerte SharePoint, Facebook Workplace, Active Directory og SAP SuccessFactors til en sømløs digital arbeidsplass for Norwegian Air Shuttle.' },
+      seo: { description: 'Se hvordan Xala integrerte SharePoint, Active Directory og SAP SuccessFactors til en sømløs digital arbeidsplass for Norwegian Air Shuttle.' },
     },
     ar: {
       subtitle: 'دمج SharePoint وFacebook Workplace وActive Directory وSAP SuccessFactors في مكان عمل رقمي موحد لشركة طيران أوروبية رائدة',

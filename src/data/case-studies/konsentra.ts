@@ -265,7 +265,7 @@ export const konsentraCaseStudy: CaseStudy = {
   },
 
   seo: {
-    title: 'Ruter Autonomous Bus Case Study | Xala Technologies',
+    title: 'Ruter: plattform for autonom buss | Xala',
     description:
       'See how Xala supported Ruter with digital platform services for an autonomous bus prototype, including smart mobility architecture, operational monitoring, integrations, and deployment support.',
   },
@@ -303,7 +303,7 @@ export const konsentraCaseStudy: CaseStudy = {
         'Forbedret driftskoordinering for pilotprogrammet.',
       ],
       card: { excerpt: 'Støtte for en autonom bussprototype-plattform i Drammen og Ski gjennom digitale tjenester, driftsintegrasjon og smart mobilitetarkitektur.' },
-      seo: { description: 'Se hvordan Xala støttet Ruter med digital plattformutvikling for den autonome busspiloten i Drammen og Ski, inkludert sanntidsovervåking og smart mobilitetarkitektur.' },
+      seo: { description: 'Se hvordan Xala støttet Ruter med plattformutvikling for den autonome busspiloten i Drammen og Ski, med sanntidsovervåking og smart arkitektur.' },
     },
     ar: {
       subtitle: 'دعم منصة نموذج أولي للحافلات ذاتية القيادة من خلال الخدمات الرقمية والتكامل التشغيلي وهندسة التنقل الذكي',

@@ -274,7 +274,7 @@ export const spareBank1CaseStudy: CaseStudy = {
   },
 
   seo: {
-    title: 'SpareBank 1 Case Study | Xala Technologies',
+    title: 'SpareBank 1 Case Study | Xala',
     description:
       'See how Xala supported SpareBank 1 with banking system development, enterprise integrations, secure digital services, and maintainable financial platform architecture in a regulated environment.',
   },

@@ -283,7 +283,7 @@ export const ssbCaseStudy: CaseStudy = {
   },
 
   seo: {
-    title: 'SSB Case Study | Xala Technologies',
+    title: 'SSB Case Study | Xala',
     description:
       'See how Xala supported SSB with legacy modernization, Java-to-.NET Core migration, architecture renewal, testing, and maintainable public-sector system delivery.',
   },

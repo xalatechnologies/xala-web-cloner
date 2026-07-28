@@ -12,6 +12,17 @@
 export interface BlogFrontmatter {
   slug: string;
   title: string;
+  /**
+   * The <title> for search results, when the on-page headline is too long for
+   * one.
+   *
+   * Google truncates around 60 characters, and sixteen of seventeen articles
+   * exceeded it — so Google, not us, was choosing where the SERP headline got
+   * cut. A headline can afford the full claim ("hvor de hører hjemme, og hvor
+   * de ikke gjør det"); a search result has to lead with the words people
+   * actually type. Falls back to `title`.
+   */
+  seoTitle?: string;
   description: string;
   /** ISO date, YYYY-MM-DD. */
   date: string;

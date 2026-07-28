@@ -58,7 +58,6 @@ export default function BloggPostPage() {
   return (
     <div className="flex min-h-screen flex-col">
       <Helmet>
-        <html lang={post.lang === 'en' ? 'en' : 'no'} />
         <title>{meta.title}</title>
         <meta name="description" content={meta.description} />
         <link rel="canonical" href={meta.canonical} />
@@ -71,7 +70,6 @@ export default function BloggPostPage() {
         {meta.image && <meta property="og:image" content={meta.image} />}
         <meta property="article:published_time" content={post.date} />
         {post.tag && <meta property="article:section" content={post.tag} />}
-        <meta name="twitter:card" content={meta.image ? 'summary_large_image' : 'summary'} />
         <script type="application/ld+json">{JSON.stringify(articleJsonLd(post))}</script>
         {faqSchema && <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>}
       </Helmet>

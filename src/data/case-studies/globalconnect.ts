@@ -211,7 +211,7 @@ export const globalConnectCaseStudy: CaseStudy = {
   },
 
   seo: {
-    title: 'GlobalConnect Case Study | Xala Technologies',
+    title: 'GlobalConnect Case Study | Xala',
     description:
       'See how Xala supported GlobalConnect with telecommunications infrastructure services, enterprise integrations, backend development, and scalable digital platform delivery.',
   },

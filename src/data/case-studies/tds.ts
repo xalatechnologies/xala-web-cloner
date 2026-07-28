@@ -264,7 +264,7 @@ export const tdsCaseStudy: CaseStudy = {
   },
 
   seo: {
-    title: 'TDS Taxi Portal Case Study | Xala Technologies',
+    title: 'TDS Taxi Portal Case Study | Xala',
     description:
       'See how Xala supported Transport Data Systems with a taxi portal and transport platform covering workflow services, integrations, operational dashboards, testing, and deployment support.',
   },

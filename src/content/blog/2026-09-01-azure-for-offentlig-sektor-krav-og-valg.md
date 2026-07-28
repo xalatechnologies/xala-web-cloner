@@ -1,6 +1,7 @@
 ---
 slug: azure-for-offentlig-sektor-krav-og-valg
 title: "Azure for offentlig sektor: hvor data ligger, og hva dere må kunne dokumentere"
+seoTitle: "Azure for offentlig sektor: krav og datalagring"
 description: "Skyvalget er sjelden teknisk. Det handler om hva dere kan svare på når noen spør hvor personopplysningene befinner seg."
 date: 2026-09-01
 author: "Ibrahim Rahmani"

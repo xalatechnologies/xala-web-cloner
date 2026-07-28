@@ -88,6 +88,7 @@ export function parsePost(raw: string, file: string): BlogPost | BlogPostError {
   return {
     slug: asString(data.slug) ?? slugFromFilename(file),
     title: title as string,
+    seoTitle: asString(data.seoTitle),
     description: description as string,
     date: (date as string).slice(0, 10),
     author: asString(data.author) ?? "Xala Technologies",

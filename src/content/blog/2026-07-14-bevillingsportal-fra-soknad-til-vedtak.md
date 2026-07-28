@@ -1,6 +1,7 @@
 ---
 slug: bevillingsportal-fra-soknad-til-vedtak
 title: "Bevillingssaker: hvor tiden faktisk går, og hva som kan automatiseres"
+seoTitle: "Bevillingsportal: fra søknad til vedtak"
 description: "En bevillingssak består mest av venting på andre instanser. Slik kutter du liggetiden uten å endre selve saksbehandlingen."
 date: 2026-07-14
 author: "Ibrahim Rahmani"

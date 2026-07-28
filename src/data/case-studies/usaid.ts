@@ -207,7 +207,7 @@ export const usaidCaseStudy: CaseStudy = {
   },
 
   seo: {
-    title: 'USAID Case Study | Xala Technologies',
+    title: 'USAID Case Study | Xala',
     description:
       'See how Xala supported USAID with digital development platform services, program workflow support, reporting capabilities, and international development digital services.',
   },

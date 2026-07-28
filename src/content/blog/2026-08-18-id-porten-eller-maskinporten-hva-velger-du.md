@@ -1,6 +1,7 @@
 ---
 slug: id-porten-eller-maskinporten-hva-velger-du
 title: "ID-porten eller Maskinporten: hvilken du trenger, og når du trenger begge"
+seoTitle: "ID-porten eller Maskinporten: hva velger du"
 description: "De løser to forskjellige problemer. Velger du feil, oppdager du det først når tilgangssøknaden er sendt."
 date: 2026-08-18
 author: "Ibrahim Rahmani"

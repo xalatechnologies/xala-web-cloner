@@ -98,22 +98,30 @@ export default function ProduktDetaljPage() {
         </div>
 
         <header className="container mx-auto px-4 pb-4 pt-6 md:pb-6">
-          <div className="flex items-center gap-3">
-            <span className="card-icon">
+          {/* The tagline belongs inside the h1.
+              The heading was the product name alone — "DigiList", eight
+              characters — so the strongest signal on the page said only what we
+              call the thing, not what it does. Nobody searches for "digilist";
+              they search for booking av lokaler. The name still reads as the
+              headline; the tagline sits under it as part of the same heading,
+              so the h1 says what the page is about without changing what the
+              page looks like. */}
+          <div className="flex items-start gap-3">
+            <span className="card-icon mt-1.5 shrink-0">
               <Icon aria-hidden="true" />
             </span>
             <h1 className="text-4xl font-bold leading-[1.1] tracking-tight md:text-5xl">
               {product.title}
+              <span className="mt-3 block max-w-[20ch] text-xl font-semibold leading-snug text-muted-foreground md:text-2xl">
+                {copy.tagline}
+              </span>
             </h1>
             {!isLive && (
-              <span className="rounded-full border border-border px-3 py-1 text-sm font-medium uppercase tracking-[0.14em] text-muted-foreground">
+              <span className="mt-2 shrink-0 rounded-full border border-border px-3 py-1 text-sm font-medium uppercase tracking-[0.14em] text-muted-foreground">
                 {t('products.comingSoon', 'Kommer')}
               </span>
             )}
           </div>
-          <p className="mt-6 max-w-2xl section-lead">
-            {copy.tagline}
-          </p>
         </header>
 
         <section className="container mx-auto px-4 py-12 md:py-16">

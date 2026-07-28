@@ -271,7 +271,7 @@ export const altinnCaseStudy: CaseStudy = {
   },
 
   seo: {
-    title: "Altinn 3 & Altinn Studio – Cloud-Native Digital Government Platform | Xala",
+    title: "Altinn 3: skyplattform for digital forvaltning | Xala",
     description:
       "Xala contributed to modernizing Norway's national digital government platform Altinn 3 with cloud-native microservices on Azure, serving 5 million citizens with 99.99% uptime and enabling agencies to deploy digital services independently.",
   },
@@ -345,7 +345,7 @@ export const altinnCaseStudy: CaseStudy = {
         'Sikre nasjonale identitets- og registerintegrasjoner',
       ],
       card: { excerpt: 'Transformerte Norges nasjonale digitale forvaltningsplattform — sky-native arkitektur på Azure og Kubernetes som betjener 5M+ innbyggere med 99,99 % oppetid.' },
-      seo: { description: 'Se hvordan Xala moderniserte Altinn 3 med sky-native Azure og Kubernetes-arkitektur, og leverte 99,99 % oppetid for Norges nasjonale digitale forvaltningsplattform.' },
+      seo: { description: 'Se hvordan Xala moderniserte Altinn 3 med Azure og Kubernetes, og leverte 99,99 % oppetid for Norges nasjonale plattform for digital forvaltning.' },
     },
     ar: {
       subtitle: 'تحديث المنصة الرقمية الحكومية الوطنية النرويجية بهندسة سحابية حديثة',

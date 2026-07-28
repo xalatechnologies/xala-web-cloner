@@ -274,7 +274,7 @@ export const unochaCaseStudy: CaseStudy = {
   },
 
   seo: {
-    title: 'UNOCHA Case Study | Xala Technologies',
+    title: 'UNOCHA: kartlegging av beredskapslager | Xala',
     description:
       'See how Xala supported UNOCHA with a global emergency stockpile mapping platform covering logistics visibility, inventory reporting, GIS integration, and humanitarian crisis-response coordination.',
   },
@@ -312,7 +312,7 @@ export const unochaCaseStudy: CaseStudy = {
         'Sterkere datasikkerhet og tilgangskontroll for humanitær data.',
       ],
       card: { excerpt: 'Global plattform for kartlegging av beredskapslager som forbedrer humanistisk logistikksiktbarhet og styrker koordinering av kriserespons.' },
-      seo: { description: 'Se hvordan Xala støttet UNOCHA med en global plattform for kartlegging av beredskapslager, forbedret humanitær logistikksiktbarhet og kriseresponskoordinering.' },
+      seo: { description: 'Se hvordan Xala støttet UNOCHA med en global plattform for kartlegging av beredskapslager, og bedre oversikt over logistikk i kriserespons.' },
     },
     ar: {
       subtitle: 'تقديم منصة عالمية لرسم خرائط مخزونات الطوارئ وتعزيز اللوجستيات الإنسانية وتحسين رؤية الاستجابة للأزمات',

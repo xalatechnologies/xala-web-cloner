@@ -1,6 +1,7 @@
 ---
 slug: flerleietakerarkitektur-saas-offentlig-sektor
 title: "Flerleietaker eller egen installasjon: valget som avgjør driftskostnaden"
+seoTitle: "Flerleietaker eller egen installasjon"
 description: "Skal hver kunde ha sin egen installasjon, eller skal alle dele én? Valget tas tidlig, og det er dyrt å snu."
 date: 2026-08-04
 author: "Ibrahim Rahmani"

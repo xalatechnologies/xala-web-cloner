@@ -1,6 +1,7 @@
 ---
 slug: modernisere-fagsystem-uten-driftsstans
 title: "Slik moderniserer du et fagsystem uten å stoppe driften"
+seoTitle: "Modernisere fagsystem uten driftsstans"
 description: "Strangler-mønsteret lar deg bytte ut et gammelt fagsystem modul for modul, med full drift underveis. Her er rekkefølgen som fungerer."
 date: 2026-07-25
 author: "Ibrahim Rahmani"

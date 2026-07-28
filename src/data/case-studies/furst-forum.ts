@@ -234,7 +234,7 @@ export const furstForumCaseStudy: CaseStudy = {
   },
 
   seo: {
-    title: 'Fürst Forum Case Study | Xala Technologies',
+    title: 'Fürst Forum Case Study | Xala',
     description:
       'See how Xala supported Fürst Forum with healthcare communication platform architecture, development, integrations, and secure digital information access for medical professionals.',
   },

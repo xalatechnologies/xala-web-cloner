@@ -228,7 +228,7 @@ export const nordreFolloCaseStudy: CaseStudy = {
   },
 
   seo: {
-    title: 'Nordre Follo Municipality Case Study | Xala Technologies',
+    title: 'Nordre Follo Municipality Case Study | Xala',
     description:
       'See how Xala supported Nordre Follo Municipality with a Tilskuddsportal and Bevillingsportal, modern architecture, React and .NET development, integrations, testing, and deployment support.',
   },

@@ -1,6 +1,7 @@
 ---
 slug: tilskuddsportal-som-faktisk-brukes
 title: "Tilskuddsportalen som faktisk blir brukt: fire valg som avgjør"
+seoTitle: "Tilskuddsportal som faktisk blir brukt"
 description: "De fleste tilskuddsportaler feiler ikke på teknologi, men på skjemaet. Fire valg som avgjør om søkerne kommer gjennom uten å ringe."
 date: 2026-07-20
 author: "Ibrahim Rahmani"

@@ -40,98 +40,98 @@ interface SEOContent {
 const seoContent: Record<Language, Record<PageId, SEOContent>> = {
   no: {
     home: {
-      title: 'Xala Technologies | Skreddersydd programvare og AI',
+      title: 'Systemutvikling for offentlig sektor | Xala Technologies',
       description:
         'Norsk systemutviklingshus i Asker. Vi bygger skreddersydd programvare, AI-løsninger, skytjenester og systemintegrasjon for offentlig sektor og næringsliv.',
       keywords:
         'systemutvikling, skreddersydd programvare, AI-utvikling, skyløsninger, systemintegrasjon, cybersikkerhet, Asker, Norge, offentlig sektor'
     },
     services: {
-      title: 'Tjenester | Xala Technologies',
+      title: 'Saksbehandling, integrasjon og modernisering | Xala',
       description:
-        'Saksbehandlingsplattform, SaaS-utvikling, systemintegrasjon og modernisering. Vi bygger tilskuddsportaler, bevillingsportaler og integrasjoner mot Altinn og ID-porten.',
+        'Saksbehandlingsplattform, SaaS-utvikling, systemintegrasjon og modernisering. Vi bygger tilskuddsportaler, bevillingsportaler og integrasjoner mot Altinn.',
       keywords:
         'saksbehandlingssystem, tilskuddsportal, bevillingsportal, integrasjon Altinn, Maskinporten, modernisering fagsystem, automatisering saksbehandling, systemutvikling offentlig sektor'
     },
     products: {
-      title: 'Produkter | Xala Technologies',
+      title: 'Produkter: Digilist, Digiskjema og Xaheen | Xala',
       description:
         'Norchain, Xaheen AI Builder og DigiList — egne produkter utviklet av Xala Technologies for norsk offentlig sektor og næringsliv.',
       keywords: 'Norchain, Xaheen AI Builder, DigiList, norske programvareprodukter, AI-verktøy, digitale plattformer'
     },
     cases: {
-      title: 'Kundecaser | Xala Technologies',
+      title: 'Kundecaser fra offentlig sektor | Xala',
       description:
         'Se hva vi har levert for SSB, Norsk helsenett, Altinn, Nordre Follo kommune, SpareBank 1, Telia, UNICEF og andre oppdragsgivere.',
       keywords: 'kundecaser, referanser, prosjekter, offentlig sektor, SSB, Altinn, Norsk helsenett, digitalisering'
     },
     caseStudy: {
-      title: 'Kundecase | Xala Technologies',
+      title: 'Kundecase fra offentlig sektor | Xala',
       description:
         'Gjennomgang av et kundeprosjekt: utfordringen, løsningen vi bygde, teknologivalgene bak den og de målbare resultatene.',
       keywords: 'kundecase, prosjekt, referanse, systemutvikling, resultater, teknologivalg'
     },
     process: {
-      title: 'Slik jobber vi | Xala Technologies',
+      title: 'Slik jobber vi: fra behov til drift | Xala',
       description:
         'Fra idé til drift: hvordan vi kartlegger behov, utvikler i korte sykluser, tester og forvalter løsningen sammen med kunden.',
       keywords: 'arbeidsmetode, smidig utvikling, prosjektmetodikk, systemutvikling, forvaltning, samarbeid'
     },
     technology: {
-      title: 'Teknologi | Xala Technologies',
+      title: 'Teknologi: .NET, Azure, React og Kubernetes | Xala',
       description:
         'Teknologistakken vi bygger på: React og TypeScript, Node.js, Python, Go og Rust, Azure, AWS og Google Cloud, Docker og Kubernetes.',
       keywords: 'React, TypeScript, Node.js, Python, Go, Rust, Azure, AWS, Kubernetes, PostgreSQL, TensorFlow, teknologistack'
     },
     about: {
-      title: 'Om oss | Xala Technologies',
+      title: 'Om oss: systemutviklere for offentlig sektor | Xala',
       description:
         'Xala Technologies AS er et systemutviklingshus i Asker. Møt teamet, og les om hvorfor kunder i offentlig sektor velger oss.',
       keywords: 'om Xala Technologies, systemutviklingshus, team, teknologieksperter, Asker, Nesbru, Norge'
     },
     contact: {
-      title: 'Kontakt | Xala Technologies',
+      title: 'Kontakt Xala Technologies',
       description:
         'Ta kontakt med Xala Technologies AS i Asker. Fortell oss om prosjektet, så svarer vi med hvordan vi kan hjelpe.',
       keywords: 'kontakt, teknologikonsultasjon, IT-rådgivning, tilbud, Asker, Nesbru, Norge'
     },
     careers: {
-      title: 'Karriere | Xala Technologies',
+      title: 'Ledige stillinger og karriere | Xala',
       description:
         'Vil du utvikle programvare hos oss? Se åpne stillinger i Xala Technologies og hvordan det er å jobbe i teamet vårt i Asker.',
       keywords: 'karriere, jobb, stillinger, utviklerjobb, systemutvikler, Asker, Norge, IT-jobb'
     },
     blog: {
-      title: 'Fagartikler | Xala Technologies',
+      title: 'Fagartikler om offentlig digitalisering | Xala',
       description:
         'Fagartikler om systemutvikling, AI, skyarkitektur, systemintegrasjon og digitalisering av offentlig sektor.',
       keywords: 'fagartikler, blogg, systemutvikling, AI, skyarkitektur, digitalisering, offentlig sektor'
     },
     blogPost: {
-      title: 'Fagartikkel | Xala Technologies',
+      title: 'Fagartikkel | Xala',
       description:
         'Fagartikkel fra utviklerne i Xala Technologies om systemutvikling, arkitektur og digitalisering.',
       keywords: 'fagartikkel, systemutvikling, arkitektur, AI, digitalisering'
     },
     privacy: {
-      title: 'Personvernerklæring | Xala Technologies',
+      title: 'Personvernerklæring | Xala',
       description:
         'Hvordan Xala Technologies AS behandler personopplysninger, hvilke rettigheter du har, og hvordan du kan bruke dem.',
       keywords: 'personvern, personvernerklæring, GDPR, personopplysninger, databehandling'
     },
     terms: {
-      title: 'Vilkår for bruk | Xala Technologies',
+      title: 'Vilkår for bruk | Xala',
       description: 'Vilkårene som gjelder for bruk av nettstedet og tjenestene til Xala Technologies AS.',
       keywords: 'vilkår, brukervilkår, betingelser, avtale'
     },
     cookies: {
-      title: 'Informasjonskapsler | Xala Technologies',
+      title: 'Informasjonskapsler | Xala',
       description:
         'Hvilke informasjonskapsler nettstedet vårt bruker, hva de brukes til, og hvordan du styrer dem selv.',
       keywords: 'informasjonskapsler, cookies, sporing, samtykke, personvern'
     },
     notFound: {
-      title: 'Siden finnes ikke | Xala Technologies',
+      title: 'Siden finnes ikke | Xala',
       description: 'Vi fant ikke siden du lette etter. Gå til forsiden, eller ta kontakt om du mener noe mangler.',
       keywords: 'siden finnes ikke, 404'
     }

@@ -6,11 +6,11 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { allPosts } from '@/lib/blog';
 import { allTags, publishedPosts } from '@/lib/blog/posts';
-import { BLOG_PATH, ORGANIZATION, SITE_ORIGIN, blogJsonLd, formatDate } from '@/lib/blog/seo';
+import { BLOG_PATH, BRAND, SITE_ORIGIN, blogJsonLd, formatDate } from '@/lib/blog/seo';
 
-const TITLE = `Blogg | ${ORGANIZATION}`;
+const TITLE = `Fagartikler om offentlig digitalisering | ${BRAND}`;
 const DESCRIPTION =
-  'Fagartikler om saksbehandlingssystemer, tilskudds- og bevillingsportaler, integrasjoner mot nasjonale felleskomponenter og modernisering av fagsystemer — skrevet for beslutningstakere i offentlig sektor og næringsliv.';
+  'Fagartikler om saksbehandlingssystemer, tilskudds- og bevillingsportaler, integrasjoner mot nasjonale felleskomponenter og modernisering av fagsystemer.';
 
 const PAGE_SIZE = 8;
 const ALL = 'Alle';
@@ -79,7 +79,6 @@ export default function BloggPage() {
         <meta property="og:title" content={TITLE} />
         <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:url" content={`${SITE_ORIGIN}${BLOG_PATH}`} />
-        <meta name="twitter:card" content="summary_large_image" />
         <script type="application/ld+json">{JSON.stringify(blogJsonLd(posts))}</script>
       </Helmet>
 

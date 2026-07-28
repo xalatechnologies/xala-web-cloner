@@ -4,7 +4,6 @@ import { Menu, X, Moon, Sun, ArrowRight } from 'lucide-react';
 import { useMenuItems } from '@/hooks/use-menu-items';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'next-themes';
-import { LANGUAGES, normalizeLang, type LanguageCode } from './navbar/languages';
 
 /** Two-digit index, so the drawer reads like a parts list rather than a list. */
 const ordinal = (index: number) => String(index + 1).padStart(2, '0');
@@ -17,7 +16,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
-  const { i18n, t } = useTranslation();
+  const { t } = useTranslation();
   const { theme, setTheme } = useTheme();
   const location = useLocation();
   const { data: menuItems } = useMenuItems();
@@ -52,29 +51,12 @@ const Navbar = () => {
 
   useEffect(() => { setIsOpen(false); }, [location.pathname]);
 
-  useEffect(() => {
-    const lang = i18n.language || 'no';
-    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    document.documentElement.lang = lang;
-  }, [i18n.language]);
-
   // Vector rather than the 6x PNGs: crisp at any size, a fraction of the
   // bytes, and the mark is a single fill so it can carry the palette. One
   // bronze per scheme, each contrast-checked against its own background.
   const logoSrc = theme === 'dark' ? '/logo-xala-dark.svg' : '/logo-xala-light.svg';
 
   const isActive = (href: string) => location.pathname === href;
-  const activeLang = normalizeLang(i18n.language);
-
-  const selectLanguage = (code: LanguageCode) => {
-    i18n.changeLanguage(code);
-    try {
-      localStorage.setItem('i18nextLng', code);
-    } catch {
-      // Private browsing: the switch still applies for this session.
-    }
-  };
-
   return (
     <>
       <nav
@@ -131,32 +113,6 @@ const Navbar = () => {
 
             {/* Right: controls + CTA */}
             <div className="flex items-center gap-2">
-              {/* Segmented language picker. Each language is its own button so
-                  it can be reached directly and announced by name, rather than
-                  a toggle that cycles and hides where you are. */}
-              <div
-                role="group"
-                aria-label="Språk / Language"
-                className="hidden sm:flex items-center rounded-md border border-border/60 overflow-hidden"
-              >
-                {LANGUAGES.map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => selectLanguage(lang.code)}
-                    lang={lang.code}
-                    aria-label={lang.name}
-                    aria-current={activeLang === lang.code ? 'true' : undefined}
-                    className={`min-h-11 px-2.5 text-xs font-bold tracking-[0.12em] transition-colors ${FOCUS} ${
-                      activeLang === lang.code
-                        ? 'bg-primary/15 text-primary'
-                        : 'text-muted-foreground hover:text-foreground'
-                    }`}
-                  >
-                    {lang.label}
-                  </button>
-                ))}
-              </div>
-
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                 aria-label="Toggle theme"
@@ -247,30 +203,6 @@ const Navbar = () => {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               )}
-              {/* Same three languages on mobile, each named in its own
-                  language. The old control read "Switch to English" and could
-                  only ever reach two of the three. */}
-              <div
-                role="group"
-                aria-label="Språk / Language"
-                className="grid grid-cols-3 gap-2"
-              >
-                {LANGUAGES.map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => selectLanguage(lang.code)}
-                    lang={lang.code}
-                    aria-current={activeLang === lang.code ? 'true' : undefined}
-                    className={`min-h-11 rounded-lg border text-sm font-semibold transition-colors ${FOCUS} ${
-                      activeLang === lang.code
-                        ? 'border-primary/50 bg-primary/15 text-primary'
-                        : 'border-border/60 text-muted-foreground hover:text-foreground'
-                    }`}
-                  >
-                    {lang.name}
-                  </button>
-                ))}
-              </div>
             </div>
           </div>
         </div>

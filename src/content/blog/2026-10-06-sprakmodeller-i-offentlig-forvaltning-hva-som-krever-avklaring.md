@@ -1,6 +1,7 @@
 ---
 slug: sprakmodeller-i-offentlig-forvaltning-hva-som-krever-avklaring
 title: "Språkmodeller i offentlig forvaltning: fire avklaringer før dere begynner"
+seoTitle: "Språkmodeller i offentlig forvaltning"
 description: "De tekniske spørsmålene er sjelden det som stopper et prosjekt. Det er de fire under."
 date: 2026-10-06
 author: "Ibrahim Rahmani"

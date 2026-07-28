@@ -239,7 +239,7 @@ export const unicefLiberiaCaseStudy: CaseStudy = {
   },
 
   seo: {
-    title: 'UNICEF Liberia Case Study | Xala Technologies',
+    title: 'UNICEF Liberia Case Study | Xala',
     description:
       'See how Xala supported UNICEF Liberia with a child protection, registration, and reintegration platform covering anti-trafficking workflows, reporting, and secure humanitarian case management.',
   },

@@ -1,6 +1,7 @@
 ---
 slug: automatisering-av-saksbehandling-hva-boer-og-ikke
 title: "Automatisering av saksbehandling: hva bør automatiseres — og hva ikke"
+seoTitle: "Automatisering av saksbehandling"
 description: "Regelstyrte vedtak kan automatiseres trygt. Skjønn kan ikke. Her er skillet, og hvorfor det avgjør hva prosjektet bør begynne med."
 date: 2026-07-02
 author: "Ibrahim Rahmani"
