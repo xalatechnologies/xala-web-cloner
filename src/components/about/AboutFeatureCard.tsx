@@ -1,5 +1,5 @@
-import * as Icons from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import { resolveIcon } from '@/lib/icons';
 
 interface AboutFeatureCardProps {
   title: string;
@@ -20,7 +20,7 @@ interface AboutFeatureCardProps {
  * h3, not h2: these sit under the section's own heading.
  */
 const AboutFeatureCard = ({ title, description, icon }: AboutFeatureCardProps) => {
-  const Icon = (Icons[icon as keyof typeof Icons] as LucideIcon) || Icons.CircleDot;
+  const Icon = resolveIcon(icon, 'CircleDot');
 
   return (
     <article className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 md:p-7">

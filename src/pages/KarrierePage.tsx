@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import * as Icons from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import { resolveIcon } from '@/lib/icons';
 import { ArrowRight, Mail } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -46,7 +46,7 @@ export default function KarrierePage() {
   const roles: CareerRole[] = rolesData[language] ?? rolesData.no;
 
   const iconFor = (name: string): LucideIcon =>
-    (Icons[name as keyof typeof Icons] as LucideIcon) || Icons.Briefcase;
+    resolveIcon(name, 'Briefcase');
 
   const mailtoFor = (role?: CareerRole) => {
     const subject = role

@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight } from 'lucide-react';
-import * as Icons from 'lucide-react';
+import { resolveIcon } from '@/lib/icons';
 import type { LucideIcon } from 'lucide-react';
 import productsData from '@/data/products.json';
 
@@ -29,7 +29,7 @@ export default function ProductsTeaser() {
 
   const products = productsData[language] ?? productsData.no;
   const iconFor = (name?: string | null): LucideIcon =>
-    (Icons[name as keyof typeof Icons] as LucideIcon) || Icons.Package;
+    resolveIcon(name, 'Package');
 
   return (
     <section

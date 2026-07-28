@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
-import * as Icons from 'lucide-react';
+import { resolveIcon } from '@/lib/icons';
 import type { LucideIcon } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -85,7 +85,7 @@ export default function TjenesteDetaljPage() {
 
   const copy = page[language] ?? page.no;
   const url = `${SITE_ORIGIN}/tjenester/${page.slug}`;
-  const Icon = (Icons[page.icon as keyof typeof Icons] as LucideIcon) || Icons.CircleDot;
+  const Icon = resolveIcon(page.icon, 'CircleDot');
 
   const pageMap = servicePages as Record<string, ServicePage>;
   const localised = (candidate: ServicePage) => candidate[language] ?? candidate.no;

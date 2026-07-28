@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight } from 'lucide-react';
-import * as Icons from 'lucide-react';
+import { resolveIcon } from '@/lib/icons';
 import type { LucideIcon } from 'lucide-react';
 import workProcessData from '@/data/work-process.json';
 
@@ -27,7 +27,7 @@ export default function ProcessTeaser() {
 
   const steps = workProcessData[language] ?? workProcessData.no;
   const iconFor = (name: string): LucideIcon =>
-    (Icons[name as keyof typeof Icons] as LucideIcon) || Icons.CircleDot;
+    resolveIcon(name, 'CircleDot');
 
   return (
     <section

@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight } from 'lucide-react';
-import * as Icons from 'lucide-react';
+import { resolveIcon } from '@/lib/icons';
 import type { LucideIcon } from 'lucide-react';
 import servicesData from '@/data/services.json';
 
@@ -32,7 +32,7 @@ export default function ServicesTeaser() {
 
   const services = (servicesData[language] ?? servicesData.no).slice(0, TEASER_COUNT);
   const iconFor = (name: string): LucideIcon =>
-    (Icons[name as keyof typeof Icons] as LucideIcon) || Icons.CircleDot;
+    resolveIcon(name, 'CircleDot');
 
   return (
     <section

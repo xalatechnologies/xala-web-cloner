@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ExternalLink } from 'lucide-react';
-import * as Icons from 'lucide-react';
+import { resolveIcon } from '@/lib/icons';
 import type { LucideIcon } from 'lucide-react';
 
 /**
@@ -74,7 +74,7 @@ const CAPABILITIES = [
 export default function DigilistSection() {
   const { t } = useTranslation();
   const iconFor = (name: string): LucideIcon =>
-    (Icons[name as keyof typeof Icons] as LucideIcon) || Icons.CircleDot;
+    resolveIcon(name, 'CircleDot');
 
   return (
     <section

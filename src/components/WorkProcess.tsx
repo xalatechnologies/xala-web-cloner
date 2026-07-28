@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import * as Icons from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import { resolveIcon } from '@/lib/icons';
 import { useSection } from '@/hooks/use-section';
 import workProcessData from '@/data/work-process.json';
 
@@ -45,7 +45,7 @@ const WorkProcess = ({ headingLevel = 'h2' }: WorkProcessProps) => {
 
   const Heading = headingLevel;
   const iconFor = (name: string): LucideIcon =>
-    (Icons[name as keyof typeof Icons] as LucideIcon) || Icons.HelpCircle;
+    resolveIcon(name, 'HelpCircle');
 
   return (
     <section id="work-process" className="py-16 md:py-24" aria-labelledby="work-process-heading">

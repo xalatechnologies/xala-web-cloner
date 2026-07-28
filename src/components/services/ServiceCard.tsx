@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import * as Icons from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import { resolveIcon } from '@/lib/icons';
 import { ArrowRight } from 'lucide-react';
 import { processServiceTitle } from '@/utils/text-hyphenation';
 
@@ -43,7 +43,7 @@ const ServiceCard = ({
   slug,
   readMoreLabel,
 }: ServiceCardProps) => {
-  const Icon = (Icons[icon as keyof typeof Icons] as LucideIcon) || Icons.CircleDot;
+  const Icon = resolveIcon(icon, 'CircleDot');
   const isNorwegian = /^(no|nb|nn)/.test(language.toLowerCase());
 
   return (
