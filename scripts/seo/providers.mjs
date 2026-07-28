@@ -77,7 +77,92 @@ export const dataforseo = {
       .filter((item) => item.type === 'organic')
       .map((item) => ({ position: item.rank_absolute, url: item.url, title: item.title }));
   },
+
+  /** Shared POST helper — every Labs endpoint takes the same auth and shape. */
+  async _post(path, task) {
+    const auth = Buffer.from(`${env('DATAFORSEO_LOGIN')}:${env('DATAFORSEO_PASSWORD')}`).toString('base64');
+    const data = await asJson(
+      await fetch(`https://api.dataforseo.com${path}`, {
+        method: 'POST',
+        headers: { Authorization: `Basic ${auth}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify([task]),
+      }),
+      'DataForSEO'
+    );
+    const t = data.tasks?.[0];
+    if (!t || t.status_code !== 20000) {
+      throw new Error(`DataForSEO ${path}: ${t?.status_message ?? 'no task returned'}`);
+    }
+    return t.result?.[0]?.items ?? [];
+  },
+
+  /**
+   * Keywords related to a set of seed terms, with the volume that decides
+   * whether any of them is worth a page.
+   *
+   * Search volume is the number the whole exercise turns on. A keyword list
+   * written from what a company calls its own services is a list of guesses;
+   * roughly half of them usually turn out to have no measurable Norwegian
+   * search volume at all, which means no page can rank for them because nobody
+   * is searching.
+   */
+  async keywordIdeas(seeds, limit = 200) {
+    const items = await this._post('/v3/dataforseo_labs/google/keyword_ideas/live', {
+      keywords: seeds,
+      location_code: MARKET.dataforseoLocation,
+      language_code: MARKET.dataforseoLanguage,
+      include_serp_info: false,
+      limit,
+    });
+    return items.map(shapeKeyword);
+  },
+
+  /** Keyword suggestions: long-tail phrases containing a seed. */
+  async keywordSuggestions(seed, limit = 100) {
+    const items = await this._post('/v3/dataforseo_labs/google/keyword_suggestions/live', {
+      keyword: seed,
+      location_code: MARKET.dataforseoLocation,
+      language_code: MARKET.dataforseoLanguage,
+      limit,
+    });
+    return items.map(shapeKeyword);
+  },
+
+  /**
+   * What a domain already ranks for.
+   *
+   * Pointed at a competitor this is the highest-signal keyword research
+   * available: not what a keyword tool thinks is related, but the queries a
+   * company in the same market is being found for right now.
+   */
+  async rankedKeywords(domain, limit = 200) {
+    const items = await this._post('/v3/dataforseo_labs/google/ranked_keywords/live', {
+      target: domain,
+      location_code: MARKET.dataforseoLocation,
+      language_code: MARKET.dataforseoLanguage,
+      limit,
+      order_by: ['keyword_data.keyword_info.search_volume,desc'],
+    });
+    return items.map((item) => ({
+      ...shapeKeyword(item),
+      position: item.ranked_serp_element?.serp_item?.rank_absolute ?? null,
+      url: item.ranked_serp_element?.serp_item?.url ?? null,
+    }));
+  },
 };
+
+/** DataForSEO nests the same numbers differently per endpoint. */
+function shapeKeyword(item) {
+  const kd = item.keyword_data ?? item;
+  const info = kd.keyword_info ?? {};
+  return {
+    keyword: kd.keyword ?? item.keyword,
+    volume: info.search_volume ?? 0,
+    cpc: info.cpc ?? null,
+    competition: info.competition_level ?? null,
+    difficulty: kd.keyword_properties?.keyword_difficulty ?? null,
+  };
+}
 
 /* ── SerpAPI ───────────────────────────────────────────────────────────────── */
 export const serpapi = {
