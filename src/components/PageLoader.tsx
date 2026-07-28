@@ -1,7 +1,15 @@
 import { useEffect, useState } from 'react';
 
-const LOGO_SRC = '/LOGO/PNG/Asset 4@6x.png';
-const LOGO_SRC_DARK = '/LOGO/PNG/Asset 3@6x.png';
+/**
+ * The same vectors the navbar uses, not the 6x PNGs.
+ *
+ * This component is the Suspense fallback, so it is the first thing that
+ * renders on every cold load — and it was fetching a 104 KB PNG to show a logo
+ * at 64px high. That request sat directly on the First Contentful Paint path of
+ * every page. The SVGs are 3 KB, already on the site, and sharp at any size.
+ */
+const LOGO_SRC = '/logo-xala-light.svg';
+const LOGO_SRC_DARK = '/logo-xala-dark.svg';
 
 export default function PageLoader() {
   const [progress, setProgress] = useState(0);
@@ -37,7 +45,8 @@ export default function PageLoader() {
     >
       <img
         src={logoSrc}
-        alt="Xala"
+        alt=""
+        aria-hidden="true"
         className="h-12 w-auto object-contain sm:h-14 md:h-16"
         width={160}
         height={64}

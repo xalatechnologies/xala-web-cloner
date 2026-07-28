@@ -39,6 +39,31 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
   const { t } = useTranslation()
   const navigate = useNavigate()
 
+  /**
+   * The background film loads after the first paint, never before it.
+   *
+   * It was 7 MB at 11 Mbps, autoplaying, with no preload hint — so a phone on a
+   * Norwegian mobile connection spent its whole first second of bandwidth on a
+   * video that sits behind an 85% opaque overlay and a blur. Largest
+   * Contentful Paint was 4.2s on the page every visitor lands on.
+   *
+   * Re-encoding for how it is actually seen took it to 163 KB. Deferring the
+   * fetch takes it off the critical path entirely: the poster is a 2.6 KB SVG
+   * that paints immediately, and the video swaps in once the browser is idle.
+   * Nobody watching a blurred 15%-opacity background notices the difference;
+   * the LCP measurement does.
+   */
+  const [videoReady, setVideoReady] = useState(false)
+
+  useEffect(() => {
+    if (!videoSrc) return
+    // requestIdleCallback where available, so this cannot compete with paint.
+    const idle = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 1))
+    const cancel = window.cancelIdleCallback ?? window.clearTimeout
+    const handle = idle(() => setVideoReady(true))
+    return () => cancel(handle as number)
+  }, [videoSrc])
+
   return (
     /*
      * pt-32 clears the fixed navbar. Without it the h1 rendered underneath the
@@ -56,16 +81,22 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
       <div className="absolute inset-0">
         {/* public/videos/xala.mp4 is the background film. The conditional
             stays so a caller can opt out with videoSrc={undefined} and fall
-            back to the poster, but the default is the real asset. */}
+            back to the poster, but the default is the real asset.
+
+            aria-hidden because it is decoration: it carries no information a
+            screen reader could use, and an unlabelled video element announces
+            itself as media a user might try to control. */}
         {videoSrc ? (
           <video
             className="h-full w-full object-cover"
-            src={videoSrc}
+            src={videoReady ? videoSrc : undefined}
             poster={poster}
+            preload="none"
             autoPlay
             loop
             muted
             playsInline
+            aria-hidden="true"
           />
         ) : (
           <div
