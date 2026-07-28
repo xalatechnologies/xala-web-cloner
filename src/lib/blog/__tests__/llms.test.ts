@@ -53,11 +53,17 @@ describe('llms.txt', () => {
   );
 
   it('describes what the company currently does', () => {
-    expect(output).toContain('saksbehandlingssystemer');
-    expect(output).toContain('integrasjoner mot nasjonale felleskomponenter');
-    // The pre-repositioning pitch, which outlived the repositioning by months.
-    expect(output).not.toContain('Power Platform');
-    expect(output).not.toContain('SharePoint');
+    // Scoped to the summary block, not the whole file. Case studies legitimately
+    // name SharePoint because two real projects used it; the defect being
+    // guarded is the *pitch* still claiming it, which is a different string in a
+    // different place. A whole-file assertion here would have read as stricter
+    // than it is and failed the day someone wrote a true sentence.
+    const summary = output.split('## Sider')[0];
+
+    expect(summary).toContain('saksbehandlingssystemer');
+    expect(summary).toContain('integrasjoner mot nasjonale felleskomponenter');
+    expect(summary).not.toContain('Power Platform');
+    expect(summary).not.toContain('SharePoint');
   });
 
   it('states the facts an answer engine needs to treat this as a known entity', () => {
