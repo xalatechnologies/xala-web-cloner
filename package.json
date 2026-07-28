@@ -13,7 +13,10 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "prerender": "tsx scripts/prerender-blog.ts"
+    "prerender": "tsx scripts/prerender-blog.ts",
+    "seo:rankings": "node scripts/audit-rankings.mjs",
+    "seo:console": "node scripts/audit-search-console.mjs",
+    "seo:vitals": "node scripts/audit-pagespeed.mjs"
   },
   "dependencies": {
     "@axe-core/react": "^4.10.2",
