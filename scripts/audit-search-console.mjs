@@ -15,7 +15,7 @@
  *   node scripts/audit-search-console.mjs --days 90
  *   node scripts/audit-search-console.mjs --inspect    # per-URL index status
  */
-import { readFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { requireEnv } from './seo/env.mjs';
 import { searchConsole } from './seo/providers.mjs';
@@ -134,3 +134,9 @@ if (doInspect) {
 } else {
   console.log('\n  Add --inspect to check which sitemap URLs Google has actually indexed.\n');
 }
+
+mkdirSync(resolve(process.cwd(), 'seo-data'), { recursive: true });
+writeFileSync(
+  resolve(process.cwd(), 'seo-data/search-console.json'),
+  JSON.stringify({ startDate, endDate, queries, pages }, null, 2) + '\n'
+);

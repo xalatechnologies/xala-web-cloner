@@ -35,6 +35,7 @@ concurrency:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   measure:
@@ -125,6 +126,50 @@ jobs:
               echo "GSC_CLIENT_EMAIL, GSC_PRIVATE_KEY, GSC_SITE_URL"
             fi
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Update the SEO status issue
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/seo-report.mjs > /tmp/issue.md
+          TITLE="SEO status — xala.no"
+
+          # One rolling issue, found by title, updated in place.
+          #
+          # A new issue every morning is a notification people mute inside a
+          # week, and a muted issue is worse than none because it looks like
+          # coverage. Rewriting one issue means the top of the backlog always
+          # shows the current state, and GitHub's own edit history keeps the
+          # rest.
+          NUMBER=$(gh issue list --state open --limit 100 \
+            --json number,title \
+            --jq ".[] | select(.title == \"$TITLE\") | .number" | head -1)
+
+          CRITICAL=$(node scripts/seo-report.mjs --json \
+            | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>console.log(JSON.parse(s).findings.filter(f=>f.severity==='critical').length))")
+
+          if [ -z "$NUMBER" ]; then
+            gh issue create --title "$TITLE" --body-file /tmp/issue.md --label seo 2>/dev/null \
+              || gh issue create --title "$TITLE" --body-file /tmp/issue.md
+            echo "created SEO status issue"
+          else
+            gh issue edit "$NUMBER" --body-file /tmp/issue.md
+            echo "updated issue #$NUMBER"
+
+            # Comment only when something critical is outstanding. The issue
+            # body is rewritten silently; a comment is what actually notifies,
+            # so it has to be rare enough to still mean something.
+            if [ "$CRITICAL" -gt 0 ]; then
+              LAST=$(gh issue view "$NUMBER" --json comments \
+                --jq '[.comments[].createdAt] | last // ""')
+              TODAY=$(date -u +%Y-%m-%d)
+              if [ "${LAST:0:10}" != "$TODAY" ]; then
+                gh issue comment "$NUMBER" \
+                  --body "$CRITICAL critical finding(s) as of $TODAY — see the issue body."
+              fi
+            fi
+          fi
 
       - name: Commit the series
         if: always()

@@ -361,7 +361,7 @@
           "intent": "navigational",
           "position": 1,
           "url": "/",
-          "onTarget": false,
+          "onTarget": true,
           "ahead": []
         }
       ]

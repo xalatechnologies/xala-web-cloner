@@ -52,6 +52,12 @@ requireEnv(
     : 'SerpAPI: serpapi.com/manage-api-key'
 );
 
+/** "/tjenester/" and "/tjenester" are one page; "/" must stay "/". */
+function normalisePath(pathname) {
+  const trimmed = String(pathname).replace(/\/+$/, '');
+  return trimmed === '' ? '/' : trimmed;
+}
+
 /** Our best-ranking result for a keyword, and what beats it. */
 function analyse(results, target) {
   const ours = results.find((r) => {
@@ -62,13 +68,17 @@ function analyse(results, target) {
     }
   });
 
-  const path = ours ? new URL(ours.url).pathname.replace(/\/$/, '') || '/' : null;
+  const path = ours ? normalisePath(new URL(ours.url).pathname) : null;
   return {
     position: ours?.position ?? null,
     url: path,
     // Ranking with a page other than the one written for the query usually
     // means the intended page is thinner than the one Google preferred.
-    onTarget: path === null ? null : path === target.replace(/\/$/, ''),
+    //
+    // Both sides go through the same normaliser. Stripping a trailing slash
+    // with a bare replace turns "/" into "", so the home page compared unequal
+    // to itself and was reported as ranking with the wrong page.
+    onTarget: path === null ? null : path === normalisePath(target),
     ahead: results.filter((r) => !ours || r.position < ours.position).slice(0, 3).map((r) => {
       try {
         return new URL(r.url).hostname.replace(/^www\./, '');

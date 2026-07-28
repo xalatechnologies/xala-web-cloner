@@ -15,6 +15,8 @@
  *   node scripts/audit-pagespeed.mjs
  *   node scripts/audit-pagespeed.mjs --strategy desktop
  */
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { requireEnv } from './seo/env.mjs';
 import { pagespeed } from './seo/providers.mjs';
 
@@ -108,3 +110,11 @@ if (divergent.length) {
   for (const r of divergent) console.log(`    ${r.url.replace('https://xala.no', '') || '/'}  lab ${r.lab.performance}, field LCP ${r.field.lcp}ms`);
 }
 console.log('');
+
+// Persisted for scripts/seo-report.mjs, and so the field numbers accumulate
+// into a series the same way rankings do.
+mkdirSync(resolve(process.cwd(), 'seo-data'), { recursive: true });
+writeFileSync(
+  resolve(process.cwd(), 'seo-data/vitals.json'),
+  JSON.stringify({ strategy, thresholds: GOOD, pages: rows }, null, 2) + '\n'
+);
