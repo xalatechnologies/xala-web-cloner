@@ -321,7 +321,9 @@
         }
       }
     },
-    "description": "Get in touch for a no-obligation conversation about your project."
+    "description": "Get in touch for a no-obligation conversation about your project.",
+    "detailsHeading": "Contact details",
+    "formHeading": "Send us a message"
   },
   "common": {
     "showMore": "Show More",

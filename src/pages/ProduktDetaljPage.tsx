@@ -123,7 +123,7 @@ export default function ProduktDetaljPage() {
 
               {copy.sections.map((block) => (
                 <div key={block.heading} className="mt-10">
-                  <h2 className="text-xl font-semibold tracking-tight text-foreground md:text-2xl">
+                  <h2 className="subsection-heading">
                     {block.heading}
                   </h2>
                   <p className="mt-3 max-w-[62ch] leading-relaxed text-muted-foreground">

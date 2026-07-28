@@ -34,7 +34,7 @@ export default function ValueProps() {
     <Section tone="muted" size="md" styled container={false}>
       <div className="container mx-auto px-4">
         <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="section-heading mb-6">
             {t('valueProps.title')}
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">

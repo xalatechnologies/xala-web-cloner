@@ -18,7 +18,7 @@ const LegalLayout = ({ title, lastUpdated, children }: LegalLayoutProps) => {
       <div className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
         {/* Header */}
         <div className="mb-12 md:mb-16 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h1 className="section-heading mb-6">
             {title}
           </h1>
           <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">

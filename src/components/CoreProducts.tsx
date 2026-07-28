@@ -52,7 +52,7 @@ const CoreProducts = ({ headingLevel = 'h1' }: CoreProductsProps = {}) => {
       <div className="container">
         <div className="flex flex-col gap-12">
           <div className="flex flex-col gap-4 text-center">
-            <Heading className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <Heading className="section-heading">
               {sectionTitle}
             </Heading>
             <p className="text-lg leading-8 text-muted-foreground max-w-3xl mx-auto">

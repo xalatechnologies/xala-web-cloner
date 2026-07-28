@@ -32,10 +32,17 @@ const Contact = () => {
 
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 overflow-hidden">
             <div className="w-full lg:w-[400px] lg:shrink-0 space-y-4 lg:space-y-8">
+              {/* Both columns need a heading of their own. Demoting the contact
+                  detail labels to h3 — which is what they are, items inside a
+                  group rather than sections — left the page going h1 straight
+                  to h3, and a skipped level is a real navigation problem for
+                  anyone moving through the page by heading. */}
+              <h2 className="sr-only">{t('contact.detailsHeading', 'Kontaktinformasjon')}</h2>
               <ContactInfo />
               <SocialLinks />
             </div>
             <div className="flex-1 min-w-0 overflow-hidden">
+              <h2 className="sr-only">{t('contact.formHeading', 'Send oss en melding')}</h2>
               <ContactForm />
             </div>
           </div>

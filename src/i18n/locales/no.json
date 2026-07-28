@@ -321,7 +321,9 @@
         }
       }
     },
-    "description": "Ta kontakt for en uforpliktende samtale om prosjektet ditt."
+    "description": "Ta kontakt for en uforpliktende samtale om prosjektet ditt.",
+    "detailsHeading": "Kontaktinformasjon",
+    "formHeading": "Send oss en melding"
   },
   "common": {
     "showMore": "Vis mer",
