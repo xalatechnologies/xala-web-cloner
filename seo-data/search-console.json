@@ -1,7 +1,198 @@
 {
-  "startDate": "2026-06-29",
-  "endDate": "2026-07-27",
-  "queries": [],
-  "pages": [],
+  "startDate": "2026-06-30",
+  "endDate": "2026-07-28",
+  "queries": [
+    {
+      "keys": [
+        "xala technologies"
+      ],
+      "clicks": 20,
+      "impressions": 41,
+      "ctr": 0.4878048780487805,
+      "position": 1.6341463414634148
+    },
+    {
+      "keys": [
+        "ayala tech"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 52
+    },
+    {
+      "keys": [
+        "xala"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "keys": [
+        "xala tech"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 4
+    }
+  ],
+  "pages": [
+    {
+      "keys": [
+        "https://xala.no/"
+      ],
+      "clicks": 21,
+      "impressions": 72,
+      "ctr": 0.2916666666666667,
+      "position": 3.2222222222222223
+    },
+    {
+      "keys": [
+        "http://xala.no/"
+      ],
+      "clicks": 7,
+      "impressions": 48,
+      "ctr": 0.14583333333333334,
+      "position": 10.708333333333334
+    },
+    {
+      "keys": [
+        "https://xala.no/caser"
+      ],
+      "clicks": 0,
+      "impressions": 24,
+      "ctr": 0,
+      "position": 4.666666666666666
+    },
+    {
+      "keys": [
+        "https://xala.no/caser/altinn"
+      ],
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 5.25
+    },
+    {
+      "keys": [
+        "https://xala.no/caser/sparebank-1-banking-systems"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "https://xala.no/caser/unicef-afghanistan-child-protection-birth-registration"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "https://xala.no/cookies"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "https://xala.no/en"
+      ],
+      "clicks": 0,
+      "impressions": 21,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "https://xala.no/karriere"
+      ],
+      "clicks": 0,
+      "impressions": 10,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "https://xala.no/kontakt"
+      ],
+      "clicks": 0,
+      "impressions": 14,
+      "ctr": 0,
+      "position": 2.142857142857143
+    },
+    {
+      "keys": [
+        "https://xala.no/om-oss"
+      ],
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 2.625
+    },
+    {
+      "keys": [
+        "https://xala.no/privacy"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 3.5
+    },
+    {
+      "keys": [
+        "https://xala.no/produkter"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 4.5
+    },
+    {
+      "keys": [
+        "https://xala.no/slik-vi-jobber"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "keys": [
+        "https://xala.no/teknologi"
+      ],
+      "clicks": 0,
+      "impressions": 11,
+      "ctr": 0,
+      "position": 2.5454545454545454
+    },
+    {
+      "keys": [
+        "https://xala.no/terms"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 4
+    },
+    {
+      "keys": [
+        "https://xala.no/tjenester"
+      ],
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 1.25
+    }
+  ],
   "index": null
 }
