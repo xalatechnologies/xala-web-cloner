@@ -1597,6 +1597,310 @@
           "ahead": []
         }
       ]
+    },
+    {
+      "date": "2026-08-01",
+      "provider": "DataForSEO",
+      "rows": [
+        {
+          "keyword": "saksbehandlingssystem",
+          "target": "/tjenester/saksbehandlingssystem",
+          "intent": "commercial",
+          "position": 69,
+          "url": "/blogg/automatisering-av-saksbehandling-hva-boer-og-ikke",
+          "onTarget": false,
+          "ahead": [
+            "minflyt.no",
+            "businesswith.no",
+            "invo.no"
+          ]
+        },
+        {
+          "keyword": "saksbehandlingssystem kommune",
+          "target": "/tjenester/saksbehandlingssystem",
+          "intent": "commercial",
+          "position": null,
+          "url": null,
+          "onTarget": null,
+          "ahead": [
+            "minflyt.no",
+            "nasjonalarkivet.no",
+            "regjeringen.no"
+          ]
+        },
+        {
+          "keyword": "saksbehandlingsplattform",
+          "target": "/tjenester/saksbehandlingsplattform",
+          "intent": "commercial",
+          "position": 52,
+          "url": "/",
+          "onTarget": false,
+          "ahead": [
+            "dmp.no",
+            "ordbokene.no",
+            "doffin.no"
+          ]
+        },
+        {
+          "keyword": "tilskuddsportal",
+          "target": "/tjenester/tilskuddsportal",
+          "intent": "commercial",
+          "position": null,
+          "url": null,
+          "onTarget": null,
+          "ahead": [
+            "helsedirektoratet.no",
+            "tilskudd.bergen.kommune.no",
+            "tilskuddsportalen.no"
+          ]
+        },
+        {
+          "keyword": "tilskuddsportal kommune",
+          "target": "/tjenester/tilskuddsportal",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: task failed — Internal SE Server Error."
+        },
+        {
+          "keyword": "bevillingsportal",
+          "target": "/tjenester/bevillingsportal",
+          "intent": "commercial",
+          "position": 1,
+          "url": "/blogg/bevillingsportal-fra-soknad-til-vedtak",
+          "onTarget": false,
+          "ahead": []
+        },
+        {
+          "keyword": "skjenkebevilling system",
+          "target": "/tjenester/bevillingsportal",
+          "intent": "commercial",
+          "position": null,
+          "url": null,
+          "onTarget": null,
+          "ahead": [
+            "helsedirektoratet.no",
+            "bevillingsklar.no",
+            "elverum.kommune.no"
+          ]
+        },
+        {
+          "keyword": "systemintegrasjon offentlig sektor",
+          "target": "/tjenester/systemintegrasjon",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: task failed — Internal SE Server Error."
+        },
+        {
+          "keyword": "integrasjon altinn",
+          "target": "/tjenester/integrasjoner",
+          "intent": "commercial",
+          "position": null,
+          "url": null,
+          "onTarget": null,
+          "ahead": [
+            "docs.data.altinn.no",
+            "samarbeid.digdir.no",
+            "info.altinn.no"
+          ]
+        },
+        {
+          "keyword": "id-porten integrasjon",
+          "target": "/blogg/id-porten-eller-maskinporten-hva-velger-du",
+          "intent": "informational",
+          "position": null,
+          "url": null,
+          "onTarget": null,
+          "ahead": [
+            "docs.digdir.no",
+            "skatteetaten.github.io",
+            "mercell.com"
+          ]
+        },
+        {
+          "keyword": "maskinporten integrasjon",
+          "target": "/blogg/id-porten-eller-maskinporten-hva-velger-du",
+          "intent": "informational",
+          "position": 19,
+          "url": "/blogg/id-porten-eller-maskinporten-hva-velger-du",
+          "onTarget": true,
+          "ahead": [
+            "docs.digdir.no",
+            "dokumentasjon.dsop.no",
+            "samarbeid.digdir.no"
+          ]
+        },
+        {
+          "keyword": "noark 5 arkivering",
+          "target": "/blogg/noark-5-arkivering-i-moderne-fagsystemer",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: task failed — Internal SE Server Error."
+        },
+        {
+          "keyword": "modernisering av fagsystemer",
+          "target": "/tjenester/modernisering-av-fagsystemer",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: task failed — Internal SE Server Error."
+        },
+        {
+          "keyword": "modernisere fagsystem uten driftsstans",
+          "target": "/blogg/modernisere-fagsystem-uten-driftsstans",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: task failed — Internal SE Server Error."
+        },
+        {
+          "keyword": "systemutvikling offentlig sektor",
+          "target": "/",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: task failed — Internal SE Server Error."
+        },
+        {
+          "keyword": "saas offentlig sektor",
+          "target": "/tjenester/saas-applikasjonsutvikling",
+          "intent": "commercial",
+          "position": null,
+          "url": null,
+          "onTarget": null,
+          "ahead": [
+            "markedsplassen.anskaffelser.no",
+            "publixgroup.io",
+            "effi.pro"
+          ]
+        },
+        {
+          "keyword": "flerleietaker arkitektur",
+          "target": "/blogg/flerleietakerarkitektur-saas-offentlig-sektor",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: task failed — Internal SE Server Error."
+        },
+        {
+          "keyword": "automatisering av saksbehandling",
+          "target": "/blogg/automatisering-av-saksbehandling-hva-boer-og-ikke",
+          "intent": "informational",
+          "position": 10,
+          "url": "/blogg/automatisering-av-saksbehandling-hva-boer-og-ikke",
+          "onTarget": true,
+          "ahead": [
+            "regjeringen.no",
+            "scup.com",
+            "digdir.no"
+          ]
+        },
+        {
+          "keyword": "ai i offentlig sektor",
+          "target": "/tjenester/automatisering-og-ai",
+          "intent": "commercial",
+          "position": null,
+          "url": null,
+          "onTarget": null,
+          "ahead": [
+            "tankesmiengoforit.no",
+            "regjeringen.no",
+            "oslomet.no"
+          ]
+        },
+        {
+          "keyword": "språkmodeller offentlig forvaltning",
+          "target": "/blogg/sprakmodeller-i-offentlig-forvaltning-hva-som-krever-avklaring",
+          "intent": "informational",
+          "position": 7,
+          "url": "/blogg/sprakmodeller-i-offentlig-forvaltning-hva-som-krever-avklaring",
+          "onTarget": true,
+          "ahead": [
+            "digdir.no",
+            "jus.uio.no",
+            "regjeringen.no"
+          ]
+        },
+        {
+          "keyword": "agentiske arbeidsflyter",
+          "target": "/blogg/agentiske-arbeidsflyter-i-saksbehandling",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: task failed — Internal SE Server Error."
+        },
+        {
+          "keyword": "wcag 2.2 aa krav",
+          "target": "/blogg/wcag-2-2-aa-i-praksis-for-fagsystemer",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: task failed — Internal SE Server Error."
+        },
+        {
+          "keyword": "iso 27001 utviklingsprosjekt",
+          "target": "/blogg/iso-27001-i-praksis-for-utviklingsprosjekter",
+          "intent": "informational",
+          "position": 2,
+          "url": "/blogg/iso-27001-i-praksis-for-utviklingsprosjekter",
+          "onTarget": true,
+          "ahead": []
+        },
+        {
+          "keyword": "azure offentlig sektor",
+          "target": "/blogg/azure-for-offentlig-sektor-krav-og-valg",
+          "intent": "informational",
+          "position": 6,
+          "url": "/blogg/azure-for-offentlig-sektor-krav-og-valg",
+          "onTarget": true,
+          "ahead": [
+            "azure.microsoft.com",
+            "markedsplassen.anskaffelser.no",
+            "azure.microsoft.com"
+          ]
+        },
+        {
+          "keyword": "ssa-s eller ssa-l",
+          "target": "/blogg/ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling",
+          "intent": "informational",
+          "position": 12,
+          "url": "/blogg/ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling",
+          "onTarget": true,
+          "ahead": [
+            "anskaffelser.no",
+            "nordialaw.com",
+            "anskaffelser.no"
+          ]
+        },
+        {
+          "keyword": "booking og utleie kommune",
+          "target": "/produkter/digilist",
+          "intent": "commercial",
+          "position": null,
+          "url": null,
+          "onTarget": null,
+          "ahead": [
+            "booking.oslo.kommune.no",
+            "io.kommune.no",
+            "drammen.kommune.no"
+          ]
+        },
+        {
+          "keyword": "digilist",
+          "target": "/produkter/digilist",
+          "intent": "navigational",
+          "position": null,
+          "url": null,
+          "onTarget": null,
+          "ahead": [
+            "digilist.no",
+            "martinboroughwinevillage.nz",
+            "instagram.com"
+          ]
+        },
+        {
+          "keyword": "xala technologies",
+          "target": "/",
+          "intent": "navigational",
+          "position": 1,
+          "url": "/",
+          "onTarget": true,
+          "ahead": []
+        }
+      ]
     }
   ]
 }
