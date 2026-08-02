@@ -41,8 +41,8 @@
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 2560,
-        "cls": 0.004859644519760349,
+        "lcp": 2558,
+        "cls": 0,
         "tbt": 0
       }
     },
@@ -57,12 +57,12 @@
         "overall": null
       },
       "lab": {
-        "performance": 91,
+        "performance": 86,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3042,
-        "cls": 0,
+        "lcp": 3526,
+        "cls": 0.0000666954423648676,
         "tbt": 0
       }
     },
@@ -77,11 +77,11 @@
         "overall": null
       },
       "lab": {
-        "performance": 92,
+        "performance": 90,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 2776,
+        "lcp": 3001,
         "cls": 0,
         "tbt": 0
       }
@@ -97,13 +97,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 89,
+        "performance": 69,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3151,
-        "cls": 0,
-        "tbt": 0
+        "lcp": 3601,
+        "cls": 0.0017926749544509401,
+        "tbt": 609.5
       }
     },
     {
@@ -117,13 +117,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 95,
+        "performance": 88,
         "accessibility": 95,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 2431.5,
-        "cls": 0.0008839961372688815,
-        "tbt": 11
+        "lcp": 3226,
+        "cls": 0,
+        "tbt": 0
       }
     },
     {
@@ -142,7 +142,7 @@
         "seo": 100,
         "bestPractices": 100,
         "lcp": 3451,
-        "cls": 0.0001705337188462729,
+        "cls": 0,
         "tbt": 0
       }
     },
@@ -157,13 +157,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 86,
+        "performance": 98,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3154.5,
-        "cls": 0,
-        "tbt": 0
+        "lcp": 1054,
+        "cls": 0.0001880243853903182,
+        "tbt": 7.5
       }
     }
   ]
