@@ -49,12 +49,12 @@
       "volume": 2400,
       "cpc": 6.91,
       "competition": "LOW",
-      "difficulty": 18,
+      "difficulty": 13,
       "sources": [
         "suggestions"
       ],
       "competitors": [],
-      "opportunity": 8571
+      "opportunity": 10435
     },
     {
       "keyword": "modalen kommune",
@@ -331,6 +331,30 @@
       "opportunity": 900
     },
     {
+      "keyword": "enova tilskudd",
+      "volume": 210,
+      "cpc": 4.74,
+      "competition": "LOW",
+      "difficulty": 20,
+      "sources": [
+        "ideas"
+      ],
+      "competitors": [],
+      "opportunity": 700
+    },
+    {
+      "keyword": "helsedirektoratet tilskuddsportal",
+      "volume": 70,
+      "cpc": null,
+      "competition": "LOW",
+      "difficulty": 0,
+      "sources": [
+        "suggestions"
+      ],
+      "competitors": [],
+      "opportunity": 700
+    },
+    {
       "keyword": "skjenkebevilling prøve gratis",
       "volume": 70,
       "cpc": 1.35,
@@ -373,18 +397,6 @@
       "opportunity": 700
     },
     {
-      "keyword": "enova tilskudd",
-      "volume": 210,
-      "cpc": 4.74,
-      "competition": "LOW",
-      "difficulty": 21,
-      "sources": [
-        "ideas"
-      ],
-      "competitors": [],
-      "opportunity": 677
-    },
-    {
       "keyword": "skjenkebevilling prøve",
       "volume": 90,
       "cpc": 1.54,
@@ -403,18 +415,6 @@
       "opportunity": 643
     },
     {
-      "keyword": "helsedirektoratet tilskuddsportal",
-      "volume": 70,
-      "cpc": null,
-      "competition": "LOW",
-      "difficulty": 1,
-      "sources": [
-        "suggestions"
-      ],
-      "competitors": [],
-      "opportunity": 636
-    },
-    {
       "keyword": "id-porten min side",
       "volume": 170,
       "cpc": null,
@@ -425,6 +425,30 @@
       ],
       "competitors": [],
       "opportunity": 630
+    },
+    {
+      "keyword": "skjenkebevilling vm",
+      "volume": 70,
+      "cpc": null,
+      "competition": "LOW",
+      "difficulty": 2,
+      "sources": [
+        "suggestions"
+      ],
+      "competitors": [],
+      "opportunity": 583
+    },
+    {
+      "keyword": "eboks id-porten",
+      "volume": 70,
+      "cpc": null,
+      "competition": "LOW",
+      "difficulty": 4,
+      "sources": [
+        "suggestions"
+      ],
+      "competitors": [],
+      "opportunity": 500
     },
     {
       "keyword": "systemutvikling ntnu",
@@ -481,15 +505,9 @@
       "competition": "LOW",
       "difficulty": 0,
       "sources": [
-        "suggestions",
-        "competitor"
+        "suggestions"
       ],
-      "competitors": [
-        {
-          "domain": "bevillingsklar.no",
-          "position": 15
-        }
-      ],
+      "competitors": [],
       "opportunity": 500
     },
     {
@@ -503,18 +521,6 @@
       ],
       "competitors": [],
       "opportunity": 483
-    },
-    {
-      "keyword": "booking trondheim kommune",
-      "volume": 70,
-      "cpc": 1.75,
-      "competition": "LOW",
-      "difficulty": 6,
-      "sources": [
-        "suggestions"
-      ],
-      "competitors": [],
-      "opportunity": 438
     },
     {
       "keyword": "skjenkebevilling enkeltanledning",
@@ -569,18 +575,6 @@
       ],
       "competitors": [],
       "opportunity": 333
-    },
-    {
-      "keyword": "eboks id-porten",
-      "volume": 70,
-      "cpc": null,
-      "competition": "LOW",
-      "difficulty": 12,
-      "sources": [
-        "suggestions"
-      ],
-      "competitors": [],
-      "opportunity": 318
     },
     {
       "keyword": "serveringsbevilling prøve",
@@ -784,6 +778,18 @@
       "opportunity": 250
     },
     {
+      "keyword": "booking trondheim kommune",
+      "volume": 70,
+      "cpc": 1.75,
+      "competition": "LOW",
+      "difficulty": 18,
+      "sources": [
+        "suggestions"
+      ],
+      "competitors": [],
+      "opportunity": 250
+    },
+    {
       "keyword": "oslo kommune budsjett",
       "volume": 90,
       "cpc": null,
@@ -916,7 +922,7 @@
       "opportunity": 167
     },
     {
-      "keyword": "skjenkebevilling vm",
+      "keyword": "utvidet skjenkebevilling vm",
       "volume": 70,
       "cpc": null,
       "competition": "LOW",
@@ -928,16 +934,16 @@
       "opportunity": 140
     },
     {
-      "keyword": "utvidet skjenkebevilling vm",
-      "volume": 70,
+      "keyword": "hvor finner jeg id-porten",
+      "volume": 50,
       "cpc": null,
       "competition": "LOW",
-      "difficulty": null,
+      "difficulty": 30,
       "sources": [
         "suggestions"
       ],
       "competitors": [],
-      "opportunity": 140
+      "opportunity": 125
     },
     {
       "keyword": "logg inn id-porten",
@@ -962,18 +968,6 @@
       ],
       "competitors": [],
       "opportunity": 125
-    },
-    {
-      "keyword": "hvor finner jeg id-porten",
-      "volume": 50,
-      "cpc": null,
-      "competition": "LOW",
-      "difficulty": 32,
-      "sources": [
-        "suggestions"
-      ],
-      "competitors": [],
-      "opportunity": 119
     },
     {
       "keyword": "udir tilskudd",
