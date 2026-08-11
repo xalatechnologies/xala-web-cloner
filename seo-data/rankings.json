@@ -4698,6 +4698,208 @@
           "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":null}"
         }
       ]
+    },
+    {
+      "date": "2026-08-11",
+      "provider": "DataForSEO",
+      "rows": [
+        {
+          "keyword": "saksbehandlingssystem",
+          "target": "/tjenester/saksbehandlingssystem",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":20000,\"status_message\":\"Ok.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":[{\"id\":\"08110612-2142-0139-0000-e001e0ebcf4f\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"result_count\":0,\"path\":[\"v3\",\"serp\",\""
+        },
+        {
+          "keyword": "saksbehandlingssystem kommune",
+          "target": "/tjenester/saksbehandlingssystem",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":20000,\"status_message\":\"Ok.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":[{\"id\":\"08110612-2142-0139-0000-40387732b3a4\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"result_count\":0,\"path\":[\"v3\",\"serp\",\""
+        },
+        {
+          "keyword": "saksbehandlingsplattform",
+          "target": "/tjenester/saksbehandlingsplattform",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":20000,\"status_message\":\"Ok.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":[{\"id\":\"08110612-2142-0139-0000-dc628f4ec41d\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"result_count\":0,\"path\":[\"v3\",\"serp\",\""
+        },
+        {
+          "keyword": "tilskuddsportal",
+          "target": "/tjenester/tilskuddsportal",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":null}"
+        },
+        {
+          "keyword": "tilskuddsportal kommune",
+          "target": "/tjenester/tilskuddsportal",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":20000,\"status_message\":\"Ok.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":[{\"id\":\"08110612-2142-0139-0000-aaa214e4c92a\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"result_count\":0,\"path\":[\"v3\",\"serp\",\""
+        },
+        {
+          "keyword": "bevillingsportal",
+          "target": "/tjenester/bevillingsportal",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\n    \"version\": \"0.1.20260806\",\n    \"status_code\": 20000,\n    \"status_message\": \"Ok.\",\n    \"time\": \"0 sec.\",\n    \"cost\": 0,\n    \"tasks_count\": 1,\n    \"tasks_error\": 1,\n    \"tasks\": [\n        {\n            \"id\": \"08110612-2142-0139-0000-585bc5b413e7\",\n            \"status_code\": 40200,\n            \"s"
+        },
+        {
+          "keyword": "skjenkebevilling system",
+          "target": "/tjenester/bevillingsportal",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\n    \"version\": \"0.1.20260806\",\n    \"status_code\": 20000,\n    \"status_message\": \"Ok.\",\n    \"time\": \"0 sec.\",\n    \"cost\": 0,\n    \"tasks_count\": 1,\n    \"tasks_error\": 1,\n    \"tasks\": [\n        {\n            \"id\": \"08110612-2142-0139-0000-c437ffd955be\",\n            \"status_code\": 40200,\n            \"s"
+        },
+        {
+          "keyword": "systemintegrasjon offentlig sektor",
+          "target": "/tjenester/systemintegrasjon",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":20000,\"status_message\":\"Ok.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":[{\"id\":\"08110612-2142-0139-0000-5e3a9ae0c48d\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"result_count\":0,\"path\":[\"v3\",\"serp\",\""
+        },
+        {
+          "keyword": "integrasjon altinn",
+          "target": "/tjenester/integrasjoner",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":null}"
+        },
+        {
+          "keyword": "id-porten integrasjon",
+          "target": "/blogg/id-porten-eller-maskinporten-hva-velger-du",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\n    \"version\": \"0.1.20260806\",\n    \"status_code\": 40200,\n    \"status_message\": \"Payment Required.\",\n    \"time\": \"0 sec.\",\n    \"cost\": 0,\n    \"tasks_count\": 1,\n    \"tasks_error\": 1,\n    \"tasks\": null\n}"
+        },
+        {
+          "keyword": "maskinporten integrasjon",
+          "target": "/blogg/id-porten-eller-maskinporten-hva-velger-du",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\n    \"version\": \"0.1.20260806\",\n    \"status_code\": 40200,\n    \"status_message\": \"Payment Required.\",\n    \"time\": \"0 sec.\",\n    \"cost\": 0,\n    \"tasks_count\": 1,\n    \"tasks_error\": 1,\n    \"tasks\": null\n}"
+        },
+        {
+          "keyword": "noark 5 arkivering",
+          "target": "/blogg/noark-5-arkivering-i-moderne-fagsystemer",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":20000,\"status_message\":\"Ok.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":[{\"id\":\"08110612-2142-0139-0000-2957257bcd5b\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"result_count\":0,\"path\":[\"v3\",\"serp\",\""
+        },
+        {
+          "keyword": "modernisering av fagsystemer",
+          "target": "/tjenester/modernisering-av-fagsystemer",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":null}"
+        },
+        {
+          "keyword": "modernisere fagsystem uten driftsstans",
+          "target": "/blogg/modernisere-fagsystem-uten-driftsstans",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\n    \"version\": \"0.1.20260806\",\n    \"status_code\": 20000,\n    \"status_message\": \"Ok.\",\n    \"time\": \"0 sec.\",\n    \"cost\": 0,\n    \"tasks_count\": 1,\n    \"tasks_error\": 1,\n    \"tasks\": [\n        {\n            \"id\": \"08110612-2142-0139-0000-b40a78774f5b\",\n            \"status_code\": 40200,\n            \"s"
+        },
+        {
+          "keyword": "systemutvikling offentlig sektor",
+          "target": "/",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":null}"
+        },
+        {
+          "keyword": "saas offentlig sektor",
+          "target": "/tjenester/saas-applikasjonsutvikling",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":null}"
+        },
+        {
+          "keyword": "flerleietaker arkitektur",
+          "target": "/blogg/flerleietakerarkitektur-saas-offentlig-sektor",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":null}"
+        },
+        {
+          "keyword": "automatisering av saksbehandling",
+          "target": "/blogg/automatisering-av-saksbehandling-hva-boer-og-ikke",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":null}"
+        },
+        {
+          "keyword": "ai i offentlig sektor",
+          "target": "/tjenester/automatisering-og-ai",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\n    \"version\": \"0.1.20260806\",\n    \"status_code\": 40200,\n    \"status_message\": \"Payment Required.\",\n    \"time\": \"0 sec.\",\n    \"cost\": 0,\n    \"tasks_count\": 1,\n    \"tasks_error\": 1,\n    \"tasks\": null\n}"
+        },
+        {
+          "keyword": "språkmodeller offentlig forvaltning",
+          "target": "/blogg/sprakmodeller-i-offentlig-forvaltning-hva-som-krever-avklaring",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\n    \"version\": \"0.1.20260806\",\n    \"status_code\": 40200,\n    \"status_message\": \"Payment Required.\",\n    \"time\": \"0 sec.\",\n    \"cost\": 0,\n    \"tasks_count\": 1,\n    \"tasks_error\": 1,\n    \"tasks\": null\n}"
+        },
+        {
+          "keyword": "agentiske arbeidsflyter",
+          "target": "/blogg/agentiske-arbeidsflyter-i-saksbehandling",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":null}"
+        },
+        {
+          "keyword": "wcag 2.2 aa krav",
+          "target": "/blogg/wcag-2-2-aa-i-praksis-for-fagsystemer",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":null}"
+        },
+        {
+          "keyword": "iso 27001 utviklingsprosjekt",
+          "target": "/blogg/iso-27001-i-praksis-for-utviklingsprosjekter",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":null}"
+        },
+        {
+          "keyword": "azure offentlig sektor",
+          "target": "/blogg/azure-for-offentlig-sektor-krav-og-valg",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\n    \"version\": \"0.1.20260806\",\n    \"status_code\": 40200,\n    \"status_message\": \"Payment Required.\",\n    \"time\": \"0 sec.\",\n    \"cost\": 0,\n    \"tasks_count\": 1,\n    \"tasks_error\": 1,\n    \"tasks\": null\n}"
+        },
+        {
+          "keyword": "ssa-s eller ssa-l",
+          "target": "/blogg/ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":20000,\"status_message\":\"Ok.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":[{\"id\":\"08110612-2142-0139-0000-d9ffba831b4f\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"result_count\":0,\"path\":[\"v3\",\"serp\",\""
+        },
+        {
+          "keyword": "booking og utleie kommune",
+          "target": "/produkter/digilist",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":null}"
+        },
+        {
+          "keyword": "digilist",
+          "target": "/produkter/digilist",
+          "intent": "navigational",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\"version\":\"0.1.20260806\",\"status_code\":40200,\"status_message\":\"Payment Required.\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":1,\"tasks\":null}"
+        },
+        {
+          "keyword": "xala technologies",
+          "target": "/",
+          "intent": "navigational",
+          "position": null,
+          "error": "DataForSEO: HTTP 402 — {\n    \"version\": \"0.1.20260806\",\n    \"status_code\": 20000,\n    \"status_message\": \"Ok.\",\n    \"time\": \"0 sec.\",\n    \"cost\": 0,\n    \"tasks_count\": 1,\n    \"tasks_error\": 1,\n    \"tasks\": [\n        {\n            \"id\": \"08110612-2142-0139-0000-2ed51ec34b12\",\n            \"status_code\": 40200,\n            \"s"
+        }
+      ]
     }
   ]
 }
