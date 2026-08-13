@@ -62,7 +62,7 @@
   },
   "gdpr": {
     "title": "We use cookies",
-    "content": "We use cookies to improve your experience on our website and to analyze traffic.",
+    "content": "We use cookies to improve your experience on the site, analyse traffic and measure how our advertising performs. Choose “Essential only” and none of them load.",
     "acceptAll": "Accept all",
     "essentialOnly": "Essential only",
     "learnMore": "Learn more"
@@ -319,6 +319,10 @@
         "message": {
           "min": "Message must be at least 10 characters"
         }
+      },
+      "sent": {
+        "title": "Message sent",
+        "description": "Thank you. We will reply as soon as we can."
       }
     },
     "description": "Get in touch for a no-obligation conversation about your project.",

@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/form';
 import { useToast } from '@/components/ui/use-toast';
 import { formEndpoint, submitForm } from '@/lib/forms/submit';
+import { trackConversion } from '@/lib/analytics/conversions';
 
 interface ApplicationFormProps {
   /** Discipline titles offered in the role field, in the reader's language. */
@@ -84,6 +85,8 @@ export const ApplicationForm = ({ roles, contactEmail }: ApplicationFormProps) =
           body: `${lines.join('\n')}\n\n${t('careers.form.attachReminder', '')}`,
         }
       );
+
+      trackConversion('application', outcome);
 
       toast({
         title:

@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/form";
 import { useToast } from "@/components/ui/use-toast";
 import { submitForm } from '@/lib/forms/submit';
+import { trackConversion } from '@/lib/analytics/conversions';
 
 export const ContactForm = () => {
   const { t, i18n } = useTranslation();
@@ -45,7 +46,7 @@ export const ContactForm = () => {
       // mailto. Today no endpoint is configured, so the browser's own mail
       // client carries it and no applicant or enquiry data passes through a
       // third party at all — which is the deliberate choice, not a stopgap.
-      await submitForm(
+      const outcome = await submitForm(
         { form: 'contact', ...values },
         {
           to: 'info@xala.no',
@@ -54,9 +55,21 @@ export const ContactForm = () => {
         }
       );
 
+      trackConversion('contact', outcome);
+
+      // Say which of the two actually happened. A mailto only opens the
+      // visitor's mail client; telling them it was sent, when the message is
+      // still sitting unsent in a compose window, loses the enquiry twice over
+      // — we never receive it and they never think to follow up.
       toast({
-        title: t('contact.form.success.title'),
-        description: t('contact.form.success.description'),
+        title:
+          outcome === 'posted'
+            ? t('contact.form.sent.title', 'Meldingen er sendt')
+            : t('contact.form.success.title'),
+        description:
+          outcome === 'posted'
+            ? t('contact.form.sent.description', 'Takk. Vi svarer så snart vi kan.')
+            : t('contact.form.success.description'),
       });
       form.reset();
     } catch (error) {
