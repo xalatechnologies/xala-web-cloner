@@ -7,6 +7,26 @@
   },
   "pages": [
     {
+      "url": "https://xala.no/",
+      "strategy": "mobile",
+      "hasFieldData": false,
+      "field": {
+        "lcp": null,
+        "inp": null,
+        "cls": null,
+        "overall": null
+      },
+      "lab": {
+        "performance": 89,
+        "accessibility": 100,
+        "seo": 100,
+        "bestPractices": 100,
+        "lcp": 3526,
+        "cls": 0.0001880243853903182,
+        "tbt": 0
+      }
+    },
+    {
       "url": "https://xala.no/tjenester",
       "strategy": "mobile",
       "hasFieldData": false,
@@ -21,9 +41,9 @@
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 2560.5,
-        "cls": 0.001762749049980544,
-        "tbt": 6
+        "lcp": 2564,
+        "cls": 0.0001880243853903182,
+        "tbt": 5
       }
     },
     {
@@ -37,13 +57,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 91,
+        "performance": 90,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3084,
-        "cls": 0,
-        "tbt": 16.5
+        "lcp": 3080,
+        "cls": 0.0001880243853903182,
+        "tbt": 14.5
       }
     },
     {
@@ -61,7 +81,7 @@
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3001,
+        "lcp": 3010.5,
         "cls": 0,
         "tbt": 0
       }
@@ -77,12 +97,12 @@
         "overall": null
       },
       "lab": {
-        "performance": 88,
+        "performance": 91,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3154,
-        "cls": 0,
+        "lcp": 3154.5,
+        "cls": 0.0017926749544509401,
         "tbt": 0
       }
     },
@@ -97,13 +117,33 @@
         "overall": null
       },
       "lab": {
-        "performance": 96,
+        "performance": 87,
         "accessibility": 95,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 2551,
-        "cls": 0.004226629480887713,
-        "tbt": 33
+        "lcp": 3151,
+        "cls": 0.0008217782338699984,
+        "tbt": 0
+      }
+    },
+    {
+      "url": "https://xala.no/blogg/tilskuddsportal-som-faktisk-brukes",
+      "strategy": "mobile",
+      "hasFieldData": false,
+      "field": {
+        "lcp": null,
+        "inp": null,
+        "cls": null,
+        "overall": null
+      },
+      "lab": {
+        "performance": 93,
+        "accessibility": 100,
+        "seo": 100,
+        "bestPractices": 100,
+        "lcp": 2756,
+        "cls": 0.000397289756951803,
+        "tbt": 5
       }
     },
     {
@@ -117,12 +157,12 @@
         "overall": null
       },
       "lab": {
-        "performance": 94,
+        "performance": 86,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 1051,
-        "cls": 0.0037031457798390763,
+        "lcp": 3151.5,
+        "cls": 0,
         "tbt": 0
       }
     }
