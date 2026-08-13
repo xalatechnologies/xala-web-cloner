@@ -62,7 +62,7 @@
   },
   "gdpr": {
     "title": "Vi bruker informasjonskapsler",
-    "content": "Vi bruker informasjonskapsler for å forbedre din opplevelse på nettstedet vårt og for å analysere trafikk.",
+    "content": "Vi bruker informasjonskapsler for å forbedre opplevelsen din på nettstedet, analysere trafikk og måle effekten av annonseringen vår. Velger du «Kun nødvendige», lastes ingen av dem.",
     "acceptAll": "Godta alle",
     "essentialOnly": "Kun nødvendige",
     "learnMore": "Les mer"
@@ -319,6 +319,10 @@
         "message": {
           "min": "Melding må ha minst 10 tegn"
         }
+      },
+      "sent": {
+        "title": "Meldingen er sendt",
+        "description": "Takk. Vi svarer så snart vi kan."
       }
     },
     "description": "Ta kontakt for en uforpliktende samtale om prosjektet ditt.",

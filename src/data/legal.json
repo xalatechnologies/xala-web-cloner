@@ -215,7 +215,7 @@
         },
         "cookies": {
             "title": "Informasjonskapselpolitikk",
-            "lastUpdated": "2025-01-15",
+            "lastUpdated": "2026-08-13",
             "sections": [
                 {
                     "id": "what",
@@ -242,6 +242,11 @@
                             "id": "functional",
                             "title": "Funksjonelle informasjonskapsler",
                             "content": "Disse husker dine preferanser og valg for å gi deg en mer tilpasset opplevelse, som for eksempel tema (lys/mørk modus)."
+                        },
+                        {
+                            "id": "marketing",
+                            "title": "Markedsføringsinformasjonskapsler",
+                            "content": "Disse brukes til å måle effekten av annonsene våre og til å vise relevante annonser til deg senere. Vi bruker Google Ads til dette. De lastes bare hvis du velger «Godta alle»."
                         }
                     ]
                 },
@@ -276,6 +281,11 @@
                             "id": "analytics-services",
                             "title": "Analysetjenester",
                             "content": "Tjenester som hjelper oss med å analysere nettstedets ytelse og bruk."
+                        },
+                        {
+                            "id": "advertising-services",
+                            "title": "Annonsetjenester",
+                            "content": "Google Ads, som måler hvilke annonser som fører til henvendelser, og bygger målgrupper for senere annonsering."
                         },
                         {
                             "id": "social-media",
@@ -532,7 +542,7 @@
         },
         "cookies": {
             "title": "Cookie Policy",
-            "lastUpdated": "2025-01-15",
+            "lastUpdated": "2026-08-13",
             "sections": [
                 {
                     "id": "what",
@@ -559,6 +569,11 @@
                             "id": "functional",
                             "title": "Functional Cookies",
                             "content": "These remember your preferences and choices to provide you with a more customized experience, such as theme (light/dark mode)."
+                        },
+                        {
+                            "id": "marketing",
+                            "title": "Marketing cookies",
+                            "content": "These measure how our adverts perform and let us show you relevant adverts later. We use Google Ads for this. They load only if you choose “Accept all”."
                         }
                     ]
                 },
@@ -593,6 +608,11 @@
                             "id": "analytics-services",
                             "title": "Analytics Services",
                             "content": "Services that help us analyze website performance and usage."
+                        },
+                        {
+                            "id": "advertising-services",
+                            "title": "Advertising services",
+                            "content": "Google Ads, which measures which adverts lead to enquiries and builds audiences for later advertising."
                         },
                         {
                             "id": "social-media",
@@ -849,7 +869,7 @@
         },
         "cookies": {
             "title": "سياسة ملفات تعريف الارتباط",
-            "lastUpdated": "2025-01-15",
+            "lastUpdated": "2026-08-13",
             "sections": [
                 {
                     "id": "what",
@@ -876,6 +896,11 @@
                             "id": "functional",
                             "title": "ملفات تعريف الارتباط الوظيفية",
                             "content": "هذه تتذكر تفضيلاتك وخياراتك لتوفير تجربة مخصصة أكثر، مثل المظهر (الوضع الفاتح/الداكن)."
+                        },
+                        {
+                            "id": "marketing",
+                            "title": "ملفات تعريف الارتباط التسويقية",
+                            "content": "تُستخدم لقياس أداء إعلاناتنا ولعرض إعلانات ملائمة لك لاحقًا. نستخدم Google Ads لهذا الغرض. ولا يتم تحميلها إلا إذا اخترت «قبول الكل»."
                         }
                     ]
                 },
@@ -910,6 +935,11 @@
                             "id": "analytics-services",
                             "title": "خدمات التحليل",
                             "content": "الخدمات التي تساعدنا على تحليل أداء الموقع واستخدامه."
+                        },
+                        {
+                            "id": "advertising-services",
+                            "title": "خدمات الإعلان",
+                            "content": "Google Ads، الذي يقيس الإعلانات التي تؤدي إلى استفسارات ويبني جماهير للإعلانات اللاحقة."
                         },
                         {
                             "id": "social-media",

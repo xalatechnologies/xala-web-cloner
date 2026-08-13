@@ -14,6 +14,20 @@ declare function gtag(command: 'event', action: string, params?: AnalyticsProps)
 declare function gtag(command: 'set' | 'config' | 'consent', ...args: unknown[]): void;
 declare function gtag(command: 'js', date: Date): void;
 
+interface Window {
+  /**
+   * The same function as the `gtag` global above, reached through `window` so
+   * that `typeof window.gtag === 'function'` type-checks. Callers need that
+   * test rather than the bare global: the tag mounts only after the visitor
+   * accepts cookies, so on most page loads it is genuinely absent.
+   */
+  gtag?: {
+    (command: 'event', action: string, params?: AnalyticsProps): void;
+    (command: 'set' | 'config' | 'consent', ...args: unknown[]): void;
+    (command: 'js', date: Date): void;
+  };
+}
+
 /** Microsoft Clarity — https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-api */
 declare function clarity(
   command: 'event' | 'set' | 'identify' | 'consent' | 'upgrade',

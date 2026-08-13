@@ -8,6 +8,12 @@ import ScrollToTop from './components/ScrollToTop';
 import PageLoader from './components/PageLoader';
 import RouteSEO from './components/seo/RouteSEO';
 import ConsentedAnalytics from './components/seo/ConsentedAnalytics';
+import {
+  GOOGLE_ADS_ID,
+  GOOGLE_ANALYTICS_ID,
+  MICROSOFT_CLARITY_ID,
+  PLAUSIBLE_DOMAIN
+} from './lib/analytics/ids';
 
 const Home = lazy(() => import('./pages/Index'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
@@ -29,9 +35,10 @@ const BloggPostPage = lazy(() => import('./pages/BloggPostPage'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 const analyticsConfig = {
-  googleAnalyticsId: "G-NFGNKJDHHW",
-  microsoftClarityId: "q15abxku18",
-  plausibleDomain: 'xala.no'
+  googleAnalyticsId: GOOGLE_ANALYTICS_ID,
+  microsoftClarityId: MICROSOFT_CLARITY_ID,
+  plausibleDomain: PLAUSIBLE_DOMAIN,
+  googleAdsId: GOOGLE_ADS_ID
 };
 
 const App = () => {
