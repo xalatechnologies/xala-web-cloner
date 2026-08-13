@@ -1,18 +1,28 @@
-import { render, waitFor } from '@testing-library/react';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { render } from '@testing-library/react';
 import { describe, it, expect, beforeEach } from 'vitest';
 import ConsentedAnalytics from '../ConsentedAnalytics';
 import { CONSENT_KEY } from '../../gdpr/consent';
 
 /**
- * The gate, pinned.
+ * The gate and the injection, both pinned.
  *
- * This repo has already shipped the failure once: the banner wrote its answer
- * to localStorage and nothing read it back, so the tags loaded whatever the
- * visitor pressed. Nothing in the type system or the build catches that — the
- * component still renders, the tags still work, and only a visitor's network
- * tab shows the difference. So it gets a test that fails if the gate is
- * removed, rather than a comment asking the next person not to remove it.
+ * Two failures have already happened here and each one was invisible to a
+ * green suite.
+ *
+ * 1. The banner wrote its answer to localStorage and nothing read it back, so
+ *    the tags ignored what the visitor pressed.
+ * 2. The tags went through react-helmet-async, which silently never committed
+ *    a `<script>` — so nothing loaded at all, for anyone, ever. Rendering the
+ *    component was not the same as the tag being present, and only the DOM
+ *    knows the difference.
+ *
+ * So these tests assert on `document.head` itself, and the gate was
+ * mutation-checked: delete it and two of these fail. That is verified rather
+ * than assumed, because an earlier version of this file passed with the gate
+ * deleted — a negative assertion wrapped in `waitFor` is satisfied before the
+ * thing it guards has had a chance to happen. There is no `waitFor` here:
+ * Testing Library's `render` flushes effects inside `act`, so the injection
+ * has already run by the time it returns.
  */
 const IDS = {
   googleAnalyticsId: 'G-TEST',
@@ -21,36 +31,8 @@ const IDS = {
   googleAdsId: 'AW-TEST'
 };
 
-/**
- * Renders the gate behind a sentinel, and resolves only once Helmet has
- * actually written to <head>.
- *
- * The barrier is the whole point. Without it, `await waitFor(() =>
- * expect(head).not.toContain('googletagmanager'))` passes on its first
- * evaluation — at that moment Helmet has not flushed and the head is empty, so
- * the assertion is true for the wrong reason. Verified: with the consent gate
- * deleted, the earlier version of these tests still passed. The sentinel is
- * emitted by the same Helmet pass as the tags, so once it is present, anything
- * the gate allowed through is present too.
- */
-async function renderGate() {
-  render(
-    <HelmetProvider>
-      <Helmet>
-        <meta name="test-helmet-flushed" content="yes" />
-      </Helmet>
-      <ConsentedAnalytics {...IDS} />
-    </HelmetProvider>
-  );
-  await waitFor(() => {
-    expect(document.head.querySelector('meta[name="test-helmet-flushed"]')).not.toBeNull();
-  });
-}
-
-/** Everything Helmet put in <head>, as one searchable string. */
-function headText(): string {
-  return document.head.innerHTML;
-}
+const scripts = () => [...document.head.querySelectorAll('script')];
+const headText = () => scripts().map(s => s.src + ' ' + s.text).join('\n');
 
 describe('ConsentedAnalytics', () => {
   beforeEach(() => {
@@ -58,53 +40,74 @@ describe('ConsentedAnalytics', () => {
     document.head.innerHTML = '';
   });
 
-  it('loads nothing at all before the visitor has answered', async () => {
-    await renderGate();
-    expect(headText()).not.toContain('googletagmanager');
-    expect(headText()).not.toContain('AW-TEST');
-    expect(headText()).not.toContain('clarity.ms');
-    expect(headText()).not.toContain('plausible.io');
+  it('injects nothing before the visitor has answered', () => {
+    render(<ConsentedAnalytics {...IDS} />);
+    expect(scripts()).toHaveLength(0);
   });
 
-  it('loads nothing when the visitor chose essential only', async () => {
+  it('injects nothing when the visitor chose essential only', () => {
     window.localStorage.setItem(CONSENT_KEY, 'essential-only');
-    await renderGate();
-    expect(headText()).not.toContain('googletagmanager');
-    expect(headText()).not.toContain('AW-TEST');
+    render(<ConsentedAnalytics {...IDS} />);
+    expect(scripts()).toHaveLength(0);
   });
 
-  it('loads the Google Ads tag once the visitor accepted all', async () => {
+  it('injects the Google Ads tag once the visitor accepted all', () => {
     window.localStorage.setItem(CONSENT_KEY, 'true');
-    await renderGate();
-    expect(headText()).toContain('AW-TEST');
-    expect(headText()).toContain('googletagmanager');
-    expect(headText()).toContain('clarity.ms');
-    expect(headText()).toContain('plausible.io');
+    render(<ConsentedAnalytics {...IDS} />);
+    const text = headText();
+    expect(text).toContain('AW-TEST');
+    expect(text).toContain('googletagmanager.com/gtag/js');
+    expect(text).toContain('clarity.ms');
+    expect(text).toContain('plausible.io');
   });
 
-  it('fetches the gtag.js library exactly once for two Google ids', async () => {
+  it('fetches the gtag.js library exactly once for two Google ids', () => {
     window.localStorage.setItem(CONSENT_KEY, 'true');
-    await renderGate();
-    expect(headText()).toContain('AW-TEST');
-    // Both GA4 and Ads run off one loader and one dataLayer. A second copy of
-    // Google's own snippet would redefine gtag() and double-count page views.
+    render(<ConsentedAnalytics {...IDS} />);
     const loaders = document.head.querySelectorAll(
       'script[src*="googletagmanager.com/gtag/js"]'
     );
     expect(loaders).toHaveLength(1);
   });
 
-  it('declares Consent Mode defaults before granting them', async () => {
+  it('configures the Ads id in an inline script with a body', () => {
     window.localStorage.setItem(CONSENT_KEY, 'true');
-    await renderGate();
-    expect(headText()).toContain('AW-TEST');
-    const inline = headText();
-    const defaultAt = inline.indexOf("gtag('consent', 'default'");
-    const updateAt = inline.indexOf("gtag('consent', 'update'");
-    const configAt = inline.indexOf("gtag('config', 'AW-TEST')");
+    render(<ConsentedAnalytics {...IDS} />);
+    const inline = scripts().filter(s => !s.src);
+    expect(inline.length).toBeGreaterThan(0);
+    for (const s of inline) expect(s.text.length).toBeGreaterThan(0);
+    expect(inline.some(s => s.text.includes("gtag('config', 'AW-TEST')"))).toBe(true);
+  });
+
+  it('declares Consent Mode defaults before granting them', () => {
+    window.localStorage.setItem(CONSENT_KEY, 'true');
+    render(<ConsentedAnalytics {...IDS} />);
+    const boot = scripts().find(s => s.text.includes("gtag('consent'"))?.text ?? '';
+    const defaultAt = boot.indexOf("gtag('consent', 'default'");
+    const updateAt = boot.indexOf("gtag('consent', 'update'");
+    const configAt = boot.indexOf("gtag('config', 'AW-TEST')");
     expect(defaultAt).toBeGreaterThan(-1);
     expect(updateAt).toBeGreaterThan(defaultAt);
     expect(configAt).toBeGreaterThan(updateAt);
-    expect(inline).toContain("'ad_user_data': 'granted'");
+    expect(boot).toContain("'ad_user_data':'granted'");
+  });
+
+  it('removes its own nodes on unmount, but cannot recall a tag that already ran', () => {
+    window.localStorage.setItem(CONSENT_KEY, 'true');
+    const { unmount } = render(<ConsentedAnalytics {...IDS} />);
+    const ours = () => document.head.querySelectorAll('[data-xala-analytics]');
+    expect(ours().length).toBeGreaterThan(0);
+
+    unmount();
+    expect(ours()).toHaveLength(0);
+
+    // What is left is the point. Clarity's snippet runs on append and inserts
+    // its own <script src="clarity.ms/tag/…">, which this component never
+    // owned and cannot clean up — and by then it has set its cookies too.
+    // Unmounting stops the next page view, it does not undo this one. Consent
+    // withdrawal that actually withdraws needs a reload; the code comment in
+    // Analytics.tsx says so and this asserts it stays true.
+    const orphaned = scripts().filter(s => !s.hasAttribute('data-xala-analytics'));
+    expect(orphaned.some(s => s.src.includes('clarity.ms'))).toBe(true);
   });
 });
