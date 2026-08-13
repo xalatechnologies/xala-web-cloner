@@ -59,6 +59,21 @@ describe('trackConversion', () => {
     expect(gtag).toHaveBeenCalledWith('event', 'generate_lead_mailto');
   });
 
+  it('sends the committed contact label when no env var is configured', async () => {
+    // The production path, and the one that was broken by construction: the
+    // deploy builds on a runner with no env file, so a label that lived only
+    // in .env.local would have reached local builds and never production —
+    // indistinguishable from working, recording nothing.
+    const gtag = vi.fn();
+    (window as { gtag?: unknown }).gtag = gtag;
+    const { trackConversion } = await loadModule();
+
+    expect(trackConversion('contact', 'posted')).toBe(true);
+    expect(gtag).toHaveBeenCalledWith('event', 'conversion', {
+      send_to: 'AW-18385967405/1l7dCKGNk-EcEK2yjr9E',
+    });
+  });
+
   it('fires the GA4 event but no Ads conversion while the label is unset', async () => {
     const gtag = vi.fn();
     (window as { gtag?: unknown }).gtag = gtag;
