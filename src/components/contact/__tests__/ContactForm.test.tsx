@@ -39,6 +39,9 @@ describe('ContactForm', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     vi.stubGlobal('open', openMock);
+    // The default is now the same-origin endpoint. These cases cover the
+    // mailto fallback, so they opt into it the way a build would.
+    vi.stubEnv('VITE_FORM_ENDPOINT', 'off');
   });
 
   it('hands a valid submission to the mail client with the message encoded', async () => {
