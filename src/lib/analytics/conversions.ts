@@ -21,7 +21,7 @@
  * Analytics from day one — and the Ads conversion quietly does not. That is the
  * intended half-configured state, not a bug to guard against.
  */
-import { GOOGLE_ADS_ID } from './ids';
+import { ADS_LABEL_APPLICATION, ADS_LABEL_CONTACT, GOOGLE_ADS_ID } from './ids';
 import type { SubmitOutcome } from '@/lib/forms/submit';
 
 /** The things on this site worth counting as a conversion. */
@@ -37,13 +37,13 @@ const GA_EVENT: Record<ConversionName, string> = {
 };
 
 /**
- * Conversion labels from the Ads account, as `AW-18385967405/<label>`.
- * Create the conversion action in Google Ads, copy the label, set the env var,
- * redeploy. No code change.
+ * Conversion labels from the Ads account, sent as `AW-18385967405/<label>`.
+ * Committed in ids.ts — see the note there on why an env-only label would
+ * never have reached production. The env vars still override.
  */
 const LABEL: Record<ConversionName, string | undefined> = {
-  contact: import.meta.env.VITE_ADS_LABEL_CONTACT,
-  application: import.meta.env.VITE_ADS_LABEL_APPLICATION,
+  contact: import.meta.env.VITE_ADS_LABEL_CONTACT || ADS_LABEL_CONTACT,
+  application: import.meta.env.VITE_ADS_LABEL_APPLICATION || ADS_LABEL_APPLICATION,
 };
 
 function hasGtag(): boolean {

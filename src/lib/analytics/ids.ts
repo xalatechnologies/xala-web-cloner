@@ -29,3 +29,24 @@ export const PLAUSIBLE_DOMAIN = 'xala.no';
  * is what `trackConversion` sends. See conversions.ts.
  */
 export const GOOGLE_ADS_ID = 'AW-18385967405';
+
+/**
+ * Conversion labels, one per action created in the Ads account.
+ *
+ * Committed rather than env-configured, and that is a correction rather than a
+ * preference. The deploy workflow runs `pnpm build` on a GitHub runner with no
+ * env file, and `VITE_` values are baked in at build time — so a label that
+ * lives only in `.env.local` reaches a local build and never production. It
+ * would have looked exactly like a working configuration and recorded nothing.
+ *
+ * They are public in the same way the tag id is: both ship in the bundle and
+ * are readable with view-source on any site running them. `VITE_ADS_LABEL_*`
+ * still overrides, for testing against a different action.
+ *
+ * `contact` is the "Skjema for potensielle salg sendt inn" action. Careful with
+ * the second character — it is a lowercase L, not a one.
+ */
+export const ADS_LABEL_CONTACT = '1l7dCKGNk-EcEK2yjr9E';
+
+/** No conversion action exists for job applications yet. */
+export const ADS_LABEL_APPLICATION = '';
