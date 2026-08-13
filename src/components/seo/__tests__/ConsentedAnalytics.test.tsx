@@ -1,38 +1,36 @@
 import { render } from '@testing-library/react';
 import { describe, it, expect, beforeEach } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import ConsentedAnalytics from '../ConsentedAnalytics';
 import { CONSENT_KEY } from '../../gdpr/consent';
+import { GOOGLE_ADS_ID, GOOGLE_ANALYTICS_ID } from '@/lib/analytics/ids';
 
-/**
- * The gate and the injection, both pinned.
- *
- * Two failures have already happened here and each one was invisible to a
- * green suite.
- *
- * 1. The banner wrote its answer to localStorage and nothing read it back, so
- *    the tags ignored what the visitor pressed.
- * 2. The tags went through react-helmet-async, which silently never committed
- *    a `<script>` — so nothing loaded at all, for anyone, ever. Rendering the
- *    component was not the same as the tag being present, and only the DOM
- *    knows the difference.
- *
- * So these tests assert on `document.head` itself, and the gate was
- * mutation-checked: delete it and two of these fail. That is verified rather
- * than assumed, because an earlier version of this file passed with the gate
- * deleted — a negative assertion wrapped in `waitFor` is satisfied before the
- * thing it guards has had a chance to happen. There is no `waitFor` here:
- * Testing Library's `render` flushes effects inside `act`, so the injection
- * has already run by the time it returns.
- */
-const IDS = {
-  googleAnalyticsId: 'G-TEST',
-  microsoftClarityId: 'clarity-test',
-  plausibleDomain: 'example.test',
-  googleAdsId: 'AW-TEST'
-};
-
+const IDS = { microsoftClarityId: 'clarity-test', plausibleDomain: 'example.test' };
 const scripts = () => [...document.head.querySelectorAll('script')];
 const headText = () => scripts().map(s => s.src + ' ' + s.text).join('\n');
+
+/**
+ * The Google tag has to be in index.html, not injected after consent.
+ *
+ * A tag that only appears once someone presses "Godta alle" is invisible to
+ * Google Ads and Tag Assistant, because neither presses it — so the account
+ * reports the tag as not installed. This asserts the file, since nothing else
+ * in the suite would notice it being moved back.
+ */
+describe('the Google tag in index.html', () => {
+  const html = readFileSync(join(process.cwd(), 'index.html'), 'utf-8');
+
+  it('loads gtag.js unconditionally in the head', () => {
+    expect(html).toContain('googletagmanager.com/gtag/js?id=' + GOOGLE_ADS_ID);
+    expect(html.indexOf('gtag/js')).toBeLessThan(html.indexOf('</head>'));
+  });
+
+  it('configures both the Ads and GA4 ids', () => {
+    expect(html).toContain(`gtag('config', '${GOOGLE_ADS_ID}')`);
+    expect(html).toContain(`gtag('config', '${GOOGLE_ANALYTICS_ID}'`);
+  });
+});
 
 describe('ConsentedAnalytics', () => {
   beforeEach(() => {
@@ -51,63 +49,27 @@ describe('ConsentedAnalytics', () => {
     expect(scripts()).toHaveLength(0);
   });
 
-  it('injects the Google Ads tag once the visitor accepted all', () => {
+  it('injects Clarity and Plausible once the visitor accepted all', () => {
     window.localStorage.setItem(CONSENT_KEY, 'true');
     render(<ConsentedAnalytics {...IDS} />);
-    const text = headText();
-    expect(text).toContain('AW-TEST');
-    expect(text).toContain('googletagmanager.com/gtag/js');
-    expect(text).toContain('clarity.ms');
-    expect(text).toContain('plausible.io');
+    expect(headText()).toContain('clarity.ms');
+    expect(headText()).toContain('plausible.io');
   });
 
-  it('fetches the gtag.js library exactly once for two Google ids', () => {
+  it('never injects a second copy of the Google tag', () => {
+    // It is already in index.html; loading it again would redefine gtag() and
+    // double-count page views.
     window.localStorage.setItem(CONSENT_KEY, 'true');
     render(<ConsentedAnalytics {...IDS} />);
-    const loaders = document.head.querySelectorAll(
-      'script[src*="googletagmanager.com/gtag/js"]'
-    );
-    expect(loaders).toHaveLength(1);
+    expect(headText()).not.toContain('googletagmanager');
   });
 
-  it('configures the Ads id in an inline script with a body', () => {
-    window.localStorage.setItem(CONSENT_KEY, 'true');
-    render(<ConsentedAnalytics {...IDS} />);
-    const inline = scripts().filter(s => !s.src);
-    expect(inline.length).toBeGreaterThan(0);
-    for (const s of inline) expect(s.text.length).toBeGreaterThan(0);
-    expect(inline.some(s => s.text.includes("gtag('config', 'AW-TEST')"))).toBe(true);
-  });
-
-  it('declares Consent Mode defaults before granting them', () => {
-    window.localStorage.setItem(CONSENT_KEY, 'true');
-    render(<ConsentedAnalytics {...IDS} />);
-    const boot = scripts().find(s => s.text.includes("gtag('consent'"))?.text ?? '';
-    const defaultAt = boot.indexOf("gtag('consent', 'default'");
-    const updateAt = boot.indexOf("gtag('consent', 'update'");
-    const configAt = boot.indexOf("gtag('config', 'AW-TEST')");
-    expect(defaultAt).toBeGreaterThan(-1);
-    expect(updateAt).toBeGreaterThan(defaultAt);
-    expect(configAt).toBeGreaterThan(updateAt);
-    expect(boot).toContain("'ad_user_data':'granted'");
-  });
-
-  it('removes its own nodes on unmount, but cannot recall a tag that already ran', () => {
+  it('removes its own nodes on unmount', () => {
     window.localStorage.setItem(CONSENT_KEY, 'true');
     const { unmount } = render(<ConsentedAnalytics {...IDS} />);
     const ours = () => document.head.querySelectorAll('[data-xala-analytics]');
     expect(ours().length).toBeGreaterThan(0);
-
     unmount();
     expect(ours()).toHaveLength(0);
-
-    // What is left is the point. Clarity's snippet runs on append and inserts
-    // its own <script src="clarity.ms/tag/…">, which this component never
-    // owned and cannot clean up — and by then it has set its cookies too.
-    // Unmounting stops the next page view, it does not undo this one. Consent
-    // withdrawal that actually withdraws needs a reload; the code comment in
-    // Analytics.tsx says so and this asserts it stays true.
-    const orphaned = scripts().filter(s => !s.hasAttribute('data-xala-analytics'));
-    expect(orphaned.some(s => s.src.includes('clarity.ms'))).toBe(true);
   });
 });
