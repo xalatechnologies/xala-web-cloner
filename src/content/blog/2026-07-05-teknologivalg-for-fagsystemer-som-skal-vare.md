@@ -2,7 +2,7 @@
 slug: teknologivalg-for-fagsystemer-som-skal-vare
 title: "Teknologivalg for systemer som skal leve i ti år"
 description: "Et fagsystem lever lenger enn rammeverkene som var populære da det ble bygget. Det bør påvirke valget."
-date: 2026-09-08
+date: 2026-07-05
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"

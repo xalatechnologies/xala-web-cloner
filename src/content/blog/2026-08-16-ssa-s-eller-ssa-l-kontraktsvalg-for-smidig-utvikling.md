@@ -3,7 +3,7 @@ slug: ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling
 title: "SSA-S eller SSA-L: kontraktsvalget som avgjør om leveransen kan gjøres i etapper"
 seoTitle: "SSA-S eller SSA-L: hvilken kontrakt passer"
 description: "Kontraktsformen bestemmer om dere kan levere modul for modul, eller må love alt på forhånd."
-date: 2026-10-20
+date: 2026-08-16
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "IT-leder"
