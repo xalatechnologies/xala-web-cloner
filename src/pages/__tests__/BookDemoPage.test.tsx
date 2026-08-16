@@ -42,17 +42,25 @@ describe('BookDemoPage', () => {
     renderPage();
 
     expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument();
-    expect(screen.getByLabelText('contact.form.name.label')).toBeInTheDocument();
-    expect(screen.getByLabelText('contact.form.email.label')).toHaveAttribute('type', 'email');
-    expect(screen.getByLabelText('contact.form.subject.label')).toHaveValue('Book en demo');
+    expect(screen.getByPlaceholderText('contact.form.name.placeholder')).toBeInTheDocument();
+    expect(
+      screen.getByPlaceholderText('contact.form.email.placeholder')
+    ).toHaveAttribute('type', 'email');
+    expect(screen.getByPlaceholderText('contact.form.subject.placeholder')).toHaveValue(
+      'Book en demo'
+    );
     expect(screen.getByRole('button', { name: 'contact.form.status.send' })).toBeInTheDocument();
+    expect(screen.getByLabelText('Navn')).toBeVisible();
+    expect(screen.getByLabelText('E-post')).toBeVisible();
+    expect(screen.getByLabelText('Emne')).toHaveValue('Book en demo');
+    expect(screen.getByLabelText('Melding')).toBeVisible();
   });
 
   it('accepts typed input without submitting anything', () => {
     renderPage();
 
-    const name = screen.getByLabelText('contact.form.name.label') as HTMLInputElement;
-    const email = screen.getByLabelText('contact.form.email.label') as HTMLInputElement;
+    const name = screen.getByLabelText('Navn') as HTMLInputElement;
+    const email = screen.getByLabelText('E-post') as HTMLInputElement;
 
     fireEvent.change(name, { target: { value: 'Jane Doe' } });
     fireEvent.change(email, { target: { value: 'jane@example.com' } });
