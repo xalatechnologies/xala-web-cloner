@@ -21,6 +21,7 @@ type PageId =
   | 'caseStudy'
   | 'process'
   | 'pricing'
+  | 'faq'
   | 'status'
   | 'transparens'
   | 'technology'
@@ -87,6 +88,13 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
         'Ingen fast prisliste. Hva som driver kostnaden for et saksbehandlingssystem, hva som inngår, og hvordan vi estimerer etter kartlegging.',
       keywords:
         'hva koster et saksbehandlingssystem, pris saksbehandlingssystem, kostnad fagsystem, offentlig sektor, estimat, SSA-S, SSA-L'
+    },
+    faq: {
+      title: 'Ofte stilte spørsmål | Xala',
+      description:
+        'Svar på det folk spør oss om oftest: hva et saksbehandlingssystem koster, hvor lang tid det tar, GDPR, og hvem som drifter løsningen etterpå.',
+      keywords:
+        'ofte stilte spørsmål, FAQ, saksbehandlingssystem, GDPR, pris, forvaltning, offentlig sektor'
     },
     status: {
       title: 'Driftsstatus | Xala Technologies',
@@ -212,6 +220,12 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
       keywords:
         'case management system cost, public sector software price, estimate, SSA-S, SSA-L, Norway'
     },
+    faq: {
+      title: 'Frequently asked questions | Xala',
+      description:
+        'Answers to what people ask us most: what a case management system costs, how long a project takes, GDPR, and who runs the solution afterwards.',
+      keywords: 'FAQ, frequently asked questions, case management system, GDPR, price, operations, public sector'
+    },
     status: {
       title: 'Status | Xala Technologies',
       description:
@@ -327,6 +341,12 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
       description:
         'لا توجد قائمة أسعار ثابتة. ما الذي يحدد تكلفة نظام إدارة قضايا مخصص للقطاع العام، وما الذي يشمله التقدير، وكيف نقدّره بعد الاستكشاف.',
       keywords: 'تكلفة نظام إدارة القضايا, سعر البرمجيات للقطاع العام, تقدير, النرويج'
+    },
+    faq: {
+      title: 'الأسئلة الشائعة | زالا',
+      description:
+        'أجوبة على أكثر ما يُسأل عنه: تكلفة نظام إدارة القضايا، ومدة المشروع، والخصوصية، ومن يشغّل الحل بعد التسليم.',
+      keywords: 'الأسئلة الشائعة, نظام إدارة القضايا, الخصوصية, السعر, التشغيل, القطاع العام'
     },
     status: {
       title: 'حالة التشغيل | زالا تكنولوجيز',

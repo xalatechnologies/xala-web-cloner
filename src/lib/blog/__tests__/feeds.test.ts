@@ -109,6 +109,9 @@ describe("sitemap", () => {
     expect(locs).toContain("https://xala.no/status");
     expect(locs).toContain("https://xala.no/transparens");
     expect(locs).not.toContain("https://xala.no/transparency");
+    expect(locs).toContain("https://xala.no/faq");
+    expect(locs).not.toContain("https://xala.no/personvern");
+    expect(locs).not.toContain("https://xala.no/use-cases");
     expect(locs.some((l) => l.includes("/no/"))).toBe(false);
     expect(locs.some((l) => l.endsWith("/services"))).toBe(false);
   });
@@ -133,6 +136,9 @@ describe("sitemap", () => {
     expect(entries.map((e) => e.loc)).toContain("https://xala.no/status");
     expect(entries.map((e) => e.loc)).toContain("https://xala.no/transparens");
     expect(entries.map((e) => e.loc)).not.toContain("https://xala.no/transparency");
+    expect(entries.map((e) => e.loc)).toContain("https://xala.no/faq");
+    expect(entries.map((e) => e.loc)).not.toContain("https://xala.no/personvern");
+    expect(entries.map((e) => e.loc)).not.toContain("https://xala.no/use-cases");
     expect([...xml.matchAll(/<url>/g)]).toHaveLength(entries.length);
   });
 });

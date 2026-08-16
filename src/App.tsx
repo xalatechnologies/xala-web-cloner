@@ -21,6 +21,7 @@ const TjenesteDetaljPage = lazy(() => import('./pages/TjenesteDetaljPage'));
 const CaserPage = lazy(() => import('./pages/CaserPage'));
 const SlikViJobberPage = lazy(() => import('./pages/SlikViJobberPage'));
 const PriserPage = lazy(() => import('./pages/PriserPage'));
+const FaqPage = lazy(() => import('./pages/FaqPage'));
 const StatusPage = lazy(() => import('./pages/StatusPage'));
 const TransparensPage = lazy(() => import('./pages/TransparensPage'));
 const TeknologiPage = lazy(() => import('./pages/TeknologiPage'));
@@ -63,9 +64,11 @@ const App = () => {
                   CaseStudyCard and CaserPage kept linking to /caser/:slug,
                   so all 18 case study cards led to the 404 page. */}
               <Route path="/caser/:slug" element={<CaseStudyDetailPage />} />
+              <Route path="/use-cases" element={<Navigate to="/caser" replace />} />
               <Route path="/slik-vi-jobber" element={<SlikViJobberPage />} />
               <Route path="/priser" element={<PriserPage />} />
               <Route path="/pris" element={<Navigate to="/priser" replace />} />
+              <Route path="/faq" element={<FaqPage />} />
               <Route path="/status" element={<StatusPage />} />
               <Route path="/transparens" element={<TransparensPage />} />
               <Route path="/transparency" element={<Navigate to="/transparens" replace />} />
@@ -78,6 +81,7 @@ const App = () => {
               <Route path="/blogg" element={<BloggPage />} />
               <Route path="/blogg/:slug" element={<BloggPostPage />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/personvern" element={<Navigate to="/privacy" replace />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/cookies" element={<CookiesPolicy />} />
               <Route path="*" element={<NotFound />} />

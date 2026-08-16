@@ -117,9 +117,8 @@ export default function TjenesterPage() {
 
         {/* Capability questions only. Engagement questions live on
             /slik-vi-jobber (time, procurement, aftercare) and /priser (cost).
-            Disjoint sets keep each page's FAQPage schema describing what that
-            page shows. */}
-        <FAQSection only={FAQ_TOPICS.services} />
+            Visible sets stay disjoint; FAQPage schema is emitted on /faq. */}
+        <FAQSection only={FAQ_TOPICS.services} includeSchema={false} />
       </main>
 
       <Footer />

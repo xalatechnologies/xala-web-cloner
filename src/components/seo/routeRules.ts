@@ -26,10 +26,13 @@ export const ROUTE_RULES: RouteRule[] = [
   { pattern: /^\/produkter\/[^/]+\/?$/, pageId: 'products', selfManaged: true },
   { pattern: /^\/caser\/?$/, pageId: 'cases', selfManaged: true },
   { pattern: /^\/caser\/[^/]+\/?$/, pageId: 'caseStudy', ogType: 'article', selfManaged: true },
+  // Alias: same copy as /caser, but canonicalFor rewrites the URL.
+  { pattern: /^\/use-cases\/?$/, pageId: 'cases' },
   { pattern: /^\/slik-vi-jobber\/?$/, pageId: 'process' },
   { pattern: /^\/priser\/?$/, pageId: 'pricing' },
   // Alias: same copy as /priser, but canonicalFor rewrites the URL.
   { pattern: /^\/pris\/?$/, pageId: 'pricing' },
+  { pattern: /^\/faq\/?$/, pageId: 'faq' },
   { pattern: /^\/status\/?$/, pageId: 'status' },
   { pattern: /^\/transparens\/?$/, pageId: 'transparens' },
   // Alias: same copy as /transparens, but canonicalFor rewrites the URL.
@@ -42,6 +45,8 @@ export const ROUTE_RULES: RouteRule[] = [
   { pattern: /^\/blogg\/?$/, pageId: 'blog', selfManaged: true },
   { pattern: /^\/blogg\/[^/]+\/?$/, pageId: 'blogPost', ogType: 'article', selfManaged: true },
   { pattern: /^\/privacy\/?$/, pageId: 'privacy' },
+  // Alias: same copy as /privacy, but canonicalFor rewrites the URL.
+  { pattern: /^\/personvern\/?$/, pageId: 'privacy' },
   { pattern: /^\/terms\/?$/, pageId: 'terms' },
   { pattern: /^\/cookies\/?$/, pageId: 'cookies' },
 ];
@@ -65,6 +70,8 @@ export function normalizeLanguage(raw: string | undefined): Language {
 export const CANONICAL_ALIASES: Record<string, string> = {
   '/pris': '/priser',
   '/transparency': '/transparens',
+  '/personvern': '/privacy',
+  '/use-cases': '/caser',
 };
 
 export function canonicalFor(pathname: string): string {

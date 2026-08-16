@@ -136,4 +136,16 @@ describe('FAQSection', () => {
     expect(section).toHaveAttribute('aria-labelledby', 'faq-heading');
     expect(screen.getByRole('heading', { level: 2 })).toHaveAttribute('id', 'faq-heading');
   });
+
+  it('omits FAQPage schema when includeSchema is false', async () => {
+    render(
+      <HelmetProvider>
+        <FAQSection includeSchema={false} />
+      </HelmetProvider>
+    );
+
+    expect(screen.getByText(faqData.no[0].question)).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByRole('heading', { level: 2 })).toBeInTheDocument());
+    expect(jsonLdBlocks()).toHaveLength(0);
+  });
 });

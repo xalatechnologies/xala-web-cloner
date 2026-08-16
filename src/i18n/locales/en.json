@@ -617,6 +617,7 @@
     }
   },
   "faq": {
+    "eyebrow": "FAQ",
     "title": "Frequently asked questions",
     "description": "Answers to what people ask us most. If yours is not here, get in touch."
   },

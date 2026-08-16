@@ -109,5 +109,25 @@ describe('prerendered static routes', () => {
     const parsed = [...block![1].matchAll(/['"](\/[^'"]+)['"]\s*:/g)].map((m) => m[1]);
     expect(parsed.sort()).toEqual(Object.keys(CANONICAL_ALIASES).sort());
     expect(parsed).toContain('/pris');
+    expect(parsed).toContain('/transparency');
+    expect(parsed).toContain('/personvern');
+    expect(parsed).toContain('/use-cases');
+  });
+
+  it('puts /faq in STATIC_ROUTES and keeps alias paths out', () => {
+    expect(CANONICAL_ALIASES).toMatchObject({
+      '/pris': '/priser',
+      '/transparency': '/transparens',
+      '/personvern': '/privacy',
+      '/use-cases': '/caser',
+    });
+    const paths = STATIC_ROUTES.map((route) => route.path);
+    expect(paths).toContain('/faq');
+    expect(paths).not.toContain('/personvern');
+    expect(paths).not.toContain('/use-cases');
+    expect(paths).not.toContain('/pris');
+    expect(paths).not.toContain('/transparency');
+    expect(resolveRoute('/faq').pageId).toBe('faq');
+    expect(resolveRoute('/faq').pageId).not.toBe('notFound');
   });
 });
