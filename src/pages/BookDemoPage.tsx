@@ -20,7 +20,7 @@ export default function BookDemoPage() {
                 {t('bookDemo.description')}
               </p>
             </div>
-            <ContactForm defaultSubject={t('bookDemo.title')} />
+            <ContactForm defaultSubject="Book en demo" />
           </div>
         </section>
       </main>
