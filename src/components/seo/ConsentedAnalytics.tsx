@@ -7,11 +7,9 @@ interface ConsentedAnalyticsProps {
 }
 
 /**
- * Mounts Clarity and Plausible once, for the whole app, and only after the
- * visitor has accepted cookies.
- *
- * The Google tag is not gated here — it is in index.html and loads for every
- * visitor, so Google Ads can detect it.
+ * Mounts gtag, Clarity and Plausible once, for the whole app, and only after
+ * the visitor has accepted cookies. Essential-only, reject, and the default
+ * before a choice leave every tracker unloaded.
  */
 const ConsentedAnalytics = ({ microsoftClarityId, plausibleDomain }: ConsentedAnalyticsProps) => {
   const consent = useConsent();

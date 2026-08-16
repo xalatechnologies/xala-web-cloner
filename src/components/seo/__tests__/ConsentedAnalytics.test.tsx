@@ -11,24 +11,17 @@ const scripts = () => [...document.head.querySelectorAll('script')];
 const headText = () => scripts().map(s => s.src + ' ' + s.text).join('\n');
 
 /**
- * The Google tag has to be in index.html, not injected after consent.
- *
- * A tag that only appears once someone presses "Godta alle" is invisible to
- * Google Ads and Tag Assistant, because neither presses it — so the account
- * reports the tag as not installed. This asserts the file, since nothing else
- * in the suite would notice it being moved back.
+ * First HTML must not load advertising or analytics gtag. The banner says
+ * «Kun nødvendige» loads none of the trackers; a tag in index.html would
+ * make that copy false before anyone has chosen.
  */
-describe('the Google tag in index.html', () => {
+describe('the Google tag is not in first HTML', () => {
   const html = readFileSync(join(process.cwd(), 'index.html'), 'utf-8');
 
-  it('loads gtag.js unconditionally in the head', () => {
-    expect(html).toContain('googletagmanager.com/gtag/js?id=' + GOOGLE_ADS_ID);
-    expect(html.indexOf('gtag/js')).toBeLessThan(html.indexOf('</head>'));
-  });
-
-  it('configures both the Ads and GA4 ids', () => {
-    expect(html).toContain(`gtag('config', '${GOOGLE_ADS_ID}')`);
-    expect(html).toContain(`gtag('config', '${GOOGLE_ANALYTICS_ID}'`);
+  it('does not load gtag.js in the document head', () => {
+    expect(html).not.toContain('googletagmanager.com/gtag/js');
+    expect(html).not.toContain(GOOGLE_ADS_ID);
+    expect(html).not.toContain(GOOGLE_ANALYTICS_ID);
   });
 });
 
@@ -41,27 +34,26 @@ describe('ConsentedAnalytics', () => {
   it('injects nothing before the visitor has answered', () => {
     render(<ConsentedAnalytics {...IDS} />);
     expect(scripts()).toHaveLength(0);
+    expect(headText()).not.toContain('googletagmanager');
   });
 
   it('injects nothing when the visitor chose essential only', () => {
     window.localStorage.setItem(CONSENT_KEY, 'essential-only');
     render(<ConsentedAnalytics {...IDS} />);
     expect(scripts()).toHaveLength(0);
+    expect(headText()).not.toContain('googletagmanager');
+    expect(headText()).not.toContain(GOOGLE_ADS_ID);
+    expect(headText()).not.toContain(GOOGLE_ANALYTICS_ID);
   });
 
-  it('injects Clarity and Plausible once the visitor accepted all', () => {
+  it('injects gtag, Clarity and Plausible once the visitor accepted all', () => {
     window.localStorage.setItem(CONSENT_KEY, 'true');
     render(<ConsentedAnalytics {...IDS} />);
+    expect(headText()).toContain('googletagmanager.com/gtag/js?id=' + GOOGLE_ADS_ID);
+    expect(headText()).toContain(`gtag('config', '${GOOGLE_ADS_ID}')`);
+    expect(headText()).toContain(`gtag('config', '${GOOGLE_ANALYTICS_ID}'`);
     expect(headText()).toContain('clarity.ms');
     expect(headText()).toContain('plausible.io');
-  });
-
-  it('never injects a second copy of the Google tag', () => {
-    // It is already in index.html; loading it again would redefine gtag() and
-    // double-count page views.
-    window.localStorage.setItem(CONSENT_KEY, 'true');
-    render(<ConsentedAnalytics {...IDS} />);
-    expect(headText()).not.toContain('googletagmanager');
   });
 
   it('removes its own nodes on unmount', () => {
