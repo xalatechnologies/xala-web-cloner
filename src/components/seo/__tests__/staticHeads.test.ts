@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { STATIC_ROUTES } from '@/lib/blog/feeds';
-import { resolveRoute } from '../routeRules';
+import { CANONICAL_ALIASES, resolveRoute } from '../routeRules';
 import { getPageSEO } from '../seoContent';
 
 /**
@@ -68,8 +68,21 @@ describe('prerendered static routes', () => {
     }
   );
 
-  it('gives every static route a unique title', () => {
-    const titles = STATIC_ROUTES.map((route) => getPageSEO(resolveRoute(route.path).pageId, 'no').title);
+  it('gives every canonical static route a unique title', () => {
+    const titles = STATIC_ROUTES
+      .filter((route) => !(route.path in CANONICAL_ALIASES))
+      .map((route) => getPageSEO(resolveRoute(route.path).pageId, 'no').title);
     expect(new Set(titles).size).toBe(titles.length);
+  });
+
+  it('prerenders every canonical alias so a cold hit is not a 404', () => {
+    const paths = STATIC_ROUTES.map((route) => route.path);
+    for (const [alias, target] of Object.entries(CANONICAL_ALIASES)) {
+      expect(paths, `${alias} missing from STATIC_ROUTES`).toContain(alias);
+      expect(paths, `${target} missing from STATIC_ROUTES`).toContain(target);
+      expect(getPageSEO(resolveRoute(alias).pageId, 'no').title).toBe(
+        getPageSEO(resolveRoute(target).pageId, 'no').title
+      );
+    }
   });
 });

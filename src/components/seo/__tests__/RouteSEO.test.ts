@@ -83,6 +83,11 @@ describe('canonicalFor', () => {
     expect(resolveRoute('/pris').pageId).toBe('pricing');
     expect(resolveRoute('/priser').pageId).toBe('pricing');
   });
+
+  it('301s /pris to /priser in .htaccess so a cold hit is not a 404', () => {
+    const htaccess = readFileSync(resolve(__dirname, '../../../../public/.htaccess'), 'utf8');
+    expect(htaccess).toMatch(/RewriteRule\s+\^pris\/\?\$\s+\/priser\s+\[L,R=301\]/);
+  });
 });
 
 describe('normalizeLanguage', () => {

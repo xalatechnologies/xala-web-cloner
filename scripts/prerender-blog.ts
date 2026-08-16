@@ -29,7 +29,7 @@ import remarkGfm from "remark-gfm";
 import { parsePosts, publishedPosts, relatedPosts } from "../src/lib/blog/posts";
 import { extractFaq, faqJsonLd } from "../src/lib/blog/toc";
 import { getPageSEO } from "../src/components/seo/seoContent";
-import { resolveRoute } from "../src/components/seo/routeRules";
+import { canonicalFor, resolveRoute } from "../src/components/seo/routeRules";
 import {
   BLOG_PATH,
   ORGANIZATION,
@@ -385,19 +385,22 @@ function main(): void {
     // title and canonical — for any crawler that does not run the bundle, the
     // site looked like a dozen copies of the home page.
     const copy = getPageSEO(resolveRoute(route.path).pageId, "no");
+    // Aliases (e.g. /pris → /priser) must share the canonical URL, not mint
+    // a second one. canonicalFor is a no-op for every other static route.
+    const canonical = canonicalFor(route.path);
     write(
       path.join(DIST, route.path.replace(/^\//, ""), "index.html"),
       renderBody(
       renderHead(shell, {
         title: copy.title,
         description: copy.description,
-        canonical: `${SITE_ORIGIN}${route.path}`,
+        canonical,
         ogType: "website",
         jsonLd: {
           "@context": "https://schema.org",
           "@type": "WebPage",
-          "@id": `${SITE_ORIGIN}${route.path}#webpage`,
-          url: `${SITE_ORIGIN}${route.path}`,
+          "@id": `${canonical}#webpage`,
+          url: canonical,
           name: copy.title,
           description: copy.description,
           inLanguage: "nb-NO",
