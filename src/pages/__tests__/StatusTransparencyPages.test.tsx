@@ -2,12 +2,13 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, it, expect, vi } from 'vitest';
 import StatusPage from '../StatusPage';
+import TransparensPage from '../TransparensPage';
 import { resolveRoute } from '@/components/seo/routeRules';
 
 /**
  * Pins the combined XWEB-6 / XWEB-14 surface: /status and /transparens both
- * exist, /transparency is only an alias of /transparens, and status links to
- * the canonical openness page.
+ * exist, /transparency is only an alias of /transparens, and the two pages
+ * cross-link. /status stays the thin “no public statusboard” page.
  */
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
@@ -43,5 +44,17 @@ describe('status and transparens pages', () => {
 
     const links = screen.getAllByRole('link').filter((a) => a.getAttribute('href') === '/transparens');
     expect(links.length).toBeGreaterThan(0);
+  });
+
+  it('links from /transparens back to /status without inventing uptime figures', () => {
+    const { container } = render(
+      <MemoryRouter initialEntries={['/transparens']}>
+        <TransparensPage />
+      </MemoryRouter>
+    );
+
+    const links = screen.getAllByRole('link').filter((a) => a.getAttribute('href') === '/status');
+    expect(links.length).toBeGreaterThan(0);
+    expect(container.textContent ?? '').not.toMatch(/99[,.]99/);
   });
 });

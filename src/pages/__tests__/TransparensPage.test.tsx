@@ -43,4 +43,10 @@ describe('TransparensPage', () => {
     const { container } = renderPage();
     expect(container.textContent ?? '').not.toMatch(/99[,.]99/);
   });
+
+  it('links to /status so the openness page is not a dead end', () => {
+    renderPage();
+    const links = screen.getAllByRole('link').filter((a) => a.getAttribute('href') === '/status');
+    expect(links.length).toBeGreaterThan(0);
+  });
 });

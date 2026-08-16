@@ -58,6 +58,16 @@ export default function TransparensPage() {
               'Vi er tydelige på hvordan vi drifter det vi bygger: hvilke oppetids- og SLA-forpliktelser vi tar på oss, hvordan sikkerhet er forankret i arbeidet, og hvor dere henvender dere ved en hendelse.'
             )}
           </p>
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            {t(
+              'transparensPage.statusBefore',
+              'Vi har ikke et offentlig statusboard. Se'
+            )}{' '}
+            <Link to="/status" className="font-semibold text-primary underline underline-offset-4">
+              {t('transparensPage.statusLink', 'status-siden')}
+            </Link>
+            {t('transparensPage.statusAfter', '.')}
+          </p>
         </header>
 
         <Section tone="muted" size="md" styled container={false}>
@@ -104,6 +114,12 @@ export default function TransparensPage() {
                 className="inline-flex min-h-12 items-center rounded-xl bg-primary px-6 py-3 text-sm font-semibold uppercase tracking-[0.1em] text-primary-foreground transition-all hover:shadow-[0_0_32px_hsl(var(--primary)/0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 {t('transparensPage.ctaContact', 'Kontakt oss')}
+              </Link>
+              <Link
+                to="/status"
+                className="inline-flex min-h-12 items-center rounded-xl border border-border bg-card px-6 py-3 text-sm font-semibold uppercase tracking-[0.1em] text-foreground transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                {t('transparensPage.ctaStatus', 'Statusside')}
               </Link>
             </div>
           </div>

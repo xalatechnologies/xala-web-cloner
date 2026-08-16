@@ -284,15 +284,19 @@
     "subtitle": "Vi hører gjerne fra deg",
     "form": {
       "name": {
+        "label": "Navn",
         "placeholder": "Ditt navn"
       },
       "email": {
+        "label": "E-post",
         "placeholder": "Din e-postadresse"
       },
       "subject": {
+        "label": "Emne",
         "placeholder": "Emne"
       },
       "message": {
+        "label": "Melding",
         "placeholder": "Skriv din melding her..."
       },
       "status": {
@@ -771,7 +775,11 @@
     },
     "ctaTitle": "Spørsmål om drift eller SLA?",
     "ctaDescription": "Fortell oss om systemet deres, så går vi gjennom hvilke oppetids- og SLA-vilkår som passer.",
-    "ctaContact": "Kontakt oss"
+    "ctaContact": "Kontakt oss",
+    "ctaStatus": "Statusside",
+    "statusBefore": "Vi har ikke et offentlig statusboard. Se",
+    "statusLink": "status-siden",
+    "statusAfter": "."
   },
   "statusPage": {
     "eyebrow": "Drift",

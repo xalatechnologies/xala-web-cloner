@@ -284,15 +284,19 @@
     "subtitle": "We would love to hear from you",
     "form": {
       "name": {
+        "label": "Name",
         "placeholder": "Your name"
       },
       "email": {
+        "label": "Email",
         "placeholder": "Your email address"
       },
       "subject": {
+        "label": "Subject",
         "placeholder": "Subject"
       },
       "message": {
+        "label": "Message",
         "placeholder": "Write your message here..."
       },
       "status": {
@@ -771,7 +775,11 @@
     },
     "ctaTitle": "Questions about operations or SLA?",
     "ctaDescription": "Tell us about your system, and we will walk through which uptime and SLA terms fit.",
-    "ctaContact": "Contact us"
+    "ctaContact": "Contact us",
+    "ctaStatus": "Status page",
+    "statusBefore": "We do not publish a public status board. See",
+    "statusLink": "the status page",
+    "statusAfter": "."
   },
   "statusPage": {
     "eyebrow": "Operations",

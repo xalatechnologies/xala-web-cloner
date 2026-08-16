@@ -284,15 +284,19 @@
     "subtitle": "نسعد بالتواصل معك",
     "form": {
       "name": {
+        "label": "الاسم",
         "placeholder": "اسمك"
       },
       "email": {
+        "label": "البريد الإلكتروني",
         "placeholder": "بريدك الإلكتروني"
       },
       "subject": {
+        "label": "الموضوع",
         "placeholder": "الموضوع"
       },
       "message": {
+        "label": "الرسالة",
         "placeholder": "اكتب رسالتك هنا..."
       },
       "status": {
@@ -771,7 +775,11 @@
     },
     "ctaTitle": "أسئلة حول التشغيل أو اتفاقية مستوى الخدمة؟",
     "ctaDescription": "أخبرونا عن نظامكم، وسنستعرض معكم شروط وقت التشغيل واتفاقية مستوى الخدمة المناسبة.",
-    "ctaContact": "اتصل بنا"
+    "ctaContact": "اتصل بنا",
+    "ctaStatus": "صفحة الحالة",
+    "statusBefore": "ليس لدينا لوحة حالة عامة. انظر",
+    "statusLink": "صفحة الحالة",
+    "statusAfter": "."
   },
   "statusPage": {
     "eyebrow": "التشغيل",
