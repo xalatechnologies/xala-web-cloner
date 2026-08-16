@@ -3,6 +3,8 @@ import { ArrowRight, ChevronDown } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { processServiceTitle } from '@/utils/text-hyphenation'
+import { DEFAULT_HERO_WORDS } from './words'
 
 interface VideoHeroProps {
   videoSrc?: string
@@ -10,7 +12,15 @@ interface VideoHeroProps {
   words?: string[]
 }
 
-function DynamicWord({ words, interval = 2500 }: { words: string[]; interval?: number }) {
+function DynamicWord({
+  words,
+  interval = 2500,
+  language,
+}: {
+  words: string[]
+  interval?: number
+  language: string
+}) {
   const safeWords = useMemo(() => (words?.length ? words : ['AI', 'sky', 'apper', 'data']), [words])
   const [index, setIndex] = useState(0)
 
@@ -19,24 +29,34 @@ function DynamicWord({ words, interval = 2500 }: { words: string[]; interval?: n
     return () => clearInterval(id)
   }, [safeWords, interval])
 
+  const raw = safeWords[index]
+  const display = processServiceTitle(raw, language)
+
   return (
     <AnimatePresence mode="wait">
       <motion.span
-        key={safeWords[index]}
+        key={raw}
         initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
         animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
         exit={{ opacity: 0, y: -20, filter: 'blur(8px)' }}
         transition={{ duration: 0.4, ease: 'easeOut' }}
-        className="inline-block text-primary"
+        /*
+          inline-block lets the enter/exit translate run, but without a max
+          width it shrink-to-fits the compound and the heading's inherited
+          overflow-wrap never fires. max-w-full caps it to the column;
+          overflow-wrap:anywhere shrinks min-content so a flex parent cannot
+          grow a horizontal scrollbar around the unbroken word.
+        */
+        className="inline-block max-w-full text-primary [overflow-wrap:anywhere]"
       >
-        {safeWords[index]}
+        {display}
       </motion.span>
     </AnimatePresence>
   )
 }
 
 export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/hero-bg.svg', words }: VideoHeroProps) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const navigate = useNavigate()
 
   /**
@@ -143,9 +163,10 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
               The audience clause moved to the subtitle rather than making the
               heading a third line. */}
           <span className="block">{t('hero.heroText.weBuild', 'Vi bygger')} </span>
-          <span className="block min-h-[1.15em]">
+          <span className="block min-h-[1.15em] min-w-0 max-w-full">
             <DynamicWord
-              words={words ?? ['saksbehandlingssystemer', 'tilskuddsportaler', 'bevillingsportaler', 'skjemaløsninger', 'prosessautomatisering', 'integrasjoner']}
+              language={i18n.language}
+              words={words ?? [...DEFAULT_HERO_WORDS]}
             />
           </span>
         </motion.h1>

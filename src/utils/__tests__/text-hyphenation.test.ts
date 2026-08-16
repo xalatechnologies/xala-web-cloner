@@ -61,4 +61,25 @@ describe('processServiceTitle', () => {
       'Saksbehandlingssystemer'
     );
   });
+
+  it('hyphenates the lowercase home-hero rotators, including saksbehandlingssystemer', () => {
+    // The hero uses lowercase compounds. A 390px pass that happens to show
+    // "integrasjoner" can look fine while the first rotator still overflows.
+    const heroWords = [
+      'saksbehandlingssystemer',
+      'tilskuddsportaler',
+      'bevillingsportaler',
+      'skjemaløsninger',
+      'prosessautomatisering',
+      'integrasjoner',
+    ];
+    for (const word of heroWords) {
+      const processed = processServiceTitle(word, 'no');
+      expect(processed, word).toContain(SHY);
+      expect(processed.replace(/­/g, '')).toBe(word);
+    }
+    expect(processServiceTitle('saksbehandlingssystemer', 'no')).toBe(
+      `saks${SHY}behandlings${SHY}systemer`
+    );
+  });
 });
