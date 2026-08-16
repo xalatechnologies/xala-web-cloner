@@ -9,7 +9,14 @@ import BookDemoPage from '../BookDemoPage';
 // checks the form the E2E journey depends on is actually there.
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
-    t: (key: string, fallback?: string) => fallback ?? key,
+    t: (key: string, fallback?: string) => {
+      const copy: Record<string, string> = {
+        'bookDemo.title': 'Book en demo',
+        'bookDemo.description':
+          'Fortell oss om behovet ditt, så viser vi hvordan Xala Technologies kan hjelpe.',
+      };
+      return copy[key] ?? fallback ?? key;
+    },
     i18n: { language: 'no', changeLanguage: vi.fn() },
   }),
 }));
@@ -39,6 +46,9 @@ describe('BookDemoPage', () => {
     expect(
       screen.getByPlaceholderText('contact.form.email.placeholder')
     ).toHaveAttribute('type', 'email');
+    expect(screen.getByPlaceholderText('contact.form.subject.placeholder')).toHaveValue(
+      'Book en demo'
+    );
     expect(screen.getByRole('button', { name: 'contact.form.status.send' })).toBeInTheDocument();
   });
 

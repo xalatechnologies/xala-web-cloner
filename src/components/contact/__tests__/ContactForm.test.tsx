@@ -38,6 +38,7 @@ function submit() {
 describe('ContactForm', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    openMock.mockReset();
     vi.stubGlobal('open', openMock);
     // The default is now the same-origin endpoint. These cases cover the
     // mailto fallback, so they opt into it the way a build would.
@@ -100,5 +101,31 @@ describe('ContactForm', () => {
       expect(screen.getByText('contact.form.validation.name.min')).toBeInTheDocument();
     });
     expect(openMock).not.toHaveBeenCalled();
+  });
+
+  it('leaves subject blank by default so /kontakt stays a blank enquiry', () => {
+    render(<ContactForm />);
+    expect(screen.getByPlaceholderText('contact.form.subject.placeholder')).toHaveValue('');
+  });
+
+  it('pre-fills subject when given a default, and uses it on submit', async () => {
+    render(<ContactForm defaultSubject="Book en demo" />);
+    expect(screen.getByPlaceholderText('contact.form.subject.placeholder')).toHaveValue(
+      'Book en demo'
+    );
+
+    fireEvent.change(screen.getByPlaceholderText('contact.form.name.placeholder'), {
+      target: { value: 'Jane Doe' },
+    });
+    fireEvent.change(screen.getByPlaceholderText('contact.form.email.placeholder'), {
+      target: { value: 'jane@example.com' },
+    });
+    fireEvent.change(screen.getByPlaceholderText('contact.form.message.placeholder'), {
+      target: { value: 'This is a long enough test message.' },
+    });
+    submit();
+
+    await waitFor(() => expect(openMock).toHaveBeenCalledTimes(1));
+    expect(decodeURIComponent(openMock.mock.calls[0][0])).toContain('[xala.no] Book en demo');
   });
 });

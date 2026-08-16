@@ -16,7 +16,12 @@ import { useToast } from "@/components/ui/use-toast";
 import { submitForm } from '@/lib/forms/submit';
 import { trackConversion } from '@/lib/analytics/conversions';
 
-export const ContactForm = () => {
+interface ContactFormProps {
+  /** Pre-fills subject. /book-demo passes this so the mail is not a blank /kontakt form. */
+  defaultSubject?: string;
+}
+
+export const ContactForm = ({ defaultSubject = '' }: ContactFormProps) => {
   const { t, i18n } = useTranslation();
   const { toast } = useToast();
 
@@ -34,7 +39,7 @@ export const ContactForm = () => {
     defaultValues: {
       name: '',
       email: '',
-      subject: '',
+      subject: defaultSubject,
       message: '',
     },
   });
