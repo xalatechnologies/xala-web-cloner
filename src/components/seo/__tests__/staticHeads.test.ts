@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { STATIC_ROUTES } from '@/lib/blog/feeds';
-import { resolveRoute } from '../routeRules';
+import { CANONICAL_ALIASES, resolveRoute } from '../routeRules';
 import { getPageSEO } from '../seoContent';
 
 /**
@@ -71,5 +71,17 @@ describe('prerendered static routes', () => {
   it('gives every static route a unique title', () => {
     const titles = STATIC_ROUTES.map((route) => getPageSEO(resolveRoute(route.path).pageId, 'no').title);
     expect(new Set(titles).size).toBe(titles.length);
+  });
+
+  it('keeps canonical aliases out of STATIC_ROUTES', () => {
+    // Aliases share a pageId with their target. Listing them here would
+    // duplicate the sitemap and fail the unique-title check above.
+    const paths = STATIC_ROUTES.map((route) => route.path);
+    for (const [alias, target] of Object.entries(CANONICAL_ALIASES)) {
+      expect(paths, `${alias} belongs in the prerender copy step, not STATIC_ROUTES`).not.toContain(
+        alias
+      );
+      expect(paths, `${target} missing from STATIC_ROUTES`).toContain(target);
+    }
   });
 });

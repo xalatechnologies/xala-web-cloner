@@ -29,7 +29,7 @@ import remarkGfm from "remark-gfm";
 import { parsePosts, publishedPosts, relatedPosts } from "../src/lib/blog/posts";
 import { extractFaq, faqJsonLd } from "../src/lib/blog/toc";
 import { getPageSEO } from "../src/components/seo/seoContent";
-import { resolveRoute } from "../src/components/seo/routeRules";
+import { CANONICAL_ALIASES, resolveRoute } from "../src/components/seo/routeRules";
 import {
   BLOG_PATH,
   ORGANIZATION,
@@ -408,6 +408,17 @@ function main(): void {
       staticRouteHtml(copy.title.split(" | ")[0], copy.description, MAIN_NAV),
       ),
     );
+  }
+  // Aliases are not in STATIC_ROUTES: they share a pageId with the canonical
+  // path, so listing them would duplicate the sitemap and break unique titles.
+  // Copy the already-written file so a cold hit / crawler is not a 404, and
+  // the canonical stays the one written for the target (e.g. /priser).
+  for (const [alias, target] of Object.entries(CANONICAL_ALIASES)) {
+    const source = path.join(DIST, target.replace(/^\//, ""), "index.html");
+    if (!fs.existsSync(source)) {
+      throw new Error(`prerender: alias ${alias} → ${target} but ${source} was not written`);
+    }
+    write(path.join(DIST, alias.replace(/^\//, ""), "index.html"), fs.readFileSync(source, "utf-8"));
   }
   // Every case study needs a file of its own for the same reason the static
   // routes do — more urgently, in fact, because these URLs are listed in the

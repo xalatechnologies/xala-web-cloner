@@ -57,7 +57,7 @@ export function normalizeLanguage(raw: string | undefined): Language {
 }
 
 /** Short aliases that must not get a canonical of their own. */
-const CANONICAL_ALIASES: Record<string, string> = {
+export const CANONICAL_ALIASES: Record<string, string> = {
   '/pris': '/priser',
 };
 
