@@ -222,13 +222,14 @@ export default function BloggPage() {
                       <div className="grid gap-5 px-2 md:px-5 lg:grid-cols-12 lg:gap-8">
                         {post.cover && (
                           <div className="order-2 lg:order-1 lg:col-span-3">
-                            <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-muted">
+                            {/* Covers are generated at 1200x630 (40:21) with the title baked in near the left edge; a narrower frame made object-cover crop into that text. */}
+                            <div className="relative aspect-[40/21] overflow-hidden rounded-xl border border-border bg-muted">
                               <img
                                 src={post.cover}
                                 alt=""
                                 loading="lazy"
                                 decoding="async"
-                                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                                className="absolute inset-0 h-full w-full object-cover"
                               />
                             </div>
                           </div>
