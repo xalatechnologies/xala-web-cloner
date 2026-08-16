@@ -45,7 +45,33 @@ const NORWEGIAN_BREAKS: Record<string, string> = {
   Saksbehandlingsplattform: shy('Saks', 'behandlings', 'plattform'),
   'SaaS-applikasjonsutvikling': `SaaS-${shy('appli', 'kasjons', 'ut', 'vikling')}`,
   Systemintegrasjon: shy('System', 'inte', 'grasjon'),
+  // Home-hero rotators (lowercase). A 390px viewport cannot hold these at
+  // text-4xl as a single glyph run; the breaks are the compound boundaries.
+  tilskuddsportaler: shy('tilskudds', 'portaler'),
+  bevillingsportaler: shy('bevillings', 'portaler'),
+  skjemaløsninger: shy('skjema', 'løsninger'),
+  prosessautomatisering: shy('prosess', 'automatisering'),
 };
+
+/**
+ * Copy soft-hyphen positions from a known spelling onto `title`, keeping
+ * whatever casing the caller passed. Used so the hero's lowercase
+ * "saksbehandlingssystemer" can reuse the Saksbehandlingssystemer entry.
+ */
+function applyBreaksFromKnown(title: string, hyphenatedKnown: string): string {
+  const insertBefore = new Set<number>();
+  let index = 0;
+  for (const ch of hyphenatedKnown) {
+    if (ch === SHY) insertBefore.add(index);
+    else index += 1;
+  }
+  let out = '';
+  for (let i = 0; i < title.length; i += 1) {
+    if (insertBefore.has(i)) out += SHY;
+    out += title[i];
+  }
+  return out;
+}
 
 
 function isNorwegian(language: string): boolean {
@@ -61,7 +87,15 @@ function isNorwegian(language: string): boolean {
  */
 export function processServiceTitle(title: string, language: string = 'en'): string {
   if (!isNorwegian(language)) return title;
-  return NORWEGIAN_BREAKS[title] ?? title;
+  const exact = NORWEGIAN_BREAKS[title];
+  if (exact) return exact;
+
+  const lower = title.toLowerCase();
+  for (const [known, hyphenated] of Object.entries(NORWEGIAN_BREAKS)) {
+    if (known.toLowerCase() !== lower) continue;
+    return applyBreaksFromKnown(title, hyphenated);
+  }
+  return title;
 }
 
 /** Class that turns on the browser's own hyphenation. Defined in index.css. */

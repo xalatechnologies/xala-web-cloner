@@ -1,5 +1,6 @@
 import Navbar from '../components/Navbar';
 import VideoHero from '../components/hero/VideoHero';
+import { DEFAULT_HERO_WORDS } from '../components/hero/words';
 import Clients from '../components/Clients';
 import ValueProps from '../components/ValueProps';
 import Footer from '../components/Footer';
@@ -24,7 +25,7 @@ const Index = () => {
     const lang = i18n.language?.toLowerCase() ?? 'no';
     if (lang.startsWith('en')) return ['case management systems', 'grant portals', 'licensing portals', 'digital forms', 'process automation', 'integrations'];
     if (lang.startsWith('ar')) return ['أنظمة معالجة الطلبات', 'بوابات المنح', 'بوابات التراخيص', 'النماذج الرقمية', 'أتمتة العمليات', 'التكاملات'];
-    return ['saksbehandlingssystemer', 'tilskuddsportaler', 'bevillingsportaler', 'skjemaløsninger', 'prosessautomatisering', 'integrasjoner'];
+    return [...DEFAULT_HERO_WORDS];
   };
 
   return (
