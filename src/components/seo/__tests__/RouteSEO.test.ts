@@ -43,7 +43,7 @@ describe('RouteSEO route coverage', () => {
   });
 
   it('does not mark the static pages as self-managed', () => {
-    for (const path of ['/', '/tjenester', '/kontakt', '/karriere', '/teknologi']) {
+    for (const path of ['/', '/tjenester', '/kontakt', '/karriere', '/teknologi', '/priser']) {
       expect(resolveRoute(path).selfManaged ?? false, `${path} needs RouteSEO`).toBe(false);
     }
   });
@@ -73,8 +73,15 @@ describe('canonicalFor', () => {
   it('gives distinct pages distinct canonicals', () => {
     // Every page previously claimed https://xala.no as its canonical, which
     // tells a crawler the whole site is one page.
-    const urls = ['/', '/tjenester', '/produkter', '/kontakt'].map(canonicalFor);
+    const urls = ['/', '/tjenester', '/produkter', '/kontakt', '/priser'].map(canonicalFor);
     expect(new Set(urls).size).toBe(urls.length);
+  });
+
+  it('rewrites the /pris alias onto /priser so the two URLs share one canonical', () => {
+    expect(canonicalFor('/pris')).toBe('https://xala.no/priser');
+    expect(canonicalFor('/pris/')).toBe('https://xala.no/priser');
+    expect(resolveRoute('/pris').pageId).toBe('pricing');
+    expect(resolveRoute('/priser').pageId).toBe('pricing');
   });
 });
 

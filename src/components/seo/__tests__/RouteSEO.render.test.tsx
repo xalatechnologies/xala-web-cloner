@@ -66,6 +66,23 @@ describe('RouteSEO renders head tags', () => {
     await waitFor(() => expect(head.meta('robots')).toBe('index, follow'));
   });
 
+  it('gives /priser its own title and canonical', async () => {
+    const expected = getPageSEO('pricing', 'no');
+    renderAt('/priser');
+
+    await waitFor(() => expect(document.title).toBe(expected.title));
+    expect(head.meta('description')).toBe(expected.description);
+    expect(head.canonical()).toBe('https://xala.no/priser');
+  });
+
+  it('points the /pris alias at the /priser canonical', async () => {
+    const expected = getPageSEO('pricing', 'no');
+    renderAt('/pris');
+
+    await waitFor(() => expect(document.title).toBe(expected.title));
+    expect(head.canonical()).toBe('https://xala.no/priser');
+  });
+
   it('emits no placeholder verification tags', async () => {
     renderAt('/');
 

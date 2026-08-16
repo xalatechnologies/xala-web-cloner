@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import AppProviders from './components/providers/AppProviders';
@@ -20,6 +20,7 @@ const ProduktDetaljPage = lazy(() => import('./pages/ProduktDetaljPage'));
 const TjenesteDetaljPage = lazy(() => import('./pages/TjenesteDetaljPage'));
 const CaserPage = lazy(() => import('./pages/CaserPage'));
 const SlikViJobberPage = lazy(() => import('./pages/SlikViJobberPage'));
+const PriserPage = lazy(() => import('./pages/PriserPage'));
 const TeknologiPage = lazy(() => import('./pages/TeknologiPage'));
 const OmOssPage = lazy(() => import('./pages/OmOssPage'));
 const KontaktPage = lazy(() => import('./pages/KontaktPage'));
@@ -60,6 +61,8 @@ const App = () => {
                   so all 18 case study cards led to the 404 page. */}
               <Route path="/caser/:slug" element={<CaseStudyDetailPage />} />
               <Route path="/slik-vi-jobber" element={<SlikViJobberPage />} />
+              <Route path="/priser" element={<PriserPage />} />
+              <Route path="/pris" element={<Navigate to="/priser" replace />} />
               <Route path="/teknologi" element={<TeknologiPage />} />
               <Route path="/om-oss" element={<OmOssPage />} />
               <Route path="/kontakt" element={<KontaktPage />} />

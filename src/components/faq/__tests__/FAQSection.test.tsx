@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { HelmetProvider } from 'react-helmet-async';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import FAQSection from '../FAQSection';
-import { faqsFor } from '../faqs';
+import { FAQ_TOPICS, faqsFor } from '../faqs';
 import faqData from '@/data/faq.json';
 
 const language = { current: 'no' };
@@ -75,6 +75,20 @@ describe('FAQ content', () => {
       const ids = faqData[lang].map((f) => f.id);
       expect(new Set(ids).size).toBe(ids.length);
     }
+  });
+
+  it('keeps FAQ topics disjoint so two pages cannot emit the same FAQPage', () => {
+    const seen = new Set<string>();
+    for (const [topic, ids] of Object.entries(FAQ_TOPICS)) {
+      for (const id of ids) {
+        expect(seen.has(id), `${id} appears in more than one topic (found again in ${topic})`).toBe(
+          false
+        );
+        seen.add(id);
+      }
+    }
+    expect(FAQ_TOPICS.pricing).toContain('kostnad');
+    expect(FAQ_TOPICS.process).not.toContain('kostnad');
   });
 });
 

@@ -115,10 +115,10 @@ export default function TjenesterPage() {
           </div>
         </section>
 
-        {/* Capability questions only. The four about engagement — cost,
-            timeline, procurement, aftercare — moved to /slik-vi-jobber, which
-            is the page people are on when they ask them. Disjoint sets keep
-            each page's FAQPage schema describing what that page shows. */}
+        {/* Capability questions only. Engagement questions live on
+            /slik-vi-jobber (time, procurement, aftercare) and /priser (cost).
+            Disjoint sets keep each page's FAQPage schema describing what that
+            page shows. */}
         <FAQSection only={FAQ_TOPICS.services} />
       </main>
 

@@ -104,16 +104,19 @@ describe("sitemap", () => {
     const locs = staticSitemapEntries("2026-07-25").map((e) => e.loc);
     expect(locs).toContain("https://xala.no");
     expect(locs).toContain("https://xala.no/tjenester");
+    expect(locs).toContain("https://xala.no/priser");
     expect(locs.some((l) => l.includes("/no/"))).toBe(false);
     expect(locs.some((l) => l.endsWith("/services"))).toBe(false);
   });
 
   it("renders valid sitemap XML with no trailing slash on the origin", () => {
-    const xml = renderSitemap([...staticSitemapEntries("2026-07-25"), ...blogSitemapEntries(posts())]);
+    const entries = [...staticSitemapEntries("2026-07-25"), ...blogSitemapEntries(posts())];
+    const xml = renderSitemap(entries);
     expect(xml).toContain('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
     expect(xml).toContain("<loc>https://xala.no</loc>");
     expect(xml).not.toContain("<loc>https://xala.no/</loc>");
-    expect([...xml.matchAll(/<url>/g)]).toHaveLength(15);
+    expect(entries.map((e) => e.loc)).toContain("https://xala.no/priser");
+    expect([...xml.matchAll(/<url>/g)]).toHaveLength(entries.length);
   });
 });
 

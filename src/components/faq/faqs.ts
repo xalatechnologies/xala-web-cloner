@@ -18,10 +18,14 @@ export function faqsFor(language: string): FAQEntry[] {
 /**
  * Which questions belong to which page.
  *
- * The whole set used to render on /tjenester and nowhere else, so the four
- * questions people ask about *engagement* — cost, timeline, public
- * procurement, who runs it afterwards — sat on a page about capabilities,
- * while the page named "how we work" answered nothing.
+ * The whole set used to render on /tjenester and nowhere else, so the
+ * questions people ask about engagement (cost, timeline, public procurement,
+ * who runs it afterwards) sat on a page about capabilities, while the page
+ * named "how we work" answered nothing.
+ *
+ * Cost then moved again, to /priser, which is the page that exists to answer
+ * "hva koster et saksbehandlingssystem". Timeline, procurement and aftercare
+ * stay on /slik-vi-jobber.
  *
  * The split is disjoint on purpose. Google asks that FAQPage markup describe
  * FAQs visible on that page, and two URLs publishing the same FAQPage is the
@@ -29,10 +33,12 @@ export function faqsFor(language: string): FAQEntry[] {
  * up, its own questions.
  */
 export const FAQ_TOPICS = {
-  /** What we can do — capabilities, stack, compliance, reach. */
+  /** What we can do: capabilities, stack, compliance, reach. */
   services: ['teknologi', 'overta', 'gdpr', 'sted'],
-  /** What working with us is like — cost, time, procurement, aftercare. */
-  process: ['kostnad', 'tid', 'offentlig', 'forvaltning'],
+  /** What working with us is like: time, procurement, aftercare. */
+  process: ['tid', 'offentlig', 'forvaltning'],
+  /** What a system costs, and why there is no fixed list. */
+  pricing: ['kostnad', 'prisliste', 'inkludert', 'kontrakt'],
 } as const;
 
 /** The entries for a topic, in the order the topic lists them. */

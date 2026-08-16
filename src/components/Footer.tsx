@@ -17,6 +17,7 @@ const Footer = () => {
     { name: t('nav.services'), href: '/tjenester' },
     { name: t('nav.products'), href: '/produkter' },
     { name: t('nav.cases'), href: '/caser' },
+    { name: t('nav.prices', 'Priser'), href: '/priser' },
     { name: t('nav.technology'), href: '/teknologi' },
   ];
 
