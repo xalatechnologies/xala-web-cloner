@@ -751,6 +751,39 @@
     "ctaContact": "Kontakt oss",
     "ctaProcess": "Slik vi jobber"
   },
+  "transparensPage": {
+    "eyebrow": "Åpenhet",
+    "title": "Oppetid, SLA og drift",
+    "description": "Vi er tydelige på hvordan vi drifter det vi bygger: hvilke oppetids- og SLA-forpliktelser vi tar på oss, hvordan sikkerhet er forankret i arbeidet, og hvor dere henvender dere ved en hendelse.",
+    "cards": {
+      "sla": {
+        "title": "Oppetid og SLA-avtaler",
+        "description": "Oppetids- og SLA-krav avtales per prosjekt og forankres i driftsavtalen. Terskler og oppfølging tilpasses hvor kritisk løsningen er."
+      },
+      "security": {
+        "title": "Forvaltning og sikkerhet",
+        "description": "Vi er ISO 27001-sertifisert. Forvaltning, drift og sikkerhet er del av leveransen fra første dag — driftbarhet og tilgjengelighet er designvalg vi tar sammen med dere, ikke noe som legges til etterpå."
+      },
+      "incidents": {
+        "title": "Hendelser og status",
+        "description": "Opplever dere nedetid eller avvik fra avtalt SLA, tar dere kontakt med oss direkte. Vi rapporterer status og oppfølging gjennom kanalen som er avtalt i driftsavtalen."
+      }
+    },
+    "ctaTitle": "Spørsmål om drift eller SLA?",
+    "ctaDescription": "Fortell oss om systemet deres, så går vi gjennom hvilke oppetids- og SLA-vilkår som passer.",
+    "ctaContact": "Kontakt oss"
+  },
+  "statusPage": {
+    "eyebrow": "Drift",
+    "title": "Ingen offentlig statusside",
+    "description": "Vi har ikke et offentlig, sanntids dashbord. Oppetid og hendelser rapporteres til kunden gjennom kanalen som er avtalt i driftsavtalen.",
+    "transparensBefore": "For oppetidsforpliktelser, SLA og sertifiseringer, se",
+    "transparensLink": "siden om åpenhet",
+    "transparensAfter": ".",
+    "ctaTitle": "Mer om drift og SLA",
+    "ctaDescription": "Åpenhetssiden beskriver hvordan vi avtaler oppetid, og hvem dere kontakter ved en hendelse.",
+    "ctaTransparens": "Åpenhet om drift"
+  },
   "servicesPage": {
     "eyebrow": "Tjenester",
     "title": "Systemer som skal stå i mange år",

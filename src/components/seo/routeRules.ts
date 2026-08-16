@@ -30,6 +30,10 @@ export const ROUTE_RULES: RouteRule[] = [
   { pattern: /^\/priser\/?$/, pageId: 'pricing' },
   // Alias: same copy as /priser, but canonicalFor rewrites the URL.
   { pattern: /^\/pris\/?$/, pageId: 'pricing' },
+  { pattern: /^\/status\/?$/, pageId: 'status' },
+  { pattern: /^\/transparens\/?$/, pageId: 'transparens' },
+  // Alias: same copy as /transparens, but canonicalFor rewrites the URL.
+  { pattern: /^\/transparency\/?$/, pageId: 'transparens' },
   { pattern: /^\/teknologi\/?$/, pageId: 'technology' },
   { pattern: /^\/om-oss\/?$/, pageId: 'about' },
   { pattern: /^\/kontakt\/?$/, pageId: 'contact' },
@@ -60,6 +64,7 @@ export function normalizeLanguage(raw: string | undefined): Language {
 /** Short aliases that must not get a canonical of their own. */
 export const CANONICAL_ALIASES: Record<string, string> = {
   '/pris': '/priser',
+  '/transparency': '/transparens',
 };
 
 export function canonicalFor(pathname: string): string {

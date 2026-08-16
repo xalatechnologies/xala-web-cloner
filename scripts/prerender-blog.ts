@@ -420,6 +420,7 @@ function main(): void {
     }
     write(path.join(DIST, alias.replace(/^\//, ""), "index.html"), fs.readFileSync(source, "utf-8"));
   }
+
   // Every case study needs a file of its own for the same reason the static
   // routes do — more urgently, in fact, because these URLs are listed in the
   // sitemap. Without a file, nginx answered /caser/<slug> with a 404 for all

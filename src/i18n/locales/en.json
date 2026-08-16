@@ -751,6 +751,39 @@
     "ctaContact": "Contact us",
     "ctaProcess": "How we work"
   },
+  "transparensPage": {
+    "eyebrow": "Transparency",
+    "title": "Uptime, SLA and operations",
+    "description": "We are direct about how we run what we build: the uptime and SLA commitments we take on, how security is built into the work, and who to contact if something breaks.",
+    "cards": {
+      "sla": {
+        "title": "Uptime and SLA agreements",
+        "description": "Uptime and SLA targets are agreed per project and set out in the operations agreement. Thresholds and follow-up are matched to how critical the solution is."
+      },
+      "security": {
+        "title": "Operations and security",
+        "description": "We are ISO 27001 certified. Operations and security are part of the delivery from day one — operability and availability are design decisions we make with you, not an afterthought."
+      },
+      "incidents": {
+        "title": "Incidents and status",
+        "description": "If you experience downtime or a deviation from the agreed SLA, contact us directly. We report status and follow-up through the channel set out in your operations agreement."
+      }
+    },
+    "ctaTitle": "Questions about operations or SLA?",
+    "ctaDescription": "Tell us about your system, and we will walk through which uptime and SLA terms fit.",
+    "ctaContact": "Contact us"
+  },
+  "statusPage": {
+    "eyebrow": "Operations",
+    "title": "No public status board",
+    "description": "We do not publish a public, real-time dashboard. Uptime and incidents are reported to the client through the channel set out in the operations agreement.",
+    "transparensBefore": "For uptime commitments, SLA and certifications, see",
+    "transparensLink": "the transparency page",
+    "transparensAfter": ".",
+    "ctaTitle": "More on operations and SLA",
+    "ctaDescription": "The transparency page describes how we agree uptime, and who to contact if something breaks.",
+    "ctaTransparens": "Operations transparency"
+  },
   "servicesPage": {
     "eyebrow": "Services",
     "title": "Systems built to last years",

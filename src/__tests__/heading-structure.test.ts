@@ -41,6 +41,8 @@ const PAGE_HEADING_OWNER: Record<string, string> = {
   // the page, and it now renders an h2 under the page's own h1.
   '/slik-vi-jobber': 'pages/SlikViJobberPage.tsx',
   '/priser': 'pages/PriserPage.tsx',
+  '/status': 'pages/StatusPage.tsx',
+  '/transparens': 'pages/TransparensPage.tsx',
   '/teknologi': 'pages/TeknologiPage.tsx',
   '/om-oss': 'pages/OmOssPage.tsx',
   '/kontakt': 'components/Contact.tsx',
@@ -70,8 +72,8 @@ function declaredRoutes(): string[] {
   const app = readFileSync(join(SRC, 'App.tsx'), 'utf8');
   return [...app.matchAll(/path="([^"]+)"/g)]
     .map((m) => m[1])
-    // /pris is a Navigate alias of /priser and never renders its own heading.
-    .filter((r) => r !== '*' && r !== '/pris');
+    // /pris and /transparency are Navigate aliases and never render their own heading.
+    .filter((r) => r !== '*' && r !== '/pris' && r !== '/transparency');
 }
 
 function componentFiles(dir: string): string[] {
