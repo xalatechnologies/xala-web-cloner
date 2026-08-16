@@ -147,9 +147,6 @@ export const STATIC_ROUTES = [
   { path: "/caser", priority: "0.8", changefreq: "monthly" },
   { path: "/slik-vi-jobber", priority: "0.7", changefreq: "monthly" },
   { path: "/priser", priority: "0.8", changefreq: "monthly" },
-  // Short alias of /priser. Must be listed so prerender writes dist/pris/
-  // and a cold hit / crawler is not a 404 before React boots.
-  { path: "/pris", priority: "0.8", changefreq: "monthly" },
   { path: "/teknologi", priority: "0.7", changefreq: "monthly" },
   { path: "/om-oss", priority: "0.7", changefreq: "monthly" },
   { path: "/karriere", priority: "0.6", changefreq: "monthly" },
@@ -273,7 +270,6 @@ const LLMS_PAGE_TITLES: Record<string, string> = {
   "/caser": "Kundecaser",
   "/slik-vi-jobber": "Slik vi jobber",
   "/priser": "Priser",
-  "/pris": "Priser",
   "/teknologi": "Teknologi",
   "/om-oss": "Om oss",
   "/karriere": "Karriere",
