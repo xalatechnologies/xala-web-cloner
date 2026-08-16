@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { GOOGLE_ADS_ID, GOOGLE_ANALYTICS_ID } from '@/lib/analytics/ids';
 
 interface AnalyticsProps {
   microsoftClarityId?: string;
@@ -9,13 +10,12 @@ interface AnalyticsProps {
 const MARKER = 'data-xala-analytics';
 
 /**
- * Loads Clarity and Plausible after the visitor has accepted cookies.
+ * Loads gtag, Clarity and Plausible after the visitor has accepted cookies.
  *
- * The Google tag is NOT here — it lives in index.html and loads for everyone,
- * because a tag that only appears after someone presses "Godta alle" is
- * invisible to Google Ads and Tag Assistant, which never press it. Loading it
- * here as well would run Google's snippet twice, redefining gtag() and
- * double-counting page views.
+ * The Google tag used to live in index.html and fire for every visitor, which
+ * made «Kun nødvendige» a no-op for advertising and analytics. It is gated
+ * here with the other trackers: first HTML, reject, and essential-only must
+ * not inject gtag.js. Accepting all still loads the same two existing ids.
  *
  * These scripts are appended directly rather than through react-helmet-async,
  * which silently never commits a <script> — that bug is why the tags on this
@@ -33,6 +33,21 @@ export const Analytics = ({ microsoftClarityId, plausibleDomain }: AnalyticsProp
       document.head.appendChild(node);
       added.push(node);
     };
+
+    // One loader serves both the Ads and GA4 ids, same snippet as before —
+    // only the moment it is injected has changed.
+    append({
+      async: '',
+      src: `https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`,
+    });
+    append(
+      {},
+      `window.dataLayer = window.dataLayer || [];` +
+        `function gtag(){dataLayer.push(arguments);}` +
+        `gtag('js', new Date());` +
+        `gtag('config', '${GOOGLE_ADS_ID}');` +
+        `gtag('config', '${GOOGLE_ANALYTICS_ID}', { 'anonymize_ip': true });`
+    );
 
     if (microsoftClarityId) {
       append(

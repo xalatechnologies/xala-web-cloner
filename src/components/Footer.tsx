@@ -24,7 +24,7 @@ const Footer = () => {
   const legalLinks = [
     { name: t('footer.links.privacy') || 'Privacy', href: '/privacy' },
     { name: t('footer.links.terms') || 'Terms', href: '/terms' },
-    { name: t('footer.links.cookies') || 'Cookies', href: '/cookies' },
+    { name: t('footer.links.cookies', 'Informasjonskapsler'), href: '/cookies' },
   ];
 
   // Every product points at its own page on this site. Two of the four

@@ -34,8 +34,7 @@ const BloggPage = lazy(() => import('./pages/BloggPage'));
 const BloggPostPage = lazy(() => import('./pages/BloggPostPage'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
-// The Google tag lives in index.html so it loads for every visitor; only these
-// two are consent-gated.
+// All trackers, including gtag, mount only after the visitor accepts cookies.
 const analyticsConfig = {
   microsoftClarityId: MICROSOFT_CLARITY_ID,
   plausibleDomain: PLAUSIBLE_DOMAIN

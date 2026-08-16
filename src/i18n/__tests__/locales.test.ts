@@ -92,6 +92,12 @@ describe('locale parity', () => {
     expect(subtitle(en)).not.toBe(subtitle(ar));
   });
 
+  it('keeps the Norwegian footer cookies label as Informasjonskapsler', () => {
+    const cookies = ((no.footer as Tree).links as Tree).cookies;
+    expect(cookies).toBe('Informasjonskapsler');
+    expect(cookies).not.toBe('Cookies');
+  });
+
   it('does not misspell Leverte as Levererte', () => {
     for (const [lang, tree] of Object.entries(LOCALES)) {
       expect(JSON.stringify(tree), `${lang} still contains Levererte`).not.toMatch(/Levererte/);
