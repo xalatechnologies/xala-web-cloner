@@ -14,6 +14,7 @@
   ],
   "keywords": [
     { "keyword": "saksbehandlingssystem", "target": "/tjenester/saksbehandlingssystem", "intent": "commercial" },
+    { "keyword": "hva koster et saksbehandlingssystem", "target": "/priser", "intent": "commercial" },
     { "keyword": "saksbehandlingssystem kommune", "target": "/tjenester/saksbehandlingssystem", "intent": "commercial" },
     { "keyword": "saksbehandlingsplattform", "target": "/tjenester/saksbehandlingsplattform", "intent": "commercial" },
     { "keyword": "tilskuddsportal", "target": "/tjenester/tilskuddsportal", "intent": "commercial" },

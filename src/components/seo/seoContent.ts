@@ -20,6 +20,7 @@ type PageId =
   | 'cases'
   | 'caseStudy'
   | 'process'
+  | 'pricing'
   | 'technology'
   | 'about'
   | 'contact'
@@ -76,6 +77,13 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
       description:
         'Fra idé til drift: hvordan vi kartlegger behov, utvikler i korte sykluser, tester og forvalter løsningen sammen med kunden.',
       keywords: 'arbeidsmetode, smidig utvikling, prosjektmetodikk, systemutvikling, forvaltning, samarbeid'
+    },
+    pricing: {
+      title: 'Hva koster et saksbehandlingssystem? | Xala',
+      description:
+        'Ingen fast prisliste. Hva som driver kostnaden for et saksbehandlingssystem, hva som inngår, og hvordan vi estimerer etter kartlegging.',
+      keywords:
+        'hva koster et saksbehandlingssystem, pris saksbehandlingssystem, kostnad fagsystem, offentlig sektor, estimat, SSA-S, SSA-L'
     },
     technology: {
       title: 'Teknologi: .NET, Azure, React og Kubernetes | Xala',
@@ -176,6 +184,13 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
         'From idea to operations: how we map requirements, build in short cycles, test, and maintain the solution together with the client.',
       keywords: 'process, agile development, project methodology, software delivery, maintenance, collaboration'
     },
+    pricing: {
+      title: 'What does a case management system cost? | Xala',
+      description:
+        'There is no fixed price list. What drives the cost of a custom public-sector case system, what is included, and how we estimate after discovery.',
+      keywords:
+        'case management system cost, public sector software price, estimate, SSA-S, SSA-L, Norway'
+    },
     technology: {
       title: 'Technology | Xala Technologies',
       description:
@@ -267,6 +282,12 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
       title: 'كيف نعمل | زالا تكنولوجيز',
       description: 'من الفكرة إلى التشغيل: كيف نحدد الاحتياجات، ونطوّر بدورات قصيرة، ونختبر، وندير الحل مع العميل.',
       keywords: 'منهجية العمل, التطوير المرن, إدارة المشاريع, التشغيل, التعاون'
+    },
+    pricing: {
+      title: 'كم تكلفة نظام إدارة القضايا؟ | زالا',
+      description:
+        'لا توجد قائمة أسعار ثابتة. ما الذي يحدد تكلفة نظام إدارة قضايا مخصص للقطاع العام، وما الذي يشمله التقدير، وكيف نقدّره بعد الاستكشاف.',
+      keywords: 'تكلفة نظام إدارة القضايا, سعر البرمجيات للقطاع العام, تقدير, النرويج'
     },
     technology: {
       title: 'التقنيات | زالا تكنولوجيز',

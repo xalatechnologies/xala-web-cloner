@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import WorkProcess from '../components/WorkProcess';
@@ -37,15 +38,26 @@ export default function SlikViJobberPage() {
 
         <WorkProcess headingLevel="h2" />
 
-        {/* The engagement questions belong here rather than on /tjenester,
-            where all eight of them used to sit. See FAQ_TOPICS. */}
+        <p className="container mx-auto max-w-3xl px-4 pb-2 text-center text-lg text-muted-foreground">
+          {t('processPage.priceNoteBefore', 'Spørsmål om pris og hva som driver kostnaden')}{' '}
+          <Link
+            to="/priser"
+            className="font-medium text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            {t('processPage.priceNoteLink', 'finnes på prissiden')}
+          </Link>
+          .
+        </p>
+
+        {/* Time, procurement and aftercare belong here. Cost moved to /priser
+            so the two pages do not emit the same FAQPage questions. */}
         <FAQSection
           id="prosess-faq"
           only={FAQ_TOPICS.process}
           title={t('processPage.faqTitle', 'Før dere setter i gang')}
           description={t(
             'processPage.faqDescription',
-            'Det folk oftest vil vite før de tar kontakt — pris, tid, anskaffelse og hvem som drifter løsningen etterpå.'
+            'Det folk oftest vil vite før de tar kontakt: tid, anskaffelse og hvem som drifter løsningen etterpå.'
           )}
         />
 

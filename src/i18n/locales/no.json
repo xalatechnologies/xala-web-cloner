@@ -18,7 +18,8 @@
     "technology": "Teknologi",
     "technologyDescription": ".NET, Azure og React, og hvorfor vi velger som vi gjør",
     "aboutDescription": "Lær mer om vår misjon og ekspertise",
-    "contactDescription": "Ta kontakt for en uforpliktende samtale"
+    "contactDescription": "Ta kontakt for en uforpliktende samtale",
+    "prices": "Priser"
   },
   "Loading": "Laster",
   "hero": {
@@ -659,12 +660,92 @@
     "title": "Fra første samtale til system i drift",
     "description": "Vi leverer i etapper, ikke som én stor overlevering. Hver etappe gir noe som virker, og noe dere kan ta stilling til før den neste starter.",
     "faqTitle": "Før dere setter i gang",
-    "faqDescription": "Det folk oftest vil vite før de tar kontakt: pris, tid, anskaffelse og hvem som drifter løsningen etterpå.",
+    "faqDescription": "Det folk oftest vil vite før de tar kontakt: tid, anskaffelse og hvem som drifter løsningen etterpå.",
+    "priceNoteBefore": "Spørsmål om pris og hva som driver kostnaden",
+    "priceNoteLink": "finnes på prissiden",
     "ctaEyebrow": "Neste steg",
     "ctaTitle": "Ta en uforpliktende prat",
     "ctaDescription": "Fortell oss hva dere står i, så sier vi hva vi ville gjort først og hva vi ville ventet med.",
     "ctaContact": "Kontakt oss",
     "ctaCases": "Se kundecaser"
+  },
+  "pricesPage": {
+    "eyebrow": "Priser",
+    "title": "Hva koster et saksbehandlingssystem?",
+    "description": "Det finnes ingen fast prisliste. Prisen følger omfanget: hvilke sakstyper dere trenger, hvilke nasjonale felleskomponenter løsningen skal snakke med, og om dere kjøper utvikling, forvaltning eller begge deler.",
+    "whyTitle": "Derfor har vi ikke en prisliste",
+    "whyBody": "Et saksbehandlingssystem for tre sakstyper og et for et direktorat med titalls integrasjoner er ikke samme leveranse. Kontraktsform, arkivkrav og om løsningen skal deles eller stå alene endrer både arbeid og risiko. En tabell med kroner ville enten være for generell til å bruke, eller så spesifikk at den bare gjaldt ett prosjekt.",
+    "driversTitle": "Hva som driver kostnaden",
+    "driversLead": "Dette er postene som faktisk endrer et estimat for et norsk, offentlig fagsystem. Vi priser dem etter kartlegging, ikke som en ferdig pakke.",
+    "drivers": {
+      "cases": {
+        "title": "Sakstyper",
+        "body": "Hvor mange sakstyper, hvilke steg fra innsending til vedtak, og om saksflyten er lik eller ulik per type."
+      },
+      "integrations": {
+        "title": "Nasjonale felleskomponenter",
+        "body": "Altinn, ID-porten, Maskinporten, Folkeregisteret, Enhetsregisteret, KS Fiks og Noark. Tilgang, testmiljø og feilhåndtering tar mer tid enn selve API-kallet."
+      },
+      "accessibility": {
+        "title": "Universell utforming",
+        "body": "WCAG 2.2 AA er et krav for offentlige tjenester. Det er billigere å bygge inn enn å rette etter at løsningen er i drift."
+      },
+      "archive": {
+        "title": "Arkivering",
+        "body": "Noark-integrasjon hører hjemme i datamodellen fra start. Å rekonstruere journalposter etterpå blir dyrt og skjørt."
+      },
+      "migration": {
+        "title": "Datamigrering",
+        "body": "Å flytte saker, dokumenter og historikk fra et eksisterende system er eget arbeid, med egne forutsetninger."
+      },
+      "tenancy": {
+        "title": "Flerleietaker eller egen installasjon",
+        "body": "Delt plattform og egen installasjon har ulik driftskostnad, isolasjon og oppgraderingsrytme."
+      },
+      "contract": {
+        "title": "SSA-S eller SSA-L",
+        "body": "Timebasert utvikling og løpende tjenesteavtale priser risiko ulikt. Valget hører til anskaffelsen, ikke til en ferdig pakke."
+      },
+      "operations": {
+        "title": "Forvaltning etter lansering",
+        "body": "De fleste kostnadene i et fagsystems levetid kommer etter driftsettelse. Oppdateringer, overvåking og videreutvikling avtales separat."
+      }
+    },
+    "scopeTitle": "Hva som inngår, og hva som prises separat",
+    "scope": {
+      "included": {
+        "title": "Vanligvis inkludert",
+        "body": "Kartlegging med forutsetninger, arkitektur og datamodell, utvikling i delleveranser, test og produksjonssetting, og dokumentasjon dere kan overta."
+      },
+      "separate": {
+        "title": "Prises separat",
+        "body": "Integrasjoner mot felleskomponenter dere ikke allerede har avtale på, datamigrering, tilpasning av et eksisterende fagsystem, og forvaltningsavtale etter lansering."
+      }
+    },
+    "processTitle": "Tid, anskaffelse og forvaltning",
+    "processBody": "Spørsmål om fremdrift, offentlige anskaffelser og hvem som drifter løsningen etterpå hører til engasjementet, ikke til denne siden.",
+    "processLink": "Les om tid, anskaffelse og forvaltning",
+    "faqTitle": "Spørsmål om pris",
+    "faqDescription": "Svar på det folk spør om når de skal budsjettere et saksbehandlingssystem. Tid, anskaffelse og forvaltning ligger under Slik vi jobber.",
+    "nextTitle": "Videre herfra",
+    "next": {
+      "contact": {
+        "title": "Be om et estimat",
+        "blurb": "Fortell oss hva dere står i, så sier vi hva vi trenger for å prise."
+      },
+      "services": {
+        "title": "Hva vi bygger",
+        "blurb": "Saksbehandling, portaler, integrasjoner og modernisering."
+      },
+      "process": {
+        "title": "Slik vi jobber",
+        "blurb": "Tid, anskaffelse og hvem som drifter løsningen etterpå."
+      }
+    },
+    "ctaTitle": "Vil dere ha et estimat med forutsetninger?",
+    "ctaDescription": "Fortell oss hva dere står i. Vi sier hva vi trenger å vite for å prise, og hva vi ville ventet med.",
+    "ctaContact": "Kontakt oss",
+    "ctaProcess": "Slik vi jobber"
   },
   "servicesPage": {
     "eyebrow": "Tjenester",

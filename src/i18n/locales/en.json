@@ -18,7 +18,8 @@
     "technology": "Technology",
     "technologyDescription": ".NET, Azure and React, and why we choose as we do",
     "aboutDescription": "Learn about our mission and expertise",
-    "contactDescription": "Get in touch for a non-committal conversation"
+    "contactDescription": "Get in touch for a non-committal conversation",
+    "prices": "Prices"
   },
   "Loading": "Loading",
   "hero": {
@@ -659,12 +660,92 @@
     "title": "From first conversation to system in production",
     "description": "We deliver in stages rather than as one large handover. Each stage produces something that works, and something you can weigh before the next one starts.",
     "faqTitle": "Before you start",
-    "faqDescription": "What people most want to know before getting in touch: cost, time, procurement, and who runs the solution afterwards.",
+    "faqDescription": "What people most want to know before getting in touch: time, procurement, and who runs the solution afterwards.",
+    "priceNoteBefore": "Questions about price and what drives the cost",
+    "priceNoteLink": "are on the prices page",
     "ctaEyebrow": "Next step",
     "ctaTitle": "Have an informal conversation",
     "ctaDescription": "Tell us what you are dealing with, and we will say what we would do first, and what we would leave until later.",
     "ctaContact": "Contact us",
     "ctaCases": "See case studies"
+  },
+  "pricesPage": {
+    "eyebrow": "Prices",
+    "title": "What does a case management system cost?",
+    "description": "There is no fixed price list. The price follows scope: which case types you need, which national components the solution must talk to, and whether you are buying development, operations, or both.",
+    "whyTitle": "Why we do not publish a price list",
+    "whyBody": "A case management system for three case types and one for a directorate with dozens of integrations are not the same delivery. Contract form, archive requirements, and whether the solution is shared or standalone all change both the work and the risk. A table of kroner would either be too generic to use, or so specific that it only described one project.",
+    "driversTitle": "What drives the cost",
+    "driversLead": "These are the items that actually change an estimate for a Norwegian public-sector line-of-business system. We price them after discovery, not as a finished package.",
+    "drivers": {
+      "cases": {
+        "title": "Case types",
+        "body": "How many case types, which steps from submission to decision, and whether the flow is the same or different per type."
+      },
+      "integrations": {
+        "title": "National shared components",
+        "body": "Altinn, ID-porten, Maskinporten, the Population Register, the Register of Legal Entities, KS Fiks and Noark. Access, test environments and error handling take more time than the API call itself."
+      },
+      "accessibility": {
+        "title": "Accessibility",
+        "body": "WCAG 2.2 AA is a requirement for public services. It is cheaper to build in than to fix after the solution is in production."
+      },
+      "archive": {
+        "title": "Archiving",
+        "body": "Noark integration belongs in the data model from the start. Reconstructing journal entries afterwards becomes expensive and fragile."
+      },
+      "migration": {
+        "title": "Data migration",
+        "body": "Moving cases, documents and history from an existing system is its own piece of work, with its own assumptions."
+      },
+      "tenancy": {
+        "title": "Multi-tenant or dedicated install",
+        "body": "A shared platform and a dedicated install have different operating cost, isolation and upgrade rhythm."
+      },
+      "contract": {
+        "title": "SSA-S or SSA-L",
+        "body": "Time-and-materials development and a running service agreement price risk differently. The choice belongs to the procurement, not to a finished package."
+      },
+      "operations": {
+        "title": "Operations after launch",
+        "body": "Most of the cost in a line-of-business system's life comes after go-live. Updates, monitoring and further development are agreed separately."
+      }
+    },
+    "scopeTitle": "What is included, and what is priced separately",
+    "scope": {
+      "included": {
+        "title": "Typically included",
+        "body": "Discovery with stated assumptions, architecture and data model, development in increments, testing and go-live, and documentation you can take over."
+      },
+      "separate": {
+        "title": "Priced separately",
+        "body": "Integrations with shared components you do not already have an agreement for, data migration, adapting an existing line-of-business system, and a maintenance agreement after launch."
+      }
+    },
+    "processTitle": "Time, procurement and operations",
+    "processBody": "Questions about timeline, public procurement and who runs the solution afterwards belong to the engagement, not to this page.",
+    "processLink": "Read about time, procurement and operations",
+    "faqTitle": "Questions about price",
+    "faqDescription": "Answers to what people ask when they need to budget a case management system. Time, procurement and operations sit on How we work.",
+    "nextTitle": "Where to next",
+    "next": {
+      "contact": {
+        "title": "Ask for an estimate",
+        "blurb": "Tell us what you are dealing with, and we will say what we need in order to price it."
+      },
+      "services": {
+        "title": "What we build",
+        "blurb": "Case management, portals, integrations and modernisation."
+      },
+      "process": {
+        "title": "How we work",
+        "blurb": "Time, procurement, and who runs the solution afterwards."
+      }
+    },
+    "ctaTitle": "Want an estimate with stated assumptions?",
+    "ctaDescription": "Tell us what you are dealing with. We will say what we need to know in order to price it, and what we would leave until later.",
+    "ctaContact": "Contact us",
+    "ctaProcess": "How we work"
   },
   "servicesPage": {
     "eyebrow": "Services",

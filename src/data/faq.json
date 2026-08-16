@@ -2,8 +2,23 @@
     "no": [
         {
             "id": "kostnad",
-            "question": "Hva koster et prosjekt hos Xala Technologies?",
-            "answer": "Det avhenger av omfang, men vi starter alltid med et kort kartleggingsmøte og gir deretter et estimat med tydelige forutsetninger. Mindre integrasjoner og avgrensede leveranser starter typisk rundt 150 000 kroner, mens større fagsystemer løper over flere måneder. Vi fakturerer per time eller på fastpris per delleveranse, og dere velger hva som passer anskaffelsen best."
+            "question": "Hva koster et saksbehandlingssystem?",
+            "answer": "Det avhenger av omfang. Vi starter med et kort kartleggingsmøte og gir deretter et estimat med tydelige forutsetninger. Et avgrenset prosjekt og et fagsystem med mange sakstyper, integrasjoner og arkivkrav er ulike leveranser. Vi fakturerer per time eller på fastpris per delleveranse, og dere velger det som passer anskaffelsen."
+        },
+        {
+            "id": "prisliste",
+            "question": "Hvorfor har dere ikke en fast prisliste?",
+            "answer": "Fordi omfanget ikke er det samme fra virksomhet til virksomhet. Antall sakstyper, hvilke felleskomponenter løsningen skal integreres mot, arkivkrav, tilgjengelighet og om dere vil ha flerleietaker eller egen installasjon endrer både arbeid og risiko. En prisliste ville enten være for generell til å bruke, eller så spesifikk at den bare gjaldt ett prosjekt."
+        },
+        {
+            "id": "inkludert",
+            "question": "Hva inngår vanligvis i et estimat, og hva prises separat?",
+            "answer": "Et typisk estimat dekker kartlegging, arkitektur, utvikling i delleveranser, test, produksjonssetting og dokumentasjon dere kan overta. Integrasjoner dere ikke allerede har avtale og tilgang til, datamigrering fra et eksisterende system, og forvaltning etter lansering prises som egne poster, fordi de har egne forutsetninger og egen risiko."
+        },
+        {
+            "id": "kontrakt",
+            "question": "Hvordan påvirker SSA-S og SSA-L prisen?",
+            "answer": "SSA-S priser utvikling per time eller per delleveranse, og passer når omfanget avklares underveis. SSA-L er en løpende tjenesteavtale for drift og forvaltning etter at løsningen er i produksjon. De to avtalene dekker ulike faser, og det er derfor de sjelden kan slås sammen til én pakkepris på forhånd."
         },
         {
             "id": "tid",
@@ -44,8 +59,23 @@
     "en": [
         {
             "id": "kostnad",
-            "question": "What does a project with Xala Technologies cost?",
-            "answer": "It depends on scope, but we always begin with a short discovery meeting and then give an estimate with stated assumptions. Smaller integrations and well-bounded deliveries typically start around NOK 150,000, while larger line-of-business systems run over several months. We bill hourly or at a fixed price per increment, whichever suits your procurement better."
+            "question": "What does a case management system cost?",
+            "answer": "It depends on scope. We always begin with a short discovery meeting and then give an estimate with stated assumptions. A bounded project and a line-of-business system with many case types, integrations and archive requirements are different deliveries. We bill hourly or at a fixed price per increment, whichever suits your procurement."
+        },
+        {
+            "id": "prisliste",
+            "question": "Why do you not publish a fixed price list?",
+            "answer": "Because scope is not the same from one organisation to the next. The number of case types, which national components the solution must integrate with, archive requirements, accessibility, and whether you want multi-tenant or a dedicated install all change both the work and the risk. A price list would either be too generic to use, or so specific that it only described one project."
+        },
+        {
+            "id": "inkludert",
+            "question": "What is typically included in an estimate, and what is priced separately?",
+            "answer": "A typical estimate covers discovery, architecture, development in increments, testing, go-live and documentation you can take over. Integrations you do not already have agreements and access for, data migration from an existing system, and operations after launch are priced as separate items, because they have their own assumptions and their own risk."
+        },
+        {
+            "id": "kontrakt",
+            "question": "How do SSA-S and SSA-L affect the price?",
+            "answer": "SSA-S prices development by the hour or per increment, and fits when scope is clarified along the way. SSA-L is a running service agreement for operations and maintenance after the solution is in production. The two contracts cover different phases, which is why they are rarely folded into one package price in advance."
         },
         {
             "id": "tid",
@@ -86,8 +116,23 @@
     "ar": [
         {
             "id": "kostnad",
-            "question": "ما تكلفة المشروع مع زالا تكنولوجيز؟",
-            "answer": "تعتمد التكلفة على نطاق العمل، لكننا نبدأ دائماً بجلسة استكشاف قصيرة ثم نقدّم تقديراً بافتراضات واضحة. تبدأ عمليات التكامل الصغيرة والمشاريع المحددة عادةً من نحو 150 ألف كرونة نرويجية، أما الأنظمة الكبيرة فتمتد على عدة أشهر. نحاسب بالساعة أو بسعر ثابت لكل مرحلة، حسب ما يناسب إجراءات الشراء لديكم."
+            "question": "كم تكلفة نظام إدارة القضايا؟",
+            "answer": "تعتمد التكلفة على نطاق العمل. نبدأ دائماً بجلسة استكشاف قصيرة ثم نقدّم تقديراً بافتراضات واضحة. المشروع المحدود ونظام الأعمال الذي يضم أنواعاً كثيرة من القضايا وتكاملات ومتطلبات أرشفة هما تسليمان مختلفان. نحاسب بالساعة أو بسعر ثابت لكل مرحلة، حسب ما يناسب إجراءات الشراء لديكم."
+        },
+        {
+            "id": "prisliste",
+            "question": "لماذا لا تنشرون قائمة أسعار ثابتة؟",
+            "answer": "لأن النطاق يختلف من جهة إلى أخرى. عدد أنواع القضايا، والمكوّنات الوطنية التي يجب التكامل معها، ومتطلبات الأرشفة وإمكانية الوصول، وما إذا كنتم تريدون منصة متعددة المستأجرين أو تثبيتاً خاصاً، كلها تغيّر العمل والمخاطر. قائمة أسعار ستكون إما عامة جداً فلا تُستخدم، أو محددة جداً فلا تصف إلا مشروعاً واحداً."
+        },
+        {
+            "id": "inkludert",
+            "question": "ما الذي يشمله التقدير عادةً، وما الذي يُسعَّر على حدة؟",
+            "answer": "يشمل التقدير النموذجي الاستكشاف والهندسة المعمارية والتطوير على مراحل والاختبار والإطلاق والتوثيق الذي يمكنكم تسلّمه. أما التكاملات التي لا تملكون اتفاقاً أو صلاحية لها بعد، وترحيل البيانات من نظام قائم، والتشغيل بعد الإطلاق، فتُسعَّر كبنود مستقلة لأن لها افتراضاتها ومخاطرها الخاصة."
+        },
+        {
+            "id": "kontrakt",
+            "question": "كيف يؤثر عقدا SSA-S وSSA-L في السعر؟",
+            "answer": "يسعّر SSA-S التطوير بالساعة أو لكل مرحلة، ويناسب عندما يتضح النطاق أثناء العمل. أما SSA-L فهو اتفاق خدمة مستمر للتشغيل والصيانة بعد دخول الحل إلى الإنتاج. يغطي العقدان مرحلتين مختلفتين، ولذلك نادراً ما يُجمعان في سعر حزمة واحد مسبقاً."
         },
         {
             "id": "tid",
