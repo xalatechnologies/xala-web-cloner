@@ -84,4 +84,30 @@ describe('prerendered static routes', () => {
       expect(paths, `${target} missing from STATIC_ROUTES`).toContain(target);
     }
   });
+
+  it('copies every CANONICAL_ALIASES key in the prerender write loop', () => {
+    // Aliases are not sitemap URLs, so a loc-only verify-dist check cannot
+    // see them. Deleting this loop 404s /pris on a cold hit again.
+    const prerender = readFileSync(resolve(__dirname, '../../../../scripts/prerender-blog.ts'), 'utf8');
+    const verifyDist = readFileSync(resolve(__dirname, '../../../../scripts/verify-dist.mjs'), 'utf8');
+    expect(Object.keys(CANONICAL_ALIASES).length).toBeGreaterThan(0);
+    expect(prerender, 'prerender must copy each alias onto dist/<alias>/index.html').toContain(
+      'Object.entries(CANONICAL_ALIASES)'
+    );
+    expect(prerender).toMatch(/write\(\s*path\.join\(\s*DIST,\s*alias\.replace/);
+    expect(verifyDist, 'verify-dist must require a file for every alias').toContain(
+      'CANONICAL_ALIASES'
+    );
+  });
+
+  it('lets verify-dist parse the same alias keys the prerender copies', () => {
+    // Same regex as scripts/verify-dist.mjs. If the object is reformatted and
+    // the parser goes silent, /pris would stop being required in dist/.
+    const routeRules = readFileSync(resolve(__dirname, '../routeRules.ts'), 'utf8');
+    const block = routeRules.match(/export const CANONICAL_ALIASES[\s\S]*?=\s*\{([^}]*)\}/);
+    expect(block, 'CANONICAL_ALIASES object not found in routeRules.ts').toBeTruthy();
+    const parsed = [...block![1].matchAll(/['"](\/[^'"]+)['"]\s*:/g)].map((m) => m[1]);
+    expect(parsed.sort()).toEqual(Object.keys(CANONICAL_ALIASES).sort());
+    expect(parsed).toContain('/pris');
+  });
 });
