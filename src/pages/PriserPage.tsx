@@ -154,6 +154,7 @@ export default function PriserPage() {
         <FAQSection
           id="priser-faq"
           only={FAQ_TOPICS.pricing}
+          includeSchema={false}
           title={t('pricesPage.faqTitle', 'Spørsmål om pris')}
           description={t(
             'pricesPage.faqDescription',

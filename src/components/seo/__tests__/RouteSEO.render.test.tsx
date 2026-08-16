@@ -100,6 +100,29 @@ describe('RouteSEO renders head tags', () => {
     expect(head.canonical()).toBe('https://xala.no/transparens');
   });
 
+  it('gives /faq its own title and canonical', async () => {
+    const expected = getPageSEO('faq', 'no');
+    renderAt('/faq');
+
+    await waitFor(() => expect(document.title).toBe(expected.title));
+    expect(head.meta('description')).toBe(expected.description);
+    expect(head.canonical()).toBe('https://xala.no/faq');
+  });
+
+  it('points the /personvern alias at the /privacy canonical', async () => {
+    const expected = getPageSEO('privacy', 'no');
+    renderAt('/personvern');
+
+    await waitFor(() => expect(document.title).toBe(expected.title));
+    expect(head.canonical()).toBe('https://xala.no/privacy');
+  });
+
+  it('points the /use-cases alias at the /caser canonical', async () => {
+    renderAt('/use-cases');
+
+    await waitFor(() => expect(head.canonical()).toBe('https://xala.no/caser'));
+  });
+
   it('emits no placeholder verification tags', async () => {
     renderAt('/');
 

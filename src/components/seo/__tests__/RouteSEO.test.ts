@@ -43,7 +43,7 @@ describe('RouteSEO route coverage', () => {
   });
 
   it('does not mark the static pages as self-managed', () => {
-    for (const path of ['/', '/tjenester', '/kontakt', '/karriere', '/teknologi', '/priser', '/status', '/transparens']) {
+    for (const path of ['/', '/tjenester', '/kontakt', '/karriere', '/teknologi', '/priser', '/faq', '/status', '/transparens']) {
       expect(resolveRoute(path).selfManaged ?? false, `${path} needs RouteSEO`).toBe(false);
     }
   });
@@ -89,6 +89,20 @@ describe('canonicalFor', () => {
     expect(canonicalFor('/transparency/')).toBe('https://xala.no/transparens');
     expect(resolveRoute('/transparency').pageId).toBe('transparens');
     expect(resolveRoute('/transparens').pageId).toBe('transparens');
+  });
+
+  it('rewrites the /personvern alias onto /privacy so the two URLs share one canonical', () => {
+    expect(canonicalFor('/personvern')).toBe('https://xala.no/privacy');
+    expect(canonicalFor('/personvern/')).toBe('https://xala.no/privacy');
+    expect(resolveRoute('/personvern').pageId).toBe('privacy');
+    expect(resolveRoute('/privacy').pageId).toBe('privacy');
+  });
+
+  it('rewrites the /use-cases alias onto /caser so the two URLs share one canonical', () => {
+    expect(canonicalFor('/use-cases')).toBe('https://xala.no/caser');
+    expect(canonicalFor('/use-cases/')).toBe('https://xala.no/caser');
+    expect(resolveRoute('/use-cases').pageId).toBe('cases');
+    expect(resolveRoute('/caser').pageId).toBe('cases');
   });
 });
 

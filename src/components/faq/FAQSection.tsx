@@ -10,13 +10,11 @@ import { generateFAQSchema } from '@/components/seo/sectionSchemas';
 import { faqsFor, faqsForTopic } from './faqs';
 
 /**
- * The questions buyers actually ask, answered on the page and mirrored as
- * FAQPage structured data.
+ * The questions buyers actually ask.
  *
- * The schema is emitted here rather than from RouteSEO on purpose: Google
- * requires FAQPage markup to describe FAQs that are visible on the page, so
- * tying the two together means the markup cannot outlive the content. Drop this
- * component from a page and its schema goes with it.
+ * FAQPage schema is optional: /faq emits it for the full set. Landing-page
+ * sections keep the visible accordion but pass includeSchema={false} so the
+ * site does not publish two FAQPage graphs.
  */
 interface FAQSectionProps {
   /** Rendered as the section heading; defaults to a translated fallback. */
@@ -27,9 +25,23 @@ interface FAQSectionProps {
   description?: string;
   /** Anchor and landmark id, so two FAQ sections could coexist on one page. */
   id?: string;
+  /**
+   * FAQPage JSON-LD. Default true for standalone use; set false on pages that
+   * only show a subset, so /faq remains the single FAQPage on the site.
+   */
+  includeSchema?: boolean;
+  /** Heading + intro. Set false when the page already has that chrome. */
+  includeIntro?: boolean;
 }
 
-const FAQSection = ({ title, only, description, id = 'faq' }: FAQSectionProps) => {
+const FAQSection = ({
+  title,
+  only,
+  description,
+  id = 'faq',
+  includeSchema = true,
+  includeIntro = true,
+}: FAQSectionProps) => {
   const { t, i18n } = useTranslation();
   const faqs = only ? faqsForTopic(i18n.language, only) : faqsFor(i18n.language);
 
@@ -40,26 +52,35 @@ const FAQSection = ({ title, only, description, id = 'faq' }: FAQSectionProps) =
   const headingId = `${id}-heading`;
 
   return (
-    <section id={id} className="py-20 md:py-24 bg-muted/30" aria-labelledby={headingId}>
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(generateFAQSchema(faqs.map(({ question, answer }) => ({ question, answer }))))}
-        </script>
-      </Helmet>
+    <section
+      id={id}
+      className="py-20 md:py-24 bg-muted/30"
+      aria-labelledby={includeIntro ? headingId : undefined}
+      aria-label={includeIntro ? undefined : heading}
+    >
+      {includeSchema && (
+        <Helmet>
+          <script type="application/ld+json">
+            {JSON.stringify(generateFAQSchema(faqs.map(({ question, answer }) => ({ question, answer }))))}
+          </script>
+        </Helmet>
+      )}
 
       <div className="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center">
-          <h2
-            id={headingId}
-            className="section-heading"
-          >
-            {heading}
-          </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            {description ??
-              t('faq.description', 'Svar på det folk spør oss om oftest. Finner du ikke svaret, ta kontakt.')}
-          </p>
-        </div>
+        {includeIntro && (
+          <div className="mb-12 text-center">
+            <h2
+              id={headingId}
+              className="section-heading"
+            >
+              {heading}
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              {description ??
+                t('faq.description', 'Svar på det folk spør oss om oftest. Finner du ikke svaret, ta kontakt.')}
+            </p>
+          </div>
+        )}
 
         <Accordion type="single" collapsible className="w-full">
           {faqs.map((faq) => (

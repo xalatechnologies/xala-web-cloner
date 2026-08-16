@@ -375,7 +375,7 @@
     "title": "Hva vi har levert",
     "description": "Xala har samarbeidet med ledende norske og internasjonale organisasjoner om komplekse digitale plattformer, systemintegrasjoner og skybaserte løsninger.",
     "stats": {
-      "projects": "Levererte prosjekter",
+      "projects": "Leverte prosjekter",
       "experience": "Års erfaring",
       "users": "Sluttbrukere betjent"
     },
@@ -617,6 +617,7 @@
     }
   },
   "faq": {
+    "eyebrow": "FAQ",
     "title": "Ofte stilte spørsmål",
     "description": "Svar på det folk spør oss om oftest. Finner du ikke svaret, ta kontakt."
   },

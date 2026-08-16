@@ -27,10 +27,10 @@ export function faqsFor(language: string): FAQEntry[] {
  * "hva koster et saksbehandlingssystem". Timeline, procurement and aftercare
  * stay on /slik-vi-jobber.
  *
- * The split is disjoint on purpose. Google asks that FAQPage markup describe
- * FAQs visible on that page, and two URLs publishing the same FAQPage is the
- * duplication that guidance exists to prevent. Each page now shows, and marks
- * up, its own questions.
+ * The split is disjoint on purpose so each landing page shows the questions
+ * that belong there. FAQPage structured data is emitted only on /faq, which
+ * publishes the full set — two URLs marking up the same FAQPage is the
+ * duplication Google's guidance exists to prevent.
  */
 export const FAQ_TOPICS = {
   /** What we can do: capabilities, stack, compliance, reach. */

@@ -49,11 +49,12 @@ export default function SlikViJobberPage() {
           .
         </p>
 
-        {/* Time, procurement and aftercare belong here. Cost moved to /priser
-            so the two pages do not emit the same FAQPage questions. */}
+        {/* Time, procurement and aftercare belong here. Cost lives on /priser.
+            FAQPage schema is emitted on /faq, not here. */}
         <FAQSection
           id="prosess-faq"
           only={FAQ_TOPICS.process}
+          includeSchema={false}
           title={t('processPage.faqTitle', 'Før dere setter i gang')}
           description={t(
             'processPage.faqDescription',

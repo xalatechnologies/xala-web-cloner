@@ -91,6 +91,27 @@ describe('locale parity', () => {
     expect(subtitle(no)).not.toBe(subtitle(en));
     expect(subtitle(en)).not.toBe(subtitle(ar));
   });
+
+  it('does not misspell Leverte as Levererte', () => {
+    for (const [lang, tree] of Object.entries(LOCALES)) {
+      expect(JSON.stringify(tree), `${lang} still contains Levererte`).not.toMatch(/Levererte/);
+    }
+    const offenders: string[] = [];
+    const walk = (dir: string) => {
+      for (const entry of readdirSync(dir, { withFileTypes: true })) {
+        const full = join(dir, entry.name);
+        if (entry.isDirectory()) {
+          if (entry.name !== 'node_modules' && entry.name !== '__tests__') walk(full);
+        } else if (/\.(tsx?|json|md)$/.test(entry.name)) {
+          if (readFileSync(full, 'utf8').includes('Levererte')) {
+            offenders.push(full.replace(`${SRC}/`, ''));
+          }
+        }
+      }
+    };
+    walk(SRC);
+    expect(offenders, `Levererte still in:\n  ${offenders.join('\n  ')}`).toEqual([]);
+  });
 });
 
 describe('keys referenced in code', () => {
