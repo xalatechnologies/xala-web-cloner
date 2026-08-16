@@ -330,6 +330,10 @@
     "detailsHeading": "Kontaktinformasjon",
     "formHeading": "Send oss en melding"
   },
+  "bookDemo": {
+    "title": "Book en demo",
+    "description": "Fortell oss om behovet ditt, så viser vi hvordan Xala Technologies kan hjelpe."
+  },
   "common": {
     "showMore": "Vis mer",
     "showLess": "Vis mindre",

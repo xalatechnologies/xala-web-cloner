@@ -24,6 +24,7 @@ const PriserPage = lazy(() => import('./pages/PriserPage'));
 const TeknologiPage = lazy(() => import('./pages/TeknologiPage'));
 const OmOssPage = lazy(() => import('./pages/OmOssPage'));
 const KontaktPage = lazy(() => import('./pages/KontaktPage'));
+const BookDemoPage = lazy(() => import('./pages/BookDemoPage'));
 const KarrierePage = lazy(() => import('./pages/KarrierePage'));
 const CaseStudyDetailPage = lazy(() => import('./pages/CaseStudyDetailPage'));
 const BloggPage = lazy(() => import('./pages/BloggPage'));
@@ -66,6 +67,7 @@ const App = () => {
               <Route path="/teknologi" element={<TeknologiPage />} />
               <Route path="/om-oss" element={<OmOssPage />} />
               <Route path="/kontakt" element={<KontaktPage />} />
+              <Route path="/book-demo" element={<BookDemoPage />} />
               {/* Restored likewise — Footer links to /karriere. */}
               <Route path="/karriere" element={<KarrierePage />} />
               <Route path="/blogg" element={<BloggPage />} />
