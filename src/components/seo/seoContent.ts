@@ -21,6 +21,8 @@ type PageId =
   | 'caseStudy'
   | 'process'
   | 'pricing'
+  | 'status'
+  | 'transparens'
   | 'technology'
   | 'about'
   | 'contact'
@@ -85,6 +87,18 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
         'Ingen fast prisliste. Hva som driver kostnaden for et saksbehandlingssystem, hva som inngår, og hvordan vi estimerer etter kartlegging.',
       keywords:
         'hva koster et saksbehandlingssystem, pris saksbehandlingssystem, kostnad fagsystem, offentlig sektor, estimat, SSA-S, SSA-L'
+    },
+    status: {
+      title: 'Driftsstatus | Xala Technologies',
+      description:
+        'Hvordan Xala Technologies følger opp driften av løsningene vi har levert, varsler ved hendelser, og rapporterer oppetid til kundene.',
+      keywords: 'driftsstatus, oppetid, hendelser, drift, forvaltning, SLA'
+    },
+    transparens: {
+      title: 'Åpenhet: oppetid, SLA og drift | Xala Technologies',
+      description:
+        'Hvordan Xala Technologies AS drifter det vi bygger: oppetids- og SLA-forpliktelser, sikkerhet og hvem du kontakter ved en hendelse.',
+      keywords: 'transparens, oppetid, SLA, driftsavtale, ISO 27001, sikkerhet, status'
     },
     technology: {
       title: 'Teknologi: .NET, Azure, React og Kubernetes | Xala',
@@ -198,6 +212,18 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
       keywords:
         'case management system cost, public sector software price, estimate, SSA-S, SSA-L, Norway'
     },
+    status: {
+      title: 'Status | Xala Technologies',
+      description:
+        'How Xala Technologies follows up the operation of the solutions we deliver, alerts on incidents, and reports uptime to clients.',
+      keywords: 'status, uptime, incidents, operations, maintenance, SLA'
+    },
+    transparens: {
+      title: 'Transparency: Uptime, SLA and Operations | Xala Technologies',
+      description:
+        'How Xala Technologies AS runs what we build: uptime and SLA commitments, security practices, and who to contact if something breaks.',
+      keywords: 'transparency, uptime, SLA, operations agreement, ISO 27001, security, status'
+    },
     technology: {
       title: 'Technology | Xala Technologies',
       description:
@@ -301,6 +327,18 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
       description:
         'لا توجد قائمة أسعار ثابتة. ما الذي يحدد تكلفة نظام إدارة قضايا مخصص للقطاع العام، وما الذي يشمله التقدير، وكيف نقدّره بعد الاستكشاف.',
       keywords: 'تكلفة نظام إدارة القضايا, سعر البرمجيات للقطاع العام, تقدير, النرويج'
+    },
+    status: {
+      title: 'حالة التشغيل | زالا تكنولوجيز',
+      description:
+        'كيف تتابع زالا تكنولوجيز تشغيل الحلول التي نقدمها، وتنبّه العملاء عند وقوع حوادث، وتُبلغهم بمعدل التشغيل بانتظام.',
+      keywords: 'حالة التشغيل, معدل التشغيل, الحوادث, التشغيل, الصيانة'
+    },
+    transparens: {
+      title: 'الشفافية: التشغيل واتفاقية مستوى الخدمة | زالا تكنولوجيز',
+      description:
+        'كيف تُشغّل زالا تكنولوجيز ما تبنيه: التزامات وقت التشغيل واتفاقية مستوى الخدمة، ممارسات الأمن، ومن تتواصل معه عند حدوث عطل.',
+      keywords: 'الشفافية, وقت التشغيل, اتفاقية مستوى الخدمة, اتفاقية التشغيل, ISO 27001, الأمن, الحالة'
     },
     technology: {
       title: 'التقنيات | زالا تكنولوجيز',

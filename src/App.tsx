@@ -21,6 +21,8 @@ const TjenesteDetaljPage = lazy(() => import('./pages/TjenesteDetaljPage'));
 const CaserPage = lazy(() => import('./pages/CaserPage'));
 const SlikViJobberPage = lazy(() => import('./pages/SlikViJobberPage'));
 const PriserPage = lazy(() => import('./pages/PriserPage'));
+const StatusPage = lazy(() => import('./pages/StatusPage'));
+const TransparensPage = lazy(() => import('./pages/TransparensPage'));
 const TeknologiPage = lazy(() => import('./pages/TeknologiPage'));
 const OmOssPage = lazy(() => import('./pages/OmOssPage'));
 const KontaktPage = lazy(() => import('./pages/KontaktPage'));
@@ -64,6 +66,9 @@ const App = () => {
               <Route path="/slik-vi-jobber" element={<SlikViJobberPage />} />
               <Route path="/priser" element={<PriserPage />} />
               <Route path="/pris" element={<Navigate to="/priser" replace />} />
+              <Route path="/status" element={<StatusPage />} />
+              <Route path="/transparens" element={<TransparensPage />} />
+              <Route path="/transparency" element={<Navigate to="/transparens" replace />} />
               <Route path="/teknologi" element={<TeknologiPage />} />
               <Route path="/om-oss" element={<OmOssPage />} />
               <Route path="/kontakt" element={<KontaktPage />} />

@@ -751,6 +751,28 @@
     "ctaContact": "Contact us",
     "ctaProcess": "How we work"
   },
+  "transparensPage": {
+    "eyebrow": "Transparency",
+    "title": "Uptime, SLA and operations",
+    "description": "We are direct about how we run what we build: the uptime and SLA commitments we take on, how security is built into the work, and who to contact if something breaks.",
+    "cards": {
+      "sla": {
+        "title": "Uptime and SLA agreements",
+        "description": "Uptime and SLA targets are agreed per project and set out in the operations agreement. We have delivered national infrastructure with 99.99% uptime; for less critical systems we agree lower thresholds and lighter follow-up, matched to how critical the solution is."
+      },
+      "security": {
+        "title": "Operations and security",
+        "description": "We are ISO 27001 certified. Operations and security are part of the delivery from day one — operability and availability are design decisions we make with you, not an afterthought."
+      },
+      "incidents": {
+        "title": "Incidents and status",
+        "description": "If you experience downtime or a deviation from the agreed SLA, contact us directly. We report status and follow-up through the channel set out in your operations agreement."
+      }
+    },
+    "ctaTitle": "Questions about operations or SLA?",
+    "ctaDescription": "Tell us about your system, and we will walk through which uptime and SLA terms fit.",
+    "ctaContact": "Contact us"
+  },
   "servicesPage": {
     "eyebrow": "Services",
     "title": "Systems built to last years",

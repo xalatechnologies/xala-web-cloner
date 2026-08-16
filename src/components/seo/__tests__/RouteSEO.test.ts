@@ -43,7 +43,7 @@ describe('RouteSEO route coverage', () => {
   });
 
   it('does not mark the static pages as self-managed', () => {
-    for (const path of ['/', '/tjenester', '/kontakt', '/karriere', '/teknologi', '/priser']) {
+    for (const path of ['/', '/tjenester', '/kontakt', '/karriere', '/teknologi', '/priser', '/status', '/transparens']) {
       expect(resolveRoute(path).selfManaged ?? false, `${path} needs RouteSEO`).toBe(false);
     }
   });
@@ -82,6 +82,13 @@ describe('canonicalFor', () => {
     expect(canonicalFor('/pris/')).toBe('https://xala.no/priser');
     expect(resolveRoute('/pris').pageId).toBe('pricing');
     expect(resolveRoute('/priser').pageId).toBe('pricing');
+  });
+
+  it('rewrites the /transparency alias onto /transparens so the two URLs share one canonical', () => {
+    expect(canonicalFor('/transparency')).toBe('https://xala.no/transparens');
+    expect(canonicalFor('/transparency/')).toBe('https://xala.no/transparens');
+    expect(resolveRoute('/transparency').pageId).toBe('transparens');
+    expect(resolveRoute('/transparens').pageId).toBe('transparens');
   });
 });
 
