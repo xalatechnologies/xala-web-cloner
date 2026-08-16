@@ -38,4 +38,9 @@ describe('TransparensPage', () => {
     const body = container.textContent?.toLowerCase() ?? '';
     expect(body).toMatch(/oppetid|uptime|sla|tilgjengelighet|drift/);
   });
+
+  it('does not claim an unsourced 99.99% uptime figure', () => {
+    const { container } = renderPage();
+    expect(container.textContent ?? '').not.toMatch(/99[,.]99/);
+  });
 });

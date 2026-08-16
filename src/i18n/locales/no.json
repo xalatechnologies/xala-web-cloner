@@ -758,7 +758,7 @@
     "cards": {
       "sla": {
         "title": "Oppetid og SLA-avtaler",
-        "description": "Oppetids- og SLA-krav avtales per prosjekt og forankres i driftsavtalen. For nasjonal infrastruktur har vi levert løsninger med 99,99 % oppetid; for mindre kritiske systemer avtaler vi lavere terskler og enklere oppfølging tilpasset hvor kritisk løsningen er."
+        "description": "Oppetids- og SLA-krav avtales per prosjekt og forankres i driftsavtalen. Terskler og oppfølging tilpasses hvor kritisk løsningen er."
       },
       "security": {
         "title": "Forvaltning og sikkerhet",
@@ -772,6 +772,17 @@
     "ctaTitle": "Spørsmål om drift eller SLA?",
     "ctaDescription": "Fortell oss om systemet deres, så går vi gjennom hvilke oppetids- og SLA-vilkår som passer.",
     "ctaContact": "Kontakt oss"
+  },
+  "statusPage": {
+    "eyebrow": "Drift",
+    "title": "Ingen offentlig statusside",
+    "description": "Vi har ikke et offentlig, sanntids dashbord. Oppetid og hendelser rapporteres til kunden gjennom kanalen som er avtalt i driftsavtalen.",
+    "transparensBefore": "For oppetidsforpliktelser, SLA og sertifiseringer, se",
+    "transparensLink": "siden om åpenhet",
+    "transparensAfter": ".",
+    "ctaTitle": "Mer om drift og SLA",
+    "ctaDescription": "Åpenhetssiden beskriver hvordan vi avtaler oppetid, og hvem dere kontakter ved en hendelse.",
+    "ctaTransparens": "Åpenhet om drift"
   },
   "servicesPage": {
     "eyebrow": "Tjenester",

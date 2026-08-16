@@ -758,7 +758,7 @@
     "cards": {
       "sla": {
         "title": "Uptime and SLA agreements",
-        "description": "Uptime and SLA targets are agreed per project and set out in the operations agreement. We have delivered national infrastructure with 99.99% uptime; for less critical systems we agree lower thresholds and lighter follow-up, matched to how critical the solution is."
+        "description": "Uptime and SLA targets are agreed per project and set out in the operations agreement. Thresholds and follow-up are matched to how critical the solution is."
       },
       "security": {
         "title": "Operations and security",
@@ -772,6 +772,17 @@
     "ctaTitle": "Questions about operations or SLA?",
     "ctaDescription": "Tell us about your system, and we will walk through which uptime and SLA terms fit.",
     "ctaContact": "Contact us"
+  },
+  "statusPage": {
+    "eyebrow": "Operations",
+    "title": "No public status board",
+    "description": "We do not publish a public, real-time dashboard. Uptime and incidents are reported to the client through the channel set out in the operations agreement.",
+    "transparensBefore": "For uptime commitments, SLA and certifications, see",
+    "transparensLink": "the transparency page",
+    "transparensAfter": ".",
+    "ctaTitle": "More on operations and SLA",
+    "ctaDescription": "The transparency page describes how we agree uptime, and who to contact if something breaks.",
+    "ctaTransparens": "Operations transparency"
   },
   "servicesPage": {
     "eyebrow": "Services",

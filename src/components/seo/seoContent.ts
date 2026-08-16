@@ -91,8 +91,8 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
     status: {
       title: 'Driftsstatus | Xala Technologies',
       description:
-        'Hvordan Xala Technologies følger opp driften av løsningene vi har levert, varsler ved hendelser, og rapporterer oppetid til kundene.',
-      keywords: 'driftsstatus, oppetid, hendelser, drift, forvaltning, SLA'
+        'Ingen offentlig statusside. Oppetid og hendelser rapporteres til kunden gjennom driftsavtalen, ikke som et sanntids dashbord.',
+      keywords: 'driftsstatus, statusside, oppetid, hendelser, drift, forvaltning'
     },
     transparens: {
       title: 'Åpenhet: oppetid, SLA og drift | Xala Technologies',
@@ -215,8 +215,8 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
     status: {
       title: 'Status | Xala Technologies',
       description:
-        'How Xala Technologies follows up the operation of the solutions we deliver, alerts on incidents, and reports uptime to clients.',
-      keywords: 'status, uptime, incidents, operations, maintenance, SLA'
+        'There is no public status board. Uptime and incidents are reported to the client through the operations agreement, not a real-time dashboard.',
+      keywords: 'status, status board, uptime, incidents, operations, maintenance'
     },
     transparens: {
       title: 'Transparency: Uptime, SLA and Operations | Xala Technologies',
@@ -331,8 +331,8 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
     status: {
       title: 'حالة التشغيل | زالا تكنولوجيز',
       description:
-        'كيف تتابع زالا تكنولوجيز تشغيل الحلول التي نقدمها، وتنبّه العملاء عند وقوع حوادث، وتُبلغهم بمعدل التشغيل بانتظام.',
-      keywords: 'حالة التشغيل, معدل التشغيل, الحوادث, التشغيل, الصيانة'
+        'لا توجد صفحة حالة عامة. يُبلَّغ العميل بوقت التشغيل والحوادث عبر اتفاقية التشغيل، لا عبر لوحة معلومات آنية.',
+      keywords: 'حالة التشغيل, صفحة الحالة, معدل التشغيل, الحوادث, التشغيل'
     },
     transparens: {
       title: 'الشفافية: التشغيل واتفاقية مستوى الخدمة | زالا تكنولوجيز',

@@ -31,12 +31,15 @@ describe('status and transparens pages', () => {
     expect(resolveRoute('/transparency').pageId).not.toBe('notFound');
   });
 
-  it('links from the status page to the canonical transparens page', () => {
-    render(
+  it('says there is no public status board and links to /transparens', () => {
+    const { container } = render(
       <MemoryRouter initialEntries={['/status']}>
         <StatusPage />
       </MemoryRouter>
     );
+
+    const body = container.textContent?.toLowerCase() ?? '';
+    expect(body).toMatch(/ingen offentlig statusside|no public status|dashbord|dashboard/);
 
     const links = screen.getAllByRole('link').filter((a) => a.getAttribute('href') === '/transparens');
     expect(links.length).toBeGreaterThan(0);

@@ -19,7 +19,7 @@ export default function TransparensPage() {
       title: t('transparensPage.cards.sla.title', 'Oppetid og SLA-avtaler'),
       description: t(
         'transparensPage.cards.sla.description',
-        'Oppetids- og SLA-krav avtales per prosjekt og forankres i driftsavtalen. For nasjonal infrastruktur har vi levert løsninger med 99,99 % oppetid; for mindre kritiske systemer avtaler vi lavere terskler og enklere oppfølging tilpasset hvor kritisk løsningen er.'
+        'Oppetids- og SLA-krav avtales per prosjekt og forankres i driftsavtalen. Terskler og oppfølging tilpasses hvor kritisk løsningen er.'
       )
     },
     {
