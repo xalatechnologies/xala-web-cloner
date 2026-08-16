@@ -10,6 +10,7 @@ import {
   FormControl,
   FormField,
   FormItem,
+  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { useToast } from "@/components/ui/use-toast";
@@ -22,7 +23,7 @@ interface ContactFormProps {
 }
 
 export const ContactForm = ({ defaultSubject = '' }: ContactFormProps) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { toast } = useToast();
 
   const formSchema = z.object({
@@ -90,7 +91,7 @@ export const ContactForm = ({ defaultSubject = '' }: ContactFormProps) => {
   return (
     <div className="rounded-2xl p-4 sm:p-6 md:p-8 bg-card text-card-foreground border border-border w-full flex-1 dark:bg-gradient-to-br dark:from-white/5 dark:to-transparent dark:border-white/10">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col h-full space-y-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col h-full space-y-4" noValidate>
           <div className="space-y-4 flex-1">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FormField
@@ -98,11 +99,13 @@ export const ContactForm = ({ defaultSubject = '' }: ContactFormProps) => {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
+                    <FormLabel>{t('contact.form.name.label', 'Navn')}</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
+                        required
+                        autoComplete="name"
                         placeholder={t('contact.form.name.placeholder')}
-                        aria-label={t('contact.form.name.placeholder')}
                         className="text-base sm:text-lg h-14 bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary dark:bg-white/5 dark:text-white dark:border-white/10"
                       />
                     </FormControl>
@@ -115,12 +118,14 @@ export const ContactForm = ({ defaultSubject = '' }: ContactFormProps) => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
+                    <FormLabel>{t('contact.form.email.label', 'E-post')}</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
                         type="email"
+                        required
+                        autoComplete="email"
                         placeholder={t('contact.form.email.placeholder')}
-                        aria-label={t('contact.form.email.placeholder')}
                         className="text-base sm:text-lg h-14 bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary dark:bg-white/5 dark:text-white dark:border-white/10"
                       />
                     </FormControl>
@@ -134,11 +139,12 @@ export const ContactForm = ({ defaultSubject = '' }: ContactFormProps) => {
               name="subject"
               render={({ field }) => (
                 <FormItem>
+                  <FormLabel>{t('contact.form.subject.label', 'Emne')}</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
+                      required
                       placeholder={t('contact.form.subject.placeholder')}
-                        aria-label={t('contact.form.subject.placeholder')}
                       className="text-base sm:text-lg h-14 bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary dark:bg-white/5 dark:text-white dark:border-white/10"
                     />
                   </FormControl>
@@ -151,11 +157,12 @@ export const ContactForm = ({ defaultSubject = '' }: ContactFormProps) => {
               name="message"
               render={({ field }) => (
                 <FormItem>
+                  <FormLabel>{t('contact.form.message.label', 'Melding')}</FormLabel>
                   <FormControl>
                     <Textarea
                       {...field}
+                      required
                       placeholder={t('contact.form.message.placeholder')}
-                        aria-label={t('contact.form.message.placeholder')}
                       className="resize-none min-h-[266px] p-4 text-base sm:text-lg bg-background border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary dark:bg-white/5 dark:text-white dark:border-white/10"
                     />
                   </FormControl>

@@ -17,16 +17,16 @@ vi.mock('react-i18next', () => ({
 }));
 
 function fillValidForm() {
-  fireEvent.change(screen.getByPlaceholderText('contact.form.name.placeholder'), {
+  fireEvent.change(screen.getByLabelText('contact.form.name.label'), {
     target: { value: 'Jane Doe' },
   });
-  fireEvent.change(screen.getByPlaceholderText('contact.form.email.placeholder'), {
+  fireEvent.change(screen.getByLabelText('contact.form.email.label'), {
     target: { value: 'jane@example.com' },
   });
-  fireEvent.change(screen.getByPlaceholderText('contact.form.subject.placeholder'), {
+  fireEvent.change(screen.getByLabelText('contact.form.subject.label'), {
     target: { value: 'Hello there' },
   });
-  fireEvent.change(screen.getByPlaceholderText('contact.form.message.placeholder'), {
+  fireEvent.change(screen.getByLabelText('contact.form.message.label'), {
     target: { value: 'This is a long enough test message.' },
   });
 }
@@ -105,27 +105,44 @@ describe('ContactForm', () => {
 
   it('leaves subject blank by default so /kontakt stays a blank enquiry', () => {
     render(<ContactForm />);
-    expect(screen.getByPlaceholderText('contact.form.subject.placeholder')).toHaveValue('');
+    expect(screen.getByLabelText('contact.form.subject.label')).toHaveValue('');
   });
 
   it('pre-fills subject when given a default, and uses it on submit', async () => {
     render(<ContactForm defaultSubject="Book en demo" />);
-    expect(screen.getByPlaceholderText('contact.form.subject.placeholder')).toHaveValue(
-      'Book en demo'
-    );
+    expect(screen.getByLabelText('contact.form.subject.label')).toHaveValue('Book en demo');
 
-    fireEvent.change(screen.getByPlaceholderText('contact.form.name.placeholder'), {
+    fireEvent.change(screen.getByLabelText('contact.form.name.label'), {
       target: { value: 'Jane Doe' },
     });
-    fireEvent.change(screen.getByPlaceholderText('contact.form.email.placeholder'), {
+    fireEvent.change(screen.getByLabelText('contact.form.email.label'), {
       target: { value: 'jane@example.com' },
     });
-    fireEvent.change(screen.getByPlaceholderText('contact.form.message.placeholder'), {
+    fireEvent.change(screen.getByLabelText('contact.form.message.label'), {
       target: { value: 'This is a long enough test message.' },
     });
     submit();
 
     await waitFor(() => expect(openMock).toHaveBeenCalledTimes(1));
     expect(decodeURIComponent(openMock.mock.calls[0][0])).toContain('[xala.no] Book en demo');
+  });
+
+  it('gives every field a visible associated label and keeps placeholders as hints', () => {
+    render(<ContactForm />);
+
+    const fields = [
+      { label: 'contact.form.name.label', placeholder: 'contact.form.name.placeholder' },
+      { label: 'contact.form.email.label', placeholder: 'contact.form.email.placeholder' },
+      { label: 'contact.form.subject.label', placeholder: 'contact.form.subject.placeholder' },
+      { label: 'contact.form.message.label', placeholder: 'contact.form.message.placeholder' },
+    ] as const;
+
+    for (const { label, placeholder } of fields) {
+      const control = screen.getByLabelText(label);
+      expect(control).toBeVisible();
+      expect(control).toHaveAttribute('required');
+      expect(control).toHaveAttribute('placeholder', placeholder);
+      expect(screen.getByText(label)).toBeVisible();
+    }
   });
 });
