@@ -43,5 +43,7 @@ describe('BloggPage cover frames', () => {
     const frame = img!.parentElement!;
     expect(frame.className).toContain('aspect-[40/21]');
     expect(frame.className).not.toContain('aspect-[4/3]');
+    // Hover zoom re-crops the baked-in title; keep the cover at 1:1 with the frame.
+    expect(img!.className).not.toContain('group-hover:scale');
   });
 });
