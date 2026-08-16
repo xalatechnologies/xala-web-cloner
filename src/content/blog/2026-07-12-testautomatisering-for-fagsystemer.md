@@ -3,7 +3,7 @@ slug: testautomatisering-for-fagsystemer
 title: "Testautomatisering for fagsystemer: hva som er verdt å automatisere"
 seoTitle: "Testautomatisering for fagsystemer"
 description: "Full dekning er ikke målet. Målet er å vite at en endring ikke brøt et vedtak som er fattet riktig i ti år."
-date: 2026-09-15
+date: 2026-07-12
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"

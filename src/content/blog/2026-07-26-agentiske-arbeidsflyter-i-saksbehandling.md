@@ -3,7 +3,7 @@ slug: agentiske-arbeidsflyter-i-saksbehandling
 title: "Agentiske arbeidsflyter i saksbehandling: hvor de hører hjemme, og hvor de ikke gjør det"
 seoTitle: "Agentiske arbeidsflyter i saksbehandling"
 description: "En agent som kan handle på egen hånd er nyttig i forarbeidet og farlig i vedtaket. Skillet er verdt å gjøre eksplisitt."
-date: 2026-09-29
+date: 2026-07-26
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "IT-leder"

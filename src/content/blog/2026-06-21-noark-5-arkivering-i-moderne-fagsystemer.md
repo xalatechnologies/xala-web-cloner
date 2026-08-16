@@ -3,7 +3,7 @@ slug: noark-5-arkivering-i-moderne-fagsystemer
 title: "Noark 5 i moderne fagsystemer: arkivering som følger av saksgangen"
 seoTitle: "Noark 5-arkivering i moderne fagsystemer"
 description: "Arkivering blir dyr når den tenkes på til slutt. Bygget inn i datamodellen er den nesten gratis."
-date: 2026-08-25
+date: 2026-06-21
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"

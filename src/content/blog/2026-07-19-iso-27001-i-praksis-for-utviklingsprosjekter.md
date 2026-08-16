@@ -3,7 +3,7 @@ slug: iso-27001-i-praksis-for-utviklingsprosjekter
 title: "ISO 27001 i praksis: hva sertifiseringen faktisk krever av et utviklingsprosjekt"
 seoTitle: "ISO 27001 i utviklingsprosjekter"
 description: "Sertifiseringen er ikke et stempel. Den er en samling rutiner som må være synlige i måten koden blir til på."
-date: 2026-09-22
+date: 2026-07-19
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "IT-leder"

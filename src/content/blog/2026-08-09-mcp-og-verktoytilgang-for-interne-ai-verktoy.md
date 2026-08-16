@@ -3,7 +3,7 @@ slug: mcp-og-verktoytilgang-for-interne-ai-verktoy
 title: "Model Context Protocol: hvordan interne AI-verktøy får tilgang til systemene deres"
 seoTitle: "Model Context Protocol for interne AI-verktøy"
 description: "Den vanskelige delen av et internt AI-verktøy er ikke modellen. Det er hva den får lov til å se."
-date: 2026-10-13
+date: 2026-08-09
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
