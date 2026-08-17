@@ -1,6 +1,6 @@
 {
-  "startDate": "2026-07-17",
-  "endDate": "2026-08-14",
+  "startDate": "2026-07-18",
+  "endDate": "2026-08-15",
   "queries": [
     {
       "keys": [
@@ -16,9 +16,9 @@
         "xala"
       ],
       "clicks": 2,
-      "impressions": 10,
-      "ctr": 0.2,
-      "position": 1.1
+      "impressions": 11,
+      "ctr": 0.18181818181818182,
+      "position": 1.0909090909090908
     },
     {
       "keys": [
@@ -88,9 +88,9 @@
         "automatisert system"
       ],
       "clicks": 0,
-      "impressions": 5,
+      "impressions": 6,
       "ctr": 0,
-      "position": 42.6
+      "position": 42.333333333333336
     },
     {
       "keys": [
@@ -109,6 +109,15 @@
       "impressions": 1,
       "ctr": 0,
       "position": 52
+    },
+    {
+      "keys": [
+        "ccaas providers norway"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 82
     },
     {
       "keys": [
@@ -142,18 +151,18 @@
         "fagsystem"
       ],
       "clicks": 0,
-      "impressions": 95,
+      "impressions": 100,
       "ctr": 0,
-      "position": 21.63157894736842
+      "position": 21.45
     },
     {
       "keys": [
         "furst forum"
       ],
       "clicks": 0,
-      "impressions": 9,
+      "impressions": 10,
       "ctr": 0,
-      "position": 5.666666666666667
+      "position": 5.5
     },
     {
       "keys": [
@@ -259,9 +268,9 @@
         "modernisering av fagsystemer"
       ],
       "clicks": 0,
-      "impressions": 33,
+      "impressions": 36,
       "ctr": 0,
-      "position": 11.454545454545455
+      "position": 10.63888888888889
     },
     {
       "keys": [
@@ -286,18 +295,18 @@
         "saksbehandlingssystem"
       ],
       "clicks": 0,
-      "impressions": 111,
+      "impressions": 112,
       "ctr": 0,
-      "position": 67.23423423423424
+      "position": 67.21428571428571
     },
     {
       "keys": [
         "saksbehandlingssystem?\""
       ],
       "clicks": 0,
-      "impressions": 18,
+      "impressions": 19,
       "ctr": 0,
-      "position": 61.44444444444444
+      "position": 61.36842105263158
     },
     {
       "keys": [
@@ -594,9 +603,9 @@
         "https://xala.no/"
       ],
       "clicks": 32,
-      "impressions": 173,
-      "ctr": 0.18497109826589594,
-      "position": 9.965317919075144
+      "impressions": 175,
+      "ctr": 0.18285714285714286,
+      "position": 10.337142857142856
     },
     {
       "keys": [
@@ -621,9 +630,9 @@
         "https://xala.no/caser"
       ],
       "clicks": 1,
-      "impressions": 73,
-      "ctr": 0.0136986301369863,
-      "position": 5.712328767123288
+      "impressions": 74,
+      "ctr": 0.013513513513513514,
+      "position": 6.743243243243243
     },
     {
       "keys": [
@@ -657,9 +666,9 @@
         "https://xala.no/blogg/automatisering-av-saksbehandling-hva-boer-og-ikke"
       ],
       "clicks": 0,
-      "impressions": 238,
+      "impressions": 241,
       "ctr": 0,
-      "position": 57.19327731092437
+      "position": 57.170124481327804
     },
     {
       "keys": [
@@ -702,9 +711,9 @@
         "https://xala.no/blogg/modernisere-fagsystem-uten-driftsstans"
       ],
       "clicks": 0,
-      "impressions": 127,
+      "impressions": 132,
       "ctr": 0,
-      "position": 22.1496062992126
+      "position": 21.992424242424242
     },
     {
       "keys": [
@@ -747,9 +756,9 @@
         "https://xala.no/caser/furst-forum"
       ],
       "clicks": 0,
-      "impressions": 39,
+      "impressions": 40,
       "ctr": 0,
-      "position": 5.435897435897436
+      "position": 5.4
     },
     {
       "keys": [
@@ -891,9 +900,9 @@
         "https://xala.no/produkter"
       ],
       "clicks": 0,
-      "impressions": 18,
+      "impressions": 19,
       "ctr": 0,
-      "position": 3.3333333333333335
+      "position": 3.263157894736842
     },
     {
       "keys": [
@@ -936,9 +945,9 @@
         "https://xala.no/tjenester/modernisering-av-fagsystemer"
       ],
       "clicks": 0,
-      "impressions": 50,
+      "impressions": 53,
       "ctr": 0,
-      "position": 20.02
+      "position": 18.9811320754717
     }
   ],
   "index": null
