@@ -6,6 +6,7 @@ import {
   localizedCardTitle,
   localizedSeo,
   normalizeCaseLang,
+  visibleTechChips,
 } from '../localized';
 import { caserEntries } from '@/data/caser-page-entries';
 
@@ -128,6 +129,57 @@ describe('localizedCardExcerpt', () => {
 
     const altinn = localizeCaseStudy(caseStudies.find((item) => item.slug === 'altinn')!, 'no');
     expect(altinn.objectives.join(' ')).toMatch(/99,99 %/);
+  });
+
+  it('shows Nordre Follo tech chips in Norwegian on nb-NO without inventing kroner or SLA', () => {
+    const study = caseStudies.find(
+      (item) => item.slug === 'nordre-follo-tilskuddsportal-bevillingsportal'
+    );
+    expect(study).toBeTruthy();
+    const no = localizeCaseStudy(study!, 'no');
+    const en = localizeCaseStudy(study!, 'en');
+    const chips = visibleTechChips(no).join(' | ');
+
+    expect(chips).toMatch(/Autentiseringstjenester/);
+    expect(chips).toMatch(/Kommunale integrasjoner/);
+    expect(chips).toMatch(/Rollestyrt tilgangskontroll/);
+    expect(chips).toMatch(/Kommunale systemintegrasjoner/);
+    expect(chips).toMatch(/Testing og validering/);
+    expect(chips).toMatch(/Driftsstøtte/);
+    expect(chips).toMatch(/Overvåking og driftsklarhet/);
+    expect(chips).not.toMatch(/Authentication services/);
+    expect(chips).not.toMatch(/Municipal integrations/);
+    expect(chips).not.toMatch(/Role-based access control/);
+    expect(chips).not.toMatch(/Municipal system integrations/);
+    expect(chips).not.toMatch(/Testing and validation/);
+    expect(chips).not.toMatch(/Deployment support/);
+    expect(chips).not.toMatch(/Monitoring and operational readiness/);
+    expect(chips).toMatch(/React/);
+    expect(chips).toMatch(/TypeScript/);
+    expect(chips).toMatch(/\.NET/);
+    expect(JSON.stringify(no)).not.toMatch(/kr\s?\d|NOK\s?\d/i);
+    expect(visibleTechChips(en).join(' ')).toMatch(/Authentication services/);
+
+    const altinn = localizeCaseStudy(caseStudies.find((item) => item.slug === 'altinn')!, 'no');
+    expect(altinn.objectives.join(' ')).toMatch(/99,99 %/);
+  });
+
+  it('drops the XWEB-179 English chip phrases from every nb-NO case URL', () => {
+    const leftover = [
+      'Authentication services',
+      'Municipal integrations',
+      'Role-based access control',
+      'Municipal system integrations',
+      'Testing and validation',
+      'Deployment support',
+      'Monitoring and operational readiness',
+    ];
+    for (const study of caseStudies) {
+      const chips = visibleTechChips(localizeCaseStudy(study, 'no'));
+      for (const phrase of leftover) {
+        expect(chips, `${study.slug} still shows “${phrase}”`).not.toContain(phrase);
+      }
+    }
   });
 
   it('collapses locale tags to the three languages that are authored', () => {
