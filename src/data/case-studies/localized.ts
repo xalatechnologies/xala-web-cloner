@@ -43,6 +43,23 @@ export function localizedCardExcerpt(
 }
 
 /**
+ * Visible card title on /caser. Same source as the detail-page h1, so the
+ * listing and the case cannot disagree about the customer's name.
+ */
+export function localizedCardTitle(
+  slug: string | undefined,
+  fallback: string,
+  language: string
+): string {
+  if (!slug) return fallback;
+  const study = caseStudyBySlug(slug);
+  if (!study) return fallback;
+
+  const localized = localizeCaseStudy(study, language);
+  return localized.card?.title ?? localized.title ?? fallback;
+}
+
+/**
  * Title and description a crawler should see for this case study.
  *
  * The base `seo` object is English ("Nordre Follo Municipality Case Study").
@@ -76,4 +93,52 @@ export function norwegianCaseTitle(title: string): string {
     .replace(/\s+\|/g, ' |')
     .replace(/\s{2,}/g, ' ')
     .trim();
+}
+
+function norwegianVisibleTitle(title: string): string {
+  return title.replace(/\bMunicipality\b/g, 'kommune').replace(/\s{2,}/g, ' ').trim();
+}
+
+/**
+ * Visible case-study fields in the reader's language.
+ *
+ * SEO is handled separately by `localizedSeo` (XWEB-169). This is the on-page
+ * body: h1, sector pill, leveranser, brukergrupper, gjennomføring, architecture.
+ */
+export function localizeCaseStudy(study: CaseStudy, language: string): CaseStudy {
+  const lang = normalizeCaseLang(language);
+  const locale = lang === 'en' ? undefined : study.translations?.[lang];
+  if (!locale) {
+    return lang === 'no'
+      ? { ...study, title: norwegianVisibleTitle(study.title), seo: localizedSeo(study, 'no') }
+      : study;
+  }
+
+  return {
+    ...study,
+    title: locale.title ?? (lang === 'no' ? norwegianVisibleTitle(study.title) : study.title),
+    client: locale.client ?? study.client,
+    industry: locale.industry ?? study.industry,
+    sector: locale.sector ?? study.sector,
+    deliveryModel: locale.deliveryModel ?? study.deliveryModel,
+    duration: locale.duration ?? study.duration,
+    budget: locale.budget ?? study.budget,
+    status: locale.status ?? study.status,
+    subtitle: locale.subtitle ?? study.subtitle,
+    summary: locale.summary ?? study.summary,
+    challenge: locale.challenge ?? study.challenge,
+    objectives: locale.objectives ?? study.objectives,
+    solution: locale.solution ? { ...study.solution, ...locale.solution } : study.solution,
+    timeline: locale.timeline ?? study.timeline,
+    outcomes: locale.outcomes ?? study.outcomes,
+    capabilities: locale.capabilities ?? study.capabilities,
+    scope: locale.scope ?? study.scope,
+    role: locale.role ?? study.role,
+    architecture: locale.architecture ?? study.architecture,
+    architectureDiagram: locale.architectureDiagram
+      ? { ...study.architectureDiagram, ...locale.architectureDiagram }
+      : study.architectureDiagram,
+    card: locale.card ? { ...study.card, ...locale.card } : study.card,
+    seo: localizedSeo(study, lang),
+  };
 }

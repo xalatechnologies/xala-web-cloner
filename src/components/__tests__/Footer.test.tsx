@@ -17,6 +17,18 @@ describe('Footer legal row', () => {
     expect(screen.queryByRole('link', { name: 'Cookies' })).not.toBeInTheDocument();
   });
 
+  it('labels the solutions /caser link Caser, not Cases', () => {
+    render(
+      <MemoryRouter>
+        <Footer />
+      </MemoryRouter>
+    );
+
+    const caser = screen.getByRole('link', { name: 'Caser' });
+    expect(caser).toHaveAttribute('href', '/caser');
+    expect(screen.queryByRole('link', { name: 'Cases' })).not.toBeInTheDocument();
+  });
+
   it('points a crawlable footer link at /faq', () => {
     render(
       <MemoryRouter>

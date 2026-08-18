@@ -16,6 +16,7 @@ role: "Grunnlegger, Xala Technologies"
 readingMinutes: 4                               # optional; derived from the body
 tag: "IT-leder"                                 # one audience tag
 cover: "/images/blog/noe.webp"                  # optional, under public/
+alt: "Kort norsk alt som navngir temaet"       # optional; otherwise derived from seoTitle/title
 keywords: ["systemutvikling", "azure"]
 lang: no                                        # no (default) | en
 draft: false                                    # true keeps it out of everything

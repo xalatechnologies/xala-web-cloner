@@ -61,8 +61,8 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
     products: {
       title: 'Produkter: Digilist, Digiskjema og Xaheen | Xala',
       description:
-        'Norchain, Xaheen AI Builder og DigiList — egne produkter utviklet av Xala Technologies for norsk offentlig sektor og næringsliv.',
-      keywords: 'Norchain, Xaheen AI Builder, DigiList, norske programvareprodukter, AI-verktøy, digitale plattformer'
+        'Digilist, Digiskjema og Xaheen. Egne produkter utviklet av Xala Technologies for norsk offentlig sektor og næringsliv.',
+      keywords: 'Digilist, Digiskjema, Xaheen, norske programvareprodukter, AI-verktøy, digitale plattformer'
     },
     cases: {
       title: 'Kundecaser fra offentlig sektor | Xala',
@@ -190,10 +190,10 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
         'case management system, grant portal, licensing portal, Altinn integration, Maskinporten, legacy modernisation, caseworking automation, public sector software Norway'
     },
     products: {
-      title: 'Products | Xala Technologies',
+      title: 'Products: Digilist, Digiskjema and Xaheen | Xala',
       description:
-        'Norchain, Xaheen AI Builder and DigiList — products built by Xala Technologies for the Norwegian public sector and private business.',
-      keywords: 'Norchain, Xaheen AI Builder, DigiList, Norwegian software products, AI tooling, digital platforms'
+        'Digilist, Digiskjema and Xaheen. Products built by Xala Technologies for the Norwegian public sector and private business.',
+      keywords: 'Digilist, Digiskjema, Xaheen, Norwegian software products, AI tooling, digital platforms'
     },
     cases: {
       title: 'Case Studies | Xala Technologies',
@@ -316,9 +316,9 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
       keywords: 'نظام إدارة القضايا, بوابة المنح, بوابة التراخيص, تكامل Altinn, Maskinporten, تحديث الأنظمة, أتمتة المعالجة, برمجيات القطاع العام'
     },
     products: {
-      title: 'منتجاتنا | زالا تكنولوجيز',
-      description: 'نورتشين، وزاهين AI Builder، ودیجي‌ليست — منتجات من تطوير زالا تكنولوجيز للقطاع العام والشركات في النرويج.',
-      keywords: 'نورتشين, زاهين, ديجي ليست, منتجات برمجية, أدوات ذكاء اصطناعي, منصات رقمية'
+      title: 'المنتجات: Digilist وDigiskjema وXaheen | زالا',
+      description: 'Digilist وDigiskjema وXaheen. منتجات من تطوير زالا تكنولوجيز للقطاع العام والشركات في النرويج.',
+      keywords: 'Digilist, Digiskjema, Xaheen, منتجات برمجية, أدوات ذكاء اصطناعي, منصات رقمية'
     },
     cases: {
       title: 'دراسات حالة | زالا تكنولوجيز',

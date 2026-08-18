@@ -11,7 +11,7 @@
     "services": "Services",
     "servicesDescription": "Complete spectrum of technology services for modern businesses",
     "products": "Products",
-    "productsDescription": "Digilist, Digiskjema, Xaheen and Norchain",
+    "productsDescription": "Digilist, Digiskjema and Xaheen",
     "cases": "Cases",
     "casesDescription": "Explore our successful project implementations",
     "workProcessDescription": "Our structured approach from idea to implementation",
@@ -131,7 +131,7 @@
     },
     "products": {
       "title": "Our Core Products",
-      "description": "Four products built from the same parts we use in client projects.",
+      "description": "Three products. Digilist, Digiskjema and Xaheen, built from the same parts we use in client projects.",
       "viewAll": "View all products",
       "available": "Available",
       "beta": "Beta",
@@ -255,7 +255,7 @@
       "status": "Live"
     },
     "title": "Our core products",
-    "description": "Four products built from the same parts we use in client projects.",
+    "description": "Three products. Digilist, Digiskjema and Xaheen, built from the same parts we use in client projects.",
     "comingSoon": "Soon",
     "readMore": "Read more"
   },
@@ -817,8 +817,8 @@
   },
   "productsPage": {
     "eyebrow": "Products",
-    "title": "Finished solutions we already run",
-    "description": "Three products built from the same parts we use in client projects, and maintained the same way.",
+    "title": "Products: Digilist, Digiskjema and Xaheen",
+    "description": "Three products. Digilist, Digiskjema and Xaheen, built from the same parts we use in client projects, and maintained the same way.",
     "ctaTitle": "Does any of this fit?",
     "ctaDescription": "The products adapt. Tell us what you need and we will say whether it is a configuration or a project.",
     "ctaContact": "Contact us",

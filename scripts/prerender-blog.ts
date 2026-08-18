@@ -26,7 +26,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-import { parsePosts, publishedPosts, relatedPosts } from "../src/lib/blog/posts";
+import { coverAlt, parsePosts, publishedPosts, relatedPosts } from "../src/lib/blog/posts";
 import { extractFaq, faqJsonLd } from "../src/lib/blog/toc";
 import { getPageSEO } from "../src/components/seo/seoContent";
 import { CANONICAL_ALIASES, resolveRoute } from "../src/components/seo/routeRules";
@@ -287,7 +287,7 @@ function webPageJsonLd(path: string, copy: { title: string; description: string 
 
 function postArticleHtml(post: BlogPost, related: BlogPost[]): string {
   const cover = post.cover
-    ? `<img src="${escapeHtml(post.cover)}" alt="" width="1200" height="675" />`
+    ? `<img src="${escapeHtml(post.cover)}" alt="${escapeHtml(coverAlt(post))}" width="1200" height="675" />`
     : "";
   const relatedHtml = related.length
     ? `<section aria-labelledby="relaterte"><h2 id="relaterte">Relaterte artikler</h2><ul>${related

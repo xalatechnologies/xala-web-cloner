@@ -11,8 +11,8 @@
     "services": "Tjenester",
     "servicesDescription": "Komplett spektrum av teknologitjenester for moderne bedrifter",
     "products": "Produkter",
-    "productsDescription": "Digilist, Digiskjema, Xaheen og Norchain",
-    "cases": "Cases",
+    "productsDescription": "Digilist, Digiskjema og Xaheen",
+    "cases": "Caser",
     "casesDescription": "Utforsk våre vellykkede prosjektimplementeringer",
     "workProcessDescription": "Vår strukturerte tilnærming fra idé til implementering",
     "technology": "Teknologi",
@@ -131,7 +131,7 @@
     },
     "products": {
       "title": "Våre kjerneprodukter",
-      "description": "Fire produkter bygget av de samme delene vi bruker i kundeprosjekter.",
+      "description": "Tre produkter. Digilist, Digiskjema og Xaheen, bygget av de samme delene vi bruker i kundeprosjekter.",
       "viewAll": "Se alle produkter",
       "available": "Tilgjengelig",
       "beta": "Beta",
@@ -247,15 +247,15 @@
     "xaheen": {
       "title": "Xaheen",
       "description": "AI-drevet applikasjonsbygger som lar deg lage komplette webapplikasjoner med naturlig språk.",
-      "status": "Live"
+      "status": "Kommer"
     },
     "norchain": {
       "title": "Norchain",
       "description": "Komplett blockchain-operativsystem for digital handel med betalinger, regnskap og governance.",
-      "status": "Live"
+      "status": "Kommer"
     },
     "title": "Våre kjerneprodukter",
-    "description": "Fire produkter bygget av de samme delene vi bruker i kundeprosjekter.",
+    "description": "Tre produkter. Digilist, Digiskjema og Xaheen, bygget av de samme delene vi bruker i kundeprosjekter.",
     "comingSoon": "Kommer",
     "readMore": "Les mer"
   },
@@ -380,7 +380,7 @@
       "experience": "Års erfaring",
       "users": "Sluttbrukere betjent"
     },
-    "fullCase": "Full case",
+    "fullCase": "Komplett case",
     "clearAll": "Nullstill",
     "sector": "Sektor",
     "allSectors": "Alle sektorer",
@@ -392,7 +392,7 @@
     "clearAllFilters": "Nullstill alle filtre",
     "casesTotal": "caser totalt",
     "cases": "caser",
-    "withFullCase": "med full case study",
+    "withFullCase": "med komplette caser",
     "sectors": {
       "public_sector": "Offentlig sektor",
       "aviation": "Luftfart",
@@ -817,8 +817,8 @@
   },
   "productsPage": {
     "eyebrow": "Produkter",
-    "title": "Ferdige løsninger vi allerede drifter",
-    "description": "Tre produkter bygget av de samme delene vi bruker i kundeprosjekter, og forvaltet på samme måte.",
+    "title": "Produkter: Digilist, Digiskjema og Xaheen",
+    "description": "Tre produkter. Digilist, Digiskjema og Xaheen, bygget av de samme delene vi bruker i kundeprosjekter, og forvaltet på samme måte.",
     "ctaTitle": "Passer noe av dette til dere?",
     "ctaDescription": "Produktene tilpasses. Fortell oss hva dere trenger, så sier vi om det er en tilpasning eller et prosjekt.",
     "ctaContact": "Kontakt oss",

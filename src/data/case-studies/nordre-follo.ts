@@ -240,6 +240,14 @@ export const nordreFolloCaseStudy: CaseStudy = {
   },
   translations: {
     no: {
+      title: 'Nordre Follo kommune',
+      client: 'Nordre Follo kommune',
+      industry: 'Offentlig sektor / kommunale digitale tjenester',
+      sector: 'Offentlig sektor / kommunale tjenester',
+      deliveryModel: 'Konsulentleveranse',
+      duration: '12–18 måneder',
+      status: 'Levert',
+      budget: 'Konfidensielt',
       subtitle: 'Leveranse av digitale tilskudds- og bevillingsportaler med moderne arkitektur, React og .NET-implementasjon, og tilpasning til kommunale arkitekturprinsipper',
       summary: 'Nordre Follo kommune trengte moderne digitale portaler for å håndtere tilskuddssøknader og bevillinger — og erstatte manuelle prosesser med strukturerte digitale arbeidsflyter. Xala leverte React og .NET-baserte portaler med samsvar til kommunale arkitekturprinsipper, og forbedret tjenestekvalitet og effektivitet for innbyggere og saksbehandlere.',
       challenge: [
@@ -256,16 +264,157 @@ export const nordreFolloCaseStudy: CaseStudy = {
         'Levere sikker innbyggerautentisering og rollestyrte tilgangskontroller',
         'Forbedre tjenesteeffektivitet og innbyggertilfredshet for kommunale portaler',
       ],
+      role: [
+        'Arkitektur',
+        'Behovsanalyse',
+        'Utvikling',
+        'Integrasjon',
+        'Testing',
+        'Driftsstøtte',
+        'Teknisk rådgivning',
+      ],
+      scope: [
+        'Tilskuddsportal',
+        'Bevillingsportal',
+        'Kommunale digitale tjenester',
+        'Arkitekturprinsipper',
+        'Arbeidsflyt for innbyggere og administrasjon',
+      ],
       solution: {
         overview: 'Xala leverte digitale portaler for tilskudd og bevillinger bygget med React og .NET, og en arkitektur som følger Nordre Follo kommunes prinsipper. Portalene inkluderer arbeidsflytsstøtte for søknadsbehandling, rollestyrt tilgang for saksbehandlere og innbyggervendte skjemaer med innebygd validering.',
+        modules: [
+          'Tilskuddsportal for tilskuddsarbeidsflyter',
+          'Bevillingsportal for bevillings- og tillatelsesarbeidsflyter',
+          'Digitale skjemaer og statushåndtering for søkere',
+          'Saksbehandlingsgrensesnitt for administrasjonen',
+          'Backend-tjenester for arbeidsflyt og validering',
+          'API-baserte integrasjoner mot kommunale systemer',
+          'Integrasjon for autentisering og tilgangsstyring',
+          'Testing og driftsstøtte',
+        ],
+        users: [
+          'Innbyggere som søker kommunale tilskudd eller bevillinger',
+          'Organisasjoner som søker kommunal finansiering eller tillatelser',
+          'Kommunale saksbehandlere som behandler søknader og saker',
+          'Kommunale administratorer og ledere som følger opp arbeidsflyt og tjenestekvalitet',
+        ],
       },
+      timeline: [
+        {
+          phase: 'Behovsanalyse',
+          description:
+            'Tilskudds- og bevillingsarbeidsflyter ble analysert sammen med kommunale interessenter og omsatt til strukturerte tjeneste- og systemkrav for Tilskuddsportalen og Bevillingsportalen.',
+        },
+        {
+          phase: 'Arkitektur',
+          description:
+            'Løsningsarkitekturen ble definert i tråd med kommunale arkitekturprinsipper, inkludert portalstruktur, tjenestegrenser, dataansvar og integrasjonspunkter.',
+        },
+        {
+          phase: 'Utvikling',
+          description:
+            'Frontend- og backend-funksjoner for søker- og administrasjonsflyter ble implementert med React, TypeScript, .NET og SQL Server på Azure.',
+        },
+        {
+          phase: 'Integrasjon',
+          description:
+            'Portaltjenestene ble integrert med omkringliggende kommunale systemer, autentiseringstjenester og støttende driftskomponenter, og validert for pålitelig drift.',
+        },
+        {
+          phase: 'Testing',
+          description:
+            'Funksjonell testing og validering styrket brukervennlighet, korrekthet og driftstrygghet for både søker- og administrasjonsreiser.',
+        },
+        {
+          phase: 'Produksjonssetting og stabilisering',
+          description:
+            'Oppdraget støttet kontrollert utrulling av portalene og bidro til et sterkere digitalt fundament for kommunal tjenesteleveranse.',
+        },
+      ],
       outcomes: [
         'Digitale tilskudds- og bevillingsportaler levert som erstatning for manuelle prosesser.',
         'Redusert behandlingstid for søknader via strukturert arbeidsflyt og automatisering.',
         'Forbedret innbyggeropplevelse med brukervennlige skjemaer og søknadssporingskapasiteter.',
         'Samsvar med kommunale arkitekturprinsipper som letter fremtidig plattformintegrasjon.',
       ],
-      card: { excerpt: 'Leveranse av digitale tilskudds- og bevillingsportaler med moderne arkitektur, React og .NET-implementasjon, og samsvar med kommunale arkitekturprinsipper.' },
+      capabilities: [
+        'Digitale arbeidsflyter for tilskuddssøknader',
+        'Digitale arbeidsflyter for bevillinger og tillatelser',
+        'Søker- og administrasjonsopplevelser i portalene',
+        '.NET-baserte arbeidsflyt- og forretningstjenester',
+        'API-baserte kommunale integrasjoner',
+        'Strukturert datahåndtering i SQL Server',
+        'Azure-basert hosting og driftsstøtte',
+        'Arkitektur i tråd med kommunale prinsipper',
+        'Integrert testing og driftsklarhet',
+      ],
+      architecture: {
+        presentation: [
+          'Tilskuddsportal i React og TypeScript',
+          'Bevillingsportal i React og TypeScript',
+          'Søkerflyter og skjemaer',
+          'Administrative saksbehandlingsgrensesnitt',
+        ],
+        services: [
+          '.NET-backendtjenester for arbeidsflyt',
+          'Validerings- og regelmotorer',
+          'Støttetjenester for saksbehandling',
+          'Varsling og støttende tjenestekomponenter',
+        ],
+        integrations: [
+          'API-er som kobler portalene til kommunale systemer',
+          'Autentiseringstjenester for sikker tilgang for innbyggere og ansatte',
+          'Varsling og støttende driftstjenester',
+        ],
+        data: [
+          'SQL Server for søknads- og saksdata',
+          'Strukturerte datatjenester for arbeidsflytstatus og metadata',
+          'Status- og revisjonsregistre som støtter administrativ saksbehandling',
+        ],
+        infrastructure: [
+          'Azure-basert hostingsmiljø',
+          'Driftsstøtte for utrulling i kommunen',
+          'Overvåking og driftsklarhet for offentlig bruk',
+        ],
+        security: [
+          'Autentiseringstjenester integrert med kommunale identitetsløsninger',
+          'Rollestyrt tilgang for søkere, saksbehandlere og administratorer',
+          'Sikker håndtering av søknads- og saksdata',
+        ],
+      },
+      architectureDiagram: {
+        title: 'Nordre Follo – arkitektur for tilskudds- og bevillingsportaler',
+        layers: [
+          {
+            name: 'Brukere',
+            components: ['Innbyggere', 'Organisasjoner', 'Kommunale saksbehandlere', 'Administratorer'],
+          },
+          {
+            name: 'Portaler',
+            components: ['Tilskuddsportal', 'Bevillingsportal', 'Søkerflyter', 'Administrasjonsgrensesnitt'],
+          },
+          {
+            name: 'Applikasjonstjenester',
+            components: ['.NET-backendtjenester', 'Valideringslogikk', 'Arbeidsflyttjenester', 'Saksbehandlingsstøtte'],
+          },
+          {
+            name: 'Integrasjonslag',
+            components: ['API-er', 'Kommunale systemer', 'Autentiseringstjenester', 'Varsling og støttetjenester'],
+          },
+          {
+            name: 'Datalag',
+            components: ['SQL Server', 'Søknadsdata', 'Saksdata', 'Metadata og statusregistre'],
+          },
+          {
+            name: 'Infrastruktur / leveranse',
+            components: ['Azure-hosting', 'Testlag', 'Driftsstøtte', 'Overvåking / driftsklarhet'],
+          },
+        ],
+      },
+      card: {
+        title: 'Nordre Follo kommune',
+        excerpt: 'Leveranse av digitale tilskudds- og bevillingsportaler med moderne arkitektur, React og .NET-implementasjon, og samsvar med kommunale arkitekturprinsipper.',
+      },
       seo: { description: 'Se hvordan Xala leverte digitale tilskudds- og bevillingsportaler for Nordre Follo kommune med React, .NET og kommunale arkitekturprinsipper.' },
     },
     ar: {

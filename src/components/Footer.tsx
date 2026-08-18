@@ -36,7 +36,7 @@ const Footer = () => {
     { name: 'Digilist', href: '/produkter/digilist', soon: false },
     { name: 'Digiskjema', href: '/produkter/digiskjema', soon: true },
     { name: 'Xaheen', href: '/produkter/xaheen', soon: true },
-    { name: 'Norchain', href: '/produkter/norchain', soon: false },
+    { name: 'Norchain', href: '/produkter/norchain', soon: true },
   ];
 
   // Localized section headers

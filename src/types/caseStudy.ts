@@ -39,6 +39,14 @@ export interface CaseStudyTeamMember {
 }
 
 export interface CaseStudyLocale {
+  title?: string;
+  client?: string;
+  industry?: string;
+  sector?: string;
+  deliveryModel?: string;
+  duration?: string;
+  budget?: string;
+  status?: string;
   subtitle?: string;
   summary?: string;
   challenge?: string[];
@@ -48,6 +56,13 @@ export interface CaseStudyLocale {
   outcomes?: string[];
   capabilities?: string[];
   scope?: string[];
+  role?: string[];
+  architecture?: CaseStudyArchitecture;
+  architectureDiagram?: Partial<{
+    title: string;
+    brief: string;
+    layers: CaseStudyArchitectureLayer[];
+  }>;
   card?: Partial<{ title: string; excerpt: string }>;
   seo?: Partial<{ title: string; description: string }>;
 }

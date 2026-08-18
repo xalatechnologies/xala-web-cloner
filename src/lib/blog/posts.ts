@@ -97,6 +97,7 @@ export function parsePost(raw: string, file: string): BlogPost | BlogPostError {
       typeof readingValue === "number" && readingValue > 0 ? readingValue : readingMinutes(body),
     tag: asString(data.tag),
     cover: asString(data.cover),
+    alt: asString(data.alt),
     keywords: asStringArray(data.keywords),
     lang: asString(data.lang) ?? DEFAULT_LANG,
     draft: data.draft === true,
@@ -177,4 +178,31 @@ export function relatedPosts(posts: BlogPost[], post: BlogPost, limit = 3): Blog
 
 export function allTags(posts: BlogPost[]): string[] {
   return [...new Set(posts.map((p) => p.tag).filter(Boolean) as string[])].sort();
+}
+
+const IMAGE_FILENAME = /\.(webp|png|jpe?g|gif|svg|avif)$/i;
+
+function isFilenameAlt(value: string, cover?: string): boolean {
+  if (IMAGE_FILENAME.test(value)) return true;
+  if (!cover) return false;
+  const base = cover.split("/").pop() ?? "";
+  return value === cover || value === base;
+}
+
+/**
+ * Alt text for a post hero.
+ *
+ * The image is the article hero, not a decorative spacer. Frontmatter `alt`
+ * wins when it is a real phrase; otherwise the topic comes from `seoTitle`
+ * or `title`. A filename is never accepted as alt.
+ */
+export function coverAlt(post: {
+  title: string;
+  seoTitle?: string;
+  alt?: string;
+  cover?: string;
+}): string {
+  const explicit = post.alt?.trim();
+  if (explicit && !isFilenameAlt(explicit, post.cover)) return explicit;
+  return (post.seoTitle ?? post.title).trim();
 }

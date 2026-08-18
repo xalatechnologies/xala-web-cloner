@@ -13,10 +13,10 @@ export default function ProdukterPage() {
       <main id="main" className="flex-1 pt-20">
         <PageHeader
           eyebrow={t('productsPage.eyebrow', 'Produkter')}
-          title={t('productsPage.title', 'Ferdige løsninger vi allerede drifter')}
+          title={t('productsPage.title', 'Produkter: Digilist, Digiskjema og Xaheen')}
           description={t(
             'productsPage.description',
-            'Tre produkter bygget av de samme delene vi bruker i kundeprosjekter — og forvaltet på samme måte.'
+            'Tre produkter. Digilist, Digiskjema og Xaheen, bygget av de samme delene vi bruker i kundeprosjekter, og forvaltet på samme måte.'
           )}
         />
 
