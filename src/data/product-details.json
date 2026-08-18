@@ -317,6 +317,351 @@
       ]
     }
   },
+  "redusert-foreldrebetaling": {
+    "slug": "redusert-foreldrebetaling",
+    "postSlugs": [
+      "redusert-foreldrebetaling-sfo-varig-nedgang",
+      "redusert-foreldrebetaling-sfo-skattemelding-for-1-august",
+      "redusert-foreldrebetaling-uten-fagsystemintegrasjon",
+      "redusert-foreldrebetaling-dokumentasjon-fra-foresatte"
+    ],
+    "no": {
+      "tagline": "Hent oppgjør. Slett ikke unntaket.",
+      "intro": "Redusert foreldrebetaling er produktet Xala bygger når kommunen skal behandle søknader om redusert betaling i SFO og barnehage. Det er portalen og integrasjonen kommunen bruker. Xala kjører ikke SFO-portalen. Xala er ikke Fiks, Altinn, Digdir, Digisos eller Startskudd.",
+      "whatHeading": "Hva det er",
+      "what": "Kommunen skal etter søknad redusere foreldrebetalingen når vilkårene er oppfylt. To spor: siste års inntekt, eller varig nedgang i år. Smerten i dag er skattemelding og dokumentasjon fra foresatte, mens fagsystemet ikke slår opp det kommunen allerede kan hente.",
+      "doesHeading": "Hva det gjør",
+      "does": "Integrasjonen henter oppgjøret inn i saken når Skatteetaten kan utlevere det. Rekker det ikke, står unntaket: kommunen skal be om skattemeldingen før 1. august. Folkeregisteret fyller husholdningen. Tilgang til API-et er ikke det samme som oppslag i fagsystemet.",
+      "doesNotHeading": "Hva det ikke gjør",
+      "doesNot": "Det sier ikke at inntektsfallet er varig. Det sletter ikke unntaket. Det erstatter ikke Fiks eller Skatteetaten. Xala kjører ikke SFO-portalen, og Xala er ikke Digdir.",
+      "capabilityHeading": "Det som faktisk må ligge i saken",
+      "capabilities": [
+        {
+          "title": "Hent oppgjør når det finnes",
+          "body": "Skattemeldingen er et utkast. Oppgjøret er fastsettingen. Integrasjonen skal hente siste fastsetting når den kan utleveres, og skrive den inn der saksbehandleren allerede jobber."
+        },
+        {
+          "title": "Unntaket står",
+          "body": "Rekker ikke oppgjøret, skal kommunen be om skattemeldingen før 1. august. Integrasjonen sletter ikke den plikten. Den fyller feltet når oppgjøret finnes, og lar unntaket stå når det ikke gjør det."
+        },
+        {
+          "title": "Tilgang er ikke oppslag",
+          "body": "At API-et er åpnet, betyr ikke at inntekten ligger i saken. Uten oppslag i fagsystemet blir det manuelt i to vinduer, eller et skjema som fortsatt ber om vedlegg."
+        },
+        {
+          "title": "Varig nedgang er et menneske",
+          "body": "Integrasjon kan legge skatt og folkeregister i mappa. Den kan ikke krysse av at fallet er varig. Det er en vurdering. Den skal ligge hos saksbehandleren."
+        },
+        {
+          "title": "Folkeregister for husholdningen",
+          "body": "Husholdningen er den som bor på barnets folkeregistrerte adresse. Uten husholdning vet ikke kommunen hvem inntekten gjelder. Folkeregisteret fyller det feltet. Det fyller ikke vurderingen."
+        },
+        {
+          "title": "Gjenbruk data og løsninger",
+          "body": "Prinsipp 4, del og gjenbruk data, og prinsipp 5, del og gjenbruk løsninger, står hos Digdir. Her betyr det: hent fra kilden, og ikke bygg et kommunalt inntektsregister ved siden av."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Må foresatte legge ved skattemelding?",
+          "answer": "Bare når oppgjøret ikke kan utleveres i tide, og kommunen av den grunn ikke rekker vedtak før 1. august. Finnes oppgjøret, skal det hentes. Skattemeldingen er unntaket, ikke hovedregelen."
+        },
+        {
+          "question": "Er digital tilgang det samme som oppslag i fagsystemet?",
+          "answer": "Nei. Tilgang betyr at API-et er åpnet. Oppslag betyr at inntekten ligger i saken saksbehandleren allerede jobber i. Uten oppslag blir det manuelt, selv om tilgangen finnes."
+        },
+        {
+          "question": "Kan integrasjonen si at inntektsfallet er varig?",
+          "answer": "Nei. Integrasjon kan hente skatt og folkeregister. Den kan ikke si at fallet er varig. Varig nedgang er en vurdering i mappa."
+        },
+        {
+          "question": "Sletter integrasjonen unntaket når oppgjøret kommer?",
+          "answer": "Nei. Integrasjon henter oppgjør når det finnes. Den sletter ikke unntaket. Rekker ikke oppgjøret, skal kommunen fortsatt be om skattemeldingen før 1. august."
+        },
+        {
+          "question": "Er dette Fiks, Altinn eller Digdir?",
+          "answer": "Nei. Xala bygger produktet. Kommunen eier saken. Fiks, Altinn, Digdir, Digisos og Startskudd er andre systemer."
+        }
+      ]
+    },
+    "en": {
+      "tagline": "Fetch the settlement. Do not delete the exception.",
+      "intro": "Redusert foreldrebetaling is the product Xala builds when a municipality has to process applications for reduced fees in SFO and kindergarten. It is the portal and the integration the municipality uses. Xala does not run the SFO portal. Xala is not Fiks, Altinn, Digdir, Digisos or Startskudd.",
+      "whatHeading": "What it is",
+      "what": "The municipality must, on application, reduce the parental fee when the conditions are met. Two tracks: last year's income, or a lasting drop this year. The pain today is a tax return and documents from the parents, while the case system does not look up what the municipality can already fetch.",
+      "doesHeading": "What it does",
+      "does": "The integration writes the tax settlement into the case when the Tax Administration can release it. If it will not arrive in time, the exception stands: the municipality must ask for the tax return before 1 August. The national registry fills the household. Access to the API is not the same as a lookup in the case system.",
+      "doesNotHeading": "What it does not do",
+      "doesNot": "It does not say that the income drop is lasting. It does not delete the exception. It does not replace Fiks or the Tax Administration. Xala does not run the SFO portal, and Xala is not Digdir.",
+      "capabilityHeading": "What actually has to sit in the case",
+      "capabilities": [
+        {
+          "title": "Fetch the settlement when it exists",
+          "body": "The tax return is a draft. The settlement is the assessment. The integration should fetch the latest assessment when it can be released, and write it where the caseworker already works."
+        },
+        {
+          "title": "The exception stands",
+          "body": "If the settlement will not arrive in time, the municipality must ask for the tax return before 1 August. The integration does not delete that duty. It fills the field when the settlement exists, and leaves the exception when it does not."
+        },
+        {
+          "title": "Access is not a lookup",
+          "body": "An open API does not mean the income sits in the case. Without a lookup in the case system it is still manual work in two windows, or a form that still asks for attachments."
+        },
+        {
+          "title": "A lasting drop is a person",
+          "body": "Integration can put tax and the national registry in the file. It cannot tick that the drop is lasting. That is a judgement. It stays with the caseworker."
+        },
+        {
+          "title": "National registry for the household",
+          "body": "The household is whoever lives at the child's registered address. Without the household the municipality does not know whose income applies. The registry fills that field. It does not fill the judgement."
+        },
+        {
+          "title": "Reuse data and solutions",
+          "body": "Principle 4, share and reuse data, and principle 5, share and reuse solutions, live at Digdir. Here it means: fetch from the source, and do not build a municipal income register beside it."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Do parents have to attach a tax return?",
+          "answer": "Only when the settlement cannot be released in time, and the municipality therefore cannot decide before 1 August. If the settlement exists, it should be fetched. The tax return is the exception, not the rule."
+        },
+        {
+          "question": "Is digital access the same as a lookup in the case system?",
+          "answer": "No. Access means the API is open. A lookup means the income sits in the case the caseworker already works in. Without a lookup it stays manual, even if access exists."
+        },
+        {
+          "question": "Can the integration say the income drop is lasting?",
+          "answer": "No. Integration can fetch tax and the national registry. It cannot say the drop is lasting. A lasting drop is a judgement in the file."
+        },
+        {
+          "question": "Does the integration delete the exception when the settlement arrives?",
+          "answer": "No. Integration fetches the settlement when it exists. It does not delete the exception. If the settlement will not arrive, the municipality must still ask for the tax return before 1 August."
+        },
+        {
+          "question": "Is this Fiks, Altinn or Digdir?",
+          "answer": "No. Xala builds the product. The municipality owns the case. Fiks, Altinn, Digdir, Digisos and Startskudd are other systems."
+        }
+      ]
+    },
+    "ar": {
+      "tagline": "اجلب التسوية. لا تحذف الاستثناء.",
+      "intro": "Redusert foreldrebetaling هو المنتج الذي تبنيه Xala عندما تحتاج البلدية إلى معالجة طلبات خفض الرسوم في SFO والروضة. هذه بوابة البلدية وتكاملها. Xala لا تشغّل بوابة SFO. Xala ليست Fiks أو Altinn أو Digdir أو Digisos أو Startskudd.",
+      "whatHeading": "ما هو",
+      "what": "يجب على البلدية بعد الطلب خفض رسوم الأهل عند استيفاء الشروط. مساران: دخل السنة الماضية، أو انخفاض دائم هذا العام. الألم اليوم هو الإقرار الضريبي والوثائق من الأهل، بينما لا يستعلم نظام الحالة عمّا تستطيع البلدية جلبه أصلاً.",
+      "doesHeading": "ماذا يفعل",
+      "does": "يضع التكامل التسوية الضريبية في المعاملة عندما تستطيع هيئة الضرائب تسليمها. إن لم تصل في الوقت، يبقى الاستثناء: تطلب البلدية الإقرار قبل 1 أغسطس. يملأ السجل السكاني الأسرة. الوصول إلى واجهة البرمجة ليس استعلاماً في نظام الحالة.",
+      "doesNotHeading": "ما لا يفعله",
+      "doesNot": "لا يقول إن انخفاض الدخل دائم. لا يحذف الاستثناء. لا يستبدل Fiks أو هيئة الضرائب. Xala لا تشغّل بوابة SFO، وXala ليست Digdir.",
+      "capabilityHeading": "ما يجب أن يقع في المعاملة فعلاً",
+      "capabilities": [
+        {
+          "title": "جلب التسوية إن وُجدت",
+          "body": "الإقرار مسودّة. التسوية هي التقدير. يجب أن يجلب التكامل آخر تقدير عندما يمكن تسليمه، ويكتبه حيث يعمل موظف الحالة أصلاً."
+        },
+        {
+          "title": "الاستثناء يبقى",
+          "body": "إن لم تصل التسوية في الوقت، يجب أن تطلب البلدية الإقرار قبل 1 أغسطس. التكامل لا يحذف ذلك الواجب. يملأ الحقل إن وُجدت التسوية، ويترك الاستثناء إن لم توجد."
+        },
+        {
+          "title": "الوصول ليس استعلاماً",
+          "body": "فتح الواجهة لا يعني أن الدخل في المعاملة. بلا استعلام في نظام الحالة يبقى العمل يدوياً في نافذتين، أو نموذجاً ما يزال يطلب مرفقات."
+        },
+        {
+          "title": "الانخفاض الدائم إنسان",
+          "body": "يمكن للتكامل وضع الضريبة والسجل السكاني في الملف. لا يمكنه التأشير بأن الانخفاض دائم. ذلك تقدير. يبقى لدى موظف الحالة."
+        },
+        {
+          "title": "السجل السكاني للأسرة",
+          "body": "الأسرة من يسكن في عنوان الطفل المسجّل. بلا أسرة لا تعرف البلدية لمن يعود الدخل. يملأ السجل ذلك الحقل. لا يملأ التقدير."
+        },
+        {
+          "title": "إعادة استخدام البيانات والحلول",
+          "body": "المبدأ 4، شارك وأعد استخدام البيانات، والمبدأ 5، شارك وأعد استخدام الحلول، لدى Digdir. هنا يعني: اجلب من المصدر، ولا تبنِ سجلاً بلدياً للدخل إلى جانبه."
+        }
+      ],
+      "faq": [
+        {
+          "question": "هل يجب على الأهل إرفاق إقرار ضريبي؟",
+          "answer": "فقط عندما لا يمكن تسليم التسوية في الوقت، ولذلك لا تلحق البلدية بالقرار قبل 1 أغسطس. إن وُجدت التسوية فلتُجلب. الإقرار هو الاستثناء لا القاعدة."
+        },
+        {
+          "question": "هل الوصول الرقمي هو نفسه الاستعلام في نظام الحالة؟",
+          "answer": "لا. الوصول يعني أن الواجهة مفتوحة. الاستعلام يعني أن الدخل في المعاملة التي يعمل فيها موظف الحالة. بلا استعلام يبقى الأمر يدوياً حتى مع الوصول."
+        },
+        {
+          "question": "هل يمكن للتكامل أن يقول إن انخفاض الدخل دائم؟",
+          "answer": "لا. يمكنه جلب الضريبة والسجل السكاني. لا يمكنه القول إن الانخفاض دائم. الانخفاض الدائم تقدير في الملف."
+        },
+        {
+          "question": "هل يحذف التكامل الاستثناء عند وصول التسوية؟",
+          "answer": "لا. يجلب التكامل التسوية إن وُجدت. لا يحذف الاستثناء. إن لم تصل التسوية، يجب أن تطلب البلدية الإقرار قبل 1 أغسطس."
+        },
+        {
+          "question": "هل هذا Fiks أو Altinn أو Digdir؟",
+          "answer": "لا. تبني Xala المنتج. البلدية تملك المعاملة. Fiks وAltinn وDigdir وDigisos وStartskudd أنظمة أخرى."
+        }
+      ]
+    }
+  },
+  "arkitekturprinsipper": {
+    "slug": "arkitekturprinsipper",
+    "postSlugs": [
+      "flerleietakerarkitektur-saas-offentlig-sektor"
+    ],
+    "no": {
+      "tagline": "Digdirs prinsipper, i systemene dere kjører",
+      "intro": "Arkitekturprinsipper er produktet Xala bygger når en kommune skal følge Digdirs sju arkitekturprinsipper i egne løsninger. Xala er ikke Digdir. Prinsippene står hos Digdir. Vi hjelper dere å holde dem i arkitekturen, ikke i en presentasjon.",
+      "whatHeading": "Hva det er",
+      "what": "Digdir har sju arkitekturprinsipper for digital samhandling. De er Digdirs, ikke våre. Kommunen skal kunne vise at systemene følger dem: gjenbruk av data, gjenbruk av løsninger, og de øvrige prinsippene slik Digdir formulerer dem.",
+      "doesHeading": "Hva det gjør",
+      "does": "Gjør prinsippene til valg i arkitekturen. Prinsipp 4, del og gjenbruk data, betyr at kommunen henter fra autoritative kilder i stedet for å be innbyggeren oppgi det det offentlige allerede vet. Prinsipp 5, del og gjenbruk løsninger, betyr å bruke fellesløsningen der den passer. De andre prinsippene peker vi på hos Digdir.",
+      "doesNotHeading": "Hva det ikke gjør",
+      "doesNot": "Det er ikke Digdir. Det erstatter ikke Digdirs veiledning. Det er ikke en sertifisering, og vi teller ikke kommuner. Xala er ikke Fiks, Altinn, Digisos eller Startskudd.",
+      "capabilityHeading": "Det som holder prinsippene i koden",
+      "capabilities": [
+        {
+          "title": "Peker på Digdir, omskriver ikke",
+          "body": "De sju prinsippene står hos Digdir. Vi gjentar dem ikke som om de var våre. Produktet peker dit, og hjelper kommunen å holde dem i valgene som faktisk bygges."
+        },
+        {
+          "title": "Prinsipp 4: del og gjenbruk data",
+          "body": "Hent fra autoritative kilder. Ikke be innbyggeren laste opp det kommunen allerede kan slå opp. Teksten står hos Digdir. Her er det et oppslag i saken, ikke et nytt skjema."
+        },
+        {
+          "title": "Prinsipp 5: del og gjenbruk løsninger",
+          "body": "Bruk fellesløsningen der den passer. Ikke bygg et kommunalt register eller en ny portal ved siden av det som allerede finnes. Igjen: teksten står hos Digdir."
+        },
+        {
+          "title": "Isolasjon i datamodellen",
+          "body": "Når flere kommuner deler kodebase, skal isolasjonen ligge der den ikke kan glemmes. En filterkolonne noen husker å bruke, er ikke isolasjon. Det er et håp."
+        },
+        {
+          "title": "Konfigurasjon som data",
+          "body": "Priser, roller, skjemaer og regler er forskjellige per kommune. Ligger de i koden, blir hver ny kommune et utviklingsprosjekt. Ligger de som data, kan dere sette opp selv."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Er Xala Digdir?",
+          "answer": "Nei. Digdir eier de sju arkitekturprinsippene. Xala bygger et produkt som hjelper kommunen å følge dem. Vi er ikke Digdir."
+        },
+        {
+          "question": "Hva er de sju prinsippene?",
+          "answer": "De står hos Digdir. Vi omskriver dem ikke. Prinsipp 4 og 5 bruker vi allerede på dette nettstedet: del og gjenbruk data, og del og gjenbruk løsninger."
+        },
+        {
+          "question": "Må hver kommune ha sin egen installasjon?",
+          "answer": "Ikke nødvendigvis. Valget mellom flerleietaker og egen installasjon tas tidlig. Isolasjonen må ligge i datamodellen, ikke i at noen husker å filtrere."
+        },
+        {
+          "question": "Hvor mange kommuner følger prinsippene med Xala?",
+          "answer": "Vi teller ikke. Produktet hjelper kommunen å følge Digdirs prinsipper. Det er ikke en liste over kommuner."
+        }
+      ]
+    },
+    "en": {
+      "tagline": "Digdir's principles, in the systems you run",
+      "intro": "Arkitekturprinsipper is the product Xala builds when a municipality needs to follow Digdir's seven architecture principles in its own solutions. Xala is not Digdir. The principles live at Digdir. We help you keep them in the architecture, not in a slide deck.",
+      "whatHeading": "What it is",
+      "what": "Digdir has seven architecture principles for digital collaboration. They are Digdir's, not ours. The municipality should be able to show that its systems follow them: reuse of data, reuse of solutions, and the remaining principles as Digdir writes them.",
+      "doesHeading": "What it does",
+      "does": "Turns the principles into architecture choices. Principle 4, share and reuse data, means the municipality fetches from authoritative sources instead of asking residents to supply what the public sector already knows. Principle 5, share and reuse solutions, means using the shared solution where it fits. We point at Digdir for the rest.",
+      "doesNotHeading": "What it does not do",
+      "doesNot": "It is not Digdir. It does not replace Digdir's guidance. It is not a certification, and we do not count municipalities. Xala is not Fiks, Altinn, Digisos or Startskudd.",
+      "capabilityHeading": "What keeps the principles in the code",
+      "capabilities": [
+        {
+          "title": "Points at Digdir, does not rewrite",
+          "body": "The seven principles live at Digdir. We do not repeat them as if they were ours. The product points there, and helps the municipality keep them in the choices that actually get built."
+        },
+        {
+          "title": "Principle 4: share and reuse data",
+          "body": "Fetch from authoritative sources. Do not ask the resident to upload what the municipality can already look up. The wording is Digdir's. Here it is a lookup in the case, not a new form."
+        },
+        {
+          "title": "Principle 5: share and reuse solutions",
+          "body": "Use the shared solution where it fits. Do not build a municipal register or a new portal beside what already exists. Again: the wording is Digdir's."
+        },
+        {
+          "title": "Isolation in the data model",
+          "body": "When several municipalities share a codebase, isolation has to sit where it cannot be forgotten. A filter column someone remembers to use is not isolation. It is a hope."
+        },
+        {
+          "title": "Configuration as data",
+          "body": "Prices, roles, forms and rules differ per municipality. If they live in code, each new municipality is a development project. If they live as data, you can set them up yourselves."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is Xala Digdir?",
+          "answer": "No. Digdir owns the seven architecture principles. Xala builds a product that helps the municipality follow them. We are not Digdir."
+        },
+        {
+          "question": "What are the seven principles?",
+          "answer": "They live at Digdir. We do not rewrite them. We already use principle 4 and 5 on this site: share and reuse data, and share and reuse solutions."
+        },
+        {
+          "question": "Does every municipality need its own install?",
+          "answer": "Not necessarily. The choice between multi-tenant and own install is made early. Isolation must sit in the data model, not in someone remembering to filter."
+        },
+        {
+          "question": "How many municipalities follow the principles with Xala?",
+          "answer": "We do not count. The product helps the municipality follow Digdir's principles. It is not a list of municipalities."
+        }
+      ]
+    },
+    "ar": {
+      "tagline": "مبادئ Digdir، في الأنظمة التي تشغّلونها",
+      "intro": "Arkitekturprinsipper هو المنتج الذي تبنيه Xala عندما تحتاج بلدية إلى اتباع مبادئ Digdir السبعة للعمارة في حلولها. Xala ليست Digdir. المبادئ لدى Digdir. نساعدكم على إبقيائها في العمارة لا في عرض تقديمي.",
+      "whatHeading": "ما هو",
+      "what": "لدى Digdir سبعة مبادئ عمارة للتعاون الرقمي. هي لـ Digdir لا لنا. يجب أن تستطيع البلدية إظهار أن أنظمتها تتبعها: إعادة استخدام البيانات، وإعادة استخدام الحلول، وبقية المبادئ كما يصوغها Digdir.",
+      "doesHeading": "ماذا يفعل",
+      "does": "يجعل المبادئ خيارات في العمارة. المبدأ 4، شارك وأعد استخدام البيانات، يعني أن البلدية تجلب من مصادر موثوقة بدل أن تطلب من السكان تقديم ما يعرفه القطاع العام أصلاً. المبدأ 5، شارك وأعد استخدام الحلول، يعني استخدام الحل المشترك حيث يناسب. نشير إلى Digdir للبقية.",
+      "doesNotHeading": "ما لا يفعله",
+      "doesNot": "ليس Digdir. لا يستبدل إرشاد Digdir. ليس شهادة، ولا نحصي بلديات. Xala ليست Fiks أو Altinn أو Digisos أو Startskudd.",
+      "capabilityHeading": "ما يُبقي المبادئ في الشيفرة",
+      "capabilities": [
+        {
+          "title": "تشير إلى Digdir ولا تعيد الصياغة",
+          "body": "المبادئ السبعة لدى Digdir. لا نكرّرها كأنّها لنا. المنتج يشير إلى هناك، ويساعد البلدية على إبقيائها في الخيارات التي تُبنى فعلاً."
+        },
+        {
+          "title": "المبدأ 4: شارك وأعد استخدام البيانات",
+          "body": "اجلب من مصادر موثوقة. لا تطلب من الساكن رفع ما تستطيع البلدية الاستعلام عنه. النص لدى Digdir. هنا هو استعلام في المعاملة لا نموذج جديد."
+        },
+        {
+          "title": "المبدأ 5: شارك وأعد استخدام الحلول",
+          "body": "استخدم الحل المشترك حيث يناسب. لا تبنِ سجلاً بلدياً أو بوابة جديدة إلى جانب ما يوجد. مرّة أخرى: النص لدى Digdir."
+        },
+        {
+          "title": "العزل في نموذج البيانات",
+          "body": "عندما تشترك عدّة بلديات في قاعدة شيفرة، يجب أن يقع العزل حيث لا يُنسى. عمود تصفية يتذكّره أحدهم ليس عزلاً. هو أمل."
+        },
+        {
+          "title": "التهيئة كبيانات",
+          "body": "الأسعار والأدوار والنماذج والقواعد تختلف لكل بلدية. إن كانت في الشيفرة فكل بلدية جديدة مشروع تطوير. إن كانت بيانات يمكنكم إعدادها بأنفسكم."
+        }
+      ],
+      "faq": [
+        {
+          "question": "هل Xala هي Digdir؟",
+          "answer": "لا. تملك Digdir المبادئ السبعة. تبني Xala منتجاً يساعد البلدية على اتباعها. نحن لسنا Digdir."
+        },
+        {
+          "question": "ما المبادئ السبعة؟",
+          "answer": "هي لدى Digdir. لا نعيد صياغتها. نستخدم المبدأين 4 و5 أصلاً في هذا الموقع: شارك وأعد استخدام البيانات، وشارك وأعد استخدام الحلول."
+        },
+        {
+          "question": "هل تحتاج كل بلدية تثبيتاً خاصاً؟",
+          "answer": "ليس بالضرورة. يُتّخذ خيار المستأجرين المتعدّدين أو التثبيت الخاص مبكراً. يجب أن يقع العزل في نموذج البيانات لا في أن يتذكّر أحدهم التصفية."
+        },
+        {
+          "question": "كم بلدية تتبع المبادئ مع Xala؟",
+          "answer": "لا نحصي. المنتج يساعد البلدية على اتباع مبادئ Digdir. ليست قائمة بلديات."
+        }
+      ]
+    }
+  },
   "digilist": {
     "slug": "digilist",
     "no": {

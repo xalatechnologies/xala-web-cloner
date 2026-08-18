@@ -11,7 +11,7 @@
     "services": "Tjenester",
     "servicesDescription": "Komplett spektrum av teknologitjenester for moderne bedrifter",
     "products": "Produkter",
-    "productsDescription": "Bevillingsportal, Tilskuddsportal, Digilist og Digiskjema",
+    "productsDescription": "Bevillingsportal, Tilskuddsportal, Redusert foreldrebetaling, Arkitekturprinsipper, Digilist og Digiskjema",
     "cases": "Caser",
     "casesDescription": "Utforsk våre vellykkede prosjektimplementeringer",
     "workProcessDescription": "Vår strukturerte tilnærming fra idé til implementering",
@@ -131,7 +131,7 @@
     },
     "products": {
       "title": "Våre kjerneprodukter",
-      "description": "Fire produkter. Bevillingsportal, Tilskuddsportal, Digilist og Digiskjema, bygget av de samme delene vi bruker i kundeprosjekter.",
+      "description": "Seks produkter. Bevillingsportal, Tilskuddsportal, Redusert foreldrebetaling, Arkitekturprinsipper, Digilist og Digiskjema, bygget av de samme delene vi bruker i kundeprosjekter.",
       "viewAll": "Se alle produkter",
       "available": "Tilgjengelig",
       "beta": "Beta",
@@ -255,7 +255,7 @@
       "status": "Kommer"
     },
     "title": "Våre kjerneprodukter",
-    "description": "Fire produkter. Bevillingsportal, Tilskuddsportal, Digilist og Digiskjema, bygget av de samme delene vi bruker i kundeprosjekter.",
+    "description": "Seks produkter. Bevillingsportal, Tilskuddsportal, Redusert foreldrebetaling, Arkitekturprinsipper, Digilist og Digiskjema, bygget av de samme delene vi bruker i kundeprosjekter.",
     "comingSoon": "Kommer",
     "readMore": "Les mer"
   },
@@ -825,8 +825,8 @@
   },
   "productsPage": {
     "eyebrow": "Produkter",
-    "title": "Fire produkter for kommune og næringsliv",
-    "description": "Bevillingsportal, Tilskuddsportal, Digilist og Digiskjema. Bygget av de samme delene vi bruker i kundeprosjekter, og forvaltet på samme måte.",
+    "title": "Seks produkter for kommune og næringsliv",
+    "description": "Bevillingsportal, Tilskuddsportal, Redusert foreldrebetaling, Arkitekturprinsipper, Digilist og Digiskjema. Bygget av de samme delene vi bruker i kundeprosjekter, og forvaltet på samme måte.",
     "ctaTitle": "Passer noe av dette til dere?",
     "ctaDescription": "Produktene tilpasses. Fortell oss hva dere trenger, så sier vi om det er en tilpasning eller et prosjekt.",
     "ctaContact": "Kontakt oss",

@@ -59,10 +59,11 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
         'saksbehandlingssystem, tilskuddsportal, bevillingsportal, integrasjon Altinn, Maskinporten, modernisering fagsystem, automatisering saksbehandling, systemutvikling offentlig sektor'
     },
     products: {
-      title: 'Fire produkter for kommune og næringsliv | Xala',
+      title: 'Seks produkter for kommune og næringsliv | Xala',
       description:
-        'Bevillingsportal, Tilskuddsportal, Digilist og Digiskjema. Egne produkter fra Xala for norsk offentlig sektor og næringsliv.',
-      keywords: 'Bevillingsportal, Tilskuddsportal, Digilist, Digiskjema, norske programvareprodukter'
+        'Bevillingsportal, Tilskuddsportal, Redusert foreldrebetaling, Arkitekturprinsipper, Digilist og Digiskjema. Produkter fra Xala.',
+      keywords:
+        'Bevillingsportal, Tilskuddsportal, Redusert foreldrebetaling, Arkitekturprinsipper, Digilist, Digiskjema'
     },
     cases: {
       title: 'Kundecaser fra offentlig sektor | Xala',
@@ -190,10 +191,11 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
         'case management system, grant portal, licensing portal, Altinn integration, Maskinporten, legacy modernisation, caseworking automation, public sector software Norway'
     },
     products: {
-      title: 'Four products for municipalities and business | Xala',
+      title: 'Six products for municipalities and business | Xala',
       description:
-        'Bevillingsportal, Tilskuddsportal, Digilist and Digiskjema. Products built by Xala for the Norwegian public sector and private business.',
-      keywords: 'Bevillingsportal, Tilskuddsportal, Digilist, Digiskjema, Norwegian software products'
+        'Bevillingsportal, Tilskuddsportal, Redusert foreldrebetaling, Arkitekturprinsipper, Digilist and Digiskjema. Built by Xala.',
+      keywords:
+        'Bevillingsportal, Tilskuddsportal, Redusert foreldrebetaling, Arkitekturprinsipper, Digilist, Digiskjema'
     },
     cases: {
       title: 'Case Studies | Xala Technologies',
@@ -316,9 +318,11 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
       keywords: 'نظام إدارة القضايا, بوابة المنح, بوابة التراخيص, تكامل Altinn, Maskinporten, تحديث الأنظمة, أتمتة المعالجة, برمجيات القطاع العام'
     },
     products: {
-      title: 'أربعة منتجات للبلديات والأعمال | زالا',
-      description: 'Bevillingsportal وTilskuddsportal وDigilist وDigiskjema. منتجات من تطوير زالا للقطاع العام والشركات في النرويج.',
-      keywords: 'Bevillingsportal, Tilskuddsportal, Digilist, Digiskjema, منتجات برمجية'
+      title: 'ستة منتجات للبلديات والأعمال | زالا',
+      description:
+        'Bevillingsportal وTilskuddsportal وRedusert foreldrebetaling وArkitekturprinsipper وDigilist وDigiskjema. من زالا.',
+      keywords:
+        'Bevillingsportal, Tilskuddsportal, Redusert foreldrebetaling, Arkitekturprinsipper, Digilist, Digiskjema'
     },
     cases: {
       title: 'دراسات حالة | زالا تكنولوجيز',

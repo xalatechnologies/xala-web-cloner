@@ -32,7 +32,15 @@ afterEach(() => {
 });
 
 describe('ProduktDetaljPage', () => {
-  it.each(['bevillingsportal', 'tilskuddsportal', 'digilist', 'digiskjema', 'xaheen'])(
+  it.each([
+    'bevillingsportal',
+    'tilskuddsportal',
+    'redusert-foreldrebetaling',
+    'arkitekturprinsipper',
+    'digilist',
+    'digiskjema',
+    'xaheen',
+  ])(
     'renders /produkter/%s with site chrome',
     (slug) => {
       renderAt(`/produkter/${slug}`);

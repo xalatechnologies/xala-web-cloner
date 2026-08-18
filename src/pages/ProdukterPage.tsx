@@ -13,10 +13,10 @@ export default function ProdukterPage() {
       <main id="main" className="flex-1 pt-20">
         <PageHeader
           eyebrow={t('productsPage.eyebrow', 'Produkter')}
-          title={t('productsPage.title', 'Fire produkter for kommune og næringsliv')}
+          title={t('productsPage.title', 'Seks produkter for kommune og næringsliv')}
           description={t(
             'productsPage.description',
-            'Bevillingsportal, Tilskuddsportal, Digilist og Digiskjema. Bygget av de samme delene vi bruker i kundeprosjekter, og forvaltet på samme måte.'
+            'Bevillingsportal, Tilskuddsportal, Redusert foreldrebetaling, Arkitekturprinsipper, Digilist og Digiskjema. Bygget av de samme delene vi bruker i kundeprosjekter, og forvaltet på samme måte.'
           )}
         />
 
