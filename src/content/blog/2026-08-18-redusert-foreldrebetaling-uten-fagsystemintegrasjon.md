@@ -20,7 +20,7 @@ Det er ikke et hjemmelsproblem. Det er et integrasjonsproblem.
 
 ## Tilgang er ikke oppslag i saken
 
-[KS Digital](https://ksdigital.no/tjenestene/segmentsamarbeid/redusert-foreldrebetaling/) skriver at 302 kommuner har digital tilgang til skatteopplysningene for redusert foreldrebetaling. I 2026 er tallet over 300. 356 kommuner bruker Fiks skatte- og inntektsopplysninger som tjeneste.
+[KS Digital](https://ksdigital.no/tjenestene/segmentsamarbeid/redusert-foreldrebetaling/) skriver at 302 kommuner har digital tilgang til skatteopplysningene for redusert foreldrebetaling.
 
 Samme side er tydelig på det neste: tilgang betyr ikke at kommunen har lagt til rette for å ta imot og bruke opplysningene. Saksbehandler trenger et digitalt grensesnitt. KS Digital lister tre: fagsystem hos leverandør, Fiks skatte- og inntektsopplysninger, eller en løsning kommunen lager selv. Uten ett av dem blir oppslaget manuelt, selv om API-et er åpent.
 
@@ -64,4 +64,4 @@ Hvem, når, og at oppslaget gikk mot det dataminimerte settet. Kommunen er behan
 
 Vi bygger integrasjonslaget mot Skatteetaten eller Fiks, inn i fagsystemet. Vi er ikke Fiks, vi er ikke fagsystemleverandøren, og vi eier ikke en kommunal søknadsportal.
 
-Kartlegging av om inntekten faktisk ligger i saken, eller bare i en tilgangsavtale, er det første steget. Det tar vi i [kontakt](/kontakt).
+Kartlegging av om inntekten faktisk ligger i saken, eller bare i en tilgangsavtale, er det første steget. Det tar vi når dere tar [kontakt](/kontakt).
