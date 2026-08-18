@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, useLocation } from 'react-router-dom';
 import { vi, describe, it, expect } from 'vitest';
 import Navbar from '../Navbar';
 import menuData from '@/data/menu.json';
@@ -24,10 +24,24 @@ const CONTACT = '/kontakt';
 const inlineItems = menuData.no.filter((item) => item.href !== HOME && item.href !== CONTACT);
 const contactItem = menuData.no.find((item) => item.href === CONTACT)!;
 
+let location: { pathname: string; search: string } | null = null;
+
+/** Where the router ended up, as a path a reader could paste into the bar. */
+function currentLocation() {
+  return location ? `${location.pathname}${location.search}` : null;
+}
+
+function LocationProbe() {
+  location = useLocation();
+  return null;
+}
+
 function renderNavbar(path = HOME) {
+  location = null;
   return render(
     <MemoryRouter initialEntries={[path]}>
       <Navbar />
+      <LocationProbe />
     </MemoryRouter>
   );
 }
@@ -68,10 +82,34 @@ describe('Navbar', () => {
     // "Hjem" only exists inside the drawer, so it is an unambiguous marker
     // that the drawer mounted.
     expect(screen.getByRole('link', { name: 'Hjem' })).toHaveAttribute('href', HOME);
+    expect(screen.getByRole('searchbox', { name: 'Søk i artikler' })).toBeInTheDocument();
+    expect(screen.getByRole('searchbox', { name: 'Søk i artikler i menyen' })).toBeInTheDocument();
 
     fireEvent.click(screen.getByLabelText('Close menu'));
 
     expect(screen.queryByRole('link', { name: 'Hjem' })).not.toBeInTheDocument();
+  });
+
+  it('offers a search box that hands the query to the article index', () => {
+    renderNavbar();
+
+    // The front page shipped with no search box at all: search lived on /blogg
+    // and /caser, so a reader who landed anywhere else had nowhere to type.
+    const box = screen.getByRole('searchbox');
+    expect(box).toHaveAccessibleName('Søk i artikler');
+
+    fireEvent.change(box, { target: { value: '  tilskuddsportal  ' } });
+    fireEvent.submit(box.closest('form')!);
+
+    expect(currentLocation()).toBe('/blogg?q=tilskuddsportal');
+  });
+
+  it('sends an empty search to the article index rather than nowhere', () => {
+    renderNavbar();
+
+    fireEvent.submit(screen.getByRole('searchbox').closest('form')!);
+
+    expect(currentLocation()).toBe('/blogg');
   });
 
   it('offers no language picker, because the site is Norwegian only', () => {

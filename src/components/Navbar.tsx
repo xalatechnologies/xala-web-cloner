@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Moon, Sun, ArrowRight } from 'lucide-react';
+import { useState, useEffect, type FormEvent } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Menu, X, Moon, Sun, ArrowRight, Search } from 'lucide-react';
 import { useMenuItems } from '@/hooks/use-menu-items';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'next-themes';
@@ -12,13 +12,18 @@ const FOCUS =
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 ' +
   'focus-visible:ring-offset-2 focus-visible:ring-offset-background';
 
+const SEARCH_LABEL = 'Søk i artikler';
+const DRAWER_SEARCH_LABEL = 'Søk i artikler i menyen';
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [query, setQuery] = useState('');
   const { t } = useTranslation();
   const { theme, setTheme } = useTheme();
   const location = useLocation();
+  const navigate = useNavigate();
   const { data: menuItems } = useMenuItems();
 
   const navItems = (menuItems || []).filter(
@@ -55,6 +60,39 @@ const Navbar = () => {
   // bytes, and the mark is a single fill so it can carry the palette. One
   // bronze per scheme, each contrast-checked against its own background.
   const logoSrc = theme === 'dark' ? '/logo-xala-dark.svg' : '/logo-xala-light.svg';
+
+  // The site had no search box anywhere outside /blogg and /caser, so a reader
+  // landing on the front page had no way to look anything up. The articles are
+  // the only body of text worth searching, so the bar hands off to the blog
+  // index, which already filters on ?q= and renders the result as a shareable
+  // URL rather than transient state.
+  const submitSearch = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const needle = query.trim();
+    setIsOpen(false);
+    navigate(needle ? `/blogg?q=${encodeURIComponent(needle)}` : '/blogg');
+  };
+
+  const searchForm = (id: string, className: string, label: string) => (
+    <form role="search" action="/blogg" method="get" onSubmit={submitSearch} className={className}>
+      <label htmlFor={id} className="sr-only">
+        {label}
+      </label>
+      <Search
+        aria-hidden
+        className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+      />
+      <input
+        id={id}
+        type="search"
+        name="q"
+        value={query}
+        onChange={(event) => setQuery(event.target.value)}
+        placeholder={label}
+        className={`min-h-11 w-full rounded-lg border border-border/70 bg-background/60 py-2 pl-9 pr-3 text-sm text-foreground placeholder:text-muted-foreground ${FOCUS}`}
+      />
+    </form>
+  );
 
   const isActive = (href: string) => location.pathname === href;
   return (
@@ -111,8 +149,10 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Right: controls + CTA */}
+            {/* Right: search + controls + CTA */}
             <div className="flex items-center gap-2">
+              {searchForm('nav-sok', 'relative hidden md:block w-44 lg:w-52', SEARCH_LABEL)}
+
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                 aria-label="Toggle theme"
@@ -170,6 +210,8 @@ const Navbar = () => {
               <p className="mb-8 eyebrow">
                 Xala Technologies
               </p>
+
+              {searchForm('nav-sok-drawer', 'relative mb-8 w-full md:hidden', DRAWER_SEARCH_LABEL)}
 
               {[{ id: 'home', href: '/', name: t('nav.home', 'Hjem') }, ...navItems].map((item, index) => (
                 <Link
