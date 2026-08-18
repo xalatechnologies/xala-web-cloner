@@ -29,6 +29,19 @@ export interface FaqItem {
 /** Headings whose section is treated as the post's FAQ. */
 const FAQ_HEADING = /^(ofte stilte sp(ø|o)rsm(å|a)l|sp(ø|o)rsm(å|a)l og svar|faq|frequently asked questions)\b/i;
 
+/**
+ * Opening "Kort svar" / "Short answer" — the house lead. Lifted above the
+ * cover so the answer is on the first screen instead of two viewports down.
+ */
+const LEAD_HEADING = /^(kort svar|short answer)\b/i;
+
+export interface LeadSection {
+  /** Markdown of the lead heading plus its body, ready to render. */
+  lead: string;
+  /** The rest of the article, with the lead section removed. */
+  rest: string;
+}
+
 /** Inline markdown emphasis/code marks, stripped so heading text reads clean. */
 function plainText(markdown: string): string {
   return markdown
@@ -71,6 +84,57 @@ function headingAt(line: string, level: number): string | null {
   if (!match) return null;
   const text = plainText(match[1]);
   return text || null;
+}
+
+/**
+ * Pull an opening Kort svar / Short answer off the body, if the post has one.
+ *
+ * Only the first `##` counts, and only when it is the lead heading. A later
+ * "Kort svar" stays in the article flow — lifting a mid-piece recap would
+ * invert the argument. Posts without a lead are returned unchanged so the
+ * template can keep a single render path.
+ */
+export function splitLeadSection(body: string): LeadSection {
+  const lines = body.split('\n');
+  let inFence = false;
+  let fence = '';
+  let leadStart = -1;
+  let restStart = -1;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const opener = /^\s{0,3}(```+|~~~+)/.exec(line);
+    if (opener) {
+      if (!inFence) {
+        inFence = true;
+        fence = opener[1][0];
+      } else if (opener[1][0] === fence) {
+        inFence = false;
+      }
+      continue;
+    }
+    if (inFence) continue;
+
+    const text = headingAt(line, 2);
+    if (!text) continue;
+
+    if (leadStart === -1) {
+      if (!LEAD_HEADING.test(text)) break;
+      leadStart = i;
+      continue;
+    }
+
+    restStart = i;
+    break;
+  }
+
+  if (leadStart === -1) return { lead: '', rest: body };
+
+  const end = restStart === -1 ? lines.length : restStart;
+  return {
+    lead: lines.slice(leadStart, end).join('\n').replace(/\s+$/, ''),
+    rest: lines.slice(end).join('\n').replace(/^\s+/, ''),
+  };
 }
 
 /**

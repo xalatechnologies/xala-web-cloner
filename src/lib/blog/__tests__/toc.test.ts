@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { extractFaq, extractHeadings, faqJsonLd } from '../toc';
+import { extractFaq, extractHeadings, faqJsonLd, splitLeadSection } from '../toc';
 
 describe('extractHeadings', () => {
   it('returns h2 headings in document order with anchor ids', () => {
@@ -70,6 +70,51 @@ describe('extractHeadings', () => {
 
   it('returns an empty list for a body with no headings', () => {
     expect(extractHeadings('Bare tekst, ingen struktur.')).toEqual([]);
+  });
+});
+
+describe('splitLeadSection', () => {
+  it('lifts an opening Kort svar so the template can put it above the cover', () => {
+    const body = [
+      '## Kort svar',
+      '',
+      'Regelstyrte steg kan automatiseres. [Digdir](https://www.digdir.no) og Prop. 79 L.',
+      '',
+      '## Neste seksjon',
+      '',
+      'Resten av artikkelen.',
+    ].join('\n');
+
+    expect(splitLeadSection(body)).toEqual({
+      lead: '## Kort svar\n\nRegelstyrte steg kan automatiseres. [Digdir](https://www.digdir.no) og Prop. 79 L.',
+      rest: '## Neste seksjon\n\nResten av artikkelen.',
+    });
+  });
+
+  it('recognises the English heading too', () => {
+    const body = '## Short answer\n\nYes.\n\n## Next\n\nNo.';
+    expect(splitLeadSection(body).lead).toBe('## Short answer\n\nYes.');
+    expect(splitLeadSection(body).rest).toBe('## Next\n\nNo.');
+  });
+
+  it('leaves a body without a lead heading untouched', () => {
+    const body = '## Innledning\n\nTekst.';
+    expect(splitLeadSection(body)).toEqual({ lead: '', rest: body });
+  });
+
+  it('does not lift a Kort svar that is not the first h2', () => {
+    const body = '## Bakgrunn\n\nTekst.\n\n## Kort svar\n\nSvaret.';
+    expect(splitLeadSection(body)).toEqual({ lead: '', rest: body });
+  });
+
+  it('ignores a ## Kort svar inside a fenced code block', () => {
+    const body = '```md\n## Kort svar\n```\n\n## Innledning\n\nTekst.';
+    expect(splitLeadSection(body)).toEqual({ lead: '', rest: body });
+  });
+
+  it('keeps the lead when it is the only section', () => {
+    const body = '## Kort svar\n\nBare dette.';
+    expect(splitLeadSection(body)).toEqual({ lead: body, rest: '' });
   });
 });
 

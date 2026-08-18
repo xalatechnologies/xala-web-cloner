@@ -2,7 +2,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { coverAlt, isPostFile, parsePost } from '../posts';
-import { extractFaq, extractHeadings, faqJsonLd } from '../toc';
+import { extractFaq, extractHeadings, faqJsonLd, splitLeadSection } from '../toc';
 import { postUrl } from '../seo';
 import type { BlogPost } from '../types';
 
@@ -89,4 +89,16 @@ describe('published post structure', () => {
       expect(new Set(ids).size).toBe(ids.length);
     }
   );
+
+  it('lifts Kort svar on the automatisering post so the template can put it above the cover', () => {
+    const post = posts.find((item) => item.slug === 'automatisering-av-saksbehandling-hva-boer-og-ikke');
+    expect(post).toBeTruthy();
+    const { lead, rest } = splitLeadSection(post!.body);
+    expect(lead).toMatch(/^## Kort svar/);
+    expect(lead).toContain('Digdir');
+    expect(lead).toContain('Prop. 79 L');
+    expect(lead).toContain('Forskriftsarbeidet');
+    expect(rest).toMatch(/^## Skillet går ved skjønn/);
+    expect(rest).not.toContain('## Kort svar');
+  });
 });
