@@ -1,18 +1,17 @@
 import { useMemo, type ReactNode } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PostCard from '../components/blog/PostCard';
+import ArticleMarkdown from '../components/blog/ArticleMarkdown';
 import ArticleToc from '../components/blog/ArticleToc';
 import ShareLinks from '../components/blog/ShareLinks';
 import NotFound from './NotFound';
 import { allPosts } from '@/lib/blog';
 import { coverAlt, findPost, relatedPosts } from '@/lib/blog/posts';
-import { extractFaq, extractHeadings, faqJsonLd } from '@/lib/blog/toc';
+import { extractFaq, extractHeadings, faqJsonLd, splitLeadSection } from '@/lib/blog/toc';
 import { relatedServices } from '@/lib/blog/relatedServices';
 import { BLOG_PATH, ORGANIZATION, articleJsonLd, formatDate, postMeta, postUrl } from '@/lib/blog/seo';
 import { slugify } from '@/lib/slug';
@@ -34,6 +33,10 @@ export default function BloggPostPage() {
   const related = useMemo(() => (post ? relatedPosts(posts, post) : []), [posts, post]);
   const headings = useMemo(() => (post ? extractHeadings(post.body) : []), [post]);
   const faq = useMemo(() => (post ? extractFaq(post.body) : []), [post]);
+  const { lead, rest } = useMemo(
+    () => (post ? splitLeadSection(post.body) : { lead: '', rest: '' }),
+    [post]
+  );
   const services = useMemo(() => (post ? relatedServices(post) : []), [post]);
 
   // A slug that does not resolve must be a real 404 for crawlers, not a blog
@@ -77,10 +80,10 @@ export default function BloggPostPage() {
       <Navbar />
 
       <main className="flex-1 pt-20">
-        <article className="container mx-auto px-4 py-10 md:py-14">
+        <article className={`container mx-auto px-4 ${lead ? 'py-8 md:py-10' : 'py-10 md:py-14'}`}>
           {/* Breadcrumb and section label share one line: the top of an article
               should get to the headline fast. */}
-          <div className="mb-8 flex items-center justify-between gap-4">
+          <div className={`flex items-center justify-between gap-4 ${lead ? 'mb-5' : 'mb-8'}`}>
             <nav aria-label="Brødsmuler" className="min-w-0 text-sm text-muted-foreground">
               <Link
                 to={BLOG_PATH}
@@ -106,9 +109,23 @@ export default function BloggPostPage() {
                 <h1 className="max-w-[22ch] page-heading">
                   {post.title}
                 </h1>
-                <p className="mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground">
+                <p className={`max-w-[60ch] text-xl leading-relaxed text-muted-foreground ${lead ? 'mt-4' : 'mt-6'}`}>
                   {post.description}
                 </p>
+                {/* Kort svar is the house lead: it belongs with the headline,
+                    not under a 16:9 cover two screens down. The muted box is
+                    the same treatment as the in-article TOC — a scannable
+                    block, not a new component. Byline follows so the answer
+                    is what the first viewport holds at 1280×800. */}
+                {lead ? (
+                  <div className="mt-6 max-w-[68ch] rounded-2xl border border-border bg-muted/40 px-5 py-4">
+                    <ArticleMarkdown
+                      markdown={lead}
+                      heading={anchored}
+                      className="prose max-w-none dark:prose-invert prose-headings:scroll-mt-28 prose-headings:text-lg prose-headings:font-semibold prose-headings:mt-0 prose-p:my-3 prose-p:leading-relaxed prose-a:text-primary"
+                    />
+                  </div>
+                ) : null}
                 <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-border pt-5 text-sm text-muted-foreground">
                   <span className="font-medium text-foreground">{post.author}</span>
                   {post.role && <span>{post.role}</span>}
@@ -148,14 +165,11 @@ export default function BloggPostPage() {
                 </div>
               )}
 
-              <div className="prose prose-lg mt-10 max-w-[68ch] dark:prose-invert prose-headings:scroll-mt-28 prose-a:text-primary">
-                <ReactMarkdown
-                  remarkPlugins={[remarkGfm]}
-                  components={{ h2: anchored('h2'), h3: anchored('h3') }}
-                >
-                  {post.body}
-                </ReactMarkdown>
-              </div>
+              <ArticleMarkdown
+                markdown={rest}
+                heading={anchored}
+                className="prose prose-lg mt-10 max-w-[68ch] dark:prose-invert prose-headings:scroll-mt-28 prose-a:text-primary"
+              />
 
               {services.length > 0 && (
                 <aside aria-labelledby="relevant-heading" className="mt-14 max-w-[68ch] border-t border-border pt-8">
