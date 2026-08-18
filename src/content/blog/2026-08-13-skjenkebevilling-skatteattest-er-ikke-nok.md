@@ -14,52 +14,79 @@ lang: no
 draft: false
 ---
 
+I mappa ligger en skatteattest lastet opp i forrige uke. «Ingen restanser». Saken er merket komplett. En skatteattest søkeren henter selv viser bare visse restanser på utstedelsesdagen. Helsedirektoratet skriver det. Den erstatter ikke uttalelse fra Skatteetaten. Xala kan strukturere innhentingen mot etaten. Xala eier ikke bevillingsportalen. Xala gir ikke bevillingen.
+
+Søkeren har gjort det skjemaet ba om, og venter. Saksbehandleren sitter med et PDF som ikke viser det vandelen krever.
+
 ## Kort svar
 
-En selvhentet skatteattest viser visse restanser på utstedelsesdagen. Den erstatter ikke uttalelse fra Skatteetaten.
+Be om uttalelse fra Skatteetaten. Ikke et obligatorisk vedleggsfelt for skatteattest.
 
-Det står i [Helsedirektoratets rundskriv til alkoholloven § 1-7](https://www.helsedirektoratet.no/rundskriv/alkoholloven/kapittel-1-alminnelige-bestemmelser/-1-7.bevilling-for-salg-og-skjenking). Kommunen kan innhente uttalelse fra skatte- og avgiftsmyndighetene. Attesten søkeren henter selv er ikke den uttalelsen.
+[Prinsipp 4](https://www.digdir.no/digital-samhandling/prinsipp-4-del-og-gjenbruk-data/1061) er kun én gang: hent det etaten allerede har, ikke det søkeren lastet opp. [Prinsipp 5](https://www.digdir.no/digital-samhandling/prinsipp-5-del-og-gjenbruk-losninger/1062) er å bruke etatens uttalelse inn i fagsystemet dere har, ikke å bygge en ny skjenkeportal.
 
-## Hva Helsedir faktisk sier
+## Hva Helsedir faktisk sier om selvhentet attest
 
-En skatteattest som søkeren innhenter selv, gir ikke en fullstendig oversikt over søkerens skatte- og avgiftsmessige situasjon. Den viser visse typer restanser på utstedelsestidspunktet.
+I [rundskrivet til alkoholloven § 1-7, punkt 1.7.4](https://www.helsedirektoratet.no/rundskriv/alkoholloven/kapittel-1-alminnelige-bestemmelser/-1-7.bevilling-for-salg-og-skjenking) står det at en skatteattest som søkeren innhenter selv, «ikke gir noen fullstendig oversikt over bevillingssøkers skatte- og avgiftsmessige situasjon, men kun gir en oversikt over visse typer restanser på et gitt tidspunkt (utstedelsestidspunktet)».
 
-Helsedir: attesten opplyser ikke om krav som er beregnet men ikke forfalt, krav som forfaller etter utstedelsen, forhold i andre virksomheter søkeren er eller har vært involvert i, historikk, eller restanser andre steder i landet når attesten er utstedt av skatteoppkreveren i kommunen.
+Det er hele poenget. Attesten er et øyeblikksbilde av visse restanser. Den er ikke etatens uttalelse.
 
-Uttalelse fra skatte- og avgiftsmyndighetene er «kan» i [§ 1-7](https://lovdata.no/dokument/NL/lov/1989-06-02-27/%C2%A71-7). I de fleste tilfeller er den likevel nødvendig for å ta stilling til vandelskravet i [§ 1-7b](https://lovdata.no/dokument/NL/lov/1989-06-02-27/%C2%A71-7b). På oppfordring skal etatene gi relevante opplysninger uten hinder av taushetsplikt, jf. [§ 1-15](https://lovdata.no/dokument/NL/lov/1989-06-02-27/%C2%A71-15). Kommunen gjør deretter en selvstendig vurdering.
+## Hva § 1-7 krever og hva den bare åpner for
 
-Uttalelse fra politi og sosial er et annet krav. Det er beskrevet i [Skjenkebevilling: uttalelse fra politi og sosial kommer før vedtaket](/blogg/skjenkebevilling-uttalelse-fra-politi-og-sosial).
+[Alkoholloven § 1-7 andre ledd](https://lovdata.no/lov/1989-06-02-27/§1-7) sier at kommunen *skal* innhente uttalelse fra sosialtjenesten og politiet før søknaden avgjøres. Den *kan* også innhente uttalelse fra skatte- og avgiftsmyndighetene.
 
-## Xala kan strukturere innhentingen. Xala gir ikke bevillingen.
+Helsedir skriver likevel at uttalelsen i de fleste tilfeller er nødvendig for å ta stilling til vandelskravet i [§ 1-7b](https://lovdata.no/lov/1989-06-02-27/§1-7b). Når kommunen ber, plikter etatene å gi relevante opplysninger uten hinder av taushetsplikt, etter [§ 1-15](https://lovdata.no/lov/1989-06-02-27/§1-15).
 
-Det som kan struktureres, er å sende saken til skatte- og avgiftsmyndighetene når den er komplett, og legge uttalelsen i mappa før vedtaket. [Prinsipp 4](https://www.digdir.no/digital-samhandling/prinsipp-4-del-og-gjenbruk-data/1061) er å gjenbruke data fra autoritative kilder. [Prinsipp 5](https://www.digdir.no/digital-samhandling/prinsipp-5-del-og-gjenbruk-losninger/1062) er å bruke fellesløsningen, ikke å bygge en ny skjenkeportal.
+Politi og sosial er et annet steg. Det er skrevet i [Skjenkebevilling: uttalelse fra politi og sosial kommer før vedtaket](/blogg/skjenkebevilling-uttalelse-fra-politi-og-sosial). Denne teksten handler bare om skatteattesten.
 
-En selvhentet attest i vedlegget er ikke den innhentingen.
+## Hva attesten ikke viser
 
-Xala kan strukturere innhentingen. Xala gir ikke bevillingen. Xala eier ikke portalen. Xala er ikke Fiks, Altinn, Digdir, Digisos eller Startskudd.
+Helsedir lister fem ting en slik attest ikke opplyser om:
 
-## Hva det betyr for søker og saksbehandler
+- skatte- eller avgiftskrav som er oppstått eller beregnet, men ikke forfalt på utstedelsestidspunktet
+- skatte- eller avgiftskrav som er oppstått eller forfalt etter utstedelsestidspunktet (forskuddstrekk, arbeidsgiveravgift og merverdiavgift forfaller annenhver måned)
+- forhold tilknyttet andre virksomheter bevillingssøker er eller har vært involvert i
+- historikk for bevillingssøkers skatte- og avgiftssituasjon
+- skatte- eller avgiftsrestanser andre steder i landet når attesten er utstedt av skatteoppkreveren i kommunen
 
-Saksbehandleren får en sak der uttalelsen fra Skatteetaten ligger i mappa, eller der det er synlig at den ikke er inne ennå. Ikke en sak der en attest søkeren hentet selv har erstattet uttalelsen.
+Etaten skal bare uttale seg om forholdet til skatte-, avgifts- og regnskapslovgivningen. Uttalelsen kan omfatte nåværende og tidligere overtredelser og restanser, også andre selskaper og privatøkonomi når det kan henge sammen med næringen.
 
-Søkeren merker det som at attesten de henter selv, ikke er uttalelsen kommunen innhenter.
+## Hva som kan automatiseres, og hva som blir manuelt
+
+Det som kan automatiseres, er bestillingen til etaten. Kommunen ber. Etaten svarer. Oppslaget logges: at det gikk til etaten, når, og at det var det § 1-7 og § 1-15 peker på. [NSM](https://nsm.no/hold-deg-oppdatert/meninger/logging-du-ma-vite-hva-som-skjer-og-hva-som-har-skjedd) er at dere må vite hva som skjedde. Arkiver ikke søkerens PDF «for sikkerhets skyld» som om den var etatens uttalelse.
+
+Søkeren har rett til å kjenne uttalelsene, etter [forvaltningsloven § 18](https://lovdata.no/lov/1967-02-10-10/§18). Helsedir: uttalelsen er ikke et enkeltvedtak og kan ikke påklages.
+
+Hvis skjemaet i det hele tatt har et felt for attest, er det valgfritt. [Designsystemets feilmønster](https://designsystemet.no/no/patterns/errors) sier at feilmeldingen skal peke på det som faktisk mangler. Den skal ikke si «last opp skatteattest», og «Send inn» skal ikke blokkeres for et manglende PDF.
+
+Det som ikke skal automatiseres, er å behandle en selvhentet attest som «vandelen er ok». Heller ikke selve vandelsvedtaket. § 1-7b er skjønn. Helsedir skriver at brudd ikke gir automatisk avslag, at kommunen vurderer vekten, og at forhold eldre enn 10 år ikke skal tillegges vekt. Kommunen skal gjøre en selvstendig vurdering etter at uttalelsen er inne.
+
+Xala kan strukturere innhentingen. Xala er ikke Skatteetaten.
 
 ## Ofte stilte spørsmål
 
-### Er skatteattesten søkeren henter selv nok?
+### Er en skatteattest søkeren henter selv nok til å vurdere vandel?
 
-Nei. En selvhentet skatteattest viser visse restanser på utstedelsesdagen. Den gir ikke en fullstendig oversikt. Det står i Helsedirektoratets rundskriv til § 1-7.
+Nei. Helsedirektoratet skriver at den bare viser visse restanser på utstedelsesdagen. Den erstatter ikke uttalelse fra skatte- og avgiftsmyndighetene.
 
-### Erstatter en skatteattest uttalelse fra Skatteetaten?
+### Må kommunen alltid be Skatteetaten?
 
-Nei. Kommunen kan innhente uttalelse fra skatte- og avgiftsmyndighetene. Attesten søkeren henter selv er ikke den uttalelsen.
+Loven sier *kan*, ikke *skal*. Helsedir skriver likevel at uttalelsen i de fleste tilfeller er nødvendig for å ta stilling til § 1-7b.
 
-### Kan Xala gi skjenkebevillingen?
+### Kan kommunen bare stole på «ingen restanser» i PDF-en?
 
-Nei. Xala kan strukturere innhentingen. Xala gir ikke bevillingen. Xala eier ikke portalen, og eier ikke Fiks, Altinn, Digdir, Digisos eller Startskudd.
+Nei. Attesten viser ikke uforfalte krav, senere forfall, andre virksomheter, historikk eller restanser andre steder.
 
-### Hva gjør Xala, og hva gjør Xala ikke?
+### Kan vandelsvurderingen automatiseres når uttalelsen er inne?
 
-Vi strukturerer innhentingen inn i fagsystemet dere allerede har, slik at uttalelsen fra skatte- og avgiftsmyndighetene kan ligge i mappa. Vi gir ikke bevillingen. Vi eier ikke portalen.
+Nei. § 1-7b er skjønn. Kommunen skal gjøre en selvstendig vurdering. Brudd gir ikke automatisk avslag.
+
+### Hva gjør Xala her?
+
+Xala kan strukturere innhentingen mot skatte- og avgiftsmyndighetene. Xala eier ikke bevillingsportalen. Xala gir ikke bevillingen.
+
+## Relaterte artikler
+
+- [Skjenkebevilling: uttalelse fra politi og sosial kommer før vedtaket](/blogg/skjenkebevilling-uttalelse-fra-politi-og-sosial)
+- [Automatisering av saksbehandling: hva som kan automatiseres, og hva som må bli hos saksbehandleren](/blogg/automatisering-av-saksbehandling-hva-boer-og-ikke)
 
 Trenger dere innhenting mot skatte- og avgiftsmyndighetene, start på [kontakt](/kontakt).
