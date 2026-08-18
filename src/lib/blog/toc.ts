@@ -6,7 +6,8 @@
  * - The table of contents, from `##` headings. Answer engines and humans both
  *   scan before they read; an article with no visible structure is an article
  *   nobody scrolls.
- * - The FAQ, from `###` headings under a "Ofte stilte spørsmål" section. This
+ * - The FAQ, from `###` headings or a bold `**Question?**` line under a
+ *   "Ofte stilte spørsmål" section. This
  *   feeds FAQPage schema, and deliberately reads it out of the *rendered body*
  *   rather than from frontmatter. Schema that is authored separately from the
  *   visible text can drift from it, and Google penalises exactly that. Derived
@@ -170,9 +171,11 @@ export function extractHeadings(body: string): TocHeading[] {
 /**
  * Question/answer pairs from the post's FAQ section, if it has one.
  *
- * An answer is every line between one `###` and the next heading, joined into a
- * single string — schema.org `acceptedAnswer.text` takes plain text, and a
- * multi-paragraph answer that arrives as one blob still answers the question.
+ * An answer is every line between one question and the next heading, joined
+ * into a single string — schema.org `acceptedAnswer.text` takes plain text,
+ * and a multi-paragraph answer that arrives as one blob still answers the
+ * question. Questions are `###` headings, or a lone `**Question?**` line
+ * (the form the approved copy uses).
  */
 export function extractFaq(body: string): FaqItem[] {
   const lines = proseLines(body);
@@ -206,6 +209,14 @@ export function extractFaq(body: string): FaqItem[] {
       question = h3;
       continue;
     }
+
+    const bold = /^\s*\*\*(.+?\?)\*\*\s*$/.exec(line);
+    if (bold) {
+      flush();
+      question = plainText(bold[1]);
+      continue;
+    }
+
     if (question && line.trim()) answer.push(line.trim());
   }
   flush();
