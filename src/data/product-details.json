@@ -1,182 +1,722 @@
 {
-    "norchain": {
-        "slug": "norchain",
-        "no": {
-            "tagline": "Blockchain-infrastruktur bygget i Norge",
-            "intro": "Norchain er et komplett blockchain-operativsystem. Det består av en egen L1-infrastruktur, betalingsløsningen NorPay og NorLedger for sporbarhet, og det er bygget for virksomheter som trenger etterprøvbare transaksjoner uten å sette bort kontrollen.",
-            "sections": [
-                {
-                    "heading": "Hva det består av",
-                    "body": "L1-infrastrukturen er kjernen. NorPay håndterer betalinger, NorLedger gir en sporbar hovedbok, og smartkontrakter binder det sammen."
-                },
-                {
-                    "heading": "Hvem det er for",
-                    "body": "Virksomheter som må kunne dokumentere hva som skjedde, når det skjedde og hvem som gjorde det, uten å stole på en tredjepart for revisjonssporet."
-                }
-            ]
+  "bevillingsportal": {
+    "slug": "bevillingsportal",
+    "serviceSlug": "bevillingsportal",
+    "caseSlugs": ["nordre-follo-tilskuddsportal-bevillingsportal"],
+    "postSlugs": ["bevillingsportal-fra-soknad-til-vedtak"],
+    "no": {
+      "tagline": "Fra søknad til begrunnet vedtak",
+      "intro": "Bevillingsportal er produktet Xala bygger når en kommune skal ta imot og behandle bevillingssaker. Det er portalen kommunen bruker. Det er ikke Fiks, Altinn, Digisos eller Startskudd.",
+      "whatHeading": "Hva det er",
+      "what": "Bevillingssaker er blant de mest sammensatte sakene en kommune behandler. De involverer flere instanser, har frister som løper parallelt, og ender i et vedtak som må kunne begrunnes. Portalen samler søknad, høring, status og vedtak i samme saksgang.",
+      "doesHeading": "Hva det gjør",
+      "does": "Skjemaet fanger manglene mens søkeren fortsatt fyller ut. Høringene går parallelt. Purring og frister automatiseres. Søkeren ser ærlig status uten å ringe. Noark ligger i datamodellen fra start.",
+      "doesNotHeading": "Hva det ikke gjør",
+      "doesNot": "Det fatter ikke vedtak. Skjønnsvurderingen av vandel og egnethet ligger hos saksbehandleren. Det erstatter ikke arkivet. Det arkiverer mot Noark. Det er ikke en nasjonal felleskomponent.",
+      "capabilityHeading": "Det som er verdt å bygge",
+      "capabilities": [
+        {
+          "title": "Skjemaet fanger manglene med én gang",
+          "body": "En bevillingssøknad som mangler dokumentasjon, oppdages best mens søkeren fortsatt fyller ut, ikke tre uker senere."
         },
-        "en": {
-            "tagline": "Blockchain infrastructure built in Norway",
-            "intro": "Norchain is a complete blockchain operating system: its own L1 infrastructure, the NorPay payment layer and NorLedger for traceability, built for organisations that need verifiable transactions without handing over control.",
-            "sections": [
-                {
-                    "heading": "What it consists of",
-                    "body": "The L1 infrastructure is the core. NorPay handles payments, NorLedger provides a traceable ledger, and smart contracts tie them together."
-                },
-                {
-                    "heading": "Who it is for",
-                    "body": "Organisations that have to be able to document what happened, when, and who did it, without trusting a third party for the audit trail."
-                }
-            ]
+        {
+          "title": "Høringene er parallelle, ikke sekvensielle",
+          "body": "Politi, skatteetat og kommunens egne instanser har ingen grunn til å vente på hverandre. En sekvensiell kjede gjør saksbehandlingstiden til summen av alle svartidene i stedet for den lengste."
         },
-        "ar": {
-            "tagline": "بنية بلوك تشين مبنية في النرويج",
-            "intro": "Norchain نظام تشغيل بلوك تشين متكامل: بنية L1 خاصة، وطبقة الدفع NorPay، وNorLedger للتتبّع، مبني لمؤسسات تحتاج معاملات قابلة للتحقّق دون التنازل عن السيطرة.",
-            "sections": [
-                {
-                    "heading": "ممّ يتكوّن",
-                    "body": "بنية L1 هي النواة. تتولّى NorPay المدفوعات، ويوفّر NorLedger سجلاً قابلاً للتتبّع، وتربطها العقود الذكية معاً."
-                },
-                {
-                    "heading": "لمن هو",
-                    "body": "للمؤسسات التي يجب أن توثّق ما حدث ومتى ومَن قام به، دون الاعتماد على طرف ثالث لمسار التدقيق."
-                }
-            ]
+        {
+          "title": "Purring, ikke skjønn",
+          "body": "Frister, purringer, statusvarsler og dokumentasjon av hvem som gjorde hva automatiseres. Selve vurderingen skal ligge hos saksbehandleren."
+        },
+        {
+          "title": "Ærlig status uten å ringe",
+          "body": "Et statusfelt søkeren kan se selv fjerner en betydelig andel av henvendelsene til servicetorget. Det krever at statusene er ærlige."
+        },
+        {
+          "title": "Noark fra start",
+          "body": "Bevillingssaker er arkivpliktige. Noark-integrasjonen er del av datamodellen fra start, ikke et vedlegg på slutten."
         }
+      ],
+      "faq": [
+        {
+          "question": "Hva kan automatiseres i en bevillingssak?",
+          "answer": "Alt rundt vurderingen: frister, purringer, statusvarsler og dokumentasjon av hvem som gjorde hva og når. Selve skjønnsvurderingen skal ligge hos saksbehandleren."
+        },
+        {
+          "question": "Hvordan håndteres høringsuttalelser?",
+          "answer": "Parallelt. Instansene varsles samtidig, og systemet purrer automatisk på dem som ikke har svart innen fristen."
+        },
+        {
+          "question": "Må en bevillingsportal integreres med arkivet?",
+          "answer": "Ja, bevillingssaker er arkivpliktige. Vi legger Noark-integrasjonen inn i datamodellen fra start i stedet for å rekonstruere journalposter i etterkant."
+        },
+        {
+          "question": "Er dette Fiks, Altinn eller en annen felleskomponent?",
+          "answer": "Nei. Xala bygger portalen. Kommunen eier saken. Fiks, Altinn, Digisos og Startskudd er andre systemer."
+        }
+      ]
     },
-    "xaheen": {
-        "slug": "xaheen",
-        "no": {
-            "tagline": "AI-drevet utviklingsplattform",
-            "intro": "Xaheen AI Builder er en utviklingsplattform som bruker AI til å ta unna det repetitive i programvareutvikling: kodeassistanse, testing, kodeanalyse og integrasjon mot CI/CD.",
-            "sections": [
-                {
-                    "heading": "Status",
-                    "body": "Xaheen er under utvikling og ikke lansert ennå. Vi bruker den internt i egne prosjekter mens den modnes."
-                },
-                {
-                    "heading": "Hva den gjør",
-                    "body": "Assisterer med kode, genererer og kjører tester, analyserer kodebasen og kobler seg på eksisterende CI/CD-oppsett."
-                }
-            ]
+    "en": {
+      "tagline": "From application to a reasoned decision",
+      "intro": "Bevillingsportal is the product Xala builds when a municipality needs to receive and process licensing cases. It is the portal the municipality uses. It is not Fiks, Altinn, Digisos or Startskudd.",
+      "whatHeading": "What it is",
+      "what": "Licensing cases are among the most involved a municipality handles. They involve several bodies, run parallel deadlines, and end in a decision that has to be justifiable. The portal keeps application, consultation, status and decision in one case flow.",
+      "doesHeading": "What it does",
+      "does": "The form catches what is missing while the applicant is still filling it in. Consultations run in parallel. Reminders and deadlines are automated. The applicant sees an honest status without phoning. Noark is in the data model from the start.",
+      "doesNotHeading": "What it does not do",
+      "doesNot": "It does not make the decision. Judgement on conduct and suitability stays with the caseworker. It does not replace the archive. It archives to Noark. It is not a national shared component.",
+      "capabilityHeading": "What is worth building",
+      "capabilities": [
+        {
+          "title": "The form catches gaps immediately",
+          "body": "A licence application missing documentation is best caught while the applicant is still filling it in, not three weeks later."
         },
-        "en": {
-            "tagline": "AI-assisted development platform",
-            "intro": "Xaheen AI Builder is a development platform that uses AI for the repetitive part of building software: code assistance, testing, code analysis and CI/CD integration.",
-            "sections": [
-                {
-                    "heading": "Status",
-                    "body": "Xaheen is in development and not launched yet. We use it internally on our own projects while it matures."
-                },
-                {
-                    "heading": "What it does",
-                    "body": "Assists with code, generates and runs tests, analyses the codebase, and connects to existing CI/CD setups."
-                }
-            ]
+        {
+          "title": "Consultations are parallel, not sequential",
+          "body": "Police, tax authorities and the municipality have no reason to wait for each other. A sequential chain makes processing time the sum of every reply time rather than the longest."
         },
-        "ar": {
-            "tagline": "منصة تطوير مدعومة بالذكاء الاصطناعي",
-            "intro": "Xaheen AI Builder منصة تطوير تستخدم الذكاء الاصطناعي للجزء المتكرّر من بناء البرمجيات: مساعدة الشيفرة والاختبار وتحليل الشيفرة والتكامل مع CI/CD.",
-            "sections": [
-                {
-                    "heading": "الحالة",
-                    "body": "Xaheen قيد التطوير ولم تُطلق بعد. نستخدمها داخلياً في مشاريعنا بينما تنضج."
-                },
-                {
-                    "heading": "ماذا تفعل",
-                    "body": "تساعد في كتابة الشيفرة، وتولّد الاختبارات وتشغّلها، وتحلّل قاعدة الشيفرة، وترتبط بإعدادات CI/CD القائمة."
-                }
-            ]
+        {
+          "title": "Reminders, not judgement",
+          "body": "Deadlines, reminders, status notices and a record of who did what are automated. The assessment itself stays with the caseworker."
+        },
+        {
+          "title": "Honest status without a phone call",
+          "body": "A status field the applicant can see removes a large share of calls to the service desk. That only works if the statuses are honest."
+        },
+        {
+          "title": "Noark from the start",
+          "body": "Licensing cases must be archived. The Noark integration is part of the data model from the start, not an attachment at the end."
         }
+      ],
+      "faq": [
+        {
+          "question": "What can be automated in a licensing case?",
+          "answer": "Everything around the assessment: deadlines, reminders, status notices and a record of who did what and when. Judgement stays with the caseworker."
+        },
+        {
+          "question": "How are consultation statements handled?",
+          "answer": "In parallel. The bodies are notified at the same time, and the system reminds those who have not replied by the deadline."
+        },
+        {
+          "question": "Does a licensing portal have to integrate with the archive?",
+          "answer": "Yes. Licensing cases must be archived. We put the Noark integration in the data model from the start rather than reconstructing journal entries afterwards."
+        },
+        {
+          "question": "Is this Fiks, Altinn or another shared component?",
+          "answer": "No. Xala builds the portal. The municipality owns the case. Fiks, Altinn, Digisos and Startskudd are other systems."
+        }
+      ]
     },
-    "digilist": {
-        "slug": "digilist",
-        "no": {
-            "tagline": "Booking og utleie av lokaler",
-            "intro": "Digilist samler booking, sesongtildeling, saksbehandling og fakturering i ett system, bygget for norske kommuner og utleiere.",
-            "sections": [
-                {
-                    "heading": "Hva det løser",
-                    "body": "Mange kommuner styrer lokalene sine i regneark og på e-post. Digilist gir én oversikt over hva som er ledig, hvem som har søkt, hva som er vedtatt og hva som skal faktureres."
-                },
-                {
-                    "heading": "Bygget for norske krav",
-                    "body": "Innlogging med ID-porten, arkivering mot Noark, universell utforming etter WCAG 2.2 AA og dokumentasjon som holder i en anskaffelse."
-                }
-            ]
+    "ar": {
+      "tagline": "من الطلب إلى قرار مسبّب",
+      "intro": "Bevillingsportal هو المنتج الذي تبنيه Xala عندما تحتاج بلدية إلى استقبال معاملات التراخيص ومعالجتها. هذه بوابة البلدية. ليست Fiks أو Altinn أو Digisos أو Startskudd.",
+      "whatHeading": "ما هو",
+      "what": "معاملات الترخيص من أكثر المعاملات تعقيداً في البلدية. تشترك فيها عدّة جهات، وتسير فيها المهل بالتوازي، وتنتهي بقرار يجب تسبيبه. تجمع البوابة الطلب والاستشارة والحالة والقرار في مسار واحد.",
+      "doesHeading": "ماذا يفعل",
+      "does": "يلتقط النموذج النواقص بينما ما يزال المتقدّم يملأ الطلب. تسير الاستشارات بالتوازي. تُؤتمت التذكيرات والمهل. يرى المتقدّم حالة صادقة دون أن يتصل. Noark جزء من نموذج البيانات من البداية.",
+      "doesNotHeading": "ما لا يفعله",
+      "doesNot": "لا يتّخذ القرار. تقدير السيرة والأهلية يبقى لدى موظف الحالة. لا يستبدل الأرشيف. يؤرشف وفق Noark. ليس مكوّناً وطنياً مشتركاً.",
+      "capabilityHeading": "ما يستحق البناء",
+      "capabilities": [
+        {
+          "title": "النموذج يلتقط النواقص فوراً",
+          "body": "طلب ترخيص ينقصه توثيق يُكتشف أفضل أثناء التعبئة، لا بعد ثلاثة أسابيع."
         },
-        "en": {
-            "tagline": "Booking and venue hire",
-            "intro": "Digilist brings booking, seasonal allocation, casework and invoicing into one system, built for Norwegian municipalities and venue operators.",
-            "sections": [
-                {
-                    "heading": "What it solves",
-                    "body": "Many municipalities run their facilities out of spreadsheets and email. Digilist gives one view of what is free, who applied, what was decided and what needs invoicing."
-                },
-                {
-                    "heading": "Built for Norwegian requirements",
-                    "body": "ID-porten sign-in, Noark archiving, accessibility to WCAG 2.2 AA, and documentation that holds up in a procurement."
-                }
-            ]
+        {
+          "title": "الاستشارات متوازية لا متسلسلة",
+          "body": "الشرطة والضرائب وجهات البلدية لا سبب لديها لانتظار بعضها. التسلسل يجعل زمن المعالجة مجموع أزمنة الرد لا أطولها."
         },
-        "ar": {
-            "tagline": "الحجز وتأجير المرافق",
-            "intro": "يجمع Digilist الحجز والتوزيع الموسمي ومعالجة الطلبات والفوترة في نظام واحد، مبنيّ للبلديات والجهات المؤجّرة النرويجية.",
-            "sections": [
-                {
-                    "heading": "ما الذي يحلّه",
-                    "body": "تدير بلديات كثيرة مرافقها عبر جداول البيانات والبريد. يمنح Digilist رؤية واحدة لما هو متاح ومَن تقدّم وما تقرّر وما يجب فوترته."
-                },
-                {
-                    "heading": "مبنيّ للمتطلبات النرويجية",
-                    "body": "تسجيل الدخول عبر ID-porten، والأرشفة وفق Noark، وإمكانية الوصول وفق WCAG 2.2 AA، وتوثيق يصمد في عملية شراء عامة."
-                }
-            ]
+        {
+          "title": "تذكير لا تقدير",
+          "body": "المهَل والتذكيرات وإشعارات الحالة وتوثيق من فعل ماذا تُؤتمت. التقييم نفسه يبقى لدى موظف الحالة."
+        },
+        {
+          "title": "حالة صادقة دون اتصال",
+          "body": "حقل حالة يراه المتقدّم يقلّل كثيراً من الاتصالات بمكتب الخدمة. هذا لا ينجح إلا إذا كانت الحالات صادقة."
+        },
+        {
+          "title": "Noark من البداية",
+          "body": "معاملات الترخيص واجبة الأرشفة. تكامل Noark جزء من نموذج البيانات من البداية، لا مرفق في النهاية."
         }
-    },
-    "digiskjema": {
-        "slug": "digiskjema",
-        "no": {
-            "tagline": "Skjemaer som fanger manglene med én gang",
-            "intro": "Digiskjema er en skjemaløsning for offentlig sektor. Poenget er at søkeren får vite hva som mangler mens hun fortsatt fyller ut, i stedet for tre uker senere i et avslagsbrev.",
-            "sections": [
-                {
-                    "heading": "Status",
-                    "body": "Digiskjema er under utvikling og ikke lansert ennå."
-                },
-                {
-                    "heading": "Hvorfor det er bygget slik",
-                    "body": "Regler for hva som er gyldig legges ett sted, ikke spredt i frontend-koden. Da kan de endres når retningslinjene endres, uten en ny utrulling."
-                }
-            ]
+      ],
+      "faq": [
+        {
+          "question": "ما الذي يمكن أتمتته في معاملة ترخيص؟",
+          "answer": "كل ما حول التقييم: المهَل والتذكيرات وإشعارات الحالة وتوثيق من فعل ماذا ومتى. التقدير نفسه يبقى لدى موظف الحالة."
         },
-        "en": {
-            "tagline": "Forms that catch what is missing straight away",
-            "intro": "Digiskjema is a forms solution for the public sector. The point is that an applicant learns what is missing while still filling the form in, rather than three weeks later in a rejection letter.",
-            "sections": [
-                {
-                    "heading": "Status",
-                    "body": "Digiskjema is in development and not launched yet."
-                },
-                {
-                    "heading": "Why it is built this way",
-                    "body": "The rules for what counts as valid live in one place rather than scattered through frontend code, so they can change when the guidance changes without a new deployment."
-                }
-            ]
+        {
+          "question": "كيف تُعالَج بيانات الاستشارة؟",
+          "answer": "بالتوازي. تُبلَّغ الجهات في الوقت نفسه، ويذكّر النظام من لم يرد قبل المهلة."
         },
-        "ar": {
-            "tagline": "نماذج تكتشف النواقص فوراً",
-            "intro": "Digiskjema حلّ نماذج للقطاع العام. الفكرة أن يعرف مقدّم الطلب ما ينقصه وهو ما يزال يملأ النموذج، لا بعد ثلاثة أسابيع في خطاب رفض.",
-            "sections": [
-                {
-                    "heading": "الحالة",
-                    "body": "Digiskjema قيد التطوير ولم يُطلق بعد."
-                },
-                {
-                    "heading": "لماذا بُني هكذا",
-                    "body": "قواعد الصلاحية موجودة في مكان واحد لا موزّعة في شيفرة الواجهة، فيمكن تغييرها عند تغيّر الإرشادات دون نشر جديد."
-                }
-            ]
+        {
+          "question": "هل يجب ربط بوابة الترخيص بالأرشيف؟",
+          "answer": "نعم. معاملات الترخيص واجبة الأرشفة. نضع تكامل Noark في نموذج البيانات من البداية بدل إعادة بناء قيود اليومية لاحقاً."
+        },
+        {
+          "question": "هل هذا Fiks أو Altinn أو مكوّن مشترك آخر؟",
+          "answer": "لا. Xala تبني البوابة. البلدية تملك المعاملة. Fiks وAltinn وDigisos وStartskudd أنظمة أخرى."
         }
+      ]
     }
+  },
+  "tilskuddsportal": {
+    "slug": "tilskuddsportal",
+    "serviceSlug": "tilskuddsportal",
+    "caseSlugs": ["nordre-follo-tilskuddsportal-bevillingsportal"],
+    "postSlugs": ["tilskuddsportal-som-faktisk-brukes"],
+    "no": {
+      "tagline": "To brukergrupper, motsatte behov",
+      "intro": "Tilskuddsportal er produktet Xala bygger for tilskuddsordninger. Søkeren vil bli ferdig. Saksbehandleren vil ha et komplett grunnlag. Det er portalen kommunen bruker. Det er ikke Fiks, Altinn, Digisos eller Startskudd.",
+      "whatHeading": "Hva det er",
+      "what": "En tilskuddsordning har to brukergrupper med motsatte behov. En portal som løser den ene på bekostning av den andre, flytter bare arbeidet et annet sted: telefoner til servicetorget, eller mangelfulle søknader som må returneres.",
+      "doesHeading": "Hva det gjør",
+      "does": "Skjemaet spør bare om det som påvirker vedtaket. Det lagrer underveis. Det validerer mot regelverket, ikke bare mot datatypen. Saksbehandleren får en kø, ikke en innboks. Universell utforming ligger inne fra start.",
+      "doesNotHeading": "Hva det ikke gjør",
+      "doesNot": "Det fatter ikke vedtaket for saksbehandleren. Det digitaliserer ikke papirskjemaet som det er. Det er ikke en nasjonal fellesløsning.",
+      "capabilityHeading": "Valgene som avgjør utfallet",
+      "capabilities": [
+        {
+          "title": "Spør bare om det som påvirker vedtaket",
+          "body": "Gå gjennom hvert felt og still ett spørsmål: påvirker svaret vedtaket? Hvis ikke, fjern det. Finnes svaret i et register dere har tilgang til, hent det i stedet."
+        },
+        {
+          "title": "Lagre underveis",
+          "body": "Søknader fylles sjelden ut i én økt. Vedlegg må hentes, styrevedtak må fattes. Uten automatisk lagring straffes nettopp de grundige søkerne."
+        },
+        {
+          "title": "Valider mot regelverket, ikke bare mot datatypen",
+          "body": "Reglene for hva som er gyldig legges ett sted, ikke spredt i frontend-koden. Da kan de endres når retningslinjene endres, uten en ny utrulling."
+        },
+        {
+          "title": "Gi saksbehandleren en kø",
+          "body": "Lander søknadene i en e-postboks eller et regneark, er problemet flyttet og ikke løst. Saksbehandleren trenger å se hva som venter, hva som haster og hva som mangler."
+        },
+        {
+          "title": "Universell utforming fra start",
+          "body": "En portal som ikke kan brukes med skjermleser, kan ikke brukes av alle som har rett til å søke. Det er hele poenget med en offentlig tilskuddsordning."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Hvor mange felt bør et tilskuddsskjema ha?",
+          "answer": "Så få som mulig. Still ett spørsmål per felt: påvirker svaret vedtaket? Hvis ikke, fjern det. Organisasjonsnummer gir navn, adresse og roller fra Enhetsregisteret uten at søkeren skriver dem inn."
+        },
+        {
+          "question": "Kan portalen håndtere flere tilskuddsordninger?",
+          "answer": "Ja. Ordningene deler som regel saksgang og skiller seg i regelverk og skjema, så vi bygger dem som konfigurasjon i stedet for som separate løsninger."
+        },
+        {
+          "question": "Må en tilskuddsportal oppfylle WCAG 2.2 AA?",
+          "answer": "For offentlige tjenester er det et krav, ikke en ambisjon. Det er også vesentlig billigere å bygge inn enn å rette i etterkant."
+        },
+        {
+          "question": "Er dette Fiks, Altinn eller Startskudd?",
+          "answer": "Nei. Xala bygger portalen. Kommunen eier ordningen. Fiks, Altinn, Digisos og Startskudd er andre systemer."
+        }
+      ]
+    },
+    "en": {
+      "tagline": "Two user groups, opposite needs",
+      "intro": "Tilskuddsportal is the product Xala builds for grant schemes. The applicant wants to be finished. The caseworker wants a complete basis. It is the portal the municipality uses. It is not Fiks, Altinn, Digisos or Startskudd.",
+      "whatHeading": "What it is",
+      "what": "A grant scheme has two user groups with opposite needs. A portal that serves one at the expense of the other just moves the work: calls to the service desk, or incomplete applications that have to be sent back.",
+      "doesHeading": "What it does",
+      "does": "The form asks only what affects the decision. It saves as you go. It validates against the regulation, not just the data type. The caseworker gets a queue, not an inbox. Accessibility is built in from the start.",
+      "doesNotHeading": "What it does not do",
+      "doesNot": "It does not make the decision for the caseworker. It does not digitise the paper form as it stands. It is not a national shared solution.",
+      "capabilityHeading": "Choices that decide the outcome",
+      "capabilities": [
+        {
+          "title": "Ask only what affects the decision",
+          "body": "Ask one question of every field: does the answer change the outcome? If not, remove it. If the answer is in a register you can reach, fetch it."
+        },
+        {
+          "title": "Save as you go",
+          "body": "Applications are rarely completed in one sitting. Attachments have to be fetched, board decisions have to be made. Without autosave you penalise exactly the most thorough applicants."
+        },
+        {
+          "title": "Validate against the regulation, not just the data type",
+          "body": "Validity rules live in one place rather than scattered through frontend code, so they change when the guidance changes without a deployment."
+        },
+        {
+          "title": "Give the caseworker a queue",
+          "body": "If applications land in an inbox or a spreadsheet, the problem has moved rather than been solved. The caseworker needs to see what is waiting, what is urgent and what is missing."
+        },
+        {
+          "title": "Accessibility from the start",
+          "body": "A portal that cannot be used with a screen reader cannot be used by everyone entitled to apply. That is the point of a public grant scheme."
+        }
+      ],
+      "faq": [
+        {
+          "question": "How many fields should a grant form have?",
+          "answer": "As few as possible. Ask one question of every field: does the answer change the decision? If not, remove it. An organisation number gives name, address and roles from the Register of Legal Entities."
+        },
+        {
+          "question": "Can the portal handle several schemes?",
+          "answer": "Yes. Schemes usually share a case flow and differ in regulation and form, so we build them as configuration rather than separate solutions."
+        },
+        {
+          "question": "Does a grant portal have to meet WCAG 2.2 AA?",
+          "answer": "For public services it is a requirement, and cheaper to build in than to retrofit."
+        },
+        {
+          "question": "Is this Fiks, Altinn or Startskudd?",
+          "answer": "No. Xala builds the portal. The municipality owns the scheme. Fiks, Altinn, Digisos and Startskudd are other systems."
+        }
+      ]
+    },
+    "ar": {
+      "tagline": "فئتان، واحتياجان متعاكسان",
+      "intro": "Tilskuddsportal هو المنتج الذي تبنيه Xala لبرامج المنح. المتقدّم يريد الإنجاز. موظف الحالة يريد أساساً كاملاً. هذه بوابة البلدية. ليست Fiks أو Altinn أو Digisos أو Startskudd.",
+      "whatHeading": "ما هو",
+      "what": "لبرامج المنح فئتان لهما احتياجان متعاكسان. بوابة تخدم واحدة على حساب الأخرى تنقل العمل فقط: اتصالات بمكتب الخدمة، أو طلبات ناقصة يجب إعادتها.",
+      "doesHeading": "ماذا يفعل",
+      "does": "يسأل النموذج فقط عمّا يؤثّر في القرار. يحفظ أثناء التعبئة. يتحقّق من اللوائح لا من نوع البيانات فقط. يحصل موظف الحالة على قائمة انتظار لا صندوق بريد. إمكانية الوصول مبنية من البداية.",
+      "doesNotHeading": "ما لا يفعله",
+      "doesNot": "لا يتّخذ القرار بدل موظف الحالة. لا يرقمن النموذج الورقي كما هو. ليس حلاً وطنياً مشتركاً.",
+      "capabilityHeading": "الخيارات التي تحسم النتيجة",
+      "capabilities": [
+        {
+          "title": "اسأل فقط عمّا يؤثّر في القرار",
+          "body": "اطرح سؤالاً واحداً على كل حقل: هل يغيّر الجواب النتيجة؟ إن لم يكن، احذفه. إن وُجد الجواب في سجل تصلون إليه، اجلبوه."
+        },
+        {
+          "title": "احفظ أثناء التعبئة",
+          "body": "نادراً ما تُملأ الطلبات في جلسة واحدة. تُجلب المرفقات وتُتّخذ قرارات مجلس الإدارة. غياب الحفظ التلقائي يعاقب أكثر المتقدّمين دقّة."
+        },
+        {
+          "title": "تحقّق من اللوائح لا من نوع البيانات فقط",
+          "body": "قواعد الصلاحية في مكان واحد لا موزّعة في شيفرة الواجهة، فتتغيّر مع تغيّر الإرشادات دون نشر جديد."
+        },
+        {
+          "title": "امنح موظف الحالة قائمة انتظار",
+          "body": "إن وصلت الطلبات إلى صندوق بريد أو جدول بيانات، فقد انتقلت المشكلة ولم تُحل. يحتاج موظف الحالة أن يرى ما ينتظر وما يستعجل وما ينقص."
+        },
+        {
+          "title": "إمكانية الوصول من البداية",
+          "body": "بوابة لا تُستخدم بقارئ الشاشة لا يستطيع استخدامها كل من له حق التقديم. هذا هو معنى برنامج منح عام."
+        }
+      ],
+      "faq": [
+        {
+          "question": "كم حقلاً ينبغي أن يضمّ نموذج المنحة؟",
+          "answer": "أقل ما يمكن. اسأل عن كل حقل: هل يغيّر الجواب القرار؟ إن لم يكن، احذفه. رقم المنشأة يعطي الاسم والعنوان والأدوار من سجل المنشآت."
+        },
+        {
+          "question": "هل تدعم البوابة عدّة برامج منح؟",
+          "answer": "نعم. تتشارك البرامج عادة مسار المعالجة وتختلف في اللوائح والنموذج، فنبنيها كإعداد لا كحلول منفصلة."
+        },
+        {
+          "question": "هل يجب أن تلبّي البوابة معيار WCAG 2.2 AA؟",
+          "answer": "للخدمات العامة هو شرط، وبناؤه من البداية أرخص من تصحيحه لاحقاً."
+        },
+        {
+          "question": "هل هذا Fiks أو Altinn أو Startskudd؟",
+          "answer": "لا. Xala تبني البوابة. البلدية تملك البرنامج. Fiks وAltinn وDigisos وStartskudd أنظمة أخرى."
+        }
+      ]
+    }
+  },
+  "digilist": {
+    "slug": "digilist",
+    "no": {
+      "tagline": "Booking og utleie av lokaler",
+      "intro": "Digilist samler booking, sesongtildeling, saksbehandling og fakturering i ett system, bygget for norske kommuner og utleiere. Det er i drift på digilist.no. Der merkevaren trenger det, heter det Digilist powered by Xala.",
+      "whatHeading": "Hva det er",
+      "what": "Digilist er en digital markedsplass for utleie og booking av lokaler og tjenester. Idrettshaller, gymsaler, møterom, kulturhus, selskapslokaler og utstyr bruker samme flyt.",
+      "doesHeading": "Hva det gjør",
+      "does": "Det gir én oversikt over hva som er ledig, hvem som har søkt, hva som er vedtatt og hva som skal faktureres. Innlogging skjer med ID-porten. Søknader som krever behandling går gjennom en saksflyt med sporbare vedtak og arkivering mot Noark.",
+      "doesNotHeading": "Hva det ikke gjør",
+      "doesNot": "Det er ikke kommunens arkiv. Det arkiverer mot Noark. Det erstatter ikke økonomisystemet. Det gir fakturagrunnlag og betaling på nett, uten manuell etterregistrering.",
+      "capabilityHeading": "Det som inngår",
+      "capabilities": [
+        {
+          "title": "Booking og sesongtildeling",
+          "body": "Enkeltbookinger og sesongtildeling i samme system, inkludert fordeling av treningstid mellom lag og foreninger."
+        },
+        {
+          "title": "Lokaler av alle slag",
+          "body": "Idrettshaller, gymsaler, møterom, kulturhus, selskapslokaler og utstyr. Samme flyt uansett hva som leies ut."
+        },
+        {
+          "title": "Innlogging med ID-porten",
+          "body": "Sikker innlogging for innbyggere og foreninger, med egne roller for saksbehandlere og driftspersonell."
+        },
+        {
+          "title": "Søknad, vedtak og arkiv",
+          "body": "Søknader som krever behandling går gjennom en saksflyt med sporbare vedtak og arkivering mot Noark."
+        },
+        {
+          "title": "Fakturering og betaling",
+          "body": "Egne priser per leietakertype, automatisk fakturagrunnlag og betaling på nett, uten manuell etterregistrering."
+        },
+        {
+          "title": "Krav i offentlig sektor",
+          "body": "Universell utforming etter WCAG 2.2 AA, krav i personvernforordningen og dokumentasjon som holder i en anskaffelse."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Er Digilist i drift?",
+          "answer": "Ja. Portalen er live på digilist.no. Xala har bygget produktet. Der merkevaren trenger det, heter det Digilist powered by Xala."
+        },
+        {
+          "question": "Hva dekker Digilist?",
+          "answer": "Booking, sesongtildeling, saksbehandling og fakturering av lokaler og tjenester, i ett system."
+        },
+        {
+          "question": "Kan innbyggere logge inn med ID-porten?",
+          "answer": "Ja. Innlogging med ID-porten gjelder innbyggere og foreninger, med egne roller for saksbehandlere og driftspersonell."
+        },
+        {
+          "question": "Arkiveres sakene?",
+          "answer": "Søknader som krever behandling går gjennom en saksflyt med sporbare vedtak og arkivering mot Noark. Digilist er ikke arkivet."
+        }
+      ]
+    },
+    "en": {
+      "tagline": "Booking and venue hire",
+      "intro": "Digilist brings booking, seasonal allocation, casework and invoicing into one system, built for Norwegian municipalities and venue operators. It is live at digilist.no. Where the brand needs it, it is Digilist powered by Xala.",
+      "whatHeading": "What it is",
+      "what": "Digilist is a digital marketplace for rental and booking of venues and services. Sports halls, gyms, meeting rooms, cultural venues, function rooms and equipment use the same flow.",
+      "doesHeading": "What it does",
+      "does": "It gives one view of what is free, who applied, what was decided and what needs invoicing. Sign-in is with ID-porten. Applications that need a decision go through a case flow with traceable decisions and Noark archiving.",
+      "doesNotHeading": "What it does not do",
+      "doesNot": "It is not the municipality's archive. It archives to Noark. It does not replace the finance system. It produces invoice data and takes payment online, without manual re-entry.",
+      "capabilityHeading": "What it includes",
+      "capabilities": [
+        {
+          "title": "Booking and seasonal allocation",
+          "body": "One-off bookings and seasonal allocation in the same system, including the split of training time between clubs."
+        },
+        {
+          "title": "Venues of every kind",
+          "body": "Sports halls, gyms, meeting rooms, cultural venues, function rooms and equipment. The same flow whatever is being hired."
+        },
+        {
+          "title": "Sign-in with ID-porten",
+          "body": "Secure sign-in for residents and clubs, with separate roles for caseworkers and operations staff."
+        },
+        {
+          "title": "Application, decision and archive",
+          "body": "Applications that need a decision go through a case flow with traceable decisions and Noark archiving."
+        },
+        {
+          "title": "Invoicing and payment",
+          "body": "Prices per tenant type, automatic invoice data and payment online, without manual re-entry."
+        },
+        {
+          "title": "Public-sector requirements",
+          "body": "Accessibility to WCAG 2.2 AA, GDPR obligations, and documentation that holds up in a procurement."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is Digilist live?",
+          "answer": "Yes. The portal is live at digilist.no. Xala built the product. Where the brand needs it, it is Digilist powered by Xala."
+        },
+        {
+          "question": "What does Digilist cover?",
+          "answer": "Booking, seasonal allocation, casework and invoicing for venues and services, in one system."
+        },
+        {
+          "question": "Can residents sign in with ID-porten?",
+          "answer": "Yes. ID-porten sign-in covers residents and clubs, with separate roles for caseworkers and operations staff."
+        },
+        {
+          "question": "Are cases archived?",
+          "answer": "Applications that need a decision go through a case flow with traceable decisions and Noark archiving. Digilist is not the archive."
+        }
+      ]
+    },
+    "ar": {
+      "tagline": "الحجز وتأجير المرافق",
+      "intro": "يجمع Digilist الحجز والتوزيع الموسمي ومعالجة الطلبات والفوترة في نظام واحد، مبنيّ للبلديات والجهات المؤجّرة النرويجية. وهو قيد التشغيل على digilist.no. وحيث تحتاج العلامة ذلك، يُسمّى Digilist powered by Xala.",
+      "whatHeading": "ما هو",
+      "what": "Digilist سوق رقمي لتأجير وحجز المرافق والخدمات. تستخدم القاعات الرياضية والصالات وغرف الاجتماعات ودور الثقافة وقاعات المناسبات والمعدات المسار نفسه.",
+      "doesHeading": "ماذا يفعل",
+      "does": "يمنح رؤية واحدة لما هو متاح ومَن تقدّم وما تقرّر وما يجب فوترته. يتم الدخول عبر ID-porten. الطلبات التي تحتاج قراراً تمرّ بمسار مع قرارات قابلة للتتبّع وأرشفة وفق Noark.",
+      "doesNotHeading": "ما لا يفعله",
+      "doesNot": "ليس أرشيف البلدية. يؤرشف وفق Noark. لا يستبدل نظام المالية. يوفّر أساس الفاتورة والدفع عبر الشبكة دون إعادة إدخال يدوي.",
+      "capabilityHeading": "ما يشمله",
+      "capabilities": [
+        {
+          "title": "الحجز والتوزيع الموسمي",
+          "body": "حجوزات فردية وتوزيع موسمي في النظام نفسه، بما في ذلك توزيع وقت التدريب بين الأندية."
+        },
+        {
+          "title": "مرافق من كل نوع",
+          "body": "قاعات رياضية وصالات وغرف اجتماعات ودور ثقافة وقاعات مناسبات ومعدات. المسار نفسه مهما كان المؤجَّر."
+        },
+        {
+          "title": "تسجيل الدخول عبر ID-porten",
+          "body": "دخول آمن للسكان والأندية، مع أدوار منفصلة لموظفي الحالة والتشغيل."
+        },
+        {
+          "title": "الطلب والقرار والأرشيف",
+          "body": "الطلبات التي تحتاج قراراً تمرّ بمسار مع قرارات قابلة للتتبّع وأرشفة وفق Noark."
+        },
+        {
+          "title": "الفوترة والدفع",
+          "body": "أسعار حسب نوع المستأجر، وأساس فاتورة تلقائي ودفع عبر الشبكة دون إعادة إدخال يدوي."
+        },
+        {
+          "title": "متطلبات القطاع العام",
+          "body": "إمكانية وصول وفق WCAG 2.2 AA، والتزامات حماية البيانات، وتوثيق يصمد في عملية شراء عامة."
+        }
+      ],
+      "faq": [
+        {
+          "question": "هل Digilist قيد التشغيل؟",
+          "answer": "نعم. البوابة مباشرة على digilist.no. بنت Xala المنتج. وحيث تحتاج العلامة ذلك، يُسمّى Digilist powered by Xala."
+        },
+        {
+          "question": "ماذا يغطّي Digilist؟",
+          "answer": "الحجز والتوزيع الموسمي ومعالجة الطلبات وفوترة المرافق والخدمات في نظام واحد."
+        },
+        {
+          "question": "هل يمكن للسكان الدخول عبر ID-porten؟",
+          "answer": "نعم. يغطي الدخول عبر ID-porten السكان والأندية، مع أدوار منفصلة لموظفي الحالة والتشغيل."
+        },
+        {
+          "question": "هل تُأرشف المعاملات؟",
+          "answer": "الطلبات التي تحتاج قراراً تمرّ بمسار مع قرارات قابلة للتتبّع وأرشفة وفق Noark. Digilist ليس الأرشيف."
+        }
+      ]
+    }
+  },
+  "digiskjema": {
+    "slug": "digiskjema",
+    "no": {
+      "tagline": "Skjemaer som fanger manglene med én gang",
+      "intro": "Digiskjema er en skjemaløsning for offentlig sektor. Poenget er at søkeren får vite hva som mangler mens hun fortsatt fyller ut, i stedet for tre uker senere i et avslagsbrev. Produktet er under utvikling og ikke lansert ennå.",
+      "whatHeading": "Hva det er",
+      "what": "Digiskjema er produktet Xala bygger for skjemaer som skal valideres mot regelverket mens de fylles ut. Det er ikke Altinn, Digisos eller en nasjonal felleskomponent. Det har ingen offentlig nettadresse ennå.",
+      "doesHeading": "Hva det gjør",
+      "does": "Regler for hva som er gyldig legges ett sted, ikke spredt i frontend-koden. Da kan de endres når retningslinjene endres, uten en ny utrulling. Søkeren får beskjed mens hun fortsatt har konteksten i hodet.",
+      "doesNotHeading": "Hva det ikke gjør",
+      "doesNot": "Det er ikke live. Det fatter ikke vedtak. Det erstatter ikke Altinn. Xala bygger produktet, og vi sier ifra når det kan tas i bruk.",
+      "capabilityHeading": "Slik er det bygget",
+      "capabilities": [
+        {
+          "title": "Validering mot regelverket",
+          "body": "Teknisk validering fanger ugyldige felt. Regelvalidering fanger det som sparer saksbehandleren tid: er søkeren innenfor målgruppen, er beløpet innenfor rammen, er fristen passert?"
+        },
+        {
+          "title": "Reglene ett sted",
+          "body": "Regler for hva som er gyldig lever ett sted. Når retningslinjene endres, endres reglene uten en ny utrulling."
+        },
+        {
+          "title": "Universell utforming",
+          "body": "Et skjema som ikke kan brukes med skjermleser, kan ikke brukes av alle som har rett til å søke. WCAG 2.2 AA er et krav for offentlige tjenester."
+        },
+        {
+          "title": "Innsending og kvittering",
+          "body": "Når skjemaet er komplett, går innsendingen gjennom med kvittering. Mangler noe, får søkeren vite det før hun sender."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Er Digiskjema lansert?",
+          "answer": "Nei. Digiskjema er under utvikling og ikke lansert ennå. Det har ingen offentlig nettadresse."
+        },
+        {
+          "question": "Hva er poenget med Digiskjema?",
+          "answer": "At søkeren får vite hva som mangler mens hun fortsatt fyller ut, i stedet for tre uker senere i et avslagsbrev."
+        },
+        {
+          "question": "Er dette Altinn eller Digisos?",
+          "answer": "Nei. Xala bygger produktet. Altinn og Digisos er andre systemer."
+        },
+        {
+          "question": "Når kan vi ta det i bruk?",
+          "answer": "Når det er klart til å vises. Fortell oss hva dere trenger, så sier vi om det passer."
+        }
+      ]
+    },
+    "en": {
+      "tagline": "Forms that catch what is missing straight away",
+      "intro": "Digiskjema is a forms solution for the public sector. The point is that an applicant learns what is missing while still filling the form in, rather than three weeks later in a rejection letter. The product is in development and not launched yet.",
+      "whatHeading": "What it is",
+      "what": "Digiskjema is the product Xala builds for forms that have to be validated against the regulation as they are filled in. It is not Altinn, Digisos or a national shared component. It has no public URL yet.",
+      "doesHeading": "What it does",
+      "does": "The rules for what counts as valid live in one place rather than scattered through frontend code, so they can change when the guidance changes without a new deployment. The applicant is told while the context is still in her head.",
+      "doesNotHeading": "What it does not do",
+      "doesNot": "It is not live. It does not make the decision. It does not replace Altinn. Xala builds the product, and we will say when it can be used.",
+      "capabilityHeading": "How it is built",
+      "capabilities": [
+        {
+          "title": "Validation against the regulation",
+          "body": "Technical validation catches invalid fields. Rule validation catches what saves the caseworker time: is the applicant in scope, is the amount within the limit, has the deadline passed?"
+        },
+        {
+          "title": "Rules in one place",
+          "body": "Validity rules live in one place. When the guidance changes, the rules change without a new deployment."
+        },
+        {
+          "title": "Accessibility",
+          "body": "A form that cannot be used with a screen reader cannot be used by everyone entitled to apply. WCAG 2.2 AA is a requirement for public services."
+        },
+        {
+          "title": "Submission and receipt",
+          "body": "When the form is complete, submission goes through with a receipt. If something is missing, the applicant is told before she sends."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Has Digiskjema launched?",
+          "answer": "No. Digiskjema is in development and not launched yet. It has no public URL."
+        },
+        {
+          "question": "What is the point of Digiskjema?",
+          "answer": "That the applicant learns what is missing while still filling the form in, rather than three weeks later in a rejection letter."
+        },
+        {
+          "question": "Is this Altinn or Digisos?",
+          "answer": "No. Xala builds the product. Altinn and Digisos are other systems."
+        },
+        {
+          "question": "When can we use it?",
+          "answer": "When it is ready to show. Tell us what you need and we will say whether it fits."
+        }
+      ]
+    },
+    "ar": {
+      "tagline": "نماذج تكتشف النواقص فوراً",
+      "intro": "Digiskjema حلّ نماذج للقطاع العام. الفكرة أن يعرف مقدّم الطلب ما ينقصه وهو ما يزال يملأ النموذج، لا بعد ثلاثة أسابيع في خطاب رفض. المنتج قيد التطوير ولم يُطلق بعد.",
+      "whatHeading": "ما هو",
+      "what": "Digiskjema هو المنتج الذي تبنيه Xala للنماذج التي يجب التحقّق منها وفق اللوائح أثناء التعبئة. ليس Altinn أو Digisos أو مكوّناً وطنياً مشتركاً. ليست له عنوان شبكة عام بعد.",
+      "doesHeading": "ماذا يفعل",
+      "does": "قواعد الصلاحية موجودة في مكان واحد لا موزّعة في شيفرة الواجهة، فتتغيّر عند تغيّر الإرشادات دون نشر جديد. يتلقّى المتقدّم التنبيه وهو ما يزال يملك السياق.",
+      "doesNotHeading": "ما لا يفعله",
+      "doesNot": "ليس مباشراً بعد. لا يتّخذ القرار. لا يستبدل Altinn. تبني Xala المنتج، وسنقول متى يمكن استخدامه.",
+      "capabilityHeading": "كيف بُني",
+      "capabilities": [
+        {
+          "title": "التحقّق من اللوائح",
+          "body": "التحقّق التقني يلتقط الحقول غير الصالحة. تحقّق القواعد يلتقط ما يوفّر وقت موظف الحالة: هل المتقدّم ضمن الفئة، هل المبلغ ضمن الحد، هل انتهت المهلة؟"
+        },
+        {
+          "title": "القواعد في مكان واحد",
+          "body": "قواعد الصلاحية في مكان واحد. عند تغيّر الإرشادات تتغيّر القواعد دون نشر جديد."
+        },
+        {
+          "title": "إمكانية الوصول",
+          "body": "نموذج لا يُستخدم بقارئ الشاشة لا يستطيع استخدامه كل من له حق التقديم. WCAG 2.2 AA شرط للخدمات العامة."
+        },
+        {
+          "title": "الإرسال والإيصال",
+          "body": "عندما يكتمل النموذج يمرّ الإرسال مع إيصال. إن نقص شيء، يعرف المتقدّم ذلك قبل الإرسال."
+        }
+      ],
+      "faq": [
+        {
+          "question": "هل أُطلق Digiskjema؟",
+          "answer": "لا. Digiskjema قيد التطوير ولم يُطلق بعد. ليست له عنوان شبكة عام."
+        },
+        {
+          "question": "ما غاية Digiskjema؟",
+          "answer": "أن يعرف مقدّم الطلب ما ينقصه وهو ما يزال يملأ النموذج، لا بعد ثلاثة أسابيع في خطاب رفض."
+        },
+        {
+          "question": "هل هذا Altinn أو Digisos؟",
+          "answer": "لا. تبني Xala المنتج. Altinn وDigisos أنظمة أخرى."
+        },
+        {
+          "question": "متى يمكن استخدامه؟",
+          "answer": "عندما يصبح جاهزاً للعرض. أخبرونا بما تحتاجونه وسنقول إن كان يناسب."
+        }
+      ]
+    }
+  },
+  "norchain": {
+    "slug": "norchain",
+    "no": {
+      "tagline": "Blockchain-infrastruktur bygget i Norge",
+      "intro": "Norchain er et komplett blockchain-operativsystem. Det består av en egen L1-infrastruktur, betalingsløsningen NorPay og NorLedger for sporbarhet, og det er bygget for virksomheter som trenger etterprøvbare transaksjoner uten å sette bort kontrollen.",
+      "sections": [
+        {
+          "heading": "Hva det består av",
+          "body": "L1-infrastrukturen er kjernen. NorPay håndterer betalinger, NorLedger gir en sporbar hovedbok, og smartkontrakter binder det sammen."
+        },
+        {
+          "heading": "Hvem det er for",
+          "body": "Virksomheter som må kunne dokumentere hva som skjedde, når det skjedde og hvem som gjorde det, uten å stole på en tredjepart for revisjonssporet."
+        }
+      ]
+    },
+    "en": {
+      "tagline": "Blockchain infrastructure built in Norway",
+      "intro": "Norchain is a complete blockchain operating system: its own L1 infrastructure, the NorPay payment layer and NorLedger for traceability, built for organisations that need verifiable transactions without handing over control.",
+      "sections": [
+        {
+          "heading": "What it consists of",
+          "body": "The L1 infrastructure is the core. NorPay handles payments, NorLedger provides a traceable ledger, and smart contracts tie them together."
+        },
+        {
+          "heading": "Who it is for",
+          "body": "Organisations that have to be able to document what happened, when, and who did it, without trusting a third party for the audit trail."
+        }
+      ]
+    },
+    "ar": {
+      "tagline": "بنية بلوك تشين مبنية في النرويج",
+      "intro": "Norchain نظام تشغيل بلوك تشين متكامل: بنية L1 خاصة، وطبقة الدفع NorPay، وNorLedger للتتبّع، مبني لمؤسسات تحتاج معاملات قابلة للتحقّق دون التنازل عن السيطرة.",
+      "sections": [
+        {
+          "heading": "ممّ يتكوّن",
+          "body": "بنية L1 هي النواة. تتولّى NorPay المدفوعات، ويوفّر NorLedger سجلاً قابلاً للتتبّع، وتربطها العقود الذكية معاً."
+        },
+        {
+          "heading": "لمن هو",
+          "body": "للمؤسسات التي يجب أن توثّق ما حدث ومتى ومَن قام به، دون الاعتماد على طرف ثالث لمسار التدقيق."
+        }
+      ]
+    }
+  },
+  "xaheen": {
+    "slug": "xaheen",
+    "no": {
+      "tagline": "AI-drevet utviklingsplattform",
+      "intro": "Xaheen AI Builder er en utviklingsplattform som bruker AI til å ta unna det repetitive i programvareutvikling: kodeassistanse, testing, kodeanalyse og integrasjon mot CI/CD.",
+      "sections": [
+        {
+          "heading": "Status",
+          "body": "Xaheen er under utvikling og ikke lansert ennå. Vi bruker den internt i egne prosjekter mens den modnes."
+        },
+        {
+          "heading": "Hva den gjør",
+          "body": "Assisterer med kode, genererer og kjører tester, analyserer kodebasen og kobler seg på eksisterende CI/CD-oppsett."
+        }
+      ]
+    },
+    "en": {
+      "tagline": "AI-assisted development platform",
+      "intro": "Xaheen AI Builder is a development platform that uses AI for the repetitive part of building software: code assistance, testing, code analysis and CI/CD integration.",
+      "sections": [
+        {
+          "heading": "Status",
+          "body": "Xaheen is in development and not launched yet. We use it internally on our own projects while it matures."
+        },
+        {
+          "heading": "What it does",
+          "body": "Assists with code, generates and runs tests, analyses the codebase, and connects to existing CI/CD setups."
+        }
+      ]
+    },
+    "ar": {
+      "tagline": "منصة تطوير مدعومة بالذكاء الاصطناعي",
+      "intro": "Xaheen AI Builder منصة تطوير تستخدم الذكاء الاصطناعي للجزء المتكرّر من بناء البرمجيات: مساعدة الشيفرة والاختبار وتحليل الشيفرة والتكامل مع CI/CD.",
+      "sections": [
+        {
+          "heading": "الحالة",
+          "body": "Xaheen قيد التطوير ولم تُطلق بعد. نستخدمها داخلياً في مشاريعنا بينما تنضج."
+        },
+        {
+          "heading": "ماذا تفعل",
+          "body": "تساعد في كتابة الشيفرة، وتولّد الاختبارات وتشغّلها، وتحلّل قاعدة الشيفرة، وترتبط بإعدادات CI/CD القائمة."
+        }
+      ]
+    }
+  }
 }
