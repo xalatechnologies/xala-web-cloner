@@ -131,9 +131,14 @@ export function splitLeadSection(body: string): LeadSection {
   if (leadStart === -1) return { lead: '', rest: body };
 
   const end = restStart === -1 ? lines.length : restStart;
+  const prefix = lines.slice(0, leadStart).join('\n').replace(/\s+$/, '');
+  const after = lines.slice(end).join('\n').replace(/^\s+/, '');
   return {
     lead: lines.slice(leadStart, end).join('\n').replace(/\s+$/, ''),
-    rest: lines.slice(end).join('\n').replace(/^\s+/, ''),
+    // Prose before the first Kort svar is the lede, not part of the box.
+    // Dropping it would silently delete the opening of posts that set the
+    // scene before the boxed answer.
+    rest: [prefix, after].filter(Boolean).join('\n\n'),
   };
 }
 

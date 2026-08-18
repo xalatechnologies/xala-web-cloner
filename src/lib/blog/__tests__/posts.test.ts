@@ -9,6 +9,7 @@ import {
   publishedPosts,
   readingMinutes,
   relatedPosts,
+  relatedSlugsFromBody,
   slugFromFilename,
   sortPosts,
 } from "../posts";
@@ -278,6 +279,44 @@ describe("selection helpers", () => {
     const related = relatedPosts(posts, a, 1);
     expect(related).toHaveLength(1);
     expect(related[0].slug).not.toBe("a");
+  });
+
+  it("relatedSlugsFromBody reads /blogg links under Relaterte artikler", () => {
+    expect(
+      relatedSlugsFromBody(
+        [
+          "## Relaterte artikler",
+          "",
+          "- [Politi](/blogg/skjenkebevilling-uttalelse-fra-politi-og-sosial)",
+          "- [Automatisering](/blogg/automatisering-av-saksbehandling-hva-boer-og-ikke)",
+          "",
+          "Trenger dere innhenting, start på [kontakt](/kontakt).",
+        ].join("\n")
+      )
+    ).toEqual([
+      "skjenkebevilling-uttalelse-fra-politi-og-sosial",
+      "automatisering-av-saksbehandling-hva-boer-og-ikke",
+    ]);
+  });
+
+  it("relatedPosts prefers an authored Relaterte artikler list of two or more", () => {
+    const { posts: withRelated } = parsePosts({
+      "/blog/a.md": md(
+        { slug: "a", date: "2026-07-01", tag: '"IT-leder"', keywords: '["azure", "sky"]' },
+        [
+          "Ingress.",
+          "",
+          "## Relaterte artikler",
+          "",
+          "- [C](/blogg/c)",
+          "- [B](/blogg/b)",
+        ].join("\n")
+      ),
+      "/blog/b.md": md({ slug: "b", date: "2026-06-01", tag: '"IT-leder"', keywords: '["sharepoint"]' }),
+      "/blog/c.md": md({ slug: "c", date: "2026-05-01", tag: '"Utvikler"', keywords: '["azure"]' }),
+    });
+    const a = findPost(withRelated, "a") as BlogPost;
+    expect(relatedPosts(withRelated, a).map((p) => p.slug)).toEqual(["c", "b"]);
   });
 
   it("allTags is deduplicated and sorted", () => {

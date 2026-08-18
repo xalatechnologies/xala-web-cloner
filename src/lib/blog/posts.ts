@@ -157,13 +157,53 @@ export function findPost(posts: BlogPost[], slug: string, lang = DEFAULT_LANG): 
   return posts.find((p) => p.slug === slug && p.lang === lang);
 }
 
+const RELATED_HEADING = /^(relaterte artikler|related articles)\b/i;
+const BLOG_HREF = /\]\((?:https?:\/\/xala\.no)?\/blogg\/([a-z0-9-]+)\)/g;
+
+/**
+ * Slugs the author listed under Relaterte artikler, in document order.
+ *
+ * Keyword overlap invents neighbours (SFO next to skjenkebevilling) that the
+ * body never claimed. When the author named two or more, that list is the
+ * related set — not a starting point to pad with lookalikes.
+ */
+export function relatedSlugsFromBody(body: string): string[] {
+  const slugs: string[] = [];
+  let inRelated = false;
+
+  for (const line of body.split('\n')) {
+    const heading = /^\s{0,3}##\s+(.+?)\s*#*\s*$/.exec(line);
+    if (heading) {
+      const text = heading[1].replace(/[*_`]/g, '').trim();
+      if (inRelated) break;
+      inRelated = RELATED_HEADING.test(text);
+      continue;
+    }
+    if (!inRelated) continue;
+    for (const match of line.matchAll(BLOG_HREF)) {
+      if (match[1] && !slugs.includes(match[1])) slugs.push(match[1]);
+    }
+  }
+
+  return slugs;
+}
+
 /**
  * Up to `limit` posts closest to `post`, ranked by shared keywords then tag.
  *
  * Internal links are the point: a post reachable only from the index is a leaf,
  * and both crawlers and answer engines weigh a page by what links to it.
+ * An authored Relaterte artikler list of two or more wins over that ranking.
  */
 export function relatedPosts(posts: BlogPost[], post: BlogPost, limit = 3): BlogPost[] {
+  const authored = relatedSlugsFromBody(post.body);
+  if (authored.length >= 2) {
+    return authored
+      .map((slug) => findPost(posts, slug, post.lang))
+      .filter((item): item is BlogPost => Boolean(item) && item.slug !== post.slug)
+      .slice(0, limit);
+  }
+
   const keywords = new Set((post.keywords ?? []).map((k) => k.toLowerCase()));
   const scored = publishedPosts(posts, post.lang)
     .filter((p) => p.slug !== post.slug)

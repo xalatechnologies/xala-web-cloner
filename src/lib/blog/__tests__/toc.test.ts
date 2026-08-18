@@ -116,6 +116,25 @@ describe('splitLeadSection', () => {
     const body = '## Kort svar\n\nBare dette.';
     expect(splitLeadSection(body)).toEqual({ lead: body, rest: '' });
   });
+
+  it('keeps prose that sits before the opening Kort svar', () => {
+    const body = [
+      'I mappa ligger en skatteattest.',
+      '',
+      '## Kort svar',
+      '',
+      'Be om uttalelse.',
+      '',
+      '## Neste seksjon',
+      '',
+      'Resten.',
+    ].join('\n');
+
+    expect(splitLeadSection(body)).toEqual({
+      lead: '## Kort svar\n\nBe om uttalelse.',
+      rest: 'I mappa ligger en skatteattest.\n\n## Neste seksjon\n\nResten.',
+    });
+  });
 });
 
 describe('extractFaq', () => {
