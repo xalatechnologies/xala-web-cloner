@@ -72,6 +72,26 @@ describe('BloggPostPage lead vs cover', () => {
     ).toBeInTheDocument();
   });
 
+  it('compacts the first-screen stack so the three citations stay in the lead box', () => {
+    const { container } = renderPost();
+
+    const box = container.querySelector('[data-article-lead]');
+    expect(box).toBeTruthy();
+    expect(box!.querySelector('a[href*="digdir.no"]')?.textContent).toBe('Digdir');
+    expect(box!.querySelector('a[href*="prop.-79-l"]')?.textContent).toBe('Prop. 79 L kap. 8');
+    expect(box!.querySelector('a[href*="forskrift-om-automatisert"]')?.textContent).toBe(
+      'Forskriftsarbeidet'
+    );
+
+    // Layout only: the approved type scale is one step down from page-heading
+    // / relaxed deck so the box fits a 1280×800 first screen.
+    const heading = screen.getByRole('heading', { level: 1 });
+    expect(heading.className).not.toContain('page-heading');
+    expect(heading.className).toMatch(/2\.5rem/);
+    expect(box!.className).toMatch(/py-3/);
+    expect(box!.className).toMatch(/px-4/);
+  });
+
   it('prerenders the lead above the cover so first HTML matches the SPA', () => {
     const prerender = readFileSync(resolve(__dirname, '../../../scripts/prerender-blog.ts'), 'utf8');
     expect(prerender).toContain('splitLeadSection');
