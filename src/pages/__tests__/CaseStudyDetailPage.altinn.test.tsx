@@ -16,6 +16,14 @@ vi.mock('next-themes', () => ({
   useTheme: () => ({ theme: 'light', setTheme: vi.fn() }),
 }));
 
+class FakeIntersectionObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+
+vi.stubGlobal('IntersectionObserver', FakeIntersectionObserver);
+
 function jsonLdBlocks() {
   return [...document.head.querySelectorAll('script[type="application/ld+json"]')].map((el) =>
     JSON.parse(el.textContent ?? '')
@@ -66,8 +74,10 @@ describe('/caser/altinn', () => {
     for (const item of altinnCaseStudy.faq ?? []) {
       expect(screen.getByText(item.question)).toBeInTheDocument();
     }
-    expect(screen.getByRole('link', { name: 'Kontakt' })).toHaveAttribute('href', '/kontakt');
-    expect(screen.getByRole('link', { name: 'caser' })).toHaveAttribute('href', '/caser');
+    const faq = document.getElementById('faq');
+    expect(faq).toBeTruthy();
+    expect(faq!.querySelector('a[href="/kontakt"]')?.textContent).toBe('Kontakt');
+    expect(faq!.querySelector('a[href="/caser"]')?.textContent).toBe('caser');
 
     await waitFor(() => expect(jsonLdBlocks().some((block) => block['@type'] === 'FAQPage')).toBe(true));
     const faqPages = jsonLdBlocks().filter((block) => block['@type'] === 'FAQPage');
