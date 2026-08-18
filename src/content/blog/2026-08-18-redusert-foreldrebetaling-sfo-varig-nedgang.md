@@ -68,4 +68,4 @@ Fordi husholdningen er den som bor på barnets folkeregistrerte adresse. Uten hu
 
 Vi bygger hentingen inn i fagsystemet dere allerede har, og kan sende saken til et menneske når vurderingen krever det. Vi sier ikke at fallet er varig. Vi kjører ikke SFO-portalen, og vi eier ikke Fiks, Altinn, Digisos eller Startskudd.
 
-Kartlegging av om varig nedgang blir liggende hos saksbehandleren, er det første steget. Det tar vi i [kontakt](/kontakt).
+Kartlegging av om varig nedgang blir liggende hos saksbehandleren, er det første steget. Det tar vi når dere tar [kontakt](/kontakt).
