@@ -165,11 +165,13 @@ export const SEO = ({
         <meta property="og:description" content={description} />
         <meta property="og:image" content={absoluteOgImage} />
 
-        {/* Twitter */}
-        <meta name="twitter:url" content={canonicalUrl} />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={absoluteOgImage} />
+        {/* Twitter. property= matches index.html so Helmet replaces the
+            shell tags instead of leaving the homepage card beside a second
+            name= pair that crawlers ignore. */}
+        <meta property="twitter:url" content={canonicalUrl} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={absoluteOgImage} />
 
         {/* The hreflang pair that accompanies this is in UniversalHead. */}
         <link rel="canonical" href={canonicalUrl} />

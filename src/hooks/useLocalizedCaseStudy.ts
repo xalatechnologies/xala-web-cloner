@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { localizedSeo } from '@/data/case-studies/localized';
 import type { CaseStudy } from '@/types/caseStudy';
 
 /**
@@ -14,7 +15,9 @@ export function useLocalizedCaseStudy(cs: CaseStudy | undefined): CaseStudy | un
 
   if (!cs) return undefined;
   const locale = cs.translations?.[lang as 'no' | 'ar'];
-  if (!locale) return cs;
+  if (!locale) {
+    return lang === 'no' ? { ...cs, seo: localizedSeo(cs, 'no') } : cs;
+  }
 
   return {
     ...cs,
@@ -30,6 +33,6 @@ export function useLocalizedCaseStudy(cs: CaseStudy | undefined): CaseStudy | un
     capabilities: locale.capabilities ?? cs.capabilities,
     scope: locale.scope ?? cs.scope,
     card: locale.card ? { ...cs.card, ...locale.card } : cs.card,
-    seo: locale.seo ? { ...cs.seo, ...locale.seo } : cs.seo,
+    seo: localizedSeo(cs, lang),
   };
 }

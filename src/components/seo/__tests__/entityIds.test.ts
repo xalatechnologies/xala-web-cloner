@@ -29,6 +29,11 @@ describe('organization identity', () => {
     expect(orgs).toHaveLength(1);
   });
 
+  it('publishes a WebSite node at #website so WebPage isPartOf resolves', () => {
+    expect(INDEX_HTML).toContain('"@type": "WebSite"');
+    expect(INDEX_HTML).toContain('"@id": "https://xala.no/#website"');
+  });
+
   it('points service offerings at that same organization', () => {
     const schema = generateServicesSchema(
       [{ id: 'x', title: 'En tjeneste', description: 'Beskrivelse.' }],

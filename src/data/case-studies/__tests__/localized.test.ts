@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { caseStudies } from '../index';
-import { localizedCardExcerpt, normalizeCaseLang } from '../localized';
+import { localizedCardExcerpt, localizedSeo, normalizeCaseLang } from '../localized';
 import { caserEntries } from '@/data/caser-page-entries';
 
 /**
@@ -54,6 +54,28 @@ describe('localizedCardExcerpt', () => {
     expect(localizedCardExcerpt(undefined, 'no')).toBeUndefined();
     expect(localizedCardExcerpt('ikke-en-case', 'no')).toBeUndefined();
   });
+
+  it.each(linked.map((entry) => [entry.slug!, entry] as const))(
+    '%s ships Norwegian first-HTML SEO without an English Case Study template',
+    (slug) => {
+      const study = caseStudies.find((item) => item.slug === slug);
+      expect(study, `no case study for ${slug}`).toBeTruthy();
+
+      const no = localizedSeo(study!, 'no');
+      const en = localizedSeo(study!, 'en');
+
+      expect(no.title, `${slug} has no Norwegian title`).toBeTruthy();
+      expect(no.description, `${slug} has no Norwegian description`).toBeTruthy();
+      expect(no.title).not.toMatch(/case study/i);
+      expect(no.title).not.toContain('Municipality');
+      expect(no.description).not.toMatch(/see how xala/i);
+      // Altinn's existing 99,99 % sentence stays on the Norwegian description.
+      if (slug !== 'altinn') {
+        expect(no.description).not.toMatch(/99[,.]99/);
+      }
+      expect(no.description, `${slug} falls back to English SEO`).not.toBe(en.description);
+    }
+  );
 
   it('collapses locale tags to the three languages that are authored', () => {
     expect(normalizeCaseLang('nb-NO')).toBe('no');

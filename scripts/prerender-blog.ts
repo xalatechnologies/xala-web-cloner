@@ -55,8 +55,11 @@ import {
 } from "../src/lib/blog/feeds";
 import type { BlogPost } from "../src/lib/blog/types";
 import { caseStudies } from "../src/data/case-studies/index";
+import { localizedSeo } from "../src/data/case-studies/localized";
 import productsData from "../src/data/products.json";
 import servicePages from "../src/data/service-pages.json";
+import faqData from "../src/data/faq.json";
+import { generateFAQSchema } from "../src/components/seo/sectionSchemas";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CONTENT_DIR = path.join(ROOT, "src", "content", "blog");
@@ -129,13 +132,21 @@ function renderHead(shell: string, fields: HeadFields): string {
   replaceMeta("property", "og:description", fields.description);
   replaceMeta("property", "og:url", fields.canonical);
   replaceMeta("property", "og:type", fields.ogType);
-  if (fields.image) replaceMeta("property", "og:image", fields.image);
+  // Default share image so summary_large_image is never a card with no image.
+  // Blog posts pass their cover; everything else uses /og-image.png.
+  const image = fields.image ?? `${SITE_ORIGIN}/og-image.png`;
+  replaceMeta("property", "og:image", image);
+  replaceMeta("property", "twitter:card", "summary_large_image");
+  replaceMeta("property", "twitter:url", fields.canonical);
+  replaceMeta("property", "twitter:title", fields.title);
+  replaceMeta("property", "twitter:description", fields.description);
+  replaceMeta("property", "twitter:image", image);
 
   html = html.replace(/<link\s+rel=["']canonical["'][^>]*>/i, "");
 
   const extra = [
     `<link rel="canonical" href="${escapeHtml(fields.canonical)}" data-rh="true" />`,
-    `<link rel="alternate" type="application/rss+xml" title="Blogg | ${escapeHtml(ORGANIZATION)}" href="${SITE_ORIGIN}${BLOG_PATH}/rss.xml" />`,
+    `<link rel="alternate" type="application/rss+xml" title="${escapeHtml(getPageSEO("blog", "no").title)}" href="${SITE_ORIGIN}${BLOG_PATH}/rss.xml" />`,
     fields.publishedTime
       ? `<meta property="article:published_time" content="${fields.publishedTime}" data-rh="true" />`
       : "",
@@ -186,6 +197,7 @@ const MAIN_NAV: NavLink[] = [
   { href: "/teknologi", label: "Teknologi" },
   { href: "/om-oss", label: "Om oss" },
   { href: "/karriere", label: "Karriere" },
+  { href: "/faq", label: "Ofte stilte spørsmål" },
   { href: "/kontakt", label: "Kontakt" },
 ];
 
@@ -241,6 +253,38 @@ function staticRouteHtml(heading: string, description: string, links: NavLink[])
   );
 }
 
+function faqRouteHtml(
+  heading: string,
+  description: string,
+  faqs: { question: string; answer: string }[],
+  links: NavLink[],
+): string {
+  const items = faqs
+    .map(
+      (faq) =>
+        `<dt>${escapeHtml(faq.question)}</dt><dd>${escapeHtml(faq.answer)}</dd>`,
+    )
+    .join("");
+  const list =
+    `<dl style="max-width:52ch;text-align:left;margin:1.5rem auto 0;color:#f5f5f4">${items}</dl>`;
+  return staticRouteHtml(heading, description, links).replace("</div>", `${list}</div>`);
+}
+
+function webPageJsonLd(path: string, copy: { title: string; description: string }) {
+  const url = `${SITE_ORIGIN}${path === "/" ? "" : path}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    url,
+    name: copy.title,
+    description: copy.description,
+    inLanguage: "nb-NO",
+    isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+    publisher: { "@id": ORG_ID },
+  };
+}
+
 function postArticleHtml(post: BlogPost, related: BlogPost[]): string {
   const cover = post.cover
     ? `<img src="${escapeHtml(post.cover)}" alt="" width="1200" height="675" />`
@@ -269,6 +313,7 @@ ${relatedHtml}
 }
 
 function indexHtml(posts: BlogPost[]): string {
+  const listing = getPageSEO("blog", "no");
   const cards = posts
     .map(
       (post) => `<li><article>
@@ -280,9 +325,9 @@ function indexHtml(posts: BlogPost[]): string {
     .join("\n");
 
   return `<div class="min-h-screen flex flex-col"><main>
-<nav aria-label="Brødsmuler"><a href="/">Forside</a> / <span aria-current="page">Blogg</span></nav>
-<h1>Blogg</h1>
-<p>Fagartikler om systemutvikling, Microsoft 365 og SharePoint, Azure, integrasjon og AI — skrevet for beslutningstakere i offentlig sektor og næringsliv.</p>
+<nav aria-label="Brødsmuler"><a href="/">Forside</a> / <span aria-current="page">${escapeHtml(listing.title.split(" | ")[0])}</span></nav>
+<h1>${escapeHtml(listing.title.split(" | ")[0])}</h1>
+<p>${escapeHtml(listing.description)}</p>
 ${posts.length ? `<ul>\n${cards}\n</ul>` : "<p>Ingen artikler her ennå.</p>"}
 </main></div>`;
 }
@@ -314,13 +359,13 @@ function main(): void {
   const posts = publishedPosts(all);
   const today = new Date().toISOString().slice(0, 10);
 
+  const listing = getPageSEO("blog", "no");
   write(
     path.join(DIST, "blogg", "index.html"),
     renderBody(
       renderHead(shell, {
-        title: `Blogg | ${ORGANIZATION}`,
-        description:
-          "Fagartikler om systemutvikling, Microsoft 365 og SharePoint, Azure, integrasjon og AI — for offentlig sektor og næringsliv.",
+        title: listing.title,
+        description: listing.description,
         canonical: `${SITE_ORIGIN}${BLOG_PATH}`,
         ogType: "website",
         jsonLd: blogJsonLd(posts),
@@ -356,56 +401,33 @@ function main(): void {
   // Give every real route a file of its own, so nginx can serve `$uri/index.html`
   // and answer anything else with a genuine 404.
   //
-  // Without these the server needs a catch-all `/index.html` fallback, which
-  // hands back HTTP 200 for URLs that do not exist — a soft 404. Crawlers treat
-  // a site that answers 200 for everything as having unbounded duplicate
-  // content, and the NotFound page React renders afterwards does not undo the
-  // status line that was already sent.
-  /**
-   * The front page last, and deliberately after the loop.
-   *
-   * dist/index.html is the shell every other page is rendered from, so it can
-   * only be rewritten once that is no longer needed. Skipping it entirely — as
-   * this did — left the single most important page for crawl discovery with an
-   * empty <div id="root"> and no links to follow, which is exactly where a
-   * crawler starts.
-   */
-  {
-    const copy = getPageSEO("home", "no");
-    write(
-      path.join(DIST, "index.html"),
-      renderBody(shell, staticRouteHtml(copy.title.split(" | ")[0], copy.description, MAIN_NAV)),
-    );
-  }
-
+  // dist/index.html is the shell every other page is rendered from, so the
+  // in-memory `shell` is what we rewrite — never the file we just wrote.
+  // The front page used to skip renderHead, which left crawlers the leftover
+  // "Innovative Teknologiløsninger" title on the single most important URL.
   for (const route of STATIC_ROUTES) {
-    if (route.path === "/") continue; // written above, from the untouched shell
-    // Each route gets its own title, description and canonical. Writing the
-    // untouched shell here meant every static page claimed the front page's
-    // title and canonical — for any crawler that does not run the bundle, the
-    // site looked like a dozen copies of the home page.
     const copy = getPageSEO(resolveRoute(route.path).pageId, "no");
+    const canonical = `${SITE_ORIGIN}${route.path === "/" ? "" : route.path}`;
+    const extraJsonLd =
+      route.path === "/faq"
+        ? [{ ...generateFAQSchema(faqData.no), "@id": `${SITE_ORIGIN}/faq#faq` }]
+        : [];
+    const inner =
+      route.path === "/faq"
+        ? faqRouteHtml(copy.title.split(" | ")[0], copy.description, faqData.no, MAIN_NAV)
+        : staticRouteHtml(copy.title.split(" | ")[0], copy.description, MAIN_NAV);
     write(
       path.join(DIST, route.path.replace(/^\//, ""), "index.html"),
       renderBody(
-      renderHead(shell, {
-        title: copy.title,
-        description: copy.description,
-        canonical: `${SITE_ORIGIN}${route.path}`,
-        ogType: "website",
-        jsonLd: {
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          "@id": `${SITE_ORIGIN}${route.path}#webpage`,
-          url: `${SITE_ORIGIN}${route.path}`,
-          name: copy.title,
+        renderHead(shell, {
+          title: copy.title,
           description: copy.description,
-          inLanguage: "nb-NO",
-          isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
-          publisher: { "@id": ORG_ID },
-        },
-      }),
-      staticRouteHtml(copy.title.split(" | ")[0], copy.description, MAIN_NAV),
+          canonical,
+          ogType: "website",
+          jsonLd: webPageJsonLd(route.path, copy),
+          extraJsonLd,
+        }),
+        inner,
       ),
     );
   }
@@ -430,11 +452,12 @@ function main(): void {
   for (const study of caseStudies) {
     if (!study.slug) continue;
     const url = `${SITE_ORIGIN}/caser/${study.slug}`;
+    const seo = localizedSeo(study, "no");
     write(
       path.join(DIST, "caser", study.slug, "index.html"),
       renderHead(shell, {
-        title: study.seo?.title ?? `${study.title} | ${ORGANIZATION}`,
-        description: study.seo?.description ?? study.summary,
+        title: seo.title,
+        description: seo.description,
         canonical: url,
         ogType: "article",
         jsonLd: {
@@ -444,7 +467,7 @@ function main(): void {
               "@type": "Article",
               "@id": `${url}#article`,
               headline: study.title,
-              description: study.seo?.description ?? study.summary,
+              description: seo.description,
               inLanguage: "nb-NO",
               publisher: { "@id": ORG_ID },
               mainEntityOfPage: { "@type": "WebPage", "@id": url },

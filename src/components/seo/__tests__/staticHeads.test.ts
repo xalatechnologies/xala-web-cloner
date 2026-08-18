@@ -31,6 +31,8 @@ const HELMET_OWNED = [
   'property="twitter:url"',
   'property="twitter:title"',
   'property="twitter:description"',
+  'property="twitter:image"',
+  'property="og:image"',
   'rel="canonical"',
 ];
 
@@ -43,6 +45,37 @@ describe('index.html shell', () => {
 
   it('ships exactly one canonical of its own', () => {
     expect(INDEX_HTML.match(/rel="canonical"/g)).toHaveLength(1);
+  });
+
+  it('ships the public-sector home copy, not leftover Innovative Teknologiløsninger', () => {
+    const home = getPageSEO('home', 'no');
+    expect(INDEX_HTML).toContain(`<title>${home.title}</title>`);
+    expect(INDEX_HTML).toContain(`content="${home.description}"`);
+    expect(INDEX_HTML).not.toContain('Innovative Teknologiløsninger');
+    expect(INDEX_HTML).not.toContain('banebrytende teknologi');
+  });
+
+  it('includes a default share image so large Twitter cards are not empty', () => {
+    expect(INDEX_HTML).toContain('property="og:image"');
+    expect(INDEX_HTML).toContain('https://xala.no/og-image.png');
+    expect(INDEX_HTML).toContain('property="twitter:image"');
+  });
+
+  it('describes the company as public-sector software, not Microsoft 365', () => {
+    const orgBlock = INDEX_HTML.slice(
+      INDEX_HTML.indexOf('"@type": "Organization"'),
+      INDEX_HTML.indexOf('"@type": "WebSite"')
+    );
+    expect(orgBlock).toContain('saksbehandlingssystemer');
+    expect(orgBlock).toContain('Altinn');
+    expect(orgBlock).toContain('Noark 5');
+    expect(orgBlock).not.toContain('Microsoft 365');
+    expect(orgBlock).not.toContain('SharePoint');
+    expect(orgBlock).not.toContain('SPFx');
+    expect(orgBlock).not.toContain('Power Platform');
+    expect(INDEX_HTML).not.toContain('linkedin.com/in/ibrahimrahmani');
+    expect(INDEX_HTML).toContain('linkedin.com/company/');
+    expect(INDEX_HTML).toContain('"@id": "https://xala.no/#website"');
   });
 });
 
@@ -93,6 +126,12 @@ describe('prerendered static routes', () => {
     expect(Object.keys(CANONICAL_ALIASES).length).toBeGreaterThan(0);
     expect(prerender, 'prerender must copy each alias onto dist/<alias>/index.html').toContain(
       'Object.entries(CANONICAL_ALIASES)'
+    );
+    expect(prerender, 'inner pages must rewrite twitter:title, not keep the homepage card').toContain(
+      'replaceMeta("property", "twitter:title"'
+    );
+    expect(prerender, 'marketing routes must prerender og/twitter images').toContain(
+      'replaceMeta("property", "twitter:image"'
     );
     expect(prerender).toMatch(/write\(\s*path\.join\(\s*DIST,\s*alias\.replace/);
     expect(verifyDist, 'verify-dist must require a file for every alias').toContain(

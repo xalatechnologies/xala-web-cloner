@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
@@ -63,6 +65,12 @@ describe('FaqPage', () => {
     const faqPages = jsonLdBlocks().filter((block) => block['@type'] === 'FAQPage');
     expect(faqPages).toHaveLength(1);
     expect(faqPages[0].mainEntity).toHaveLength(faqData.no.length);
+  });
+
+  it('is linked from the prerendered main nav so a crawler can reach it', () => {
+    const prerender = readFileSync(resolve(__dirname, '../../../scripts/prerender-blog.ts'), 'utf8');
+    expect(prerender).toContain('href: "/faq"');
+    expect(prerender).toContain('generateFAQSchema');
   });
 
   it('does not invent uptime or SLA figures', () => {

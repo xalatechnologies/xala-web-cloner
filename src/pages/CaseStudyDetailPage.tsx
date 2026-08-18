@@ -959,6 +959,9 @@ export default function CaseStudyDetailPage() {
         <meta property="og:url" content={`${SITE_ORIGIN}/caser/${slug}`} />
         <meta property="og:title" content={cs.seo.title} />
         <meta property="og:description" content={cs.seo.description} />
+        <meta property="twitter:url" content={`${SITE_ORIGIN}/caser/${slug}`} />
+        <meta property="twitter:title" content={cs.seo.title} />
+        <meta property="twitter:description" content={cs.seo.description} />
       </Helmet>
 
       <div className="min-h-screen flex flex-col">

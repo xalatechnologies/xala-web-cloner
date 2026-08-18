@@ -10,6 +10,7 @@ const Footer = () => {
   const companyLinks = [
     { name: t('footer.links.about'), href: '/om-oss' },
     { name: t('footer.links.careers'), href: '/karriere' },
+    { name: t('footer.links.faq', 'Ofte stilte spørsmål'), href: '/faq' },
     { name: t('footer.links.contact'), href: '/kontakt' },
   ];
 

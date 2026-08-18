@@ -41,10 +41,11 @@ const UniversalHead = ({ canonicalUrl }: UniversalHeadProps) => (
     <link rel="alternate" hrefLang="nb-NO" href={canonicalUrl} />
     <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
 
-    {/* Without a card type, X renders a bare link with no image. */}
-    <meta name="twitter:card" content="summary_large_image" />
+    {/* Without a card type, X renders a bare link with no image.
+        property= matches the static shell so Helmet replaces it. */}
+    <meta property="twitter:card" content="summary_large_image" />
     <meta property="og:image" content={DEFAULT_OG_IMAGE} />
-    <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
+    <meta property="twitter:image" content={DEFAULT_OG_IMAGE} />
 
     {/* Answer engines: the machine-readable summary of the whole site. */}
     <link rel="alternate" type="text/plain" href={`${SITE_ORIGIN}/llms.txt`} title="llms.txt" />

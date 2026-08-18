@@ -5,6 +5,7 @@
  * *says* lives here.
  */
 import { BLOG_PATH, ORGANIZATION, SITE_ORIGIN, absolute, postUrl } from "./seo";
+import { getPageSEO } from "@/components/seo/seoContent";
 import type { BlogPost } from "./types";
 
 /** Escape the five characters that are not legal as XML text. */
@@ -23,6 +24,7 @@ function rfc822(date: string): string {
 }
 
 export function renderRss(posts: BlogPost[], now = new Date()): string {
+  const listing = getPageSEO("blog", "no");
   const items = posts
     .map((post) => {
       const image = absolute(post.cover);
@@ -42,10 +44,10 @@ export function renderRss(posts: BlogPost[], now = new Date()): string {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blogg | ${escapeXml(ORGANIZATION)}</title>
+    <title>${escapeXml(listing.title)}</title>
     <link>${SITE_ORIGIN}${BLOG_PATH}</link>
     <atom:link href="${SITE_ORIGIN}${BLOG_PATH}/rss.xml" rel="self" type="application/rss+xml" />
-    <description>Fagartikler om systemutvikling, Microsoft 365, Azure, integrasjon og AI.</description>
+    <description>${escapeXml(listing.description)}</description>
     <language>nb-NO</language>
     <lastBuildDate>${now.toUTCString()}</lastBuildDate>
 ${items}
