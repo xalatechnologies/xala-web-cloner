@@ -58,6 +58,19 @@ describe('VideoHero rotating word overflow', () => {
     expect(h1?.className).toContain('lg:text-7xl');
   });
 
+  // GEOQA #45: lcp-below 1200ms failed on xala.no's landing page. The heading
+  // is the largest text on it, so it is the LCP element, and it used to mount
+  // at opacity 0 behind a 0.3s entrance delay — time added straight onto the
+  // measurement. An entrance animation is fine anywhere else in the hero.
+  it('paints the heading immediately rather than fading it in', () => {
+    renderHero(['saksbehandlingssystemer']);
+
+    const h1 = document.querySelector('#home h1') as HTMLElement;
+    expect(h1).not.toBeNull();
+    expect(h1.style.opacity).not.toBe('0');
+    expect(rotatingWord()).not.toHaveStyle({ opacity: 0 });
+  });
+
   it('opens on saksbehandlingssystemer when using the default rotator list', () => {
     render(
       <MemoryRouter>

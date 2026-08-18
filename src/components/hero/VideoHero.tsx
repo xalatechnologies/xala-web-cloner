@@ -33,7 +33,12 @@ function DynamicWord({
   const display = processServiceTitle(raw, language)
 
   return (
-    <AnimatePresence mode="wait">
+    /*
+      initial={false} only for the word already on screen at mount: it is part
+      of the LCP heading, and fading it in held the heading's own paint back.
+      Every later tick still animates, because the key changes after mount.
+    */
+    <AnimatePresence mode="wait" initial={false}>
       <motion.span
         key={raw}
         initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
@@ -149,13 +154,15 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
           </span>
         </motion.div>
 
-        {/* Main headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1] mb-6"
-        >
+        {/*
+          Main headline — the largest text on the page, so it is the Largest
+          Contentful Paint element. It used to mount at opacity 0 and fade in
+          on a 0.3s delay, which means the browser cannot count it as painted
+          until the animation starts: the entrance delay was added to LCP on
+          the page every visitor lands on. It renders immediately now. The
+          elements around it still animate; none of them is the LCP candidate.
+        */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground leading-[1.1] mb-6">
           {/* Two fixed lines. The rotating word sits on its own line with a
               reserved height, because the words differ in length
               ("integrasjoner" vs "saksbehandlingssystemer") and inline they
@@ -169,7 +176,7 @@ export default function VideoHero({ videoSrc = '/videos/xala.mp4', poster = '/he
               words={words ?? [...DEFAULT_HERO_WORDS]}
             />
           </span>
-        </motion.h1>
+        </h1>
 
         {/* Subtitle */}
         <motion.p
