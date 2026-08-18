@@ -52,6 +52,18 @@ describe('RouteSEO renders head tags', () => {
 
     // A bare "/og-image.png" is ignored by most crawlers.
     await waitFor(() => expect(head.property('og:image')).toMatch(/^https:\/\//));
+    expect(head.property('twitter:image')).toBe(head.property('og:image'));
+  });
+
+  it('keeps twitter:title and twitter:url on this page, not the homepage leftovers', async () => {
+    const expected = getPageSEO('services', 'no');
+    renderAt('/tjenester');
+
+    await waitFor(() => expect(head.property('og:title')).toBe(expected.title));
+    expect(head.property('twitter:title')).toBe(expected.title);
+    expect(head.property('twitter:url')).toBe(head.property('og:url'));
+    expect(head.property('twitter:url')).toBe('https://xala.no/tjenester');
+    expect(head.property('twitter:title')).not.toContain('Innovative');
   });
 
   it('marks the 404 page noindex', async () => {

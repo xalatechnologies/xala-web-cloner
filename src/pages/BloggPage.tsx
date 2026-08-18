@@ -6,11 +6,12 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { allPosts } from '@/lib/blog';
 import { allTags, publishedPosts } from '@/lib/blog/posts';
-import { BLOG_PATH, BRAND, SITE_ORIGIN, blogJsonLd, formatDate } from '@/lib/blog/seo';
+import { getPageSEO } from '@/components/seo/seoContent';
+import { BLOG_PATH, SITE_ORIGIN, blogJsonLd, formatDate } from '@/lib/blog/seo';
 
-const TITLE = `Fagartikler om offentlig digitalisering | ${BRAND}`;
-const DESCRIPTION =
-  'Fagartikler om saksbehandlingssystemer, tilskudds- og bevillingsportaler, integrasjoner mot nasjonale felleskomponenter og modernisering av fagsystemer.';
+const listing = getPageSEO('blog', 'no');
+const TITLE = listing.title;
+const DESCRIPTION = listing.description;
 
 const PAGE_SIZE = 8;
 const ALL = 'Alle';

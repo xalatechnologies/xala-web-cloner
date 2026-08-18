@@ -9,6 +9,8 @@
  */
 import type { BlogPost } from "./types";
 
+import { getPageSEO } from "@/components/seo/seoContent";
+
 export const SITE_ORIGIN = "https://xala.no";
 export const BLOG_PATH = "/blogg";
 export const ORGANIZATION = "Xala Technologies AS";
@@ -108,11 +110,13 @@ export function articleJsonLd(post: BlogPost): Record<string, unknown> {
 
 /** schema.org for the index: a Blog whose posts are listed, not just linked. */
 export function blogJsonLd(posts: BlogPost[]): Record<string, unknown> {
+  const listing = getPageSEO("blog", "no");
   return {
     "@context": "https://schema.org",
     "@type": "Blog",
     "@id": `${SITE_ORIGIN}${BLOG_PATH}#blog`,
-    name: `Blogg | ${ORGANIZATION}`,
+    name: listing.title,
+    description: listing.description,
     url: `${SITE_ORIGIN}${BLOG_PATH}`,
     inLanguage: "nb-NO",
     publisher: { "@id": ORG_ID },

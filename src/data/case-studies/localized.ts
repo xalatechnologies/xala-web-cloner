@@ -1,3 +1,4 @@
+import type { CaseStudy } from '@/types/caseStudy';
 import { caseStudyBySlug } from './index';
 
 export type CaseLang = 'no' | 'en' | 'ar';
@@ -39,4 +40,40 @@ export function localizedCardExcerpt(
   if (lang === 'en') return study.card?.excerpt;
 
   return study.translations?.[lang]?.card?.excerpt ?? study.card?.excerpt;
+}
+
+/**
+ * Title and description a crawler should see for this case study.
+ *
+ * The base `seo` object is English ("Nordre Follo Municipality Case Study").
+ * Norwegian descriptions were already written under translations.no.seo, but
+ * the prerender and the detail-page Helmet both read the English fields, so
+ * every nb-NO case URL shipped an English card. Titles that still use the
+ * "Case Study" template are rewritten rather than invented: the English
+ * marketing sentence stays for en, and Altinn's existing 99,99 % copy is
+ * left untouched because it lives on the Norwegian description.
+ */
+export function localizedSeo(
+  study: Pick<CaseStudy, 'seo' | 'summary' | 'translations'>,
+  language: string
+): { title: string; description: string } {
+  const lang = normalizeCaseLang(language);
+  const locale = lang === 'en' ? undefined : study.translations?.[lang];
+  const description = locale?.seo?.description ?? study.seo.description ?? study.summary;
+  const authored = locale?.seo?.title ?? study.seo.title;
+  return {
+    title: lang === 'no' ? norwegianCaseTitle(authored) : authored,
+    description,
+  };
+}
+
+/** Drop the English "Case Study" template from an nb-NO title. */
+export function norwegianCaseTitle(title: string): string {
+  if (!/case study/i.test(title)) return title;
+  return title
+    .replace(/\s*Case Study\s*/gi, ' ')
+    .replace(/\bMunicipality\b/g, 'kommune')
+    .replace(/\s+\|/g, ' |')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
 }

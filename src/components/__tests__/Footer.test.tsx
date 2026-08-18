@@ -16,4 +16,15 @@ describe('Footer legal row', () => {
     expect(cookies).toHaveAttribute('href', '/cookies');
     expect(screen.queryByRole('link', { name: 'Cookies' })).not.toBeInTheDocument();
   });
+
+  it('points a crawlable footer link at /faq', () => {
+    render(
+      <MemoryRouter>
+        <Footer />
+      </MemoryRouter>
+    );
+
+    const faq = screen.getByRole('link', { name: 'Ofte stilte spørsmål' });
+    expect(faq).toHaveAttribute('href', '/faq');
+  });
 });

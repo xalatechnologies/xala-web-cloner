@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { getPageSEO } from "@/components/seo/seoContent";
 import {
   blogSitemapEntries,
   escapeXml,
@@ -77,6 +78,16 @@ describe("renderRss", () => {
   it("includes an absolute enclosure only when the post has a cover", () => {
     expect(xml).toContain('<enclosure url="https://xala.no/images/blog/a.webp"');
     expect([...xml.matchAll(/<enclosure/g)]).toHaveLength(1);
+  });
+
+  it("uses the public-sector listing copy for the channel, not leftover M365", () => {
+    const listing = getPageSEO("blog", "no");
+    const channel = xml.split("<item>")[0];
+    expect(channel).toContain(`<title>${listing.title}</title>`);
+    expect(channel).toContain(`<description>${listing.description}</description>`);
+    expect(channel).not.toContain("Microsoft 365");
+    expect(channel).not.toContain("SharePoint");
+    expect(channel).not.toContain("Blogg |");
   });
 });
 
