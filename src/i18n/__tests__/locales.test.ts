@@ -92,6 +92,14 @@ describe('locale parity', () => {
     expect(subtitle(en)).not.toBe(subtitle(ar));
   });
 
+  it('uses a Norwegian /caser card CTA without case study', () => {
+    // XWEB-178: every listing card reads caseStudy.readMore. The badge and
+    // count are already Norwegian (XWEB-176); the leftover English was here.
+    expect((no.caseStudy as Tree).readMore).toBe('Les case');
+    expect((no.caseStudy as Tree).readMore).not.toMatch(/case study/i);
+    expect((en.caseStudy as Tree).readMore).toBe('Read case study');
+  });
+
   it('keeps the Norwegian footer cookies label as Informasjonskapsler', () => {
     const cookies = ((no.footer as Tree).links as Tree).cookies;
     expect(cookies).toBe('Informasjonskapsler');

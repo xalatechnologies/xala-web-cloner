@@ -65,6 +65,8 @@ export interface CaseStudyLocale {
   }>;
   card?: Partial<{ title: string; excerpt: string }>;
   seo?: Partial<{ title: string; description: string }>;
+  coreTechnologies?: string[];
+  technologies?: CaseStudyTechStack;
 }
 
 export interface CaseStudy {

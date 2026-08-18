@@ -1,4 +1,4 @@
-import type { CaseStudy } from '@/types/caseStudy';
+import type { CaseStudy, CaseStudyTechStack } from '@/types/caseStudy';
 import { caseStudyBySlug } from './index';
 
 export type CaseLang = 'no' | 'en' | 'ar';
@@ -100,17 +100,74 @@ function norwegianVisibleTitle(title: string): string {
 }
 
 /**
+ * English descriptive tech-chip phrases → Bokmål.
+ *
+ * Product names (React, TypeScript, .NET, Azure, SQL Server, APIs) stay as-is.
+ * Only the leftover English chrome called out in XWEB-179. No kroner, no SLA.
+ */
+const NORWEGIAN_TECH_CHIPS: Record<string, string> = {
+  'Authentication services': 'Autentiseringstjenester',
+  'Municipal integrations': 'Kommunale integrasjoner',
+  'Role-based access control': 'Rollestyrt tilgangskontroll',
+  'Municipal system integrations': 'Kommunale systemintegrasjoner',
+  'Testing and validation': 'Testing og validering',
+  'Deployment support': 'Driftsstøtte',
+  'Monitoring and operational readiness': 'Overvåking og driftsklarhet',
+};
+
+function localizeChipList(items: string[] | undefined, lang: CaseLang): string[] | undefined {
+  if (!items) return items;
+  if (lang !== 'no') return items;
+  return items.map((item) => NORWEGIAN_TECH_CHIPS[item] ?? item);
+}
+
+function localizeTechStack(stack: CaseStudyTechStack, lang: CaseLang): CaseStudyTechStack {
+  if (lang !== 'no') return stack;
+  return {
+    frontend: localizeChipList(stack.frontend, lang),
+    backend: localizeChipList(stack.backend, lang),
+    databases: localizeChipList(stack.databases, lang),
+    cloud: localizeChipList(stack.cloud, lang),
+    identity: localizeChipList(stack.identity, lang),
+    integrations: localizeChipList(stack.integrations, lang),
+    devops: localizeChipList(stack.devops, lang),
+  };
+}
+
+/** Chip labels a visitor sees on a case page (core row + teknologi section). */
+export function visibleTechChips(study: Pick<CaseStudy, 'coreTechnologies' | 'technologies'>): string[] {
+  const stack = study.technologies;
+  return [
+    ...(study.coreTechnologies ?? []),
+    ...(stack.frontend ?? []),
+    ...(stack.backend ?? []),
+    ...(stack.databases ?? []),
+    ...(stack.cloud ?? []),
+    ...(stack.identity ?? []),
+    ...(stack.integrations ?? []),
+    ...(stack.devops ?? []),
+  ];
+}
+
+/**
  * Visible case-study fields in the reader's language.
  *
  * SEO is handled separately by `localizedSeo` (XWEB-169). This is the on-page
- * body: h1, sector pill, leveranser, brukergrupper, gjennomføring, architecture.
+ * body: h1, sector pill, leveranser, brukergrupper, gjennomføring, architecture,
+ * and the technology chips (XWEB-179).
  */
 export function localizeCaseStudy(study: CaseStudy, language: string): CaseStudy {
   const lang = normalizeCaseLang(language);
   const locale = lang === 'en' ? undefined : study.translations?.[lang];
   if (!locale) {
     return lang === 'no'
-      ? { ...study, title: norwegianVisibleTitle(study.title), seo: localizedSeo(study, 'no') }
+      ? {
+          ...study,
+          title: norwegianVisibleTitle(study.title),
+          seo: localizedSeo(study, 'no'),
+          coreTechnologies: localizeChipList(study.coreTechnologies, lang),
+          technologies: localizeTechStack(study.technologies, lang),
+        }
       : study;
   }
 
@@ -140,5 +197,7 @@ export function localizeCaseStudy(study: CaseStudy, language: string): CaseStudy
       : study.architectureDiagram,
     card: locale.card ? { ...study.card, ...locale.card } : study.card,
     seo: localizedSeo(study, lang),
+    coreTechnologies: locale.coreTechnologies ?? localizeChipList(study.coreTechnologies, lang),
+    technologies: locale.technologies ?? localizeTechStack(study.technologies, lang),
   };
 }
