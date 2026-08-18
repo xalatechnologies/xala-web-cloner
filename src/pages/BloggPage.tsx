@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowUpRight, ChevronLeft, ChevronRight, Search, X } from 'lucide-react';
@@ -28,10 +28,26 @@ export default function BloggPage() {
     return Number.isFinite(parsed) && parsed > 0 ? parsed : 1;
   });
 
+  // The navbar search submits to /blogg?q=…, and when the reader is already on
+  // this page the router reuses the mounted component, so the initialiser above
+  // never runs again. Follow the URL when it changes from somewhere other than
+  // this box. The comparison is against the trimmed field, because the writer
+  // below trims before it writes: without that, typing a trailing space would
+  // come straight back as a URL change and delete the space under the cursor.
+  const urlQuery = searchParams.get('q') ?? '';
+  const typedQuery = useRef(query);
+  useEffect(() => {
+    if (typedQuery.current.trim() === urlQuery) return;
+    typedQuery.current = urlQuery;
+    setQuery(urlQuery);
+    setPage(1);
+  }, [urlQuery]);
+
   // Search and filter state lives in the URL so a filtered view is a link
   // somebody can send. `replace` keeps the back button pointing at the page
   // the reader arrived from rather than at every keystroke.
   useEffect(() => {
+    typedQuery.current = query;
     const next = new URLSearchParams();
     if (query.trim()) next.set('q', query.trim());
     if (activeTag !== ALL) next.set('tag', activeTag);
