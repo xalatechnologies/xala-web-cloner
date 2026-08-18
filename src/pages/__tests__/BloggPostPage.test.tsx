@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
@@ -14,6 +16,14 @@ vi.mock('react-i18next', () => ({
 vi.mock('next-themes', () => ({
   useTheme: () => ({ theme: 'light', setTheme: vi.fn() }),
 }));
+
+// ArticleToc's scroll-spy needs IntersectionObserver; jsdom does not have one.
+class FakeIntersectionObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+vi.stubGlobal('IntersectionObserver', FakeIntersectionObserver);
 
 const SLUG = 'automatisering-av-saksbehandling-hva-boer-og-ikke';
 
@@ -60,6 +70,16 @@ describe('BloggPostPage lead vs cover', () => {
     expect(
       screen.getByText(/Begynn med arbeidet rundt vedtaket, ikke vedtaket selv/)
     ).toBeInTheDocument();
+  });
+
+  it('prerenders the lead above the cover so first HTML matches the SPA', () => {
+    const prerender = readFileSync(resolve(__dirname, '../../../scripts/prerender-blog.ts'), 'utf8');
+    expect(prerender).toContain('splitLeadSection');
+    const leadAt = prerender.indexOf('${leadHtml}');
+    const coverAt = prerender.indexOf('${cover}');
+    expect(leadAt).toBeGreaterThan(-1);
+    expect(coverAt).toBeGreaterThan(-1);
+    expect(leadAt).toBeLessThan(coverAt);
   });
 
   it('leaves a post without Kort svar in the existing header → cover → body order', () => {

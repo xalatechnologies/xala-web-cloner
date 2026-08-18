@@ -27,7 +27,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 import { coverAlt, parsePosts, publishedPosts, relatedPosts } from "../src/lib/blog/posts";
-import { extractFaq, faqJsonLd } from "../src/lib/blog/toc";
+import { extractFaq, faqJsonLd, splitLeadSection } from "../src/lib/blog/toc";
 import { getPageSEO } from "../src/components/seo/seoContent";
 import { CANONICAL_ALIASES, resolveRoute } from "../src/components/seo/routeRules";
 import {
@@ -297,15 +297,19 @@ function postArticleHtml(post: BlogPost, related: BlogPost[]): string {
         )
         .join("")}</ul></section>`
     : "";
+  const { lead, rest } = splitLeadSection(post.body);
+  const leadHtml = lead ? `<div>${markdownToHtml(lead)}</div>` : "";
+  const bodyHtml = rest ? `<div>${markdownToHtml(rest)}</div>` : "";
 
   return `<div class="min-h-screen flex flex-col"><main><article>
 <nav aria-label="Brødsmuler"><a href="/">Forside</a> / <a href="${BLOG_PATH}">Blogg</a> / <span aria-current="page">${escapeHtml(post.title)}</span></nav>
 <header>${post.tag ? `<p>${escapeHtml(post.tag)}</p>` : ""}<h1>${escapeHtml(post.title)}</h1>
 <p>${escapeHtml(post.description)}</p>
+${leadHtml}
 <p><span>${escapeHtml(post.author)}</span>${post.role ? ` · <span>${escapeHtml(post.role)}</span>` : ""} · <time datetime="${post.date}">${escapeHtml(formatDate(post.date, post.lang))}</time> · <span>${post.readingMinutes} min lesetid</span></p>
 </header>
 ${cover}
-<div>${markdownToHtml(post.body)}</div>
+${bodyHtml}
 <aside><h2>Snakk med oss om dette</h2><p>${escapeHtml(ORGANIZATION)} bygger løsninger som denne for offentlig sektor og næringsliv.</p><a href="/kontakt">Kontakt oss</a></aside>
 </article>
 ${relatedHtml}
