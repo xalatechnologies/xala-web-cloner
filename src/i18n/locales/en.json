@@ -510,6 +510,14 @@
       "capabilities": {
         "accent": "Delivered Capabilities",
         "heading": "Key Capabilities Delivered"
+      },
+      "kortSvar": {
+        "accent": "Short answer",
+        "heading": "Short answer"
+      },
+      "faq": {
+        "accent": "Questions",
+        "heading": "Frequently asked questions"
       }
     },
     "meta": {

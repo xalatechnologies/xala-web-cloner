@@ -38,6 +38,11 @@ export interface CaseStudyTeamMember {
   count: number;
 }
 
+export interface CaseStudyFaqItem {
+  question: string;
+  answer: string;
+}
+
 export interface CaseStudyLocale {
   title?: string;
   client?: string;
@@ -49,6 +54,9 @@ export interface CaseStudyLocale {
   status?: string;
   subtitle?: string;
   summary?: string;
+  kortSvar?: string;
+  videre?: string;
+  faq?: CaseStudyFaqItem[];
   challenge?: string[];
   objectives?: string[];
   solution?: Partial<CaseStudySolution>;
@@ -93,6 +101,10 @@ export interface CaseStudy {
   logoUrl?: string;
   imageUrl?: string;
   summary: string;
+  /** Answer-first lead for the first screen. Markdown links allowed. */
+  kortSvar?: string;
+  videre?: string;
+  faq?: CaseStudyFaqItem[];
   challenge: string[];
   objectives: string[];
   solution: CaseStudySolution;

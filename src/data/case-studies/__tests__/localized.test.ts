@@ -8,6 +8,7 @@ import {
   normalizeCaseLang,
   visibleTechChips,
 } from '../localized';
+import { caseStudyFaqJsonLd } from '../faq';
 import { caserEntries } from '@/data/caser-page-entries';
 
 /**
@@ -76,10 +77,7 @@ describe('localizedCardExcerpt', () => {
       expect(no.title).not.toMatch(/case study/i);
       expect(no.title).not.toContain('Municipality');
       expect(no.description).not.toMatch(/see how xala/i);
-      // Altinn's existing 99,99 % sentence stays on the Norwegian description.
-      if (slug !== 'altinn') {
-        expect(no.description).not.toMatch(/99[,.]99/);
-      }
+      expect(no.description).not.toMatch(/99[,.]99/);
       expect(no.description, `${slug} falls back to English SEO`).not.toBe(en.description);
     }
   );
@@ -128,7 +126,8 @@ describe('localizedCardExcerpt', () => {
     expect(no.summary).not.toBe(en.summary);
 
     const altinn = localizeCaseStudy(caseStudies.find((item) => item.slug === 'altinn')!, 'no');
-    expect(altinn.objectives.join(' ')).toMatch(/99,99 %/);
+    expect(JSON.stringify(altinn)).not.toMatch(/99[,.]99/);
+    expect(JSON.stringify(altinn)).not.toMatch(/kr\s?\d|NOK\s?\d/i);
   });
 
   it('shows Nordre Follo tech chips in Norwegian on nb-NO without inventing kroner or SLA', () => {
@@ -161,7 +160,8 @@ describe('localizedCardExcerpt', () => {
     expect(visibleTechChips(en).join(' ')).toMatch(/Authentication services/);
 
     const altinn = localizeCaseStudy(caseStudies.find((item) => item.slug === 'altinn')!, 'no');
-    expect(altinn.objectives.join(' ')).toMatch(/99,99 %/);
+    expect(JSON.stringify(altinn)).not.toMatch(/99[,.]99/);
+    expect(JSON.stringify(altinn)).not.toMatch(/kr\s?\d|NOK\s?\d/i);
   });
 
   it('drops the XWEB-179 English chip phrases from every nb-NO case URL', () => {
@@ -180,6 +180,54 @@ describe('localizedCardExcerpt', () => {
         expect(chips, `${study.slug} still shows “${phrase}”`).not.toContain(phrase);
       }
     }
+  });
+
+  it('gives Altinn the approved Norwegian SEO, Kort svar and four FAQs without invented figures', () => {
+    const study = caseStudies.find((item) => item.slug === 'altinn');
+    expect(study).toBeTruthy();
+    const no = localizeCaseStudy(study!, 'no');
+    const seo = localizedSeo(study!, 'no');
+
+    expect(seo.title).toBe('Altinn 3 og Altinn Studio: hva Xala bidro med hos Digdir');
+    expect(seo.description).toBe(
+      'Altinn 3 er tredje generasjon plattform for digitale tjenester. Xala bidro hos Digdir til utvikling og modernisering, inkludert Altinn Studio. Xala eier ikke Altinn.'
+    );
+    expect(seo.description).not.toMatch(/—/);
+    expect(no.client).toBe('Digitaliseringsdirektoratet (Digdir)');
+    expect(no.kortSvar).toMatch(/Xala eier ikke Altinn/);
+    expect(no.kortSvar).toContain('https://docs.altinn.studio/nb/community/about/');
+    expect(no.kortSvar).toContain('https://samarbeid.digdir.no/altinn/ta-i-bruk-altinn-3/2333');
+    expect(no.faq).toHaveLength(4);
+    expect(no.faq?.map((item) => item.question)).toEqual([
+      'Hva er Altinn 3?',
+      'Hva er Altinn Studio?',
+      'Hva gjorde Xala på Altinn 3?',
+      'Er Xala leverandør av Altinn?',
+    ]);
+    expect(no.videre).toContain('/kontakt');
+    expect(no.videre).toContain('/caser');
+    expect(no.budget).toBeUndefined();
+    expect(JSON.stringify(no)).not.toMatch(/99[,.]99/);
+    expect(JSON.stringify(no)).not.toMatch(/70\s?%/);
+    expect(JSON.stringify(no)).not.toMatch(/kr\s?\d|NOK\s?\d/i);
+    expect(JSON.stringify(no)).toMatch(/Azure/);
+    expect(JSON.stringify(no)).toMatch(/Kubernetes/);
+
+    const schema = caseStudyFaqJsonLd('https://xala.no/caser/altinn', no);
+    expect(schema).toBeTruthy();
+    expect(schema!['@type']).toBe('FAQPage');
+    expect(schema!['@id']).toBe('https://xala.no/caser/altinn#faq');
+    const questions = (schema!.mainEntity as { name: string; acceptedAnswer: { text: string } }[]).map(
+      (item) => item.name
+    );
+    expect(questions).toEqual(no.faq?.map((item) => item.question));
+    const answers = (schema!.mainEntity as { acceptedAnswer: { text: string } }[]).map(
+      (item) => item.acceptedAnswer.text
+    );
+    expect(answers.join(' ')).not.toMatch(/\[|\]\(/);
+    expect(answers.join(' ')).toMatch(/Om Altinn 3/);
+
+    expect(caseStudyFaqJsonLd('https://xala.no/caser/telia', { faq: undefined })).toBeNull();
   });
 
   it('collapses locale tags to the three languages that are authored', () => {

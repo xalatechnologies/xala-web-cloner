@@ -66,9 +66,7 @@ export function localizedCardTitle(
  * Norwegian descriptions were already written under translations.no.seo, but
  * the prerender and the detail-page Helmet both read the English fields, so
  * every nb-NO case URL shipped an English card. Titles that still use the
- * "Case Study" template are rewritten rather than invented: the English
- * marketing sentence stays for en, and Altinn's existing 99,99 % copy is
- * left untouched because it lives on the Norwegian description.
+ * "Case Study" template are rewritten rather than invented.
  */
 export function localizedSeo(
   study: Pick<CaseStudy, 'seo' | 'summary' | 'translations'>,
@@ -196,6 +194,9 @@ export function localizeCaseStudy(study: CaseStudy, language: string): CaseStudy
       ? { ...study.architectureDiagram, ...locale.architectureDiagram }
       : study.architectureDiagram,
     card: locale.card ? { ...study.card, ...locale.card } : study.card,
+    kortSvar: locale.kortSvar ?? study.kortSvar,
+    videre: locale.videre ?? study.videre,
+    faq: locale.faq ?? study.faq,
     seo: localizedSeo(study, lang),
     coreTechnologies: locale.coreTechnologies ?? localizeChipList(study.coreTechnologies, lang),
     technologies: locale.technologies ?? localizeTechStack(study.technologies, lang),

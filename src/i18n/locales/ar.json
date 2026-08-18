@@ -510,6 +510,14 @@
       "capabilities": {
         "accent": "ما تم تسليمه",
         "heading": "القدرات المُسلَّمة"
+      },
+      "kortSvar": {
+        "accent": "إجابة قصيرة",
+        "heading": "إجابة قصيرة"
+      },
+      "faq": {
+        "accent": "أسئلة",
+        "heading": "الأسئلة الشائعة"
       }
     },
     "meta": {

@@ -14,7 +14,7 @@ export const caserEntries: CaserEntry[] = [
     id: 'altinn',
     title: 'Altinn',
     description:
-      "Transformed Norway's national digital government platform — cloud-native architecture on Azure and Kubernetes serving 5M+ citizens with 99.99% uptime.",
+      'Xala contributed to development and modernization of Altinn 3 at Digdir, including Altinn Studio, on Azure and Kubernetes.',
     imageUrl: '/clients/altinn.svg',
     slug: 'altinn',
     sector: 'Public Sector',

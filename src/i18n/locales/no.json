@@ -510,6 +510,14 @@
       "capabilities": {
         "accent": "Levert",
         "heading": "Nøkkelfunksjoner levert"
+      },
+      "kortSvar": {
+        "accent": "Kort svar",
+        "heading": "Kort svar"
+      },
+      "faq": {
+        "accent": "Spørsmål",
+        "heading": "Ofte stilte spørsmål"
       }
     },
     "meta": {
