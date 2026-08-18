@@ -227,7 +227,7 @@ interface CaseLink { slug: string; title: string }
  * visitor never sees is cloaking, whatever the intent, and "it is the same as
  * the real nav" is exactly what every cloaked page claims.
  *
- * The deep URLs — seventeen articles, ten service pages, four products,
+ * The deep URLs — seventeen articles, ten service pages, six products,
  * seventeen case studies — are reached through the sitemap, which is what a
  * sitemap is for and which is already working: thirteen of them moved from
  * "unknown to Google" to "discovered" within two hours of submission.

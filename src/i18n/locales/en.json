@@ -11,7 +11,7 @@
     "services": "Services",
     "servicesDescription": "Complete spectrum of technology services for modern businesses",
     "products": "Products",
-    "productsDescription": "Bevillingsportal, Tilskuddsportal, Digilist and Digiskjema",
+    "productsDescription": "Bevillingsportal, Tilskuddsportal, Redusert foreldrebetaling, Arkitekturprinsipper, Digilist and Digiskjema",
     "cases": "Cases",
     "casesDescription": "Explore our successful project implementations",
     "workProcessDescription": "Our structured approach from idea to implementation",
@@ -131,7 +131,7 @@
     },
     "products": {
       "title": "Our Core Products",
-      "description": "Four products. Bevillingsportal, Tilskuddsportal, Digilist and Digiskjema, built from the same parts we use in client projects.",
+      "description": "Six products. Bevillingsportal, Tilskuddsportal, Redusert foreldrebetaling, Arkitekturprinsipper, Digilist and Digiskjema, built from the same parts we use in client projects.",
       "viewAll": "View all products",
       "available": "Available",
       "beta": "Beta",
@@ -255,7 +255,7 @@
       "status": "Live"
     },
     "title": "Our core products",
-    "description": "Four products. Bevillingsportal, Tilskuddsportal, Digilist and Digiskjema, built from the same parts we use in client projects.",
+    "description": "Six products. Bevillingsportal, Tilskuddsportal, Redusert foreldrebetaling, Arkitekturprinsipper, Digilist and Digiskjema, built from the same parts we use in client projects.",
     "comingSoon": "Soon",
     "readMore": "Read more"
   },
@@ -825,8 +825,8 @@
   },
   "productsPage": {
     "eyebrow": "Products",
-    "title": "Four products for municipalities and business",
-    "description": "Bevillingsportal, Tilskuddsportal, Digilist and Digiskjema. Built from the same parts we use in client projects, and maintained the same way.",
+    "title": "Six products for municipalities and business",
+    "description": "Bevillingsportal, Tilskuddsportal, Redusert foreldrebetaling, Arkitekturprinsipper, Digilist and Digiskjema. Built from the same parts we use in client projects, and maintained the same way.",
     "ctaTitle": "Does any of this fit?",
     "ctaDescription": "The products adapt. Tell us what you need and we will say whether it is a configuration or a project.",
     "ctaContact": "Contact us",

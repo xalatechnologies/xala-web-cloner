@@ -31,6 +31,36 @@
       "slug": "tilskuddsportal"
     },
     {
+      "id": "redusert-foreldrebetaling",
+      "title": "Redusert foreldrebetaling",
+      "description": "Portal for kommunal redusert foreldrebetaling og SFO. Henter oppgjør når det finnes. Unntaket og varig nedgang blir liggende.",
+      "icon": "Users",
+      "features": [
+        "Henter siste fastsetting når den kan utleveres",
+        "Skattemelding bare når oppgjøret ikke rekker 1. august",
+        "Folkeregister for husholdningen",
+        "Varig nedgang til saksbehandler",
+        "Oppslag i fagsystemet, ikke bare tilgang",
+        "Dataminimering i saken"
+      ],
+      "slug": "redusert-foreldrebetaling"
+    },
+    {
+      "id": "arkitekturprinsipper",
+      "title": "Arkitekturprinsipper",
+      "description": "Hjelper kommunen å følge Digdirs sju arkitekturprinsipper i systemene den kjører. Xala er ikke Digdir.",
+      "icon": "Layers",
+      "features": [
+        "Peker på Digdirs sju prinsipper",
+        "Prinsipp 4: del og gjenbruk data",
+        "Prinsipp 5: del og gjenbruk løsninger",
+        "Isolasjon i datamodellen",
+        "Konfigurasjon som data",
+        "Flerleietaker eller egen installasjon som valg"
+      ],
+      "slug": "arkitekturprinsipper"
+    },
+    {
       "id": "digilist",
       "title": "Digilist",
       "url": "https://digilist.no",
@@ -123,6 +153,36 @@
       "slug": "tilskuddsportal"
     },
     {
+      "id": "redusert-foreldrebetaling",
+      "title": "Redusert foreldrebetaling",
+      "description": "Portal for municipal reduced parental fees and SFO. Fetches the tax settlement when it exists. The exception and lasting drop stay in the case.",
+      "icon": "Users",
+      "features": [
+        "Fetches the latest assessment when it can be released",
+        "Tax return only when the settlement will not arrive before 1 August",
+        "National registry for the household",
+        "Lasting drop goes to the caseworker",
+        "A lookup in the case system, not access alone",
+        "Data minimisation in the case"
+      ],
+      "slug": "redusert-foreldrebetaling"
+    },
+    {
+      "id": "arkitekturprinsipper",
+      "title": "Arkitekturprinsipper",
+      "description": "Helps the municipality follow Digdir's seven architecture principles in the systems it runs. Xala is not Digdir.",
+      "icon": "Layers",
+      "features": [
+        "Points at Digdir's seven principles",
+        "Principle 4: share and reuse data",
+        "Principle 5: share and reuse solutions",
+        "Isolation in the data model",
+        "Configuration as data",
+        "Multi-tenant or own install as a choice"
+      ],
+      "slug": "arkitekturprinsipper"
+    },
+    {
       "id": "digilist",
       "title": "Digilist",
       "url": "https://digilist.no",
@@ -213,6 +273,36 @@
         "عدّة برامج في بوابة واحدة كإعداد"
       ],
       "slug": "tilskuddsportal"
+    },
+    {
+      "id": "redusert-foreldrebetaling",
+      "title": "Redusert foreldrebetaling",
+      "description": "بوابة للخفض البلدي لرسوم الأهل وSFO. تجلب التسوية الضريبية إن وُجدت. يبقى الاستثناء والانخفاض الدائم في المعاملة.",
+      "icon": "Users",
+      "features": [
+        "جلب آخر تقدير عندما يمكن تسليمه",
+        "الإقرار الضريبي فقط إن لم تصل التسوية قبل 1 أغسطس",
+        "السجل السكاني للأسرة",
+        "الانخفاض الدائم إلى موظف الحالة",
+        "استعلام في نظام الحالة لا مجرّد وصول",
+        "تقليل البيانات في المعاملة"
+      ],
+      "slug": "redusert-foreldrebetaling"
+    },
+    {
+      "id": "arkitekturprinsipper",
+      "title": "Arkitekturprinsipper",
+      "description": "تساعد البلدية على اتباع مبادئ Digdir السبعة للعمارة في الأنظمة التي تشغّلها. Xala ليست Digdir.",
+      "icon": "Layers",
+      "features": [
+        "تشير إلى مبادئ Digdir السبعة",
+        "المبدأ 4: شارك وأعد استخدام البيانات",
+        "المبدأ 5: شارك وأعد استخدام الحلول",
+        "العزل في نموذج البيانات",
+        "التهيئة كبيانات",
+        "مستأجرون متعددون أو تثبيت خاص كخيار"
+      ],
+      "slug": "arkitekturprinsipper"
     },
     {
       "id": "digilist",

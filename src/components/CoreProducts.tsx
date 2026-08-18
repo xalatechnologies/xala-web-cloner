@@ -38,7 +38,7 @@ const CoreProducts = ({ headingLevel = 'h1' }: CoreProductsProps = {}) => {
     return (
       <ProductGrid
         products={products}
-        initialRows={2}
+        initialRows={Math.ceil(products.length / 2)}
         cols={2}
       />
     );
