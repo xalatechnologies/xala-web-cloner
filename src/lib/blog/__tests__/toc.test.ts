@@ -189,6 +189,28 @@ describe('extractFaq', () => {
       { question: 'Besvart?', answer: 'Ja.' },
     ]);
   });
+
+  it('pairs a bold Question? line with the following prose', () => {
+    const bold = [
+      '## Ofte stilte spørsmål',
+      '',
+      '**Er 360 og Visma i hver sin fane integrasjon?**',
+      'Nei. Integrasjon er at samme sak skrives én gang.',
+      '',
+      '**Må en skjenkeportal lovmessig snakke med 360?**',
+      'Nei. Det finnes ingen slik plikt.',
+    ].join('\n');
+    expect(extractFaq(bold)).toEqual([
+      {
+        question: 'Er 360 og Visma i hver sin fane integrasjon?',
+        answer: 'Nei. Integrasjon er at samme sak skrives én gang.',
+      },
+      {
+        question: 'Må en skjenkeportal lovmessig snakke med 360?',
+        answer: 'Nei. Det finnes ingen slik plikt.',
+      },
+    ]);
+  });
 });
 
 describe('faqJsonLd', () => {
