@@ -13,6 +13,7 @@ const FOCUS =
   'focus-visible:ring-offset-2 focus-visible:ring-offset-background';
 
 const SEARCH_LABEL = 'Søk i artikler';
+const DRAWER_SEARCH_LABEL = 'Søk i artikler i menyen';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,10 +73,10 @@ const Navbar = () => {
     navigate(needle ? `/blogg?q=${encodeURIComponent(needle)}` : '/blogg');
   };
 
-  const searchForm = (id: string, className: string) => (
+  const searchForm = (id: string, className: string, label: string) => (
     <form role="search" action="/blogg" method="get" onSubmit={submitSearch} className={className}>
       <label htmlFor={id} className="sr-only">
-        {SEARCH_LABEL}
+        {label}
       </label>
       <Search
         aria-hidden
@@ -87,7 +88,7 @@ const Navbar = () => {
         name="q"
         value={query}
         onChange={(event) => setQuery(event.target.value)}
-        placeholder={SEARCH_LABEL}
+        placeholder={label}
         className={`min-h-11 w-full rounded-lg border border-border/70 bg-background/60 py-2 pl-9 pr-3 text-sm text-foreground placeholder:text-muted-foreground ${FOCUS}`}
       />
     </form>
@@ -150,7 +151,7 @@ const Navbar = () => {
 
             {/* Right: search + controls + CTA */}
             <div className="flex items-center gap-2">
-              {searchForm('nav-sok', 'relative hidden md:block w-44 lg:w-52')}
+              {searchForm('nav-sok', 'relative hidden md:block w-44 lg:w-52', SEARCH_LABEL)}
 
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -210,7 +211,7 @@ const Navbar = () => {
                 Xala Technologies
               </p>
 
-              {searchForm('nav-sok-drawer', 'relative mb-8 w-full md:hidden')}
+              {searchForm('nav-sok-drawer', 'relative mb-8 w-full md:hidden', DRAWER_SEARCH_LABEL)}
 
               {[{ id: 'home', href: '/', name: t('nav.home', 'Hjem') }, ...navItems].map((item, index) => (
                 <Link
