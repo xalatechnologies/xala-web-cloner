@@ -65,6 +65,16 @@ describe('search result metadata', () => {
     }
   });
 
+  it('keeps the gebyr document title as the existing seoTitle plus | Xala', () => {
+    // XWEB-184: first HTML must paste this string. Do not reconstruct it.
+    const post = posts.find((p) => p.slug === 'skjenkebevilling-gebyr-og-omsetningsoppgave');
+    expect(post, 'gebyr post missing from the published set').toBeDefined();
+    expect(post!.title).toBe('Skjenkebevilling: når gebyr og omsetning regnes for hånd');
+    expect(post!.seoTitle).toBe('Skjenkebevilling: gebyr og omsetning for hånd');
+    expect(postMeta(post!).title).toBe('Skjenkebevilling: gebyr og omsetning for hånd | Xala');
+    expect(postMeta(post!).title).toHaveLength(52);
+  });
+
   it.each(Object.entries(servicePages).map(([slug, page]) => [slug, page] as const))(
     'service page %s fits a search result',
     (_slug, page) => {
