@@ -3,7 +3,7 @@ slug: redusert-foreldrebetaling-sfo-skattemelding-for-1-august
 title: "Redusert foreldrebetaling i SFO: når skattemeldingen må inn før 1. august"
 seoTitle: "Redusert foreldrebetaling i SFO: før 1. august"
 description: "Rekker ikke skatteoppgjøret, skal kommunen be om skattemeldingen før 1. august. Integrasjon henter oppgjør når det finnes. Den sletter ikke unntaket."
-date: 2026-08-18
+date: 2026-08-14
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 readingMinutes: 3

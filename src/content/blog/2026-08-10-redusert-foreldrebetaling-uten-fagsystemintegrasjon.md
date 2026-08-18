@@ -3,7 +3,7 @@ slug: redusert-foreldrebetaling-uten-fagsystemintegrasjon
 title: "Redusert foreldrebetaling uten fagsystemintegrasjon: tilgang er ikke det samme som oppslag i saken"
 seoTitle: "Redusert foreldrebetaling: uten fagsystemintegrasjon"
 description: "Kommunen kan ha digital tilgang til skatt uten at inntekten ligger i fagsystemet. Da blir oppslaget manuelt. Xala er integrasjonslaget, ikke Fiks."
-date: 2026-08-18
+date: 2026-08-10
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 readingMinutes: 3
