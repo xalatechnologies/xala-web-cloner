@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Mail, Phone, MapPin, Linkedin, Github, Twitter } from "lucide-react";
+import productsData from "@/data/products.json";
+import { catalogProducts } from "@/lib/products";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
 
   const companyLinks = [
@@ -28,16 +30,15 @@ const Footer = () => {
     { name: t('footer.links.cookies', 'Informasjonskapsler'), href: '/cookies' },
   ];
 
-  // Every product points at its own page on this site. Two of the four
-  // external domains (xaheen.com, digiskjema.no) do not resolve at all, so
-  // linking outward sent people to a connection error from every page — and
-  // for the two that do resolve it handed the authority to another domain.
-  const products = [
-    { name: 'Digilist', href: '/produkter/digilist', soon: false },
-    { name: 'Digiskjema', href: '/produkter/digiskjema', soon: true },
-    { name: 'Xaheen', href: '/produkter/xaheen', soon: true },
-    { name: 'Norchain', href: '/produkter/norchain', soon: true },
-  ];
+  // Same listed catalogue as the homepage strip and /produkter. Unlisted
+  // products keep their detail URL; they do not appear here.
+  const lang = i18n.language?.toLowerCase() ?? 'no';
+  const language = lang.startsWith('ar') ? 'ar' : lang.startsWith('en') ? 'en' : 'no';
+  const products = catalogProducts(productsData[language] ?? productsData.no).map((product) => ({
+    name: product.title,
+    href: `/produkter/${product.slug}`,
+    soon: product.status === 'coming-soon',
+  }));
 
   // Localized section headers
   const sectionHeaders = {

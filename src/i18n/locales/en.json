@@ -11,7 +11,7 @@
     "services": "Services",
     "servicesDescription": "Complete spectrum of technology services for modern businesses",
     "products": "Products",
-    "productsDescription": "Digilist, Digiskjema and Xaheen",
+    "productsDescription": "Bevillingsportal, Tilskuddsportal, Digilist and Digiskjema",
     "cases": "Cases",
     "casesDescription": "Explore our successful project implementations",
     "workProcessDescription": "Our structured approach from idea to implementation",
@@ -131,7 +131,7 @@
     },
     "products": {
       "title": "Our Core Products",
-      "description": "Three products. Digilist, Digiskjema and Xaheen, built from the same parts we use in client projects.",
+      "description": "Four products. Bevillingsportal, Tilskuddsportal, Digilist and Digiskjema, built from the same parts we use in client projects.",
       "viewAll": "View all products",
       "available": "Available",
       "beta": "Beta",
@@ -255,7 +255,7 @@
       "status": "Live"
     },
     "title": "Our core products",
-    "description": "Three products. Digilist, Digiskjema and Xaheen, built from the same parts we use in client projects.",
+    "description": "Four products. Bevillingsportal, Tilskuddsportal, Digilist and Digiskjema, built from the same parts we use in client projects.",
     "comingSoon": "Soon",
     "readMore": "Read more"
   },
@@ -825,8 +825,8 @@
   },
   "productsPage": {
     "eyebrow": "Products",
-    "title": "Products: Digilist, Digiskjema and Xaheen",
-    "description": "Three products. Digilist, Digiskjema and Xaheen, built from the same parts we use in client projects, and maintained the same way.",
+    "title": "Four products for municipalities and business",
+    "description": "Bevillingsportal, Tilskuddsportal, Digilist and Digiskjema. Built from the same parts we use in client projects, and maintained the same way.",
     "ctaTitle": "Does any of this fit?",
     "ctaDescription": "The products adapt. Tell us what you need and we will say whether it is a configuration or a project.",
     "ctaContact": "Contact us",
@@ -903,7 +903,12 @@
     "visit": "Visit the site",
     "ctaTitle": "Want to see it in practice?",
     "ctaDescription": "Get in touch and we will show how the product solves the problem you have.",
-    "ctaContact": "Contact us"
+    "ctaContact": "Contact us",
+    "relatedService": "How we build it",
+    "relatedServiceBody": "The service page describes how we build the portal. The product page is the product.",
+    "closingBefore": "We'll take that when you ",
+    "closingLink": "get in touch",
+    "closingAfter": "."
   },
   "servicePage": {
     "back": "All services",

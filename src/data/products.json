@@ -1,45 +1,47 @@
 {
   "no": [
     {
-      "id": "norchain",
-      "title": "Norchain",
-      "description": "Komplett blockchain-operativsystem med L1-infrastruktur, NorPay betalingsløsninger, og NorLedger for sporbarhet.",
-      "icon": "Blocks",
+      "id": "bevillingsportal",
+      "title": "Bevillingsportal",
+      "description": "Bevillingsportal for skjenke- og salgsbevillinger. Parallelle høringer, ærlig status og Noark fra start.",
+      "icon": "FileCheck2",
       "features": [
-        "L1-infrastruktur",
-        "NorPay-betalinger",
-        "NorLedger-sporbarhet",
-        "Smartkontrakter"
+        "Søknad om skjenke- og salgsbevilling",
+        "Parallell utsending av høringer med frist",
+        "Automatisk purring på manglende uttalelser",
+        "Ærlig status til søkeren",
+        "Vedtak med begrunnelse og klageadgang",
+        "Noark-arkivering av hele saksgangen"
       ],
-      "status": "coming-soon",
-      "listed": false,
-      "slug": "norchain"
+      "slug": "bevillingsportal"
     },
     {
-      "id": "xaheen",
-      "title": "Xaheen AI Builder",
-      "description": "AI-drevet utviklingsplattform som akselererer programvareutvikling med intelligent kodeassistanse.",
-      "icon": "Cpu",
+      "id": "tilskuddsportal",
+      "title": "Tilskuddsportal",
+      "description": "Tilskuddsportal der søkeren blir ferdig, og saksbehandleren får et komplett grunnlag å fatte vedtak på.",
+      "icon": "ClipboardList",
       "features": [
-        "AI-kodeassistanse",
-        "Automatisk testing",
-        "CI/CD-integrasjon",
-        "Kodeanalyse"
+        "Skjemabygger med regelbasert validering",
+        "Automatisk lagring og gjenopptakelse via lenke",
+        "Vedleggshåndtering med filtypekontroll",
+        "Kø for saksbehandler, ikke innboks",
+        "Tildelingsbrev og avslagsbrev fra mal",
+        "Flere ordninger i samme portal, som konfigurasjon"
       ],
-      "status": "coming-soon",
-      "slug": "xaheen"
+      "slug": "tilskuddsportal"
     },
     {
       "id": "digilist",
-      "title": "DigiList",
+      "title": "Digilist",
       "url": "https://digilist.no",
-      "description": "Digital markedsplass og SaaS-plattform for utleie og booking av objekter og tjenester.",
+      "description": "Digital markedsplass for utleie og booking av lokaler og tjenester. I drift på digilist.no.",
       "icon": "LayoutGrid",
       "features": [
-        "Bookingsystem",
-        "Betalingsintegrasjon",
-        "Flerspråklig",
-        "Flerleietaker"
+        "Booking og sesongtildeling",
+        "Innlogging med ID-porten",
+        "Søknad, vedtak og arkiv mot Noark",
+        "Fakturering og betaling",
+        "Universell utforming etter WCAG 2.2 AA"
       ],
       "status": "live",
       "slug": "digilist"
@@ -57,49 +59,81 @@
       ],
       "status": "coming-soon",
       "slug": "digiskjema"
-    }
-  ],
-  "en": [
-    {
-      "id": "norchain",
-      "title": "Norchain",
-      "description": "Complete blockchain operating system with L1 infrastructure, NorPay payment solutions, and NorLedger for traceability.",
-      "icon": "Blocks",
-      "features": [
-        "L1 Infrastructure",
-        "NorPay Payments",
-        "NorLedger Traceability",
-        "Smart Contracts"
-      ],
-      "status": "coming-soon",
-      "listed": false,
-      "slug": "norchain"
     },
     {
       "id": "xaheen",
       "title": "Xaheen AI Builder",
-      "description": "AI-powered development platform that accelerates software development with intelligent code assistance.",
+      "description": "AI-drevet utviklingsplattform som akselererer programvareutvikling med intelligent kodeassistanse.",
       "icon": "Cpu",
       "features": [
-        "AI Code Assistance",
-        "Automated Testing",
-        "CI/CD Integration",
-        "Code Analysis"
+        "AI-kodeassistanse",
+        "Automatisk testing",
+        "CI/CD-integrasjon",
+        "Kodeanalyse"
       ],
       "status": "coming-soon",
+      "listed": false,
       "slug": "xaheen"
     },
     {
+      "id": "norchain",
+      "title": "Norchain",
+      "description": "Komplett blockchain-operativsystem med L1-infrastruktur, NorPay betalingsløsninger, og NorLedger for sporbarhet.",
+      "icon": "Blocks",
+      "features": [
+        "L1-infrastruktur",
+        "NorPay-betalinger",
+        "NorLedger-sporbarhet",
+        "Smartkontrakter"
+      ],
+      "status": "coming-soon",
+      "listed": false,
+      "slug": "norchain"
+    }
+  ],
+  "en": [
+    {
+      "id": "bevillingsportal",
+      "title": "Bevillingsportal",
+      "description": "Licensing portal for alcohol serving and sales licences. Parallel consultations, honest status and Noark from the start.",
+      "icon": "FileCheck2",
+      "features": [
+        "Applications for serving and sales licences",
+        "Parallel consultation requests with deadlines",
+        "Automatic reminders for missing statements",
+        "Honest status for the applicant",
+        "Decisions with grounds and a right of appeal",
+        "Noark archiving of the whole case flow"
+      ],
+      "slug": "bevillingsportal"
+    },
+    {
+      "id": "tilskuddsportal",
+      "title": "Tilskuddsportal",
+      "description": "Grant portal where the applicant can finish, and the caseworker gets a complete basis for the decision.",
+      "icon": "ClipboardList",
+      "features": [
+        "Form builder with rule-based validation",
+        "Autosave and resume via link",
+        "Attachment handling with file-type checks",
+        "A queue for the caseworker, not an inbox",
+        "Award and rejection letters from templates",
+        "Several schemes in one portal, as configuration"
+      ],
+      "slug": "tilskuddsportal"
+    },
+    {
       "id": "digilist",
-      "title": "DigiList",
+      "title": "Digilist",
       "url": "https://digilist.no",
-      "description": "Digital marketplace and SaaS platform for rental and booking of objects and services.",
+      "description": "Digital marketplace for rental and booking of venues and services. Live at digilist.no.",
       "icon": "LayoutGrid",
       "features": [
-        "Booking System",
-        "Payment Integration",
-        "Multilingual",
-        "Multi-tenant"
+        "Booking and seasonal allocation",
+        "Sign-in with ID-porten",
+        "Application, decision and Noark archiving",
+        "Invoicing and payment",
+        "Accessibility to WCAG 2.2 AA"
       ],
       "status": "live",
       "slug": "digilist"
@@ -117,49 +151,81 @@
       ],
       "status": "coming-soon",
       "slug": "digiskjema"
-    }
-  ],
-  "ar": [
+    },
+    {
+      "id": "xaheen",
+      "title": "Xaheen AI Builder",
+      "description": "AI-powered development platform that accelerates software development with intelligent code assistance.",
+      "icon": "Cpu",
+      "features": [
+        "AI Code Assistance",
+        "Automated Testing",
+        "CI/CD Integration",
+        "Code Analysis"
+      ],
+      "status": "coming-soon",
+      "listed": false,
+      "slug": "xaheen"
+    },
     {
       "id": "norchain",
-      "title": "نورتشين",
-      "description": "نظام تشغيل بلوكتشين كامل مع بنية تحتية L1 وحلول دفع NorPay وNorLedger للتتبع.",
+      "title": "Norchain",
+      "description": "Complete blockchain operating system with L1 infrastructure, NorPay payment solutions, and NorLedger for traceability.",
       "icon": "Blocks",
       "features": [
-        "بنية L1 التحتية",
-        "مدفوعات NorPay",
-        "تتبع NorLedger",
-        "العقود الذكية"
+        "L1 Infrastructure",
+        "NorPay Payments",
+        "NorLedger Traceability",
+        "Smart Contracts"
       ],
       "status": "coming-soon",
       "listed": false,
       "slug": "norchain"
+    }
+  ],
+  "ar": [
+    {
+      "id": "bevillingsportal",
+      "title": "Bevillingsportal",
+      "description": "بوابة تراخيص لتراخيص تقديم وبيع الكحول. استشارات متوازية وحالة صادقة وأرشفة Noark من البداية.",
+      "icon": "FileCheck2",
+      "features": [
+        "طلب ترخيص التقديم والبيع",
+        "إرسال الاستشارات بالتوازي مع مهلة",
+        "تذكير تلقائي بالبيانات الناقصة",
+        "حالة صادقة لمقدّم الطلب",
+        "قرار مسبّب مع حق الاعتراض",
+        "أرشفة Noark لمسار المعاملة كاملاً"
+      ],
+      "slug": "bevillingsportal"
     },
     {
-      "id": "xaheen",
-      "title": "زاهين AI بيلدر",
-      "description": "منصة تطوير مدعومة بالذكاء الاصطناعي تسرع تطوير البرمجيات مع مساعدة ذكية للكود.",
-      "icon": "Cpu",
+      "id": "tilskuddsportal",
+      "title": "Tilskuddsportal",
+      "description": "بوابة منح ينجز فيها المتقدّم طلبه، ويحصل موظف الحالة على أساس كامل لاتخاذ القرار.",
+      "icon": "ClipboardList",
       "features": [
-        "مساعدة الكود بالذكاء الاصطناعي",
-        "اختبار آلي",
-        "تكامل CI/CD",
-        "تحليل الكود"
+        "منشئ نماذج بتحقّق قائم على القواعد",
+        "حفظ تلقائي واستئناف عبر رابط",
+        "إدارة المرفقات مع فحص أنواع الملفات",
+        "قائمة انتظار لموظف الحالة لا صندوق بريد",
+        "خطابات المنح والرفض من قوالب",
+        "عدّة برامج في بوابة واحدة كإعداد"
       ],
-      "status": "coming-soon",
-      "slug": "xaheen"
+      "slug": "tilskuddsportal"
     },
     {
       "id": "digilist",
-      "title": "ديجيليست",
+      "title": "Digilist",
       "url": "https://digilist.no",
-      "description": "سوق رقمي ومنصة SaaS للتأجير والحجز للأشياء والخدمات.",
+      "description": "سوق رقمي لتأجير وحجز المرافق والخدمات. قيد التشغيل على digilist.no.",
       "icon": "LayoutGrid",
       "features": [
-        "نظام الحجز",
-        "تكامل الدفع",
-        "متعدد اللغات",
-        "متعدد المستأجرين"
+        "الحجز والتوزيع الموسمي",
+        "تسجيل الدخول عبر ID-porten",
+        "الطلب والقرار والأرشفة وفق Noark",
+        "الفوترة والدفع",
+        "إمكانية الوصول وفق WCAG 2.2 AA"
       ],
       "status": "live",
       "slug": "digilist"
@@ -177,6 +243,36 @@
       ],
       "status": "coming-soon",
       "slug": "digiskjema"
+    },
+    {
+      "id": "xaheen",
+      "title": "زاهين AI بيلدر",
+      "description": "منصة تطوير مدعومة بالذكاء الاصطناعي تسرع تطوير البرمجيات مع مساعدة ذكية للكود.",
+      "icon": "Cpu",
+      "features": [
+        "مساعدة الكود بالذكاء الاصطناعي",
+        "اختبار آلي",
+        "تكامل CI/CD",
+        "تحليل الكود"
+      ],
+      "status": "coming-soon",
+      "listed": false,
+      "slug": "xaheen"
+    },
+    {
+      "id": "norchain",
+      "title": "نورتشين",
+      "description": "نظام تشغيل بلوكتشين كامل مع بنية تحتية L1 وحلول دفع NorPay وNorLedger للتتبع.",
+      "icon": "Blocks",
+      "features": [
+        "بنية L1 التحتية",
+        "مدفوعات NorPay",
+        "تتبع NorLedger",
+        "العقود الذكية"
+      ],
+      "status": "coming-soon",
+      "listed": false,
+      "slug": "norchain"
     }
   ]
 }

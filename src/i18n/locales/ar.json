@@ -11,7 +11,7 @@
     "services": "الخدمات",
     "servicesDescription": "مجموعة شاملة من الخدمات التقنية للأعمال الحديثة",
     "products": "المنتجات",
-    "productsDescription": "Digilist وDigiskjema وXaheen",
+    "productsDescription": "Bevillingsportal وTilskuddsportal وDigilist وDigiskjema",
     "cases": "المشاريع",
     "casesDescription": "استكشف تنفيذاتنا الناجحة للمشاريع",
     "workProcessDescription": "نهجنا المنظم من الفكرة إلى التنفيذ",
@@ -131,7 +131,7 @@
     },
     "products": {
       "title": "منتجاتنا الأساسية",
-      "description": "ثلاثة منتجات. Digilist وDigiskjema وXaheen، مبنية من المكوّنات نفسها التي نستخدمها في مشاريع العملاء.",
+      "description": "أربعة منتجات. Bevillingsportal وTilskuddsportal وDigilist وDigiskjema، مبنية من المكوّنات نفسها التي نستخدمها في مشاريع العملاء.",
       "viewAll": "عرض جميع المنتجات",
       "available": "متوفر",
       "beta": "تجريبي",
@@ -255,7 +255,7 @@
       "status": "مباشر"
     },
     "title": "منتجاتنا الأساسية",
-    "description": "ثلاثة منتجات. Digilist وDigiskjema وXaheen، مبنية من المكوّنات نفسها التي نستخدمها في مشاريع العملاء.",
+    "description": "أربعة منتجات. Bevillingsportal وTilskuddsportal وDigilist وDigiskjema، مبنية من المكوّنات نفسها التي نستخدمها في مشاريع العملاء.",
     "comingSoon": "قريباً",
     "readMore": "اقرأ المزيد"
   },
@@ -825,8 +825,8 @@
   },
   "productsPage": {
     "eyebrow": "المنتجات",
-    "title": "المنتجات: Digilist وDigiskjema وXaheen",
-    "description": "ثلاثة منتجات. Digilist وDigiskjema وXaheen، مبنية من المكوّنات نفسها التي نستخدمها في مشاريع العملاء، وتُدار بالطريقة نفسها.",
+    "title": "أربعة منتجات للبلديات والأعمال",
+    "description": "Bevillingsportal وTilskuddsportal وDigilist وDigiskjema. مبنية من المكوّنات نفسها التي نستخدمها في مشاريع العملاء، وتُدار بالطريقة نفسها.",
     "ctaTitle": "هل يناسبكم أيّ من هذا؟",
     "ctaDescription": "المنتجات قابلة للتكييف. أخبرونا بما تحتاجونه وسنقول إن كان تهيئة أم مشروعاً.",
     "ctaContact": "اتصل بنا",
@@ -903,7 +903,12 @@
     "visit": "زيارة الموقع",
     "ctaTitle": "هل تريدون رؤيته عملياً؟",
     "ctaDescription": "تواصلوا معنا وسنريكم كيف يحلّ المنتج المشكلة التي تواجهونها.",
-    "ctaContact": "اتصل بنا"
+    "ctaContact": "اتصل بنا",
+    "relatedService": "كيف نبنيه",
+    "relatedServiceBody": "صفحة الخدمة تصف كيف نبني البوابة. صفحة المنتج هي المنتج.",
+    "closingBefore": "نتولّى ذلك عندما ",
+    "closingLink": "تتواصلون معنا",
+    "closingAfter": "."
   },
   "servicePage": {
     "back": "كل الخدمات",

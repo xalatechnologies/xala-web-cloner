@@ -58,6 +58,7 @@ import { caseStudies } from "../src/data/case-studies/index";
 import { caseStudyFaqJsonLd } from "../src/data/case-studies/faq";
 import { localizeCaseStudy, localizedSeo } from "../src/data/case-studies/localized";
 import productsData from "../src/data/products.json";
+import detailsData from "../src/data/product-details.json";
 import servicePages from "../src/data/service-pages.json";
 import faqData from "../src/data/faq.json";
 import { generateFAQSchema } from "../src/components/seo/sectionSchemas";
@@ -543,6 +544,10 @@ function main(): void {
   for (const product of productsData.no) {
     if (!product.slug) continue;
     const url = `${SITE_ORIGIN}/produkter/${product.slug}`;
+    const details = (detailsData as Record<string, { no?: { faq?: { question: string; answer: string }[] } }>)[
+      product.id
+    ];
+    const faq = details?.no?.faq ?? [];
     write(
       path.join(DIST, "produkter", product.slug, "index.html"),
       renderHead(shell, {
@@ -562,6 +567,20 @@ function main(): void {
           publisher: { "@id": ORG_ID },
           ...(product.features?.length ? { featureList: product.features } : {}),
         },
+        extraJsonLd: faq.length
+          ? [
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "@id": `${url}#faq`,
+                mainEntity: faq.map((item) => ({
+                  "@type": "Question",
+                  name: item.question,
+                  acceptedAnswer: { "@type": "Answer", text: item.answer },
+                })),
+              },
+            ]
+          : undefined,
       }),
     );
   }
