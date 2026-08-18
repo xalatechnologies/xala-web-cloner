@@ -1,6 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { caseStudies } from '../index';
-import { localizedCardExcerpt, localizedSeo, normalizeCaseLang } from '../localized';
+import {
+  localizeCaseStudy,
+  localizedCardExcerpt,
+  localizedCardTitle,
+  localizedSeo,
+  normalizeCaseLang,
+} from '../localized';
 import { caserEntries } from '@/data/caser-page-entries';
 
 /**
@@ -76,6 +82,53 @@ describe('localizedCardExcerpt', () => {
       expect(no.description, `${slug} falls back to English SEO`).not.toBe(en.description);
     }
   );
+
+  it.each(caseStudies.map((study) => [study.slug, study] as const))(
+    '%s has a Norwegian visible title without Municipality',
+    (_slug, study) => {
+      const title = localizeCaseStudy(study, 'no').title;
+      expect(title).toBeTruthy();
+      expect(title).not.toContain('Municipality');
+    }
+  );
+
+  it('shows Nordre Follo as Nordre Follo kommune on the Norwegian listing', () => {
+    const title = localizedCardTitle(
+      'nordre-follo-tilskuddsportal-bevillingsportal',
+      'Nordre Follo Municipality',
+      'no'
+    );
+    expect(title).toBe('Nordre Follo kommune');
+    expect(title).not.toContain('Municipality');
+  });
+
+  it('gives Nordre Follo a Norwegian h1 and body on nb-NO without inventing kroner or SLA', () => {
+    const study = caseStudies.find(
+      (item) => item.slug === 'nordre-follo-tilskuddsportal-bevillingsportal'
+    );
+    expect(study).toBeTruthy();
+    const no = localizeCaseStudy(study!, 'no');
+    const en = localizeCaseStudy(study!, 'en');
+
+    expect(no.title).toBe('Nordre Follo kommune');
+    expect(no.title).not.toContain('Municipality');
+    expect(no.industry).toMatch(/offentlig sektor/i);
+    expect(no.industry).not.toMatch(/public sector/i);
+    expect(no.role.join(' ')).toMatch(/arkitektur/i);
+    expect(no.role.join(' ')).not.toMatch(/architecture/i);
+    expect(no.solution.modules.join(' ')).toMatch(/tilskuddsportal/i);
+    expect(no.solution.modules.join(' ')).not.toMatch(/grant-related/i);
+    expect(no.solution.users?.join(' ')).toMatch(/innbyggere/i);
+    expect(no.timeline[0].phase).toBe('Behovsanalyse');
+    expect(no.architectureDiagram.title).toMatch(/arkitektur/i);
+    expect(no.architectureDiagram.title).not.toMatch(/municipal grant/i);
+    expect(no.architectureDiagram.layers?.[0].name).toBe('Brukere');
+    expect(JSON.stringify(no)).not.toMatch(/kr\s?\d|NOK\s?\d/i);
+    expect(no.summary).not.toBe(en.summary);
+
+    const altinn = localizeCaseStudy(caseStudies.find((item) => item.slug === 'altinn')!, 'no');
+    expect(altinn.objectives.join(' ')).toMatch(/99,99 %/);
+  });
 
   it('collapses locale tags to the three languages that are authored', () => {
     expect(normalizeCaseLang('nb-NO')).toBe('no');

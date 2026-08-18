@@ -11,7 +11,7 @@
     "services": "الخدمات",
     "servicesDescription": "مجموعة شاملة من الخدمات التقنية للأعمال الحديثة",
     "products": "المنتجات",
-    "productsDescription": "Digilist وDigiskjema وXaheen وNorchain",
+    "productsDescription": "Digilist وDigiskjema وXaheen",
     "cases": "المشاريع",
     "casesDescription": "استكشف تنفيذاتنا الناجحة للمشاريع",
     "workProcessDescription": "نهجنا المنظم من الفكرة إلى التنفيذ",
@@ -131,7 +131,7 @@
     },
     "products": {
       "title": "منتجاتنا الأساسية",
-      "description": "أربعة منتجات مبنية من المكوّنات نفسها التي نستخدمها في مشاريع العملاء.",
+      "description": "ثلاثة منتجات. Digilist وDigiskjema وXaheen، مبنية من المكوّنات نفسها التي نستخدمها في مشاريع العملاء.",
       "viewAll": "عرض جميع المنتجات",
       "available": "متوفر",
       "beta": "تجريبي",
@@ -255,7 +255,7 @@
       "status": "مباشر"
     },
     "title": "منتجاتنا الأساسية",
-    "description": "أربعة منتجات مبنية من المكوّنات نفسها التي نستخدمها في مشاريع العملاء.",
+    "description": "ثلاثة منتجات. Digilist وDigiskjema وXaheen، مبنية من المكوّنات نفسها التي نستخدمها في مشاريع العملاء.",
     "comingSoon": "قريباً",
     "readMore": "اقرأ المزيد"
   },
@@ -817,8 +817,8 @@
   },
   "productsPage": {
     "eyebrow": "المنتجات",
-    "title": "حلول جاهزة نشغّلها بالفعل",
-    "description": "ثلاثة منتجات مبنية من المكوّنات نفسها التي نستخدمها في مشاريع العملاء، وتُدار بالطريقة نفسها.",
+    "title": "المنتجات: Digilist وDigiskjema وXaheen",
+    "description": "ثلاثة منتجات. Digilist وDigiskjema وXaheen، مبنية من المكوّنات نفسها التي نستخدمها في مشاريع العملاء، وتُدار بالطريقة نفسها.",
     "ctaTitle": "هل يناسبكم أيّ من هذا؟",
     "ctaDescription": "المنتجات قابلة للتكييف. أخبرونا بما تحتاجونه وسنقول إن كان تهيئة أم مشروعاً.",
     "ctaContact": "اتصل بنا",

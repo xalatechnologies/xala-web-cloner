@@ -35,6 +35,12 @@ export interface BlogFrontmatter {
   tag?: string;
   /** Cover image path, e.g. "/images/blog/foo.webp". */
   cover?: string;
+  /**
+   * Short Norwegian alt for the hero. Optional: `coverAlt()` uses this when
+   * present, otherwise the topic from `seoTitle` or `title`, so a new post
+   * cannot ship an empty hero alt.
+   */
+  alt?: string;
   keywords?: string[];
   /** `no` (default) or `en`. */
   lang?: string;

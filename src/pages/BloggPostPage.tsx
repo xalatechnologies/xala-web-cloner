@@ -11,7 +11,7 @@ import ArticleToc from '../components/blog/ArticleToc';
 import ShareLinks from '../components/blog/ShareLinks';
 import NotFound from './NotFound';
 import { allPosts } from '@/lib/blog';
-import { findPost, relatedPosts } from '@/lib/blog/posts';
+import { coverAlt, findPost, relatedPosts } from '@/lib/blog/posts';
 import { extractFaq, extractHeadings, faqJsonLd } from '@/lib/blog/toc';
 import { relatedServices } from '@/lib/blog/relatedServices';
 import { BLOG_PATH, ORGANIZATION, articleJsonLd, formatDate, postMeta, postUrl } from '@/lib/blog/seo';
@@ -128,7 +128,7 @@ export default function BloggPostPage() {
                   <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-border bg-muted">
                     <img
                       src={post.cover}
-                      alt=""
+                      alt={coverAlt(post)}
                       className="absolute inset-0 h-full w-full object-cover"
                       loading="eager"
                       decoding="async"

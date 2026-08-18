@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react';
 import { resolveIcon } from '@/lib/icons';
 import type { LucideIcon } from 'lucide-react';
 import productsData from '@/data/products.json';
+import { catalogProducts } from '@/lib/products';
 
 type Language = 'no' | 'en' | 'ar';
 
@@ -27,7 +28,7 @@ export default function ProductsTeaser() {
     return lang.startsWith('ar') ? 'ar' : lang.startsWith('en') ? 'en' : 'no';
   }, [i18n.language]);
 
-  const products = productsData[language] ?? productsData.no;
+  const products = catalogProducts(productsData[language] ?? productsData.no);
   const iconFor = (name?: string | null): LucideIcon =>
     resolveIcon(name, 'Package');
 

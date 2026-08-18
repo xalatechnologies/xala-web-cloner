@@ -1,7 +1,7 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { isPostFile, parsePost } from '../posts';
+import { coverAlt, isPostFile, parsePost } from '../posts';
 import { extractFaq, extractHeadings, faqJsonLd } from '../toc';
 import { postUrl } from '../seo';
 import type { BlogPost } from '../types';
@@ -75,6 +75,10 @@ describe('published post structure', () => {
       expect(post.cover, `${post.slug} has no cover`).toBeTruthy();
       const file = resolve(__dirname, '../../../../public', post.cover!.replace(/^\//, ''));
       expect(existsSync(file), `${post.cover} is not in public/`).toBe(true);
+      const alt = coverAlt(post);
+      expect(alt, `${post.slug} has an empty hero alt`).toBeTruthy();
+      expect(alt).not.toBe(post.cover);
+      expect(alt).not.toBe(post.cover!.split('/').pop());
     }
   );
 

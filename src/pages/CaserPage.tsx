@@ -14,7 +14,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { cn } from '@/lib/utils';
-import { localizedCardExcerpt } from '@/data/case-studies/localized';
+import { localizedCardExcerpt, localizedCardTitle } from '@/data/case-studies/localized';
 import { SITE_ORIGIN } from '@/lib/blog/seo';
 import {
   caserEntries,
@@ -84,6 +84,7 @@ function CaseCard({ entry, index }: { entry: CaserEntry; index: number }) {
   // translated one, and keep the entry's text for the rare card with no study
   // behind it.
   const description = localizedCardExcerpt(entry.slug, i18n.language) ?? entry.description;
+  const title = localizedCardTitle(entry.slug, entry.title, i18n.language);
   const sectorColor = SECTOR_COLORS[entry.sector] ?? 'text-primary bg-primary/10 border-primary/20';
 
   const inner = (
@@ -119,7 +120,7 @@ function CaseCard({ entry, index }: { entry: CaserEntry; index: number }) {
         {entry.imageUrl && (
           <img
             src={entry.imageUrl}
-            alt={entry.title}
+            alt={title}
             className={cn(
               'object-contain max-h-16 max-w-[65%] transition-all duration-500',
               'brightness-0 invert opacity-60',
@@ -139,7 +140,7 @@ function CaseCard({ entry, index }: { entry: CaserEntry; index: number }) {
           'card-heading mb-3 leading-tight transition-colors duration-200',
           isLinked ? 'text-foreground group-hover:text-primary' : 'text-muted-foreground'
         )}>
-          {entry.title}
+          {title}
         </h3>
 
         <p className="text-sm leading-relaxed text-muted-foreground flex-1 line-clamp-3 mb-5">
@@ -499,6 +500,7 @@ export default function CaserPage() {
       // card and be told there were no results.
       const haystack = [
         e.title,
+        localizedCardTitle(e.slug, e.title, i18n.language),
         e.description,
         localizedCardExcerpt(e.slug, i18n.language) ?? '',
         e.sector,

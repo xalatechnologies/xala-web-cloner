@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   allTags,
+  coverAlt,
   findPost,
   isPostFile,
   parsePost,
@@ -151,6 +152,41 @@ describe("parsePost", () => {
   it("rejects an empty body", () => {
     const result = parsePost(md({}, "   \n"), "/blog/a.md");
     expect(isError(result) && result.reason).toBe("empty body");
+  });
+
+  it("reads an optional cover alt from frontmatter", () => {
+    const post = ok(parsePost(md({ alt: '"SSA-S eller SSA-L"' }), "/blog/a.md"));
+    expect(post.alt).toBe("SSA-S eller SSA-L");
+  });
+});
+
+describe("coverAlt", () => {
+  it("prefers an authored alt over the title", () => {
+    expect(
+      coverAlt({ title: "Lang tittel om kontraktsvalg", alt: "SSA-S eller SSA-L" })
+    ).toBe("SSA-S eller SSA-L");
+  });
+
+  it("derives a short topic from seoTitle, then title, so new posts cannot ship empty alts", () => {
+    expect(coverAlt({ title: "SSA-S eller SSA-L: kontraktsvalget som avgjør om leveransen kan gjøres i etapper" })).toBe(
+      "SSA-S eller SSA-L: kontraktsvalget som avgjør om leveransen kan gjøres i etapper"
+    );
+    expect(
+      coverAlt({
+        title: "SSA-S eller SSA-L: kontraktsvalget som avgjør om leveransen kan gjøres i etapper",
+        seoTitle: "SSA-S eller SSA-L: hvilken kontrakt passer",
+      })
+    ).toBe("SSA-S eller SSA-L: hvilken kontrakt passer");
+  });
+
+  it("rejects a filename as alt and falls back to the topic", () => {
+    expect(
+      coverAlt({
+        title: "WCAG 2.2 AA i praksis",
+        alt: "wcag-2-2-aa-i-praksis.webp",
+        cover: "/images/blog/wcag-2-2-aa-i-praksis.webp",
+      })
+    ).toBe("WCAG 2.2 AA i praksis");
   });
 });
 

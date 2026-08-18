@@ -14,6 +14,7 @@ export interface ProductItem {
   slug?: string;
   status?: string;
   features?: string[];
+  listed?: boolean;
 }
 
 interface ProductGridProps {

@@ -42,7 +42,7 @@ const RULES: Rule[] = [
   {
     href: '/produkter',
     label: 'Våre produkter',
-    blurb: 'Norchain, Xaheen AI Builder og DigiList.',
+    blurb: 'Digilist, Digiskjema og Xaheen.',
     match: /norchain|xaheen|digilist|booking|blockchain|ai|kunstig intelligens|maskinl(æ|ae)ring|produkt/i,
   },
   {

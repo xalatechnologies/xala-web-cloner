@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useSection } from '@/hooks/use-section';
 import ProductGrid from './products/ProductGrid';
 import productsData from '@/data/products.json';
+import { catalogProducts } from '@/lib/products';
 
 type Language = 'no' | 'en' | 'ar';
 
@@ -23,7 +24,7 @@ const CoreProducts = ({ headingLevel = 'h1' }: CoreProductsProps = {}) => {
   const currentLanguage: Language = lang === 'ar' ? 'ar' : (lang === 'en' ? 'en' : 'no');
 
   // Get products from JSON
-  const products = productsData[currentLanguage] || productsData.no;
+  const products = catalogProducts(productsData[currentLanguage] || productsData.no);
 
   const renderContent = () => {
     if (!products.length) {
