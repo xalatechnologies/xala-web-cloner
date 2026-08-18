@@ -3,7 +3,7 @@ slug: redusert-foreldrebetaling-dokumentasjon-fra-foresatte
 title: "Redusert foreldrebetaling: når foresatte fortsatt må legge ved dokumentasjon"
 seoTitle: "Redusert foreldrebetaling: dokumentasjon"
 description: "Hvis kommunen ikke henter inntekt selv, må foresatte legge ved dokumentasjon. § 3e lar kommunen hente skatt. Mange har tilgang, men ber likevel om vedlegg."
-date: 2026-08-18
+date: 2026-08-06
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 readingMinutes: 4
