@@ -1,6 +1,7 @@
 ---
 slug: skjenkebevilling-gebyr-og-omsetningsoppgave
 title: "Skjenkebevilling: når gebyr og omsetning regnes for hånd"
+seoTitle: "Skjenkebevilling: gebyr og omsetning for hånd"
 description: "Gebyret står i forskriften. Omsetningsoppgaven er plikt. Å taste liter inn i et ark er ikke loven."
 date: 2026-08-03
 author: "Ibrahim Rahmani"
