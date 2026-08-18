@@ -55,7 +55,8 @@ import {
 } from "../src/lib/blog/feeds";
 import type { BlogPost } from "../src/lib/blog/types";
 import { caseStudies } from "../src/data/case-studies/index";
-import { localizedSeo } from "../src/data/case-studies/localized";
+import { caseStudyFaqJsonLd } from "../src/data/case-studies/faq";
+import { localizeCaseStudy, localizedSeo } from "../src/data/case-studies/localized";
 import productsData from "../src/data/products.json";
 import servicePages from "../src/data/service-pages.json";
 import faqData from "../src/data/faq.json";
@@ -452,6 +453,7 @@ function main(): void {
   for (const study of caseStudies) {
     if (!study.slug) continue;
     const url = `${SITE_ORIGIN}/caser/${study.slug}`;
+    const localized = localizeCaseStudy(study, "no");
     const seo = localizedSeo(study, "no");
     write(
       path.join(DIST, "caser", study.slug, "index.html"),
@@ -466,12 +468,12 @@ function main(): void {
             {
               "@type": "Article",
               "@id": `${url}#article`,
-              headline: study.title,
+              headline: localized.title,
               description: seo.description,
               inLanguage: "nb-NO",
               publisher: { "@id": ORG_ID },
               mainEntityOfPage: { "@type": "WebPage", "@id": url },
-              ...(study.client ? { about: { "@type": "Organization", name: study.client } } : {}),
+              ...(localized.client ? { about: { "@type": "Organization", name: localized.client } } : {}),
             },
             {
               "@type": "BreadcrumbList",
@@ -479,11 +481,14 @@ function main(): void {
               itemListElement: [
                 { "@type": "ListItem", position: 1, name: "Forside", item: SITE_ORIGIN },
                 { "@type": "ListItem", position: 2, name: "Kundecaser", item: `${SITE_ORIGIN}/caser` },
-                { "@type": "ListItem", position: 3, name: study.title, item: url },
+                { "@type": "ListItem", position: 3, name: localized.title, item: url },
               ],
             },
           ],
         },
+        extraJsonLd: [caseStudyFaqJsonLd(url, localized)].filter(
+          (block): block is Record<string, unknown> => Boolean(block),
+        ),
       }),
     );
   }

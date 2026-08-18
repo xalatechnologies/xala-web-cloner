@@ -102,7 +102,7 @@ const staticCaseStudiesEn: CaseStudy[] = [
   {
     id: 'altinn-static',
     title: 'Altinn',
-    description: 'Transformed Norway\'s digital public service platform with scalable cloud infrastructure, serving over 5 million citizens with 99.99% uptime and enhanced security compliance.',
+    description: 'Xala contributed at Digdir to development and modernization of Altinn 3, including Altinn Studio, on Azure and Kubernetes. Xala does not own Altinn.',
     image_url: '/clients/altinn.svg',
     icon: null,
     language: 'en',
@@ -650,7 +650,7 @@ const staticCaseStudiesNo: CaseStudy[] = [
   {
     id: 'altinn-static-no',
     title: 'Altinn',
-    description: 'Transformerte Norges digitale offentlige tjenesteplattform med skalerbar skyinfrastruktur, betjente over 5 millioner innbyggere med 99,99 % oppetid og forbedret sikkerhetskompatibilitet.',
+    description: 'Xala bidro hos Digdir til utvikling og modernisering av Altinn 3, inkludert Altinn Studio. Xala eier ikke Altinn.',
     image_url: '/clients/altinn.svg',
     icon: null,
     language: 'no',

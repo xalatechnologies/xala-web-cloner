@@ -25,6 +25,8 @@ import Footer from '@/components/Footer';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { caseStudyBySlug } from '@/data/case-studies';
+import { caseStudyFaqJsonLd } from '@/data/case-studies/faq';
+import { CaseStudyRichInline, CaseStudyRichText } from '@/components/case-studies/CaseStudyRichText';
 import { useLocalizedCaseStudy } from '@/hooks/useLocalizedCaseStudy';
 
 // ─── TOC section IDs (order matters) ─────────────────────────────────────────
@@ -150,6 +152,11 @@ function HeroSection({ cs }: { cs: NonNullable<ReturnType<typeof caseStudyBySlug
 
   const teamSizeLabel = cs.estimatedTeamSize ?? (cs.team ? String(cs.team.size) : undefined);
   const durationLabel = cs.duration ?? cs.deliveryPeriod;
+  const logo = cs.logoUrl ? (
+    <div className="mb-8 p-4 rounded-2xl bg-white/5 border border-border/50 inline-block">
+      <img src={cs.logoUrl} alt={cs.title} className="h-12 object-contain object-left" />
+    </div>
+  ) : null;
 
   return (
     <section className="relative overflow-hidden bg-background pt-20">
@@ -208,21 +215,27 @@ function HeroSection({ cs }: { cs: NonNullable<ReturnType<typeof caseStudyBySlug
               )}
             </div>
 
-            {/* logo */}
-            {cs.logoUrl && (
-              <div className="mb-8 p-4 rounded-2xl bg-white/5 border border-border/50 inline-block">
-                <img
-                  src={cs.logoUrl}
-                  alt={cs.title}
-                  className="h-12 object-contain object-left"
-                />
-              </div>
-            )}
+            {!cs.kortSvar && logo}
 
             {/* title */}
             <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-foreground mb-6 leading-[1.05]">
               {cs.title}
             </h1>
+            {cs.kortSvar && (
+              <div id="kort-svar" className="mb-10 max-w-2xl">
+                <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2 flex items-center gap-2">
+                  <span className="h-px w-6 bg-primary inline-block" />
+                  {t('caseStudy.sections.kortSvar.accent', 'Kort svar')}
+                </p>
+                <h2 className="text-2xl font-bold text-foreground tracking-tight leading-tight mb-4">
+                  {t('caseStudy.sections.kortSvar.heading', 'Kort svar')}
+                </h2>
+                <div className="space-y-4 text-base text-foreground/80 leading-relaxed">
+                  <CaseStudyRichText text={cs.kortSvar} />
+                </div>
+              </div>
+            )}
+            {cs.kortSvar && logo}
             <p className="text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl">
               {cs.subtitle}
             </p>
@@ -912,6 +925,38 @@ function CTASection({ title }: { title: string }) {
   );
 }
 
+function FaqSection({
+  faq,
+  videre,
+}: {
+  faq: NonNullable<NonNullable<ReturnType<typeof caseStudyBySlug>>['faq']>;
+  videre?: string;
+}) {
+  const { t } = useTranslation();
+  return (
+    <section id="faq" aria-labelledby="faq-heading" className="py-16 border-t border-border">
+      <SectionHeading accent={t('caseStudy.sections.faq.accent', 'Spørsmål')}>
+        <span id="faq-heading">{t('caseStudy.sections.faq.heading', 'Ofte stilte spørsmål')}</span>
+      </SectionHeading>
+      <dl className="max-w-[70ch] divide-y divide-border border-y border-border">
+        {faq.map((item) => (
+          <div key={item.question} className="py-6">
+            <dt className="text-lg font-semibold text-foreground">{item.question}</dt>
+            <dd className="mt-3 text-base text-foreground/80 leading-relaxed">
+              <CaseStudyRichInline text={item.answer} />
+            </dd>
+          </div>
+        ))}
+      </dl>
+      {videre && (
+        <div className="mt-10 max-w-[70ch] text-base text-foreground/80 leading-relaxed">
+          <CaseStudyRichText text={videre} />
+        </div>
+      )}
+    </section>
+  );
+}
+
 // ─── Active section tracker ───────────────────────────────────────────────────
 function useActiveSection(ids: string[]) {
   const [activeId, setActiveId] = useState(ids[0]);
@@ -946,6 +991,9 @@ export default function CaseStudyDetailPage() {
 
   if (!cs) return <Navigate to="/caser" replace />;
 
+  const pageUrl = `${SITE_ORIGIN}/caser/${slug}`;
+  const faqSchema = caseStudyFaqJsonLd(pageUrl, cs);
+
   return (
     <>
       {/* Canonical belongs here, not in RouteSEO: this route is `selfManaged`.
@@ -954,14 +1002,15 @@ export default function CaseStudyDetailPage() {
       <Helmet>
         <title>{cs.seo.title}</title>
         <meta name="description" content={cs.seo.description} />
-        <link rel="canonical" href={`${SITE_ORIGIN}/caser/${slug}`} />
+        <link rel="canonical" href={pageUrl} />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`${SITE_ORIGIN}/caser/${slug}`} />
+        <meta property="og:url" content={pageUrl} />
         <meta property="og:title" content={cs.seo.title} />
         <meta property="og:description" content={cs.seo.description} />
-        <meta property="twitter:url" content={`${SITE_ORIGIN}/caser/${slug}`} />
+        <meta property="twitter:url" content={pageUrl} />
         <meta property="twitter:title" content={cs.seo.title} />
         <meta property="twitter:description" content={cs.seo.description} />
+        {faqSchema && <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>}
       </Helmet>
 
       <div className="min-h-screen flex flex-col">
@@ -986,6 +1035,7 @@ export default function CaseStudyDetailPage() {
                 <TimelineSection timeline={cs.timeline} />
                 <OutcomesSection outcomes={cs.outcomes} />
                 <CapabilitiesSection capabilities={cs.capabilities} />
+                {cs.faq && cs.faq.length > 0 && <FaqSection faq={cs.faq} videre={cs.videre} />}
                 <CTASection title={cs.title} />
               </div>
             </div>

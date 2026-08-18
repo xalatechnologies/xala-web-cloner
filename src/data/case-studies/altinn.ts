@@ -10,7 +10,6 @@ export const altinnCaseStudy: CaseStudy = {
   deliveryModel: 'Long-term platform consultancy and development',
   deliveryPeriod: '2020–2024',
   duration: '4 years',
-  budget: 'NOK 15–25M',
   status: 'Delivered',
   team: {
     size: 10,
@@ -27,7 +26,36 @@ export const altinnCaseStudy: CaseStudy = {
   imageUrl: '/clients/altinn.svg',
 
   summary:
-    "Xala contributed to the development and modernization of Altinn 3, Norway's cornerstone digital government platform serving over 5 million citizens and businesses. Working alongside Digdir, Xala delivered critical backend services, cloud infrastructure components, and application integrations within the Altinn Studio ecosystem — enabling Norwegian public agencies to build, deploy, and manage digital services at scale.",
+    "Xala contributed to the development and modernization of Altinn 3, Norway's cornerstone digital government platform serving over 5 million citizens and businesses. Working alongside Digdir, Xala delivered critical backend services, cloud infrastructure components, and application integrations within the Altinn Studio ecosystem, enabling Norwegian public agencies to build, deploy, and manage digital services at scale.",
+
+  kortSvar:
+    'Altinn 3 er tredje generasjon plattform for å utvikle og kjøre digitale tjenester, slik [Digdir](https://docs.altinn.studio/nb/community/about/) beskriver den. Xala bidro til utvikling og modernisering av plattformen, inkludert Altinn Studio. Xala eier ikke Altinn. Vi er ikke produktansvarlig, og dette er ikke en annen «Ta i bruk Altinn 3»-side.\n\nDigitaliseringsdirektoratet eier Altinn. Xala var utviklings- og arkitekturpartner på Altinn 3. Offisiell overgang og tjenesteeier-veiledning ligger hos Digdir, på [Samarbeidsportalen](https://samarbeid.digdir.no/altinn/ta-i-bruk-altinn-3/2333).',
+
+  videre:
+    '[Kontakt](/kontakt) hvis dere skal modernisere et fagsystem mot nasjonale felleskomponenter. Flere oppdrag ligger under [caser](/caser).',
+
+  faq: [
+    {
+      question: 'Hva er Altinn 3?',
+      answer:
+        'Altinn 3 er tredje generasjon plattform for å utvikle og kjøre digitale tjenester. Digdir eier Altinn og utvikler den som åpen kildekode. Plattformen gir etatene kjernefunksjonalitet som lagring, autorisasjon og autentisering, og tjenestene kjøres som applikasjoner i skyen. Les Digdirs egen side [Om Altinn 3](https://docs.altinn.studio/nb/community/about/).',
+    },
+    {
+      question: 'Hva er Altinn Studio?',
+      answer:
+        'Altinn Studio er verktøyet tjenesteeiere bruker for å utvikle, drifte og forvalte digitale tjenester på Altinn 3. Digdir beskriver det som en hybrid mellom lavkode og vanlig koding. Xala bidro til Studio. Xala eier det ikke. Se [Om Altinn Studio](https://docs.altinn.studio/nb/altinn-studio/v8/about/).',
+    },
+    {
+      question: 'Hva gjorde Xala på Altinn 3?',
+      answer:
+        'Xala bidro til utvikling og modernisering av Altinn 3 hos Digdir. Det inkluderte arkitektur, backend og skyinfrastruktur, og arbeid på Altinn Studio. Caset er et bidrag, ikke et eierskap. For hvordan Altinn henger sammen med andre felleskomponenter, se [integrasjoner mot nasjonale felleskomponenter](/blogg/integrasjoner-mot-nasjonale-felleskomponenter).',
+    },
+    {
+      question: 'Er Xala leverandør av Altinn?',
+      answer:
+        'Nei. Digdir eier Altinn. Xala var partner på utvikling og modernisering. Vi leverer ikke Altinn som produkt, og denne siden er ikke en erstatning for Digdirs [Ta i bruk Altinn 3](https://samarbeid.digdir.no/altinn/ta-i-bruk-altinn-3/2333).',
+    },
+  ],
 
   challenge: [
     'The legacy Altinn 2 platform was a monolithic, on-premises system built over two decades, creating significant operational and maintenance challenges for the Norwegian government.',
@@ -40,7 +68,6 @@ export const altinnCaseStudy: CaseStudy = {
   objectives: [
     'Transition from monolithic architecture to cloud-native microservices on Azure',
     'Enable government agencies to build and publish digital services independently via Altinn Studio',
-    'Achieve 99.99% uptime SLA across all critical public-facing services',
     'Establish secure, modern API-first integration patterns for third-party systems',
     'Implement full GDPR compliance and NSM security framework alignment',
     'Reduce time-to-deploy for new government digital services from months to days',
@@ -205,7 +232,6 @@ export const altinnCaseStudy: CaseStudy = {
   outcomes: [
     'Platform serves over 5 million Norwegian citizens and hundreds of thousands of businesses with high-availability digital government services.',
     'Government agencies can build and publish new digital services in days rather than months, dramatically reducing time-to-deployment.',
-    'Achieved 99.99% uptime across critical platform services, meeting national digital infrastructure standards.',
     'Altinn Studio enables non-developer staff at government agencies to independently create forms, workflows, and digital processes.',
     'Full GDPR compliance and NSM security framework alignment across all platform components.',
     'Event-driven architecture enables real-time data exchange between Norwegian government registries and agency systems.',
@@ -271,9 +297,9 @@ export const altinnCaseStudy: CaseStudy = {
   },
 
   seo: {
-    title: "Altinn 3: skyplattform for digital forvaltning | Xala",
+    title: 'Altinn 3 and Altinn Studio: what Xala contributed at Digdir',
     description:
-      "Xala contributed to modernizing Norway's national digital government platform Altinn 3 with cloud-native microservices on Azure, serving 5 million citizens with 99.99% uptime and enabling agencies to deploy digital services independently.",
+      'Altinn 3 is the third-generation platform for digital services. Xala contributed at Digdir to development and modernization, including Altinn Studio. Xala does not own Altinn.',
   },
 
   card: {
@@ -283,6 +309,8 @@ export const altinnCaseStudy: CaseStudy = {
   },
   translations: {
     no: {
+      title: 'Altinn 3 og Altinn Studio: hva Xala bidro med hos Digdir',
+      client: 'Digitaliseringsdirektoratet (Digdir)',
       subtitle: 'Modernisering av Norges nasjonale digitale offentlige plattform med skybasert arkitektur',
       summary: 'Xala bidro til utvikling og modernisering av Altinn 3, Norges hjørnesteinplattform for digital forvaltning som betjener over 5 millioner innbyggere og bedrifter. I samarbeid med Digdir leverte vi viktige arkitektur-, utviklings- og skyinfrastrukturbidrag for en moderne, containerpakket, hendelsesorientert plattform bygget på Azure og Kubernetes.',
       challenge: [
@@ -295,20 +323,19 @@ export const altinnCaseStudy: CaseStudy = {
       objectives: [
         'Levere en sky-native arkitektur på Azure og Kubernetes som erstatter den eldre monolittiske plattformen',
         'Muliggjøre kontinuerlig deployment og uavhengige tjenesteutgivelser for hundrevis av statlige tjenester',
-        'Oppnå 99,99 % oppetid SLA for nasjonalt kritisk offentlig infrastruktur',
         'Implementere event-drevet kommunikasjon via Azure Service Bus og API-gateway-mønstre',
-        'Levere Altinn Studio — en lavkode tjenestebygger for ikke-tekniske statlige tjenestedesignere',
+        'Levere Altinn Studio, en lavkode tjenestebygger for ikke-tekniske statlige tjenestedesignere',
       ],
       solution: {
         overview: 'Løsningen innebar migrering av Altinn fra en monolittisk on-premises applikasjon til en moderne mikrotjenestearkitektur på Azure Kubernetes Service. Xala bidro til viktige deler av plattformkjernen, API-infrastrukturen og DevOps-rørledningene som muliggjorde skalerbar, hendelsesdrevet tjenesteutgivelse.',
         modules: [
           'Mikrotjenestearkitektur på Azure Kubernetes Service (AKS)',
-          'Azure API Management — API-gateway og sikkerhetslaget',
-          'Azure Service Bus — hendelsesdrevet kommunikasjonslag',
-          'Altinn Studio — lavkode tjenestebygger for offentlig sektor',
-          'React & TypeScript — innbygger- og bedriftsvendte grensesnitt',
-          '.NET 8 mikrotjenester — kjerneforretningslogikk og databehandling',
-          'CI/CD-rørledninger — Azure DevOps og automatisert testinfrastruktur',
+          'Azure API Management: API-gateway og sikkerhetslaget',
+          'Azure Service Bus: hendelsesdrevet kommunikasjonslag',
+          'Altinn Studio: lavkode tjenestebygger for offentlig sektor',
+          'React & TypeScript: innbygger- og bedriftsvendte grensesnitt',
+          '.NET 8 mikrotjenester: kjerneforretningslogikk og databehandling',
+          'CI/CD-rørledninger: Azure DevOps og automatisert testinfrastruktur',
         ],
         users: ['Norske innbyggere og bedrifter (5M+)', 'Statlige tjenesteeiere og designere', 'Digdir plattformingeniører', 'Tredjeparts applikasjonsutviklere'],
       },
@@ -321,10 +348,8 @@ export const altinnCaseStudy: CaseStudy = {
         { phase: 'Kontinuerlig forbedring', description: 'Løpende plattformoptimalisering, ytelsestuning og funksjonsleveranse i takt med ny etterspørsel fra offentlig sektor.' },
       ],
       outcomes: [
-        '99,99 % oppetid oppnådd over produksjonslevetiden for nasjonal offentlig infrastruktur',
         'Hundrevis av statlige tjenester migrert til den nye sky-native plattformen med full bakoverkompatibilitet',
         'Altinn Studio muliggjorde ikke-tekniske offentlige designere å lansere digitale tjenester selvstendig',
-        '70 % reduksjon i infrastrukturkostnader sammenlignet med on-premises drift',
         'Skalerbar arkitektur som håndterer nasjonale toppbelastninger på tvers av skatteperioder og tjenesteutgivelser',
       ],
       capabilities: [
@@ -344,8 +369,15 @@ export const altinnCaseStudy: CaseStudy = {
         'Innbygger- og bedriftsvendte digitale tjenester',
         'Sikre nasjonale identitets- og registerintegrasjoner',
       ],
-      card: { excerpt: 'Transformerte Norges nasjonale digitale forvaltningsplattform — sky-native arkitektur på Azure og Kubernetes som betjener 5M+ innbyggere med 99,99 % oppetid.' },
-      seo: { description: 'Se hvordan Xala moderniserte Altinn 3 med Azure og Kubernetes, og leverte 99,99 % oppetid for Norges nasjonale plattform for digital forvaltning.' },
+      card: {
+        excerpt:
+          'Xala bidro hos Digdir til utvikling og modernisering av Altinn 3, inkludert Altinn Studio. Xala eier ikke Altinn.',
+      },
+      seo: {
+        title: 'Altinn 3 og Altinn Studio: hva Xala bidro med hos Digdir',
+        description:
+          'Altinn 3 er tredje generasjon plattform for digitale tjenester. Xala bidro hos Digdir til utvikling og modernisering, inkludert Altinn Studio. Xala eier ikke Altinn.',
+      },
     },
     ar: {
       subtitle: 'تحديث المنصة الرقمية الحكومية الوطنية النرويجية بهندسة سحابية حديثة',
@@ -360,7 +392,6 @@ export const altinnCaseStudy: CaseStudy = {
       objectives: [
         'تقديم بنية سحابية على Azure وKubernetes تحل محل المنصة القديمة',
         'تمكين النشر المستمر وإصدارات الخدمات المستقلة لمئات الخدمات الحكومية',
-        'تحقيق اتفاقية مستوى الخدمة 99.99% لبنية تحتية وطنية حيوية',
         'تنفيذ الاتصال القائم على الأحداث عبر Azure Service Bus وأنماط بوابة API',
         'تقديم Altinn Studio — أداة بناء خدمات منخفضة الكود لمصممي الخدمات الحكومية غير التقنيين',
       ],
@@ -383,14 +414,18 @@ export const altinnCaseStudy: CaseStudy = {
         { phase: 'التحسين المستمر', description: 'تحسين مستمر للمنصة وضبط الأداء وتسليم الميزات بالتوازي مع الطلب الجديد من القطاع العام.' },
       ],
       outcomes: [
-        'تحقيق 99.99% من وقت التشغيل عبر عمر الإنتاج للبنية التحتية الحكومية الوطنية',
         'ترحيل مئات الخدمات الحكومية إلى المنصة السحابية الجديدة مع الحفاظ على التوافق الكامل',
         'مكّن Altinn Studio المصممين الحكوميين غير التقنيين من إطلاق الخدمات الرقمية باستقلالية',
-        'تخفيض تكاليف البنية التحتية بنسبة 70% مقارنة بالتشغيل المحلي',
         'بنية قابلة للتوسع تتعامل مع ذروة الأحمال الوطنية عبر مواسم الضرائب وإطلاق الخدمات',
       ],
-      card: { excerpt: 'حوّل المنصة الرقمية الحكومية الوطنية النرويجية — بنية سحابية على Azure وKubernetes تخدم أكثر من 5 ملايين مواطن بنسبة توفر 99.99%.' },
-      seo: { description: 'اكتشف كيف حدّثت Xala منصة Altinn 3 ببنية Azure وKubernetes السحابية، وحققت 99.99% وقت تشغيل للمنصة الرقمية الحكومية الوطنية النرويجية.' },
+      card: {
+        excerpt:
+          'ساهمت Xala لدى Digdir في تطوير وتحديث Altinn 3، بما في ذلك Altinn Studio. Xala لا تملك Altinn.',
+      },
+      seo: {
+        description:
+          'ساهمت Xala لدى Digdir في تطوير وتحديث Altinn 3 ببنية Azure وKubernetes، بما في ذلك Altinn Studio. Xala لا تملك Altinn.',
+      },
     },
   },
 };
