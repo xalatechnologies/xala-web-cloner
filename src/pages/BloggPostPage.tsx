@@ -80,10 +80,10 @@ export default function BloggPostPage() {
       <Navbar />
 
       <main className="flex-1 pt-20">
-        <article className={`container mx-auto px-4 ${lead ? 'py-8 md:py-10' : 'py-10 md:py-14'}`}>
+        <article className={`container mx-auto px-4 ${lead ? 'pt-6 pb-8 md:pt-6 md:pb-10' : 'py-10 md:py-14'}`}>
           {/* Breadcrumb and section label share one line: the top of an article
               should get to the headline fast. */}
-          <div className={`flex items-center justify-between gap-4 ${lead ? 'mb-5' : 'mb-8'}`}>
+          <div className={`flex items-center justify-between gap-4 ${lead ? 'mb-3' : 'mb-8'}`}>
             <nav aria-label="Brødsmuler" className="min-w-0 text-sm text-muted-foreground">
               <Link
                 to={BLOG_PATH}
@@ -106,27 +106,47 @@ export default function BloggPostPage() {
           <div className="grid gap-x-10 gap-y-12 lg:grid-cols-[minmax(0,1fr)_18rem] xl:gap-x-16 xl:grid-cols-[minmax(0,1fr)_20rem]">
             <div className="min-w-0">
               <header>
-                <h1 className="max-w-[22ch] page-heading">
+                {/* A lead (Kort svar) has to share the first 1280×800 screen
+                    with the headline and deck. The default page-heading (60px,
+                    22ch) plus a relaxed deck leave Digdir / Prop. 79 L kap. 8
+                    / Forskriftsarbeidet under the fold after the box itself
+                    was lifted above the cover. Same type family, one step
+                    down; copy is untouched. */}
+                <h1
+                  className={
+                    lead
+                      ? 'max-w-[40ch] font-bold tracking-tight text-foreground text-[clamp(1.75rem,2.8vw,2.5rem)] leading-[1.15]'
+                      : 'max-w-[22ch] page-heading'
+                  }
+                >
                   {post.title}
                 </h1>
-                <p className={`max-w-[60ch] text-xl leading-relaxed text-muted-foreground ${lead ? 'mt-4' : 'mt-6'}`}>
+                <p
+                  className={
+                    lead
+                      ? 'mt-3 max-w-[68ch] text-base leading-snug text-muted-foreground md:text-lg md:leading-snug'
+                      : 'mt-6 max-w-[60ch] text-xl leading-relaxed text-muted-foreground'
+                  }
+                >
                   {post.description}
                 </p>
-                {/* Kort svar is the house lead: it belongs with the headline,
-                    not under a 16:9 cover two screens down. The muted box is
-                    the same treatment as the in-article TOC — a scannable
-                    block, not a new component. Byline follows so the answer
-                    is what the first viewport holds at 1280×800. */}
                 {lead ? (
-                  <div className="mt-6 max-w-[68ch] rounded-2xl border border-border bg-muted/40 px-5 py-4">
+                  <div
+                    data-article-lead
+                    className="mt-4 max-w-[72ch] rounded-xl border border-border bg-muted/40 px-4 py-3"
+                  >
                     <ArticleMarkdown
                       markdown={lead}
                       heading={anchored}
-                      className="prose max-w-none dark:prose-invert prose-headings:scroll-mt-28 prose-headings:text-lg prose-headings:font-semibold prose-headings:mt-0 prose-p:my-3 prose-p:leading-relaxed prose-a:text-primary"
+                      className="prose max-w-none dark:prose-invert prose-headings:scroll-mt-28 prose-headings:mb-1.5 prose-headings:mt-0 prose-headings:text-base prose-headings:font-semibold prose-p:my-0 prose-p:text-[0.9375rem] prose-p:leading-snug prose-a:text-primary"
                     />
                   </div>
                 ) : null}
-                <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-border pt-5 text-sm text-muted-foreground">
+                <div
+                  className={`flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-border text-sm text-muted-foreground ${
+                    lead ? 'mt-5 pt-3' : 'mt-8 pt-5'
+                  }`}
+                >
                   <span className="font-medium text-foreground">{post.author}</span>
                   {post.role && <span>{post.role}</span>}
                   <span aria-hidden="true" className="text-primary">
