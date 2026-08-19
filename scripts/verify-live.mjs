@@ -12,8 +12,9 @@
  *   - /blogg?q=gebyr answers 200 with only the gebyr card in #root — a file
  *     under /blogg/q/gebyr/ is not enough if the live query URL still serves
  *     the unfiltered listing
- *   - every post page answers 200, carries its own <title> (not the shell's),
- *     its own canonical, and Article JSON-LD
+ *   - every post page answers 200, carries postMeta() as the first <title>
+ *     (`seoTitle ?? title` + ` | Xala`, not the listing shell), its own
+ *     canonical, and Article JSON-LD
  *   - sitemap.xml and rss.xml parse and list the same posts
  *
  * Usage: node scripts/verify-live.mjs [origin]
@@ -24,6 +25,9 @@ import http from "node:http";
 import https from "node:https";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+
+/** Same brand suffix prerender writes via postMeta() after XWEB-184. */
+export const BRAND = "Xala";
 
 const ORIGIN = (process.argv[2] || process.env.VERIFY_ORIGIN || "https://xala.no").replace(/\/$/, "");
 /**
@@ -136,7 +140,7 @@ async function reportDns(hostname) {
 }
 
 /** The posts we expect to be live, read from source — not from the site. */
-function expectedPosts() {
+export function expectedPosts() {
   if (!fs.existsSync(CONTENT_DIR)) return [];
   return fs
     .readdirSync(CONTENT_DIR)
@@ -153,6 +157,7 @@ function expectedPosts() {
       return {
         slug: field("slug") || file.replace(/\.mdx?$/, "").replace(/^\d{4}-\d{2}-\d{2}-/, ""),
         title: field("title"),
+        seoTitle: field("seoTitle") || undefined,
       };
     })
     .filter(Boolean);
@@ -165,6 +170,26 @@ const decode = (html) =>
     .replace(/&gt;/g, ">")
     .replace(/&quot;/g, '"')
     .replace(/&#39;|&apos;/g, "'");
+
+/** First HTML `<title>`, decoded — the string a crawler reads before JS. */
+export function firstHtmlTitle(html) {
+  return decode(/<title>([\s\S]*?)<\/title>/i.exec(html)?.[1] ?? "").trim();
+}
+
+/**
+ * The document title prerender writes: `postMeta()` = `(seoTitle ?? title) | Xala`.
+ * The long frontmatter `title` is the listing card / H1, not this string.
+ */
+export function documentTitleFromPost(post) {
+  const topic = post.seoTitle ?? post.title;
+  return topic ? `${topic} | ${BRAND}` : "";
+}
+
+/** True only when the first `<title>` is the post's own postMeta(), not the shell. */
+export function isOwnDocumentTitle(html, post) {
+  const expected = documentTitleFromPost(post);
+  return Boolean(expected) && firstHtmlTitle(html) === expected;
+}
 
 const GEBYR_HREF = "/blogg/skjenkebevilling-gebyr-og-omsetningsoppgave";
 const UNRELATED_LISTING_HREFS = [
@@ -242,9 +267,8 @@ async function main() {
     check(page.status === 200, `${url} → 200 (got ${page.status})`);
     if (page.status !== 200) continue;
 
-    const title = /<title>([\s\S]*?)<\/title>/i.exec(page.body)?.[1] ?? "";
     check(
-      post.title ? decode(title).includes(post.title) : title.length > 0,
+      isOwnDocumentTitle(page.body, post),
       `${post.slug}: <title> is the post's own, not the shell's`,
     );
     check(
@@ -281,7 +305,12 @@ async function main() {
   console.log(`All checks passed (${posts.length} post(s) verified live).`);
 }
 
-main().catch((err) => {
-  console.error("verify-live crashed:", err);
-  process.exit(1);
-});
+const isDirectRun =
+  Boolean(process.argv[1]) && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+
+if (isDirectRun) {
+  main().catch((err) => {
+    console.error("verify-live crashed:", err);
+    process.exit(1);
+  });
+}
