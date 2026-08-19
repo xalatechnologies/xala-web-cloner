@@ -158,9 +158,54 @@ export function expectedPosts() {
         slug: field("slug") || file.replace(/\.mdx?$/, "").replace(/^\d{4}-\d{2}-\d{2}-/, ""),
         title: field("title"),
         seoTitle: field("seoTitle") || undefined,
+        tag: field("tag") || undefined,
+        keywords: parseKeywords(block[1]),
       };
     })
     .filter(Boolean);
+}
+
+/** Inline `keywords: ["a", "b"]` or a block list. Same shapes the content agent writes. */
+export function parseKeywords(block) {
+  const inline = /^keywords:\s*(\[[\s\S]*?\])\s*$/m.exec(block);
+  if (inline) {
+    return [...inline[1].matchAll(/"([^"]+)"|'([^']+)'/g)].map((m) => m[1] || m[2]).filter(Boolean);
+  }
+  const start = /^keywords:[ \t]*$/m.exec(block);
+  if (!start) return [];
+  const items = [];
+  for (const line of block.slice(start.index + start[0].length).split(/\r?\n/)) {
+    if (!line.trim()) continue;
+    const item = /^\s+-\s+(.+)$/.exec(line);
+    if (!item) break;
+    items.push(item[1].trim().replace(/^["']|["']$/g, ""));
+  }
+  return items;
+}
+
+const AUDIENCE = new Set(["it-leder", "arkitekt", "kommune", "utvikler"]);
+
+/** Same 3–5 topic pick as `topicKeywords()` in src/lib/blog/topics.ts. */
+export function topicKeywordsFromList(keywords, audienceTag) {
+  const audience = audienceTag?.trim().toLowerCase();
+  const seen = new Set();
+  const topics = [];
+  for (const raw of keywords ?? []) {
+    const keyword = raw.trim();
+    if (!keyword) continue;
+    const key = keyword.toLowerCase();
+    if (AUDIENCE.has(key) || (audience && key === audience)) continue;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    topics.push(keyword);
+    if (topics.length === 5) break;
+  }
+  return topics;
+}
+
+export function keywordToHashtag(keyword) {
+  const body = keyword.trim().replace(/\s+/g, "").replace(/[^\p{L}\p{N}-]/gu, "");
+  return body ? `#${body}` : "";
 }
 
 const decode = (html) =>
@@ -198,8 +243,57 @@ const UNRELATED_LISTING_HREFS = [
   "/blogg/id-porten-eller-maskinporten-hva-velger-du",
 ];
 
+/** Homepage / canned strings that must not appear as a post's keywords. */
+export const HOMEPAGE_KEYWORDS =
+  "systemutvikling, skreddersydd programvare, AI-utvikling, skyløsninger, systemintegrasjon, cybersikkerhet, Asker, Norge, offentlig sektor";
+export const BLOGPOST_CANNED_KEYWORDS = "fagartikkel, systemutvikling, arkitektur, AI, digitalisering";
+
+export function firstHtmlKeywords(html) {
+  return decode(
+    /<meta\s+[^>]*name=["']keywords["'][^>]*content=["']([^"']*)["']/i.exec(html)?.[1] ?? "",
+  ).trim();
+}
+
+export function firstHtmlArticleTags(html) {
+  return [
+    ...html.matchAll(/<meta\s+[^>]*property=["']article:tag["'][^>]*content=["']([^"']*)["']/gi),
+  ].map((m) => decode(m[1]));
+}
+
+/** Hashtags in `#root` that start with a letter, so `#0F1117` theme colors do not count. */
+export function firstHtmlHashtags(html) {
+  return rootInner(html).match(/#[\p{L}][\p{L}\p{N}-]*/gu) ?? [];
+}
+
+export function hasShareRow(html) {
+  return rootInner(html).includes("Del artikkelen");
+}
+
+/**
+ * True only when first HTML has this post's topics — not an empty title-style
+ * match, not the homepage keyword string, not audience-only (IT-leder).
+ */
+export function isPostTopicHead(html, post) {
+  const expected = topicKeywordsFromList(post.keywords, post.tag);
+  if (expected.length < 3) return false;
+  const keywords = firstHtmlKeywords(html);
+  if (!keywords || keywords === HOMEPAGE_KEYWORDS || keywords === BLOGPOST_CANNED_KEYWORDS) {
+    return false;
+  }
+  const tags = firstHtmlArticleTags(html);
+  const hashtags = firstHtmlHashtags(html);
+  if (tags.length < 3 || tags.length > 5) return false;
+  if (tags.some((tag) => AUDIENCE.has(tag.toLowerCase()))) return false;
+  if (tags.join("\0") !== expected.join("\0")) return false;
+  for (const topic of expected) {
+    if (!keywords.includes(topic)) return false;
+    if (!hashtags.includes(keywordToHashtag(topic))) return false;
+  }
+  return hasShareRow(html);
+}
+
 /** Inner HTML of `#root`, including nested divs — first `</div>` is not enough. */
-function rootInner(html) {
+export function rootInner(html) {
   const start = html.search(/<div id="root">/i);
   if (start < 0) return "";
   const open = html.indexOf(">", start) + 1;
@@ -279,6 +373,10 @@ async function main() {
     check(
       !/<div id="root">\s*<\/div>/.test(page.body),
       `${post.slug}: prose is in the HTML without JavaScript`,
+    );
+    check(
+      isPostTopicHead(page.body, post),
+      `${post.slug}: first HTML has topic hashtags, article:tag, post keywords, and Del artikkelen`,
     );
     if (post.title) {
       check(decode(index.body).includes(post.title), `/blogg lists "${post.title}"`);
