@@ -113,6 +113,14 @@ describe('topic keywords and hashtags', () => {
     expect(topicHashtagLine(PURRING!).split(' ')).toHaveLength(4);
   });
 
+  it('gives the tilskudd kontroll post one styled last line of four tags, no leftover dump', () => {
+    const KONTROLL = posts.find((post) => post.slug === 'tilskudd-kontroll-maa-dokumenteres');
+    expect(KONTROLL, 'tilskudd kontroll post missing').toBeDefined();
+    expect(leftoverHashtagDump(KONTROLL!.body)).toBeUndefined();
+    expect(topicHashtagLine(KONTROLL!)).toBe('#tilskudd #kontroll #kommune #saksbehandling');
+    expect(topicHashtagLine(KONTROLL!).split(' ')).toHaveLength(4);
+  });
+
   it('joins spaced Norwegian keywords into one hashtag', () => {
     expect(keywordToHashtag('offentlig sektor')).toBe('#offentligsektor');
     expect(keywordToHashtag('sele rundt KI')).toBe('#selerundtKI');
