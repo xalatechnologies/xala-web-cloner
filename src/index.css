@@ -494,8 +494,9 @@
     line-height: var(--ds-leading-tight);
   }
 
-  /* /produkter at 1280px: the shared heading hyphens:auto split
-     "kommune" as "kom-mune". This heading wraps at the word instead. */
+  /* Display titles that would split a short word mid-glyph
+     (/produkter "kommune" → "kom-mune", article H1 "saken" → "sa-ken")
+     wrap at the word instead. Shared hyphens:auto stays on other headings. */
   .page-heading-no-hyphens {
     hyphens: none;
     -webkit-hyphens: none;

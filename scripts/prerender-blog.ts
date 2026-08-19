@@ -318,7 +318,7 @@ function postArticleHtml(post: BlogPost, related: BlogPost[]): string {
 
   return `<div class="min-h-screen flex flex-col"><main><article>
 <nav aria-label="Brødsmuler"><a href="/">Forside</a> / <a href="${BLOG_PATH}">Blogg</a> / <span aria-current="page">${escapeHtml(post.title)}</span></nav>
-<header>${post.tag ? `<p>${escapeHtml(post.tag)}</p>` : ""}<h1>${escapeHtml(post.title)}</h1>
+<header>${post.tag ? `<p>${escapeHtml(post.tag)}</p>` : ""}<h1 class="page-heading-no-hyphens">${escapeHtml(post.title)}</h1>
 <p>${escapeHtml(post.description)}</p>
 ${leadHtml}
 <p><span>${escapeHtml(post.author)}</span>${post.role ? ` · <span>${escapeHtml(post.role)}</span>` : ""} · <time datetime="${post.date}">${escapeHtml(formatDate(post.date, post.lang))}</time> · <span>${post.readingMinutes} min lesetid</span></p>

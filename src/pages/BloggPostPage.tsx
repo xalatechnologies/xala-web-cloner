@@ -116,12 +116,14 @@ export default function BloggPostPage() {
                     22ch) plus a relaxed deck leave Digdir / Prop. 79 L kap. 8
                     / Forskriftsarbeidet under the fold after the box itself
                     was lifted above the cover. Same type family, one step
-                    down; copy is untouched. */}
+                    down; copy is untouched.
+                    page-heading-no-hyphens: hyphens:auto at 60px in the
+                    ~864px article column split "saken" as "sa-ken" (XWEB-196). */}
                 <h1
                   className={
                     lead
-                      ? 'max-w-[40ch] font-bold tracking-tight text-foreground text-[clamp(1.75rem,2.8vw,2.5rem)] leading-[1.15]'
-                      : 'max-w-[22ch] page-heading'
+                      ? 'max-w-[40ch] font-bold tracking-tight text-foreground text-[clamp(1.75rem,2.8vw,2.5rem)] leading-[1.15] page-heading-no-hyphens'
+                      : 'max-w-[22ch] page-heading page-heading-no-hyphens'
                   }
                 >
                   {post.title}
