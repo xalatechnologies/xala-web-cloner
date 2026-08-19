@@ -77,3 +77,5 @@ Hvor dokumentet ligger, og hvordan det åpnes. Ikke «under behandling». Ikke h
 Nei. Xala kan kable bekreftelse og varsel inn i fagsystemet dere har. Xala eier ikke portalen. Saken blir hos kommunen.
 
 Trenger dere at bekreftelsen og varselet lander i fagsystemet, start på [kontakt](/kontakt).
+
+#saksbehandling #innsyn #kommune #forvaltningsloven #automatisering
