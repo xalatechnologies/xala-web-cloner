@@ -129,6 +129,14 @@ describe('topic keywords and hashtags', () => {
     expect(topicHashtagLine(VEDLEGG!).split(' ')).toHaveLength(4);
   });
 
+  it('gives the sosialhjelp individuell vurdering post one styled last line of four tags, no leftover dump', () => {
+    const SATS = posts.find((post) => post.slug === 'okonomisk-sosialhjelp-individuell-vurdering');
+    expect(SATS, 'sosialhjelp individuell vurdering post missing').toBeDefined();
+    expect(leftoverHashtagDump(SATS!.body)).toBeUndefined();
+    expect(topicHashtagLine(SATS!)).toBe('#sosialhjelp #satser #kommune #saksbehandling');
+    expect(topicHashtagLine(SATS!).split(' ')).toHaveLength(4);
+  });
+
   it('joins spaced Norwegian keywords into one hashtag', () => {
     expect(keywordToHashtag('offentlig sektor')).toBe('#offentligsektor');
     expect(keywordToHashtag('sele rundt KI')).toBe('#selerundtKI');
