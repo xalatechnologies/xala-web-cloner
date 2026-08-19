@@ -16,6 +16,17 @@ export const BLOG_PATH = "/blogg";
 export const ORGANIZATION = "Xala Technologies AS";
 
 /**
+ * Visible listing H1 on /blogg.
+ *
+ * Shared by BloggPage and the no-JS prerender on purpose. The document
+ * <title> stays the SEO string from getPageSEO("blog"); the heading visitors
+ * see is this sentence. Deriving the H1 from the title (title.split(" | ")[0])
+ * is how first HTML said "Fagartikler om offentlig digitalisering" and then
+ * swapped after hydrate (XWEB-188).
+ */
+export const BLOG_LISTING_HEADING = "Erfaringer fra systemer i drift";
+
+/**
  * The brand as it appears in a <title>, which is not the legal name.
  *
  * " | Xala Technologies AS" is twenty-four characters of a sixty-character

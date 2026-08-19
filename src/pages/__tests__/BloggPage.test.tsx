@@ -5,6 +5,8 @@ import { describe, it, expect, vi } from 'vitest';
 import BloggPage from '../BloggPage';
 import { allPosts } from '@/lib/blog';
 import { publishedPosts } from '@/lib/blog/posts';
+import { BLOG_LISTING_HEADING } from '@/lib/blog/seo';
+import { getPageSEO } from '@/components/seo/seoContent';
 
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
@@ -33,6 +35,23 @@ function resultLinks(container: HTMLElement) {
     link.getAttribute('href')
   );
 }
+
+describe('BloggPage heading vs document title', () => {
+  it('keeps the designed H1 and the SEO <title> as different sentences', () => {
+    // XWEB-188: flipping the visible H1 to the SEO title would "fix" the
+    // prerender mismatch the wrong way. Helmet owns the document title.
+    renderBloggPage();
+
+    const seoTitle = getPageSEO('blog', 'no').title;
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(BLOG_LISTING_HEADING);
+    expect(BLOG_LISTING_HEADING).toBe('Erfaringer fra systemer i drift');
+    expect(seoTitle).toBe('Fagartikler om offentlig digitalisering | Xala');
+    expect(screen.getByRole('heading', { level: 1 })).not.toHaveTextContent(
+      seoTitle.split(' | ')[0],
+    );
+    expect(document.title).toBe(seoTitle);
+  });
+});
 
 describe('BloggPage cover frames', () => {
   it('sizes the cover frame to the generated cover\'s own 1200x630 ratio, so object-cover has nothing to crop', () => {
