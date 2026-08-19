@@ -145,6 +145,14 @@ describe('topic keywords and hashtags', () => {
     expect(topicHashtagLine(EBYGG!).split(' ')).toHaveLength(4);
   });
 
+  it('gives the eByggesak ufordelt post one styled last line of four tags, no leftover dump', () => {
+    const UFORDELT = posts.find((post) => post.slug === 'ebyggesak-saker-ligger-ufordelt');
+    expect(UFORDELT, 'eByggesak ufordelt post missing').toBeDefined();
+    expect(leftoverHashtagDump(UFORDELT!.body)).toBeUndefined();
+    expect(topicHashtagLine(UFORDELT!)).toBe('#byggesak #saksbehandlingstid #kommune #saksbehandling');
+    expect(topicHashtagLine(UFORDELT!).split(' ')).toHaveLength(4);
+  });
+
   it('joins spaced Norwegian keywords into one hashtag', () => {
     expect(keywordToHashtag('offentlig sektor')).toBe('#offentligsektor');
     expect(keywordToHashtag('sele rundt KI')).toBe('#selerundtKI');
