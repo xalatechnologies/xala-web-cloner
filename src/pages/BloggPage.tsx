@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import { allPosts } from '@/lib/blog';
 import { allTags, publishedPosts } from '@/lib/blog/posts';
 import { getPageSEO } from '@/components/seo/seoContent';
+import { matchSitePages, suggestedSitePages, type SitePage } from '@/lib/search/pages';
 import { BLOG_PATH, SITE_ORIGIN, blogJsonLd, formatDate } from '@/lib/blog/seo';
 
 const listing = getPageSEO('blog', 'no');
@@ -68,6 +69,15 @@ export default function BloggPage() {
     });
   }, [posts, query, activeTag]);
 
+  // The navbar hands every query here, so this is the site's search results
+  // page whether or not the answer is an article. Searching for a product, the
+  // price page or contact used to end at "Ingen treff." with nothing to open.
+  const pageHits = useMemo(() => matchSitePages(query), [query]);
+  const suggestions = useMemo(
+    () => (query.trim() && pageHits.length === 0 && !filtered.length ? suggestedSitePages() : []),
+    [query, pageHits, filtered]
+  );
+
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   // Clamped rather than reset: narrowing the filter while on page 3 should show
   // the last page of the new result set, not silently jump to an empty one.
@@ -79,6 +89,38 @@ export default function BloggPage() {
     setActiveTag(ALL);
     setPage(1);
   };
+
+  // Deliberately plainer than an article row: a page is a destination, not a
+  // piece of reading, and the eye should be able to tell them apart in one
+  // list. The whole row is the link, so it is one target rather than three.
+  const pageList = (id: string, heading: string, pages: SitePage[]) => (
+    <section aria-labelledby={id} className="pt-10">
+      <h2 id={id} className="text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">
+        {heading}
+      </h2>
+      <ul className="mt-4 border-t border-border">
+        {pages.map((page) => (
+          <li key={page.path} className="border-b border-border">
+            <Link
+              to={page.path}
+              className="group block px-2 py-5 transition-colors hover:bg-muted/40 md:px-5"
+            >
+              <h3 className="text-lg font-semibold tracking-tight transition-transform duration-300 group-hover:translate-x-1">
+                {page.title}
+                <ArrowUpRight
+                  className="ml-2 inline-block h-4 w-4 -translate-x-2 align-baseline text-primary opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                  aria-hidden="true"
+                />
+              </h3>
+              <p className="mt-2 max-w-[60ch] text-sm leading-relaxed text-muted-foreground">
+                {page.description}
+              </p>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -124,7 +166,7 @@ export default function BloggPage() {
             <div className="grid items-center gap-5 lg:grid-cols-12">
               <div className="lg:col-span-5">
                 <label htmlFor="blogg-sok" className="sr-only">
-                  Søk i artikler
+                  Søk i artikler og sider
                 </label>
                 <div className="relative">
                   <Search
@@ -206,9 +248,16 @@ export default function BloggPage() {
         </div>
 
         <div className="container mx-auto px-4 pb-20">
+          {/* Above the articles: a query that names a page is answered by that
+              page, and the reader should not have to read past eight articles
+              to find it. */}
+          {pageHits.length > 0 && pageList('sok-sider', 'Sider', pageHits)}
+
           {visible.length === 0 ? (
             <div className="py-20 text-center">
-              <p className="text-2xl font-bold tracking-tight">Ingen treff.</p>
+              <p className="text-2xl font-bold tracking-tight">
+                {pageHits.length > 0 ? 'Ingen treff i artiklene.' : 'Ingen treff.'}
+              </p>
               <p className="mt-3 text-muted-foreground">Prøv et annet søkeord, eller fjern filteret.</p>
               <button
                 type="button"
@@ -217,6 +266,13 @@ export default function BloggPage() {
               >
                 Nullstill
               </button>
+              {/* A search that matches nothing is still a reader looking for
+                  something; hand them the site rather than an apology. */}
+              {suggestions.length > 0 && (
+                <div className="mx-auto mt-12 max-w-3xl text-left">
+                  {pageList('sok-forslag', 'Prøv en av disse sidene', suggestions)}
+                </div>
+              )}
             </div>
           ) : (
             <>

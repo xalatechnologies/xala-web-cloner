@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { describe, it, expect, vi } from 'vitest';
@@ -17,13 +17,20 @@ vi.mock('next-themes', () => ({
   useTheme: () => ({ theme: 'light', setTheme: vi.fn() }),
 }));
 
-function renderBloggPage() {
+function renderBloggPage(entry = '/blogg') {
   return render(
     <HelmetProvider>
-      <MemoryRouter initialEntries={['/blogg']}>
+      <MemoryRouter initialEntries={[entry]}>
         <BloggPage />
       </MemoryRouter>
     </HelmetProvider>
+  );
+}
+
+/** Every result a reader could open, in the order they are offered. */
+function resultLinks(container: HTMLElement) {
+  return Array.from(container.querySelectorAll('main section a, main ol li a')).map((link) =>
+    link.getAttribute('href')
   );
 }
 
@@ -74,5 +81,43 @@ describe('BloggPage search', () => {
     fireEvent.change(pageBox, { target: { value: 'tilskudd ' } });
 
     expect(pageBox.value).toBe('tilskudd ');
+  });
+});
+
+describe('BloggPage results for a query the articles cannot answer', () => {
+  it('opens the page the query names instead of ending at "Ingen treff."', () => {
+    // The navbar hands every query here, and here knew about 25 articles and
+    // nothing else — so a reader searching for the price page got an empty
+    // state with no first result to open.
+    const { container, queryByText } = renderBloggPage('/blogg?q=priser');
+
+    expect(queryByText('Ingen treff.')).not.toBeInTheDocument();
+    expect(resultLinks(container)[0]).toBe('/priser');
+  });
+
+  it('keeps the article results, and puts the page above them', () => {
+    const { container } = renderBloggPage('/blogg?q=integrasjon');
+
+    const links = resultLinks(container);
+    expect(links[0]).toBe('/tjenester');
+    expect(links.some((href) => href?.startsWith('/blogg/'))).toBe(true);
+  });
+
+  it('offers somewhere to go when nothing matches at all', () => {
+    const { container, getByText } = renderBloggPage('/blogg?q=zzzzzz');
+
+    expect(getByText('Ingen treff.')).toBeInTheDocument();
+    // An apology with no link out is a dead end; the site itself is the answer.
+    const suggestions = within(container).getByRole('heading', { name: 'Prøv en av disse sidene' });
+    expect(suggestions).toBeInTheDocument();
+    expect(resultLinks(container)[0]).toBe('/');
+  });
+
+  it('leaves the unfiltered listing alone', () => {
+    const { container } = renderBloggPage();
+
+    // No query, no page section: this is the blog index, not a results page.
+    expect(container.querySelectorAll('main section a').length).toBe(0);
+    expect(resultLinks(container).every((href) => href?.startsWith('/blogg/'))).toBe(true);
   });
 });
