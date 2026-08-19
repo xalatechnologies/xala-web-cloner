@@ -153,6 +153,14 @@ describe('topic keywords and hashtags', () => {
     expect(topicHashtagLine(UFORDELT!).split(' ')).toHaveLength(4);
   });
 
+  it('gives the startlån eID post one styled last line of five tags, no leftover dump', () => {
+    const STARTLAN = posts.find((post) => post.slug === 'startlan-eid-og-vedlegg');
+    expect(STARTLAN, 'startlån eID post missing').toBeDefined();
+    expect(leftoverHashtagDump(STARTLAN!.body)).toBeUndefined();
+    expect(topicHashtagLine(STARTLAN!)).toBe('#startlån #eID #vedlegg #kommune #saksbehandling');
+    expect(topicHashtagLine(STARTLAN!).split(' ')).toHaveLength(5);
+  });
+
   it('joins spaced Norwegian keywords into one hashtag', () => {
     expect(keywordToHashtag('offentlig sektor')).toBe('#offentligsektor');
     expect(keywordToHashtag('sele rundt KI')).toBe('#selerundtKI');
