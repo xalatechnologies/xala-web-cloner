@@ -392,6 +392,7 @@
     "clearAllFilters": "Clear all filters",
     "casesTotal": "cases total",
     "cases": "cases",
+    "casesMatch": "of {{count}} cases match",
     "withFullCase": "with full case studies",
     "sectors": {
       "public_sector": "Public sector",

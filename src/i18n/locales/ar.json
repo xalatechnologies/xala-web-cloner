@@ -392,6 +392,7 @@
     "clearAllFilters": "مسح كل عوامل التصفية",
     "casesTotal": "إجمالي الحالات",
     "cases": "حالات",
+    "casesMatch": "من {{count}} حالة تطابق",
     "withFullCase": "مع دراسات حالة كاملة",
     "sectors": {
       "public_sector": "القطاع العام",

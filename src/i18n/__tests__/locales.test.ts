@@ -100,6 +100,27 @@ describe('locale parity', () => {
     expect((en.caseStudy as Tree).readMore).toBe('Read case study');
   });
 
+  it('keeps /caser listing chrome on caserPage keys (XWEB-187)', () => {
+    const caser = no.caserPage as Tree;
+    expect(caser.allSectors).toBe('Alle sektorer');
+    expect(caser.clearAll).toBe('Nullstill');
+    expect(caser.noResultsTitle).toBe('Ingen caser funnet');
+    expect(caser.noResultsBody).toBe('Juster søket eller fjern noen filtre.');
+    expect(caser.casesMatch).toBe('av {{count}} caser matcher');
+    expect(caser.casesMatch).not.toMatch(/of .* cases match/i);
+
+    const source = readFileSync(join(SRC, 'pages/CaserPage.tsx'), 'utf8');
+    for (const leftover of [
+      '>All<',
+      'Clear all',
+      'of {caserEntries.length} cases match',
+      'No cases found',
+      'Try adjusting your search or removing some filters',
+    ]) {
+      expect(source, `CaserPage still hardcodes ${leftover}`).not.toContain(leftover);
+    }
+  });
+
   it('keeps the Norwegian footer cookies label as Informasjonskapsler', () => {
     const cookies = ((no.footer as Tree).links as Tree).cookies;
     expect(cookies).toBe('Informasjonskapsler');

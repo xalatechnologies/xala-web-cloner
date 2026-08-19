@@ -392,6 +392,7 @@
     "clearAllFilters": "Nullstill alle filtre",
     "casesTotal": "caser totalt",
     "cases": "caser",
+    "casesMatch": "av {{count}} caser matcher",
     "withFullCase": "med komplette caser",
     "sectors": {
       "public_sector": "Offentlig sektor",
