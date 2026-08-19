@@ -14,7 +14,6 @@ export default function ProdukterPage() {
         <PageHeader
           eyebrow={t('productsPage.eyebrow', 'Produkter')}
           title={t('productsPage.title', 'Seks produkter for kommune og næringsliv')}
-          hyphenate={false}
           description={t(
             'productsPage.description',
             'Bevillingsportal, Tilskuddsportal, Redusert foreldrebetaling, Arkitekturprinsipper, Digilist og Digiskjema. Bygget av de samme delene vi bruker i kundeprosjekter, og forvaltet på samme måte.'
