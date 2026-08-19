@@ -1,4 +1,4 @@
-import { fireEvent, render, within } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { describe, it, expect, vi } from 'vitest';
@@ -81,6 +81,38 @@ describe('BloggPage search', () => {
     fireEvent.change(pageBox, { target: { value: 'tilskudd ' } });
 
     expect(pageBox.value).toBe('tilskudd ');
+  });
+
+  it('gives the listing and navbar searchboxes different Norwegian names', () => {
+    const { container } = renderBloggPage();
+
+    // Both stay in the tree from md up. Live /blogg used to name them both
+    // «Søk i artikler»; getByRole then cannot tell them apart.
+    const pageBox = container.querySelector<HTMLInputElement>('#blogg-sok')!;
+    const navBox = container.querySelector<HTMLInputElement>('#nav-sok')!;
+
+    expect(pageBox).toHaveAccessibleName('Søk i artikler og sider');
+    expect(navBox).toHaveAccessibleName('Søk på nettstedet i navigasjonen');
+    expect(navBox).not.toHaveAccessibleName('Søk i artikler og sider');
+  });
+
+  it('keeps the drawer search distinct from both when the menu is open', () => {
+    renderBloggPage();
+
+    fireEvent.click(screen.getByLabelText('Open menu'));
+
+    expect(screen.getByRole('searchbox', { name: 'Søk i artikler og sider' })).toHaveAttribute(
+      'id',
+      'blogg-sok',
+    );
+    expect(screen.getByRole('searchbox', { name: 'Søk på nettstedet i navigasjonen' })).toHaveAttribute(
+      'id',
+      'nav-sok',
+    );
+    expect(screen.getByRole('searchbox', { name: 'Søk på nettstedet i menyen' })).toHaveAttribute(
+      'id',
+      'nav-sok-drawer',
+    );
   });
 });
 
