@@ -43,12 +43,17 @@ describe('BloggPage heading vs document title', () => {
     renderBloggPage();
 
     const seoTitle = getPageSEO('blog', 'no').title;
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(BLOG_LISTING_HEADING);
+    const heading = screen.getByRole('heading', { level: 1 });
+    expect(heading).toHaveTextContent(BLOG_LISTING_HEADING);
     expect(BLOG_LISTING_HEADING).toBe('Erfaringer fra systemer i drift');
     expect(seoTitle).toBe('Fagartikler om offentlig digitalisering | Xala');
-    expect(screen.getByRole('heading', { level: 1 })).not.toHaveTextContent(
+    expect(heading).not.toHaveTextContent(
       seoTitle.split(' | ')[0],
     );
+    // XWEB-194: 18ch forced «drift» onto line 2 while the container was ~728px.
+    expect(heading.className).toContain('page-heading');
+    expect(heading.className).not.toContain('max-w-[18ch]');
+    expect(heading.className).not.toContain('max-w-[20ch]');
     await waitFor(() => expect(document.title).toBe(seoTitle));
   });
 });

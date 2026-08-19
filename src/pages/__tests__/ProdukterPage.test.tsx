@@ -41,6 +41,10 @@ describe('ProdukterPage heading', () => {
     expect(heading.textContent).toContain('kommune');
     expect(heading.textContent).not.toMatch(/kom[\u00AD-]mune/);
     expect(heading.className).toContain('page-heading-no-hyphens');
+    // XWEB-194: drop the 20ch clamp so the H1 uses the container. Keep
+    // hyphenation off so kommune still wraps as a whole word (XWEB-183).
+    expect(heading.className).not.toContain('max-w-[20ch]');
+    expect(heading.className).not.toContain('max-w-[18ch]');
   });
 
   it('defines page-heading-no-hyphens as hyphens: none', () => {

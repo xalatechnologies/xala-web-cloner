@@ -248,7 +248,7 @@ function staticRouteHtml(heading: string, description: string, links: NavLink[])
   const page =
     "min-height:100vh;background:#0b0b0d;color:#f5f5f4;font-family:Inter,system-ui,sans-serif;" +
     "display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:3rem 1.5rem;text-align:center";
-  const h1 = "font-size:clamp(1.75rem,5vw,3rem);font-weight:700;line-height:1.15;margin:0;max-width:20ch";
+  const h1 = "font-size:clamp(1.75rem,5vw,3rem);font-weight:700;line-height:1.15;margin:0";
   const lead = "margin:0;max-width:52ch;color:#a1a1aa;line-height:1.6";
   const navStyle = "display:flex;flex-wrap:wrap;gap:0.25rem 1.5rem;justify-content:center;margin-top:0.5rem";
   const linkStyle = "color:#d6a15e;text-decoration:none;font-size:0.95rem";
