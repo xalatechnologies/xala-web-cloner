@@ -401,7 +401,7 @@ function MobileFilterBar({
               : 'bg-card border-border text-muted-foreground hover:text-foreground'
           )}
         >
-          All
+          {t('caserPage.allSectors')}
         </button>
         {ALL_SECTORS.map(sector => (
           <button
@@ -432,7 +432,7 @@ function MobileFilterBar({
               <div className="flex items-center justify-between mb-4">
                 <p className="text-sm font-bold uppercase tracking-widest text-muted-foreground">{t('caserPage.technology')}</p>
                 {hasFilters && (
-                  <button onClick={clearAll} className="text-sm text-primary font-bold">Clear all</button>
+                  <button onClick={clearAll} className="text-sm text-primary font-bold">{t('caserPage.clearAll')}</button>
                 )}
               </div>
               <div className="flex flex-wrap gap-2">
@@ -665,7 +665,7 @@ export default function CaserPage() {
                   {hasFilters ? (
                     <>
                       <span className="font-bold text-foreground text-lg">{filtered.length}</span>
-                      <span className="text-muted-foreground"> of {caserEntries.length} cases match</span>
+                      <span className="text-muted-foreground"> {t('caserPage.casesMatch', { count: caserEntries.length })}</span>
                     </>
                   ) : (
                     <>
@@ -685,7 +685,7 @@ export default function CaserPage() {
                         onClick={() => setActiveSector(null)}
                         className="flex items-center gap-1.5 text-sm font-bold bg-primary/10 text-primary border border-primary/25 px-3 py-1.5 rounded-xl hover:bg-primary/15 transition-colors"
                       >
-                        {activeSector}
+                        {t(sectorKey(activeSector), activeSector)}
                         <X className="h-3.5 w-3.5" />
                       </button>
                     )}
@@ -720,8 +720,8 @@ export default function CaserPage() {
                     className="text-center py-32 bg-card border border-border rounded-2xl"
                   >
                     <div className="text-5xl mb-5">🔍</div>
-                    <p className="text-2xl font-bold text-foreground mb-2">No cases found</p>
-                    <p className="text-base text-muted-foreground mb-8">Try adjusting your search or removing some filters</p>
+                    <p className="text-2xl font-bold text-foreground mb-2">{t('caserPage.noResultsTitle')}</p>
+                    <p className="text-base text-muted-foreground mb-8">{t('caserPage.noResultsBody')}</p>
                     <button
                       onClick={clearAll}
                       className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3 rounded-xl font-bold text-base hover:bg-primary/90 transition-colors"
