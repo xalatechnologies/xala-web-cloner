@@ -121,6 +121,14 @@ describe('topic keywords and hashtags', () => {
     expect(topicHashtagLine(KONTROLL!).split(' ')).toHaveLength(4);
   });
 
+  it('gives the sosialhjelp vedlegg post one styled last line of four tags, no leftover dump', () => {
+    const VEDLEGG = posts.find((post) => post.slug === 'okonomisk-sosialhjelp-vedlegg-og-kode-6');
+    expect(VEDLEGG, 'sosialhjelp vedlegg post missing').toBeDefined();
+    expect(leftoverHashtagDump(VEDLEGG!.body)).toBeUndefined();
+    expect(topicHashtagLine(VEDLEGG!)).toBe('#sosialhjelp #vedlegg #kommune #saksbehandling');
+    expect(topicHashtagLine(VEDLEGG!).split(' ')).toHaveLength(4);
+  });
+
   it('joins spaced Norwegian keywords into one hashtag', () => {
     expect(keywordToHashtag('offentlig sektor')).toBe('#offentligsektor');
     expect(keywordToHashtag('sele rundt KI')).toBe('#selerundtKI');
