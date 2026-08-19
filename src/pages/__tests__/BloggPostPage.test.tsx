@@ -90,7 +90,8 @@ describe('BloggPostPage lead vs cover', () => {
     // Layout only: the approved type scale is one step down from page-heading
     // / relaxed deck so the box fits a 1280×800 first screen.
     const heading = screen.getByRole('heading', { level: 1 });
-    expect(heading.className).not.toContain('page-heading');
+    expect(heading.className.split(/\s+/)).not.toContain('page-heading');
+    expect(heading.className).toContain('page-heading-no-hyphens');
     expect(heading.className).toMatch(/2\.5rem/);
     expect(box!.className).toMatch(/py-3/);
     expect(box!.className).toMatch(/px-4/);
@@ -182,5 +183,32 @@ describe('BloggPostPage topic hashtags and share row', () => {
       'alkoholloven',
     ]);
     expect(tags).not.toContain('IT-leder');
+  });
+});
+
+const EBYGGESAK_SLUG = 'ebyggesak-manuell-henting-fra-altinn';
+const EBYGGESAK_TITLE = 'Byggesøknaden skal inn i saken, ikke i Altinn';
+
+/**
+ * XWEB-196: at 1280px the article H1 hyphenated "saken" as "sa-ken".
+ * Copy stays draft 15; hyphenation is off so the word wraps whole.
+ * Distinct from XWEB-183 (/produkter "kommune") — that PageHeader is untouched.
+ */
+describe('BloggPostPage article H1 hyphenation', () => {
+  it('keeps saken whole on the eByggesak display H1 and turns hyphenation off', () => {
+    renderPost(EBYGGESAK_SLUG);
+
+    const heading = screen.getByRole('heading', { level: 1 });
+    expect(heading).toHaveTextContent(EBYGGESAK_TITLE);
+    expect(heading.textContent).toContain('saken');
+    expect(heading.textContent).not.toMatch(/sa[\u00AD-]ken/);
+    expect(heading.className).toContain('page-heading-no-hyphens');
+    expect(heading.className).not.toContain('max-w-[18ch]');
+    expect(heading.className).not.toContain('max-w-[20ch]');
+  });
+
+  it('prerenders the article H1 with hyphenation off so first HTML matches the SPA', () => {
+    const prerender = readFileSync(resolve(__dirname, '../../../scripts/prerender-blog.ts'), 'utf8');
+    expect(prerender).toMatch(/<h1 class="page-heading-no-hyphens">\$\{escapeHtml\(post\.title\)\}<\/h1>/);
   });
 });
