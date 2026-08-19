@@ -95,6 +95,16 @@ describe('topic keywords and hashtags', () => {
     expect(topicHashtags({ tag: 'IT-leder', keywords: ['IT-leder', 'Kommune'] })).toEqual(['#Kommune']);
   });
 
+  it('gives the kontrollrapport post one styled last line of four tags, no leftover dump', () => {
+    const RAPPORT = posts.find((post) => post.slug === 'skjenkebevilling-kontrollrapport-og-kontrollapp');
+    expect(RAPPORT, 'kontrollrapport post missing').toBeDefined();
+    expect(leftoverHashtagDump(RAPPORT!.body)).toBeUndefined();
+    expect(topicHashtagLine(RAPPORT!)).toBe(
+      '#skjenkebevilling #kontrollrapport #kommune #saksbehandling',
+    );
+    expect(topicHashtagLine(RAPPORT!).split(' ')).toHaveLength(4);
+  });
+
   it('joins spaced Norwegian keywords into one hashtag', () => {
     expect(keywordToHashtag('offentlig sektor')).toBe('#offentligsektor');
     expect(keywordToHashtag('sele rundt KI')).toBe('#selerundtKI');
