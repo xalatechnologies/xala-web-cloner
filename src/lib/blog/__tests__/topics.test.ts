@@ -105,6 +105,14 @@ describe('topic keywords and hashtags', () => {
     expect(topicHashtagLine(RAPPORT!).split(' ')).toHaveLength(4);
   });
 
+  it('gives the tilskudd purring post one styled last line of four tags, no leftover dump', () => {
+    const PURRING = posts.find((post) => post.slug === 'tilskudd-purring-og-uklare-rapporteringskrav');
+    expect(PURRING, 'tilskudd purring post missing').toBeDefined();
+    expect(leftoverHashtagDump(PURRING!.body)).toBeUndefined();
+    expect(topicHashtagLine(PURRING!)).toBe('#tilskudd #purring #kommune #saksbehandling');
+    expect(topicHashtagLine(PURRING!).split(' ')).toHaveLength(4);
+  });
+
   it('joins spaced Norwegian keywords into one hashtag', () => {
     expect(keywordToHashtag('offentlig sektor')).toBe('#offentligsektor');
     expect(keywordToHashtag('sele rundt KI')).toBe('#selerundtKI');
