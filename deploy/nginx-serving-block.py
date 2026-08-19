@@ -22,6 +22,11 @@ CONFIG_DIRS = (
     "/etc/nginx/sites-available",
 )
 CONFIG_FILES = ("/etc/nginx/nginx.conf",)
+# Never write .bak next to a live vhost: nginx loads everything in
+# sites-enabled / conf.d, so a sibling backup becomes a second server_name.
+BACKUP_DIRS = (Path("/var/backups/nginx"), Path("/tmp/nginx-backups"))
+BACKUP_MAP = "blogg-query-backup.map"
+BACKUP_ENV = "XALA_NGINX_BACKUP_DIR"
 
 SERVER_HEAD = re.compile(r"(?m)^\s*server\s*\{")
 SERVER_NAME = re.compile(r"server_name\s+[^;]*\bxala\.no\b")
@@ -90,18 +95,75 @@ def serving_block_has_include(text: str, include: str) -> bool:
     return bool(found) and all(include in block for _, _, block in found)
 
 
+def is_backup_config(path: Path) -> bool:
+    """True for leftover install copies nginx must not treat as a vhost."""
+    name = path.name
+    return ".bak" in name or name.endswith(".bak-blogg-query")
+
+
+def backup_root() -> Path:
+    override = os.environ.get(BACKUP_ENV)
+    candidates = [Path(override)] if override else list(BACKUP_DIRS)
+    last_error: OSError | None = None
+    for root in candidates:
+        try:
+            root.mkdir(parents=True, exist_ok=True)
+            probe = root / ".writable"
+            probe.write_text("", encoding="utf-8")
+            probe.unlink()
+            return root
+        except OSError as exc:
+            last_error = exc
+            continue
+    raise SystemExit(f"cannot write nginx backups outside serving directories: {last_error}")
+
+
+def record_backup(source: Path, dest: Path) -> None:
+    map_file = dest.parent / BACKUP_MAP
+    with map_file.open("a", encoding="utf-8") as handle:
+        handle.write(f"{source}\t{dest}\n")
+
+
+def write_backup(source: Path, original: str, suffix: str) -> Path:
+    dest = backup_root() / f"{source.name}{suffix}"
+    if dest.exists():
+        dest = backup_root() / f"{source.name}{suffix}.{os.getpid()}"
+    dest.write_text(original, encoding="utf-8")
+    record_backup(source, dest)
+    return dest
+
+
+def quarantine_loaded_backups() -> None:
+    """Move leftover *.bak* out of directories nginx actually loads."""
+    root = backup_root()
+    leftovers: list[Path] = []
+    for directory in CONFIG_DIRS:
+        folder = Path(directory)
+        if folder.is_dir():
+            leftovers.extend(sorted(p for p in folder.iterdir() if p.is_file() and is_backup_config(p)))
+    nginx_bak = Path("/etc/nginx/nginx.conf.bak-blogg-query")
+    if nginx_bak.is_file():
+        leftovers.append(nginx_bak)
+    for path in leftovers:
+        dest = root / path.name
+        if dest.exists():
+            dest = root / f"{path.name}.{os.getpid()}"
+        os.replace(path, dest)
+        print(f"moved leftover backup {path} -> {dest}")
+
+
 def iter_config_paths(explicit: list[str] | None = None) -> list[Path]:
     if explicit:
-        return [Path(path) for path in explicit]
+        return [Path(path) for path in explicit if not is_backup_config(Path(path))]
     seen: set[str] = set()
     paths: list[Path] = []
     candidates = [Path(path) for path in CONFIG_FILES]
     for directory in CONFIG_DIRS:
-        root = Path(directory)
-        if root.is_dir():
-            candidates.extend(sorted(p for p in root.iterdir() if p.is_file()))
+        folder = Path(directory)
+        if folder.is_dir():
+            candidates.extend(sorted(p for p in folder.iterdir() if p.is_file()))
     for path in candidates:
-        if not path.is_file():
+        if not path.is_file() or is_backup_config(path):
             continue
         real = os.path.realpath(path)
         if real in seen:
@@ -152,6 +214,8 @@ def cmd_check(args: argparse.Namespace) -> int:
 
 def cmd_install(args: argparse.Namespace) -> int:
     include = args.include
+    if not args.config:
+        quarantine_loaded_backups()
     paths = iter_config_paths(args.config)
     if not paths:
         print("no nginx config mentioning server_name xala.no", file=sys.stderr)
@@ -172,7 +236,7 @@ def cmd_install(args: argparse.Namespace) -> int:
         updated, inserts = ensure_include(original, include)
         if inserts:
             if suffix:
-                Path(str(path) + suffix).write_text(original, encoding="utf-8")
+                write_backup(path, original, suffix)
             path.write_text(updated, encoding="utf-8")
 
     for path in serving_files:
@@ -182,6 +246,36 @@ def cmd_install(args: argparse.Namespace) -> int:
             return 1
 
     print(f"include present in {len(serving_files)} serving block file(s)")
+    return 0
+
+
+def cmd_restore(args: argparse.Namespace) -> int:
+    roots: list[Path] = []
+    override = os.environ.get(BACKUP_ENV)
+    if override:
+        roots.append(Path(override))
+    roots.extend(BACKUP_DIRS)
+    restored = 0
+    seen: set[str] = set()
+    for root in roots:
+        map_file = root / BACKUP_MAP
+        if not map_file.is_file():
+            continue
+        for line in map_file.read_text(encoding="utf-8").splitlines():
+            if not line.strip() or "\t" not in line:
+                continue
+            source_s, dest_s = line.split("\t", 1)
+            if dest_s in seen:
+                continue
+            dest = Path(dest_s)
+            source = Path(source_s)
+            if not dest.is_file():
+                continue
+            source.parent.mkdir(parents=True, exist_ok=True)
+            source.write_text(dest.read_text(encoding="utf-8"), encoding="utf-8")
+            seen.add(dest_s)
+            restored += 1
+    print(f"restored {restored} serving-block backup(s)")
     return 0
 
 
@@ -206,6 +300,10 @@ def main(argv: list[str] | None = None) -> int:
     install_p.add_argument("config", nargs="*")
     install_p.add_argument("--backup-suffix", default=".bak-blogg-query")
     install_p.set_defaults(func=cmd_install)
+
+    restore_p = sub.add_parser("restore", help="restore serving blocks from backups outside nginx load dirs")
+    restore_p.add_argument("--backup-suffix", default=".bak-blogg-query")
+    restore_p.set_defaults(func=cmd_restore)
 
     args = parser.parse_args(argv)
     return args.func(args)

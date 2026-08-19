@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, mkdtempSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
@@ -30,11 +30,16 @@ server {
 }
 `;
 
-function run(args: string[], input?: string): { status: number; stdout: string; stderr: string } {
+function run(
+  args: string[],
+  input?: string,
+  env?: NodeJS.ProcessEnv,
+): { status: number; stdout: string; stderr: string } {
   try {
     const stdout = execFileSync('python3', [HELPER, ...args], {
       encoding: 'utf8',
       input,
+      env: env ? { ...process.env, ...env } : process.env,
     });
     return { status: 0, stdout, stderr: '' };
   } catch (error) {
@@ -89,5 +94,41 @@ server {
     expect(twice.stdout.match(new RegExp(INCLUDE.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'))).toHaveLength(
       1,
     );
+  });
+
+  it('does not fail check when a sibling .bak-blogg-query lacks the include', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'xala-nginx-'));
+    const live = join(dir, 'xala.no.conf');
+    const bak = join(dir, 'xala.no.conf.bak-blogg-query');
+    const applied = run(['--include', INCLUDE, 'apply', withConfig(FIXTURE)]);
+    expect(applied.status, applied.stderr).toBe(0);
+    writeFileSync(live, applied.stdout);
+    writeFileSync(bak, FIXTURE);
+
+    const checked = run(['--include', INCLUDE, 'check', live, bak]);
+    expect(checked.status, checked.stderr).toBe(0);
+    expect(checked.stdout).toContain('include present in 1 serving block file');
+  });
+
+  it('writes install backups outside the nginx-loaded directory', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'xala-nginx-'));
+    const live = join(dir, 'xala.no.conf');
+    const backups = join(dir, 'backups');
+    mkdirSync(backups);
+    writeFileSync(live, FIXTURE);
+
+    const installed = run(
+      ['--include', INCLUDE, 'install', '--backup-suffix', '.bak-blogg-query', live],
+      undefined,
+      { XALA_NGINX_BACKUP_DIR: backups },
+    );
+    expect(installed.status, installed.stderr).toBe(0);
+    expect(existsSync(join(dir, 'xala.no.conf.bak-blogg-query'))).toBe(false);
+    expect(readdirSync(backups).some((name) => name.includes('.bak-blogg-query'))).toBe(true);
+    expect(readFileSync(live, 'utf8')).toContain(INCLUDE);
+
+    writeFileSync(join(dir, 'xala.no.conf.bak-blogg-query'), FIXTURE);
+    const checked = run(['--include', INCLUDE, 'check', live, join(dir, 'xala.no.conf.bak-blogg-query')]);
+    expect(checked.status, checked.stderr).toBe(0);
   });
 });
