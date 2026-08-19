@@ -35,10 +35,10 @@ import {
   ORGANIZATION,
   ORG_ID,
   SITE_ORIGIN,
-  absolute,
   articleJsonLd,
   blogJsonLd,
   formatDate,
+  postMeta,
   postUrl,
 } from "../src/lib/blog/seo";
 import {
@@ -381,14 +381,18 @@ function main(): void {
   );
 
   for (const post of posts) {
+    // Same title / description / canonical / image as Helmet. A second
+    // formula here is how crawlers kept seeing `title | Xala Technologies AS`
+    // after seoTitle + BRAND already existed in postMeta().
+    const meta = postMeta(post);
     write(
       path.join(DIST, "blogg", post.slug, "index.html"),
       renderBody(
         renderHead(shell, {
-          title: `${post.title} | ${ORGANIZATION}`,
-          description: post.description,
-          canonical: postUrl(post),
-          image: absolute(post.cover),
+          title: meta.title,
+          description: meta.description,
+          canonical: meta.canonical,
+          image: meta.image,
           ogType: "article",
           publishedTime: post.date,
           jsonLd: articleJsonLd(post),

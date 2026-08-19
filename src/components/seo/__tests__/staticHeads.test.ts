@@ -127,6 +127,12 @@ describe('prerendered static routes', () => {
     expect(prerender, 'prerender must copy each alias onto dist/<alias>/index.html').toContain(
       'Object.entries(CANONICAL_ALIASES)'
     );
+    expect(prerender, 'blog posts must take title/og:title from postMeta(), not a second formula').toContain(
+      'postMeta('
+    );
+    expect(prerender, 'do not rebuild post titles from post.title + legal name').not.toContain(
+      '`${post.title} | ${ORGANIZATION}`'
+    );
     expect(prerender, 'inner pages must rewrite twitter:title, not keep the homepage card').toContain(
       'replaceMeta("property", "twitter:title"'
     );

@@ -67,7 +67,7 @@ export default function BloggPostPage() {
         {meta.keywords && <meta name="keywords" content={meta.keywords} />}
         <meta name="author" content={post.author} />
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={post.title} />
+        <meta property="og:title" content={meta.title} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:url" content={meta.canonical} />
         {meta.image && <meta property="og:image" content={meta.image} />}
