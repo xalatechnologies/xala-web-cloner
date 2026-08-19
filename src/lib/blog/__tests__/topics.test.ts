@@ -171,6 +171,16 @@ describe('topic keywords and hashtags', () => {
     expect(topicHashtagLine(INNSTILLING!).split(' ')).toHaveLength(5);
   });
 
+  it('gives the automatisert vedtak post one styled last line of five tags, no leftover dump', () => {
+    const VEDTAK = posts.find((post) => post.slug === 'automatisert-vedtak-forklaring-og-manuell-kontroll');
+    expect(VEDTAK, 'automatisert vedtak post missing').toBeDefined();
+    expect(leftoverHashtagDump(VEDTAK!.body)).toBeUndefined();
+    expect(topicHashtagLine(VEDTAK!)).toBe(
+      '#automatisering #forvaltningsloven #vedtak #kommune #saksbehandling',
+    );
+    expect(topicHashtagLine(VEDTAK!).split(' ')).toHaveLength(5);
+  });
+
   it('joins spaced Norwegian keywords into one hashtag', () => {
     expect(keywordToHashtag('offentlig sektor')).toBe('#offentligsektor');
     expect(keywordToHashtag('sele rundt KI')).toBe('#selerundtKI');
