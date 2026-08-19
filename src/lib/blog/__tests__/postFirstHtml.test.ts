@@ -17,11 +17,34 @@ const GEBYR_FILE = resolve(
   __dirname,
   '../../../content/blog/2026-08-03-skjenkebevilling-gebyr-og-omsetningsoppgave.md',
 );
+const VISMA_FILE = resolve(
+  __dirname,
+  '../../../content/blog/2026-08-08-skjenkebevilling-integrasjon-360-visma.md',
+);
+const SELE_FILE = resolve(
+  __dirname,
+  '../../../content/blog/2026-08-20-sele-rundt-ki-i-saksbehandling.md',
+);
 const PRERENDER = readFileSync(resolve(__dirname, '../../../../scripts/prerender-blog.ts'), 'utf8');
 
-const parsed = parsePost(readFileSync(GEBYR_FILE, 'utf8'), GEBYR_FILE);
-if ('reason' in parsed) throw new Error(parsed.reason);
-const gebyr: BlogPost = parsed;
+function loadPost(file: string): BlogPost {
+  const parsed = parsePost(readFileSync(file, 'utf8'), file);
+  if ('reason' in parsed) throw new Error(parsed.reason);
+  return parsed;
+}
+
+const gebyr = loadPost(GEBYR_FILE);
+const visma = loadPost(VISMA_FILE);
+const sele = loadPost(SELE_FILE);
+
+/** Trailing leftover dump in markdown, plus styled `<p>` lines the prerender appends. */
+function hashtagLinesInFirstHtml(bodyMarkdown: string, styledHtml: string): string[] {
+  const leftover = bodyMarkdown.match(
+    /(?:^|\n)(#[\p{L}][\p{L}\p{N}-]*(?:\s+#[\p{L}][\p{L}\p{N}-]*)+)\s*$/u,
+  );
+  const styled = [...styledHtml.matchAll(/<p>(#[^<]+)<\/p>/g)].map((match) => match[1]);
+  return [...(leftover ? [leftover[1]] : []), ...styled];
+}
 
 const homepageKeywords = getPageSEO('home', 'no').keywords;
 
@@ -79,5 +102,24 @@ describe('first HTML for a blog post', () => {
     expect(gebyr.keywords).toHaveLength(6);
     expect(topicHashtagLine(gebyr).split(' ')).toHaveLength(5);
     expect(topicHashtagLine(gebyr)).not.toContain('#offentligsektor');
+  });
+
+  it('gives the sele post exactly one hashtag line in first HTML, with Del artikkelen', () => {
+    const styled = topicHashtagLineHtml(sele);
+    const share = shareRowHtml(postUrl(sele), sele.title);
+    const html = `<div id="root">${sele.body}${styled}${share}</div>`;
+    const lines = hashtagLinesInFirstHtml(sele.body, styled);
+
+    expect(lines).toEqual([
+      '#selerundtKI #kunstigintelligenskommune #arkitekturprinsipper #saksbehandling',
+    ]);
+    expect(html).not.toContain(
+      '#kunstigintelligens #arkitekturprinsipper #saksbehandling #digitalisering #offentligsektor',
+    );
+    expect(html).toContain(SHARE_LABEL);
+    expect(topicHashtagLine(gebyr)).toBe(
+      '#skjenkebevilling #gebyr #omsetningsoppgave #visma #alkoholloven',
+    );
+    expect(topicHashtagLine(visma)).toBe('#skjenkebevilling #360 #visma #integrasjon #bevilling');
   });
 });
