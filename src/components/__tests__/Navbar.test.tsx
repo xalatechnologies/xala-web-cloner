@@ -82,21 +82,23 @@ describe('Navbar', () => {
     // "Hjem" only exists inside the drawer, so it is an unambiguous marker
     // that the drawer mounted.
     expect(screen.getByRole('link', { name: 'Hjem' })).toHaveAttribute('href', HOME);
-    expect(screen.getByRole('searchbox', { name: 'Søk i artikler' })).toBeInTheDocument();
-    expect(screen.getByRole('searchbox', { name: 'Søk i artikler i menyen' })).toBeInTheDocument();
+    expect(screen.getByRole('searchbox', { name: 'Søk på nettstedet' })).toBeInTheDocument();
+    expect(screen.getByRole('searchbox', { name: 'Søk på nettstedet i menyen' })).toBeInTheDocument();
 
     fireEvent.click(screen.getByLabelText('Close menu'));
 
     expect(screen.queryByRole('link', { name: 'Hjem' })).not.toBeInTheDocument();
   });
 
-  it('offers a search box that hands the query to the article index', () => {
+  it('offers a search box that hands the query to the search results page', () => {
     renderNavbar();
 
     // The front page shipped with no search box at all: search lived on /blogg
     // and /caser, so a reader who landed anywhere else had nowhere to type.
     const box = screen.getByRole('searchbox');
-    expect(box).toHaveAccessibleName('Søk i artikler');
+    // The name says the site, not the articles: /blogg answers with the site's
+    // own pages too, so promising less than that sends readers away.
+    expect(box).toHaveAccessibleName('Søk på nettstedet');
 
     fireEvent.change(box, { target: { value: '  tilskuddsportal  ' } });
     fireEvent.submit(box.closest('form')!);
@@ -104,7 +106,7 @@ describe('Navbar', () => {
     expect(currentLocation()).toBe('/blogg?q=tilskuddsportal');
   });
 
-  it('sends an empty search to the article index rather than nowhere', () => {
+  it('sends an empty search to the results page rather than nowhere', () => {
     renderNavbar();
 
     fireEvent.submit(screen.getByRole('searchbox').closest('form')!);

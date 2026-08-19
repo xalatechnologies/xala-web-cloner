@@ -12,8 +12,8 @@ const FOCUS =
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 ' +
   'focus-visible:ring-offset-2 focus-visible:ring-offset-background';
 
-const SEARCH_LABEL = 'Søk i artikler';
-const DRAWER_SEARCH_LABEL = 'Søk i artikler i menyen';
+const SEARCH_LABEL = 'Søk på nettstedet';
+const DRAWER_SEARCH_LABEL = 'Søk på nettstedet i menyen';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,10 +62,11 @@ const Navbar = () => {
   const logoSrc = theme === 'dark' ? '/logo-xala-dark.svg' : '/logo-xala-light.svg';
 
   // The site had no search box anywhere outside /blogg and /caser, so a reader
-  // landing on the front page had no way to look anything up. The articles are
-  // the only body of text worth searching, so the bar hands off to the blog
-  // index, which already filters on ?q= and renders the result as a shareable
-  // URL rather than transient state.
+  // landing on the front page had no way to look anything up. The bar hands off
+  // to /blogg, which already filters on ?q= and renders the result as a
+  // shareable URL rather than transient state — and now answers with the site's
+  // own pages as well as its articles, so a query naming a product or the price
+  // page has a result to open instead of "Ingen treff.".
   const submitSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const needle = query.trim();
