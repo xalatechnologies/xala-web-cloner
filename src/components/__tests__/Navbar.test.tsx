@@ -82,7 +82,7 @@ describe('Navbar', () => {
     // "Hjem" only exists inside the drawer, so it is an unambiguous marker
     // that the drawer mounted.
     expect(screen.getByRole('link', { name: 'Hjem' })).toHaveAttribute('href', HOME);
-    expect(screen.getByRole('searchbox', { name: 'Søk på nettstedet' })).toBeInTheDocument();
+    expect(screen.getByRole('searchbox', { name: 'Søk på nettstedet i navigasjonen' })).toBeInTheDocument();
     expect(screen.getByRole('searchbox', { name: 'Søk på nettstedet i menyen' })).toBeInTheDocument();
 
     fireEvent.click(screen.getByLabelText('Close menu'));
@@ -97,8 +97,9 @@ describe('Navbar', () => {
     // and /caser, so a reader who landed anywhere else had nowhere to type.
     const box = screen.getByRole('searchbox');
     // The name says the site, not the articles: /blogg answers with the site's
-    // own pages too, so promising less than that sends readers away.
-    expect(box).toHaveAccessibleName('Søk på nettstedet');
+    // own pages too, so promising less than that sends readers away. It also
+    // names the location, so it cannot share a name with #blogg-sok on /blogg.
+    expect(box).toHaveAccessibleName('Søk på nettstedet i navigasjonen');
 
     fireEvent.change(box, { target: { value: '  tilskuddsportal  ' } });
     fireEvent.submit(box.closest('form')!);

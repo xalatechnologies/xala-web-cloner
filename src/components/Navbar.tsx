@@ -12,7 +12,10 @@ const FOCUS =
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 ' +
   'focus-visible:ring-offset-2 focus-visible:ring-offset-background';
 
-const SEARCH_LABEL = 'Søk på nettstedet';
+// Location, not a second copy of the listing field. On /blogg both stay in
+// the tree from md up; a shared name fails the accessible-name bar.
+const SEARCH_LABEL = 'Søk på nettstedet i navigasjonen';
+const SEARCH_PLACEHOLDER = 'Søk på nettstedet';
 const DRAWER_SEARCH_LABEL = 'Søk på nettstedet i menyen';
 
 const Navbar = () => {
@@ -74,7 +77,7 @@ const Navbar = () => {
     navigate(needle ? `/blogg?q=${encodeURIComponent(needle)}` : '/blogg');
   };
 
-  const searchForm = (id: string, className: string, label: string) => (
+  const searchForm = (id: string, className: string, label: string, placeholder = label) => (
     <form role="search" action="/blogg" method="get" onSubmit={submitSearch} className={className}>
       <label htmlFor={id} className="sr-only">
         {label}
@@ -89,7 +92,7 @@ const Navbar = () => {
         name="q"
         value={query}
         onChange={(event) => setQuery(event.target.value)}
-        placeholder={label}
+        placeholder={placeholder}
         className={`min-h-11 w-full rounded-lg border border-border/70 bg-background/60 py-2 pl-9 pr-3 text-sm text-foreground placeholder:text-muted-foreground ${FOCUS}`}
       />
     </form>
@@ -152,7 +155,7 @@ const Navbar = () => {
 
             {/* Right: search + controls + CTA */}
             <div className="flex items-center gap-2">
-              {searchForm('nav-sok', 'relative hidden md:block w-44 lg:w-52', SEARCH_LABEL)}
+              {searchForm('nav-sok', 'relative hidden md:block w-44 lg:w-52', SEARCH_LABEL, SEARCH_PLACEHOLDER)}
 
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
