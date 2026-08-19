@@ -1,7 +1,7 @@
 ---
 slug: skjenkebevilling-prikker-to-aar
 title: "Skjenkebevilling: prikker som ikke slettes av seg selv"
-seoTitle: "Skjenkebevilling: prikker som ikke slettes av seg selv"
+seoTitle: "Skjenkebevilling: prikker slettes ikke av seg selv"
 description: "Prikken teller fra dagen dere brøt loven. 12 prikker på to år er én uke uten bevilling."
 date: 2026-08-19
 author: "Ibrahim Rahmani"
@@ -61,7 +61,7 @@ Logg når prikken ble gitt, hjemmelen, dagen for bruddet, og når den sluttet å
 ## Ofte stilte spørsmål
 
 **Slettes prikker to år etter at de ble gitt?**
-Nei. § 10-2 teller to år fra dagen loven ble brutt.
+Nei. § 10-2 teller to år fra dagen loven ble brutt. Klokken starter ikke den dagen noen tastet den inn.
 
 **Hva skjer ved 12 prikker på to år?**
 Kommunestyret skal ta bevillingen i én uke. Flere enn 12: lengre stans. Det skjer ikke av seg selv i systemet.
