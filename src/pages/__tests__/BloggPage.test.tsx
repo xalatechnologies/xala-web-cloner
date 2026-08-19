@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { describe, it, expect, vi } from 'vitest';
@@ -37,7 +37,7 @@ function resultLinks(container: HTMLElement) {
 }
 
 describe('BloggPage heading vs document title', () => {
-  it('keeps the designed H1 and the SEO <title> as different sentences', () => {
+  it('keeps the designed H1 and the SEO <title> as different sentences', async () => {
     // XWEB-188: flipping the visible H1 to the SEO title would "fix" the
     // prerender mismatch the wrong way. Helmet owns the document title.
     renderBloggPage();
@@ -49,7 +49,7 @@ describe('BloggPage heading vs document title', () => {
     expect(screen.getByRole('heading', { level: 1 })).not.toHaveTextContent(
       seoTitle.split(' | ')[0],
     );
-    expect(document.title).toBe(seoTitle);
+    await waitFor(() => expect(document.title).toBe(seoTitle));
   });
 });
 
