@@ -90,6 +90,22 @@ describe('no-JS /blogg?q= listing', () => {
     expect(html).not.toContain(`<h1>${seoTitle.split(' | ')[0]}</h1>`);
   });
 
+  it('does not clamp first-HTML listing H1s to 18ch or 20ch', () => {
+    // XWEB-194: the prerender shell H1 used max-width:20ch while the
+    // hydrated /blogg heading used max-w-[18ch]. Both must follow the
+    // container so first paint and hydrate agree.
+    const prerender = readFileSync(resolve(__dirname, '../../../../scripts/prerender-blog.ts'), 'utf8');
+    const bloggPage = readFileSync(resolve(__dirname, '../../../pages/BloggPage.tsx'), 'utf8');
+    const pageFrame = readFileSync(resolve(__dirname, '../../../components/layouts/PageFrame.tsx'), 'utf8');
+
+    expect(prerender).not.toMatch(/max-width:\s*20ch/);
+    expect(prerender).not.toMatch(/max-width:\s*18ch/);
+    expect(bloggPage).not.toContain('max-w-[18ch]');
+    expect(bloggPage).not.toContain('max-w-[20ch]');
+    expect(pageFrame).not.toContain('max-w-[20ch]');
+    expect(pageFrame).not.toContain('max-w-[18ch]');
+  });
+
   it('does not turn a phrase into a file the hosts would disagree on', () => {
     expect(blogQueryFileKey('skjenkebevilling gebyr')).toBeNull();
     expect(blogQueryFileKey('gebyr')).toBe('gebyr');

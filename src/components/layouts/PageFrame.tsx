@@ -29,7 +29,7 @@ interface PageHeaderProps {
   /**
    * Shared headings use hyphens: auto so long Norwegian compounds can wrap on
    * a 390px screen. Display titles that would split a short word mid-glyph
-   * (kommune → kom-mune at 20ch) pass false and wrap at the word instead.
+   * (kommune → kom-mune) pass false and wrap at the word instead.
    */
   hyphenate?: boolean;
 }
@@ -44,7 +44,7 @@ export function PageHeader({
   return (
     <header className={`container mx-auto px-4 pt-14 md:pt-20 ${tight ? 'pb-2 md:pb-4' : 'pb-10 md:pb-14'}`}>
       <p className="mb-5 eyebrow">{eyebrow}</p>
-      <h1 className={`max-w-[20ch] page-heading${hyphenate ? '' : ' page-heading-no-hyphens'}`}>
+      <h1 className={`page-heading${hyphenate ? '' : ' page-heading-no-hyphens'}`}>
         {title}
       </h1>
       {description && (

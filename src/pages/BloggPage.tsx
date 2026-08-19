@@ -164,7 +164,7 @@ export default function BloggPage() {
           <p className="mb-5 eyebrow">
             Fagartikler
           </p>
-          <h1 className="max-w-[18ch] page-heading">
+          <h1 className="page-heading">
             {BLOG_LISTING_HEADING}
           </h1>
           <p className="mt-6 max-w-2xl section-lead">{DESCRIPTION}</p>
