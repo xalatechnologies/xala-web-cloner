@@ -11,6 +11,7 @@ import Footer from '../components/Footer';
 import { PageHeader } from '../components/layouts/PageFrame';
 import { generateServicesSchema } from '@/components/seo/sectionSchemas';
 import { ORGANIZATION, ORG_ID, SITE_ORIGIN } from '@/lib/blog/seo';
+import { SERVICES_PAGE_HEADING } from '@/lib/staticRouteHeading';
 import servicesData from '@/data/services.json';
 
 type Language = 'no' | 'en' | 'ar';
@@ -70,7 +71,7 @@ export default function TjenesterPage() {
       <main id="main" className="flex-1 pt-20">
         <PageHeader
           eyebrow={t('servicesPage.eyebrow', 'Tjenester')}
-          title={t('servicesPage.title', 'Systemer som skal stå i mange år')}
+          title={t('servicesPage.title', SERVICES_PAGE_HEADING)}
           description={t(
             'servicesPage.description',
             'Vi bygger saksbehandlingssystemer, portaler og integrasjoner for offentlig sektor og næringsliv — og forvalter dem videre etter lansering.'

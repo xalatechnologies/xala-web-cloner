@@ -32,6 +32,7 @@ import { blogListingQueries, blogQueryFileKey, filterBlogPosts } from "../src/li
 import { extractFaq, faqJsonLd, splitLeadSection } from "../src/lib/blog/toc";
 import { getPageSEO } from "../src/components/seo/seoContent";
 import { CANONICAL_ALIASES, resolveRoute } from "../src/components/seo/routeRules";
+import { staticRouteVisibleHeading } from "../src/lib/staticRouteHeading";
 import {
   BLOG_PATH,
   ORGANIZATION,
@@ -441,10 +442,11 @@ function main(): void {
       route.path === "/faq"
         ? [{ ...generateFAQSchema(faqData.no), "@id": `${SITE_ORIGIN}/faq#faq` }]
         : [];
+    const heading = staticRouteVisibleHeading(route.path, copy.title);
     const inner =
       route.path === "/faq"
-        ? faqRouteHtml(copy.title.split(" | ")[0], copy.description, faqData.no, MAIN_NAV)
-        : staticRouteHtml(copy.title.split(" | ")[0], copy.description, MAIN_NAV);
+        ? faqRouteHtml(heading, copy.description, faqData.no, MAIN_NAV)
+        : staticRouteHtml(heading, copy.description, MAIN_NAV);
     write(
       path.join(DIST, route.path.replace(/^\//, ""), "index.html"),
       renderBody(
