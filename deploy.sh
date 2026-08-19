@@ -72,16 +72,23 @@ ls -1dt rel-* 2>/dev/null | tail -n +$((KEEP_RELEASES + 1)) | xargs -r rm -rf
 echo "[deploy] live release: \$(readlink '${BASE_DIR}/current')"
 EOF
 
-# Map /blogg?q= onto the prerendered filtered listing. Failure here must not
-# roll back a release that already flipped: the files live at /blogg/q/<query>/
-# either way, and a bad nginx edit is restored by the installer.
-if [ -f deploy/nginx-blogg-query.conf ]; then
-  log "Installing nginx /blogg?q= rewrite (best effort)…"
-  scp -q "${SSH_OPTS[@]}" deploy/nginx-blogg-query.conf \
-    "${VPS_USER}@${VPS_HOST}:/tmp/xala-blogg-query.conf" || true
-  ssh "${SSH_OPTS[@]}" "${VPS_USER}@${VPS_HOST}" \
-    'bash -s -- /tmp/xala-blogg-query.conf' < deploy/install-blogg-query.sh \
-    || log "nginx rewrite not applied — /blogg/q/<query>/ is still on disk"
-fi
+# GET /blogg?q=gebyr is the unfiltered listing unless this rewrite is in the
+# server block that has `root` / `current`. Artifacts under /blogg/q/ are not
+# enough. A no-op install must fail the deploy.
+[ -f deploy/nginx-blogg-query.conf ] || die "missing deploy/nginx-blogg-query.conf"
+[ -f deploy/nginx-serving-block.py ] || die "missing deploy/nginx-serving-block.py"
+[ -f deploy/install-blogg-query.sh ] || die "missing deploy/install-blogg-query.sh"
+
+log "Installing nginx /blogg?q= rewrite in the serving block…"
+scp -q "${SSH_OPTS[@]}" deploy/nginx-blogg-query.conf \
+  "${VPS_USER}@${VPS_HOST}:/tmp/xala-blogg-query.conf" \
+  || die "could not upload deploy/nginx-blogg-query.conf"
+scp -q "${SSH_OPTS[@]}" deploy/nginx-serving-block.py \
+  "${VPS_USER}@${VPS_HOST}:/tmp/nginx-serving-block.py" \
+  || die "could not upload deploy/nginx-serving-block.py"
+ssh "${SSH_OPTS[@]}" "${VPS_USER}@${VPS_HOST}" \
+  'bash -s -- /tmp/xala-blogg-query.conf /tmp/nginx-serving-block.py' \
+  < deploy/install-blogg-query.sh \
+  || die "nginx /blogg?q= rewrite is not in the serving block — GET /blogg?q=gebyr would still be the full listing"
 
 log "Deployed ${RELEASE} → https://${DOMAIN}"

@@ -1,70 +1,53 @@
 #!/usr/bin/env bash
 # Install the nginx rewrite that maps /blogg?q= onto a prerendered listing.
 #
-# Idempotent. Safe to re-run. Does not fail a deploy if the live server block
-# cannot be found — the filtered files are still on disk at /blogg/q/<query>/.
+# The include MUST land in the server block whose `root` is the `current`
+# release — that is the TLS/site block that serves files. The first
+# `server_name xala.no` is often the :80 redirect; inserting there is a
+# no-op and GET /blogg?q=gebyr stays the unfiltered listing.
+#
+# Exits 1 if that serving block does not contain the rewrite after install.
+# A no-op (no serving block, or include only in the redirect block) is a
+# failure, not success.
 set -euo pipefail
 
 SNIPPET_SRC="${1:-deploy/nginx-blogg-query.conf}"
+HELPER="${2:-deploy/nginx-serving-block.py}"
 SNIPPET_DST="/etc/nginx/snippets/xala-blogg-query.conf"
 INCLUDE='include /etc/nginx/snippets/xala-blogg-query.conf;'
 
 log() { printf '[blogg-query] %s\n' "$*"; }
-warn() { printf '[blogg-query] %s\n' "$*" >&2; }
+die() { printf '[blogg-query] %s\n' "$*" >&2; exit 1; }
 
-[ -f "$SNIPPET_SRC" ] || { warn "missing $SNIPPET_SRC"; exit 1; }
-[ "$(id -u)" -eq 0 ] || { warn "run as root on the VPS"; exit 1; }
-
-mkdir -p /etc/nginx/snippets
-cp "$SNIPPET_SRC" "$SNIPPET_DST"
-
-if grep -Rql 'xala-blogg-query.conf' /etc/nginx/sites-enabled /etc/nginx/conf.d /etc/nginx/sites-available 2>/dev/null; then
-  log "server block already includes the snippet"
-else
-  CONF=""
-  for dir in /etc/nginx/sites-enabled /etc/nginx/conf.d /etc/nginx/sites-available; do
-    [ -d "$dir" ] || continue
-    match=$(grep -l 'server_name.*xala\.no' "$dir"/* 2>/dev/null | head -n 1 || true)
-    if [ -n "$match" ]; then
-      CONF="$match"
-      break
-    fi
-  done
-
-  if [ -z "$CONF" ]; then
-    warn "could not find a server_name xala.no block — copy $SNIPPET_DST in by hand"
-    exit 0
-  fi
-
-  log "adding include to ${CONF}"
-  cp "$CONF" "${CONF}.bak-blogg-query"
-  python3 - "$CONF" "$INCLUDE" <<'PY'
-import sys
-path, include = sys.argv[1], sys.argv[2]
-text = open(path, encoding="utf-8").read()
-if include in text:
-    raise SystemExit(0)
-needle = "server_name"
-idx = text.find(needle)
-if idx < 0:
-    raise SystemExit("no server_name in " + path)
-# Insert the include on its own line after the server_name directive.
-end = text.find(";", idx)
-if end < 0:
-    raise SystemExit("unterminated server_name in " + path)
-updated = text[: end + 1] + "\n    " + include + text[end + 1 :]
-open(path, "w", encoding="utf-8").write(updated)
-PY
-fi
-
-if nginx -t; then
-  systemctl reload nginx
-  log "nginx reloaded with /blogg?q= rewrite"
-else
-  warn "nginx -t failed — restoring any backup and leaving the live config alone"
-  for bak in /etc/nginx/sites-enabled/*.bak-blogg-query /etc/nginx/conf.d/*.bak-blogg-query /etc/nginx/sites-available/*.bak-blogg-query; do
+restore_backups() {
+  for bak in /etc/nginx/sites-enabled/*.bak-blogg-query /etc/nginx/conf.d/*.bak-blogg-query /etc/nginx/sites-available/*.bak-blogg-query /etc/nginx/nginx.conf.bak-blogg-query; do
     [ -f "$bak" ] || continue
     mv "$bak" "${bak%.bak-blogg-query}"
   done
-  exit 1
+}
+
+[ -f "$SNIPPET_SRC" ] || die "missing snippet $SNIPPET_SRC"
+[ -f "$HELPER" ] || die "missing helper $HELPER"
+[ "$(id -u)" -eq 0 ] || die "run as root on the VPS"
+command -v python3 >/dev/null || die "python3 is required to find the serving block"
+command -v nginx >/dev/null || die "nginx is not installed"
+
+mkdir -p /etc/nginx/snippets
+cp "$SNIPPET_SRC" "$SNIPPET_DST"
+grep -q 'rewrite ^ /blogg/q/$arg_q/index.html last;' "$SNIPPET_DST" \
+  || die "$SNIPPET_DST is missing the \$arg_q rewrite"
+
+python3 "$HELPER" --include "$INCLUDE" install --backup-suffix .bak-blogg-query \
+  || die "serving block (root/current) does not have the /blogg?q= include"
+
+if ! nginx -t; then
+  restore_backups
+  die "nginx -t failed — restored the previous serving-block config"
 fi
+
+systemctl reload nginx
+log "nginx reloaded with /blogg?q= rewrite in the serving block"
+
+python3 "$HELPER" --include "$INCLUDE" check \
+  || die "rewrite missing from the serving block after reload"
+log "verified: serving block includes $INCLUDE"

@@ -27,6 +27,27 @@ describe('host mapping for /blogg?q=', () => {
     expect(nginx).toContain('rewrite ^ /blogg/q/$arg_q/index.html last;');
     expect(nginx).toContain('rewrite ^ /blogg/q/_none/index.html last;');
     expect(nginx).toContain('try_files /blogg/index.html =404;');
+    expect(nginx).toContain('if ($arg_q ~ "\\.\\.")');
+  });
+
+  it('fails the deploy unless the rewrite is in the serving block', () => {
+    const deploy = readFileSync(resolve(ROOT, 'deploy.sh'), 'utf8');
+    const installer = readFileSync(resolve(ROOT, 'deploy/install-blogg-query.sh'), 'utf8');
+    const live = readFileSync(resolve(ROOT, 'scripts/verify-live.mjs'), 'utf8');
+
+    expect(deploy).not.toMatch(/\|\|\s*log /);
+    expect(deploy).not.toMatch(/scp[\s\S]*\|\|\s*true/);
+    expect(deploy).toContain('|| die "nginx /blogg?q= rewrite is not in the serving block');
+    expect(deploy).toContain('nginx-serving-block.py');
+
+    expect(installer).toContain('root/current');
+    expect(installer).toContain('exit 1');
+    expect(installer).not.toMatch(/could not find a server_name[\s\S]*exit 0/);
+
+    expect(live).toContain('/blogg?q=gebyr');
+    expect(live).toContain('rootInner');
+    expect(live).toContain('/blogg/skjenkebevilling-gebyr-og-omsetningsoppgave');
+    expect(live).toContain('/blogg/iso-27001-i-praksis-for-utviklingsprosjekter');
   });
 
   it('has the prerender write those query files', () => {
