@@ -7,7 +7,7 @@
  * bytes are not the full unfiltered listing.
  */
 import { getPageSEO } from "@/components/seo/seoContent";
-import { BLOG_PATH, formatDate } from "./seo";
+import { BLOG_LISTING_HEADING, BLOG_PATH, formatDate } from "./seo";
 import type { BlogPost } from "./types";
 
 const escapeHtml = (value: string): string =>
@@ -25,7 +25,7 @@ export function blogListingHtml(
   options: BlogListingHtmlOptions = {},
 ): string {
   const listing = getPageSEO("blog", "no");
-  const heading = listing.title.split(" | ")[0];
+  const crumb = listing.title.split(" | ")[0];
   const search = options.search ?? Boolean(options.query?.trim());
   const totalCount = options.totalCount ?? posts.length;
   const cards = posts
@@ -53,8 +53,8 @@ export function blogListingHtml(
       : "<p>Ingen artikler her ennå.</p>";
 
   return `<div class="min-h-screen flex flex-col"><main>
-<nav aria-label="Brødsmuler"><a href="/">Forside</a> / <span aria-current="page">${escapeHtml(heading)}</span></nav>
-<h1>${escapeHtml(heading)}</h1>
+<nav aria-label="Brødsmuler"><a href="/">Forside</a> / <span aria-current="page">${escapeHtml(crumb)}</span></nav>
+<h1>${escapeHtml(BLOG_LISTING_HEADING)}</h1>
 <p>${escapeHtml(listing.description)}</p>
 ${summary ? `${summary}\n` : ""}${list}
 </main></div>`;

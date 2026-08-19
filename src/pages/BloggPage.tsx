@@ -9,7 +9,7 @@ import { allTags, publishedPosts } from '@/lib/blog/posts';
 import { ALL_TAGS, filterBlogPosts } from '@/lib/blog/search';
 import { getPageSEO } from '@/components/seo/seoContent';
 import { matchSitePages, suggestedSitePages, type SitePage } from '@/lib/search/pages';
-import { BLOG_PATH, SITE_ORIGIN, blogJsonLd, formatDate } from '@/lib/blog/seo';
+import { BLOG_LISTING_HEADING, BLOG_PATH, SITE_ORIGIN, blogJsonLd, formatDate } from '@/lib/blog/seo';
 
 const listing = getPageSEO('blog', 'no');
 const TITLE = listing.title;
@@ -149,7 +149,7 @@ export default function BloggPage() {
             Fagartikler
           </p>
           <h1 className="max-w-[18ch] page-heading">
-            Erfaringer fra systemer i drift
+            {BLOG_LISTING_HEADING}
           </h1>
           <p className="mt-6 max-w-2xl section-lead">{DESCRIPTION}</p>
         </header>

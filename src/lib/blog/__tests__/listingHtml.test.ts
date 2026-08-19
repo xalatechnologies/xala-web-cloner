@@ -8,6 +8,8 @@ import {
   blogQueryFileKey,
   filterBlogPosts,
 } from '../search';
+import { getPageSEO } from '@/components/seo/seoContent';
+import { BLOG_LISTING_HEADING } from '../seo';
 import { blogListingCardHrefs, blogListingHtml } from '../listingHtml';
 import type { BlogPost } from '../types';
 
@@ -71,6 +73,21 @@ describe('no-JS /blogg?q= listing', () => {
       expect(hrefs).toContain(href);
     }
     expect(html).not.toMatch(/\d+ av \d+ artikler/);
+  });
+
+  it('uses the designed listing H1, not the SEO document title', () => {
+    // XWEB-188: first HTML used title.split(" | ")[0], so crawlers and the
+    // first paint saw "Fagartikler om offentlig digitalisering" and hydrate
+    // then swapped it for the page heading.
+    const seoTitle = getPageSEO('blog', 'no').title;
+    const html = blogListingHtml(posts);
+    const h1 = html.match(/<h1>([^<]*)<\/h1>/)?.[1];
+
+    expect(seoTitle).toBe('Fagartikler om offentlig digitalisering | Xala');
+    expect(BLOG_LISTING_HEADING).toBe('Erfaringer fra systemer i drift');
+    expect(h1).toBe(BLOG_LISTING_HEADING);
+    expect(h1).not.toBe(seoTitle.split(' | ')[0]);
+    expect(html).not.toContain(`<h1>${seoTitle.split(' | ')[0]}</h1>`);
   });
 
   it('does not turn a phrase into a file the hosts would disagree on', () => {
