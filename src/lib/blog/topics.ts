@@ -7,8 +7,10 @@
  */
 import type { BlogPost } from "./types";
 
-/** Audience chips are not a topic list. Compared case-insensitively. */
-const AUDIENCE = new Set(["it-leder", "arkitekt", "kommune", "utvikler"]);
+/** Audience chips are not a topic list. Compared case-insensitively.
+ *  `kommune` is a real topic (municipality / local government) unless it is
+ *  this post's audience chip (`tag: "Kommune"`). */
+const AUDIENCE = new Set(["it-leder", "arkitekt", "utvikler"]);
 
 const MAX_TOPICS = 5;
 

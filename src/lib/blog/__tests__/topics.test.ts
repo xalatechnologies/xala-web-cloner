@@ -81,7 +81,18 @@ describe('topic keywords and hashtags', () => {
   it('does not treat an audience-only tag as the hashtag list', () => {
     const topics = topicKeywords({ tag: 'IT-leder', keywords: [] });
     expect(topics).toEqual([]);
-    expect(topicHashtags({ tag: 'IT-leder', keywords: ['IT-leder', 'Kommune'] })).toEqual([]);
+    expect(topicHashtags({ tag: 'IT-leder', keywords: ['IT-leder'] })).toEqual([]);
+    expect(topicHashtags({ tag: 'Kommune', keywords: ['IT-leder', 'Kommune'] })).toEqual([]);
+  });
+
+  it('keeps kommune as a topic when the audience chip is IT-leder', () => {
+    const PRIKKER = posts.find((post) => post.slug === 'skjenkebevilling-prikker-to-aar');
+    expect(PRIKKER, 'prikker post missing').toBeDefined();
+    expect(leftoverHashtagDump(PRIKKER!.body)).toBeUndefined();
+    expect(topicHashtagLine(PRIKKER!)).toBe(
+      '#skjenkebevilling #prikker #kommune #saksbehandling #alkoholloven',
+    );
+    expect(topicHashtags({ tag: 'IT-leder', keywords: ['IT-leder', 'Kommune'] })).toEqual(['#Kommune']);
   });
 
   it('joins spaced Norwegian keywords into one hashtag', () => {
