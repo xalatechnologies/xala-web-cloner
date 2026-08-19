@@ -9,6 +9,10 @@
 # Exits 1 if that serving block does not contain the rewrite after install.
 # A no-op (no serving block, or include only in the redirect block) is a
 # failure, not success.
+#
+# Backups are written outside sites-enabled / conf.d (see the helper). A
+# sibling .bak-blogg-query is loaded by nginx and was treated as a serving
+# block, which is why Deploy #102 failed after a successful live rewrite.
 set -euo pipefail
 
 SNIPPET_SRC="${1:-deploy/nginx-blogg-query.conf}"
@@ -20,10 +24,11 @@ log() { printf '[blogg-query] %s\n' "$*"; }
 die() { printf '[blogg-query] %s\n' "$*" >&2; exit 1; }
 
 restore_backups() {
-  for bak in /etc/nginx/sites-enabled/*.bak-blogg-query /etc/nginx/conf.d/*.bak-blogg-query /etc/nginx/sites-available/*.bak-blogg-query /etc/nginx/nginx.conf.bak-blogg-query; do
-    [ -f "$bak" ] || continue
-    mv "$bak" "${bak%.bak-blogg-query}"
-  done
+  # Backups live outside nginx load dirs (see nginx-serving-block.py). Do not
+  # mv *.bak-blogg-query back into sites-enabled — that is what made Deploy
+  # #102 fail the post-reload check and warn about duplicate server_name.
+  python3 "$HELPER" restore --backup-suffix .bak-blogg-query \
+    || log "no serving-block backups to restore"
 }
 
 [ -f "$SNIPPET_SRC" ] || die "missing snippet $SNIPPET_SRC"
