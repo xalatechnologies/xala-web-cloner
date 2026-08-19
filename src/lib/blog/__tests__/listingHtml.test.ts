@@ -1,0 +1,81 @@
+import { readFileSync, readdirSync } from 'node:fs';
+import { join, resolve } from 'node:path';
+import { describe, expect, it } from 'vitest';
+import { isPostFile, parsePost, publishedPosts, sortPosts } from '../posts';
+import {
+  blogListingQueries,
+  blogQueryArtifactPath,
+  blogQueryFileKey,
+  filterBlogPosts,
+} from '../search';
+import { blogListingCardHrefs, blogListingHtml } from '../listingHtml';
+import type { BlogPost } from '../types';
+
+/**
+ * First HTML for /blogg?q= — the body the prerender writes, before any
+ * bundle runs. Filtering used to live only in BloggPage after hydrate, so
+ * this URL was byte-identical to /blogg for a crawler.
+ */
+const DIR = resolve(__dirname, '../../../content/blog');
+
+const posts: BlogPost[] = publishedPosts(
+  sortPosts(
+    readdirSync(DIR)
+      .filter(isPostFile)
+      .map((file) => parsePost(readFileSync(join(DIR, file), 'utf8'), file))
+      .filter((result): result is BlogPost => !('reason' in result)),
+  ),
+);
+
+const GEBYR = '/blogg/skjenkebevilling-gebyr-og-omsetningsoppgave';
+const UNRELATED = [
+  '/blogg/iso-27001-i-praksis-for-utviklingsprosjekter',
+  '/blogg/wcag-2-2-aa-i-praksis-for-fagsystemer',
+  '/blogg/id-porten-eller-maskinporten-hva-velger-du',
+  '/blogg/redusert-foreldrebetaling-sfo-varig-nedgang',
+];
+
+describe('no-JS /blogg?q= listing', () => {
+  it('finds the published set it is meant to filter', () => {
+    expect(posts.length).toBeGreaterThanOrEqual(10);
+    expect(posts.some((post) => post.slug === 'skjenkebevilling-gebyr-og-omsetningsoppgave')).toBe(
+      true,
+    );
+  });
+
+  it('prerenders only the gebyr match, not the full listing', () => {
+    const filtered = filterBlogPosts(posts, { query: 'gebyr' });
+    const html = blogListingHtml(filtered, { query: 'gebyr', totalCount: posts.length });
+
+    expect(filtered).toHaveLength(1);
+    expect(filtered[0]?.slug).toBe('skjenkebevilling-gebyr-og-omsetningsoppgave');
+    expect(blogQueryArtifactPath('gebyr')).toBe('blogg/q/gebyr/index.html');
+    expect(blogListingQueries(posts)).toContain('gebyr');
+
+    const hrefs = blogListingCardHrefs(html);
+    expect(hrefs).toEqual([GEBYR]);
+    expect(html).toMatch(/gebyr/i);
+    expect(html).toContain('1 av ');
+    for (const href of UNRELATED) {
+      expect(html, `${href} must not be a listing card for q=gebyr`).not.toContain(href);
+    }
+  });
+
+  it('prerenders the full listing when q is absent', () => {
+    const html = blogListingHtml(posts);
+    const hrefs = blogListingCardHrefs(html);
+
+    expect(hrefs).toHaveLength(posts.length);
+    expect(hrefs).toContain(GEBYR);
+    for (const href of UNRELATED) {
+      expect(hrefs).toContain(href);
+    }
+    expect(html).not.toMatch(/\d+ av \d+ artikler/);
+  });
+
+  it('does not turn a phrase into a file the hosts would disagree on', () => {
+    expect(blogQueryFileKey('skjenkebevilling gebyr')).toBeNull();
+    expect(blogQueryFileKey('gebyr')).toBe('gebyr');
+    expect(blogQueryFileKey('../etc')).toBeNull();
+  });
+});

@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { allPosts } from '@/lib/blog';
 import { allTags, publishedPosts } from '@/lib/blog/posts';
+import { ALL_TAGS, filterBlogPosts } from '@/lib/blog/search';
 import { getPageSEO } from '@/components/seo/seoContent';
 import { matchSitePages, suggestedSitePages, type SitePage } from '@/lib/search/pages';
 import { BLOG_PATH, SITE_ORIGIN, blogJsonLd, formatDate } from '@/lib/blog/seo';
@@ -15,7 +16,7 @@ const TITLE = listing.title;
 const DESCRIPTION = listing.description;
 
 const PAGE_SIZE = 8;
-const ALL = 'Alle';
+const ALL = ALL_TAGS;
 
 export default function BloggPage() {
   const posts = useMemo(() => publishedPosts(allPosts()), []);
@@ -56,18 +57,10 @@ export default function BloggPage() {
     setSearchParams(next, { replace: true });
   }, [query, activeTag, page, setSearchParams]);
 
-  const filtered = useMemo(() => {
-    const needle = query.trim().toLowerCase();
-    return posts.filter((post) => {
-      if (activeTag !== ALL && post.tag !== activeTag) return false;
-      if (!needle) return true;
-      return [post.title, post.description, post.author, post.tag, ...(post.keywords ?? [])]
-        .filter(Boolean)
-        .join(' ')
-        .toLowerCase()
-        .includes(needle);
-    });
-  }, [posts, query, activeTag]);
+  const filtered = useMemo(
+    () => filterBlogPosts(posts, { query, tag: activeTag }),
+    [posts, query, activeTag],
+  );
 
   // The navbar hands every query here, so this is the site's search results
   // page whether or not the answer is an article. Searching for a product, the

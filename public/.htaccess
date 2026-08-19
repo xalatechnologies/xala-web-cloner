@@ -11,6 +11,16 @@
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   RewriteRule ^(.*)$ https://%1%{REQUEST_URI} [L,R=301]
 
+  # /blogg?q=… is otherwise the same file as /blogg. The prerender writes a
+  # filtered listing to /blogg/q/<query>/; serve that (or the empty-results
+  # page) so the first HTML is not the full unfiltered card list.
+  RewriteCond %{QUERY_STRING} (?:^|&)q=([^&]+)
+  RewriteCond %{DOCUMENT_ROOT}/blogg/q/%1/index.html -f
+  RewriteRule ^blogg/?$ /blogg/q/%1/index.html [L]
+
+  RewriteCond %{QUERY_STRING} (?:^|&)q=.+
+  RewriteRule ^blogg/?$ /blogg/q/_none/index.html [L]
+
   # Handle client-side routing
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
