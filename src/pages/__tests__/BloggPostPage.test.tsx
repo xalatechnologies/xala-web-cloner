@@ -142,6 +142,26 @@ describe('BloggPostPage topic hashtags and share row', () => {
     ).toHaveAttribute('href', expect.stringContaining('linkedin.com/sharing/share-offsite'));
   });
 
+  it('shows exactly one hashtag line on the sele post, plus Del artikkelen', () => {
+    const slug = 'sele-rundt-ki-i-saksbehandling';
+    const post = findPost(allPosts(), slug);
+    expect(post).toBeTruthy();
+    const line = topicHashtagLine(post!);
+
+    const { container } = renderPost(slug);
+
+    expect(line).toBe('#selerundtKI #kunstigintelligenskommune #arkitekturprinsipper #saksbehandling');
+    const article = container.querySelector('article');
+    const hashtagParas = [...(article?.querySelectorAll('p') ?? [])].filter((node) =>
+      /^#[\p{L}][\p{L}\p{N}-]*(?:\s+#[\p{L}][\p{L}\p{N}-]*)+$/u.test(node.textContent?.trim() ?? ''),
+    );
+    expect(hashtagParas).toHaveLength(1);
+    expect(hashtagParas[0].textContent).toBe(line);
+    expect(hashtagParas[0].className).toMatch(/text-muted-foreground/);
+    expect(screen.queryByText(/#kunstigintelligens #arkitekturprinsipper/)).not.toBeInTheDocument();
+    expect(screen.getByText(SHARE_LABEL)).toBeInTheDocument();
+  });
+
   it('puts post-specific keywords and matching article:tag in the document head', async () => {
     renderPost(GEBYR_SLUG);
 

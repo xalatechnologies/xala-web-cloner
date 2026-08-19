@@ -99,5 +99,3 @@ Nei. Punkt 1.3 setter et mål for offentlige virksomheter og peker på rutiner. 
 Nei. Xala kan kable porter og kontekst. Kommunen eier invariantene og formålet.
 
 Trenger dere at selen blir synlig i systemene dere har, start på [kontakt](/kontakt).
-
-#kunstigintelligens #arkitekturprinsipper #saksbehandling #digitalisering #offentligsektor

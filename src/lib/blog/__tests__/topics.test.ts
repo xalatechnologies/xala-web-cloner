@@ -16,11 +16,38 @@ const posts: BlogPost[] = readdirSync(DIR)
   .filter((post) => !post.draft);
 
 const GEBYR = posts.find((post) => post.slug === 'skjenkebevilling-gebyr-og-omsetningsoppgave');
+const VISMA = posts.find((post) => post.slug === 'skjenkebevilling-integrasjon-360-visma');
+const SELE = posts.find((post) => post.slug === 'sele-rundt-ki-i-saksbehandling');
+
+/** A leftover body dump is a trailing paragraph of only hashtags. */
+function leftoverHashtagDump(body: string): string | undefined {
+  const match = body.match(/(?:^|\n)(#[\p{L}][\p{L}\p{N}-]*(?:\s+#[\p{L}][\p{L}\p{N}-]*)+)\s*$/u);
+  return match?.[1];
+}
 
 describe('topic keywords and hashtags', () => {
   it('finds the published set it is meant to tag', () => {
     expect(posts.length).toBeGreaterThanOrEqual(15);
     expect(GEBYR, 'gebyr post missing').toBeDefined();
+    expect(VISMA, '360/Visma post missing').toBeDefined();
+    expect(SELE, 'sele post missing').toBeDefined();
+  });
+
+  it('keeps one styled Sele topic line and does not leave a body hashtag dump', () => {
+    expect(leftoverHashtagDump(SELE!.body)).toBeUndefined();
+    expect(topicHashtagLine(SELE!)).toBe(
+      '#selerundtKI #kunstigintelligenskommune #arkitekturprinsipper #saksbehandling',
+    );
+    expect(topicHashtagLine(SELE!).split(' ')).toHaveLength(4);
+  });
+
+  it('leaves the Gebyr and 360/Visma topic lines unchanged', () => {
+    expect(topicHashtagLine(GEBYR!)).toBe(
+      '#skjenkebevilling #gebyr #omsetningsoppgave #visma #alkoholloven',
+    );
+    expect(topicHashtagLine(VISMA!)).toBe(
+      '#skjenkebevilling #360 #visma #integrasjon #bevilling',
+    );
   });
 
   it('turns frontmatter keywords into 3–5 hashtags, not the audience chip', () => {
