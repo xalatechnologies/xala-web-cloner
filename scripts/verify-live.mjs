@@ -183,7 +183,7 @@ export function parseKeywords(block) {
   return items;
 }
 
-const AUDIENCE = new Set(["it-leder", "arkitekt", "kommune", "utvikler"]);
+const AUDIENCE = new Set(["it-leder", "arkitekt", "utvikler"]);
 
 /** Same 3–5 topic pick as `topicKeywords()` in src/lib/blog/topics.ts. */
 export function topicKeywordsFromList(keywords, audienceTag) {
