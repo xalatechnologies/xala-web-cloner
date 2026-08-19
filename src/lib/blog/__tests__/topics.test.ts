@@ -161,6 +161,16 @@ describe('topic keywords and hashtags', () => {
     expect(topicHashtagLine(STARTLAN!).split(' ')).toHaveLength(5);
   });
 
+  it('gives the startlån innstilling post one styled last line of five tags, no leftover dump', () => {
+    const INNSTILLING = posts.find((post) => post.slug === 'startlan-innstilling-og-behovsproving');
+    expect(INNSTILLING, 'startlån innstilling post missing').toBeDefined();
+    expect(leftoverHashtagDump(INNSTILLING!.body)).toBeUndefined();
+    expect(topicHashtagLine(INNSTILLING!)).toBe(
+      '#startlån #innstilling #behovsprøving #kommune #saksbehandling',
+    );
+    expect(topicHashtagLine(INNSTILLING!).split(' ')).toHaveLength(5);
+  });
+
   it('joins spaced Norwegian keywords into one hashtag', () => {
     expect(keywordToHashtag('offentlig sektor')).toBe('#offentligsektor');
     expect(keywordToHashtag('sele rundt KI')).toBe('#selerundtKI');
