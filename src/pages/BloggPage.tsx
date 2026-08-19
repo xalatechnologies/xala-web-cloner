@@ -5,6 +5,7 @@ import { ArrowUpRight, ChevronLeft, ChevronRight, Search, X } from 'lucide-react
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { allPosts } from '@/lib/blog';
+import { listingPageNumber } from '@/lib/blog/listingPage';
 import { allTags, publishedPosts } from '@/lib/blog/posts';
 import { ALL_TAGS, filterBlogPosts } from '@/lib/blog/search';
 import { getPageSEO } from '@/components/seo/seoContent';
@@ -25,10 +26,24 @@ export default function BloggPage() {
 
   const [query, setQuery] = useState(() => searchParams.get('q') ?? '');
   const [activeTag, setActiveTag] = useState(() => searchParams.get('tag') ?? ALL);
-  const [page, setPage] = useState(() => {
-    const parsed = Number.parseInt(searchParams.get('page') ?? '1', 10);
-    return Number.isFinite(parsed) && parsed > 0 ? parsed : 1;
-  });
+  // Page is the URL, not a copy taken on mount. Local page state started at 1
+  // whenever the first render missed `page`/`side`, and the writer below then
+  // replaced the deep link with the unpaged listing. Query already follows the
+  // URL after mount; pagination has to do the same or /blogg?page=2 is page 1
+  // until someone clicks.
+  const listingSearch = searchParams.toString();
+  const page = listingPageNumber(searchParams);
+
+  const writeListingParams = (nextQuery: string, nextTag: string, nextPage: number) => {
+    const next = new URLSearchParams();
+    if (nextQuery.trim()) next.set('q', nextQuery.trim());
+    if (nextTag !== ALL) next.set('tag', nextTag);
+    if (nextPage > 1) next.set('page', String(nextPage));
+    if (next.toString() === listingSearch) return;
+    setSearchParams(next, { replace: true });
+  };
+
+  const setPage = (nextPage: number) => writeListingParams(query, activeTag, nextPage);
 
   // The navbar search submits to /blogg?q=…, and when the reader is already on
   // this page the router reuses the mounted component, so the initialiser above
@@ -42,20 +57,21 @@ export default function BloggPage() {
     if (typedQuery.current.trim() === urlQuery) return;
     typedQuery.current = urlQuery;
     setQuery(urlQuery);
-    setPage(1);
   }, [urlQuery]);
 
   // Search and filter state lives in the URL so a filtered view is a link
   // somebody can send. `replace` keeps the back button pointing at the page
-  // the reader arrived from rather than at every keystroke.
+  // the reader arrived from rather than at every keystroke. Page is read from
+  // the current URL so this write cannot wipe ?page=2 on first load.
   useEffect(() => {
     typedQuery.current = query;
     const next = new URLSearchParams();
     if (query.trim()) next.set('q', query.trim());
     if (activeTag !== ALL) next.set('tag', activeTag);
     if (page > 1) next.set('page', String(page));
+    if (next.toString() === listingSearch) return;
     setSearchParams(next, { replace: true });
-  }, [query, activeTag, page, setSearchParams]);
+  }, [query, activeTag, page, listingSearch, setSearchParams]);
 
   const filtered = useMemo(
     () => filterBlogPosts(posts, { query, tag: activeTag }),
