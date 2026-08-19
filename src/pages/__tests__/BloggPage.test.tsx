@@ -171,4 +171,69 @@ describe('BloggPage results for a query the articles cannot answer', () => {
     expect(container.querySelectorAll('main section a').length).toBe(0);
     expect(resultLinks(container).every((href) => href?.startsWith('/blogg/'))).toBe(true);
   });
+
+  it('keeps the gebyr first-HTML filter on the hydrated listing', () => {
+    // XWEB-186: /blogg?q=gebyr must still be the gebyr card after hydrate,
+    // not the full newest-first index this ticket paginates.
+    const { container } = renderBloggPage('/blogg?q=gebyr');
+
+    const links = resultLinks(container);
+    expect(links).toContain('/blogg/skjenkebevilling-gebyr-og-omsetningsoppgave');
+    expect(links).not.toContain('/blogg/iso-27001-i-praksis-for-utviklingsprosjekter');
+    expect(links.some((href) => href === '/blogg/tilskudd-purring-og-uklare-rapporteringskrav')).toBe(
+      false,
+    );
+  });
+});
+
+const LISTING_PAGE_SIZE = 8;
+
+describe('BloggPage pagination from the URL', () => {
+  const posts = publishedPosts(allPosts());
+  const page1 = posts.slice(0, LISTING_PAGE_SIZE);
+  const page2 = posts.slice(LISTING_PAGE_SIZE, LISTING_PAGE_SIZE * 2);
+
+  it('opens page 2 on first render of /blogg?page=2, not page 1', async () => {
+    // XWEB-193: the slice existed, but first load of ?page=2 stayed on page 1
+    // until the pager was clicked. Deep links have to apply after render.
+    // Live (2026-08-19) page 2 started at tilskudd-purring; the assertion is
+    // the same slice the listing uses, so a newer post does not break this.
+    expect(posts.length).toBeGreaterThan(LISTING_PAGE_SIZE);
+    const firstOnPage2 = page2[0];
+    const firstOnPage1 = page1[0];
+    expect(firstOnPage2).toBeTruthy();
+    expect(firstOnPage1).toBeTruthy();
+
+    const { container } = renderBloggPage('/blogg?page=2');
+
+    await waitFor(() => {
+      const links = resultLinks(container);
+      expect(links[0]).toBe(`/blogg/${firstOnPage2.slug}`);
+    });
+
+    const links = resultLinks(container);
+    expect(links).toEqual(page2.map((post) => `/blogg/${post.slug}`));
+    expect(links).not.toContain(`/blogg/${firstOnPage1.slug}`);
+    expect(screen.getByText(`Side 2 av ${Math.ceil(posts.length / LISTING_PAGE_SIZE)}`)).toBeInTheDocument();
+  });
+
+  it('accepts the inbound side param the live site also tried', async () => {
+    const firstOnPage2 = page2[0];
+    expect(firstOnPage2).toBeTruthy();
+
+    const { container } = renderBloggPage('/blogg?side=2');
+
+    await waitFor(() => {
+      expect(resultLinks(container)[0]).toBe(`/blogg/${firstOnPage2.slug}`);
+    });
+  });
+
+  it('keeps page 1 newest-first', () => {
+    const { container } = renderBloggPage('/blogg');
+
+    const links = resultLinks(container);
+    expect(links).toEqual(page1.map((post) => `/blogg/${post.slug}`));
+    expect(links).toHaveLength(LISTING_PAGE_SIZE);
+    expect(new Date(page1[0].date).getTime()).toBeGreaterThan(new Date(page1[1].date).getTime());
+  });
 });
