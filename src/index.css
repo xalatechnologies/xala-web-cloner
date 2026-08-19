@@ -494,6 +494,14 @@
     line-height: var(--ds-leading-tight);
   }
 
+  /* /produkter at 1280px: 20ch + the shared heading hyphens:auto split
+     "kommune" as "kom-mune". This heading wraps at the word instead. */
+  .page-heading-no-hyphens {
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+  }
+
   .glass {
     @apply bg-white/10 backdrop-blur-md border border-white/20;
   }
