@@ -14,6 +14,7 @@ import { coverAlt, findPost, relatedPosts } from '@/lib/blog/posts';
 import { extractFaq, extractHeadings, faqJsonLd, splitLeadSection } from '@/lib/blog/toc';
 import { relatedServices } from '@/lib/blog/relatedServices';
 import { BLOG_PATH, ORGANIZATION, articleJsonLd, formatDate, postMeta, postUrl } from '@/lib/blog/seo';
+import { topicHashtagLine } from '@/lib/blog/topics';
 import { slugify } from '@/lib/slug';
 
 /** Text of a ReactMarkdown child tree, for deriving a heading's anchor id. */
@@ -46,6 +47,7 @@ export default function BloggPostPage() {
   const meta = postMeta(post);
   const url = postUrl(post);
   const faqSchema = faqJsonLd(url, faq);
+  const hashtagLine = topicHashtagLine(post);
 
   // Anchor ids come from the same slugify() the TOC used, so every link in the
   // sidebar lands on a heading that exists.
@@ -73,6 +75,9 @@ export default function BloggPostPage() {
         {meta.image && <meta property="og:image" content={meta.image} />}
         <meta property="article:published_time" content={post.date} />
         {post.tag && <meta property="article:section" content={post.tag} />}
+        {meta.articleTags.map((tag) => (
+          <meta key={tag} property="article:tag" content={tag} />
+        ))}
         <script type="application/ld+json">{JSON.stringify(articleJsonLd(post))}</script>
         {faqSchema && <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>}
       </Helmet>
@@ -190,6 +195,10 @@ export default function BloggPostPage() {
                 heading={anchored}
                 className="prose prose-lg mt-10 max-w-[68ch] dark:prose-invert prose-headings:scroll-mt-28 prose-a:text-primary"
               />
+
+              {hashtagLine ? (
+                <p className="mt-10 max-w-[68ch] text-sm text-muted-foreground">{hashtagLine}</p>
+              ) : null}
 
               {services.length > 0 && (
                 <aside aria-labelledby="relevant-heading" className="mt-14 max-w-[68ch] border-t border-border pt-8">

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Check, Copy } from 'lucide-react';
+import { SHARE_LABEL, shareTargets } from '@/lib/blog/share';
 
 interface ShareLinksProps {
   url: string;
@@ -21,23 +22,10 @@ const CHIP =
  * visible-but-broken when the Clipboard API is unavailable (non-secure origin,
  * older browser): the button reports failure rather than silently doing nothing.
  */
-export default function ShareLinks({ url, title, label = 'Del artikkelen' }: ShareLinksProps) {
+export default function ShareLinks({ url, title, label = SHARE_LABEL }: ShareLinksProps) {
   const [copied, setCopied] = useState<'idle' | 'done' | 'failed'>('idle');
 
-  const targets = [
-    {
-      label: 'LinkedIn',
-      href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
-    },
-    {
-      label: 'X',
-      href: `https://x.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
-    },
-    {
-      label: 'E-post',
-      href: `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(url)}`,
-    },
-  ];
+  const targets = shareTargets(url, title);
 
   const copy = async () => {
     try {

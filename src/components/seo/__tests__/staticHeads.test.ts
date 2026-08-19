@@ -22,6 +22,7 @@ const INDEX_HTML = readFileSync(resolve(__dirname, '../../../..', 'index.html'),
 
 /** Tags Helmet also emits, which therefore must be replaceable, not duplicated. */
 const HELMET_OWNED = [
+  'name="keywords"',
   'name="description"',
   'property="og:type"',
   'property="og:url"',

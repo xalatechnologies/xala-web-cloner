@@ -8,6 +8,7 @@
  * one of them is what gets indexed.
  */
 import type { BlogPost } from "./types";
+import { topicKeywords } from "./topics";
 
 import { getPageSEO } from "@/components/seo/seoContent";
 
@@ -66,6 +67,8 @@ export interface PostMeta {
   canonical: string;
   image?: string;
   keywords?: string;
+  /** 3–5 topic keywords for article:tag. Not the audience chip. */
+  articleTags: string[];
 }
 
 export function postMeta(post: BlogPost): PostMeta {
@@ -75,6 +78,7 @@ export function postMeta(post: BlogPost): PostMeta {
     canonical: postUrl(post),
     image: absolute(post.cover),
     keywords: post.keywords?.join(", "),
+    articleTags: topicKeywords(post),
   };
 }
 

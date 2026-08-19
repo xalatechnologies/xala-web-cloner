@@ -43,6 +43,8 @@ import {
   postMeta,
   postUrl,
 } from "../src/lib/blog/seo";
+import { shareRowHtml } from "../src/lib/blog/share";
+import { topicHashtagLineHtml } from "../src/lib/blog/topics";
 import {
   STATIC_ROUTES,
   blogSitemapEntries,
@@ -105,6 +107,10 @@ interface HeadFields {
   /** Further schema blocks (FAQPage, …) emitted as their own script tags. */
   extraJsonLd?: Record<string, unknown>[];
   publishedTime?: string;
+  /** Post-specific keywords. Without this the shell keeps the homepage string. */
+  keywords?: string;
+  /** Open Graph article:tag values — the same 3–5 topics as the visible hashtags. */
+  articleTags?: string[];
 }
 
 /**
@@ -145,6 +151,7 @@ function renderHead(shell: string, fields: HeadFields): string {
   replaceMeta("property", "twitter:title", fields.title);
   replaceMeta("property", "twitter:description", fields.description);
   replaceMeta("property", "twitter:image", image);
+  if (fields.keywords) replaceMeta("name", "keywords", fields.keywords);
 
   html = html.replace(/<link\s+rel=["']canonical["'][^>]*>/i, "");
 
@@ -154,6 +161,9 @@ function renderHead(shell: string, fields: HeadFields): string {
     fields.publishedTime
       ? `<meta property="article:published_time" content="${fields.publishedTime}" data-rh="true" />`
       : "",
+    ...(fields.articleTags ?? []).map(
+      (tag) => `<meta property="article:tag" content="${escapeHtml(tag)}" data-rh="true" />`,
+    ),
     `<script type="application/ld+json" data-rh="true">${JSON.stringify(fields.jsonLd)}</script>`,
     // Separate blocks rather than one @graph: an FAQPage is a claim about the
     // page, and keeping it standalone is what the rich-result tests expect.
@@ -314,6 +324,8 @@ ${leadHtml}
 </header>
 ${cover}
 ${bodyHtml}
+${topicHashtagLineHtml(post)}
+${shareRowHtml(postUrl(post), post.title)}
 <aside><h2>Snakk med oss om dette</h2><p>${escapeHtml(ORGANIZATION)} bygger løsninger som denne for offentlig sektor og næringsliv.</p><a href="/kontakt">Kontakt oss</a></aside>
 </article>
 ${relatedHtml}
@@ -400,6 +412,8 @@ function main(): void {
           image: meta.image,
           ogType: "article",
           publishedTime: post.date,
+          keywords: meta.keywords,
+          articleTags: meta.articleTags,
           jsonLd: articleJsonLd(post),
           // The rendered page derives this from the body; the static HTML a
           // crawler reads has to carry the same thing, or the FAQ only exists

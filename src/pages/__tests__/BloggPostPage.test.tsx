@@ -1,10 +1,14 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { describe, it, expect, vi } from 'vitest';
 import BloggPostPage from '../BloggPostPage';
+import { topicHashtagLine } from '@/lib/blog/topics';
+import { SHARE_LABEL } from '@/lib/blog/share';
+import { allPosts } from '@/lib/blog';
+import { findPost } from '@/lib/blog/posts';
 
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
@@ -116,5 +120,47 @@ describe('BloggPostPage lead vs cover', () => {
     expect(cover).toBeTruthy();
     expect(heading.compareDocumentPosition(cover!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(cover!.compareDocumentPosition(firstBodyHeading) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+});
+
+const GEBYR_SLUG = 'skjenkebevilling-gebyr-og-omsetningsoppgave';
+
+describe('BloggPostPage topic hashtags and share row', () => {
+  it('shows 3–5 Norwegian topic hashtags as the last line, not IT-leder', () => {
+    const post = findPost(allPosts(), GEBYR_SLUG);
+    expect(post).toBeTruthy();
+    const line = topicHashtagLine(post!);
+
+    renderPost(GEBYR_SLUG);
+
+    expect(line).toBe('#skjenkebevilling #gebyr #omsetningsoppgave #visma #alkoholloven');
+    expect(screen.getByText(line)).toBeInTheDocument();
+    expect(screen.queryByText(/#IT-leder/)).not.toBeInTheDocument();
+    expect(screen.getByText(SHARE_LABEL)).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: 'LinkedIn (åpnes i ny fane)' }),
+    ).toHaveAttribute('href', expect.stringContaining('linkedin.com/sharing/share-offsite'));
+  });
+
+  it('puts post-specific keywords and matching article:tag in the document head', async () => {
+    renderPost(GEBYR_SLUG);
+
+    await waitFor(() => {
+      const keywords = document.head.querySelector('meta[name="keywords"]')?.getAttribute('content');
+      expect(keywords).toContain('skjenkebevilling');
+      expect(keywords).not.toContain('skreddersydd programvare');
+    });
+
+    const tags = [...document.head.querySelectorAll('meta[property="article:tag"]')].map((el) =>
+      el.getAttribute('content'),
+    );
+    expect(tags).toEqual([
+      'skjenkebevilling',
+      'gebyr',
+      'omsetningsoppgave',
+      'visma',
+      'alkoholloven',
+    ]);
+    expect(tags).not.toContain('IT-leder');
   });
 });
