@@ -1,7 +1,7 @@
 ---
 slug: skjenkebevilling-prikker-to-aar
 title: "Skjenkebevilling: prikker som ikke slettes av seg selv"
-seoTitle: "Skjenkebevilling: prikker som ikke slettes av seg selv"
+seoTitle: "Skjenkebevilling: prikker som ikke slettes"
 description: "Prikken teller fra dagen dere brøt loven. 12 prikker på to år er én uke uten bevilling."
 date: 2026-08-19
 author: "Ibrahim Rahmani"
@@ -61,7 +61,7 @@ Logg når prikken ble gitt, hjemmelen, dagen for bruddet, og når den sluttet å
 ## Ofte stilte spørsmål
 
 **Slettes prikker to år etter at de ble gitt?**
-Nei. § 10-2 teller to år fra dagen loven ble brutt.
+Nei. § 10-2 teller to år fra dagen loven ble brutt, ikke fra dagen prikken ble skrevet inn.
 
 **Hva skjer ved 12 prikker på to år?**
 Kommunestyret skal ta bevillingen i én uke. Flere enn 12: lengre stans. Det skjer ikke av seg selv i systemet.
@@ -70,6 +70,6 @@ Kommunestyret skal ta bevillingen i én uke. Flere enn 12: lengre stans. Det skj
 Nei. Xala kan kjøre klokken. Xala gir ikke prikken. Nordre Follo er et ønske. Ikke et ferdig produkt.
 
 **Teller prikker videre etter fornyelse?**
-Ja. Toårsperioden fortsetter. Ny eier, ny periode.
+Ja. Toårsperioden fortsetter når bevillingen fornyes. Ved ny eier starter perioden på nytt.
 
 Trenger dere at klokken kjører i systemet dere har, start på [kontakt](/kontakt).
