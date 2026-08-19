@@ -30,6 +30,7 @@ const posts: BlogPost[] = publishedPosts(
 );
 
 const GEBYR = '/blogg/skjenkebevilling-gebyr-og-omsetningsoppgave';
+const VISMA_FAKTURA = '/blogg/visma-fakturagrunnlag-fra-fagsystem';
 const UNRELATED = [
   '/blogg/iso-27001-i-praksis-for-utviklingsprosjekter',
   '/blogg/wcag-2-2-aa-i-praksis-for-fagsystemer',
@@ -49,15 +50,17 @@ describe('no-JS /blogg?q= listing', () => {
     const filtered = filterBlogPosts(posts, { query: 'gebyr' });
     const html = blogListingHtml(filtered, { query: 'gebyr', totalCount: posts.length });
 
-    expect(filtered).toHaveLength(1);
-    expect(filtered[0]?.slug).toBe('skjenkebevilling-gebyr-og-omsetningsoppgave');
+    expect(filtered.map((post) => post.slug)).toEqual([
+      'skjenkebevilling-gebyr-og-omsetningsoppgave',
+      'visma-fakturagrunnlag-fra-fagsystem',
+    ]);
     expect(blogQueryArtifactPath('gebyr')).toBe('blogg/q/gebyr/index.html');
     expect(blogListingQueries(posts)).toContain('gebyr');
 
     const hrefs = blogListingCardHrefs(html);
-    expect(hrefs).toEqual([GEBYR]);
+    expect(hrefs).toEqual([GEBYR, VISMA_FAKTURA]);
     expect(html).toMatch(/gebyr/i);
-    expect(html).toContain('1 av ');
+    expect(html).toContain('2 av ');
     for (const href of UNRELATED) {
       expect(html, `${href} must not be a listing card for q=gebyr`).not.toContain(href);
     }
