@@ -9,6 +9,9 @@
  *   - the homepage answers 200
  *   - /blogg answers 200 and lists every published post BY TITLE, in the HTML,
  *     with no JavaScript executed — the whole point of the prerender step
+ *   - /blogg?q=gebyr answers 200 with only the gebyr card in #root — a file
+ *     under /blogg/q/gebyr/ is not enough if the live query URL still serves
+ *     the unfiltered listing
  *   - every post page answers 200, carries its own <title> (not the shell's),
  *     its own canonical, and Article JSON-LD
  *   - sitemap.xml and rss.xml parse and list the same posts
@@ -163,6 +166,36 @@ const decode = (html) =>
     .replace(/&quot;/g, '"')
     .replace(/&#39;|&apos;/g, "'");
 
+const GEBYR_HREF = "/blogg/skjenkebevilling-gebyr-og-omsetningsoppgave";
+const UNRELATED_LISTING_HREFS = [
+  "/blogg/iso-27001-i-praksis-for-utviklingsprosjekter",
+  "/blogg/wcag-2-2-aa-i-praksis-for-fagsystemer",
+  "/blogg/id-porten-eller-maskinporten-hva-velger-du",
+];
+
+/** Inner HTML of `#root`, including nested divs — first `</div>` is not enough. */
+function rootInner(html) {
+  const start = html.search(/<div id="root">/i);
+  if (start < 0) return "";
+  const open = html.indexOf(">", start) + 1;
+  let depth = 1;
+  let i = open;
+  while (i < html.length && depth > 0) {
+    const nextOpen = html.indexOf("<div", i);
+    const nextClose = html.indexOf("</div>", i);
+    if (nextClose < 0) return html.slice(open);
+    if (nextOpen >= 0 && nextOpen < nextClose) {
+      depth += 1;
+      i = nextOpen + 4;
+    } else {
+      depth -= 1;
+      if (depth === 0) return html.slice(open, nextClose);
+      i = nextClose + 6;
+    }
+  }
+  return html.slice(open);
+}
+
 async function main() {
   console.log(`Verifying ${ORIGIN} (pinned to ${DEPLOY_IP})\n`);
   await reportDns(new URL(ORIGIN).hostname);
@@ -183,6 +216,25 @@ async function main() {
     index.body.length > 0 && !/<div id="root">\s*<\/div>/.test(index.body),
     "/blogg has prerendered markup (#root is not empty)",
   );
+
+  // First HTML for the query URL, not a file sitting under /blogg/q/.
+  const queried = await fetchText(`${ORIGIN}/blogg?q=gebyr`);
+  check(queried.status === 200, `/blogg?q=gebyr 200 (got ${queried.status})`);
+  const queriedRoot = rootInner(queried.body);
+  check(
+    queried.body.length > 0 && queriedRoot.length > 0 && !/<div id="root">\s*<\/div>/.test(queried.body),
+    "/blogg?q=gebyr has prerendered markup (#root is not empty)",
+  );
+  check(
+    queriedRoot.includes(GEBYR_HREF),
+    `/blogg?q=gebyr #root has the gebyr card (${GEBYR_HREF})`,
+  );
+  for (const href of UNRELATED_LISTING_HREFS) {
+    check(
+      !queriedRoot.includes(href),
+      `/blogg?q=gebyr #root must not list ${href}`,
+    );
+  }
 
   for (const post of posts) {
     const url = `${ORIGIN}/blogg/${post.slug}`;

@@ -27,6 +27,8 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 import { coverAlt, parsePosts, publishedPosts, relatedPosts } from "../src/lib/blog/posts";
+import { blogListingHtml } from "../src/lib/blog/listingHtml";
+import { blogListingQueries, blogQueryFileKey, filterBlogPosts } from "../src/lib/blog/search";
 import { extractFaq, faqJsonLd, splitLeadSection } from "../src/lib/blog/toc";
 import { getPageSEO } from "../src/components/seo/seoContent";
 import { CANONICAL_ALIASES, resolveRoute } from "../src/components/seo/routeRules";
@@ -318,26 +320,6 @@ ${relatedHtml}
 </main></div>`;
 }
 
-function indexHtml(posts: BlogPost[]): string {
-  const listing = getPageSEO("blog", "no");
-  const cards = posts
-    .map(
-      (post) => `<li><article>
-<h2><a href="${BLOG_PATH}/${escapeHtml(post.slug)}">${escapeHtml(post.title)}</a></h2>
-<p>${escapeHtml(post.description)}</p>
-<p>${post.tag ? `<span>${escapeHtml(post.tag)}</span> · ` : ""}<time datetime="${post.date}">${escapeHtml(formatDate(post.date, post.lang))}</time> · <span>${post.readingMinutes} min</span></p>
-</article></li>`,
-    )
-    .join("\n");
-
-  return `<div class="min-h-screen flex flex-col"><main>
-<nav aria-label="Brødsmuler"><a href="/">Forside</a> / <span aria-current="page">${escapeHtml(listing.title.split(" | ")[0])}</span></nav>
-<h1>${escapeHtml(listing.title.split(" | ")[0])}</h1>
-<p>${escapeHtml(listing.description)}</p>
-${posts.length ? `<ul>\n${cards}\n</ul>` : "<p>Ingen artikler her ennå.</p>"}
-</main></div>`;
-}
-
 function write(file: string, contents: string): void {
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, contents, "utf-8");
@@ -366,19 +348,42 @@ function main(): void {
   const today = new Date().toISOString().slice(0, 10);
 
   const listing = getPageSEO("blog", "no");
+  const listingHead = (listed: BlogPost[]) =>
+    renderHead(shell, {
+      title: listing.title,
+      description: listing.description,
+      canonical: `${SITE_ORIGIN}${BLOG_PATH}`,
+      ogType: "website",
+      jsonLd: blogJsonLd(listed),
+    });
+
   write(
     path.join(DIST, "blogg", "index.html"),
+    renderBody(listingHead(posts), blogListingHtml(posts)),
+  );
+
+  // /blogg?q= is one static file unless we emit a filtered listing and the
+  // host maps the query onto it. Without these files a crawler (and a reader
+  // with JavaScript off) always gets the full unfiltered card list.
+  write(
+    path.join(DIST, "blogg", "q", "_none", "index.html"),
     renderBody(
-      renderHead(shell, {
-        title: listing.title,
-        description: listing.description,
-        canonical: `${SITE_ORIGIN}${BLOG_PATH}`,
-        ogType: "website",
-        jsonLd: blogJsonLd(posts),
-      }),
-      indexHtml(posts),
+      listingHead([]),
+      blogListingHtml([], { search: true, totalCount: posts.length }),
     ),
   );
+  for (const query of blogListingQueries(posts)) {
+    const key = blogQueryFileKey(query);
+    if (!key) continue;
+    const filtered = filterBlogPosts(posts, { query });
+    write(
+      path.join(DIST, "blogg", "q", key, "index.html"),
+      renderBody(
+        listingHead(filtered),
+        blogListingHtml(filtered, { query, totalCount: posts.length }),
+      ),
+    );
+  }
 
   for (const post of posts) {
     // Same title / description / canonical / image as Helmet. A second
@@ -659,7 +664,7 @@ function main(): void {
   }
 
   console.log(
-    `prerender: ${posts.length} post(s) → dist/blogg/, plus rss.xml and sitemap.xml (${escapeXml(SITE_ORIGIN)})`,
+    `prerender: ${posts.length} post(s) → dist/blogg/, ${blogListingQueries(posts).length} query listing(s), plus rss.xml and sitemap.xml (${escapeXml(SITE_ORIGIN)})`,
   );
 }
 

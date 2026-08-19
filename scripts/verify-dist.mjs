@@ -81,5 +81,35 @@ if (missingAliases.length) {
   process.exit(1);
 }
 
+const gebyrListing = join(DIST, 'blogg', 'q', 'gebyr', 'index.html');
+if (!existsSync(gebyrListing)) {
+  console.error('verify-dist: dist/blogg/q/gebyr/index.html missing — /blogg?q= was not prerendered.');
+  process.exit(1);
+}
+
+const gebyrHtml = readFileSync(gebyrListing, 'utf8');
+const gebyrCards = [...gebyrHtml.matchAll(/<h2><a href="(\/blogg\/[^"]+)"/g)].map((m) => m[1]);
+if (!gebyrCards.includes('/blogg/skjenkebevilling-gebyr-og-omsetningsoppgave')) {
+  console.error('verify-dist: /blogg?q=gebyr listing is missing the gebyr post.');
+  process.exit(1);
+}
+const leaked = gebyrCards.filter((href) => href !== '/blogg/skjenkebevilling-gebyr-og-omsetningsoppgave');
+if (leaked.length) {
+  console.error(`verify-dist: /blogg?q=gebyr still prerenders unrelated cards:\n  ${leaked.join('\n  ')}`);
+  process.exit(1);
+}
+
+const unfiltered = join(DIST, 'blogg', 'index.html');
+if (!existsSync(unfiltered)) {
+  console.error('verify-dist: dist/blogg/index.html missing — the unfiltered listing was not prerendered.');
+  process.exit(1);
+}
+const unfilteredCards = [...readFileSync(unfiltered, 'utf8').matchAll(/<h2><a href="(\/blogg\/[^"]+)"/g)];
+if (unfilteredCards.length < 2) {
+  console.error('verify-dist: /blogg with no q no longer prerenders the full listing.');
+  process.exit(1);
+}
+
 console.log(`verify-dist: ${locs.length} sitemap URLs, all served by a file in dist/`);
 console.log(`verify-dist: ${aliases.length} canonical alias(es), all served by a file in dist/`);
+console.log('verify-dist: /blogg?q=gebyr is a filtered listing, /blogg is not');
