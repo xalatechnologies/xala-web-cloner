@@ -91,5 +91,3 @@ Nei. Prikk krever forhåndsvarsel og kommunestyrets enkeltvedtak. Det er skrevet
 Nei. Xala kan koble hendelsen inn i portalen dere har. Xala eier ikke Trygg 24. Xala eier ikke en kontrollapp. Prikk og vedtak blir hos kommunen.
 
 Trenger dere at feltfunnet lander i saken, start på [kontakt](/kontakt).
-
-#skjenkekontroll #bevilling #alkoholloven #kommune #kontrollrapport

@@ -22,7 +22,7 @@ cta: /kontakt
 
 Klokka 09:10. Public 360 i én fane. Fagsystemet i en annen. Journalposten kopieres for hånd.
 
-To faner er ikke én sak. Saksbehandleren er kabelen.
+To faner er ikke én sak. Saksbehandleren er koblingen.
 
 Én sak. Når fagsystemet oppretter eller mottar et journalpliktig dokument, skriv journalmetadata inn i 360, eller inn i journalen dere faktisk bruker, fra den hendelsen. Innkommende dokumenter festes på saken. Ikke bygg et tredje register.
 
@@ -66,7 +66,7 @@ Det er kanalen. Bruk [eFormidling](https://docs.digdir.no/docs/eFormidling/Funks
 
 Journalmetadata fra hendelsen i fagsystemet inn i 360, eller inn i journalen dere bruker, kan kobles. Innkommende dokumenter festes på saken. Logg hvilket system som skrev hva. Kommunen er behandlingsansvarlig. Databehandleravtale med 360 og med fagsystemet. Ikke kopier hele saken inn i begge «for sikkerhets skyld».
 
-Å behandle 360 som fagsystemet, kan ikke kobles. Ikke hopp over journalplikt. Ikke late som forskriften krever en 360-kabel. Skjønnet i saken blir hos saksbehandleren.
+Å behandle 360 som fagsystemet, kan ikke kobles. Ikke hopp over journalplikt. Ikke late som forskriften krever en 360-kobling. Skjønnet i saken blir hos saksbehandleren.
 
 Xala kan koble 360 og fagsystemet dere har. Xala eier ikke Public 360. Xala eier ikke fagsystemet.
 
