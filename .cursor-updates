@@ -1,7 +1,31 @@
 # Cursor Updates
 
-- Implemented email sending functionality using Resend for the contact form, including email service, API route, and form updates.
-- Refactored email sending to use Supabase Edge Functions instead of Express server.
-- Fixed environment variable configuration to use Vite's import.meta.env system.
-- Added database trigger and Edge Function for automated email notifications on contact form submissions.
-- Fixed unofficial Bokmål leftover in blog post, replaced kabler with official form kobler. Verified no remaining kable-family leftovers across all blog content. 
+## Fix for Numeric Topic Hashtag Matching
+
+### Summary
+Fixed verify-live script failure for posts with numeric topic keywords like "360". The verification gate was rejecting valid posts because the hashtag matcher only recognized hashtags starting with letters.
+
+### Root Cause
+Posts with numeric keywords like "360" (Public 360 software) generate hashtags like #360. The live HTML correctly contained these hashtags, but the verification regex required hashtags to start with a letter. This caused deployments to fail even though the site was correctly deployed.
+
+### Changes Made
+Updated firstHtmlHashtags function in scripts/verify-live.mjs to match hashtags starting with either letters or numbers, while filtering out 6-digit and 8-digit hex color codes.
+
+Added comprehensive test coverage for numeric hashtags and hex color filtering.
+
+### Technical Details
+Changed regex from letter-only start to alphanumeric start
+Added post-match filtering to exclude 6-digit hex colors like #0F1117
+Added post-match filtering to exclude 8-digit hex colors like #AABBCCDD
+Retained matching for 3-digit numbers like #360 as valid topics
+
+### Testing
+All existing tests pass
+New test case for #360 hashtag matching
+New test case for hex color exclusion
+Lint and build successful
+
+### Pull Request
+PR #107 created and ready for review
+Branch: cursor/fix-numeric-hashtag-matching-6d06
+Resolves issues #147 and #148
