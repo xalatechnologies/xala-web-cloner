@@ -1,7 +1,7 @@
 ---
 slug: hva-er-et-saksbehandlingssystem
 title: "Hva er et saksbehandlingssystem, og når holder det ikke med hyllevare?"
-seoTitle: "Hva er et saksbehandlingssystem, og når holder det ikke med hyllevare?"
+seoTitle: "Hva er et saksbehandlingssystem?"
 description: "Et saksbehandlingssystem er der saken lever. Hyllevare holder når flyten er lik nok. Den holder ikke når journal, register og vedtak ikke møtes."
 date: 2026-08-21
 author: "Ibrahim Rahmani"
@@ -37,7 +37,7 @@ Da er jobben å koble, ikke å erstatte. ID-porten inn. Journal ut. Status til s
 
 Når loven hos dere ikke sitter i produktet. Når søkeren må laste opp det kommunen allerede vet. Når saksbehandleren flytter filer mellom faner. Når vedtaket skal begrunnes, men systemet bare sier ja eller nei.
 
-[Prinsipp 4](https://www.digdir.no/digital-samhandling/prinsipp-4-del-og-gjenbruk-data/1061) er at data skal gjenbrukes. Folkeregister og skatt skal inn i saken, ikke i et vedlegg søkeren scannet. Hyllevare som ikke kan hente det, tvinger fram manuell kontroll og etterslep.
+[Prinsipp 4](https://www.digdir.no/digital-samhandling/prinsipp-4-del-og-gjenbruk-data/1061) er at data skal gjenbrukes. Folkeregister og skatt skal inn i saken, ikke i et vedlegg søkeren skannet. Hyllevare som ikke kan hente det, tvinger fram manuell kontroll og etterslep.
 
 Skjønnet blir hos saksbehandleren. Det som følger av regler, kan kjøres automatisk, med kontroll og spor. Det skillet står i [Automatisering av saksbehandling](/blogg/automatisering-av-saksbehandling-hva-boer-og-ikke). Denne teksten er hva systemet er, og når boksen er for trang.
 
@@ -53,7 +53,7 @@ Vi eier ikke Altinn. Vi eier ikke 360. Vi bygger det som gjør at saken kommer i
 
 Kostnad uten oppdiktede kroner: se [Hva koster et saksbehandlingssystem?](/priser).
 
-## FAQ
+## Ofte stilte spørsmål
 
 ### Hva er et saksbehandlingssystem?
 
