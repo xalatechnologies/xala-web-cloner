@@ -1,7 +1,7 @@
 ---
 slug: skjenkekontroll-eget-system
 title: "Når skjenkekontrollen lever i et annet system enn saken"
-seoTitle: "Når skjenkekontrollen lever i et annet system enn saken"
+seoTitle: "Når kontrollen lever i et annet system enn saken"
 description: "Kontrollen lever hos vaktselskapet. Vedtaket lever i portalen. Kabl hendelsen inn i saken. Ikke automatiser prikk."
 date: 2026-07-01
 author: "Ibrahim Rahmani"
