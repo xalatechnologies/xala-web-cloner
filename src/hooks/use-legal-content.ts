@@ -42,7 +42,10 @@ export const useLegalContent = ({ type }: UseLegalContentProps) => {
       sections: content.sections.map(s => ({
         id: s.id,
         title: s.title,
-        description: s.description || undefined,
+        // Keep the section lead when items are also present. Dropping `content`
+        // here is how a processors intro (and the older collection/usage leads)
+        // never reached the page.
+        description: s.description || (s.items && s.items.length > 0 ? s.content : undefined) || undefined,
         items: s.items && s.items.length > 0 
           ? s.items 
           : (s.content ? [{ id: s.id, title: undefined, content: s.content }] : [])

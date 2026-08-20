@@ -101,10 +101,11 @@ function markdownToHtml(body: string): string {
 interface HeadFields {
   title: string;
   description: string;
-  canonical: string;
+  /** Omit on 404: a shared error document has no single self-URL. */
+  canonical?: string;
   image?: string;
   ogType: "article" | "website";
-  jsonLd: Record<string, unknown>;
+  jsonLd?: Record<string, unknown>;
   /** Further schema blocks (FAQPage, …) emitted as their own script tags. */
   extraJsonLd?: Record<string, unknown>[];
   publishedTime?: string;
@@ -112,6 +113,8 @@ interface HeadFields {
   keywords?: string;
   /** Open Graph article:tag values — the same 3–5 topics as the visible hashtags. */
   articleTags?: string[];
+  /** Unknown paths must not inherit the homepage index,follow. */
+  noIndex?: boolean;
 }
 
 /**
@@ -141,23 +144,33 @@ function renderHead(shell: string, fields: HeadFields): string {
   replaceMeta("name", "description", fields.description);
   replaceMeta("property", "og:title", fields.title);
   replaceMeta("property", "og:description", fields.description);
-  replaceMeta("property", "og:url", fields.canonical);
   replaceMeta("property", "og:type", fields.ogType);
   // Default share image so summary_large_image is never a card with no image.
   // Blog posts pass their cover; everything else uses /og-image.png.
   const image = fields.image ?? `${SITE_ORIGIN}/og-image.png`;
   replaceMeta("property", "og:image", image);
   replaceMeta("property", "twitter:card", "summary_large_image");
-  replaceMeta("property", "twitter:url", fields.canonical);
   replaceMeta("property", "twitter:title", fields.title);
   replaceMeta("property", "twitter:description", fields.description);
   replaceMeta("property", "twitter:image", image);
   if (fields.keywords) replaceMeta("name", "keywords", fields.keywords);
+  if (fields.noIndex) replaceMeta("name", "robots", "noindex, follow");
 
   html = html.replace(/<link\s+rel=["']canonical["'][^>]*>/i, "");
+  if (fields.canonical) {
+    replaceMeta("property", "og:url", fields.canonical);
+    replaceMeta("property", "twitter:url", fields.canonical);
+  } else {
+    // 404.html is reused for every unknown path. Leaving the homepage
+    // og:url / twitter:url here is how scrapers treated a dead URL as /.
+    html = html.replace(/<meta\s+property=["']og:url["'][^>]*>/gi, "");
+    html = html.replace(/<meta\s+property=["']twitter:url["'][^>]*>/gi, "");
+  }
 
   const extra = [
-    `<link rel="canonical" href="${escapeHtml(fields.canonical)}" data-rh="true" />`,
+    fields.canonical
+      ? `<link rel="canonical" href="${escapeHtml(fields.canonical)}" data-rh="true" />`
+      : "",
     `<link rel="alternate" type="application/rss+xml" title="${escapeHtml(getPageSEO("blog", "no").title)}" href="${SITE_ORIGIN}${BLOG_PATH}/rss.xml" />`,
     fields.publishedTime
       ? `<meta property="article:published_time" content="${fields.publishedTime}" data-rh="true" />`
@@ -165,7 +178,9 @@ function renderHead(shell: string, fields: HeadFields): string {
     ...(fields.articleTags ?? []).map(
       (tag) => `<meta property="article:tag" content="${escapeHtml(tag)}" data-rh="true" />`,
     ),
-    `<script type="application/ld+json" data-rh="true">${JSON.stringify(fields.jsonLd)}</script>`,
+    fields.jsonLd
+      ? `<script type="application/ld+json" data-rh="true">${JSON.stringify(fields.jsonLd)}</script>`
+      : "",
     // Separate blocks rather than one @graph: an FAQPage is a claim about the
     // page, and keeping it standalone is what the rich-result tests expect.
     ...(fields.extraJsonLd ?? []).map(
@@ -610,7 +625,26 @@ function main(): void {
     );
   }
 
-  write(path.join(DIST, "404.html"), shell);
+  // Unknown paths return this file as HTTP 404. Writing the homepage shell
+  // here is how first HTML advertised https://xala.no/ with the home title
+  // and no noindex (XWEB-199).
+  const notFound = getPageSEO("notFound", "no");
+  write(
+    path.join(DIST, "404.html"),
+    renderBody(
+      renderHead(shell, {
+        title: notFound.title,
+        description: notFound.description,
+        ogType: "website",
+        noIndex: true,
+      }),
+      staticRouteHtml(
+        staticRouteVisibleHeading("/404", notFound.title),
+        notFound.description,
+        MAIN_NAV,
+      ),
+    ),
+  );
 
   write(path.join(DIST, "blogg", "rss.xml"), renderRss(posts));
 

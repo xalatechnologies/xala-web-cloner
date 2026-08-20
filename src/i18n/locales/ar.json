@@ -19,7 +19,10 @@
     "technologyDescription": ".NET وAzure وReact، ولماذا نختار كما نختار",
     "aboutDescription": "تعرف على مهمتنا وخبرتنا",
     "contactDescription": "تواصل معنا لمحادثة غير ملزمة",
-    "prices": "الأسعار"
+    "prices": "الأسعار",
+    "toggleTheme": "تبديل المظهر",
+    "openMenu": "فتح القائمة",
+    "closeMenu": "إغلاق القائمة"
   },
   "Loading": "جاري التحميل",
   "hero": {

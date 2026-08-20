@@ -19,7 +19,10 @@
     "technologyDescription": ".NET, Azure and React, and why we choose as we do",
     "aboutDescription": "Learn about our mission and expertise",
     "contactDescription": "Get in touch for a non-committal conversation",
-    "prices": "Prices"
+    "prices": "Prices",
+    "toggleTheme": "Toggle theme",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "Loading": "Loading",
   "hero": {

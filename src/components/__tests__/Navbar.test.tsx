@@ -77,7 +77,7 @@ describe('Navbar', () => {
 
     expect(screen.queryByRole('link', { name: 'Hjem' })).not.toBeInTheDocument();
 
-    fireEvent.click(screen.getByLabelText('Open menu'));
+    fireEvent.click(screen.getByLabelText('Åpne meny'));
 
     // "Hjem" only exists inside the drawer, so it is an unambiguous marker
     // that the drawer mounted.
@@ -85,7 +85,7 @@ describe('Navbar', () => {
     expect(screen.getByRole('searchbox', { name: 'Søk på nettstedet i navigasjonen' })).toBeInTheDocument();
     expect(screen.getByRole('searchbox', { name: 'Søk på nettstedet i menyen' })).toBeInTheDocument();
 
-    fireEvent.click(screen.getByLabelText('Close menu'));
+    fireEvent.click(screen.getByLabelText('Lukk meny'));
 
     expect(screen.queryByRole('link', { name: 'Hjem' })).not.toBeInTheDocument();
   });
@@ -127,6 +127,15 @@ describe('Navbar', () => {
       expect(screen.queryByRole('button', { name })).not.toBeInTheDocument();
     }
     expect(screen.queryByRole('group', { name: /språk|language/i })).not.toBeInTheDocument();
+  });
+
+  it('names the theme and menu buttons in Norwegian through i18n', () => {
+    renderNavbar();
+
+    expect(screen.getByLabelText('Bytt tema')).toBeInTheDocument();
+    expect(screen.getByLabelText('Åpne meny')).toBeInTheDocument();
+    expect(screen.queryByLabelText('Toggle theme')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('Open menu')).not.toBeInTheDocument();
   });
 
   it('exposes the logo as a link home', () => {

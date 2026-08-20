@@ -66,10 +66,17 @@ describe('RouteSEO renders head tags', () => {
     expect(head.property('twitter:title')).not.toContain('Innovative');
   });
 
-  it('marks the 404 page noindex', async () => {
-    renderAt('/finnes-ikke');
+  it('marks the 404 page noindex with the notFound title, not the homepage', async () => {
+    const expected = getPageSEO('notFound', 'no');
+    const home = getPageSEO('home', 'no');
+    renderAt('/this-path-does-not-exist');
 
-    await waitFor(() => expect(head.meta('robots')).toBe('noindex, follow'));
+    await waitFor(() => expect(document.title).toBe(expected.title));
+    expect(head.meta('description')).toBe(expected.description);
+    expect(document.title).not.toBe(home.title);
+    expect(head.meta('robots')).toBe('noindex, follow');
+    expect(head.canonical()).toBe('https://xala.no/this-path-does-not-exist');
+    expect(head.canonical()).not.toBe('https://xala.no/');
   });
 
   it('keeps real pages indexable', async () => {

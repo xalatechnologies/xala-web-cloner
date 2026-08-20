@@ -19,7 +19,10 @@
     "technologyDescription": ".NET, Azure og React, og hvorfor vi velger som vi gjør",
     "aboutDescription": "Lær mer om vår misjon og ekspertise",
     "contactDescription": "Ta kontakt for en uforpliktende samtale",
-    "prices": "Priser"
+    "prices": "Priser",
+    "toggleTheme": "Bytt tema",
+    "openMenu": "Åpne meny",
+    "closeMenu": "Lukk meny"
   },
   "Loading": "Laster",
   "hero": {

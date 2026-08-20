@@ -176,4 +176,19 @@ describe('prerendered static routes', () => {
     expect(resolveRoute('/faq').pageId).toBe('faq');
     expect(resolveRoute('/faq').pageId).not.toBe('notFound');
   });
+
+  it('writes 404.html with the notFound title, no homepage canonical, and noindex', () => {
+    // First HTML for unknown paths is dist/404.html. Writing the untouched
+    // shell there left scrapers the homepage title, https://xala.no/ and
+    // no robots tag (XWEB-199).
+    const prerender = readFileSync(resolve(__dirname, '../../../../scripts/prerender-blog.ts'), 'utf8');
+    const notFound = getPageSEO('notFound', 'no');
+    const home = getPageSEO('home', 'no');
+    expect(notFound.title).not.toBe(home.title);
+    expect(prerender).toContain('getPageSEO("notFound"');
+    expect(prerender).toContain('noIndex: true');
+    expect(prerender).toMatch(/write\(\s*path\.join\(\s*DIST,\s*"404\.html"/);
+    expect(prerender).toContain('name", "robots"');
+    expect(prerender).not.toMatch(/write\(\s*path\.join\(\s*DIST,\s*"404\.html"\),\s*shell\)/);
+  });
 });
