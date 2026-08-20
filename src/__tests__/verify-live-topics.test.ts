@@ -25,6 +25,13 @@ const GEBYR_PATH = resolve(
 const gebyrPost = parsePost(readFileSync(GEBYR_PATH, 'utf8'), GEBYR_PATH);
 if ('reason' in gebyrPost) throw new Error(gebyrPost.reason);
 
+const VISMA_PATH = resolve(
+  __dirname,
+  '../content/blog/2026-08-08-skjenkebevilling-integrasjon-360-visma.md',
+);
+const vismaPost = parsePost(readFileSync(VISMA_PATH, 'utf8'), VISMA_PATH);
+if ('reason' in vismaPost) throw new Error(vismaPost.reason);
+
 const GEBYR_TOPICS = [
   'skjenkebevilling',
   'gebyr',
@@ -102,5 +109,32 @@ describe('verify-live first-HTML topics', () => {
 
     const noShare = LIVE_GEBYR.replace('Del artikkelen', 'Kopier');
     expect(isPostTopicHead(noShare, gebyrPost)).toBe(false);
+  });
+
+  it('matches numeric topic hashtags like #360 but excludes hex color tokens', () => {
+    const VISMA_TOPICS = ['skjenkebevilling', '360', 'visma', 'integrasjon', 'bevilling'];
+    const liveVisma = `<html><head>
+<title>Skjenkebevilling: 360 og Visma mot portalen | Xala</title>
+<meta name="keywords" content="skjenkebevilling, 360, visma, integrasjon, bevilling, offentlig sektor" />
+${VISMA_TOPICS.map((tag) => `<meta property="article:tag" content="${tag}" />`).join('\n')}
+</head><body><div id="root">
+<p>#skjenkebevilling #360 #visma #integrasjon #bevilling</p>
+<aside><p>Del artikkelen</p><a href="https://www.linkedin.com/sharing/share-offsite/?url=x">LinkedIn</a></aside>
+</div></body></html>`;
+
+    expect(firstHtmlHashtags(liveVisma)).toEqual(VISMA_TOPICS.map((topic) => `#${topic}`));
+    expect(isPostTopicHead(liveVisma, vismaPost)).toBe(true);
+
+    const withHexColors = `<div id="root">
+<style>.primary{color:#4F46E5;background:#0F1117;border:#AABBCCDD}</style>
+<p>#skjenkebevilling #360 #visma #integrasjon #bevilling</p>
+<p>Del artikkelen</p>
+</div>`;
+    const hashtags = firstHtmlHashtags(withHexColors);
+    expect(hashtags).toContain('#360');
+    expect(hashtags).toContain('#skjenkebevilling');
+    expect(hashtags).not.toContain('#4F46E5');
+    expect(hashtags).not.toContain('#0F1117');
+    expect(hashtags).not.toContain('#AABBCCDD');
   });
 });
