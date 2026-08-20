@@ -38,7 +38,7 @@ Det finnes ingen lovplikt om at en skjenkeportal *skal* snakke med 360. Journalp
 
 [Digitaliseringsrundskrivet](https://www.regjeringen.no/no/dokumenter/digitaliseringsrundskrivet/id3103320/) peker på ID-porten, Altinn, digital postkasse og Kontakt- og reservasjonsregisteret. [Digdir](https://www.digdir.no/felleslosninger/nasjonale-felleslosninger/750) og [Regjeringen](https://www.regjeringen.no/no/tema/statlig-forvaltning/it-politikk/felleskomponenter/id2342598/) kaller det fellesløsninger og felleskomponenter.
 
-Trikset er ikke å bygge en privat identitet, postkasse eller et kommunalt saksregister ved siden av. Koble ID-porten, Maskinporten, Altinn, Folkeregister, eFormidling eller Fiks der de passer. Xala kabler. Xala eier ikke fellesløsningen.
+Trikset er ikke å bygge en privat identitet, postkasse eller et kommunalt saksregister ved siden av. Koble ID-porten, Maskinporten, Altinn, Folkeregister, eFormidling eller Fiks der de passer. Xala kobler. Xala eier ikke fellesløsningen.
 
 Kommunen er behandlingsansvarlig. Det skal finnes databehandleravtale med 360, Visma og portalen. Logg hvilket system som skrev hva. Ikke kopier hele saken inn i alle tre «for sikkerhets skyld». [NSM](https://nsm.no/hold-deg-oppdatert/meninger/logging-du-ma-vite-hva-som-skjer-og-hva-som-har-skjedd) er at dere må vite hva som skjedde.
 
