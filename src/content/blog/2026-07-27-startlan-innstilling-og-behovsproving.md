@@ -26,7 +26,7 @@ Ett klikk er ikke vedtaket.
 
 Hold innstilling og vedtak som to roller. Hent tallene innstillingen trenger. Krev begrunnelse før et avslag kan gå ut. Ikke slå de to klikkene sammen. Ikke la behovsprøvingen bli et ja uten lesing.
 
-I Startskudd innstiller saksbehandler. Fullmaktshaver tar vedtaket. Forskriften § 5-4 krever behovsprøving, ikke et automatisk ja. Xala kan kable de to rollene og hentingen. Xala eier ikke Startskudd. Xala innvilger ikke lånet.
+I Startskudd innstiller saksbehandler. Fullmaktshaver tar vedtaket. Forskriften § 5-4 krever behovsprøving, ikke et automatisk ja. Xala kan koble de to rollene og hentingen. Xala eier ikke Startskudd. Xala innvilger ikke lånet.
 
 eID og vedlegg er et annet steg. Det er skrevet i [Uten BankID skal du likevel kunne søke](/blogg/startlan-eid-og-vedlegg). Her er søknaden inne. Nå skal to navn på saken.
 
@@ -61,13 +61,13 @@ Har husstanden barn, skal barnets beste stå i vedtaket, jamfør Grunnloven § 1
 
 ## Hva maskinen kan gjøre
 
-To-rolle-løypa kan kables. [Startskudd henter skattemeldinger](https://www.husbanken.no/kommune/startlaan/veileder/behandle-soknader/). Kommunen må fortsatt hente gjeldsregister og kredittsjekk, slik finansavtaleloven ber om. Et felt for begrunnelse før avslaget kan forlate saken, kan kables. Et foreløpig svar når saken ikke blir klar i rimelig tid, kan kables.
+To-rolle-løypa kan kobles. [Startskudd henter skattemeldinger](https://www.husbanken.no/kommune/startlaan/veileder/behandle-soknader/). Kommunen må fortsatt hente gjeldsregister og kredittsjekk, slik finansavtaleloven ber om. Et felt for begrunnelse før avslaget kan forlate saken, kan kobles. Et foreløpig svar når saken ikke blir klar i rimelig tid, kan kobles.
 
 Innstilling og vedtak er to formål. Logg hvem som innstilte. Hvem som besluttet. Hvilke registre som ble hentet. Ikke lim kredittsjekken inn i e-post.
 
-Å slå innstilling og vedtak sammen til én person og ett klikk, kan ikke kables. Ikke auto-innvilge. Ikke auto-avslag fra behovsprøvingen. En person leser saken. Barnets beste hoppes ikke over når det er barn i husstanden.
+Å slå innstilling og vedtak sammen til én person og ett klikk, kan ikke kobles. Ikke auto-innvilge. Ikke auto-avslag fra behovsprøvingen. En person leser saken. Barnets beste hoppes ikke over når det er barn i husstanden.
 
-Xala kan kable de to rollene, hentingen og begrunnelsesfeltet inn i Startskudd eller fagsystemet dere har. Xala eier ikke Startskudd. Xala innvilger ikke lånet.
+Xala kan koble de to rollene, hentingen og begrunnelsesfeltet inn i Startskudd eller fagsystemet dere har. Xala eier ikke Startskudd. Xala innvilger ikke lånet.
 
 ## Ofte stilte spørsmål
 
@@ -81,6 +81,6 @@ Nei. § 5-4 krever behovsprøving. Hver lånsøker vurderes individuelt. Fem år
 Ja. Husbanken skriver at det skal stå i vedtaket hva som er begrunnelsen for avslaget. Feltet må fylles før avslaget kan gå ut.
 
 **Kan Xala eie Startskudd eller innvilge lånet?**
-Nei. Xala kan kable rollene og oppslaget inn i systemet dere har. Xala eier ikke Startskudd. Vedtaket blir hos fullmaktshaver.
+Nei. Xala kan koble rollene og oppslaget inn i systemet dere har. Xala eier ikke Startskudd. Vedtaket blir hos fullmaktshaver.
 
 Trenger dere at de to rollene og oppslaget henger sammen, start på [kontakt](/kontakt).

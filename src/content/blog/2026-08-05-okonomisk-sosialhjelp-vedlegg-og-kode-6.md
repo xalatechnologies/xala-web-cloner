@@ -25,7 +25,7 @@ Så den andre døren. Hemmelig adresse. Kode 6 eller 7. Digital søknad er steng
 
 Be bare om det denne saken trenger. Ikke dump hele listen på alle. Ikke tving digital søknad på den som ikke kan bruke den.
 
-Oslo ber om skattemelding, kontooversikt og husleiekontrakt. Digisos kan allerede hente skatt og bostøtte. Har du kode 6 eller 7, er digital søknad stengt. Xala kan kable hentingen og papirsporet. Xala eier ikke Digisos.
+Oslo ber om skattemelding, kontooversikt og husleiekontrakt. Digisos kan allerede hente skatt og bostøtte. Har du kode 6 eller 7, er digital søknad stengt. Xala kan koble hentingen og papirsporet. Xala eier ikke Digisos.
 
 Saksbehandleren venter på ettersendelse. Eller får en papirsøknad med den samme lange listen. Som om ingenting var annerledes.
 
@@ -57,13 +57,13 @@ I en nødssituasjon skal dokumentasjonen ned til et minimum. Helst samme dag. De
 
 ## Hva maskinen kan gjøre
 
-Hvilke felt som vises, kan kables ut fra svarene. Kode 6 og 7 kan styres til papir. Ikke til et skjema som henter folkeregistrert adresse.
+Hvilke felt som vises, kan kobles ut fra svarene. Kode 6 og 7 kan styres til papir. Ikke til et skjema som henter folkeregistrert adresse.
 
-Hele vedleggslisten til alle kan ikke kables. En kode 6-sak kan ikke behandles som om den digitale veien var åpen. Vedtaket blir hos saksbehandleren.
+Hele vedleggslisten til alle kan ikke kobles. En kode 6-sak kan ikke behandles som om den digitale veien var åpen. Vedtaket blir hos saksbehandleren.
 
 Ikke kopier en hemmelig adresse inn i e-post. Logg hva som ble hentet, med samtykke, og når.
 
-Xala kan kable skjemaet og unntaket inn i fagsystemet. Xala eier ikke Digisos. Xala eier ikke portalen.
+Xala kan koble skjemaet og unntaket inn i fagsystemet. Xala eier ikke Digisos. Xala eier ikke portalen.
 
 ## Ofte stilte spørsmål
 
@@ -77,6 +77,6 @@ Nei. Nav skriver at personer med hemmelig adresse (kode 6 og 7) ikke kan bruke d
 Etter samtykke kan søknaden hente inntektsdata fra Skatteetaten og statlig bostøtte fra Husbanken. Det erstatter ikke vedtaket, og det erstatter ikke papirsporet for kode 6 og 7.
 
 **Eier Xala Digisos?**
-Nei. Xala kan kable skjemaet og unntaket i fagsystemet dere har. Xala eier ikke Digisos, og Xala eier ikke portalen.
+Nei. Xala kan koble skjemaet og unntaket i fagsystemet dere har. Xala eier ikke Digisos, og Xala eier ikke portalen.
 
 Trenger dere at skjemaet bare ber om det saken trenger, start på [kontakt](/kontakt).

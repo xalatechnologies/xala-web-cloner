@@ -76,11 +76,11 @@ Lav risiko: agenten kan foreslå, teste og lage et endringsforslag. Mennesket se
 
 Skillet ved vedtaket er allerede skrevet. Helautomatiserte vedtak krever regler, ikke en modells skjønn. Det står i [Automatisering av saksbehandling](/blogg/automatisering-av-saksbehandling-hva-boer-og-ikke).
 
-## Hva som kan kables, og hva som blir manuelt
+## Hva som kan kobles, og hva som blir manuelt
 
-Det som kan kables: invariantene. Portene. Konteksten agenten får. Testene som feiler når en grense krysses. Loggen over hva som ble slått opp.
+Det som kan kobles: invariantene. Portene. Konteksten agenten får. Testene som feiler når en grense krysses. Loggen over hva som ble slått opp.
 
-Det som blir manuelt: formålet. Hvilken autonomi denne oppgaven tåler. Underskriften på vedtaket. DPIA når det kreves. Xala kan kable porter og kontekst i systemene dere har. Xala eier ikke selen. Xala fatter ikke vedtaket.
+Det som blir manuelt: formålet. Hvilken autonomi denne oppgaven tåler. Underskriften på vedtaket. DPIA når det kreves. Xala kan koble porter og kontekst i systemene dere har. Xala eier ikke selen. Xala fatter ikke vedtaket.
 
 Start i det små. Ett kodegrunnlag, eller ett internt bruksområde. Fem til ti invarianter. Mål hva som feiler. Juster. Det er Sahoos oppskrift, oversatt til kommunen. Ikke en fabrikk på dag én.
 
@@ -96,6 +96,6 @@ Nei. Porter kan stanse en ulovlig endring. De gjør ikke en språkmodell til hje
 Nei. Punkt 1.3 setter et mål for offentlige virksomheter og peker på rutiner. Rundskrivet binder staten først. Kommunen eier likevel risikoen i egne saker.
 
 **Kan Xala levere selen som et produkt?**
-Nei. Xala kan kable porter og kontekst. Kommunen eier invariantene og formålet.
+Nei. Xala kan koble porter og kontekst. Kommunen eier invariantene og formålet.
 
 Trenger dere at selen blir synlig i systemene dere har, start på [kontakt](/kontakt).

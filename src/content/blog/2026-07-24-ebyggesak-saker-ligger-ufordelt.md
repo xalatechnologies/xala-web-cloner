@@ -25,7 +25,7 @@ Saken hos avdelingsleder er ikke saksbehandling.
 
 Registrer og fordel samme dag. Gi den et saksnummer. Gi den et navn. Send et ærlig mottaksbrev den dagen. Ikke en stillhet på 4 til 5 uker.
 
-I Asker lå saker hos avdelingsleder til noen hadde kapasitet. [Sivilombudet](https://www.sivilombudet.no/uttalelser/asker-kommunes-saksbehandlingstid-og-rutiner-i-byggesaker-og-ulovlighetssaker/) (SOM-2025-171) kaller det ulovlig lang saksbehandlingstid. Xala kan kable køen. Xala eier ikke eByggesak. Xala fatter ikke tillatelsen.
+I Asker lå saker hos avdelingsleder til noen hadde kapasitet. [Sivilombudet](https://www.sivilombudet.no/uttalelser/asker-kommunes-saksbehandlingstid-og-rutiner-i-byggesaker-og-ulovlighetssaker/) (SOM-2025-171) kaller det ulovlig lang saksbehandlingstid. Xala kan koble køen. Xala eier ikke eByggesak. Xala fatter ikke tillatelsen.
 
 ## Start hos den som fikk brevet
 
@@ -57,13 +57,13 @@ Ombudet: kommunen må få oversikt når sakene kommer inn. Registrere og fordele
 
 ## Hva maskinen kan gjøre
 
-Mottak, registrering, fordeling og et mottaksbrev samme dag, kan kables. Logg når saken kom inn. Når den ble registrert. Når den ble tildelt. Til hvem. Ikke la søknader ligge i en felles innboks til fordeling.
+Mottak, registrering, fordeling og et mottaksbrev samme dag, kan kobles. Logg når saken kom inn. Når den ble registrert. Når den ble tildelt. Til hvem. Ikke la søknader ligge i en felles innboks til fordeling.
 
-Mottakskontrollens skjønn kan ikke kables. Tillatelsen kan ikke kables. En person leser søknaden.
+Mottakskontrollens skjønn kan ikke kobles. Tillatelsen kan ikke kobles. En person leser søknaden.
 
 Å hente søknaden ut av Altinn er en annen jobb. Den er skrevet i [Byggesøknaden skal inn i saken, ikke i Altinn](/blogg/ebyggesak-manuell-henting-fra-altinn). Her er saken inne. Den ligger likevel hos avdelingsleder.
 
-Xala kan kable mottak, registrering og fordeling inn i fagsystemet dere har. Og flagge en sak uten eier. Xala eier ikke eByggesak. Xala fatter ikke tillatelsen.
+Xala kan koble mottak, registrering og fordeling inn i fagsystemet dere har. Og flagge en sak uten eier. Xala eier ikke eByggesak. Xala fatter ikke tillatelsen.
 
 ## Ofte stilte spørsmål
 
@@ -74,7 +74,7 @@ Informasjonsbrevet Sivilombudet fikk se, sa 4 til 5 uker før fordeling. Per 14.
 Når fullstendig søknad foreligger, etter plan- og bygningsloven § 21-7. Fristen starter ikke den dagen noen tok saken, hvis søknaden allerede var komplett.
 
 **Kan Xala eie eByggesak eller fatte tillatelsen?**
-Nei. Xala kan kable køen og flagge en ufordelt sak i fagsystemet dere har. Xala eier ikke eByggesak. Tillatelsen blir hos saksbehandleren.
+Nei. Xala kan koble køen og flagge en ufordelt sak i fagsystemet dere har. Xala eier ikke eByggesak. Tillatelsen blir hos saksbehandleren.
 
 **Gjelder de 243 ufordelte sakene fra juni 2025 byggesøknadene?**
 Nei. 243 ufordelte saker og 2000 mulige brudd uten sak er ulovlighetsfeltet i Asker. Det er ikke søknadskøen mot fristen på tolv uker.

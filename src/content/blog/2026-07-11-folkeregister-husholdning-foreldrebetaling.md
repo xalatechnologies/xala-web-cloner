@@ -26,7 +26,7 @@ Husstanden står allerede der. Spør ikke om den.
 
 Slå opp husholdningen i Folkeregisteret etter § 20-1. Inntekten er et annet steg. Ikke bygg et privat personregister.
 
-Hvem som bor i husholdningen står i Folkeregisteret. [§ 20-1](https://lovdata.no/dokument/SF/forskrift/2024-06-03-900/%C2%A720-1) gir kommunen hjemmel. [KS](https://ksdigital.no/tjenestene/segmentsamarbeid/redusert-foreldrebetaling/) sier det samme. Å spørre foresatte på nytt er ikke loven. Xala kan kable oppslaget. Xala eier ikke Folkeregisteret. Xala fatter ikke vedtaket. Samboer uten felles barn må fortsatt opplyses.
+Hvem som bor i husholdningen står i Folkeregisteret. [§ 20-1](https://lovdata.no/dokument/SF/forskrift/2024-06-03-900/%C2%A720-1) gir kommunen hjemmel. [KS](https://ksdigital.no/tjenestene/segmentsamarbeid/redusert-foreldrebetaling/) sier det samme. Å spørre foresatte på nytt er ikke loven. Xala kan koble oppslaget. Xala eier ikke Folkeregisteret. Xala fatter ikke vedtaket. Samboer uten felles barn må fortsatt opplyses.
 
 Foresatte blir bedt om familiefakta registeret allerede har.
 
@@ -75,7 +75,7 @@ Det som kan slås opp: husholdningen etter § 20-1. [Skatteetaten](https://www.s
 
 Det som ikke skal automatiseres: samboer uten felles barn. Skjønnet. Klagen. Vedtaket.
 
-Xala kan kable oppslaget inn i fagsystemet dere har. Xala eier ikke Folkeregisteret. Xala fatter ikke vedtaket.
+Xala kan koble oppslaget inn i fagsystemet dere har. Xala eier ikke Folkeregisteret. Xala fatter ikke vedtaket.
 
 ## Ofte stilte spørsmål
 
@@ -89,6 +89,6 @@ Søkeren må opplyse. Det står i § 2-4. Det står ikke i Folkeregisteret. Det 
 Nei. Inntekten er Skatteetaten. Det er skrevet i [Redusert foreldrebetaling i SFO: når skattemeldingen må inn før 1. august](/blogg/redusert-foreldrebetaling-sfo-skattemelding-for-1-august). Her er husstanden.
 
 **Kan Xala eie Folkeregisteret eller fatte vedtaket?**
-Nei. Xala kan kable oppslaget. Xala eier ikke Folkeregisteret. Xala fatter ikke vedtaket. Vedtaket blir hos kommunen.
+Nei. Xala kan koble oppslaget. Xala eier ikke Folkeregisteret. Xala fatter ikke vedtaket. Vedtaket blir hos kommunen.
 
 Trenger dere at husstanden slås opp i registeret, start på [kontakt](/kontakt).

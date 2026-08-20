@@ -26,7 +26,7 @@ Saksbehandleren vet like lite. Telefonen er statusflaten.
 
 Bekreft mottak samme dag. Legg saken der søkeren kan åpne den. Når dokumentet lander, send et varsel som sier hvor og hvordan det åpnes. Tar det mer enn en måned, send et foreløpig svar med en realistisk dato.
 
-Ny forvaltningslov er vedtatt. Den er [ikke i kraft](https://lovdata.no/lov/2025-06-20-81/%C2%A799). Bygg det nå. Xala kan kable bekreftelsen og varselet. Xala eier ikke portalen. Xala avgjør ikke saken.
+Ny forvaltningslov er vedtatt. Den er [ikke i kraft](https://lovdata.no/lov/2025-06-20-81/%C2%A799). Bygg det nå. Xala kan koble bekreftelsen og varselet. Xala eier ikke portalen. Xala avgjør ikke saken.
 
 ## Start hos den som ringer
 
@@ -54,13 +54,13 @@ Forklaringen av et automatisert vedtak er et annet steg. Det er skrevet i [Vedta
 
 ## Hva maskinen kan gjøre
 
-Bekreftelse samme dag, kan kables. Et varsel når dokumentet lander, kan kables. Et foreløpig svar når klokken passerer en måned, kan kables. Varselet er en ny utsending av personopplysninger. Logg hva som gikk, til hvem, og når. Ikke putt hele saken i en SMS.
+Bekreftelse samme dag, kan kobles. Et varsel når dokumentet lander, kan kobles. Et foreløpig svar når klokken passerer en måned, kan kobles. Varselet er en ny utsending av personopplysninger. Logg hva som gikk, til hvem, og når. Ikke putt hele saken i en SMS.
 
 [Digisos](https://www.nav.no/samarbeidspartner/digisos) er et eksempel, ikke et Xala-produkt. Per januar 2024 hadde 329 kommuner innsynsløsning for søker. Der kan søkeren se status, åpne forvaltningsbrev og vedtak, og se hva som mangler. Det er sosialhjelp. Det er ikke en generell innsynsportal dere eier.
 
-En falsk status som aldri flytter seg, kan ikke kables. Ikke et varsel uten et sted å åpne dokumentet. Ikke å late som 2025-loven allerede gjelder. Den realistiske datoen i det foreløpige svaret, og skjønnet i saken, blir hos en person.
+En falsk status som aldri flytter seg, kan ikke kobles. Ikke et varsel uten et sted å åpne dokumentet. Ikke å late som 2025-loven allerede gjelder. Den realistiske datoen i det foreløpige svaret, og skjønnet i saken, blir hos en person.
 
-Xala kan kable bekreftelse, status, varsel og forsinkelsesmelding inn i fagsystemet dere har. Xala eier ikke portalen. Xala avgjør ikke saken.
+Xala kan koble bekreftelse, status, varsel og forsinkelsesmelding inn i fagsystemet dere har. Xala eier ikke portalen. Xala avgjør ikke saken.
 
 ## Ofte stilte spørsmål
 
@@ -74,6 +74,6 @@ Når 2025-loven trer i kraft, skal organet snarest bekrefte at henvendelsen er m
 Hvor dokumentet ligger, og hvordan det åpnes. Ikke «under behandling». Ikke hele saken i en SMS. Varselet skal peke på et sted søkeren faktisk kan åpne.
 
 **Kan Xala eie innsynsportalen eller avgjøre saken?**
-Nei. Xala kan kable bekreftelse og varsel inn i fagsystemet dere har. Xala eier ikke portalen. Saken blir hos kommunen.
+Nei. Xala kan koble bekreftelse og varsel inn i fagsystemet dere har. Xala eier ikke portalen. Saken blir hos kommunen.
 
 Trenger dere at bekreftelsen og varselet lander i fagsystemet, start på [kontakt](/kontakt).

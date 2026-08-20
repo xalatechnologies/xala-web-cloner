@@ -14,7 +14,7 @@ lang: no
 draft: false
 ---
 
-Klokka er 21:40. 360 i én fane. Visma i en annen. Portalen i en tredje. Saksbehandleren kopierer. 360 og Visma i hver sin fane er ikke integrasjon. Nordre Follo vil at de skal snakke med portalen. Det er et ønske, ikke et ferdig Xala-produkt. Xala kan kable systemene. Xala eier ikke 360, Visma eller portalen.
+Klokka er 21:40. 360 i én fane. Visma i en annen. Portalen i en tredje. Saksbehandleren kopierer. 360 og Visma i hver sin fane er ikke integrasjon. Nordre Follo vil at de skal snakke med portalen. Det er et ønske, ikke et ferdig Xala-produkt. Xala kan koble systemene. Xala eier ikke 360, Visma eller portalen.
 
 Søkeren venter, eller får et gebyrbrev som ikke matcher det hen nettopp sendte, fordi de tre systemene har drevet fra hverandre.
 
@@ -30,7 +30,7 @@ Søknaden lever i portalen. Journalen lever i 360. Fakturaen lever i Visma. Det 
 
 Det finnes ingen lovplikt om at en skjenkeportal *skal* snakke med 360. Journalplikt og et vedtak finnes likevel. Smerten er operativ. Saksbehandleren taster det samme inn tre steder. Søkeren merker det som ventetid, eller som et gebyr som ikke stemmer.
 
-[Prinsipp 2](https://www.digdir.no/digital-samhandling/prinsipp-2-ta-arkitekturbeslutninger-pa-rett-niva/1056) er hvem som beslutter å kable 360 og Visma, i stedet for å opprette et fjerde sted å lagre det samme.
+[Prinsipp 2](https://www.digdir.no/digital-samhandling/prinsipp-2-ta-arkitekturbeslutninger-pa-rett-niva/1056) er hvem som beslutter å koble 360 og Visma, i stedet for å opprette et fjerde sted å lagre det samme.
 
 Å ha 360 og Visma er ikke det samme som at de snakker med portalen.
 
@@ -42,13 +42,13 @@ Trikset er ikke å bygge en privat identitet, postkasse eller et kommunalt saksr
 
 Kommunen er behandlingsansvarlig. Det skal finnes databehandleravtale med 360, Visma og portalen. Logg hvilket system som skrev hva. Ikke kopier hele saken inn i alle tre «for sikkerhets skyld». [NSM](https://nsm.no/hold-deg-oppdatert/meninger/logging-du-ma-vite-hva-som-skjer-og-hva-som-har-skjedd) er at dere må vite hva som skjedde.
 
-## Hva som kan kables, og hva som blir manuelt
+## Hva som kan kobles, og hva som blir manuelt
 
-Det som kan kables: journalføring i 360 når søknaden er komplett, og fakturafelt til Visma når gebyr er i saken. Én skriving. To systemer som lytter.
+Det som kan kobles: journalføring i 360 når søknaden er komplett, og fakturafelt til Visma når gebyr er i saken. Én skriving. To systemer som lytter.
 
 Det som ikke skal automatiseres: å behandle «vi har 360 og Visma» som integrasjon. Og selve bevillingsvedtaket. Vedtaket blir hos saksbehandleren.
 
-Nordre Follo vil ha kablingen. Det er et ønske i spesifikasjonen, ikke et ferdig Xala-produkt.
+Nordre Follo vil ha koblingen. Det er et ønske i spesifikasjonen, ikke et ferdig Xala-produkt.
 
 Uttalelse fra politi og sosial, og om en selvhentet skatteattest holder, er andre steg. De er skrevet i [Skjenkebevilling: uttalelse fra politi og sosial kommer før vedtaket](/blogg/skjenkebevilling-uttalelse-fra-politi-og-sosial) og [Skjenkebevilling: skatteattesten søkeren henter selv er ikke nok](/blogg/skjenkebevilling-skatteattest-er-ikke-nok).
 
@@ -61,14 +61,14 @@ Nei. Integrasjon er at samme sak skrives én gang og lander der den skal. Tre å
 Nei. Det finnes ingen slik plikt. Journalplikt og et vedtak finnes likevel. Smerten er at saken tastet inn tre steder.
 
 **Kan Xala levere 360, Visma eller portalen?**
-Nei. Xala kan kable systemene. Xala eier ikke 360, Visma eller portalen. Nordre Follo-kablingen er et ønske, ikke et ferdig produkt.
+Nei. Xala kan koble systemene. Xala eier ikke 360, Visma eller portalen. Nordre Follo-koblingen er et ønske, ikke et ferdig produkt.
 
 **Skal vedtaket automatiseres når systemene snakker?**
-Nei. Journal og fakturafelt kan kables. Bevillingsvedtaket blir manuelt.
+Nei. Journal og fakturafelt kan kobles. Bevillingsvedtaket blir manuelt.
 
 ## Relaterte artikler
 
 - [Skjenkebevilling: uttalelse fra politi og sosial kommer før vedtaket](/blogg/skjenkebevilling-uttalelse-fra-politi-og-sosial)
 - [Skjenkebevilling: skatteattesten søkeren henter selv er ikke nok](/blogg/skjenkebevilling-skatteattest-er-ikke-nok)
 
-Trenger dere kabling mot 360 eller Visma, start på [kontakt](/kontakt).
+Trenger dere kobling mot 360 eller Visma, start på [kontakt](/kontakt).

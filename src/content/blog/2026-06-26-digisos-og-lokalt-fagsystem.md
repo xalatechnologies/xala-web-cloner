@@ -2,7 +2,7 @@
 slug: digisos-og-lokalt-fagsystem
 title: "Digisos er ikke saken"
 seoTitle: "Digisos er ikke saken"
-description: "Søknad og innsyn lever på nav.no. Behandlingen lever i fagsystemet. Kabl de to."
+description: "Søknad og innsyn lever på nav.no. Behandlingen lever i fagsystemet. Koble de to."
 date: 2026-06-26
 author: "Ibrahim Rahmani"
 role: "IT-leder"
@@ -24,9 +24,9 @@ Klokka 09:40. Innsyn på nav.no i én fane. Det kommunale fagsystemet i en annen
 
 Digisos er ikke saken. Søknad og innsyn lever på nav.no. Behandlingen lever i fagsystemet.
 
-Kabl Fiks Digisos inn i det lokale fagsystemet. KS: Fiks IO først, SvarInn som reserve. Søknaden lander der behandlingen skjer. Ikke bygg en privat sosialhjelpsportal.
+Koble Fiks Digisos inn i det lokale fagsystemet. KS: Fiks IO først, SvarInn som reserve. Søknaden lander der behandlingen skjer. Ikke bygg en privat sosialhjelpsportal.
 
-[KS](https://ksdigital.no/tjenestene/fiks-digisos/) sender søknaden dit, hvis fagsystemet er klargjort. Xala kan kable. Xala eier ikke Digisos. Xala eier ikke fagsystemet. Xala fatter ikke vedtaket. 348 kommuner er [Navs](https://www.nav.no/samarbeidspartner/digisos) tall fra januar 2024, ikke et 2026-tall.
+[KS](https://ksdigital.no/tjenestene/fiks-digisos/) sender søknaden dit, hvis fagsystemet er klargjort. Xala kan koble. Xala eier ikke Digisos. Xala eier ikke fagsystemet. Xala fatter ikke vedtaket. 348 kommuner er [Navs](https://www.nav.no/samarbeidspartner/digisos) tall fra januar 2024, ikke et 2026-tall.
 
 Søkeren har sendt digitalt og ser innsyn. Den som beslutter, sitter i et annet system.
 
@@ -66,7 +66,7 @@ Det som kan settes opp: Fiks Digisos inn i fagsystemet dere har. Logg hvilket sy
 
 Det som ikke skal automatiseres: vedtaket. Kode 6 og 7. Den individuelle vurderingen, skrevet i [Satsen er veiledende. Den er ikke vedtaket](/blogg/okonomisk-sosialhjelp-individuell-vurdering). Xala fatter ikke vedtaket.
 
-Xala kan kable Digisos inn i fagsystemet dere har. Xala eier ikke Digisos. Xala eier ikke fagsystemet.
+Xala kan koble Digisos inn i fagsystemet dere har. Xala eier ikke Digisos. Xala eier ikke fagsystemet.
 
 ## Ofte stilte spørsmål
 
@@ -80,6 +80,6 @@ Ja, skriver KS. Uten at fagsystemet er klargjort, stopper søknaden før veilede
 Nei. Nav merker det «per januar 2024». Siden er oppdatert 13.07.2026. Hva som skjedde etter januar 2024, står ikke her.
 
 **Kan Xala eie Digisos eller fatte vedtaket?**
-Nei. Xala kan kable. Xala eier ikke Digisos. Xala eier ikke fagsystemet. Vedtaket blir hos kommunen.
+Nei. Xala kan koble. Xala eier ikke Digisos. Xala eier ikke fagsystemet. Vedtaket blir hos kommunen.
 
 Trenger dere at søknaden lander i fagsystemet, start på [kontakt](/kontakt).
