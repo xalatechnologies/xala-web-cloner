@@ -181,6 +181,16 @@ describe('topic keywords and hashtags', () => {
     expect(topicHashtagLine(VEDTAK!).split(' ')).toHaveLength(5);
   });
 
+  it('gives the skjenkekontroll eget-system post one styled last line of five tags, no leftover dump', () => {
+    const EGET = posts.find((post) => post.slug === 'skjenkekontroll-eget-system');
+    expect(EGET, 'skjenkekontroll eget-system post missing').toBeDefined();
+    expect(leftoverHashtagDump(EGET!.body)).toBeUndefined();
+    expect(topicHashtagLine(EGET!)).toBe(
+      '#skjenkekontroll #bevilling #alkoholloven #kommune #kontrollrapport',
+    );
+    expect(topicHashtagLine(EGET!).split(' ')).toHaveLength(5);
+  });
+
   it('joins spaced Norwegian keywords into one hashtag', () => {
     expect(keywordToHashtag('offentlig sektor')).toBe('#offentligsektor');
     expect(keywordToHashtag('sele rundt KI')).toBe('#selerundtKI');
