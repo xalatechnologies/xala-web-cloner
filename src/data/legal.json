@@ -2,7 +2,7 @@
     "no": {
         "privacy": {
             "title": "Personvernerklæring",
-            "lastUpdated": "2025-01-15",
+            "lastUpdated": "2026-08-20",
             "sections": [
                 {
                     "id": "intro",
@@ -23,12 +23,12 @@
                         {
                             "id": "usage-data",
                             "title": "Bruksdata",
-                            "content": "Informasjon om hvordan du bruker nettstedet vårt, inkludert IP-adresse, nettlesertype, besøkstid og sidevisninger."
+                            "content": "Hvis du velger «Godta alle», sender vi bruksdata om besøket til Google Ads, GA4, Microsoft Clarity og Plausible. De lastes ikke inn hvis du velger «Kun nødvendige»."
                         },
                         {
                             "id": "cookies",
                             "title": "Informasjonskapsler",
-                            "content": "Vi bruker informasjonskapsler for å forbedre brukeropplevelsen. Se vår informasjonskapselpolitikk for mer informasjon."
+                            "content": "Nødvendige kapsler lastes for at siden skal virke. Google Ads, GA4, Microsoft Clarity og Plausible lastes bare etter «Godta alle». Se [informasjonskapsler](/cookies)."
                         }
                     ]
                 },
@@ -51,6 +51,33 @@
                             "id": "legal",
                             "title": "Juridiske formål",
                             "content": "For å overholde gjeldende lover og forskrifter, og for å beskytte våre rettigheter."
+                        }
+                    ]
+                },
+                {
+                    "id": "processors",
+                    "title": "Leverandører etter samtykke",
+                    "content": "Disse fire lastes bare hvis du velger «Godta alle». De lastes ikke inn hvis du velger «Kun nødvendige».",
+                    "items": [
+                        {
+                            "id": "google-ads",
+                            "title": "Google Ads",
+                            "content": "Måler hvilke annonser som fører til henvendelser, og bygger målgrupper for senere annonsering."
+                        },
+                        {
+                            "id": "ga4",
+                            "title": "GA4",
+                            "content": "Google Analytics 4. Viser hvordan sidene brukes, for at vi skal kunne rette det som ikke virker."
+                        },
+                        {
+                            "id": "clarity",
+                            "title": "Microsoft Clarity",
+                            "content": "Viser hvordan du beveger deg på sidene, for at vi skal se hvor det stopper."
+                        },
+                        {
+                            "id": "plausible",
+                            "title": "Plausible",
+                            "content": "Teller besøk uten at vi slår det sammen med en profil hos oss."
                         }
                     ]
                 },
@@ -215,7 +242,7 @@
         },
         "cookies": {
             "title": "Informasjonskapselpolitikk",
-            "lastUpdated": "2026-08-13",
+            "lastUpdated": "2026-08-20",
             "sections": [
                 {
                     "id": "what",
@@ -236,7 +263,7 @@
                         {
                             "id": "analytics",
                             "title": "Analytiske informasjonskapsler",
-                            "content": "Disse hjelper oss med å forstå hvordan besøkende bruker nettstedet ved å samle inn anonymisert informasjon om sidevisninger og bruksmønstre."
+                            "content": "Hvis du velger «Godta alle», lastes GA4, Microsoft Clarity og Plausible. De viser hvordan sidene brukes. De lastes ikke inn hvis du velger «Kun nødvendige». Dette er ikke anonymt."
                         },
                         {
                             "id": "functional",
@@ -246,7 +273,7 @@
                         {
                             "id": "marketing",
                             "title": "Markedsføringsinformasjonskapsler",
-                            "content": "Disse brukes til å måle effekten av annonsene våre og til å vise relevante annonser til deg senere. Vi bruker Google Ads til dette. De lastes bare hvis du velger «Godta alle»."
+                            "content": "Hvis du velger «Godta alle», lastes Google Ads. Den måler hvilke annonser som fører til henvendelser, og kan vise deg annonser senere. Den lastes ikke inn hvis du velger «Kun nødvendige»."
                         }
                     ]
                 },
@@ -263,7 +290,7 @@
                         {
                             "id": "analytics",
                             "title": "Analysere bruk",
-                            "content": "Forstå hvordan besøkende bruker nettstedet for å forbedre brukeropplevelsen."
+                            "content": "Etter «Godta alle» viser GA4, Microsoft Clarity og Plausible hvordan sidene brukes, slik at vi kan rette det som ikke virker."
                         },
                         {
                             "id": "personalization",
@@ -275,22 +302,27 @@
                 {
                     "id": "third-party",
                     "title": "Tredjeparts informasjonskapsler",
-                    "content": "Vi kan også bruke tjenester fra tredjeparter som setter informasjonskapsler på enheten din. Disse inkluderer:",
+                    "content": "Etter «Godta alle» lastes fire leverandører. Ingen av dem lastes hvis du velger «Kun nødvendige».",
                     "items": [
                         {
-                            "id": "analytics-services",
-                            "title": "Analysetjenester",
-                            "content": "Tjenester som hjelper oss med å analysere nettstedets ytelse og bruk."
+                            "id": "google-ads",
+                            "title": "Google Ads",
+                            "content": "Måler hvilke annonser som fører til henvendelser, og bygger målgrupper for senere annonsering."
                         },
                         {
-                            "id": "advertising-services",
-                            "title": "Annonsetjenester",
-                            "content": "Google Ads, som måler hvilke annonser som fører til henvendelser, og bygger målgrupper for senere annonsering."
+                            "id": "ga4",
+                            "title": "GA4",
+                            "content": "Google Analytics 4. Viser hvordan sidene brukes, for at vi skal kunne rette det som ikke virker."
                         },
                         {
-                            "id": "social-media",
-                            "title": "Sosiale medier",
-                            "content": "Informasjonskapsler fra sosiale medieplattformer hvis du deler innhold fra nettstedet."
+                            "id": "clarity",
+                            "title": "Microsoft Clarity",
+                            "content": "Viser hvordan du beveger deg på sidene, for at vi skal se hvor det stopper."
+                        },
+                        {
+                            "id": "plausible",
+                            "title": "Plausible",
+                            "content": "Teller besøk. Lastes først etter «Godta alle», som de tre andre."
                         }
                     ]
                 },
@@ -307,7 +339,7 @@
                         {
                             "id": "cookie-banner",
                             "title": "Informasjonskapselbanner",
-                            "content": "Når du først besøker nettstedet, kan du velge hvilke typer informasjonskapsler du vil akseptere gjennom banneret som vises."
+                            "content": "Banneret spør første gang du kommer. «Godta alle» laster Google Ads, GA4, Microsoft Clarity og Plausible. «Kun nødvendige» laster ingen av de fire."
                         }
                     ]
                 },
@@ -329,7 +361,7 @@
     "en": {
         "privacy": {
             "title": "Privacy Policy",
-            "lastUpdated": "2025-01-15",
+            "lastUpdated": "2026-08-20",
             "sections": [
                 {
                     "id": "intro",
@@ -350,12 +382,12 @@
                         {
                             "id": "usage-data",
                             "title": "Usage Data",
-                            "content": "Information about how you use our website, including IP address, browser type, visit duration, and page views."
+                            "content": "If you choose “Accept all”, we send usage data about the visit to Google Ads, GA4, Microsoft Clarity and Plausible. They do not load if you choose “Necessary only”."
                         },
                         {
                             "id": "cookies",
                             "title": "Cookies",
-                            "content": "We use cookies to improve user experience. See our cookie policy for more information."
+                            "content": "Necessary cookies load so the site works. Google Ads, GA4, Microsoft Clarity and Plausible load only after “Accept all”. See [cookies](/cookies)."
                         }
                     ]
                 },
@@ -378,6 +410,33 @@
                             "id": "legal",
                             "title": "Legal Purposes",
                             "content": "To comply with applicable laws and regulations, and to protect our rights."
+                        }
+                    ]
+                },
+                {
+                    "id": "processors",
+                    "title": "Processors after consent",
+                    "content": "These four load only if you choose “Accept all”. They do not load if you choose “Necessary only”.",
+                    "items": [
+                        {
+                            "id": "google-ads",
+                            "title": "Google Ads",
+                            "content": "Measures which ads lead to enquiries, and builds audiences for later advertising."
+                        },
+                        {
+                            "id": "ga4",
+                            "title": "GA4",
+                            "content": "Google Analytics 4. Shows how the pages are used, so we can fix what does not work."
+                        },
+                        {
+                            "id": "clarity",
+                            "title": "Microsoft Clarity",
+                            "content": "Shows how you move on the pages, so we can see where it stops."
+                        },
+                        {
+                            "id": "plausible",
+                            "title": "Plausible",
+                            "content": "Counts visits without us combining that with a profile of our own."
                         }
                     ]
                 },
@@ -542,7 +601,7 @@
         },
         "cookies": {
             "title": "Cookie Policy",
-            "lastUpdated": "2026-08-13",
+            "lastUpdated": "2026-08-20",
             "sections": [
                 {
                     "id": "what",
@@ -563,7 +622,7 @@
                         {
                             "id": "analytics",
                             "title": "Analytics Cookies",
-                            "content": "These help us understand how visitors use the website by collecting anonymized information about page views and usage patterns."
+                            "content": "If you choose “Accept all”, GA4, Microsoft Clarity and Plausible load. They show how the pages are used. They do not load if you choose “Necessary only”. This is not anonymous."
                         },
                         {
                             "id": "functional",
@@ -573,7 +632,7 @@
                         {
                             "id": "marketing",
                             "title": "Marketing cookies",
-                            "content": "These measure how our adverts perform and let us show you relevant adverts later. We use Google Ads for this. They load only if you choose “Accept all”."
+                            "content": "If you choose “Accept all”, Google Ads loads. It measures which ads lead to enquiries, and can show you ads later. It does not load if you choose “Necessary only”."
                         }
                     ]
                 },
@@ -590,7 +649,7 @@
                         {
                             "id": "analytics",
                             "title": "Analyze Usage",
-                            "content": "Understand how visitors use the website to improve user experience."
+                            "content": "After “Accept all”, GA4, Microsoft Clarity and Plausible show how the pages are used, so we can fix what does not work."
                         },
                         {
                             "id": "personalization",
@@ -602,22 +661,27 @@
                 {
                     "id": "third-party",
                     "title": "Third-Party Cookies",
-                    "content": "We may also use services from third parties that set cookies on your device. These include:",
+                    "content": "After “Accept all”, four processors load. None of them load if you choose “Necessary only”.",
                     "items": [
                         {
-                            "id": "analytics-services",
-                            "title": "Analytics Services",
-                            "content": "Services that help us analyze website performance and usage."
+                            "id": "google-ads",
+                            "title": "Google Ads",
+                            "content": "Measures which ads lead to enquiries, and builds audiences for later advertising."
                         },
                         {
-                            "id": "advertising-services",
-                            "title": "Advertising services",
-                            "content": "Google Ads, which measures which adverts lead to enquiries and builds audiences for later advertising."
+                            "id": "ga4",
+                            "title": "GA4",
+                            "content": "Google Analytics 4. Shows how the pages are used, so we can fix what does not work."
                         },
                         {
-                            "id": "social-media",
-                            "title": "Social Media",
-                            "content": "Cookies from social media platforms if you share content from the website."
+                            "id": "clarity",
+                            "title": "Microsoft Clarity",
+                            "content": "Shows how you move on the pages, so we can see where it stops."
+                        },
+                        {
+                            "id": "plausible",
+                            "title": "Plausible",
+                            "content": "Counts visits. Loads only after “Accept all”, like the other three."
                         }
                     ]
                 },
@@ -634,7 +698,7 @@
                         {
                             "id": "cookie-banner",
                             "title": "Cookie Banner",
-                            "content": "When you first visit the website, you can choose which types of cookies you want to accept through the banner that appears."
+                            "content": "The banner asks the first time you arrive. “Accept all” loads Google Ads, GA4, Microsoft Clarity and Plausible. “Necessary only” loads none of the four."
                         }
                     ]
                 },

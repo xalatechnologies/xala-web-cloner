@@ -159,7 +159,7 @@ const Navbar = () => {
 
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                aria-label="Toggle theme"
+                aria-label={t('nav.toggleTheme', 'Bytt tema')}
                 className={`inline-flex items-center justify-center min-h-11 min-w-11 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors ${FOCUS}`}
               >
                 {theme === 'dark' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
@@ -177,7 +177,7 @@ const Navbar = () => {
 
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                aria-label={isOpen ? 'Close menu' : 'Open menu'}
+                aria-label={isOpen ? t('nav.closeMenu', 'Lukk meny') : t('nav.openMenu', 'Åpne meny')}
                 aria-expanded={isOpen}
                 className={`lg:hidden inline-flex items-center justify-center min-h-11 min-w-11 rounded-md text-foreground hover:bg-accent transition-colors ${FOCUS}`}
               >

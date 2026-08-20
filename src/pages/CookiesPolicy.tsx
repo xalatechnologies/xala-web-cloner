@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import LegalLayout from '@/components/layouts/LegalLayout';
+import LegalSections from '@/components/layouts/LegalSections';
 import { useLegalContent } from '@/hooks/use-legal-content';
 import { Skeleton } from '@/components/ui/skeleton';
 import Navbar from '@/components/Navbar';
@@ -48,27 +49,7 @@ const CookiesPolicy = () => {
           title={data?.title || t('legal.cookies.title', 'Informasjonskapsler')}
           lastUpdated={data?.lastUpdated || ''}
         >
-          {data?.sections.map((section) => (
-            <section key={section.id} className="space-y-6">
-              <h2 className="text-2xl font-bold text-foreground">{section.title}</h2>
-              {section.description && (
-                <p className="text-foreground/80 leading-relaxed">{section.description}</p>
-              )}
-              {!section.description && section.items && section.items.length === 1 && !section.items[0].title && (
-                <p className="text-foreground/90 leading-relaxed">{section.items[0].content}</p>
-              )}
-              {section.items && section.items.length > 0 && section.items.some(item => item.title) && (
-                <ul className="space-y-4 pl-6 list-disc marker:text-primary">
-                  {section.items.map((item) => (
-                    <li key={item.id} className="text-foreground/90">
-                      {item.title && <strong className="text-primary dark:text-primary">{item.title}: </strong>}
-                      {item.content}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </section>
-          ))}
+          {data?.sections && <LegalSections sections={data.sections} />}
         </LegalLayout>
       </main>
       <Footer />

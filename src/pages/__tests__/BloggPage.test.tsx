@@ -123,7 +123,7 @@ describe('BloggPage search', () => {
   it('keeps the drawer search distinct from both when the menu is open', () => {
     renderBloggPage();
 
-    fireEvent.click(screen.getByLabelText('Open menu'));
+    fireEvent.click(screen.getByLabelText('Åpne meny'));
 
     expect(screen.getByRole('searchbox', { name: 'Søk i artikler og sider' })).toHaveAttribute(
       'id',

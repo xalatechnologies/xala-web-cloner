@@ -121,6 +121,16 @@ describe('locale parity', () => {
     }
   });
 
+  it('keeps theme and menu button names Norwegian (XWEB-200)', () => {
+    const nav = no.nav as Tree;
+    expect(nav.toggleTheme).toBe('Bytt tema');
+    expect(nav.openMenu).toBe('Åpne meny');
+    expect(nav.closeMenu).toBe('Lukk meny');
+    expect(nav.toggleTheme).not.toBe('Toggle theme');
+    expect(nav.openMenu).not.toBe('Open menu');
+    expect(nav.closeMenu).not.toBe('Close menu');
+  });
+
   it('keeps the Norwegian footer cookies label as Informasjonskapsler', () => {
     const cookies = ((no.footer as Tree).links as Tree).cookies;
     expect(cookies).toBe('Informasjonskapsler');
