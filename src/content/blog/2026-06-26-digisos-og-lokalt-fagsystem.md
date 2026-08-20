@@ -74,7 +74,7 @@ Xala kan kable Digisos inn i fagsystemet dere har. Xala eier ikke Digisos. Xala 
 Nei. Nav: innsyn lar søkeren se status. Behandlingen skjer i kommunens fagsystem.
 
 **Må fagsystemet klargjøres?**
-Ja, skriver KS. Uten det stopper søknaden før veilederen.
+Ja, skriver KS. Uten at fagsystemet er klargjort, stopper søknaden før veilederen ser den.
 
 **Er 348 kommuner et 2026-tall?**
 Nei. Nav merker det «per januar 2024». Siden er oppdatert 13.07.2026. Hva som skjedde etter januar 2024, står ikke her.
