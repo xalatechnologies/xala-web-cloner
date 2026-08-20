@@ -260,9 +260,18 @@ export function firstHtmlArticleTags(html) {
   ].map((m) => decode(m[1]));
 }
 
-/** Hashtags in `#root` that start with a letter, so `#0F1117` theme colors do not count. */
+/**
+ * Hashtags in `#root`, including numeric ones like #360, but excluding hex
+ * color tokens like #0F1117 (6-digit) or #RRGGBBAA (8-digit).
+ */
 export function firstHtmlHashtags(html) {
-  return rootInner(html).match(/#[\p{L}][\p{L}\p{N}-]*/gu) ?? [];
+  const all = rootInner(html).match(/#[\p{L}\p{N}][\p{L}\p{N}-]*/gu) ?? [];
+  return all.filter((tag) => {
+    const body = tag.slice(1);
+    if (/^[0-9A-Fa-f]{6}$/.test(body)) return false;
+    if (/^[0-9A-Fa-f]{8}$/.test(body)) return false;
+    return true;
+  });
 }
 
 export function hasShareRow(html) {
