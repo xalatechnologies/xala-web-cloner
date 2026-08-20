@@ -4,4 +4,5 @@
 - Refactored email sending to use Supabase Edge Functions instead of Express server.
 - Fixed environment variable configuration to use Vite's import.meta.env system.
 - Added database trigger and Edge Function for automated email notifications on contact form submissions.
-- Fixed unofficial Bokmål leftover in blog post, replaced kabler with official form kobler. Verified no remaining kable-family leftovers across all blog content. 
+- Fixed unofficial Bokmål leftover in blog post, replaced kabler with official form kobler. Verified no remaining kable-family leftovers across all blog content.
+- Added new blog post about case management systems explaining when off-the-shelf solutions work versus custom development. Generated professional cover image, included 6 FAQ questions, referenced Digdir principles and Nordre Follo case study. Build and lint passed successfully. 
