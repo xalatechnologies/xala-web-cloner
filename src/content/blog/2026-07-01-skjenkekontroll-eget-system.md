@@ -68,15 +68,20 @@ Xala kan kable rapporten inn i saken. Xala eier ikke Trygg 24. Xala eier ikke po
 
 ## Ofte stilte spørsmål
 
-Må rapporten til bevillingsmyndigheten når vaktselskapet allerede har sendt den til stedet? Ja. § 9-6 andre ledd. Uttalelsen skal følge med.
+**Må rapporten til bevillingsmyndigheten når vaktselskapet allerede har sendt den til stedet?**
+Ja. § 9-6 andre ledd sier at engasjerte kontrollører skal sende rapporten til både stedet og bevillingsmyndigheten. Uttalelsen skal følge med når rapporten sendes til kommunen.
 
-Er «vi har Trygg 24» det samme som at kontrollen er i saken? Nei. Trygg 24 er kontrolløren. Saken lever i fagsystemet. FHI 2022: mer enn fire av fem kommuner bruker privat vaktselskap.
+**Er «vi har Trygg 24» det samme som at kontrollen er i saken?**
+Nei. Trygg 24 er kontrolløren som utfører kontrollen, ikke fagsystemet der saken behandles. Saken lever i fagsystemet kommunen bruker. FHI 2022 viser at mer enn fire av fem kommuner bruker privat vaktselskap.
 
-Kan prikken gå av seg selv når rapporten lander? Nei. § 10-5 krever forhåndsvarsel og enkeltvedtak. Xala gir ikke prikken.
+**Kan prikken gå av seg selv når rapporten lander?**
+Nei. § 10-5 krever forhåndsvarsel som i forvaltningsloven § 16, og deretter enkeltvedtak i kommunestyret eller hos den som har fått delegert myndighet. Xala gir ikke prikken.
 
-Har Xala levert en kontrollapp? Nei. Xala kan kable rapporten inn i saken dere har. Appen Nordre Follo vil ha, er et ønske.
+**Har Xala levert en kontrollapp?**
+Nei. Xala kan kable rapporten fra kontrolløren inn i saken dere allerede har i fagsystemet. Appen Nordre Follo vil ha, er fortsatt et ønske som ikke er levert.
 
-Trenger dere at rapporten lander i saken, start på [kontakt](/kontakt).
+**Hvordan kommer jeg i gang med å få rapporten inn i saken?**
+Trenger dere at rapporten lander i saken dere har, start på kontakt-siden. Xala kan kable overføringen fra vaktselskapet inn i fagsystemet uten å bygge en ny kontrollapp.
 
 ## Relaterte artikler
 
