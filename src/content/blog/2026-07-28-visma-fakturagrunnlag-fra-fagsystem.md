@@ -36,9 +36,9 @@ Bevillingshaveren har allerede levert oppgaven. Nå venter de på en faktura en 
 
 [Prinsipp 6](https://www.digdir.no/digital-samhandling/prinsipp-6-lag-digitale-losninger-som-stotter-samhandling/1063) er at gebyret som ble regnet, lander som faktura uten en ny omgang på tastaturet.
 
-[Prinsipp 2](https://www.digdir.no/digital-samhandling/prinsipp-2-ta-arkitekturbeslutninger-pa-rett-niva/1056) er at kommunen beslutter å kable fagsystemet mot Visma. Integrasjonen eier ikke gebyret.
+[Prinsipp 2](https://www.digdir.no/digital-samhandling/prinsipp-2-ta-arkitekturbeslutninger-pa-rett-niva/1056) er at kommunen beslutter å koble fagsystemet mot Visma. Integrasjonen eier ikke gebyret.
 
-Ikke finn på en sats. Ikke gjør bevillingsvedtaket der. Er oppgaven ufullstendig eller åpenbart feil, leser en person før noe treffer Visma. Ikke late som Nordre Follo allerede har denne kabelen.
+Ikke finn på en sats. Ikke gjør bevillingsvedtaket der. Er oppgaven ufullstendig eller åpenbart feil, leser en person før noe treffer Visma. Ikke late som Nordre Follo allerede har denne koblingen.
 
 Det er ingen plikt i loven om at gebyret skal lande i Visma. Journalplikt og gebyr finnes. Smerten er operativ.
 
@@ -69,7 +69,7 @@ Xala kan sende feltene til økonomisystemet dere har. Xala eier ikke Visma. Xala
 **Må gebyret lande i Visma etter loven?**
 Nei. Alkoholloven krever bevillingsgebyr etter omsetningsoppgaven. Den krever ikke Visma. Smerten er at tallet tastes inn for hånd.
 
-**Har Nordre Follo allerede kabelen fra portal til Visma?**
+**Har Nordre Follo allerede koblingen fra portal til Visma?**
 Nei. Kommunen vil ha den. Det står ikke på den offentlige siden. Det er et ønske, ikke et ferdig produkt.
 
 **Er dette det samme som å regne satsen?**

@@ -26,7 +26,7 @@ Veggen er ikke vedtaket.
 
 Hold døren åpen. Medhjelper, verge eller papir skal virke. Hent det e-søknaden allerede kan. La vedleggslisten være det som fortsatt mangler, ikke en ny stabel.
 
-[Husbanken](https://www.husbanken.no/person/startlaan/soke-startlaan-og-tilskudd/) sier de som ikke er digitale likevel skal kunne søke. Oslo ber om sju vedlegg, mens mye allerede hentes automatisk. Xala kan kable eID, medhjelper og betinget vedlegg. Xala eier ikke Startskudd. Xala bestemmer ikke lånet.
+[Husbanken](https://www.husbanken.no/person/startlaan/soke-startlaan-og-tilskudd/) sier de som ikke er digitale likevel skal kunne søke. Oslo ber om sju vedlegg, mens mye allerede hentes automatisk. Xala kan koble eID, medhjelper og betinget vedlegg. Xala eier ikke Startskudd. Xala bestemmer ikke lånet.
 
 ## Start hos den som står utenfor
 
@@ -76,11 +76,11 @@ Fullmakt og medhjelper er et nytt formål. Logg hvem som søkte på vegne av hve
 
 ## Hva maskinen kan gjøre
 
-Å hente det e-søknaden allerede kan, kan kables. Å vise bare de vedleggene som fortsatt mangler, kan kables. Medhjelper-sporet og papirsporet skal fortsatt virke.
+Å hente det e-søknaden allerede kan, kan kobles. Å vise bare de vedleggene som fortsatt mangler, kan kobles. Medhjelper-sporet og papirsporet skal fortsatt virke.
 
-Å stenge døren fordi noen mangler BankID, kan ikke kables. Ikke auto-avslag for «ufullstendig» når skjemaet allerede har hentet inntekt. Ikke lånet.
+Å stenge døren fordi noen mangler BankID, kan ikke kobles. Ikke auto-avslag for «ufullstendig» når skjemaet allerede har hentet inntekt. Ikke lånet.
 
-Xala kan kable eID, medhjelper og betinget vedlegg inn i fagsystemet dere har, eller inn i Startskudd. Xala eier ikke Startskudd. Xala bestemmer ikke lånet.
+Xala kan koble eID, medhjelper og betinget vedlegg inn i fagsystemet dere har, eller inn i Startskudd. Xala eier ikke Startskudd. Xala bestemmer ikke lånet.
 
 ## Ofte stilte spørsmål
 
@@ -94,6 +94,6 @@ MinID er for bostøtte, skriver Husbanken. Den åpner ikke startlån. Du trenger
 Nei. Listen er Oslos. Husbanken skriver at mye hentes automatisk, og at du kanskje likevel må laste opp noe selv.
 
 **Kan Xala eie Startskudd eller avgjøre lånet?**
-Nei. Xala kan kable eID, medhjelper og betinget vedlegg. Xala eier ikke Startskudd. Lånet blir hos kommunen.
+Nei. Xala kan koble eID, medhjelper og betinget vedlegg. Xala eier ikke Startskudd. Lånet blir hos kommunen.
 
 Trenger dere at døren og vedleggslisten henger sammen, start på [kontakt](/kontakt).

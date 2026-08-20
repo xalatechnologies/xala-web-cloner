@@ -20,7 +20,7 @@ keywords:
 cta: /kontakt
 ---
 
-En person er logget inn. Fagsystemet prøver å hente Folkeregister eller skattegrunnlag med den sesjonen. APIet sier nei, eller oppslaget forlater aldri nettleseren. ID-porten logger inn et menneske. Maskinporten slipper inn et system. Et registeroppslag i saksbehandling er hjemmelsbasert, ikke et BankID-klikk. Xala kan kable Maskinporten inn i fagsystemet. Xala eier ikke døren.
+En person er logget inn. Fagsystemet prøver å hente Folkeregister eller skattegrunnlag med den sesjonen. APIet sier nei, eller oppslaget forlater aldri nettleseren. ID-porten logger inn et menneske. Maskinporten slipper inn et system. Et registeroppslag i saksbehandling er hjemmelsbasert, ikke et BankID-klikk. Xala kan koble Maskinporten inn i fagsystemet. Xala eier ikke døren.
 
 Søkeren venter mens husstand eller inntekt tastes av en skjerm. Maskindøren ble aldri åpnet.
 
@@ -64,13 +64,13 @@ Personen ved pulten, også via Ansattporten eller Entra, er ikke API-konsumenten
 
 Token er ikke rettighetspakke. Rettighetspakke er ikke hjemmel. Maskinporten viser hvilken virksomhet som ringer. Registeret sjekker pakken likevel.
 
-## Hva som kan kables, og hva som blir manuelt
+## Hva som kan kobles, og hva som blir manuelt
 
-Det som kan kables: JWT-grant, token fra Maskinporten, Bearer mot APIet. Scope etter rettighetspakke. Altinn-delegering til leverandør. Logg hvilken virksomhet, hvilket scope, hvilket formål. [Bruksvilkår 4.1.2.2](https://samarbeid.digdir.no/felleslosninger/bruksvilkar-offentlige-kunder/70): bare personell og systemer med tjenstlig behov får tokenet. Kommunen er behandlingsansvarlig. Ikke lagre hele registeret «for sikkerhets skyld».
+Det som kan kobles: JWT-grant, token fra Maskinporten, Bearer mot APIet. Scope etter rettighetspakke. Altinn-delegering til leverandør. Logg hvilken virksomhet, hvilket scope, hvilket formål. [Bruksvilkår 4.1.2.2](https://samarbeid.digdir.no/felleslosninger/bruksvilkar-offentlige-kunder/70): bare personell og systemer med tjenstlig behov får tokenet. Kommunen er behandlingsansvarlig. Ikke lagre hele registeret «for sikkerhets skyld».
 
 Det som ikke skal automatiseres: å logge saksbehandleren inn som systemet. Ikke å hoppe over hjemmel, rettighetspakke, tilslutningserklæring eller påkobling. Test i testmiljø. Forny test- og produksjonssertifikat. Digdir tildeler ikke API-tilganger for hånd. Xala avgjør ikke saken.
 
-Xala kan kable Maskinporten inn i fagsystemet dere har. Xala eier ikke døren.
+Xala kan koble Maskinporten inn i fagsystemet dere har. Xala eier ikke døren.
 
 ## Ofte stilte spørsmål
 
@@ -84,6 +84,6 @@ Nei. Oppslaget på skatteetaten.no er den delegerte personen som ser. Fagsysteme
 Nei. Tokenet viser hvilken virksomhet som ringer. Registeret sjekker rettighetspakken likevel. Hjemmelen kommer først, før noen scope blir gitt.
 
 **Kan Xala eie Maskinporten eller fatte vedtaket?**
-Nei. Xala kan kable Maskinporten inn i fagsystemet dere har. Xala eier ikke døren. Vedtaket og behandlingsansvaret blir hos kommunen.
+Nei. Xala kan koble Maskinporten inn i fagsystemet dere har. Xala eier ikke døren. Vedtaket og behandlingsansvaret blir hos kommunen.
 
 Trenger dere at fagsystemet åpner maskindøren, start på [kontakt](/kontakt).

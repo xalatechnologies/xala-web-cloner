@@ -26,7 +26,7 @@ Innboksen er ikke mottak. Den er mellomlager.
 
 Slutt å bruke Altinn som mellomlager. Ruter søknaden inn i eByggesak eller SvarInn, slik at den lander i fagsystemet. Ikke bygg et fjerde mottak.
 
-[DiBK](https://www.dibk.no/saksbehandling-tilsyn-og-kontroll/gjor-kommunen-din-klar-for-digitale-byggesoknader) kaller det mottak via Altinn, og lagring. Fristen løper likevel. Bare ansatte med riktige rettigheter ser den. Xala kan kable mottaket inn i fagsystemet. Xala eier ikke Altinn. Xala eier ikke eByggesak.
+[DiBK](https://www.dibk.no/saksbehandling-tilsyn-og-kontroll/gjor-kommunen-din-klar-for-digitale-byggesoknader) kaller det mottak via Altinn, og lagring. Fristen løper likevel. Bare ansatte med riktige rettigheter ser den. Xala kan koble mottaket inn i fagsystemet. Xala eier ikke Altinn. Xala eier ikke eByggesak.
 
 Søkeren har sendt digitalt. Filen venter på at noen logger inn.
 
@@ -68,9 +68,9 @@ Når saken først er inne, og likevel ligger uten eier, er det et annet steg. De
 
 Dere kan rute søknaden inn i eByggesak, eller sette SvarInn til saksbehandlingssystemet. Da lander den i fagsystemet dere har. Ikke bygg et fjerde mottak.
 
-Dere kan ikke kable selve byggesaksvedtaket. Xala fatter ikke tillatelsen.
+Dere kan ikke koble selve byggesaksvedtaket. Xala fatter ikke tillatelsen.
 
-Xala kan kable mottaket inn i fagsystemet dere har. Xala eier ikke Altinn. Xala eier ikke eByggesak.
+Xala kan koble mottaket inn i fagsystemet dere har. Xala eier ikke Altinn. Xala eier ikke eByggesak.
 
 ## Ofte stilte spørsmål
 
@@ -84,6 +84,6 @@ Nei. DiBK skriver at kommunen kan motta via eByggesak, SvarInn eller Altinn. «V
 Nei. Nedlastingen er skrevet i [Byggesøknaden skal inn i saken, ikke i Altinn](/blogg/ebyggesak-manuell-henting-fra-altinn). Her sitter søknaden. Ingen har åpnet den.
 
 **Kan Xala eie Altinn eller fatte vedtaket?**
-Nei. Xala kan kable mottaket inn i fagsystemet dere har. Xala eier ikke Altinn. Xala eier ikke eByggesak. Vedtaket blir hos saksbehandleren.
+Nei. Xala kan koble mottaket inn i fagsystemet dere har. Xala eier ikke Altinn. Xala eier ikke eByggesak. Vedtaket blir hos saksbehandleren.
 
 Trenger dere at søknaden lander i fagsystemet, start på [kontakt](/kontakt).

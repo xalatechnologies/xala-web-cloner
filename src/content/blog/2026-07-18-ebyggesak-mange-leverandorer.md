@@ -20,13 +20,13 @@ keywords:
 cta: /kontakt
 ---
 
-Klokka 08:40. En søknad fra Norkart. En fra Ambita. En fra Holte. [DiBK](https://www.dibk.no/om-direktoratet-for-byggkvalitet/direktoratet-for-byggkvalitet-40-ar-) skiller eByggesøknad og eByggesak. Fem søknadsløsninger i markedet. Tre saksbehandlingssystemer. Søknaden kommer i et felles format, men kommunen sitter likevel mellom leverandørene. Xala kan kable mottaket. Xala eier ikke eByggesak.
+Klokka 08:40. En søknad fra Norkart. En fra Ambita. En fra Holte. [DiBK](https://www.dibk.no/om-direktoratet-for-byggkvalitet/direktoratet-for-byggkvalitet-40-ar-) skiller eByggesøknad og eByggesak. Fem søknadsløsninger i markedet. Tre saksbehandlingssystemer. Søknaden kommer i et felles format, men kommunen sitter likevel mellom leverandørene. Xala kan koble mottaket. Xala eier ikke eByggesak.
 
 Søkeren sendte i én av fem. Søkeren vet ikke hvilket av de tre eByggesak-systemene som tar saken, eller om den landet i Altinn.
 
 ## Kort svar
 
-Pek på mottaksveien og formatet. Hvilken søknadsløsning sendte. Hvilket FtPB-format kom. Hvilken av de tre mottaksveiene kommunen bruker. Hvilket av de tre eByggesak-systemene skal få de strukturerte dataene. Kabl FtPB. Ikke bygg en sjette søknad. Ikke bygg et fjerde eByggesak.
+Pek på mottaksveien og formatet. Hvilken søknadsløsning sendte. Hvilket FtPB-format kom. Hvilken av de tre mottaksveiene kommunen bruker. Hvilket av de tre eByggesak-systemene skal få de strukturerte dataene. Koble FtPB. Ikke bygg en sjette søknad. Ikke bygg et fjerde eByggesak.
 
 Ikke late som Xala er en fjerde eByggesak. Ikke late som Xala er en sjette søknadsløsning. Ikke late som Xala erstatter FtPB. Kommunen velger leverandør og mottak. Kommunen finner ikke opp et fjerde format.
 
@@ -64,13 +64,13 @@ DiBK: «alle eByggesøknader sendes kommunene i et felles format og utseende, ua
 
 Det er formatet. Det er ikke et fjerde eByggesak. Det er ikke en sjette søknad.
 
-## Hva som kan kables, og hva som blir manuelt
+## Hva som kan kobles, og hva som blir manuelt
 
-Det som kan kables: navngitt mottaksvei og formatmapping. Hvilken søknadsløsning sendte. Hvilket FtPB-format kom. Hvilken mottaksvei kommunen bruker. Hvilket av de tre eByggesak-systemene som skal ha dataene. Logg hvilket system som tok imot hva. Kommunen er behandlingsansvarlig. Databehandleravtale med eByggesak-leverandøren og med søknadsløsningen.
+Det som kan kobles: navngitt mottaksvei og formatmapping. Hvilken søknadsløsning sendte. Hvilket FtPB-format kom. Hvilken mottaksvei kommunen bruker. Hvilket av de tre eByggesak-systemene som skal ha dataene. Logg hvilket system som tok imot hva. Kommunen er behandlingsansvarlig. Databehandleravtale med eByggesak-leverandøren og med søknadsløsningen.
 
 Det som ikke skal automatiseres: å bygge en sjette søknad. Ikke et fjerde eByggesak. Ikke å late som Xala erstatter FtPB. Vedtaket blir hos saksbehandleren. Xala fatter ikke tillatelsen.
 
-Xala kan kable mottaket inn i eByggesak dere har. Xala eier ikke eByggesak. Xala eier ikke FtPB.
+Xala kan koble mottaket inn i eByggesak dere har. Xala eier ikke eByggesak. Xala eier ikke FtPB.
 
 ## Ofte stilte spørsmål
 
@@ -84,6 +84,6 @@ Nei. Søknadsskjemaene navngir Oslo som femte. Proff-siden viser også en tjenes
 Nei. Nedlastingen er skrevet i [Byggesøknaden skal inn i saken, ikke i Altinn](/blogg/ebyggesak-manuell-henting-fra-altinn). Her er det fem inn og tre ut, ikke klikket i innboksen.
 
 **Kan Xala eie eByggesak eller fatte vedtaket?**
-Nei. Xala kan kable mottaket inn i eByggesak dere har. Xala eier ikke eByggesak. Xala eier ikke FtPB. Vedtaket blir hos saksbehandleren.
+Nei. Xala kan koble mottaket inn i eByggesak dere har. Xala eier ikke eByggesak. Xala eier ikke FtPB. Vedtaket blir hos saksbehandleren.
 
 Trenger dere at formatet lander i eByggesak dere har, start på [kontakt](/kontakt).

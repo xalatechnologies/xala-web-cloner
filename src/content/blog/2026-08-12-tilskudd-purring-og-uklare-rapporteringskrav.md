@@ -25,7 +25,7 @@ Det var det ikke.
 
 Skriv kravet i tilskuddsbrevet. Gi malen. Send en påminnelse før fristen. Ikke start med en purring.
 
-Hvis dere ofte purrer, er rapporteringskravet uklart. DFØ skriver det. En mal og et tydelig brev kommer først. Xala kan kable malen og fristen. Xala eier ikke tilskuddsportalen.
+Hvis dere ofte purrer, er rapporteringskravet uklart. DFØ skriver det. En mal og et tydelig brev kommer først. Xala kan koble malen og fristen. Xala eier ikke tilskuddsportalen.
 
 Saksbehandleren jakter tilleggsopplysninger. Søkeren gjetter hva som skulle vært levert. Begge tapte tid på noe som burde stått i brevet.
 
@@ -45,13 +45,13 @@ På siden [Kontrollere og vurdere rapporter](https://www.dfo.no/fagomrader/tilsk
 
 ## Hva maskinen kan gjøre
 
-Malen, fristen og påminnelsen kan kables. Kravet ligger i brevet før fristen. Påminnelsen går ut før den. Ikke etter.
+Malen, fristen og påminnelsen kan kobles. Kravet ligger i brevet før fristen. Påminnelsen går ut før den. Ikke etter.
 
-Sanksjon kan ikke kables. Avslag fordi rapporten var «ufullstendig» kan ikke kables, hvis kravet var uklart. DFØ skriver at noen vilkårsbrudd følger av uklarheter i regelverket eller tilskuddsbrevet. Et menneske leser det.
+Sanksjon kan ikke kobles. Avslag fordi rapporten var «ufullstendig» kan ikke kobles, hvis kravet var uklart. DFØ skriver at noen vilkårsbrudd følger av uklarheter i regelverket eller tilskuddsbrevet. Et menneske leser det.
 
 Tilleggsopplysninger er et nytt formål. Logg hva dere ba om, og hvorfor. Ikke be om hele regnskapet «for sikkerhets skyld» hvis kravet var en framdriftsrapport.
 
-Xala kan kable mal, frist og påminnelse inn i fagsystemet dere har. Xala eier ikke portalen.
+Xala kan koble mal, frist og påminnelse inn i fagsystemet dere har. Xala eier ikke portalen.
 
 ## Ofte stilte spørsmål
 
@@ -62,7 +62,7 @@ Ikke uten videre. DFØ spør først om rapporteringskravet var tydelig nok. Noen
 Kravet i tilskuddsbrevet, malen mottakeren skal fylle, og en påminnelse før fristen. En purring er ikke det første steget i løpet.
 
 **Kan Xala eie tilskuddsportalen?**
-Nei. Xala kan kable malen, fristen og påminnelsen i fagsystemet dere allerede har. Xala eier ikke en tilskuddsportal.
+Nei. Xala kan koble malen, fristen og påminnelsen i fagsystemet dere allerede har. Xala eier ikke en tilskuddsportal.
 
 **Kan sanksjon automatiseres når rapporten er ufullstendig?**
 Nei. Mal, frist og påminnelse kan automatiseres. Sanksjon og avslag blir hos et menneske, særlig når kravet i brevet var uklart.

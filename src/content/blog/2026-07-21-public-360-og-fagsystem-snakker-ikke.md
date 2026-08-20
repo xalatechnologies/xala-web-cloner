@@ -2,7 +2,7 @@
 slug: public-360-og-fagsystem-snakker-ikke
 title: "To faner er ikke én sak"
 seoTitle: "To faner er ikke én sak"
-description: "Journal i 360, sak i fagsystemet. To faner er ikke én sak. Kabl journalen fra hendelsen."
+description: "Journal i 360, sak i fagsystemet. To faner er ikke én sak. Koble journalen fra hendelsen."
 date: 2026-07-21
 author: "Ibrahim Rahmani"
 role: "IT-leder"
@@ -22,11 +22,11 @@ cta: /kontakt
 
 Klokka 09:10. Public 360 i én fane. Fagsystemet i en annen. Journalposten kopieres for hånd.
 
-To faner er ikke én sak. Saksbehandleren er kabelen.
+To faner er ikke én sak. Saksbehandleren er koblingen.
 
 Én sak. Når fagsystemet oppretter eller mottar et journalpliktig dokument, skriv journalmetadata inn i 360, eller inn i journalen dere faktisk bruker, fra den hendelsen. Innkommende dokumenter festes på saken. Ikke bygg et tredje register.
 
-[Digdir](https://docs.digdir.no/docs/eFormidling/Funksjonalitet/saksbehandling) skiller sak- og arkivsystem fra fagsystem. Dokumentene skal kunne knyttes til saken automatisk. Xala kan kable. Xala eier ikke 360. Xala eier ikke fagsystemet.
+[Digdir](https://docs.digdir.no/docs/eFormidling/Funksjonalitet/saksbehandling) skiller sak- og arkivsystem fra fagsystem. Dokumentene skal kunne knyttes til saken automatisk. Xala kan koble. Xala eier ikke 360. Xala eier ikke fagsystemet.
 
 ## Start i de to fanene
 
@@ -34,7 +34,7 @@ To faner er ikke én sak. Saksbehandleren er kabelen.
 
 [Prinsipp 6](https://www.digdir.no/digital-samhandling/prinsipp-6-lag-digitale-losninger-som-stotter-samhandling/1063) er at dokumentet som kom inn, lander på saken uten en kopi mellom fanene.
 
-[Prinsipp 2](https://www.digdir.no/digital-samhandling/prinsipp-2-ta-arkitekturbeslutninger-pa-rett-niva/1056) er at kommunen beslutter om fagsystemet kables mot 360, eller om fagsystemet selv er informasjonssystemet etter [§ 5](https://lovdata.no/dokument/SF/forskrift/2025-12-17-2647).
+[Prinsipp 2](https://www.digdir.no/digital-samhandling/prinsipp-2-ta-arkitekturbeslutninger-pa-rett-niva/1056) er at kommunen beslutter om fagsystemet kobles mot 360, eller om fagsystemet selv er informasjonssystemet etter [§ 5](https://lovdata.no/dokument/SF/forskrift/2025-12-17-2647).
 
 Bevillingsportalen er et annet steg. Det er skrevet i [Skjenkebevilling: når 360 og Visma ikke snakker med portalen](/blogg/skjenkebevilling-integrasjon-360-visma). Her er det journalen mot fagsystemet. Ikke portalen.
 
@@ -64,15 +64,15 @@ Det er kanalen. Bruk [eFormidling](https://docs.digdir.no/docs/eFormidling/Funks
 
 ## Hva maskinen kan gjøre
 
-Journalmetadata fra hendelsen i fagsystemet inn i 360, eller inn i journalen dere bruker, kan kables. Innkommende dokumenter festes på saken. Logg hvilket system som skrev hva. Kommunen er behandlingsansvarlig. Databehandleravtale med 360 og med fagsystemet. Ikke kopier hele saken inn i begge «for sikkerhets skyld».
+Journalmetadata fra hendelsen i fagsystemet inn i 360, eller inn i journalen dere bruker, kan kobles. Innkommende dokumenter festes på saken. Logg hvilket system som skrev hva. Kommunen er behandlingsansvarlig. Databehandleravtale med 360 og med fagsystemet. Ikke kopier hele saken inn i begge «for sikkerhets skyld».
 
-Å behandle 360 som fagsystemet, kan ikke kables. Ikke hopp over journalplikt. Ikke late som forskriften krever en 360-kabel. Skjønnet i saken blir hos saksbehandleren.
+Å behandle 360 som fagsystemet, kan ikke kobles. Ikke hopp over journalplikt. Ikke late som forskriften krever en 360-kobling. Skjønnet i saken blir hos saksbehandleren.
 
-Xala kan kable 360 og fagsystemet dere har. Xala eier ikke Public 360. Xala eier ikke fagsystemet.
+Xala kan koble 360 og fagsystemet dere har. Xala eier ikke Public 360. Xala eier ikke fagsystemet.
 
 ## Ofte stilte spørsmål
 
-**Må fagsystemet kables mot Public 360?**
+**Må fagsystemet kobles mot Public 360?**
 Nei. Nasjonalarkivet: det er ikke nødvendig å integrere et fagsystem mot en Noark-kjerne for å oppfylle journalplikt. Kommunen beslutter etter behov og risiko.
 
 **Kan dere droppe journalen hvis saken lever i fagsystemet?**
@@ -82,6 +82,6 @@ Nei. Journalplikt gjelder. § 14 og § 15 sier hva som skal inn, og hvilke metad
 Nei. Portalen er skrevet i [Skjenkebevilling: når 360 og Visma ikke snakker med portalen](/blogg/skjenkebevilling-integrasjon-360-visma). Her er journalen mot fagsystemet. Ikke portalen.
 
 **Kan Xala eie 360 eller fagsystemet?**
-Nei. Xala kan kable journalen fra hendelsen inn i systemet dere har. Xala eier ikke Public 360. Xala eier ikke fagsystemet.
+Nei. Xala kan koble journalen fra hendelsen inn i systemet dere har. Xala eier ikke Public 360. Xala eier ikke fagsystemet.
 
 Trenger dere at journalen og saken er samme sak, start på [kontakt](/kontakt).

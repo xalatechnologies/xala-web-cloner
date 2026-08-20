@@ -49,9 +49,9 @@ Vedleggslisten og kode 6 er en annen jobb. Den er skrevet i [Vedleggslisten er l
 
 ## Hva maskinen kan gjøre
 
-Å vise den veiledende satsen som utgangspunkt, kan kables. Å stoppe saken hos et menneske før vedtak, kan kables.
+Å vise den veiledende satsen som utgangspunkt, kan kobles. Å stoppe saken hos et menneske før vedtak, kan kobles.
 
-Å la satsen bli vedtaket, kan ikke kables. Å finne på et beløp som ikke står hos Nav eller Oslo, kan ikke kables. Vedtaket er skjønn.
+Å la satsen bli vedtaket, kan ikke kobles. Å finne på et beløp som ikke står hos Nav eller Oslo, kan ikke kobles. Vedtaket er skjønn.
 
 Xala kan rute saken til en person. Xala setter ikke satsen. Xala eier ikke Digisos.
 

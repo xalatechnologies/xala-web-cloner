@@ -26,7 +26,7 @@ SvarInn er ikke slått på. Mottaket DiBK peker på, mangler.
 
 Inngå avtalen med KS Digital. Sett opp mottakersystemet. Pek det på saksbehandlingssystemet, ikke bare arkivet. Ikke bygg et privat mottak.
 
-DiBK peker på SvarInn som mottak. [KS](https://ksdigital.no/tjenestene/svarut-tjenesten/svarinn/) kaller det en mottakservice inn i sakssystemet. Uten avtale og uten kobling mot fagsystemet kommer ikke søknaden inn. Xala kan kable. Xala eier ikke SvarInn. Xala eier ikke KS FIKS. Xala fatter ikke tillatelsen.
+DiBK peker på SvarInn som mottak. [KS](https://ksdigital.no/tjenestene/svarut-tjenesten/svarinn/) kaller det en mottakservice inn i sakssystemet. Uten avtale og uten kobling mot fagsystemet kommer ikke søknaden inn. Xala kan koble. Xala eier ikke SvarInn. Xala eier ikke KS FIKS. Xala fatter ikke tillatelsen.
 
 Søkeren har sendt via Fellestjenester. Fristen løper. Kommunen hadde et mottak de ikke slo på.
 
@@ -72,7 +72,7 @@ Det som kan settes opp: avtalen, mottakersystemet, og at SvarInn peker på saksb
 
 Det som ikke skal automatiseres: vedtaket. Ikke å registrere organisasjonsnummeret før fagsystemet kan importere. Ikke å bygge et privat mottak ved siden av FIKS.
 
-Xala kan kable SvarInn inn i fagsystemet dere har. Xala eier ikke SvarInn. Xala eier ikke KS FIKS. Xala fatter ikke tillatelsen.
+Xala kan koble SvarInn inn i fagsystemet dere har. Xala eier ikke SvarInn. Xala eier ikke KS FIKS. Xala fatter ikke tillatelsen.
 
 ## Ofte stilte spørsmål
 
@@ -86,6 +86,6 @@ KS: forsendelsene stopper i SvarInn og blir liggende i kø. Vent til fagsystemet
 Nei. Innboksen er skrevet i [Innboksen er ikke mottak](/blogg/altinn-innboks-manuelt-mellomlager). Her mangler SvarInn, eller den peker ikke på fagsystemet.
 
 **Kan Xala eie SvarInn eller fatte vedtaket?**
-Nei. Xala kan kable. Xala eier ikke SvarInn. Xala eier ikke KS FIKS. Xala fatter ikke tillatelsen. Vedtaket blir hos saksbehandleren.
+Nei. Xala kan koble. Xala eier ikke SvarInn. Xala eier ikke KS FIKS. Xala fatter ikke tillatelsen. Vedtaket blir hos saksbehandleren.
 
 Trenger dere at SvarInn peker på fagsystemet, start på [kontakt](/kontakt).

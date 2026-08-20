@@ -25,7 +25,7 @@ Søknaden i innboksen er ikke saken.
 
 Trekk søknaden inn i fagsystemet. Ikke bygg en ny byggeportal. Ikke gjør vedtaket der.
 
-Uten eByggesak eller SvarInn havner søknaden i kommunens innboks i Altinn. Da må noen med riktige rettigheter hente den for hånd. Xala kan kable den inn i fagsystemet. Xala eier ikke Altinn. Xala eier ikke eByggesak.
+Uten eByggesak eller SvarInn havner søknaden i kommunens innboks i Altinn. Da må noen med riktige rettigheter hente den for hånd. Xala kan koble den inn i fagsystemet. Xala eier ikke Altinn. Xala eier ikke eByggesak.
 
 ## Bruk det dere allerede har
 
@@ -45,11 +45,11 @@ eByggesak henter søknadene automatisk. Har kommunen SvarInn, men ikke eByggesak
 
 ## Hva maskinen kan gjøre
 
-Å trekke søknaden inn i fagsystemet, kan kables. eByggesak gjør det, skriver DiBK. SvarInn kan settes opp slik at søknadene går til saksbehandlingssystemet. Ikke bare til arkivet.
+Å trekke søknaden inn i fagsystemet, kan kobles. eByggesak gjør det, skriver DiBK. SvarInn kan settes opp slik at søknadene går til saksbehandlingssystemet. Ikke bare til arkivet.
 
-Selve byggesaksvedtaket kan ikke kables. En ny portal ved siden av Fellestjenester kan ikke kables.
+Selve byggesaksvedtaket kan ikke kobles. En ny portal ved siden av Fellestjenester kan ikke kobles.
 
-Xala kan kable Altinn inn i fagsystemet dere har. Xala eier ikke Altinn. Xala eier ikke eByggesak.
+Xala kan koble Altinn inn i fagsystemet dere har. Xala eier ikke Altinn. Xala eier ikke eByggesak.
 
 ## Ofte stilte spørsmål
 
@@ -60,9 +60,9 @@ Bare hvis kommunen verken har eByggesak eller SvarInn. DiBK skriver at den da la
 Når kommunen mottar en fullstendig byggesøknad. Det gjelder også når søknaden kom via Altinn eller SvarInn, ikke først når noen laster den ned.
 
 **Kan Xala eie eByggesak eller Altinn?**
-Nei. Xala kan kable mottaket inn i fagsystemet dere har. Xala eier ikke Altinn, og Xala eier ikke eByggesak.
+Nei. Xala kan koble mottaket inn i fagsystemet dere har. Xala eier ikke Altinn, og Xala eier ikke eByggesak.
 
 **Skal vedtaket automatiseres når søknaden er inne?**
-Nei. Mottak kan kables slik at søknaden lander i saken. Selve byggesaksvedtaket blir hos saksbehandleren.
+Nei. Mottak kan kobles slik at søknaden lander i saken. Selve byggesaksvedtaket blir hos saksbehandleren.
 
 Trenger dere at søknaden lander i fagsystemet, start på [kontakt](/kontakt).

@@ -26,7 +26,7 @@ Dokumentet kommer utenom. Integrasjonspunktet peker ikke på fagsystemet.
 
 Installer eller gjenbruk integrasjonspunktet. Pek det på fagsystemet. Da festes innkommende meldinger på saken. Ikke bygg en privat postkasse.
 
-eFormidling er mellomvare inn i fagsystemet. [Digdir](https://docs.digdir.no/docs/eFormidling/Funksjonalitet/saksbehandling) vil at dokumentet knyttes til saken automatisk. Uten den koblingen kommer det utenom. Xala kan kable integrasjonspunktet. Xala eier ikke eFormidling. Xala fatter ikke vedtaket.
+eFormidling er mellomvare inn i fagsystemet. [Digdir](https://docs.digdir.no/docs/eFormidling/Funksjonalitet/saksbehandling) vil at dokumentet knyttes til saken automatisk. Uten den koblingen kommer det utenom. Xala kan koble integrasjonspunktet. Xala eier ikke eFormidling. Xala fatter ikke vedtaket.
 
 Noen limer det inn etterpå. Ettersendelse blir hverdagen. Det er det som blir igjen. Det er ikke et Digdir-sitat.
 
@@ -36,7 +36,7 @@ Noen limer det inn etterpå. Ettersendelse blir hverdagen. Det er det som blir i
 
 [Prinsipp 6](https://www.digdir.no/digital-samhandling/prinsipp-6-lag-digitale-losninger-som-stotter-samhandling/1063) er at dokumentet som ble sendt, lander på saken.
 
-[Prinsipp 2](https://www.digdir.no/digital-samhandling/prinsipp-2-ta-arkitekturbeslutninger-pa-rett-niva/1056) er at kommunen beslutter å kable integrasjonspunktet mot fagsystemet.
+[Prinsipp 2](https://www.digdir.no/digital-samhandling/prinsipp-2-ta-arkitekturbeslutninger-pa-rett-niva/1056) er at kommunen beslutter å koble integrasjonspunktet mot fagsystemet.
 
 Ikke gjør vedtaket der. Ikke late som «vi har 360» er det samme som at eFormidling er koblet. Ikke late som Xala eier eFormidling.
 
@@ -68,7 +68,7 @@ Det som kan settes opp: integrasjonspunktet inn i fagsystemet dere har. Da feste
 
 Det som ikke skal automatiseres: vedtaket. Ikke å late som 360 alene er eFormidling. Ikke å bygge en privat postkasse ved siden av. E-post og ettersendelse er det som blir igjen når koblingen mangler. Det er ikke et Digdir-sitat.
 
-Xala kan kable integrasjonspunktet. Xala eier ikke eFormidling. Xala fatter ikke vedtaket.
+Xala kan koble integrasjonspunktet. Xala eier ikke eFormidling. Xala fatter ikke vedtaket.
 
 ## Ofte stilte spørsmål
 
@@ -82,6 +82,6 @@ Nei. SvarInn er en kanal integrasjonspunktet kan rute til. SvarInn som mangler, 
 Nei. 360 mot fagsystemet er et annet steg. Det er skrevet i [To faner er ikke én sak](/blogg/public-360-og-fagsystem-snakker-ikke). Her er det dokumentet som aldri festes.
 
 **Kan Xala eie eFormidling eller fatte vedtaket?**
-Nei. Xala kan kable integrasjonspunktet. Xala eier ikke eFormidling. Xala fatter ikke vedtaket. Vedtaket blir hos kommunen.
+Nei. Xala kan koble integrasjonspunktet. Xala eier ikke eFormidling. Xala fatter ikke vedtaket. Vedtaket blir hos kommunen.
 
 Trenger dere at dokumentet lander på saken, start på [kontakt](/kontakt).

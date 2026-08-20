@@ -26,7 +26,7 @@ En tom mal er ikke begrunnelse.
 
 Bygg forklaring og manuell kontroll før dere slår på automatikk. Parten skal kunne lese hvorfor. Noen skal kunne ta saken opp igjen for hånd.
 
-[Forvaltningsloven 1967](https://lovdata.no/dokument/NL/lov/1967-02-10/KAPITTEL_4-3#%C2%A724) krever allerede begrunnelse. [Loven av 20. juni 2025 nr. 81](https://lovdata.no/dokument/NL/lov/2025-06-20-81) er vedtatt. Den er [ikke i kraft](https://lovdata.no/lov/2025-06-20-81/%C2%A799). Xala kan kable forklaring og kontrollspor. Xala fatter ikke vedtaket.
+[Forvaltningsloven 1967](https://lovdata.no/dokument/NL/lov/1967-02-10/KAPITTEL_4-3#%C2%A724) krever allerede begrunnelse. [Loven av 20. juni 2025 nr. 81](https://lovdata.no/dokument/NL/lov/2025-06-20-81) er vedtatt. Den er [ikke i kraft](https://lovdata.no/lov/2025-06-20-81/%C2%A799). Xala kan koble forklaring og kontrollspor. Xala fatter ikke vedtaket.
 
 Status og varsler er et annet steg. Det er ikke denne teksten.
 
@@ -58,11 +58,11 @@ Det er lista som kommer. Det er ikke lista som binder kommunen i dag. §§ 24 og
 
 ## Hva maskinen kan gjøre
 
-Å fylle forklaringen fra regelsporet, kan kables. Å opplyse om manuell kontroll i samme melding, kan kables. Å logge hvem som åpnet saken etterpå, kan kables. Dokumentasjonen av det rettslige innholdet hører hjemme i systemet, ikke i en e-post.
+Å fylle forklaringen fra regelsporet, kan kobles. Å opplyse om manuell kontroll i samme melding, kan kobles. Å logge hvem som åpnet saken etterpå, kan kobles. Dokumentasjonen av det rettslige innholdet hører hjemme i systemet, ikke i en e-post.
 
-Å slå på automatisert vedtak uten forklaring, kan ikke kables. Ikke auto-avslag uten at noen kan ta saken opp igjen for hånd. Ikke å late som 2025-loven allerede gjelder. Skjønnet og den manuelle kontrollen blir hos en person.
+Å slå på automatisert vedtak uten forklaring, kan ikke kobles. Ikke auto-avslag uten at noen kan ta saken opp igjen for hånd. Ikke å late som 2025-loven allerede gjelder. Skjønnet og den manuelle kontrollen blir hos en person.
 
-Xala kan kable forklaring, kontrollknapp og spor inn i fagsystemet dere har. Xala eier ikke vedtaket. Xala fatter ikke vedtaket.
+Xala kan koble forklaring, kontrollknapp og spor inn i fagsystemet dere har. Xala eier ikke vedtaket. Xala fatter ikke vedtaket.
 
 ## Ofte stilte spørsmål
 
@@ -76,6 +76,6 @@ Når 2025-loven trer i kraft, ja, for avgjørelser som er omfattet av artikkel 2
 Nei. Bygg forklaring og manuell kontroll før dere slår på automatisert vedtak. En automat uten spor er det § 12 og § 13 er skrevet mot.
 
 **Kan Xala fatte vedtaket?**
-Nei. Xala kan kable forklaring og kontrollspor inn i fagsystemet dere har. Vedtaket blir hos kommunen. Xala fatter det ikke.
+Nei. Xala kan koble forklaring og kontrollspor inn i fagsystemet dere har. Vedtaket blir hos kommunen. Xala fatter det ikke.
 
 Trenger dere at forklaringen og kontrollen er på plass før automatikken, start på [kontakt](/kontakt).

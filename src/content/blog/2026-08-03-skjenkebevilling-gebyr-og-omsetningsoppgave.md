@@ -40,7 +40,7 @@ Det som kan automatiseres: formelen. Liter fra oppgaven, sats fra § 6-2, gebyr 
 
 [Prinsipp 5](https://www.digdir.no/digital-samhandling/prinsipp-5-del-og-gjenbruk-losninger/1062) er å bruke Visma dere allerede har, ikke å bygge et kommunalt fakturaregister ved siden av. [Prinsipp 6](https://www.digdir.no/digital-samhandling/prinsipp-6-lag-digitale-losninger-som-stotter-samhandling/1063) er at gebyret som er regnet, faktisk lander der fakturaen skal ut.
 
-Kablingen mot Visma er et annet steg enn å ha Visma åpent i en fane. Det er skrevet i [Skjenkebevilling: når 360 og Visma ikke snakker med portalen](/blogg/skjenkebevilling-integrasjon-360-visma).
+Koblingen mot Visma er et annet steg enn å ha Visma åpent i en fane. Det er skrevet i [Skjenkebevilling: når 360 og Visma ikke snakker med portalen](/blogg/skjenkebevilling-integrasjon-360-visma).
 
 Det som ikke skal automatiseres: å finne på en sats. Heller ikke selve bevillingsvedtaket. Er oppgaven mangelfull eller åpenbart feil, sjekker et menneske. Helsedir åpner for at kommunen i særlige tilfeller kan sette gebyret under minstegebyret. Det er skjønn, og kommunen har aldri plikt til å bruke unntaket.
 
