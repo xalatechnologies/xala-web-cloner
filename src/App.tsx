@@ -6,6 +6,7 @@ import { GDPRNotification } from './components/gdpr/GDPRNotification';
 import { ChatWidget } from './components/chat/ChatWidget';
 import ScrollToTop from './components/ScrollToTop';
 import PageLoader from './components/PageLoader';
+import RouteErrorBoundary from './components/error/RouteErrorBoundary';
 import RouteSEO from './components/seo/RouteSEO';
 import ConsentedAnalytics from './components/seo/ConsentedAnalytics';
 import { MICROSOFT_CLARITY_ID, PLAUSIBLE_DOMAIN } from './lib/analytics/ids';
@@ -51,43 +52,48 @@ const App = () => {
           <RouteSEO />
           {/* Site-wide and consent-gated, rather than only on /kontakt. */}
           <ConsentedAnalytics {...analyticsConfig} />
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/tjenester" element={<TjenesterPage />} />
-              <Route path="/tjenester/:slug" element={<TjenesteDetaljPage />} />
-              <Route path="/produkter" element={<ProdukterPage />} />
-              <Route path="/produkter/:slug" element={<ProduktDetaljPage />} />
-              <Route path="/caser" element={<CaserPage />} />
-              {/* Restored: the squash-merge of #7 dropped this route while
-                  CaseStudyCard and CaserPage kept linking to /caser/:slug,
-                  so all 18 case study cards led to the 404 page. */}
-              <Route path="/caser/:slug" element={<CaseStudyDetailPage />} />
-              <Route path="/use-cases" element={<Navigate to="/caser" replace />} />
-              <Route path="/slik-vi-jobber" element={<SlikViJobberPage />} />
-              <Route path="/priser" element={<PriserPage />} />
-              <Route path="/pris" element={<Navigate to="/priser" replace />} />
-              <Route path="/faq" element={<FaqPage />} />
-              <Route path="/status" element={<StatusPage />} />
-              <Route path="/transparens" element={<TransparensPage />} />
-              <Route path="/transparency" element={<Navigate to="/transparens" replace />} />
-              <Route path="/teknologi" element={<TeknologiPage />} />
-              <Route path="/om-oss" element={<OmOssPage />} />
-              <Route path="/kontakt" element={<KontaktPage />} />
-              <Route path="/book-demo" element={<BookDemoPage />} />
-              {/* Restored likewise — Footer links to /karriere. */}
-              <Route path="/karriere" element={<KarrierePage />} />
-              <Route path="/blogg" element={<BloggPage />} />
-              <Route path="/blogg/:slug" element={<BloggPostPage />} />
-              <Route path="/privacy" element={<PrivacyPolicy />} />
-              <Route path="/personvern" element={<Navigate to="/privacy" replace />} />
-              <Route path="/terms" element={<Terms />} />
-              <Route path="/cookies" element={<CookiesPolicy />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-            <GDPRNotification />
-            <ChatWidget />
-          </Suspense>
+          {/* A code-split route whose chunk a deploy has replaced rejects
+              during render; without a boundary React re-throws that as an
+              uncaught exception and unmounts the whole tree. */}
+          <RouteErrorBoundary>
+            <Suspense fallback={<PageLoader />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/tjenester" element={<TjenesterPage />} />
+                <Route path="/tjenester/:slug" element={<TjenesteDetaljPage />} />
+                <Route path="/produkter" element={<ProdukterPage />} />
+                <Route path="/produkter/:slug" element={<ProduktDetaljPage />} />
+                <Route path="/caser" element={<CaserPage />} />
+                {/* Restored: the squash-merge of #7 dropped this route while
+                    CaseStudyCard and CaserPage kept linking to /caser/:slug,
+                    so all 18 case study cards led to the 404 page. */}
+                <Route path="/caser/:slug" element={<CaseStudyDetailPage />} />
+                <Route path="/use-cases" element={<Navigate to="/caser" replace />} />
+                <Route path="/slik-vi-jobber" element={<SlikViJobberPage />} />
+                <Route path="/priser" element={<PriserPage />} />
+                <Route path="/pris" element={<Navigate to="/priser" replace />} />
+                <Route path="/faq" element={<FaqPage />} />
+                <Route path="/status" element={<StatusPage />} />
+                <Route path="/transparens" element={<TransparensPage />} />
+                <Route path="/transparency" element={<Navigate to="/transparens" replace />} />
+                <Route path="/teknologi" element={<TeknologiPage />} />
+                <Route path="/om-oss" element={<OmOssPage />} />
+                <Route path="/kontakt" element={<KontaktPage />} />
+                <Route path="/book-demo" element={<BookDemoPage />} />
+                {/* Restored likewise — Footer links to /karriere. */}
+                <Route path="/karriere" element={<KarrierePage />} />
+                <Route path="/blogg" element={<BloggPage />} />
+                <Route path="/blogg/:slug" element={<BloggPostPage />} />
+                <Route path="/privacy" element={<PrivacyPolicy />} />
+                <Route path="/personvern" element={<Navigate to="/privacy" replace />} />
+                <Route path="/terms" element={<Terms />} />
+                <Route path="/cookies" element={<CookiesPolicy />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+              <GDPRNotification />
+              <ChatWidget />
+            </Suspense>
+          </RouteErrorBoundary>
         </Router>
       </HelmetProvider>
     </AppProviders>
