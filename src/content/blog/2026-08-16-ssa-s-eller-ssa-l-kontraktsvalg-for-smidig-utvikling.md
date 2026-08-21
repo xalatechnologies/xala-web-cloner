@@ -1,19 +1,29 @@
 ---
 slug: ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling
-title: "SSA-S eller SSA-L: kontraktsvalget som avgjør om leveransen kan gjøres i etapper"
-seoTitle: "SSA-S eller SSA-L: hvilken kontrakt passer"
-description: "Kontraktsformen bestemmer om dere kan levere modul for modul, eller må love alt på forhånd."
+title: "SSA-S eller SSA-L: hvilken kontrakt når leveransen skjer i etapper"
+seoTitle: "SSA-S eller SSA-L: hvilken kontrakt når"
+description: "SSA-S er Smidigavtalen for utvikling i etapper. SSA-L er avtale om løpende tjenestekjøp. Slik velger du når omfanget ikke er kjent på forhånd."
 date: 2026-08-16
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "IT-leder"
 cover: "/images/blog/ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling.webp"
-keywords: ["SSA-S", "SSA-L", "offentlige anskaffelser", "smidig utvikling", "kontrakt", "statens standardavtaler"]
+keywords: ["SSA-S", "SSA-L", "Smidigavtalen", "løpende tjenestekjøp", "etappevis leveranse"]
 lang: no
 draft: false
 ---
 
-Kontraktsvalget behandles ofte som en formalitet etter at løsningen er beskrevet. I praksis er det motsatt: kontrakten bestemmer hvor detaljert løsningen må beskrives på forhånd, og dermed hvor mye risiko som flyttes til et tidspunkt der ingen ennå vet nok.
+Kontrakten behandles som formalitet etter at løsningen er beskrevet.
+
+I praksis er det motsatt. Kontrakten bestemmer hvor detaljert løsningen må beskrives på forhånd, og dermed hvor mye risiko som flyttes til et tidspunkt der ingen ennå vet nok.
+
+## Hva er SSA-S og SSA-L?
+
+SSA-S er Smidigavtalen. Den er laget for programvare som utvikles i etapper, der omfanget avklares underveis.
+
+SSA-L er Avtale om løpende tjenestekjøp. Den er laget for en ferdig tjeneste du kjøper over tid, ofte i skyen.
+
+Xala bruker den avtalen som matcher jobben. Ny funksjon i etapper peker mot SSA-S. En ferdig tjeneste med løpende drift peker mot SSA-L.
 
 ## Fastpris krever at dere vet svaret
 
@@ -62,3 +72,7 @@ Da bør endringshåndteringen avtales tydelig, og første leveranse bør være e
 ### Hvem eier koden?
 
 I en utviklingsavtale er hovedregelen at oppdragsgiver får rettighetene til det som utvikles. Bygges det videre på leverandørens eksisterende produkt, avtales lisens for den delen. Det bør stå eksplisitt i avtalen, ikke forutsettes.
+
+### Hva er forskjellen på SSA-S og SSA-L?
+
+SSA-S (Smidigavtalen) er for å utvikle programvare i etapper. SSA-L (Avtale om løpende tjenestekjøp) er for å kjøpe en ferdig tjeneste over tid. Offisielle maler ligger hos Anskaffelser.no (DFØ), oppdatert 2026.
