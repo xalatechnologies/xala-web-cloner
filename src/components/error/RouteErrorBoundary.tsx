@@ -24,7 +24,7 @@ import { useTranslation } from 'react-i18next';
  */
 
 /** Set once per tab, so a chunk that is genuinely gone cannot loop the reload. */
-const RELOAD_KEY = 'xala:chunk-reload';
+const RELOAD_KEY = 'xala-chunk-reloaded';
 
 /**
  * A dynamic import that could not be fetched, in each engine's wording.
