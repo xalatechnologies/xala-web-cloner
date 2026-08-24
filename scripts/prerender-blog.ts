@@ -29,7 +29,7 @@ import remarkGfm from "remark-gfm";
 import { coverAlt, parsePosts, publishedPosts, relatedPosts } from "../src/lib/blog/posts";
 import { blogListingHtml } from "../src/lib/blog/listingHtml";
 import { blogListingQueries, blogQueryFileKey, filterBlogPosts } from "../src/lib/blog/search";
-import { extractFaq, faqJsonLd, splitLeadSection } from "../src/lib/blog/toc";
+import { extractFaq, faqJsonLd, splitLeadSection, stripRelatedArticles } from "../src/lib/blog/toc";
 import { getPageSEO } from "../src/components/seo/seoContent";
 import { CANONICAL_ALIASES, resolveRoute } from "../src/components/seo/routeRules";
 import { staticRouteVisibleHeading } from "../src/lib/staticRouteHeading";
@@ -327,7 +327,8 @@ function postArticleHtml(post: BlogPost, related: BlogPost[]): string {
         )
         .join("")}</ul></section>`
     : "";
-  const { lead, rest } = splitLeadSection(post.body);
+  const strippedBody = stripRelatedArticles(post.body);
+  const { lead, rest } = splitLeadSection(strippedBody);
   const leadHtml = lead ? `<div>${markdownToHtml(lead)}</div>` : "";
   const bodyHtml = rest ? `<div>${markdownToHtml(rest)}</div>` : "";
 
@@ -418,6 +419,7 @@ function main(): void {
     // formula here is how crawlers kept seeing `title | Xala Technologies AS`
     // after seoTitle + BRAND already existed in postMeta().
     const meta = postMeta(post);
+    const strippedBody = stripRelatedArticles(post.body);
     write(
       path.join(DIST, "blogg", post.slug, "index.html"),
       renderBody(
@@ -434,7 +436,7 @@ function main(): void {
           // The rendered page derives this from the body; the static HTML a
           // crawler reads has to carry the same thing, or the FAQ only exists
           // for visitors whose browser ran the bundle.
-          extraJsonLd: [faqJsonLd(postUrl(post), extractFaq(post.body))].filter(
+          extraJsonLd: [faqJsonLd(postUrl(post), extractFaq(strippedBody))].filter(
             (block): block is Record<string, unknown> => block !== null,
           ),
         }),
