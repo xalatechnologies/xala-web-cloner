@@ -11,7 +11,7 @@ import ShareLinks from '../components/blog/ShareLinks';
 import NotFound from './NotFound';
 import { allPosts } from '@/lib/blog';
 import { coverAlt, findPost, relatedPosts } from '@/lib/blog/posts';
-import { extractFaq, extractHeadings, faqJsonLd, splitLeadSection } from '@/lib/blog/toc';
+import { extractFaq, extractHeadings, faqJsonLd, splitLeadSection, stripRelatedArticles } from '@/lib/blog/toc';
 import { relatedServices } from '@/lib/blog/relatedServices';
 import { BLOG_PATH, ORGANIZATION, articleJsonLd, formatDate, postMeta, postUrl } from '@/lib/blog/seo';
 import { topicHashtagLine } from '@/lib/blog/topics';
@@ -32,12 +32,10 @@ export default function BloggPostPage() {
   const posts = useMemo(() => allPosts(), []);
   const post = useMemo(() => findPost(posts, slug), [posts, slug]);
   const related = useMemo(() => (post ? relatedPosts(posts, post) : []), [posts, post]);
-  const headings = useMemo(() => (post ? extractHeadings(post.body) : []), [post]);
-  const faq = useMemo(() => (post ? extractFaq(post.body) : []), [post]);
-  const { lead, rest } = useMemo(
-    () => (post ? splitLeadSection(post.body) : { lead: '', rest: '' }),
-    [post]
-  );
+  const strippedBody = useMemo(() => (post ? stripRelatedArticles(post.body) : ''), [post]);
+  const headings = useMemo(() => extractHeadings(strippedBody), [strippedBody]);
+  const faq = useMemo(() => extractFaq(strippedBody), [strippedBody]);
+  const { lead, rest } = useMemo(() => splitLeadSection(strippedBody), [strippedBody]);
   const services = useMemo(() => (post ? relatedServices(post) : []), [post]);
 
   // A slug that does not resolve must be a real 404 for crawlers, not a blog
