@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { extractFaq, extractHeadings, faqJsonLd, splitLeadSection } from '../toc';
+import { extractFaq, extractHeadings, faqJsonLd, splitLeadSection, stripRelatedArticles } from '../toc';
 
 describe('extractHeadings', () => {
   it('returns h2 headings in document order with anchor ids', () => {
@@ -232,5 +232,86 @@ describe('faqJsonLd', () => {
         acceptedAnswer: { '@type': 'Answer', text: 'Svar.' },
       },
     ]);
+  });
+});
+
+describe('stripRelatedArticles', () => {
+  it('removes the Relaterte artikler section and its list', () => {
+    const body = [
+      '## Innledning',
+      '',
+      'Tekst om emnet.',
+      '',
+      '## Relaterte artikler',
+      '',
+      '- [Første lenke](/blogg/en)',
+      '- [Andre lenke](/blogg/to)',
+      '',
+      '## Neste seksjon',
+      '',
+      'Mer tekst.',
+    ].join('\n');
+
+    expect(stripRelatedArticles(body)).toBe(
+      '## Innledning\n\nTekst om emnet.\n\n## Neste seksjon\n\nMer tekst.'
+    );
+  });
+
+  it('strips when Relaterte artikler is the last section', () => {
+    const body = [
+      '## Ofte stilte spørsmål',
+      '',
+      '### Spørsmål?',
+      'Svar.',
+      '',
+      '## Relaterte artikler',
+      '',
+      '- [Lenke](/blogg/x)',
+    ].join('\n');
+
+    expect(stripRelatedArticles(body)).toBe(
+      '## Ofte stilte spørsmål\n\n### Spørsmål?\nSvar.'
+    );
+  });
+
+  it('stops at the next h2 heading', () => {
+    const body = [
+      '## Start',
+      'Tekst.',
+      '',
+      '## Relaterte artikler',
+      '',
+      '- [Lenke](/blogg/x)',
+      '',
+      'Tekst som hører til seksjonen.',
+      '',
+      '## Neste steg',
+      'Ta kontakt.',
+    ].join('\n');
+
+    expect(stripRelatedArticles(body)).toBe(
+      '## Start\nTekst.\n\n## Neste steg\nTa kontakt.'
+    );
+  });
+
+  it('ignores ## Relaterte artikler inside a fenced code block', () => {
+    const body = [
+      '## Eksempel',
+      '',
+      '```md',
+      '## Relaterte artikler',
+      '- ikke strippet',
+      '```',
+      '',
+      '## Fortsetter',
+      'Tekst.',
+    ].join('\n');
+
+    expect(stripRelatedArticles(body)).toBe(body);
+  });
+
+  it('returns body unchanged when no Relaterte artikler section exists', () => {
+    const body = '## Innledning\n\nTekst.\n\n## Konklusjon\n\nMer tekst.';
+    expect(stripRelatedArticles(body)).toBe(body);
   });
 });

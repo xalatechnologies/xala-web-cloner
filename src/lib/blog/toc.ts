@@ -244,3 +244,55 @@ export function faqJsonLd(url: string, items: FaqItem[]): Record<string, unknown
     })),
   };
 }
+
+/**
+ * Strip the manual "## Relaterte artikler" section from markdown body.
+ *
+ * The template renders programmatic related articles in the sidebar and at the
+ * bottom. When a post also carries a hand-written "## Relaterte artikler"
+ * section in its markdown, the result is two headings with the same title
+ * (XWEB-202). This filter removes the manual section so only the template's
+ * version appears.
+ */
+export function stripRelatedArticles(body: string): string {
+  const lines = body.split('\n');
+  let inFence = false;
+  let fence = '';
+  let sectionStart = -1;
+  let sectionEnd = -1;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const opener = /^\s{0,3}(```+|~~~+)/.exec(line);
+    if (opener) {
+      if (!inFence) {
+        inFence = true;
+        fence = opener[1][0];
+      } else if (opener[1][0] === fence) {
+        inFence = false;
+      }
+      continue;
+    }
+    if (inFence) continue;
+
+    const text = headingAt(line, 2);
+    if (!text) continue;
+
+    if (sectionStart === -1) {
+      if (/^relaterte artikler$/i.test(text)) {
+        sectionStart = i;
+      }
+      continue;
+    }
+
+    sectionEnd = i;
+    break;
+  }
+
+  if (sectionStart === -1) return body;
+
+  const end = sectionEnd === -1 ? lines.length : sectionEnd;
+  const before = lines.slice(0, sectionStart).join('\n').replace(/\s+$/, '');
+  const after = lines.slice(end).join('\n').replace(/^\s+/, '');
+  return [before, after].filter(Boolean).join('\n\n');
+}
