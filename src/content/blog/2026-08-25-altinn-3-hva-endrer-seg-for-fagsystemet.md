@@ -26,7 +26,7 @@ Fagsystemet mot Altinn II er stengt.
 
 Registrer sluttbrukersystemet på Altinn 3. Ikke hold en privat II-pipe.
 
-[Digdir](https://samarbeid.digdir.no/altinn/ta-i-bruk-altinn-3/2333) skrudde av Altinn II i juni 2026. Tjenester måtte reetableres på Altinn 3, eller avvikles. Et fagsystem som fortsatt kaller de gamle endepunktene, får ikke data og får ikke sendt inn. Xala kan kable sluttbrukersystemet. Xala eier ikke Altinn.
+[Digdir](https://samarbeid.digdir.no/altinn/ta-i-bruk-altinn-3/2333) skrudde av Altinn II i juni 2026. Tjenester måtte reetableres på Altinn 3, eller avvikles. Et fagsystem som fortsatt kaller de gamle endepunktene, får ikke data og får ikke sendt inn. Xala kan koble sluttbrukersystemet. Xala eier ikke Altinn.
 
 Saksbehandleren venter på en innsending som aldri lander.
 
@@ -68,9 +68,9 @@ Test i TT02 før dere peker produksjon dit.
 
 Innsending fra sluttbrukersystemet går mot App API. Meldinger hentes via Dialogporten.
 
-[Altinn 3](https://docs.altinn.studio/nb/community/about/) er tredje generasjon plattform for å utvikle og kjøre digitale tjenester. Digdir eier den. En setning er nok. Ikke bygg Altinn om igjen. Kable sluttbrukersystemet.
+[Altinn 3](https://docs.altinn.studio/nb/community/about/) er tredje generasjon plattform for å utvikle og kjøre digitale tjenester. Digdir eier den. En setning er nok. Ikke bygg Altinn om igjen. Koble sluttbrukersystemet.
 
-Xala kan kable sluttbrukersystemet inn i fagsystemet dere har. Xala eier ikke Altinn 3. Xala eier ikke Altinn Studio. Xala eier ikke Dialogporten.
+Xala kan koble sluttbrukersystemet inn i fagsystemet dere har. Xala eier ikke Altinn 3. Xala eier ikke Altinn Studio. Xala eier ikke Dialogporten.
 
 Sitter filen i innboksen i stedet, er det et annet steg. Det er skrevet i [Innboksen er ikke mottak](/blogg/altinn-innboks-manuelt-mellomlager). Her er det at fagsystemet fortsatt kaller II.
 
@@ -80,7 +80,7 @@ Ikke automatiser etat-scopes dere ikke har fått. Ikke late som testdata i TT02 
 
 Ikke bygg et privat arkiv «for sikkerhets skyld». Historikken fra II ligger ikke i et tjenesteeierarkiv lenger. Data om tjenestene hentes via API.
 
-Xala kan kable sluttbrukersystemet. Xala eier ikke Altinn. Xala fatter ikke vedtaket.
+Xala kan koble sluttbrukersystemet. Xala eier ikke Altinn. Xala fatter ikke vedtaket.
 
 ## Ofte stilte spørsmål
 
@@ -94,6 +94,6 @@ Ja, hvis de skulle videre. Digdir skriver at innsendingstjenester må utvikles p
 Nei. Digdir teller både kommersielle systemer og interne løsninger. Begge må onboardes med bruksvilkår, scopes og tilgangspakker.
 
 **Eier Xala Altinn 3?**
-Nei. Xala kan kable sluttbrukersystemet. Xala eier ikke Altinn 3. Xala eier ikke Altinn Studio. Xala eier ikke Dialogporten.
+Nei. Xala kan koble sluttbrukersystemet. Xala eier ikke Altinn 3. Xala eier ikke Altinn Studio. Xala eier ikke Dialogporten.
 
 Trenger dere at fagsystemet snakker med Altinn 3, start på [kontakt](/kontakt).
