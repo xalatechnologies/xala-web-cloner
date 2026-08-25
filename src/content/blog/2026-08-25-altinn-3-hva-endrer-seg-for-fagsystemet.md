@@ -13,10 +13,9 @@ lang: no
 tag: "IT-leder"
 keywords:
   - altinn 3
-  - altinn3
-  - altinn 3.0
   - sluttbrukersystem
   - fagsystem
+  - digitalisering
 cta: /kontakt
 ---
 
