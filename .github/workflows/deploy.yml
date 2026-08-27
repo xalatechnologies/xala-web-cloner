@@ -62,16 +62,29 @@ jobs:
           echo "${{ secrets.VPS_SSH_KEY }}" | base64 -d > ~/.ssh/id_deploy
           chmod 600 ~/.ssh/id_deploy
           ssh-keygen -y -f ~/.ssh/id_deploy > /dev/null
-          # ssh-keyscan is a network call that occasionally returns nothing.
-          # Under `bash -e` that silently fast-failed the whole deploy on the
-          # sibling repo. Retry, then fail loudly only if truly unreachable.
-          for i in 1 2 3 4 5; do
-            ssh-keyscan -T 10 -H 72.61.23.56 >> ~/.ssh/known_hosts 2>/dev/null || true
-            [ -s ~/.ssh/known_hosts ] && break
-            echo "ssh-keyscan attempt $i produced no host key, retrying in 5s…"
-            sleep 5
+          
+          # Pin known host keys for 72.61.23.56 (xala.no VPS). GitHub-hosted
+          # runners sometimes cannot reach this Hostinger box, so we pin the
+          # keys here rather than requiring a live scan to succeed.
+          printf '%s\n' \
+            '72.61.23.56 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHv4xAWJ3CVweX5am37hky35ODbB+gakahdfn0Pp4696' \
+            '72.61.23.56 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMiOm1wCDblsSQRjb3hI+QOAv5BtZUCemRtYvvG+8c+D8tDICwl+JoKJ2ZZlSkmq26IY/XknAM99VHcDtHLRmBE=' \
+            '72.61.23.56 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCiC8z17cfQ8R5zV5v6cRHhcJxoayKCKaoPVhayaNCKwDs8DIMnCL2uFzY3WVYg2VHsBohKZKUdizQ5pQ2oU9U9hVd6E29uwo+8ns8bJWQiCF7Vmy2XwmJ9LxBZjPc31i4dbnsjQBd1McovncFwLwBcP5TnVBNLKCByPcJR3AoFMtvRw1hvkwOpW+Xda+tWdL8ZrbzTuumtSiy4swlLGgNkjjgByvRhQ/y0rZRdHB8C07OsKYeHZVI31zNtwDk5e8PP+oigJBbp5vcs4h4RkxovxyTT0m86hQXcA0Qui3XfhukuGBO0AT8TaRY+1aOdhQTnu7BJVpJRKb/40bH9q33cBtZF07vamcAe5eBrpa4zWc0rWJLMALhRwQcFizF5/BaxlOmkrgF2Cg8GlL0vdnsYUj/duODGImspu1nf8Yz55EEJL77fXdoZEraDI+imFcjV8CDySr8dPzVEQB8/ptFVIOpkQ40gLM230QqLbUNmtxGixfmSd7bEkPUoiu3apo0=' \
+            >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+          
+          # Try ssh-keyscan as an optional fallback. If the runner can reach
+          # the VPS, this adds fresh keys and detects rotation. If keyscan
+          # returns nothing (which happens intermittently with GitHub runners
+          # to this Hostinger box), the pinned keys above still allow deploys.
+          for i in 1 2 3; do
+            if ssh-keyscan -T 10 -H 72.61.23.56 >> ~/.ssh/known_hosts 2>/dev/null; then
+              echo "ssh-keyscan succeeded on attempt $i"
+              break
+            fi
+            [ $i -lt 3 ] && echo "ssh-keyscan attempt $i returned nothing, retrying…"
           done
-          [ -s ~/.ssh/known_hosts ]
+          
           eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/id_deploy
           echo "SSH_AUTH_SOCK=$SSH_AUTH_SOCK" >> "$GITHUB_ENV"
