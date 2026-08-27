@@ -1,7 +1,6 @@
 # Set MIME types for XML files
 <IfModule mod_mime.c>
   AddType application/xml .xml
-  AddType application/rss+xml rss.xml
 </IfModule>
 
 # Force HTTPS and handle domain redirects
