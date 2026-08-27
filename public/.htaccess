@@ -1,3 +1,9 @@
+# Set MIME types for XML files
+<IfModule mod_mime.c>
+  AddType application/xml .xml
+  AddType application/rss+xml rss.xml
+</IfModule>
+
 # Force HTTPS and handle domain redirects
 <IfModule mod_rewrite.c>
   RewriteEngine On
@@ -23,6 +29,11 @@
 
   # Handle client-side routing
   RewriteRule ^index\.html$ - [L]
+  
+  # Explicitly serve XML files (sitemap, RSS) and other generated static assets
+  RewriteCond %{REQUEST_URI} \.(xml|txt)$ [NC]
+  RewriteRule ^ - [L]
+  
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-l

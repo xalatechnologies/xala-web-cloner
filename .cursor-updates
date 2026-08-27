@@ -1,13 +1,29 @@
-# Cursor Updates
+XWEB-204: Fixed sitemap and blog RSS 500 errors
 
-- Implemented email sending functionality using Resend for the contact form, including email service, API route, and form updates.
-- Refactored email sending to use Supabase Edge Functions instead of Express server.
-- Fixed environment variable configuration to use Vite's import.meta.env system.
-- Added database trigger and Edge Function for automated email notifications on contact form submissions.
-- Fixed unofficial Bokmål leftover in blog post, replaced kabler with official form kobler. Verified no remaining kable-family leftovers across all blog content.
-- Added new blog post about case management systems explaining when off-the-shelf solutions work versus custom development. Generated professional cover image, included 6 FAQ questions, referenced Digdir principles and Nordre Follo case study. Build and lint passed successfully.
-- Fixed post-review issues in saksbehandlingssystem blog post. Shortened seoTitle from 70 to 36 chars to pass SERP metadata limits. Changed FAQ heading to house style. Fixed unofficial Bokmål scannet to skannet. Converted cover image from PNG to real WebP reducing size from 2.0MB to 188KB.
-- Tightened fagsystem modernization blog post. Updated frontmatter with new title, seoTitle, description, and keywords. Added scene opening emphasizing stuck legacy system. Introduced H2 definition section explaining what a fagsystem is. Added integration guidance about connecting existing systems. Fixed em dash to comma in Q4. Added Q5 FAQ question about fagsystem definition. All metadata fits SERP limits. Vitest passes 959/959 tests.
-- Optimized SSA-S/SSA-L blog post for CTR. Updated seoTitle to 39 chars, tightened H1 for staged delivery clarity. Added definition H2 section before Fastpris explaining what SSA-S and SSA-L are. Updated meta description to highlight when each contract applies. Refined keywords to core terms. Added FAQ Q5 about SSA-S vs SSA-L difference with DFØ reference. Same slug, same cover, no invented clients or SLA. All 5 FAQ questions included in FAQPage schema. Lint passes.
-- Fixed duplicate Relaterte artikler headings on blog posts. Added stripRelatedArticles filter to remove manual markdown sections before rendering. Template now shows single programmatic related articles list. Affected 7 posts including hva-er-et-saksbehandlingssystem and skjenkebevilling-gebyr-og-omsetningsoppgave. Build and lint pass. PR 120 created.
-- Fixed duplicate Relaterte artikler headings in prerendered blog HTML. Seven posts had two H2 headings with the same title visible to crawlers and first paint. PR 120 stripped the markdown H2 on client side but prerender path still included it. Added stripRelatedArticles call in prerender script before rendering markdown. Now first HTML and hydrated page both show exactly one related articles heading from template. Verified all seven affected posts plus control post. PR 121 created.
+Problem identified:
+- Apache htaccess catch-all rewrite was redirecting XML file requests to index.html
+- React app attempted to handle these routes and failed with 500 errors
+- Affected sitemap.xml and blogg/rss.xml
+
+Solution implemented:
+- Added MIME type declarations for XML files in public/.htaccess
+- Added rewrite exception for xml and txt files before catch-all SPA redirect
+- Ensures static XML files generated during build are served correctly
+
+Testing completed:
+- Build passes successfully
+- All 989 tests pass
+- Lint and typecheck pass
+- Verified sitemap.xml and rss.xml are generated with valid XML content
+
+Pull request created:
+- PR #128: https://github.com/xalatechnologies/xala-web-cloner/pull/128
+- Branch: cursor/fix-sitemap-rss-500-60f2
+- Status: Ready for review
+- Single commit with clear explanation of changes
+
+After deployment:
+- Crawlers will receive 200 OK for sitemap.xml requests
+- Crawlers will receive 200 OK for blogg/rss.xml requests
+- Both files will have proper Content-Type headers
+- robots.txt continues pointing to correct sitemap URL
