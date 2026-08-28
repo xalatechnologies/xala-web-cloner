@@ -1,7 +1,7 @@
 ---
 slug: automatisering-av-saksbehandling-hva-boer-og-ikke
-title: "Automatisering av saksbehandling: hva som kan automatiseres, og hva som må bli hos saksbehandleren"
-seoTitle: "Automatisering av saksbehandling"
+title: "Elektronisk saksbehandling: hva som kan automatiseres"
+seoTitle: "Elektronisk saksbehandling: hva som kan automatiseres"
 description: "Regelstyrte steg og registerinnhenting kan automatiseres. Skjønnsvedtak kan ikke. Forvaltningsloven åpner for helautomatiserte vedtak."
 date: 2026-07-02
 author: "Ibrahim Rahmani"
