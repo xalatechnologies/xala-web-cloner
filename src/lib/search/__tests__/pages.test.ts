@@ -29,6 +29,16 @@ describe('site page search index', () => {
     expect(hits[0].path).toBe('/teknologi');
   });
 
+  it('puts /tjenester first for integrasjon, not home', () => {
+    // Home only has the compound "systemintegrasjon". After the /tjenester
+    // SEO title dropped the word "integrasjon", title-rank no longer lifts
+    // that page, and declared order would put "/" first.
+    const hits = matchSitePages('integrasjon');
+
+    expect(hits.map((page) => page.path)).toContain('/');
+    expect(hits[0].path).toBe('/tjenester');
+  });
+
   it('drops the brand suffix, so a result reads as a page and not as a tab title', () => {
     const home = sitePages().find((page) => page.path === '/')!;
 

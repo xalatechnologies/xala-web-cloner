@@ -155,7 +155,7 @@ describe('BloggPage results for a query the articles cannot answer', () => {
     const { container } = renderBloggPage('/blogg?q=integrasjon');
 
     const links = resultLinks(container);
-    expect(links[0]).toBe('/');
+    expect(links[0]).toBe('/tjenester');
     expect(links).toContain('/tjenester');
     expect(links.some((href) => href?.startsWith('/blogg/'))).toBe(true);
   });
