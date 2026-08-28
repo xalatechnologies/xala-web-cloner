@@ -1,8 +1,8 @@
 ---
 slug: modernisere-fagsystem-uten-driftsstans
-title: "Hva er et fagsystem, og hvordan moderniserer du det uten å stoppe driften"
-seoTitle: "Fagsystem: moderniser uten å stoppe driften"
-description: "Et fagsystem gjør kjernejobben i virksomheten. Slik moderniserer du det modul for modul, med drift underveis, uten én stor overgangsdato."
+title: "Modernisering av fagsystemer uten driftsstans"
+seoTitle: "Modernisering av fagsystemer uten driftsstans | Xala"
+description: "Modernisering av fagsystemer uten driftsstans: Slik gjør du det modul for modul, med full drift underveis, uten én stor overgangsdato."
 date: 2026-07-25
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
