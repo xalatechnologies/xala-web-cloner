@@ -1,20 +1,11 @@
-import { useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
-import Services from '../components/Services';
-import FAQSection from '../components/faq/FAQSection';
-import { FAQ_TOPICS } from '../components/faq/faqs';
 import Footer from '../components/Footer';
 import { PageHeader } from '../components/layouts/PageFrame';
-import { generateServicesSchema } from '@/components/seo/sectionSchemas';
-import { ORGANIZATION, ORG_ID, SITE_ORIGIN } from '@/lib/blog/seo';
 import { SERVICES_PAGE_HEADING } from '@/lib/staticRouteHeading';
-import servicesData from '@/data/services.json';
-
-type Language = 'no' | 'en' | 'ar';
 
 /** Where a reader goes after deciding a service is relevant. */
 const NEXT_STEPS = [
@@ -39,32 +30,11 @@ const NEXT_STEPS = [
 ] as const;
 
 export default function TjenesterPage() {
-  const { t, i18n } = useTranslation();
-
-  const language: Language = useMemo(() => {
-    const lang = i18n.language?.toLowerCase() ?? 'no';
-    return lang.startsWith('ar') ? 'ar' : lang.startsWith('en') ? 'en' : 'no';
-  }, [i18n.language]);
-
-  // Derived from the catalogue the page renders, so the markup cannot describe
-  // a service the page does not show.
-  const schema = useMemo(
-    () =>
-      generateServicesSchema(servicesData[language] ?? servicesData.no, {
-        url: `${SITE_ORIGIN}/tjenester`,
-        organizationId: ORG_ID,
-        name: t('services.title', 'Våre tjenester'),
-      }),
-    [language, t]
-  );
+  const { t } = useTranslation();
 
   return (
     <div className="flex min-h-screen flex-col">
-      {/* Only structured data here — the route's title, description and
-          canonical come from RouteSEO, which owns this path. */}
-      <Helmet>
-        <script type="application/ld+json">{JSON.stringify(schema)}</script>
-      </Helmet>
+      <Helmet />
 
       <Navbar />
 
@@ -236,8 +206,6 @@ export default function TjenesterPage() {
             </ul>
           </div>
         </section>
-
-        <FAQSection only={FAQ_TOPICS.services} includeSchema={false} />
       </main>
 
       <Footer />
