@@ -1,7 +1,7 @@
 ---
 slug: modernisere-fagsystem-uten-driftsstans
 title: "Modernisering av fagsystemer uten driftsstans"
-seoTitle: "Modernisering av fagsystemer uten driftsstans | Xala"
+seoTitle: "Modernisering av fagsystemer uten driftsstans"
 description: "Modernisering av fagsystemer uten driftsstans: Slik gjør du det modul for modul, med full drift underveis, uten én stor overgangsdato."
 date: 2026-07-25
 author: "Ibrahim Rahmani"
