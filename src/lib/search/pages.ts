@@ -77,22 +77,35 @@ export function sitePages(language: Language = 'no'): SitePage[] {
   return indexPages(language).map(strip);
 }
 
+const WORD = /[\p{L}\p{N}]{2,}/gu;
+
+/** True when `needle` is its own word in `haystack`, not only a compound part. */
+function hasWholeWord(haystack: string, needle: string): boolean {
+  if (/\s/.test(needle)) return haystack.includes(needle);
+  return (haystack.match(WORD) ?? []).includes(needle);
+}
+
 /**
- * Pages matching `query`, title matches first.
+ * Pages matching `query`, title matches first, then whole-word haystack
+ * matches ahead of compound-substring hits. Declared order breaks remaining ties.
  *
- * Substring, like the article filter next to it: same query, same rules, so a
- * reader cannot get a hit in one list and silently miss it in the other.
+ * Filter stays substring, like the article filter next to it: same query, same
+ * inclusion rules, so a reader cannot get a hit in one list and silently miss
+ * it in the other.
  */
 export function matchSitePages(query: string, language: Language = 'no'): SitePage[] {
   const needle = query.trim().toLowerCase();
   if (!needle) return [];
   const hits = indexPages(language).filter((page) => page.haystack.includes(needle));
-  // Stable sort, so pages that tie keep the declared order above.
+  // Stable sort, so pages that still tie keep the declared order above.
   return hits
-    .sort(
-      (a, b) =>
-        Number(b.title.toLowerCase().includes(needle)) - Number(a.title.toLowerCase().includes(needle))
-    )
+    .sort((a, b) => {
+      const byTitle =
+        Number(b.title.toLowerCase().includes(needle)) -
+        Number(a.title.toLowerCase().includes(needle));
+      if (byTitle !== 0) return byTitle;
+      return Number(hasWholeWord(b.haystack, needle)) - Number(hasWholeWord(a.haystack, needle));
+    })
     .map(strip);
 }
 
