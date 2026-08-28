@@ -14,9 +14,9 @@ describe('static route visible H1 vs document title', () => {
     // hydrate then swapped it for the page heading.
     const seoTitle = getPageSEO('services', 'no').title;
 
-    expect(SERVICES_PAGE_HEADING).toBe('Systemer som skal stå i mange år');
+    expect(SERVICES_PAGE_HEADING).toBe('Saksbehandlingssystem og fagsystem som skal stå i mange år');
     expect(no.servicesPage.title).toBe(SERVICES_PAGE_HEADING);
-    expect(seoTitle).toBe('Saksbehandling, integrasjon og modernisering | Xala');
+    expect(seoTitle).toBe('Saksbehandlingssystem og fagsystem | Xala');
     expect(staticRouteVisibleHeading('/tjenester', seoTitle)).toBe(SERVICES_PAGE_HEADING);
     expect(staticRouteVisibleHeading('/tjenester', seoTitle)).not.toBe(seoTitle.split(' | ')[0]);
   });

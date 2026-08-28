@@ -6,7 +6,7 @@
  * H1 from `title.split(" | ")[0]` is how first HTML said one sentence and
  * hydrate swapped it for another (XWEB-188 on /blogg, XWEB-195 on /tjenester).
  */
-export const SERVICES_PAGE_HEADING = 'Systemer som skal stå i mange år';
+export const SERVICES_PAGE_HEADING = 'Saksbehandlingssystem og fagsystem som skal stå i mange år';
 
 /**
  * First-HTML H1 for a marketing route.
