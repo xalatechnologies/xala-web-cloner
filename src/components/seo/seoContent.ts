@@ -52,9 +52,9 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
         'systemutvikling, skreddersydd programvare, AI-utvikling, skyløsninger, systemintegrasjon, cybersikkerhet, Asker, Norge, offentlig sektor'
     },
     services: {
-      title: 'Saksbehandling, integrasjon og modernisering | Xala',
+      title: 'Saksbehandlingssystem og fagsystem | Xala',
       description:
-        'Saksbehandlingsplattform, SaaS-utvikling, systemintegrasjon og modernisering. Vi bygger tilskuddsportaler, bevillingsportaler og integrasjoner mot Altinn.',
+        'Vi bygger saksbehandlingssystem og fagsystem, pluss integrasjon og modernisering, for offentlig sektor.',
       keywords:
         'saksbehandlingssystem, tilskuddsportal, bevillingsportal, integrasjon Altinn, Maskinporten, modernisering fagsystem, automatisering saksbehandling, systemutvikling offentlig sektor'
     },
