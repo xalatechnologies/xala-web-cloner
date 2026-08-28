@@ -36,9 +36,9 @@ describe('TjenesterPage heading vs document title', () => {
     const seoTitle = getPageSEO('services', 'no').title;
     const heading = screen.getByRole('heading', { level: 1 });
     expect(heading).toHaveTextContent(SERVICES_PAGE_HEADING);
-    expect(SERVICES_PAGE_HEADING).toBe('Systemer som skal stå i mange år');
-    expect(seoTitle).toBe('Saksbehandling, integrasjon og modernisering | Xala');
-    expect(heading).not.toHaveTextContent(seoTitle.split(' | ')[0]);
+    expect(SERVICES_PAGE_HEADING).toBe('Saksbehandlingssystem og fagsystem som skal stå i mange år');
+    expect(seoTitle).toBe('Saksbehandlingssystem og fagsystem | Xala');
+    expect(heading.textContent).not.toBe(seoTitle.split(' | ')[0]);
     // XWEB-194: H1 uses the container. XWEB-183 lives on /produkter.
     expect(heading.className).toContain('page-heading');
     expect(heading.className).not.toContain('max-w-[18ch]');
