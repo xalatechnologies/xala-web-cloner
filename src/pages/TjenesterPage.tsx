@@ -106,16 +106,16 @@ export default function TjenesterPage() {
               Tre portaler. De er levert. De kan spre til neste kommune.
             </p>
             <p>
-              <strong>Bevillingsportal</strong> (<Link to="/produkter/bevillingsportal">/produkter/bevillingsportal</Link>). Søknad om skjenke- og salgsbevilling. Høringene går parallelt. Søkeren ser ærlig status. Noark fra start. Portalen fatter ikke vedtaket.
+              <Link to="/produkter/bevillingsportal">Bevillingsportal</Link>. Søknad om skjenke- og salgsbevilling. Høringene går parallelt. Søkeren ser ærlig status. Noark fra start. Portalen fatter ikke vedtaket.
             </p>
             <p>
-              <strong>Tilskuddsportal</strong> (<Link to="/produkter/tilskuddsportal">/produkter/tilskuddsportal</Link>). Søkeren blir ferdig. Saksbehandleren får et komplett grunnlag. Kø, ikke innboks. Portalen fatter ikke vedtaket.
+              <Link to="/produkter/tilskuddsportal">Tilskuddsportal</Link>. Søkeren blir ferdig. Saksbehandleren får et komplett grunnlag. Kø, ikke innboks. Portalen fatter ikke vedtaket.
             </p>
             <p>
-              <strong>Redusert foreldrebetaling</strong> (<Link to="/produkter/redusert-foreldrebetaling">/produkter/redusert-foreldrebetaling</Link>). Henter oppgjør inn i saken når det finnes. Unntaket står. Varig nedgang er en vurdering. Xala kjører ikke SFO-portalen.
+              <Link to="/produkter/redusert-foreldrebetaling">Redusert foreldrebetaling</Link>. Henter oppgjør inn i saken når det finnes. Unntaket står. Varig nedgang er en vurdering. Xala kjører ikke SFO-portalen.
             </p>
             <p>
-              <strong>Digilist</strong> is in drift on digilist.no. Booking av lokaler. En annen jobb enn sak og vedtak.
+              Digilist er i drift på <a href="https://digilist.no" target="_blank" rel="noopener noreferrer">digilist.no</a>. Booking av lokaler. En annen jobb enn sak og vedtak.
             </p>
 
             <h2>Nordre Follo</h2>
@@ -129,7 +129,7 @@ export default function TjenesterPage() {
               Nordre Follo kommune har tilskuddsportal og bevillingsportal. Det er leveransen vi kan stå inne for. Ikke flere kommuner. Ikke et kronerbeløp.
             </p>
             <p>
-              Link to <Link to="/caser/nordre-follo-tilskuddsportal-bevillingsportal">/caser/nordre-follo-tilskuddsportal-bevillingsportal</Link> and <Link to="/caser">/caser</Link>.
+              Les <Link to="/caser/nordre-follo-tilskuddsportal-bevillingsportal">casen</Link>. Flere oppdrag ligger under <Link to="/caser">kundecaser</Link>.
             </p>
 
             <h2>Integrasjoner vi faktisk kobler</h2>
@@ -143,52 +143,57 @@ export default function TjenesterPage() {
               Kommunen eier saken. Xala eier ikke Altinn. Vi har bidratt der.
             </p>
             <p>
-              Digdir har prinsipper for hvordan det offentlige skal bygge digitale tjenester. To av dem er særlig viktige for saksbehandlingssystemer: <a href="https://www.digdir.no/digitale-felleslosninger/prinsipp-4-bruk-felleslosninger/2088" target="_blank" rel="noopener noreferrer">prinsipp 4 (bruk fellesløsninger)</a> og <a href="https://www.digdir.no/digitale-felleslosninger/prinsipp-5-del-og-gjenbruk-data/2089" target="_blank" rel="noopener noreferrer">prinsipp 5 (del og gjenbruk data)</a>. Vi følger dem.
-            </p>
-            <p>
-              Universell utforming (UU), Digdirs krav, NSM sine grunnprinsipper for IKT-sikkerhet og EUs direktiv om cybersikkerhet er standarder vi bygger inn fra start. Les mer på <Link to="/transparens">/transparens</Link>.
+              Digdir har prinsipper for hvordan det offentlige skal bygge digitale tjenester. To av dem er særlig viktige for saksbehandlingssystemer: <a href="https://www.digdir.no/digital-samhandling/prinsipp-4-del-og-gjenbruk-data/1061" target="_blank" rel="noopener noreferrer">prinsipp 4</a> (del og gjenbruk data) og <a href="https://www.digdir.no/digital-samhandling/prinsipp-5-del-og-gjenbruk-losninger/1062" target="_blank" rel="noopener noreferrer">prinsipp 5</a> (del og gjenbruk løsninger). Vi følger dem. Automatisering, brukeropplevelse, universell utforming, Digdirs veiledere, NSM sine grunnprinsipper og EUs direktiv om cybersikkerhet er standarder vi bygger inn fra start. Les mer på <Link to="/transparens">/transparens</Link>.
             </p>
 
-            <h2>Tre spørsmål når KI er med</h2>
+            <h2>Når KI er med i saksbehandlingen</h2>
+            <p>
+              KI kan skrive et utkast. Den fatter ikke vedtaket. Data blir i fagsystemet.
+            </p>
             <p>
               Hvis kunstig intelligens er med i løsningen, skal dere kunne svare på tre ting:
             </p>
-            <ol>
-              <li><strong>Ble KI brukt her?</strong> Ja eller nei.</li>
-              <li><strong>Hvordan?</strong> Klassifisering, oppsummering, søk, oversettelse, generering av utkast. Eksempel: «KI foreslår kategori. Saksbehandleren bestemmer.»</li>
-              <li><strong>Hvilke logger finnes?</strong> Hvem spurte. Hva KI svarte. Hva saksbehandleren valgte. Det er ikke valgfritt å logge.</li>
-            </ol>
+            <dl>
+              <dt><strong>Ble KI brukt her?</strong></dt>
+              <dd>Ja eller nei.</dd>
+
+              <dt><strong>Hvordan?</strong></dt>
+              <dd>Klassifisering, oppsummering, søk, oversettelse, generering av utkast. Eksempel: «KI foreslår kategori. Saksbehandleren bestemmer.»</dd>
+
+              <dt><strong>Hvilke logger ligger i saken?</strong></dt>
+              <dd>Hvem spurte. Hva KI svarte. Hva saksbehandleren valgte. Det er ikke valgfritt å logge.</dd>
+            </dl>
 
             <h2>Vanlige spørsmål</h2>
             <dl>
+              <dt><strong>Hva er et saksbehandlingssystem?</strong></dt>
+              <dd>
+                Fagsystemet inneholder faglogikken for det vedtaket handler om — skjenkelovens krav, tilskuddets vilkår, opptaksreglene for barnehagen. Saksbehandlingssystemet er flyten rundt vedtaket: hvem som så hva, når hen gjorde det, hva som ligger i historikken. Ofte er de to delene i samme løsning.
+              </dd>
+
               <dt><strong>Er e-post det samme som mottak?</strong></dt>
               <dd>
                 Nei. E-post er en haug. Mottak er strukturert. SvarInn og eDialog er innkommende meldinger med metadata. SvarUt er når svaret går ut fra kommunen til innbyggeren.
               </dd>
 
-              <dt><strong>Hva er forskjellen på saksbehandlingssystem og fagsystem?</strong></dt>
+              <dt><strong>Hvilke portaler har Xala i drift?</strong></dt>
               <dd>
-                Fagsystemet inneholder faglogikken for det vedtaket handler om — skjenkelovens krav, tilskuddets vilkår, opptaksreglene for barnehagen. Saksbehandlingssystemet er flyten rundt vedtaket: hvem som så hva, når hen gjorde det, hva som ligger i historikken. Ofte er de to delene i samme løsning.
+                Tre portaler: <Link to="/produkter/bevillingsportal">Bevillingsportal</Link> (søknad om skjenke- og salgsbevilling), <Link to="/produkter/tilskuddsportal">Tilskuddsportal</Link> (tilskuddssøknad til kommune), og <Link to="/produkter/redusert-foreldrebetaling">Redusert foreldrebetaling</Link> (søknad om moderasjon). Digilist er også i drift, men det er et bestillingssystem, ikke en saksbehandlingsløsning.
               </dd>
 
-              <dt><strong>Hvor lang tid tar det å bygge en tilskuddsportal?</strong></dt>
+              <dt><strong>Hva har dere levert i Nordre Follo?</strong></dt>
               <dd>
-                Første leveranse: 4–7 måneder fra signering til portalen er i drift. Det dekker kartlegging, design, utvikling, testing, integrasjon med Noark og ID-porten, og opplæring av saksbehandlerne. Tid avhenger av antall skjemaer, hvor mange sakstyper, og om det finnes integrasjoner utover de fem vi alltid kobler.
+                Nordre Follo kommune har tilskuddsportal og bevillingsportal i drift. Innbyggeren søker hjemmefra. Saksbehandleren åpner én sak med alt inne. Køen viser hva som venter. Les mer om leveransen i <Link to="/caser/nordre-follo-tilskuddsportal-bevillingsportal">casen</Link>.
               </dd>
 
-              <dt><strong>Hva koster det?</strong></dt>
+              <dt><strong>Hvilke integrasjoner bygger dere?</strong></dt>
               <dd>
-                Det står ikke her. Les <Link to="/priser">/priser</Link> for hva som driver kostnaden, hva som inngår, og hvordan vi estimerer etter kartlegging.
+                Vi kobler til ID-porten, Maskinporten, Altinn, Folkeregisteret og Noark 5. Det er de fem. Vi eier ikke Altinn, men vi har bidratt der. Vi følger Digdirs <a href="https://www.digdir.no/digital-samhandling/prinsipp-4-del-og-gjenbruk-data/1061" target="_blank" rel="noopener noreferrer">prinsipp 4</a> (del og gjenbruk data) og <a href="https://www.digdir.no/digital-samhandling/prinsipp-5-del-og-gjenbruk-losninger/1062" target="_blank" rel="noopener noreferrer">prinsipp 5</a> (del og gjenbruk løsninger).
               </dd>
 
-              <dt><strong>Hvem drifter løsningen etterpå?</strong></dt>
+              <dt><strong>Hva gjør dere med KI i saksbehandling?</strong></dt>
               <dd>
-                Xala. Det er ikke en valgfri tjeneste. Hver løsning vi leverer har drifts- og forvaltningsavtale fra dag én.
-              </dd>
-
-              <dt><strong>Kan vi se det i en sak vi kjenner?</strong></dt>
-              <dd>
-                Ja. Book en demo på <Link to="/kontakt">/kontakt</Link>. Vi setter opp en case dere kjenner igjen, og dere ser flyten fra innbyggeren sender til saksbehandleren lukker saken.
+                KI kan skrive et utkast. Den fatter ikke vedtaket. Data blir i fagsystemet. Dere skal alltid kunne svare på tre ting: Ble KI brukt her? Hvordan? Hvilke logger ligger i saken? Det er ikke valgfritt å logge.
               </dd>
             </dl>
           </div>
