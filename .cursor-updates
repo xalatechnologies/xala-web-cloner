@@ -1,29 +1,27 @@
-XWEB-204: Fixed sitemap and blog RSS 500 errors
+# Cursor Updates
 
-Problem identified:
-- Apache htaccess catch-all rewrite was redirecting XML file requests to index.html
-- React app attempted to handle these routes and failed with 500 errors
-- Affected sitemap.xml and blogg/rss.xml
+## 2026-08-28: Services Page SEO Update
 
-Solution implemented:
-- Added MIME type declarations for XML files in public/.htaccess
-- Added rewrite exception for xml and txt files before catch-all SPA redirect
-- Ensures static XML files generated during build are served correctly
+Updated /tjenester page title, H1, and meta description to lead with GSC keywords.
 
-Testing completed:
-- Build passes successfully
-- All 989 tests pass
-- Lint and typecheck pass
-- Verified sitemap.xml and rss.xml are generated with valid XML content
+### Changes Made
+- SEO title changed from "Saksbehandling, integrasjon og modernisering | Xala" to "Saksbehandlingssystem og fagsystem | Xala" (44 chars)
+- H1 updated from "Systemer som skal stå i mange år" to "Saksbehandlingssystem og fagsystem som skal stå i mange år"
+- Meta description updated to "Vi bygger saksbehandlingssystem og fagsystem, pluss integrasjon og modernisering, for offentlig sektor."
+- Norwegian translation file updated to match new H1
 
-Pull request created:
-- PR #128: https://github.com/xalatechnologies/xala-web-cloner/pull/128
-- Branch: cursor/fix-sitemap-rss-500-60f2
-- Status: Ready for review
-- Single commit with clear explanation of changes
+### Validation
+- Title length passes 60-char limit (44 chars including brand suffix)
+- Tests passing: staticRouteHeading.test.ts and serp-metadata.test.ts
+- Build successful
+- Official Bokmål maintained throughout
 
-After deployment:
-- Crawlers will receive 200 OK for sitemap.xml requests
-- Crawlers will receive 200 OK for blogg/rss.xml requests
-- Both files will have proper Content-Type headers
-- robots.txt continues pointing to correct sitemap URL
+### PR
+- PR #135 created and merged to main
+- Branch: cursor/services-seo-saksbehandlingssystem-3145
+
+### GSC Target
+- saksbehandlingssystem: 191 impressions / pos 51.7
+- fagsystem: 168 impressions / pos 20.3
+
+Body content, cases, and covers unchanged as requested.

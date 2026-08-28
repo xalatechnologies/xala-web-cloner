@@ -152,10 +152,12 @@ describe('BloggPage results for a query the articles cannot answer', () => {
   });
 
   it('keeps the article results, and puts the page above them', () => {
+    // After title change: "integrasjon" now appears in home and services
+    // descriptions but neither title, so home (first in PAGES order) wins.
     const { container } = renderBloggPage('/blogg?q=integrasjon');
 
     const links = resultLinks(container);
-    expect(links[0]).toBe('/tjenester');
+    expect(links[0]).toBe('/');
     expect(links.some((href) => href?.startsWith('/blogg/'))).toBe(true);
   });
 
