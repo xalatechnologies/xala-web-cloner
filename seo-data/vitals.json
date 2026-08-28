@@ -17,13 +17,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 83,
+        "performance": 84,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
         "lcp": 3901,
         "cls": 0.0001880243853903182,
-        "tbt": 28
+        "tbt": 8
       }
     },
     {
@@ -57,13 +57,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 88,
+        "performance": 87,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3445,
+        "lcp": 3428,
         "cls": 0.0001880243853903182,
-        "tbt": 9.5
+        "tbt": 1
       }
     },
     {
@@ -81,7 +81,7 @@
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 2564,
+        "lcp": 2557,
         "cls": 0.0001880243853903182,
         "tbt": 0
       }
@@ -97,13 +97,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 80,
+        "performance": 86,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3751,
+        "lcp": 3151,
         "cls": 0,
-        "tbt": 0
+        "tbt": 3.5
       }
     },
     {
@@ -117,13 +117,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 83,
+        "performance": 92,
         "accessibility": 95,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3526,
-        "cls": 0.0008127559659775556,
-        "tbt": 0
+        "lcp": 3076,
+        "cls": 0.02329053439160591,
+        "tbt": 68.5
       }
     },
     {
@@ -142,7 +142,7 @@
         "seo": 100,
         "bestPractices": 100,
         "lcp": 3751,
-        "cls": 0,
+        "cls": 0.0002308535058617668,
         "tbt": 0
       }
     },
@@ -157,7 +157,7 @@
         "overall": null
       },
       "lab": {
-        "performance": 90,
+        "performance": 86,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
