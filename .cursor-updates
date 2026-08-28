@@ -27,3 +27,26 @@ After deployment:
 - Crawlers will receive 200 OK for blogg/rss.xml requests
 - Both files will have proper Content-Type headers
 - robots.txt continues pointing to correct sitemap URL
+
+---
+
+Query-led title for elektronisk saksbehandling blog post
+
+Updated blog post automatisering-av-saksbehandling-hva-boer-og-ikke with SEO-optimized title:
+- Changed seoTitle to "Elektronisk saksbehandling: hva som kan automatiseres"
+- Changed H1/title to match seoTitle exactly
+- Final title with brand append: "Elektronisk saksbehandling: hva som kan automatiseres | Xala" (60 chars)
+- Within Google's 60-character SERP limit
+- Query-led format targets "elektronisk saksbehandling" search intent
+- Official Bokmål, forvaltning context without legal jargon
+
+Testing:
+- Lint passed with warnings only
+- Build passed successfully
+- Prerender generated 52 blog posts plus RSS and sitemap
+
+Pull request:
+- PR #139: https://github.com/xalatechnologies/xala-web-cloner/pull/139
+- Branch: cursor/elektronisk-saksbehandling-title-36d6
+- Status: Merged via auto-merge
+- Single commit with clear description
