@@ -1,8 +1,8 @@
 ---
 slug: altinn-3-hva-endrer-seg-for-fagsystemet
-title: "Fagsystemet mot Altinn II er stengt"
-seoTitle: "Fagsystemet mot Altinn II er stengt"
-description: "Altinn II er stengt. Et fagsystem som fortsatt kaller de gamle endepunktene får ikke data og får ikke sendt inn."
+title: "Altinn 3: hva som endrer seg for fagsystemet"
+seoTitle: "Altinn 3: hva som endrer seg for fagsystemet"
+description: "Altinn 3: Altinn II er stengt 19. juni 2026. Sluttbrukersystemet må kobles til Altinn 3. Et fagsystem som kaller de gamle endepunktene får ikke sendt inn."
 date: 2026-08-25
 author: "Ibrahim Rahmani"
 role: "IT-leder"

@@ -1,8 +1,8 @@
 ---
 slug: databehandleravtale-flere-leverandorer
-title: "Én databehandleravtale dekker ikke alle leverandørene"
-seoTitle: "Én avtale dekker ikke alle leverandørene"
-description: "Kommunen er behandlingsansvarlig. Hver databehandler trenger sin egen avtale. Xala er én av dem, ikke alle."
+title: "Databehandleravtale: én avtale dekker ikke alle leverandørene"
+seoTitle: "Databehandleravtale: én avtale dekker ikke alle leverandørene"
+description: "Databehandleravtale: én avtale dekker én databehandler. Kommunen trenger avtale med hver leverandør. Xala er én av dem, ikke alle."
 date: 2026-08-24
 author: "Ibrahim Rahmani"
 role: "IT-leder"
