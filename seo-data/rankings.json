@@ -8418,6 +8418,215 @@
           "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
         }
       ]
+    },
+    {
+      "date": "2026-08-29",
+      "provider": "DataForSEO",
+      "rows": [
+        {
+          "keyword": "saksbehandlingssystem",
+          "target": "/tjenester/saksbehandlingssystem",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "hva koster et saksbehandlingssystem",
+          "target": "/priser",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "saksbehandlingssystem kommune",
+          "target": "/tjenester/saksbehandlingssystem",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "saksbehandlingsplattform",
+          "target": "/tjenester/saksbehandlingsplattform",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "tilskuddsportal",
+          "target": "/tjenester/tilskuddsportal",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "tilskuddsportal kommune",
+          "target": "/tjenester/tilskuddsportal",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "bevillingsportal",
+          "target": "/tjenester/bevillingsportal",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "skjenkebevilling system",
+          "target": "/tjenester/bevillingsportal",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "systemintegrasjon offentlig sektor",
+          "target": "/tjenester/systemintegrasjon",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "integrasjon altinn",
+          "target": "/tjenester/integrasjoner",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "id-porten integrasjon",
+          "target": "/blogg/id-porten-eller-maskinporten-hva-velger-du",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "maskinporten integrasjon",
+          "target": "/blogg/id-porten-eller-maskinporten-hva-velger-du",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "noark 5 arkivering",
+          "target": "/blogg/noark-5-arkivering-i-moderne-fagsystemer",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\n    \"version\": \"0.1.20260826\",\n    \"status_code\": 40100,\n    \"status_message\": \"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\n    \"time\": \"0 sec.\",\n    \"cost\": 0,\n    \"tasks_count\": 0,\n    \"tasks_error\": 0,\n    \"tasks\": nu"
+        },
+        {
+          "keyword": "modernisering av fagsystemer",
+          "target": "/tjenester/modernisering-av-fagsystemer",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "modernisere fagsystem uten driftsstans",
+          "target": "/blogg/modernisere-fagsystem-uten-driftsstans",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\n    \"version\": \"0.1.20260826\",\n    \"status_code\": 40100,\n    \"status_message\": \"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\n    \"time\": \"0 sec.\",\n    \"cost\": 0,\n    \"tasks_count\": 0,\n    \"tasks_error\": 0,\n    \"tasks\": nu"
+        },
+        {
+          "keyword": "systemutvikling offentlig sektor",
+          "target": "/",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "saas offentlig sektor",
+          "target": "/tjenester/saas-applikasjonsutvikling",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "flerleietaker arkitektur",
+          "target": "/blogg/flerleietakerarkitektur-saas-offentlig-sektor",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "automatisering av saksbehandling",
+          "target": "/blogg/automatisering-av-saksbehandling-hva-boer-og-ikke",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "ai i offentlig sektor",
+          "target": "/tjenester/automatisering-og-ai",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "språkmodeller offentlig forvaltning",
+          "target": "/blogg/sprakmodeller-i-offentlig-forvaltning-hva-som-krever-avklaring",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "agentiske arbeidsflyter",
+          "target": "/blogg/agentiske-arbeidsflyter-i-saksbehandling",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "wcag 2.2 aa krav",
+          "target": "/blogg/wcag-2-2-aa-i-praksis-for-fagsystemer",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "iso 27001 utviklingsprosjekt",
+          "target": "/blogg/iso-27001-i-praksis-for-utviklingsprosjekter",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\n    \"version\": \"0.1.20260826\",\n    \"status_code\": 40100,\n    \"status_message\": \"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\n    \"time\": \"0 sec.\",\n    \"cost\": 0,\n    \"tasks_count\": 0,\n    \"tasks_error\": 0,\n    \"tasks\": nu"
+        },
+        {
+          "keyword": "azure offentlig sektor",
+          "target": "/blogg/azure-for-offentlig-sektor-krav-og-valg",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "ssa-s eller ssa-l",
+          "target": "/blogg/ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling",
+          "intent": "informational",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\n    \"version\": \"0.1.20260826\",\n    \"status_code\": 40100,\n    \"status_message\": \"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\n    \"time\": \"0 sec.\",\n    \"cost\": 0,\n    \"tasks_count\": 0,\n    \"tasks_error\": 0,\n    \"tasks\": nu"
+        },
+        {
+          "keyword": "booking og utleie kommune",
+          "target": "/produkter/digilist",
+          "intent": "commercial",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "digilist",
+          "target": "/produkter/digilist",
+          "intent": "navigational",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        },
+        {
+          "keyword": "xala technologies",
+          "target": "/",
+          "intent": "navigational",
+          "position": null,
+          "error": "DataForSEO: HTTP 401 — {\"version\":\"0.1.20260826\",\"status_code\":40100,\"status_message\":\"You are not authorized to access this resource. See your login details here: https:\\/\\/app.dataforseo.com\\/api-access .\",\"time\":\"0 sec.\",\"cost\":0,\"tasks_count\":0,\"tasks_error\":0,\"tasks\":null}"
+        }
+      ]
     }
   ]
 }
