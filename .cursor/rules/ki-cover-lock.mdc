@@ -1,0 +1,18 @@
+---
+description: KI blog cover lock. Always apply on this repo. Use when changing covers, restoring images, or opening a restore PR.
+alwaysApply: true
+---
+
+# KI cover lock
+
+Canonical file: `public/images/blog/ki-pa-gamle-vaner-holder-ikke.webp`
+
+- Master: cream 48966 B, sha256 `9c805be926ae74b4dbb8c02ab403afe79d93f0ab88a9cee0a69842111b142bd4`, git blob `a158fde4b6266a7da7d617fa003ae8854969460b`, 1200×675.
+- REJECTED: 136040 B, sha256 `2cd915db026bcdc6e316f416812b82ce38ebd6b7898f1cef69c3f85372a05d14`, blob `9b7bfcab3cdb2683bddf7f67d16d40939f47a60d` (dark-gold).
+- REJECTED: 16544 B / sha256 `21b76ffb` (old still).
+
+Never open or merge a PR that restores 136040. Titles like "Restore KI cover to 136040 B CoS master" are false. 136040 is not the CoS master.
+
+Never restore a trailing blog hashtag dump. Tags stay in frontmatter, `article:tag`, and ShareLinks only.
+
+If live is dark-gold, do not "fix" it. Leave it for CoS.
