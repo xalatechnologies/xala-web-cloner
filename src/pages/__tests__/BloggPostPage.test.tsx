@@ -5,7 +5,10 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { describe, it, expect, vi } from 'vitest';
 import BloggPostPage from '../BloggPostPage';
+import { topicHashtagLine } from '@/lib/blog/topics';
 import { SHARE_LABEL } from '@/lib/blog/share';
+import { allPosts } from '@/lib/blog';
+import { findPost } from '@/lib/blog/posts';
 
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
@@ -123,32 +126,39 @@ describe('BloggPostPage lead vs cover', () => {
 
 const GEBYR_SLUG = 'skjenkebevilling-gebyr-og-omsetningsoppgave';
 
-describe('BloggPostPage topic keywords and share row', () => {
-  it('does not render a visible hashtag dump after the article body', () => {
-    const { container } = renderPost(GEBYR_SLUG);
+describe('BloggPostPage topic hashtags and share row', () => {
+  it('shows 3–5 Norwegian topic hashtags as the last line, not IT-leder', () => {
+    const post = findPost(allPosts(), GEBYR_SLUG);
+    expect(post).toBeTruthy();
+    const line = topicHashtagLine(post!);
 
-    const article = container.querySelector('article');
-    const hashtagParas = [...(article?.querySelectorAll('p') ?? [])].filter((node) =>
-      /^#[\p{L}][\p{L}\p{N}-]*(?:\s+#[\p{L}][\p{L}\p{N}-]*)+$/u.test(node.textContent?.trim() ?? ''),
-    );
-    expect(hashtagParas).toHaveLength(0);
-    expect(screen.queryByText(/#skjenkebevilling #gebyr/)).not.toBeInTheDocument();
+    renderPost(GEBYR_SLUG);
+
+    expect(line).toBe('#skjenkebevilling #gebyr #omsetningsoppgave #visma #alkoholloven');
+    expect(screen.getByText(line)).toBeInTheDocument();
+    expect(screen.queryByText(/#IT-leder/)).not.toBeInTheDocument();
     expect(screen.getByText(SHARE_LABEL)).toBeInTheDocument();
     expect(
       screen.getByRole('link', { name: 'LinkedIn (åpnes i ny fane)' }),
     ).toHaveAttribute('href', expect.stringContaining('linkedin.com/sharing/share-offsite'));
   });
 
-  it('does not render a visible hashtag line on the sele post', () => {
+  it('shows exactly one hashtag line on the sele post, plus Del artikkelen', () => {
     const slug = 'sele-rundt-ki-i-saksbehandling';
+    const post = findPost(allPosts(), slug);
+    expect(post).toBeTruthy();
+    const line = topicHashtagLine(post!);
+
     const { container } = renderPost(slug);
 
+    expect(line).toBe('#selerundtKI #kunstigintelligenskommune #arkitekturprinsipper #saksbehandling');
     const article = container.querySelector('article');
     const hashtagParas = [...(article?.querySelectorAll('p') ?? [])].filter((node) =>
       /^#[\p{L}][\p{L}\p{N}-]*(?:\s+#[\p{L}][\p{L}\p{N}-]*)+$/u.test(node.textContent?.trim() ?? ''),
     );
-    expect(hashtagParas).toHaveLength(0);
-    expect(screen.queryByText(/#selerundtKI/)).not.toBeInTheDocument();
+    expect(hashtagParas).toHaveLength(1);
+    expect(hashtagParas[0].textContent).toBe(line);
+    expect(hashtagParas[0].className).toMatch(/text-muted-foreground/);
     expect(screen.queryByText(/#kunstigintelligens #arkitekturprinsipper/)).not.toBeInTheDocument();
     expect(screen.getByText(SHARE_LABEL)).toBeInTheDocument();
   });

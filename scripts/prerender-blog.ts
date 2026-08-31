@@ -45,6 +45,7 @@ import {
   postUrl,
 } from "../src/lib/blog/seo";
 import { shareRowHtml } from "../src/lib/blog/share";
+import { topicHashtagLineHtml } from "../src/lib/blog/topics";
 import {
   STATIC_ROUTES,
   blogSitemapEntries,
@@ -340,6 +341,7 @@ ${leadHtml}
 </header>
 ${cover}
 ${bodyHtml}
+${topicHashtagLineHtml(post)}
 ${shareRowHtml(postUrl(post), post.title)}
 <aside><h2>Snakk med oss om dette</h2><p>${escapeHtml(ORGANIZATION)} bygger løsninger som denne for offentlig sektor og næringsliv.</p><a href="/kontakt">Kontakt oss</a></aside>
 </article>
