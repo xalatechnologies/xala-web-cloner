@@ -45,6 +45,7 @@ const LIVE_GEBYR = `<html><head>
 <meta name="keywords" content="skjenkebevilling, gebyr, omsetningsoppgave, visma, alkoholloven, offentlig sektor" />
 ${GEBYR_TOPICS.map((tag) => `<meta property="article:tag" content="${tag}" />`).join('\n')}
 </head><body><div id="root">
+<p>#skjenkebevilling #gebyr #omsetningsoppgave #visma #alkoholloven</p>
 <aside><p>Del artikkelen</p><a href="https://www.linkedin.com/sharing/share-offsite/?url=x">LinkedIn</a></aside>
 </div></body></html>`;
 
@@ -81,10 +82,10 @@ describe('verify-live first-HTML topics', () => {
     expect(fromVerify).not.toContain('IT-leder');
   });
 
-  it('accepts first HTML that has article:tag, post keywords, and Del artikkelen', () => {
+  it('accepts first HTML that has hashtags, article:tag, post keywords, and Del artikkelen', () => {
     expect(firstHtmlKeywords(LIVE_GEBYR)).toContain('skjenkebevilling');
     expect(firstHtmlArticleTags(LIVE_GEBYR)).toEqual(GEBYR_TOPICS);
-    expect(firstHtmlHashtags(LIVE_GEBYR)).toEqual([]);
+    expect(firstHtmlHashtags(LIVE_GEBYR)).toEqual(GEBYR_TOPICS.map((topic) => `#${topic}`));
     expect(hasShareRow(LIVE_GEBYR)).toBe(true);
     expect(isPostTopicHead(LIVE_GEBYR, gebyrPost)).toBe(true);
   });
@@ -117,10 +118,11 @@ describe('verify-live first-HTML topics', () => {
 <meta name="keywords" content="skjenkebevilling, 360, visma, integrasjon, bevilling, offentlig sektor" />
 ${VISMA_TOPICS.map((tag) => `<meta property="article:tag" content="${tag}" />`).join('\n')}
 </head><body><div id="root">
+<p>#skjenkebevilling #360 #visma #integrasjon #bevilling</p>
 <aside><p>Del artikkelen</p><a href="https://www.linkedin.com/sharing/share-offsite/?url=x">LinkedIn</a></aside>
 </div></body></html>`;
 
-    expect(firstHtmlHashtags(liveVisma)).toEqual([]);
+    expect(firstHtmlHashtags(liveVisma)).toEqual(VISMA_TOPICS.map((topic) => `#${topic}`));
     expect(isPostTopicHead(liveVisma, vismaPost)).toBe(true);
 
     const withHexColors = `<div id="root">

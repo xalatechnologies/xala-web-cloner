@@ -290,11 +290,13 @@ export function isPostTopicHead(html, post) {
     return false;
   }
   const tags = firstHtmlArticleTags(html);
+  const hashtags = firstHtmlHashtags(html);
   if (tags.length < 3 || tags.length > 5) return false;
   if (tags.some((tag) => AUDIENCE.has(tag.toLowerCase()))) return false;
   if (tags.join("\0") !== expected.join("\0")) return false;
   for (const topic of expected) {
     if (!keywords.includes(topic)) return false;
+    if (!hashtags.includes(keywordToHashtag(topic))) return false;
   }
   return hasShareRow(html);
 }
@@ -383,7 +385,7 @@ async function main() {
     );
     check(
       isPostTopicHead(page.body, post),
-      `${post.slug}: first HTML has article:tag, post keywords, and Del artikkelen`,
+      `${post.slug}: first HTML has topic hashtags, article:tag, post keywords, and Del artikkelen`,
     );
     if (post.title) {
       check(decode(index.body).includes(post.title), `/blogg lists "${post.title}"`);
