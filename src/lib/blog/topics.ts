@@ -1,9 +1,8 @@
 /**
- * Topic hashtags for a post — not the audience chip, not the homepage string.
+ * Topic keywords for a post — not the audience chip, not the homepage string.
  *
  * Frontmatter `tag` is one audience label (IT-leder, Arkitekt, …). The topic
- * list is `keywords`, the same words Article JSON-LD already publishes.
- * Visible hashtags are 3–5 of those, last line of the post, never a dump.
+ * list is `keywords`, the same words Article JSON-LD and article:tag publish.
  */
 import type { BlogPost } from "./types";
 
@@ -43,17 +42,7 @@ export function topicHashtags(post: Pick<BlogPost, "keywords" | "tag">): string[
   return topicKeywords(post).map(keywordToHashtag).filter(Boolean);
 }
 
-/** Last line of the post: three to five hashtags, space-separated. */
+/** Space-separated hashtags derived from topic keywords (tests and tooling). */
 export function topicHashtagLine(post: Pick<BlogPost, "keywords" | "tag">): string {
   return topicHashtags(post).join(" ");
-}
-
-export function topicHashtagLineHtml(post: Pick<BlogPost, "keywords" | "tag">): string {
-  const line = topicHashtagLine(post);
-  if (!line) return "";
-  return `<p>${escapeHtml(line)}</p>`;
-}
-
-function escapeHtml(value: string): string {
-  return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
