@@ -59,3 +59,11 @@ Pull request:
 - Branch: cursor/elektronisk-saksbehandling-title-36d6
 - Status: Merged via auto-merge
 - Single commit with clear description
+
+Drop visible blog hashtag dump (keep keywords in frontmatter)
+
+- Removed visible topicHashtagLine paragraph from BloggPostPage SPA
+- Removed topicHashtagLineHtml from prerender-blog.ts first HTML
+- Updated verify-live.mjs to check article:tag and keywords without requiring visible hashtags
+- Keywords, article:tag, and JSON-LD unchanged in document head
+- All 999 tests pass, lint and build pass
