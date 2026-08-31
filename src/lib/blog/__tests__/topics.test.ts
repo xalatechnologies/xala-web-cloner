@@ -198,16 +198,17 @@ describe('topic keywords and hashtags', () => {
     expect(keywordToHashtag('WCAG 2.2 AA')).toBe('#WCAG22AA');
   });
 
-  const postsWithTopicHashtags = posts.filter((post) => post.slug !== 'ki-pa-gamle-vaner-holder-ikke');
-
-  it('omits the visible topic hashtag line on the KI vaner post', () => {
+  it('gives the KI vaner post one styled last line of five tags, no leftover dump', () => {
     const KI = posts.find((post) => post.slug === 'ki-pa-gamle-vaner-holder-ikke');
     expect(KI, 'ki-pa-gamle-vaner post missing').toBeDefined();
-    expect(topicHashtagLine(KI!)).toBe('');
     expect(leftoverHashtagDump(KI!.body)).toBeUndefined();
+    expect(topicHashtagLine(KI!)).toBe(
+      '#kunstigintelligens #saksbehandling #offentligsektor #digitalisering #kommunal',
+    );
+    expect(topicHashtagLine(KI!).split(' ')).toHaveLength(5);
   });
 
-  it.each(postsWithTopicHashtags.map((post) => [post.slug, post] as const))(
+  it.each(posts.map((post) => [post.slug, post] as const))(
     '%s publishes 3–5 topic hashtags from keywords, not homepage copy',
     (_slug, post) => {
       const topics = topicKeywords(post);

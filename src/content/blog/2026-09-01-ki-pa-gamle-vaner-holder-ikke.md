@@ -11,6 +11,12 @@ cover: "/images/blog/ki-pa-gamle-vaner-holder-ikke.webp"
 draft: false
 lang: no
 tag: "IT-leder"
+keywords:
+  - kunstigintelligens
+  - saksbehandling
+  - offentlig sektor
+  - digitalisering
+  - kommunal
 cta: /kontakt
 ---
 
