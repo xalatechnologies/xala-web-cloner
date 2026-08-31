@@ -106,3 +106,5 @@ Trenger dere å se hvordan saksgangen kan se ut i praksis, start på [kontakt](/
 
 - [Tjenester](/tjenester)
 - [Nordre Follo: tilskudds- og bevillingsportal](/caser/nordre-follo-tilskuddsportal-bevillingsportal)
+
+#kunstigintelligens #saksbehandling #offentligsektor #digitalisering #kommunal
