@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { parsePost } from '../posts';
 import { postMeta, postUrl } from '../seo';
 import { SHARE_LABEL, shareRowHtml } from '../share';
-import { topicHashtagLine, topicKeywords } from '../topics';
+import { topicHashtagLine, topicHashtagLineHtml, topicKeywords } from '../topics';
 import type { BlogPost } from '../types';
 import { getPageSEO } from '@/components/seo/seoContent';
 
@@ -37,12 +37,13 @@ const gebyr = loadPost(GEBYR_FILE);
 const visma = loadPost(VISMA_FILE);
 const sele = loadPost(SELE_FILE);
 
-/** Trailing leftover dump in markdown only — prerender no longer appends styled hashtag lines. */
-function leftoverHashtagDump(bodyMarkdown: string): string | undefined {
-  const match = bodyMarkdown.match(
+/** Trailing leftover dump in markdown, plus styled `<p>` lines the prerender appends. */
+function hashtagLinesInFirstHtml(bodyMarkdown: string, styledHtml: string): string[] {
+  const leftover = bodyMarkdown.match(
     /(?:^|\n)(#[\p{L}][\p{L}\p{N}-]*(?:\s+#[\p{L}][\p{L}\p{N}-]*)+)\s*$/u,
   );
-  return match?.[1];
+  const styled = [...styledHtml.matchAll(/<p>(#[^<]+)<\/p>/g)].map((match) => match[1]);
+  return [...(leftover ? [leftover[1]] : []), ...styled];
 }
 
 const homepageKeywords = getPageSEO('home', 'no').keywords;
@@ -57,11 +58,11 @@ function firstHtmlHead(post: BlogPost): string {
 }
 
 function firstHtmlBody(post: BlogPost): string {
-  return `<div id="root">${shareRowHtml(postUrl(post), post.title)}</div>`;
+  return `<div id="root">${topicHashtagLineHtml(post)}${shareRowHtml(postUrl(post), post.title)}</div>`;
 }
 
 describe('first HTML for a blog post', () => {
-  it('emits post-specific keywords, matching article:tag, and the share row — no visible hashtag dump', () => {
+  it('emits post-specific keywords, matching article:tag, hashtags, and the share row', () => {
     const head = firstHtmlHead(gebyr);
     const body = firstHtmlBody(gebyr);
     const html = `${head}${body}`;
@@ -75,7 +76,7 @@ describe('first HTML for a blog post', () => {
     }
     expect(head).not.toContain('content="IT-leder"');
 
-    expect(body).not.toContain('#skjenkebevilling #gebyr #omsetningsoppgave #visma #alkoholloven');
+    expect(body).toContain('#skjenkebevilling #gebyr #omsetningsoppgave #visma #alkoholloven');
     expect(body).not.toContain('#IT-leder');
     expect(body).toContain(SHARE_LABEL);
     expect(body).toContain('linkedin.com/sharing/share-offsite');
@@ -83,33 +84,35 @@ describe('first HTML for a blog post', () => {
   });
 
   it('is the markup the prerender actually writes', () => {
-    expect(PRERENDER).not.toContain('topicHashtagLineHtml');
+    expect(PRERENDER).toContain('topicHashtagLineHtml');
     expect(PRERENDER).toContain('shareRowHtml');
     expect(PRERENDER).toContain('replaceMeta("name", "keywords"');
     expect(PRERENDER).toContain('property="article:tag"');
     expect(PRERENDER).toContain('articleTags: meta.articleTags');
     expect(PRERENDER).toContain('keywords: meta.keywords');
 
+    const hashtagsAt = PRERENDER.indexOf('${topicHashtagLineHtml(post)}');
     const shareAt = PRERENDER.indexOf('${shareRowHtml(postUrl(post), post.title)}');
     const bodyAt = PRERENDER.indexOf('${bodyHtml}');
-    expect(shareAt).toBeGreaterThan(bodyAt);
-    expect(PRERENDER.slice(bodyAt, shareAt)).not.toContain('topicHashtag');
+    expect(hashtagsAt).toBeGreaterThan(bodyAt);
+    expect(shareAt).toBeGreaterThan(hashtagsAt);
   });
 
-  it('keeps topicKeywords to 3–5 topics, not the full keyword dump', () => {
+  it('keeps the visible hashtag line to 3–5 topics, not the full keyword dump', () => {
     expect(gebyr.keywords).toHaveLength(6);
     expect(topicHashtagLine(gebyr).split(' ')).toHaveLength(5);
     expect(topicHashtagLine(gebyr)).not.toContain('#offentligsektor');
   });
 
-  it('does not append a hashtag line in first HTML for the sele post', () => {
+  it('gives the sele post exactly one hashtag line in first HTML, with Del artikkelen', () => {
+    const styled = topicHashtagLineHtml(sele);
     const share = shareRowHtml(postUrl(sele), sele.title);
-    const html = `<div id="root">${sele.body}${share}</div>`;
+    const html = `<div id="root">${sele.body}${styled}${share}</div>`;
+    const lines = hashtagLinesInFirstHtml(sele.body, styled);
 
-    expect(leftoverHashtagDump(sele.body)).toBeUndefined();
-    expect(html).not.toContain(
+    expect(lines).toEqual([
       '#selerundtKI #kunstigintelligenskommune #arkitekturprinsipper #saksbehandling',
-    );
+    ]);
     expect(html).not.toContain(
       '#kunstigintelligens #arkitekturprinsipper #saksbehandling #digitalisering #offentligsektor',
     );
