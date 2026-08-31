@@ -44,11 +44,11 @@ Prime Video-teamet gjorde en ti-dagers sprint i ett rom uten on-call, uten møte
 
 De beste teamene delte fem vaner. Alle handler om å gi agenten kontekst og ta friksjon ut av løkka — ikke om å jobbe overtid.
 
-**Invester i kontekst.** Prosjektet skal være lesbart for modellen. Steeringsfiler, konvensjoner, tester, kommentarer som blir værende. Hopper dere over dette, gjør agenten de samme feilene igjen.
+**Invester i kontekst.** Prosjektet skal være lesbart for modellen. Styringsfiler, konvensjoner, tester, kommentarer som blir værende. Hopper dere over dette, gjør agenten de samme feilene igjen.
 
 **Sakte ned for å komme raskere.** De første ukene føltes tregere. Teamene kodet om repo, skrev spesifikasjoner, la til tester. De som ga opp i uke to så aldri den sammensatte effekten. De som holdt ut, fikk fart.
 
-**Mat agenten i stedet for å passe den.** En jevn kø av velavgrensede oppgaver. Flere agenter parallelt. Gjennomgang asynkront. Arbeidet flytter seg mens noen er i møte eller på telefon. Kveldsjakten på den perfekte prompten er friksjon, ikke en overtidsløfte.
+**Mat agenten i stedet for å passe den.** En jevn kø av velavgrensede oppgaver. Flere agenter parallelt. Gjennomgang asynkront. Arbeidet flytter seg mens noen er i møte eller på telefon. Kveldsjakten på den perfekte prompten er friksjon, ikke et overtidsløfte.
 
 **Gjør intensjonen eksplisitt før kode.** Hva betyr «ferdig»? Noen team rapporterer at de skriver 1 til 2 prosent av koden for hånd, men pusher langt flere commits. Forskjellen er at agenten vet hva den skal levere.
 
@@ -68,7 +68,7 @@ Kommunen trenger ikke en sjette chatbot. Den trenger at søknaden lander i saken
 
 ## Det Xala faktisk bygger
 
-Xala selger ikke et KI-produkt som erstatter saksbehandleren. Vi bygger saksgangen: portaler og integrasjoner som gjør løkka tydelig.
+Xala selger ikke et KI-produkt som erstatter saksbehandleren. Vi bygger saksgangen: [portaler og integrasjoner](/tjenester) som gjør løkka tydelig.
 
 I Nordre Follo har vi levert [Bevillingsportal](/produkter/bevillingsportal), [Tilskuddsportal](/produkter/tilskuddsportal) og arbeid med [Redusert foreldrebetaling](/produkter/redusert-foreldrebetaling). Søkeren fyller ut i en flate folk forstår. Saksbehandleren får en flyt med kontroll og logg. Portalene kan kobles til kommunens systemer via API. Det er én kommune i caset. Ikke flere.
 
