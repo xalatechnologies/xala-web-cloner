@@ -1,7 +1,7 @@
 ---
 slug: ki-pa-gamle-vaner-holder-ikke
-title: "KI uten nye vaner er bare et nytt verktøy"
-seoTitle: "KI uten nye vaner er bare et nytt verktøy"
+title: "KI på gamle vaner holder ikke"
+seoTitle: "KI på gamle vaner holder ikke"
 description: "Kommunen kjøpte KI. Innboksen er den samme. Uka ble ikke lettere. Gevinsten sitter i vanene, ikke i verktøyet. Clare Liguori sa det. Vi bygger saksgangen."
 date: 2026-09-01
 author: "Ibrahim Rahmani"
