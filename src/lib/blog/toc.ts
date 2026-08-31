@@ -28,7 +28,7 @@ export interface FaqItem {
 }
 
 /** Headings whose section is treated as the post's FAQ. */
-const FAQ_HEADING = /^(ofte stilte sp(ø|o)rsm(å|a)l|sp(ø|o)rsm(å|a)l og svar|faq|frequently asked questions)\b/i;
+const FAQ_HEADING = /^(ofte stilte sp(ø|o)rsm(å|a)l|vanlige sp(ø|o)rsm(å|a)l|sp(ø|o)rsm(å|a)l og svar|faq|frequently asked questions)\b/i;
 
 /**
  * Opening "Kort svar" / "Short answer" — the house lead. Lifted above the
