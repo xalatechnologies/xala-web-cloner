@@ -11,12 +11,6 @@ cover: "/images/blog/ki-pa-gamle-vaner-holder-ikke.webp"
 draft: false
 lang: no
 tag: "IT-leder"
-keywords:
-  - KI
-  - saksbehandling
-  - vaner
-  - fagsystem
-  - offentlig sektor
 cta: /kontakt
 ---
 
@@ -68,7 +62,7 @@ Kommunen trenger ikke en sjette chatbot. Den trenger at søknaden lander i saken
 
 ## Det Xala faktisk bygger
 
-Xala selger ikke et KI-produkt som erstatter saksbehandleren. Vi bygger saksgangen: portaler og integrasjoner som gjør løkka tydelig.
+Xala selger ikke et KI-produkt som erstatter saksbehandleren. Vi bygger saksgangen: portaler og [tjenester](/tjenester) som gjør løkka tydelig.
 
 I Nordre Follo har vi levert [Bevillingsportal](/produkter/bevillingsportal), [Tilskuddsportal](/produkter/tilskuddsportal) og arbeid med [Redusert foreldrebetaling](/produkter/redusert-foreldrebetaling). Søkeren fyller ut i en flate folk forstår. Saksbehandleren får en flyt med kontroll og logg. Portalene kan kobles til kommunens systemer via API. Det er én kommune i caset. Ikke flere.
 

@@ -30,6 +30,15 @@ After deployment:
 
 ---
 
+XWEB-207: KI blog post copy fixes on cover branch
+
+- Removed keywords frontmatter from ki-pa-gamle-vaner-holder-ikke so the template no longer renders the trailing hashtag paragraph
+- Added in-sentence [tjenester](/tjenester) link in «Det Xala faktisk bygger»
+- Exempted this post from the global topic-hashtag test; added assertion that it has no visible hashtag line
+- Pushed to cover/ki-pa-gamle-vaner-webp for PR #145
+
+---
+
 Query-led title for elektronisk saksbehandling blog post
 
 Updated blog post automatisering-av-saksbehandling-hva-boer-og-ikke with SEO-optimized title:
