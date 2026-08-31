@@ -70,7 +70,7 @@ Kommunen trenger ikke en sjette chatbot. Den trenger at søknaden lander i saken
 
 Xala selger ikke et KI-produkt som erstatter saksbehandleren. Vi bygger saksgangen: portaler og integrasjoner som gjør løkka tydelig.
 
-I Nordre Follo har vi levert [Bevillingsportal](/blogg/bevillingsportal-fra-soknad-til-vedtak), [Tilskuddsportal](/blogg/tilskuddsportal-som-faktisk-brukes) og arbeid med [Redusert foreldrebetaling](/blogg/redusert-foreldrebetaling-uten-fagsystemintegrasjon). Søkeren fyller ut i en flate folk forstår. Saksbehandleren får en flyt med kontroll og logg. Portalene kan kobles til kommunens systemer via API. Det er én kommune i caset. Ikke flere.
+I Nordre Follo har vi levert [Bevillingsportal](/produkter/bevillingsportal), [Tilskuddsportal](/produkter/tilskuddsportal) og arbeid med [Redusert foreldrebetaling](/produkter/redusert-foreldrebetaling). Søkeren fyller ut i en flate folk forstår. Saksbehandleren får en flyt med kontroll og logg. Portalene kan kobles til kommunens systemer via API. Det er én kommune i caset. Ikke flere.
 
 Tre spørsmål vi stiller før vi legger KI inn i en slik flyt:
 
@@ -84,23 +84,23 @@ Rammen rundt agenten er skrevet i [Når KI skriver fortere enn skjønnet](/blogg
 
 ## Vanlige spørsmål
 
-**Er Clare Liguoris tall noe Xala har levert?**
-Nei. Tallene er fra Amazon: femti team i Stores-piloten, median 4,5x, Mantle med seks personer på 76 dager, Prime Video-sprinten med forbehold. Liguori snakket om ingeniørteam i AWS. Ikke om kommunale fagsystemer. Ikke om Xala.
+**Hvorfor blir ikke uka lettere når vi har kjøpt KI?**
+Fordi KI uten nye vaner er bare et nytt verktøy. Gevinsten sitter i vanene, ikke i lisensen.
 
-**Holder det å legge et KI-felt i saksbehandlingssystemet?**
-Nei, hvis løkka er den samme. Kopier-lim-inn i chatbot og tilbake i vedtaket er KI på gamle vaner. Gevinsten sitter i hvordan saken flyter: mottak, validering, logg, kobling til arkiv.
+**Må vi bytte KI-verktøy for å få effekt?**
+Nei. I Amazon Stores brukte ni av ti lag samme assistent. Forskjellen var hvordan de jobbet.
 
-**Må kommunen bytte fagsystem?**
-Ikke nødvendigvis. Mange kommuner har Visma, 360 eller annet som fungerer. Poenget er å koble portaler og dataflyt til det dere har — ikke å kjøpe en femte chatbot ved siden av.
+**Hva må vi endre før KI hjelper saksbehandleren?**
+Skriv konteksten. Si hensikten. Gi jobben, ikke sitt og pass. Test tidlig. Og tål at det går sakte først.
 
-**Er dette et ferdig Xala KI-produkt?**
-Nei. Xala bygger portaler og integrasjoner: Bevillingsportal, Tilskuddsportal, Redusert foreldrebetaling. KI kan settes inn i en slik flyt når formål, autonomi og logging er avklart. Det er ikke en generell assistent i et felt.
+**Fatter KI vedtaket i kommunen?**
+Nei. KI kan skrive et utkast. Skjønnet og vedtaket ligger hos saksbehandleren. Loggen skal vise hva som ble brukt.
 
-**Hva med kvelds-prompting og «la agenten jobbe mens du sover»?**
-Det er friksjon, ikke en overtidsgaranti. Uten velavgrensede oppgaver, tester og kontekst blir nattarbeidet støy. Vanen er å mate agenten med arbeid som kan gjennomgås asynkront — ikke å håpe på magi.
+**Hva har Xala levert, hvis dette ikke er et Amazon-løfte?**
+Tilskuddsportal og bevillingsportal i Nordre Follo. [Les casen](/caser/nordre-follo-tilskuddsportal-bevillingsportal). Tallene i Clare Liguoris foredrag er Amazons, ikke våre.
 
-**Kan Xala endre vanene i kommunen?**
-Nei. Xala kan koble saksgangen og sette porter rundt det som skal logges. Kommunen eier arbeidsmåten, formålet og vedtaket. Vi bygger løkka — ikke feltet alene.
+**Hvor blir saksdata av når KI er med?**
+I fagsystemet. De limes ikke inn i en offentlig chatbot. Tre spørsmål i saken: ble KI brukt, hvordan, og hvilke logger ligger der.
 
 ## Endre løkka. Ikke feltet.
 
