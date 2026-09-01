@@ -68,7 +68,7 @@ Kommunen trenger ikke en sjette chatbot. Den trenger at søknaden lander i saken
 
 ## Det Xala faktisk bygger
 
-Xala selger ikke et KI-produkt som erstatter saksbehandleren. Vi bygger saksgangen: portaler og [tjenester](/tjenester) som gjør løkka tydelig.
+Xala selger ikke et KI-produkt som erstatter saksbehandleren. Vi bygger saksgangen: portaler og [tjenester](/tjenester) som gjør løkka tydelig. [Priser](/priser) ligger åpent.
 
 I Nordre Follo har vi levert [Bevillingsportal](/produkter/bevillingsportal), [Tilskuddsportal](/produkter/tilskuddsportal) og arbeid med [Redusert foreldrebetaling](/produkter/redusert-foreldrebetaling). Søkeren fyller ut i en flate folk forstår. Saksbehandleren får en flyt med kontroll og logg. Portalene kan kobles til kommunens systemer via API. Det er én kommune i caset. Ikke flere.
 
@@ -106,7 +106,7 @@ I fagsystemet. De limes ikke inn i en offentlig chatbot. Tre spørsmål i saken:
 
 Verktøyet var det samme hos Amazon. Forskjellen var vanene. Kommunen som kjøper KI uten å endre mottak, logg og kobling til fagsystemet, kjøper et nytt felt — ikke en ny uke.
 
-Trenger dere å se hvordan saksgangen kan se ut i praksis, start på [kontakt](/kontakt).
+Trenger dere å se hvordan saksgangen kan se ut i praksis, [book en demo](/book-demo) eller start på [kontakt](/kontakt).
 
 ## Relaterte artikler
 
