@@ -154,12 +154,14 @@ export function expectedPosts() {
         return m ? m[1].trim().replace(/^["']|["']$/g, "") : undefined;
       };
       if (field("draft") === "true") return null;
+      const topicHashtagsField = field("topicHashtags");
       return {
         slug: field("slug") || file.replace(/\.mdx?$/, "").replace(/^\d{4}-\d{2}-\d{2}-/, ""),
         title: field("title"),
         seoTitle: field("seoTitle") || undefined,
         tag: field("tag") || undefined,
         keywords: parseKeywords(block[1]),
+        topicHashtags: topicHashtagsField === "false" ? false : undefined,
       };
     })
     .filter(Boolean);
@@ -296,8 +298,9 @@ export function isPostTopicHead(html, post) {
   if (tags.join("\0") !== expected.join("\0")) return false;
   for (const topic of expected) {
     if (!keywords.includes(topic)) return false;
-    if (!hashtags.includes(keywordToHashtag(topic))) return false;
+    if (post.topicHashtags !== false && !hashtags.includes(keywordToHashtag(topic))) return false;
   }
+  if (post.topicHashtags === false && hashtags.length > 0) return false;
   return hasShareRow(html);
 }
 

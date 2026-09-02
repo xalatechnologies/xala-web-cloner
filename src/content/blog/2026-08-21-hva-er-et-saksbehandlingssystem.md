@@ -9,6 +9,7 @@ role: "Grunnlegger, Xala Technologies"
 tag: "IT-leder"
 cover: "/images/blog/hva-er-et-saksbehandlingssystem.webp"
 keywords: ["saksbehandlingssystem", "hyllevare", "fagsystem", "kommune", "saksbehandling"]
+topicHashtags: false
 lang: no
 draft: false
 ---

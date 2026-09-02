@@ -101,6 +101,7 @@ export function parsePost(raw: string, file: string): BlogPost | BlogPostError {
     keywords: asStringArray(data.keywords),
     lang: asString(data.lang) ?? DEFAULT_LANG,
     draft: data.draft === true,
+    topicHashtags: data.topicHashtags === false ? false : undefined,
     body,
     file,
   };

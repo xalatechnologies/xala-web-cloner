@@ -208,6 +208,22 @@ describe('topic keywords and hashtags', () => {
     expect(topicHashtagLine(KI!).split(' ')).toHaveLength(5);
   });
 
+  it('gives the saksbehandlingssystem post keywords in head but no visible hashtag line', () => {
+    const SAKS = posts.find((post) => post.slug === 'hva-er-et-saksbehandlingssystem');
+    expect(SAKS, 'saksbehandlingssystem post missing').toBeDefined();
+    expect(leftoverHashtagDump(SAKS!.body)).toBeUndefined();
+    expect(SAKS!.topicHashtags).toBe(false);
+    expect(topicHashtagLine(SAKS!)).toBe('');
+    expect(topicKeywords(SAKS!)).toEqual([
+      'saksbehandlingssystem',
+      'hyllevare',
+      'fagsystem',
+      'kommune',
+      'saksbehandling',
+    ]);
+    expect(postMeta(SAKS!).articleTags).toEqual(topicKeywords(SAKS!));
+  });
+
   it.each(posts.map((post) => [post.slug, post] as const))(
     '%s publishes 3–5 topic hashtags from keywords, not homepage copy',
     (_slug, post) => {

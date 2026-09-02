@@ -44,11 +44,16 @@ export function topicHashtags(post: Pick<BlogPost, "keywords" | "tag">): string[
 }
 
 /** Last line of the post: three to five hashtags, space-separated. */
-export function topicHashtagLine(post: Pick<BlogPost, "keywords" | "tag">): string {
+export function topicHashtagLine(
+  post: Pick<BlogPost, "keywords" | "tag" | "topicHashtags">,
+): string {
+  if (post.topicHashtags === false) return "";
   return topicHashtags(post).join(" ");
 }
 
-export function topicHashtagLineHtml(post: Pick<BlogPost, "keywords" | "tag">): string {
+export function topicHashtagLineHtml(
+  post: Pick<BlogPost, "keywords" | "tag" | "topicHashtags">,
+): string {
   const line = topicHashtagLine(post);
   if (!line) return "";
   return `<p>${escapeHtml(line)}</p>`;
