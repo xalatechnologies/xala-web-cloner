@@ -86,3 +86,11 @@ SERP fix: hva-er-et-saksbehandlingssystem frontmatter
 - seoTitle trimmed to 53 chars so postMeta title fits 60-char limit
 - description shortened to 151 chars, no em-dash or en-dash
 - H1, lede body, and FAQ unchanged
+
+---
+
+Strip visible hashtag dump on saksbehandlingssystem blog
+
+- Set topicHashtags: false in post frontmatter; keywords stay for article:tag
+- topicHashtagLine returns empty when topicHashtags is false
+- verify-live skips visible hashtag requirement for opted-out posts

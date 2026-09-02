@@ -46,6 +46,8 @@ export interface BlogFrontmatter {
   lang?: string;
   /** Excluded from listings, sitemap and RSS while true. */
   draft?: boolean;
+  /** When false, omit the visible last-line topic hashtags; keywords still feed article:tag. */
+  topicHashtags?: boolean;
 }
 
 export interface BlogPost extends BlogFrontmatter {
