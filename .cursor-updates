@@ -78,3 +78,11 @@ CTR enrichment: hva-er-et-saksbehandlingssystem blog post
 - FAQ from GSC queries: krav i kommuner, integrasjoner, innføringsutfordringer, plus core definitions
 - Switched FAQ to bold Q format under Vanlige spørsmål for FAQPage JSON-LD
 - Cream cover untouched; no other posts changed
+
+---
+
+SERP fix: hva-er-et-saksbehandlingssystem frontmatter
+
+- seoTitle trimmed to 53 chars so postMeta title fits 60-char limit
+- description shortened to 151 chars, no em-dash or en-dash
+- H1, lede body, and FAQ unchanged

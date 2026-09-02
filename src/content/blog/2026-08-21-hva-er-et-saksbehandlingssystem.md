@@ -1,8 +1,8 @@
 ---
 slug: hva-er-et-saksbehandlingssystem
 title: "Hva er et saksbehandlingssystem?"
-seoTitle: "Hva er et saksbehandlingssystem? Når holder hyllevare, og når ikke"
-description: "Saksbehandleren hopper mellom faner når portal, journal og fagsystem ikke er koblet. Et saksbehandlingssystem er der saken lever. Hyllevare holder når flyten er lik nok – ikke når loven må bøyes etter skjermen."
+seoTitle: "Hva er et saksbehandlingssystem? Når hyllevare holder"
+description: "Et saksbehandlingssystem er der saken lever. Hyllevare holder når portal, journal og fagsystem er koblet, ikke når saksbehandleren hopper mellom faner."
 date: 2026-08-21
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
