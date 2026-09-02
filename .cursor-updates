@@ -67,3 +67,14 @@ Drop visible blog hashtag dump (keep keywords in frontmatter)
 - Updated verify-live.mjs to check article:tag and keywords without requiring visible hashtags
 - Keywords, article:tag, and JSON-LD unchanged in document head
 - All 999 tests pass, lint and build pass
+
+---
+
+CTR enrichment: hva-er-et-saksbehandlingssystem blog post
+
+- Sharpened H1 to query-led "Hva er et saksbehandlingssystem?"
+- seoTitle targets when hyllevare holds vs when it does not
+- Rewrote lede: scene (three tabs) plus usable rule (koble portal, journal, fagsystem)
+- FAQ from GSC queries: krav i kommuner, integrasjoner, innføringsutfordringer, plus core definitions
+- Switched FAQ to bold Q format under Vanlige spørsmål for FAQPage JSON-LD
+- Cream cover untouched; no other posts changed
