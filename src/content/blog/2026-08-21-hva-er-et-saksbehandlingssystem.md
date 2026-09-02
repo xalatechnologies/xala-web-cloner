@@ -1,8 +1,8 @@
 ---
 slug: hva-er-et-saksbehandlingssystem
-title: "Hva er et saksbehandlingssystem, og når holder det ikke med hyllevare?"
-seoTitle: "Hva er et saksbehandlingssystem?"
-description: "Et saksbehandlingssystem er der saken lever. Hyllevare holder når flyten er lik nok. Den holder ikke når journal, register og vedtak ikke møtes."
+title: "Hva er et saksbehandlingssystem?"
+seoTitle: "Hva er et saksbehandlingssystem? Når holder hyllevare, og når ikke"
+description: "Saksbehandleren hopper mellom faner når portal, journal og fagsystem ikke er koblet. Et saksbehandlingssystem er der saken lever. Hyllevare holder når flyten er lik nok – ikke når loven må bøyes etter skjermen."
 date: 2026-08-21
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
@@ -13,9 +13,9 @@ lang: no
 draft: false
 ---
 
-Tre faner. Journalen i 360. Saken i et fagsystem. Søknaden i innboksen.
+Saksbehandleren hopper mellom tre faner. Journalen i 360. Saken i fagsystemet. Søknaden i innboksen.
 
-Et saksbehandlingssystem er stedet saken lever: mottak, kontroll, vedtak, innsyn og logg. Hyllevare holder når flyten er lik nok. Den holder ikke når kommunen må bøye loven etter produktet.
+Et saksbehandlingssystem er stedet saken lever: mottak, kontroll, vedtak, innsyn og logg. Hyllevare holder når flyten er lik nok – og når portal, journal og fagsystem faktisk er koblet. Når de ikke er koblet, er fanene tre steder. Ikke én sak.
 
 ## Hva er et saksbehandlingssystem?
 
@@ -53,31 +53,25 @@ Vi eier ikke Altinn. Vi eier ikke 360. Vi bygger det som gjør at saken kommer i
 
 Kostnad uten oppdiktede kroner: se [Hva koster et saksbehandlingssystem?](/priser).
 
-## Ofte stilte spørsmål
+## Vanlige spørsmål
 
-### Hva er et saksbehandlingssystem?
-
+**Hva er et saksbehandlingssystem?**
 Et system der saken tas imot, behandles og logges. Søkeren ser status. Saksbehandleren har grunnlaget. Kommunen kan vise hvorfor vedtaket ble som det ble.
 
-### Hva er forskjellen på sak og arkiv og et fagsystem?
+**Hvilke krav stilles til saksbehandlingssystemer i kommuner?**
+Saken skal kunne følges, vedtaket skal kunne forklares, og arkivpliktig dokumentasjon skal ivaretas. Tilgang, logg og universell utforming er ikke valgfritt. Felles krav gjelder uansett om kommunen eier systemet eller bruker hyllevare.
 
-Sak og arkiv journalfører. Fagsystemet behandler. Portalen tar imot. De tre må kobles. To faner er ikke én sak.
+**Hvilke integrasjoner er viktige for et saksbehandlingssystem?**
+ID-porten for innlogging, Maskinporten for systemkall, Altinn for innsending og melding, Folkeregisteret for data som allerede finnes, og Noark 5 for arkiv. Uten dem blir saken manuell mellom faner.
 
-### Når holder det ikke med hyllevare?
+**Hva er de vanligste utfordringene ved innføring av nytt saksbehandlingssystem?**
+Data som ikke flyter fra gammelt system, roller som ikke matcher den nye flyten, og saksbehandlere som fortsatt jobber i det gamle mens det nye står tomt. Integrasjon og opplæring tar ofte lengre enn selve programvaren.
 
+**Når holder det ikke med hyllevare?**
 Når flyten, registeret eller begrunnelsen ikke får plass i produktet. Da bøyer kommunen loven etter skjermen, eller saksbehandleren gjør jobben utenfor systemet.
 
-### Bygger Xala et Visma- eller 360-alternativ?
-
-Nei. Vi rådgir, og vi leverer det som mangler: portaler, flyt, integrasjon og logg. Hyllevare dere allerede har, skal brukes der den holder.
-
-### Hva har Xala levert i en kommune?
-
-I Nordre Follo: Tilskuddsportal og Bevillingsportal, med saksbehandlerflate, validering og API mot kommunens systemer. Ikke et oppdiktet kroner-tall. Ikke flere kommuner enn den.
-
-### Hva koster et saksbehandlingssystem?
-
-Ingen fast prisliste. Driverne er brukere, integrasjoner, drift og om dere tilpasser hyllevare eller bygger det som mangler. [Prissiden](/priser) tar det.
+**Hva er forskjellen på sak og arkiv, fagsystem og portal?**
+Sak og arkiv journalfører. Fagsystemet behandler. Portalen tar imot. De tre må kobles. To faner er ikke én sak.
 
 ## Relaterte artikler
 
