@@ -7,6 +7,26 @@
   },
   "pages": [
     {
+      "url": "https://xala.no/",
+      "strategy": "mobile",
+      "hasFieldData": false,
+      "field": {
+        "lcp": null,
+        "inp": null,
+        "cls": null,
+        "overall": null
+      },
+      "lab": {
+        "performance": 84,
+        "accessibility": 100,
+        "seo": 100,
+        "bestPractices": 100,
+        "lcp": 3901,
+        "cls": 0.0001880243853903182,
+        "tbt": 10
+      }
+    },
+    {
       "url": "https://xala.no/tjenester",
       "strategy": "mobile",
       "hasFieldData": false,
@@ -17,13 +37,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 95,
+        "performance": 96,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 2559.5,
-        "cls": 0.0001880243853903182,
-        "tbt": 6
+        "lcp": 2568,
+        "cls": 0.0011040667743072528,
+        "tbt": 1
       }
     },
     {
@@ -37,12 +57,12 @@
         "overall": null
       },
       "lab": {
-        "performance": 88,
+        "performance": 80,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3414,
-        "cls": 0,
+        "lcp": 3901,
+        "cls": 0.0000666954423648676,
         "tbt": 0
       }
     },
@@ -61,7 +81,7 @@
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3009.5,
+        "lcp": 3010.5,
         "cls": 0,
         "tbt": 0
       }
@@ -77,13 +97,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 89,
+        "performance": 80,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3151,
-        "cls": 0.0001880243853903182,
-        "tbt": 19
+        "lcp": 3751,
+        "cls": 0,
+        "tbt": 0
       }
     },
     {
@@ -97,11 +117,11 @@
         "overall": null
       },
       "lab": {
-        "performance": 79,
+        "performance": 83,
         "accessibility": 95,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 4129,
+        "lcp": 3526,
         "cls": 0.000825788130711084,
         "tbt": 0
       }
@@ -117,12 +137,12 @@
         "overall": null
       },
       "lab": {
-        "performance": 81,
+        "performance": 82,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3751,
-        "cls": 0.0002308535058617668,
+        "lcp": 3826,
+        "cls": 0,
         "tbt": 0
       }
     },
@@ -137,13 +157,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 87,
+        "performance": 92,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3153,
+        "lcp": 2851,
         "cls": 0,
-        "tbt": 0
+        "tbt": 1.5
       }
     }
   ]
