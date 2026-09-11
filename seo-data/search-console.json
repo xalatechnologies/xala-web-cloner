@@ -1,24 +1,15 @@
 {
-  "startDate": "2026-08-11",
-  "endDate": "2026-09-08",
+  "startDate": "2026-08-12",
+  "endDate": "2026-09-09",
   "queries": [
     {
       "keys": [
         "xala"
       ],
-      "clicks": 3,
-      "impressions": 38,
-      "ctr": 0.07894736842105263,
-      "position": 5.342105263157895
-    },
-    {
-      "keys": [
-        "xala technologies"
-      ],
-      "clicks": 3,
-      "impressions": 162,
-      "ctr": 0.018518518518518517,
-      "position": 1.4506172839506173
+      "clicks": 2,
+      "impressions": 37,
+      "ctr": 0.05405405405405406,
+      "position": 5.45945945945946
     },
     {
       "keys": [
@@ -31,12 +22,21 @@
     },
     {
       "keys": [
-        "xala."
+        "seks xala"
       ],
       "clicks": 1,
-      "impressions": 1,
-      "ctr": 1,
-      "position": 1
+      "impressions": 7,
+      "ctr": 0.14285714285714285,
+      "position": 7
+    },
+    {
+      "keys": [
+        "xala technologies"
+      ],
+      "clicks": 1,
+      "impressions": 166,
+      "ctr": 0.006024096385542169,
+      "position": 1.5481927710843375
     },
     {
       "keys": [
@@ -61,9 +61,9 @@
         "altinn3"
       ],
       "clicks": 0,
-      "impressions": 4,
+      "impressions": 3,
       "ctr": 0,
-      "position": 6.5
+      "position": 5.666666666666667
     },
     {
       "keys": [
@@ -90,7 +90,7 @@
       "clicks": 0,
       "impressions": 28,
       "ctr": 0,
-      "position": 43.857142857142854
+      "position": 43.392857142857146
     },
     {
       "keys": [
@@ -117,7 +117,7 @@
       "clicks": 0,
       "impressions": 13,
       "ctr": 0,
-      "position": 41.15384615384615
+      "position": 41.23076923076923
     },
     {
       "keys": [
@@ -142,9 +142,9 @@
         "digilist"
       ],
       "clicks": 0,
-      "impressions": 18,
+      "impressions": 27,
       "ctr": 0,
-      "position": 4.666666666666666
+      "position": 4.444444444444445
     },
     {
       "keys": [
@@ -187,9 +187,9 @@
         "fagsystem"
       ],
       "clicks": 0,
-      "impressions": 172,
+      "impressions": 167,
       "ctr": 0,
-      "position": 20.069767441860463
+      "position": 19.952095808383234
     },
     {
       "keys": [
@@ -205,9 +205,9 @@
         "fagsystemer"
       ],
       "clicks": 0,
-      "impressions": 4,
+      "impressions": 6,
       "ctr": 0,
-      "position": 15.25
+      "position": 12.666666666666666
     },
     {
       "keys": [
@@ -241,9 +241,9 @@
         "furst forum"
       ],
       "clicks": 0,
-      "impressions": 16,
+      "impressions": 15,
       "ctr": 0,
-      "position": 7
+      "position": 7.2
     },
     {
       "keys": [
@@ -310,6 +310,15 @@
     },
     {
       "keys": [
+        "hva er automatisering"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 12
+    },
+    {
+      "keys": [
         "hva er de beste systemene for saksbehandling i offentlig sektor?"
       ],
       "clicks": 0,
@@ -349,9 +358,9 @@
         "hva er saksbehandling"
       ],
       "clicks": 0,
-      "impressions": 11,
+      "impressions": 12,
       "ctr": 0,
-      "position": 19.09090909090909
+      "position": 19
     },
     {
       "keys": [
@@ -376,18 +385,18 @@
         "hvilke krav stilles til saksbehandlingssystemer i kommuner?"
       ],
       "clicks": 0,
-      "impressions": 35,
+      "impressions": 36,
       "ctr": 0,
-      "position": 3.914285714285714
+      "position": 3.9166666666666665
     },
     {
       "keys": [
         "hvordan digitalisere booking av kommunale lokaler"
       ],
       "clicks": 0,
-      "impressions": 3,
+      "impressions": 5,
       "ctr": 0,
-      "position": 37
+      "position": 36.6
     },
     {
       "keys": [
@@ -459,7 +468,7 @@
       "clicks": 0,
       "impressions": 17,
       "ctr": 0,
-      "position": 15.058823529411764
+      "position": 14.647058823529411
     },
     {
       "keys": [
@@ -493,18 +502,18 @@
         "modernisering av fagsystemer"
       ],
       "clicks": 0,
-      "impressions": 85,
+      "impressions": 87,
       "ctr": 0,
-      "position": 5.105882352941176
+      "position": 5.425287356321839
     },
     {
       "keys": [
         "motportalen"
       ],
       "clicks": 0,
-      "impressions": 109,
+      "impressions": 116,
       "ctr": 0,
-      "position": 9.53211009174312
+      "position": 9.39655172413793
     },
     {
       "keys": [
@@ -562,6 +571,15 @@
     },
     {
       "keys": [
+        "regresjonstesting"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 28
+    },
+    {
+      "keys": [
         "restanser"
       ],
       "clicks": 0,
@@ -574,18 +592,18 @@
         "sagsbehandlingssystem"
       ],
       "clicks": 0,
-      "impressions": 17,
+      "impressions": 19,
       "ctr": 0,
-      "position": 6.823529411764706
+      "position": 7.052631578947368
     },
     {
       "keys": [
         "saksbehandlingssystem"
       ],
       "clicks": 0,
-      "impressions": 193,
+      "impressions": 194,
       "ctr": 0,
-      "position": 25.746113989637305
+      "position": 24.835051546391753
     },
     {
       "keys": [
@@ -594,23 +612,32 @@
       "clicks": 0,
       "impressions": 32,
       "ctr": 0,
-      "position": 27.28125
+      "position": 25.75
     },
     {
       "keys": [
         "sakssystem"
       ],
       "clicks": 0,
-      "impressions": 28,
+      "impressions": 29,
       "ctr": 0,
-      "position": 27.392857142857142
+      "position": 26.896551724137932
+    },
+    {
+      "keys": [
+        "samhandlingsplattform"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 55
     },
     {
       "keys": [
         "sammenlign leverandører av saksbehandlingsløsninger for statlige virksomheter"
       ],
       "clicks": 0,
-      "impressions": 7,
+      "impressions": 8,
       "ctr": 0,
       "position": 23
     },
@@ -622,15 +649,6 @@
       "impressions": 2,
       "ctr": 0,
       "position": 8.5
-    },
-    {
-      "keys": [
-        "seks xala"
-      ],
-      "clicks": 0,
-      "impressions": 6,
-      "ctr": 0,
-      "position": 7.833333333333333
     },
     {
       "keys": [
@@ -700,9 +718,9 @@
         "ssa avtaler"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 1,
       "ctr": 0,
-      "position": 26
+      "position": 27
     },
     {
       "keys": [
@@ -890,37 +908,28 @@
       "keys": [
         "https://xala.no/"
       ],
-      "clicks": 13,
-      "impressions": 299,
-      "ctr": 0.043478260869565216,
-      "position": 4.966555183946488
-    },
-    {
-      "keys": [
-        "https://xala.no/caser"
-      ],
-      "clicks": 2,
-      "impressions": 200,
-      "ctr": 0.01,
-      "position": 2.575
+      "clicks": 9,
+      "impressions": 298,
+      "ctr": 0.030201342281879196,
+      "position": 5.080536912751678
     },
     {
       "keys": [
         "https://xala.no/om-oss"
       ],
       "clicks": 2,
-      "impressions": 43,
-      "ctr": 0.046511627906976744,
-      "position": 2.3488372093023253
+      "impressions": 38,
+      "ctr": 0.05263157894736842,
+      "position": 2.263157894736842
     },
     {
       "keys": [
         "https://xala.no/blogg/altinn-3-hva-endrer-seg-for-fagsystemet"
       ],
       "clicks": 1,
-      "impressions": 28,
-      "ctr": 0.03571428571428571,
-      "position": 4.821428571428571
+      "impressions": 29,
+      "ctr": 0.034482758620689655,
+      "position": 4.931034482758621
     },
     {
       "keys": [
@@ -933,11 +942,20 @@
     },
     {
       "keys": [
+        "https://xala.no/blogg/ebyggesak-mange-leverandorer"
+      ],
+      "clicks": 1,
+      "impressions": 34,
+      "ctr": 0.029411764705882353,
+      "position": 9.647058823529411
+    },
+    {
+      "keys": [
         "https://xala.no/blogg/iso-27001-i-praksis-for-utviklingsprosjekter"
       ],
       "clicks": 1,
-      "impressions": 10,
-      "ctr": 0.1,
+      "impressions": 13,
+      "ctr": 0.07692307692307693,
       "position": 7
     },
     {
@@ -960,39 +978,57 @@
     },
     {
       "keys": [
+        "https://xala.no/caser"
+      ],
+      "clicks": 1,
+      "impressions": 201,
+      "ctr": 0.004975124378109453,
+      "position": 2.567164179104478
+    },
+    {
+      "keys": [
         "https://xala.no/karriere"
       ],
       "clicks": 1,
-      "impressions": 123,
-      "ctr": 0.008130081300813009,
-      "position": 9.008130081300813
+      "impressions": 124,
+      "ctr": 0.008064516129032258,
+      "position": 8.943548387096774
+    },
+    {
+      "keys": [
+        "https://xala.no/produkter"
+      ],
+      "clicks": 1,
+      "impressions": 61,
+      "ctr": 0.01639344262295082,
+      "position": 5.032786885245901
     },
     {
       "keys": [
         "http://xala.no/"
       ],
       "clicks": 0,
-      "impressions": 192,
+      "impressions": 193,
       "ctr": 0,
-      "position": 6.5625
+      "position": 6.590673575129534
     },
     {
       "keys": [
         "https://xala.no/blogg"
       ],
       "clicks": 0,
-      "impressions": 126,
+      "impressions": 125,
       "ctr": 0,
-      "position": 7.666666666666667
+      "position": 7.72
     },
     {
       "keys": [
         "https://xala.no/blogg/agentiske-arbeidsflyter-i-saksbehandling"
       ],
       "clicks": 0,
-      "impressions": 24,
+      "impressions": 22,
       "ctr": 0,
-      "position": 5.5
+      "position": 4.954545454545455
     },
     {
       "keys": [
@@ -1008,18 +1044,18 @@
         "https://xala.no/blogg/automatisering-av-saksbehandling-hva-boer-og-ikke"
       ],
       "clicks": 0,
-      "impressions": 231,
+      "impressions": 229,
       "ctr": 0,
-      "position": 61.51948051948052
+      "position": 61.366812227074234
     },
     {
       "keys": [
         "https://xala.no/blogg/automatisert-vedtak-forklaring-og-manuell-kontroll"
       ],
       "clicks": 0,
-      "impressions": 18,
+      "impressions": 19,
       "ctr": 0,
-      "position": 4.333333333333334
+      "position": 4.631578947368421
     },
     {
       "keys": [
@@ -1041,21 +1077,12 @@
     },
     {
       "keys": [
-        "https://xala.no/blogg/ebyggesak-mange-leverandorer"
-      ],
-      "clicks": 0,
-      "impressions": 28,
-      "ctr": 0,
-      "position": 10.928571428571429
-    },
-    {
-      "keys": [
         "https://xala.no/blogg/ebyggesak-manuell-henting-fra-altinn"
       ],
       "clicks": 0,
-      "impressions": 4,
+      "impressions": 6,
       "ctr": 0,
-      "position": 3.75
+      "position": 5
     },
     {
       "keys": [
@@ -1071,9 +1098,9 @@
         "https://xala.no/blogg/eformidling-ikke-koblet"
       ],
       "clicks": 0,
-      "impressions": 8,
+      "impressions": 10,
       "ctr": 0,
-      "position": 5
+      "position": 5.4
     },
     {
       "keys": [
@@ -1089,36 +1116,36 @@
         "https://xala.no/blogg/folkeregister-husholdning-foreldrebetaling"
       ],
       "clicks": 0,
-      "impressions": 1,
+      "impressions": 2,
       "ctr": 0,
-      "position": 1
+      "position": 3
     },
     {
       "keys": [
         "https://xala.no/blogg/hva-er-et-saksbehandlingssystem"
       ],
       "clicks": 0,
-      "impressions": 413,
+      "impressions": 423,
       "ctr": 0,
-      "position": 20.418886198547217
+      "position": 20.16548463356974
     },
     {
       "keys": [
         "https://xala.no/blogg/id-porten-eller-maskinporten-hva-velger-du"
       ],
       "clicks": 0,
-      "impressions": 70,
+      "impressions": 71,
       "ctr": 0,
-      "position": 8.342857142857142
+      "position": 8.267605633802816
     },
     {
       "keys": [
         "https://xala.no/blogg/integrasjoner-mot-nasjonale-felleskomponenter"
       ],
       "clicks": 0,
-      "impressions": 10,
+      "impressions": 11,
       "ctr": 0,
-      "position": 4.5
+      "position": 4.181818181818182
     },
     {
       "keys": [
@@ -1143,9 +1170,9 @@
         "https://xala.no/blogg/maskinporten-vs-id-porten-system-til-system"
       ],
       "clicks": 0,
-      "impressions": 25,
+      "impressions": 29,
       "ctr": 0,
-      "position": 15.84
+      "position": 14.724137931034482
     },
     {
       "keys": [
@@ -1161,9 +1188,9 @@
         "https://xala.no/blogg/modernisere-fagsystem-uten-driftsstans"
       ],
       "clicks": 0,
-      "impressions": 184,
+      "impressions": 179,
       "ctr": 0,
-      "position": 17.282608695652176
+      "position": 17.094972067039105
     },
     {
       "keys": [
@@ -1197,9 +1224,9 @@
         "https://xala.no/blogg/public-360-og-fagsystem-snakker-ikke"
       ],
       "clicks": 0,
-      "impressions": 100,
+      "impressions": 103,
       "ctr": 0,
-      "position": 30.03
+      "position": 30.24271844660194
     },
     {
       "keys": [
@@ -1242,9 +1269,9 @@
         "https://xala.no/blogg/sele-rundt-ki-i-saksbehandling"
       ],
       "clicks": 0,
-      "impressions": 7,
+      "impressions": 8,
       "ctr": 0,
-      "position": 5.142857142857143
+      "position": 4.875
     },
     {
       "keys": [
@@ -1260,9 +1287,9 @@
         "https://xala.no/blogg/skjenkebevilling-integrasjon-360-visma"
       ],
       "clicks": 0,
-      "impressions": 114,
+      "impressions": 122,
       "ctr": 0,
-      "position": 10.271929824561404
+      "position": 10.081967213114755
     },
     {
       "keys": [
@@ -1314,18 +1341,18 @@
         "https://xala.no/blogg/ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling"
       ],
       "clicks": 0,
-      "impressions": 146,
+      "impressions": 141,
       "ctr": 0,
-      "position": 9.780821917808218
+      "position": 9.709219858156029
     },
     {
       "keys": [
         "https://xala.no/blogg/startlan-eid-og-vedlegg"
       ],
       "clicks": 0,
-      "impressions": 4,
+      "impressions": 5,
       "ctr": 0,
-      "position": 6.25
+      "position": 6.2
     },
     {
       "keys": [
@@ -1341,9 +1368,9 @@
         "https://xala.no/blogg/status-innsyn-varsler-saksbehandling"
       ],
       "clicks": 0,
-      "impressions": 10,
+      "impressions": 12,
       "ctr": 0,
-      "position": 6.9
+      "position": 6.916666666666667
     },
     {
       "keys": [
@@ -1359,9 +1386,9 @@
         "https://xala.no/blogg/testautomatisering-for-fagsystemer"
       ],
       "clicks": 0,
-      "impressions": 6,
+      "impressions": 10,
       "ctr": 0,
-      "position": 6.833333333333333
+      "position": 9.5
     },
     {
       "keys": [
@@ -1395,18 +1422,18 @@
         "https://xala.no/caser/altinn"
       ],
       "clicks": 0,
-      "impressions": 48,
+      "impressions": 47,
       "ctr": 0,
-      "position": 7.208333333333333
+      "position": 7.170212765957447
     },
     {
       "keys": [
         "https://xala.no/caser/furst-forum"
       ],
       "clicks": 0,
-      "impressions": 60,
+      "impressions": 58,
       "ctr": 0,
-      "position": 6.816666666666666
+      "position": 6.862068965517241
     },
     {
       "keys": [
@@ -1451,7 +1478,7 @@
       "clicks": 0,
       "impressions": 6,
       "ctr": 0,
-      "position": 8.166666666666668
+      "position": 7.166666666666667
     },
     {
       "keys": [
@@ -1485,9 +1512,9 @@
         "https://xala.no/caser/unicef-afghanistan-child-protection-birth-registration"
       ],
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 3,
       "ctr": 0,
-      "position": 7.5
+      "position": 8.333333333333332
     },
     {
       "keys": [
@@ -1503,9 +1530,9 @@
         "https://xala.no/caser/usaid-digital-development-platform"
       ],
       "clicks": 0,
-      "impressions": 5,
+      "impressions": 4,
       "ctr": 0,
-      "position": 17.6
+      "position": 18.5
     },
     {
       "keys": [
@@ -1521,54 +1548,45 @@
         "https://xala.no/faq"
       ],
       "clicks": 0,
-      "impressions": 59,
+      "impressions": 61,
       "ctr": 0,
-      "position": 2.9322033898305087
+      "position": 2.8688524590163933
     },
     {
       "keys": [
         "https://xala.no/kontakt"
       ],
       "clicks": 0,
-      "impressions": 179,
+      "impressions": 181,
       "ctr": 0,
-      "position": 2.011173184357542
+      "position": 2
     },
     {
       "keys": [
         "https://xala.no/priser"
       ],
       "clicks": 0,
-      "impressions": 125,
+      "impressions": 129,
       "ctr": 0,
-      "position": 35.912
+      "position": 36.310077519379846
     },
     {
       "keys": [
         "https://xala.no/privacy"
       ],
       "clicks": 0,
-      "impressions": 151,
+      "impressions": 156,
       "ctr": 0,
-      "position": 1.7880794701986755
-    },
-    {
-      "keys": [
-        "https://xala.no/produkter"
-      ],
-      "clicks": 0,
-      "impressions": 62,
-      "ctr": 0,
-      "position": 4.951612903225806
+      "position": 1.8782051282051282
     },
     {
       "keys": [
         "https://xala.no/produkter/arkitekturprinsipper"
       ],
       "clicks": 0,
-      "impressions": 39,
+      "impressions": 42,
       "ctr": 0,
-      "position": 8.256410256410255
+      "position": 8.047619047619047
     },
     {
       "keys": [
@@ -1584,9 +1602,9 @@
         "https://xala.no/produkter/digilist"
       ],
       "clicks": 0,
-      "impressions": 23,
+      "impressions": 36,
       "ctr": 0,
-      "position": 8.695652173913043
+      "position": 8.805555555555555
     },
     {
       "keys": [
@@ -1602,27 +1620,27 @@
         "https://xala.no/slik-vi-jobber"
       ],
       "clicks": 0,
-      "impressions": 52,
+      "impressions": 48,
       "ctr": 0,
-      "position": 2.75
+      "position": 2.791666666666667
     },
     {
       "keys": [
         "https://xala.no/teknologi"
       ],
       "clicks": 0,
-      "impressions": 10,
+      "impressions": 6,
       "ctr": 0,
-      "position": 3.7
+      "position": 4.333333333333334
     },
     {
       "keys": [
         "https://xala.no/terms"
       ],
       "clicks": 0,
-      "impressions": 41,
+      "impressions": 42,
       "ctr": 0,
-      "position": 3.975609756097561
+      "position": 3.9047619047619047
     },
     {
       "keys": [
@@ -1631,7 +1649,7 @@
       "clicks": 0,
       "impressions": 160,
       "ctr": 0,
-      "position": 56.7875
+      "position": 58.25
     },
     {
       "keys": [
@@ -1647,45 +1665,45 @@
         "https://xala.no/tjenester/integrasjoner"
       ],
       "clicks": 0,
-      "impressions": 5,
+      "impressions": 6,
       "ctr": 0,
-      "position": 6.4
+      "position": 5.5
     },
     {
       "keys": [
         "https://xala.no/tjenester/modernisering-av-fagsystemer"
       ],
       "clicks": 0,
-      "impressions": 86,
+      "impressions": 84,
       "ctr": 0,
-      "position": 6.3604651162790695
+      "position": 5.392857142857143
     },
     {
       "keys": [
         "https://xala.no/tjenester/saksbehandlingsplattform"
       ],
       "clicks": 0,
-      "impressions": 4,
+      "impressions": 5,
       "ctr": 0,
-      "position": 3.25
+      "position": 13.6
     },
     {
       "keys": [
         "https://xala.no/tjenester/saksbehandlingssystem"
       ],
       "clicks": 0,
-      "impressions": 37,
+      "impressions": 44,
       "ctr": 0,
-      "position": 24.216216216216218
+      "position": 25.068181818181817
     },
     {
       "keys": [
         "https://xala.no/tjenester/systemintegrasjon"
       ],
       "clicks": 0,
-      "impressions": 23,
+      "impressions": 25,
       "ctr": 0,
-      "position": 33.95652173913044
+      "position": 32.760000000000005
     }
   ],
   "index": null
