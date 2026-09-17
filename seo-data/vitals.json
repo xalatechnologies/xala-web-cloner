@@ -7,6 +7,26 @@
   },
   "pages": [
     {
+      "url": "https://xala.no/",
+      "strategy": "mobile",
+      "hasFieldData": false,
+      "field": {
+        "lcp": null,
+        "inp": null,
+        "cls": null,
+        "overall": null
+      },
+      "lab": {
+        "performance": 81,
+        "accessibility": 100,
+        "seo": 100,
+        "bestPractices": 100,
+        "lcp": 3901,
+        "cls": 0,
+        "tbt": 0
+      }
+    },
+    {
       "url": "https://xala.no/tjenester",
       "strategy": "mobile",
       "hasFieldData": false,
@@ -23,7 +43,27 @@
         "bestPractices": 100,
         "lcp": 2551,
         "cls": 0.0037587483836962286,
-        "tbt": 12
+        "tbt": 11
+      }
+    },
+    {
+      "url": "https://xala.no/tjenester/saksbehandlingssystem",
+      "strategy": "mobile",
+      "hasFieldData": false,
+      "field": {
+        "lcp": null,
+        "inp": null,
+        "cls": null,
+        "overall": null
+      },
+      "lab": {
+        "performance": 88,
+        "accessibility": 100,
+        "seo": 100,
+        "bestPractices": 100,
+        "lcp": 3422,
+        "cls": 0.0001880243853903182,
+        "tbt": 0
       }
     },
     {
@@ -41,9 +81,29 @@
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 2561,
-        "cls": 0.001802655127213207,
-        "tbt": 15
+        "lcp": 2551,
+        "cls": 0.0001880243853903182,
+        "tbt": 37
+      }
+    },
+    {
+      "url": "https://xala.no/caser",
+      "strategy": "mobile",
+      "hasFieldData": false,
+      "field": {
+        "lcp": null,
+        "inp": null,
+        "cls": null,
+        "overall": null
+      },
+      "lab": {
+        "performance": 80,
+        "accessibility": 100,
+        "seo": 100,
+        "bestPractices": 100,
+        "lcp": 3751,
+        "cls": 0,
+        "tbt": 0
       }
     },
     {
@@ -57,11 +117,11 @@
         "overall": null
       },
       "lab": {
-        "performance": 78,
+        "performance": 79,
         "accessibility": 95,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 4285,
+        "lcp": 4141,
         "cls": 0.0006663947312779279,
         "tbt": 0
       }
@@ -77,12 +137,32 @@
         "overall": null
       },
       "lab": {
-        "performance": 81,
+        "performance": 90,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3751,
-        "cls": 0.0001705337188462729,
+        "lcp": 3045,
+        "cls": 0.0002092653715614848,
+        "tbt": 0
+      }
+    },
+    {
+      "url": "https://xala.no/kontakt",
+      "strategy": "mobile",
+      "hasFieldData": false,
+      "field": {
+        "lcp": null,
+        "inp": null,
+        "cls": null,
+        "overall": null
+      },
+      "lab": {
+        "performance": 87,
+        "accessibility": 100,
+        "seo": 100,
+        "bestPractices": 100,
+        "lcp": 3151,
+        "cls": 0,
         "tbt": 0
       }
     }
