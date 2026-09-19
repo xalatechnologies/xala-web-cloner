@@ -17,13 +17,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 83,
+        "performance": 85,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
         "lcp": 3901,
         "cls": 0.0001880243853903182,
-        "tbt": 25
+        "tbt": 3
       }
     },
     {
@@ -37,12 +37,12 @@
         "overall": null
       },
       "lab": {
-        "performance": 88,
+        "performance": 95,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3076,
-        "cls": 0,
+        "lcp": 2557.5,
+        "cls": 0.0046747907726131625,
         "tbt": 0
       }
     },
@@ -57,12 +57,12 @@
         "overall": null
       },
       "lab": {
-        "performance": 89,
+        "performance": 88,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3420,
-        "cls": 0.0001880243853903182,
+        "lcp": 3419,
+        "cls": 0,
         "tbt": 0
       }
     },
@@ -87,6 +87,26 @@
       }
     },
     {
+      "url": "https://xala.no/blogg",
+      "strategy": "mobile",
+      "hasFieldData": false,
+      "field": {
+        "lcp": null,
+        "inp": null,
+        "cls": null,
+        "overall": null
+      },
+      "lab": {
+        "performance": 88,
+        "accessibility": 95,
+        "seo": 100,
+        "bestPractices": 100,
+        "lcp": 3462.5,
+        "cls": 0.000825788130711084,
+        "tbt": 29
+      }
+    },
+    {
       "url": "https://xala.no/blogg/tilskuddsportal-som-faktisk-brukes",
       "strategy": "mobile",
       "hasFieldData": false,
@@ -97,13 +117,33 @@
         "overall": null
       },
       "lab": {
-        "performance": 92,
+        "performance": 81,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3092,
-        "cls": 0.008561055622794888,
-        "tbt": 76
+        "lcp": 3751,
+        "cls": 0,
+        "tbt": 0
+      }
+    },
+    {
+      "url": "https://xala.no/kontakt",
+      "strategy": "mobile",
+      "hasFieldData": false,
+      "field": {
+        "lcp": null,
+        "inp": null,
+        "cls": null,
+        "overall": null
+      },
+      "lab": {
+        "performance": 99,
+        "accessibility": 100,
+        "seo": 100,
+        "bestPractices": 100,
+        "lcp": 1202,
+        "cls": 0.0016086170163939352,
+        "tbt": 0
       }
     }
   ]
