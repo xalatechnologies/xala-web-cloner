@@ -7,7 +7,67 @@
   },
   "pages": [
     {
+      "url": "https://xala.no/",
+      "strategy": "mobile",
+      "hasFieldData": false,
+      "field": {
+        "lcp": null,
+        "inp": null,
+        "cls": null,
+        "overall": null
+      },
+      "lab": {
+        "performance": 81,
+        "accessibility": 100,
+        "seo": 100,
+        "bestPractices": 100,
+        "lcp": 3901,
+        "cls": 0,
+        "tbt": 0.5
+      }
+    },
+    {
       "url": "https://xala.no/tjenester",
+      "strategy": "mobile",
+      "hasFieldData": false,
+      "field": {
+        "lcp": null,
+        "inp": null,
+        "cls": null,
+        "overall": null
+      },
+      "lab": {
+        "performance": 87,
+        "accessibility": 100,
+        "seo": 100,
+        "bestPractices": 100,
+        "lcp": 3077,
+        "cls": 0,
+        "tbt": 23
+      }
+    },
+    {
+      "url": "https://xala.no/tjenester/saksbehandlingssystem",
+      "strategy": "mobile",
+      "hasFieldData": false,
+      "field": {
+        "lcp": null,
+        "inp": null,
+        "cls": null,
+        "overall": null
+      },
+      "lab": {
+        "performance": 85,
+        "accessibility": 100,
+        "seo": 100,
+        "bestPractices": 100,
+        "lcp": 3677,
+        "cls": 0,
+        "tbt": 0
+      }
+    },
+    {
+      "url": "https://xala.no/produkter",
       "strategy": "mobile",
       "hasFieldData": false,
       "field": {
@@ -21,9 +81,9 @@
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 2648,
-        "cls": 0.0001880243853903182,
-        "tbt": 16
+        "lcp": 2551,
+        "cls": 0.001364321934972818,
+        "tbt": 0
       }
     },
     {
@@ -37,12 +97,12 @@
         "overall": null
       },
       "lab": {
-        "performance": 80,
+        "performance": 88,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3751,
-        "cls": 0,
+        "lcp": 3151,
+        "cls": 0.0001880243853903182,
         "tbt": 0
       }
     },
@@ -57,13 +117,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 90,
+        "performance": 83,
         "accessibility": 95,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3451.5,
-        "cls": 0.04007360487267756,
-        "tbt": 8
+        "lcp": 3604,
+        "cls": 0,
+        "tbt": 0
       }
     },
     {
@@ -77,13 +137,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 81,
+        "performance": 90,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3752,
-        "cls": 0,
-        "tbt": 0
+        "lcp": 1051.5,
+        "cls": 0.1718395131744426,
+        "tbt": 112
       }
     },
     {
@@ -97,13 +157,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 90,
+        "performance": 86,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
         "lcp": 3151,
         "cls": 0,
-        "tbt": 7
+        "tbt": 0
       }
     }
   ]
