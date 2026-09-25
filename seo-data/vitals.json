@@ -22,8 +22,8 @@
         "seo": 100,
         "bestPractices": 100,
         "lcp": 3901,
-        "cls": 0.0019243453282594722,
-        "tbt": 3
+        "cls": 0.002542927683664133,
+        "tbt": 10
       }
     },
     {
@@ -37,13 +37,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 96,
+        "performance": 88,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 2664,
+        "lcp": 3076,
         "cls": 0,
-        "tbt": 1
+        "tbt": 0
       }
     },
     {
@@ -57,31 +57,11 @@
         "overall": null
       },
       "lab": {
-        "performance": 88,
+        "performance": 82,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3429,
-        "cls": 0,
-        "tbt": 1.5
-      }
-    },
-    {
-      "url": "https://xala.no/produkter",
-      "strategy": "mobile",
-      "hasFieldData": false,
-      "field": {
-        "lcp": null,
-        "inp": null,
-        "cls": null,
-        "overall": null
-      },
-      "lab": {
-        "performance": 89,
-        "accessibility": 100,
-        "seo": 100,
-        "bestPractices": 100,
-        "lcp": 3007.5,
+        "lcp": 3901,
         "cls": 0,
         "tbt": 0
       }
@@ -97,13 +77,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 90,
+        "performance": 87,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3151,
+        "lcp": 3156,
         "cls": 0.0001880243853903182,
-        "tbt": 3
+        "tbt": 0
       }
     },
     {
@@ -117,12 +97,12 @@
         "overall": null
       },
       "lab": {
-        "performance": 86,
+        "performance": 83,
         "accessibility": 95,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3903,
-        "cls": 0.0008843777762443736,
+        "lcp": 3602,
+        "cls": 0,
         "tbt": 0
       }
     },
@@ -137,13 +117,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 81,
+        "performance": 90,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3751,
-        "cls": 0,
-        "tbt": 0
+        "lcp": 3063,
+        "cls": 0.0002092653715614848,
+        "tbt": 5.5
       }
     },
     {
@@ -157,13 +137,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 86,
+        "performance": 91,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3153,
-        "cls": 0,
-        "tbt": 0
+        "lcp": 3151,
+        "cls": 0.0001880243853903182,
+        "tbt": 23
       }
     }
   ]
