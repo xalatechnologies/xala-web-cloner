@@ -6,6 +6,12 @@ Blog: Digdir arkitekturprinsipper i praksis for kommunen (2026-09-26)
 - seoTitle trimmed to first sentence to pass 60-char SERP title check
 - Lint, build, and all 1008 tests pass
 
+Hover E2E: port 8080 plus minimal Playwright smoke specs
+
+- Changed hover-e2e.yml BASE_URL from localhost:3000 to localhost:8080
+- Added playwright.config.ts and __vibe_tests__/smoke.spec.ts for homepage and /blogg
+- Added @playwright/test devDependency; excluded __vibe_tests__ from vitest
+
 XWEB-204: Fixed sitemap and blog RSS 500 errors
 
 Problem identified:
