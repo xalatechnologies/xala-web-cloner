@@ -1,3 +1,11 @@
+Blog: Digdir arkitekturprinsipper i praksis for kommunen (2026-09-26)
+
+- Added new blog post at /blogg/digdir-arkitekturprinsipper-i-praksis-for-kommunen
+- Cover image at public/images/blog/digdir-arkitekturprinsipper-i-praksis-for-kommunen.webp
+- FAQ section with six Q&A pairs; FAQPage JSON-LD wired automatically from body
+- seoTitle trimmed to first sentence to pass 60-char SERP title check
+- Lint, build, and all 1008 tests pass
+
 XWEB-204: Fixed sitemap and blog RSS 500 errors
 
 Problem identified:
