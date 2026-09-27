@@ -2,7 +2,7 @@
 slug: systemintegrasjon-i-kommunen-myter-og-fakta
 title: "Fem myter om systemintegrasjon som koster kommunen tid"
 seoTitle: "Systemintegrasjon i kommunen: 5 myter og fakta"
-description: "Systemintegrasjon er ikke et engangsprosjekt. Den må tåle nedetid, hente bare nødvendige data og forvaltes. Fem myter vi møter i kommuner, og hva gjelder."
+description: "Systemintegrasjon er ikke et engangsprosjekt. Den må tåle nedetid, hente bare nødvendige data og forvaltes. Fem myter i kommunene, og hva som gjelder."
 date: 2026-09-27
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
