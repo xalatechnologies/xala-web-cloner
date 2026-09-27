@@ -1,3 +1,11 @@
+Blog: Systemintegrasjon i kommunen – 5 myter og fakta (2026-09-27)
+
+- Added new blog post at /blogg/systemintegrasjon-i-kommunen-myter-og-fakta
+- Cover image at public/images/blog/systemintegrasjon-i-kommunen-myter-og-fakta.webp
+- FAQ section with six Q&A pairs; FAQPage JSON-LD wired automatically from body
+- seoTitle maps draft title to SERP title: Systemintegrasjon i kommunen: 5 myter og fakta | Xala
+- H1 from draft h1 field: Fem myter om systemintegrasjon som koster kommunen tid
+
 Blog: Digdir arkitekturprinsipper i praksis for kommunen (2026-09-26)
 
 - Added new blog post at /blogg/digdir-arkitekturprinsipper-i-praksis-for-kommunen
