@@ -12,7 +12,7 @@ keywords:
   - systemintegrasjon
   - systemintegrasjon kommune
   - integrasjon fagsystem
-  - hvilke integrasjoner er viktige for et saksbehandlingssystem
+  - saksbehandling
 lang: no
 draft: false
 ---
