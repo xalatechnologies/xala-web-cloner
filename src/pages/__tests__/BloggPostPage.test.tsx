@@ -186,6 +186,36 @@ describe('BloggPostPage topic hashtags and share row', () => {
   });
 });
 
+describe('BloggPostPage frontmatter FAQ', () => {
+  const slug = 'hva-er-et-saksbehandlingssystem';
+
+  it('lists Vanlige spørsmål in the TOC and keeps it after the article body', () => {
+    renderPost(slug);
+
+    const faqHeading = screen.getByRole('heading', { level: 2, name: 'Vanlige spørsmål' });
+    expect(faqHeading).toHaveAttribute('id', 'vanlige-sporsmal');
+
+    const tocLinks = screen.getAllByRole('link', { name: 'Vanlige spørsmål' });
+    expect(tocLinks.length).toBeGreaterThanOrEqual(1);
+    for (const link of tocLinks) {
+      expect(link).toHaveAttribute('href', '#vanlige-sporsmal');
+    }
+
+    const delivers = screen.getByRole('heading', { level: 2, name: 'Hva Xala leverer' });
+    expect(delivers.compareDocumentPosition(faqHeading) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(screen.queryByRole('heading', { level: 2, name: 'Snakk med oss om dette' })).not.toBeInTheDocument();
+  });
+
+  it('prerenders the shared CTA aside after the FAQ so the heading stays unique', () => {
+    const prerender = readFileSync(resolve(__dirname, '../../../scripts/prerender-blog.ts'), 'utf8');
+    const faqAt = prerender.indexOf('${faqHtml}');
+    const asideAt = prerender.indexOf('<aside><h2>Snakk med oss om dette</h2>');
+    expect(faqAt).toBeGreaterThan(-1);
+    expect(asideAt).toBeGreaterThan(faqAt);
+    expect(prerender.match(/<h2>Snakk med oss om dette<\/h2>/g)).toHaveLength(1);
+  });
+});
+
 const EBYGGESAK_SLUG = 'ebyggesak-manuell-henting-fra-altinn';
 const EBYGGESAK_TITLE = 'Byggesøknaden skal inn i saken, ikke i Altinn';
 

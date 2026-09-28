@@ -1,5 +1,15 @@
 import { describe, expect, it } from 'vitest';
-import { extractFaq, extractHeadings, faqJsonLd, splitLeadSection, stripRelatedArticles } from '../toc';
+import {
+  articleHeadings,
+  extractFaq,
+  extractHeadings,
+  faqJsonLd,
+  faqToMarkdown,
+  postFaq,
+  splitLeadSection,
+  stripFaqSection,
+  stripRelatedArticles,
+} from '../toc';
 
 describe('extractHeadings', () => {
   it('returns h2 headings in document order with anchor ids', () => {
@@ -313,5 +323,66 @@ describe('stripRelatedArticles', () => {
   it('returns body unchanged when no Relaterte artikler section exists', () => {
     const body = '## Innledning\n\nTekst.\n\n## Konklusjon\n\nMer tekst.';
     expect(stripRelatedArticles(body)).toBe(body);
+  });
+});
+
+describe('articleHeadings', () => {
+  it('appends Vanlige spørsmål when frontmatter FAQ is rendered outside the body', () => {
+    const body = ['## Innledning', 'Tekst.', '', '## Neste', 'Mer.'].join('\n');
+    expect(articleHeadings({ faq: [{ question: 'Hva?', answer: 'Svar.' }] }, body)).toEqual([
+      { id: 'innledning', text: 'Innledning' },
+      { id: 'neste', text: 'Neste' },
+      { id: 'vanlige-sporsmal', text: 'Vanlige spørsmål' },
+    ]);
+  });
+
+  it('does not duplicate Vanlige spørsmål when the body already has that section', () => {
+    const body = [
+      '## Innledning',
+      'Tekst.',
+      '',
+      '## Vanlige spørsmål',
+      '',
+      '**Hva?**',
+      'Svar.',
+    ].join('\n');
+
+    expect(articleHeadings({ faq: [{ question: 'Front?', answer: 'Front svar.' }] }, body)).toEqual([
+      { id: 'innledning', text: 'Innledning' },
+      { id: 'vanlige-sporsmal', text: 'Vanlige spørsmål' },
+    ]);
+  });
+});
+
+describe('stripFaqSection', () => {
+  it('removes a Vanlige spørsmål section from the body', () => {
+    const body = [
+      '## Innledning',
+      'Tekst.',
+      '',
+      '## Vanlige spørsmål',
+      '',
+      '**Hva?**',
+      'Svar.',
+      '',
+      '## Neste',
+      'Mer.',
+    ].join('\n');
+
+    expect(stripFaqSection(body)).toBe(['## Innledning', 'Tekst.', '', '## Neste', 'Mer.'].join('\n'));
+  });
+});
+
+describe('postFaq and faqToMarkdown', () => {
+  it('prefers frontmatter FAQ over body extraction', () => {
+    const body = '## Vanlige spørsmål\n\n**Body?**\nBody answer.';
+    const frontmatter = [{ question: 'Front?', answer: 'Front answer.' }];
+    expect(postFaq({ faq: frontmatter }, body)).toEqual(frontmatter);
+  });
+
+  it('renders frontmatter FAQ as markdown', () => {
+    expect(faqToMarkdown([{ question: 'Hva?', answer: 'Svar.' }])).toContain('## Vanlige spørsmål');
+    expect(faqToMarkdown([{ question: 'Hva?', answer: 'Svar.' }])).toContain('**Hva?**');
+    expect(faqToMarkdown([{ question: 'Hva?', answer: 'Svar.' }])).toContain('Svar.');
   });
 });

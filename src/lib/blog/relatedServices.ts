@@ -76,9 +76,10 @@ const FALLBACK: RelatedTarget = {
  * happens to be written in.
  */
 export function relatedServices(
-  post: Pick<BlogPost, 'slug' | 'title' | 'tag' | 'keywords'>,
+  post: Pick<BlogPost, 'slug' | 'title' | 'tag' | 'keywords' | 'excludeServices'>,
   limit = 2
 ): RelatedTarget[] {
+  const excluded = new Set((post.excludeServices ?? []).map((href) => href.toLowerCase()));
   const haystack = [post.slug, post.title, post.tag ?? '', ...(post.keywords ?? [])]
     .join(' ')
     .toLowerCase();
@@ -88,9 +89,10 @@ export function relatedServices(
     const hits = haystack.match(global)?.length ?? 0;
     return { target: { href: rule.href, label: rule.label, blurb: rule.blurb }, hits };
   })
-    .filter((entry) => entry.hits > 0)
+    .filter((entry) => entry.hits > 0 && !excluded.has(entry.target.href.toLowerCase()))
     .sort((a, b) => b.hits - a.hits);
 
-  if (!scored.length) return [FALLBACK];
+  const fallback = excluded.has(FALLBACK.href.toLowerCase()) ? null : FALLBACK;
+  if (!scored.length) return fallback ? [fallback] : [];
   return scored.slice(0, limit).map((entry) => entry.target);
 }

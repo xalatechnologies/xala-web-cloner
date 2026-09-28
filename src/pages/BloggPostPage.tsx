@@ -11,7 +11,15 @@ import ShareLinks from '../components/blog/ShareLinks';
 import NotFound from './NotFound';
 import { allPosts } from '@/lib/blog';
 import { coverAlt, findPost, relatedPosts } from '@/lib/blog/posts';
-import { extractFaq, extractHeadings, faqJsonLd, splitLeadSection, stripRelatedArticles } from '@/lib/blog/toc';
+import {
+  articleHeadings,
+  faqJsonLd,
+  faqToMarkdown,
+  postFaq,
+  splitLeadSection,
+  stripFaqSection,
+  stripRelatedArticles,
+} from '@/lib/blog/toc';
 import { relatedServices } from '@/lib/blog/relatedServices';
 import { BLOG_PATH, ORGANIZATION, articleJsonLd, formatDate, postMeta, postUrl } from '@/lib/blog/seo';
 import { topicHashtagLine } from '@/lib/blog/topics';
@@ -33,16 +41,24 @@ export default function BloggPostPage() {
   const post = useMemo(() => findPost(posts, slug), [posts, slug]);
   const related = useMemo(() => (post ? relatedPosts(posts, post) : []), [posts, post]);
   const strippedBody = useMemo(() => (post ? stripRelatedArticles(post.body) : ''), [post]);
-  const headings = useMemo(() => extractHeadings(strippedBody), [strippedBody]);
-  const faq = useMemo(() => extractFaq(strippedBody), [strippedBody]);
-  const { lead, rest } = useMemo(() => splitLeadSection(strippedBody), [strippedBody]);
+  const articleBody = useMemo(
+    () => (post?.faq?.length ? stripFaqSection(strippedBody) : strippedBody),
+    [post, strippedBody],
+  );
+  const headings = useMemo(
+    () => (post ? articleHeadings(post, articleBody) : []),
+    [post, articleBody],
+  );
+  const faq = useMemo(() => (post ? postFaq(post, strippedBody) : []), [post, strippedBody]);
+  const faqMarkdown = useMemo(() => (post?.faq?.length ? faqToMarkdown(post.faq) : ''), [post]);
+  const { lead, rest } = useMemo(() => splitLeadSection(articleBody), [articleBody]);
   const services = useMemo(() => (post ? relatedServices(post) : []), [post]);
 
   // A slug that does not resolve must be a real 404 for crawlers, not a blog
   // page with empty content — a soft 404 gets the whole section devalued.
   if (!post) return <NotFound />;
 
-  const meta = postMeta(post);
+  const meta = postMeta(post, coverAlt(post));
   const url = postUrl(post);
   const faqSchema = faqJsonLd(url, faq);
   const hashtagLine = topicHashtagLine(post);
@@ -71,7 +87,9 @@ export default function BloggPostPage() {
         <meta property="og:description" content={meta.description} />
         <meta property="og:url" content={meta.canonical} />
         {meta.image && <meta property="og:image" content={meta.image} />}
+        {meta.imageAlt && <meta property="og:image:alt" content={meta.imageAlt} />}
         <meta property="article:published_time" content={post.date} />
+        <meta property="article:modified_time" content={meta.dateModified} />
         {post.tag && <meta property="article:section" content={post.tag} />}
         {meta.articleTags.map((tag) => (
           <meta key={tag} property="article:tag" content={tag} />
@@ -195,6 +213,14 @@ export default function BloggPostPage() {
                 heading={anchored}
                 className="prose prose-lg mt-10 max-w-[68ch] dark:prose-invert prose-headings:scroll-mt-28 prose-a:text-primary"
               />
+
+              {faqMarkdown ? (
+                <ArticleMarkdown
+                  markdown={faqMarkdown}
+                  heading={anchored}
+                  className="prose prose-lg mt-10 max-w-[68ch] dark:prose-invert prose-headings:scroll-mt-28 prose-a:text-primary"
+                />
+              ) : null}
 
               {hashtagLine ? (
                 <p className="mt-10 max-w-[68ch] text-sm text-muted-foreground">{hashtagLine}</p>
