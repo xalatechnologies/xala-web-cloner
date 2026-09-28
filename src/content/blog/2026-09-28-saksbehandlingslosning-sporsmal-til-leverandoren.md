@@ -9,12 +9,18 @@ role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
 cover: "/images/blog/saksbehandlingslosning-sporsmal-til-leverandoren.webp?v=2"
 keywords:
+  - saksbehandlingsløsning
+  - saksbehandling
+  - offentligsektor
+  - digitalisering
   - sammenligne leverandører av saksbehandlingsløsninger
   - fordeler med moderne saksbehandlingsløsning
   - innføring av nytt saksbehandlingssystem
-  - saksbehandlingsløsning
 hashtags:
   - saksbehandlingsløsning
+  - saksbehandling
+  - offentligsektor
+  - digitalisering
 lang: no
 draft: false
 ---
