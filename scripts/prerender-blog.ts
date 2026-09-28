@@ -75,6 +75,7 @@ import detailsData from "../src/data/product-details.json";
 import servicePages from "../src/data/service-pages.json";
 import faqData from "../src/data/faq.json";
 import { generateFAQSchema } from "../src/components/seo/sectionSchemas";
+import { servicePageHtml } from "../src/lib/servicePageHtml";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CONTENT_DIR = path.join(ROOT, "src", "content", "blog");
@@ -567,35 +568,38 @@ function main(): void {
     const url = `${SITE_ORIGIN}/tjenester/${slug}`;
     write(
       path.join(DIST, "tjenester", slug, "index.html"),
-      renderHead(shell, {
-        title: copy.metaTitle,
-        description: copy.metaDescription,
-        canonical: url,
-        ogType: "website",
-        jsonLd: {
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "@id": `${url}#service`,
-          name: copy.title,
+      renderBody(
+        renderHead(shell, {
+          title: copy.metaTitle,
           description: copy.metaDescription,
-          url,
-          provider: { "@id": ORG_ID },
-          areaServed: { "@type": "Country", name: "Norge" },
-          serviceType: copy.title,
-        },
-        extraJsonLd: [
-          {
+          canonical: url,
+          ogType: "website",
+          jsonLd: {
             "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "@id": `${url}#faq`,
-            mainEntity: copy.faq.map((item) => ({
-              "@type": "Question",
-              name: item.question,
-              acceptedAnswer: { "@type": "Answer", text: item.answer },
-            })),
+            "@type": "Service",
+            "@id": `${url}#service`,
+            name: copy.title,
+            description: copy.metaDescription,
+            url,
+            provider: { "@id": ORG_ID },
+            areaServed: { "@type": "Country", name: "Norge" },
+            serviceType: copy.title,
           },
-        ],
-      }),
+          extraJsonLd: [
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "@id": `${url}#faq`,
+              mainEntity: copy.faq.map((item) => ({
+                "@type": "Question",
+                name: item.question,
+                acceptedAnswer: { "@type": "Answer", text: item.answer },
+              })),
+            },
+          ],
+        }),
+        servicePageHtml(slug, { posts }),
+      ),
     );
   }
 

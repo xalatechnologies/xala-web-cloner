@@ -19,6 +19,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseKeywords } from './verify-parse.mjs';
+import servicePages from '../src/data/service-pages.json' with { type: 'json' };
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = resolve(process.cwd(), 'dist');
@@ -90,6 +91,61 @@ export function leakedListingCards(hrefs, posts, query) {
 
 export function listingCardHrefs(html) {
   return [...html.matchAll(/<h2><a href="(\/blogg\/[^"]+)"/g)].map((m) => m[1]);
+}
+
+/**
+ * Inner HTML of #root, or null when the marker is missing.
+ *
+ * A non-greedy `[\s\S]*?</div>` stops at the first closing tag and breaks on
+ * nested divs inside prerendered markup, so we walk div open/close depth instead.
+ */
+export function rootInnerHtml(html) {
+  const marker = /<div id="root">/i.exec(html);
+  if (!marker) return null;
+
+  let depth = 1;
+  let index = marker.index + marker[0].length;
+  const start = index;
+
+  while (index < html.length && depth > 0) {
+    const nextOpen = html.indexOf('<div', index);
+    const nextClose = html.indexOf('</div>', index);
+    if (nextClose === -1) return null;
+
+    if (nextOpen !== -1 && nextOpen < nextClose) {
+      depth += 1;
+      index = nextOpen + 4;
+      continue;
+    }
+
+    depth -= 1;
+    if (depth === 0) return html.slice(start, nextClose);
+    index = nextClose + 6;
+  }
+
+  return null;
+}
+
+/** True when #root has no visible text — the SPA-only shell the prerender must not ship. */
+export function hasEmptyRoot(html) {
+  const inner = rootInnerHtml(html);
+  if (inner === null) return true;
+  const visible = inner.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  return visible.length === 0;
+}
+
+/** First <h1> text inside #root, with inner tags stripped, or null when absent. */
+export function firstH1(html) {
+  const root = rootInnerHtml(html);
+  if (!root) return null;
+  const match = root.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  if (!match) return null;
+  return match[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+/** Service detail pages that must ship real first HTML, not an empty #root. */
+export function servicePageSlugs() {
+  return Object.keys(servicePages);
 }
 
 function fail(message) {
@@ -169,8 +225,23 @@ function main() {
     fail('verify-dist: /blogg with no q no longer prerenders the full listing.');
   }
 
+  const serviceSlugs = servicePageSlugs();
+  const hollowServices = serviceSlugs.filter((slug) => {
+    const file = join(DIST, 'tjenester', slug, 'index.html');
+    if (!existsSync(file)) return true;
+    const html = readFileSync(file, 'utf8');
+    return hasEmptyRoot(html) || !firstH1(html);
+  });
+
+  if (hollowServices.length) {
+    console.error(`verify-dist: ${hollowServices.length} /tjenester/* page(s) have an empty #root or no <h1>:`);
+    for (const slug of hollowServices) console.error(`  /tjenester/${slug}`);
+    process.exit(1);
+  }
+
   console.log(`verify-dist: ${locs.length} sitemap URLs, all served by a file in dist/`);
   console.log(`verify-dist: ${aliases.length} canonical alias(es), all served by a file in dist/`);
+  console.log(`verify-dist: ${serviceSlugs.length} /tjenester/* page(s) with real first HTML`);
   console.log('verify-dist: /blogg?q=gebyr is a filtered listing, /blogg is not');
 }
 
