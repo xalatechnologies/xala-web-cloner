@@ -7,7 +7,7 @@ date: 2026-09-28
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
-cover: "/images/blog/saksbehandlingslosning-sporsmal-til-leverandoren.webp"
+cover: "/images/blog/saksbehandlingslosning-sporsmal-til-leverandoren.webp?v=2"
 keywords:
   - sammenligne leverandører av saksbehandlingsløsninger
   - fordeler med moderne saksbehandlingsløsning
@@ -39,7 +39,7 @@ Spør leverandøren:
 
 **Varseltegn:** Dere får bare skjermbilder av oversikter og et løfte om at resten «fungerer på samme måte».
 
-Det avgjør om saksbehandleren får en kø med frister, eller en innboks som må ryddes selv hver morgen.
+Det avgjør om saksbehandleren får en kø med frister, eller en innboks som må ryddes for hånd hver morgen.
 
 ## Vedtak som tåler en klage
 

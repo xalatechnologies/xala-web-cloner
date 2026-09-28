@@ -73,7 +73,11 @@ describe('published post structure', () => {
       // field never added, so the card rendered with a hole in it and nothing
       // failed.
       expect(post.cover, `${post.slug} has no cover`).toBeTruthy();
-      const file = resolve(__dirname, '../../../../public', post.cover!.replace(/^\//, ''));
+      const file = resolve(
+        __dirname,
+        '../../../../public',
+        post.cover!.replace(/^\//, '').split('?')[0],
+      );
       expect(existsSync(file), `${post.cover} is not in public/`).toBe(true);
       const alt = coverAlt(post);
       expect(alt, `${post.slug} has an empty hero alt`).toBeTruthy();
