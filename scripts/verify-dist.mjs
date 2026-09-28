@@ -18,6 +18,7 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { lockedCoverFailures } from './locked-covers.mjs';
 import { parseKeywords } from './verify-parse.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -169,9 +170,16 @@ function main() {
     fail('verify-dist: /blogg with no q no longer prerenders the full listing.');
   }
 
+  const coverFailures = lockedCoverFailures(ROOT, undefined, { distRoot: DIST, label: 'verify-dist' });
+  if (coverFailures.length) {
+    for (const message of coverFailures) console.error(message);
+    process.exit(1);
+  }
+
   console.log(`verify-dist: ${locs.length} sitemap URLs, all served by a file in dist/`);
   console.log(`verify-dist: ${aliases.length} canonical alias(es), all served by a file in dist/`);
   console.log('verify-dist: /blogg?q=gebyr is a filtered listing, /blogg is not');
+  console.log('verify-dist: locked blog cover(s) match pinned sha256 in source and dist/');
 }
 
 const isDirectRun =

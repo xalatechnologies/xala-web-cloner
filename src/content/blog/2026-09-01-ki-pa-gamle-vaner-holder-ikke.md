@@ -7,7 +7,7 @@ date: 2026-09-01
 author: "Ibrahim Rahmani"
 role: "IT-leder"
 readingMinutes: 5
-cover: "/images/blog/ki-pa-gamle-vaner-holder-ikke.webp"
+cover: "/images/blog/ki-pa-gamle-vaner-holder-ikke.webp?v=2"
 draft: false
 lang: no
 tag: "IT-leder"
