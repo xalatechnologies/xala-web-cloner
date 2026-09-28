@@ -13,6 +13,9 @@ keywords:
   - saksbehandling
   - offentligsektor
   - digitalisering
+  - sammenligne leverandører av saksbehandlingsløsninger
+  - fordeler med moderne saksbehandlingsløsning
+  - innføring av nytt saksbehandlingssystem
 hashtags:
   - saksbehandlingsløsning
   - saksbehandling
