@@ -177,6 +177,22 @@ export function extractHeadings(body: string): TocHeading[] {
  * question. Questions are `###` headings, or a lone `**Question?**` line
  * (the form the approved copy uses).
  */
+/** FAQ from frontmatter when present, otherwise from the markdown body. */
+export function postFaq(
+  post: { faq?: FaqItem[] },
+  body: string,
+): FaqItem[] {
+  if (post.faq?.length) return post.faq;
+  return extractFaq(body);
+}
+
+/** Markdown for a visible FAQ section, matching the bold-question body style. */
+export function faqToMarkdown(items: FaqItem[], heading = 'Vanlige spørsmål'): string {
+  if (!items.length) return '';
+  const blocks = items.map((item) => `**${item.question}**\n${item.answer}`);
+  return `## ${heading}\n\n${blocks.join('\n\n')}`;
+}
+
 export function extractFaq(body: string): FaqItem[] {
   const lines = proseLines(body);
   const items: FaqItem[] = [];
@@ -254,6 +270,53 @@ export function faqJsonLd(url: string, items: FaqItem[]): Record<string, unknown
  * (XWEB-202). This filter removes the manual section so only the template's
  * version appears.
  */
+/**
+ * Strip the manual FAQ section from markdown body.
+ *
+ * When FAQ lives in frontmatter, the template renders it once. Leaving the
+ * section in the body would duplicate the heading and every Q&A on the page.
+ */
+export function stripFaqSection(body: string): string {
+  const lines = body.split('\n');
+  let inFence = false;
+  let fence = '';
+  let sectionStart = -1;
+  let sectionEnd = -1;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const opener = /^\s{0,3}(```+|~~~+)/.exec(line);
+    if (opener) {
+      if (!inFence) {
+        inFence = true;
+        fence = opener[1][0];
+      } else if (opener[1][0] === fence) {
+        inFence = false;
+      }
+      continue;
+    }
+    if (inFence) continue;
+
+    const text = headingAt(line, 2);
+    if (!text) continue;
+
+    if (sectionStart === -1) {
+      if (FAQ_HEADING.test(text)) sectionStart = i;
+      continue;
+    }
+
+    sectionEnd = i;
+    break;
+  }
+
+  if (sectionStart === -1) return body;
+
+  const end = sectionEnd === -1 ? lines.length : sectionEnd;
+  const before = lines.slice(0, sectionStart).join('\n').replace(/\s+$/, '');
+  const after = lines.slice(end).join('\n').replace(/^\s+/, '');
+  return [before, after].filter(Boolean).join('\n\n');
+}
+
 export function stripRelatedArticles(body: string): string {
   const lines = body.split('\n');
   let inFence = false;

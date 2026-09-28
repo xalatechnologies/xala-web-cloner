@@ -323,6 +323,26 @@ describe("selection helpers", () => {
     ]);
   });
 
+  it("relatedPosts honours excludeRelated wildcard prefixes", () => {
+    const { posts: withExclude } = parsePosts({
+      "/blog/a.md": md(
+        { slug: "a", date: "2026-07-01", keywords: '["kommune"]', excludeRelated: '["skjenkebevilling*"]' },
+        [
+          "Ingress.",
+          "",
+          "## Relaterte artikler",
+          "",
+          "- [Skjenke](/blogg/skjenkebevilling-gebyr-og-omsetningsoppgave)",
+          "- [C](/blogg/c)",
+        ].join("\n")
+      ),
+      "/blog/b.md": md({ slug: "b", date: "2026-06-01", keywords: '["kommune"]' }),
+      "/blog/c.md": md({ slug: "c", date: "2026-05-01", keywords: '["kommune"]' }),
+    });
+    const a = findPost(withExclude, "a") as BlogPost;
+    expect(relatedPosts(withExclude, a).map((p) => p.slug)).toEqual(["c"]);
+  });
+
   it("relatedPosts prefers an authored Relaterte artikler list of two or more", () => {
     const { posts: withRelated } = parsePosts({
       "/blog/a.md": md(

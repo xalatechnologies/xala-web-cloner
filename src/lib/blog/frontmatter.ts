@@ -98,7 +98,33 @@ export function parseFrontmatter(raw: string): FrontmatterResult | null {
     //   keywords:
     //     - one
     //     - two
+    // or structured entries:
+    //   faq:
+    //     - question: "..."
+    //       answer: "..."
     if (rest.trim() === "") {
+      const next = lines[i + 1] ?? "";
+      const objectList = /^\s*-\s+[\w-]+\s*:/.test(next);
+      if (objectList) {
+        const items: Record<string, string>[] = [];
+        while (i + 1 < lines.length && /^\s*-\s+/.test(lines[i + 1])) {
+          const item: Record<string, string> = {};
+          const first = /^\s*-\s+([\w-]+)\s*:\s*(.*)$/.exec(lines[i + 1]);
+          if (!first) break;
+          item[first[1]] = String(parseScalar(first[2]));
+          i += 1;
+          while (i + 1 < lines.length && /^\s{2,}[\w-]+\s*:/.test(lines[i + 1])) {
+            const nested = /^\s+([\w-]+)\s*:\s*(.*)$/.exec(lines[i + 1]);
+            if (!nested) break;
+            item[nested[1]] = String(parseScalar(nested[2]));
+            i += 1;
+          }
+          items.push(item);
+        }
+        data[key] = items;
+        continue;
+      }
+
       const items: string[] = [];
       while (i + 1 < lines.length && /^\s*-\s+/.test(lines[i + 1])) {
         items.push(unquote(lines[i + 1].replace(/^\s*-\s+/, "")));

@@ -2,7 +2,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { coverAlt, isPostFile, parsePost } from '../posts';
-import { extractFaq, extractHeadings, faqJsonLd, splitLeadSection } from '../toc';
+import { extractHeadings, faqJsonLd, postFaq, splitLeadSection } from '../toc';
 import { postUrl } from '../seo';
 import type { BlogPost } from '../types';
 
@@ -38,7 +38,7 @@ describe('published post structure', () => {
   it.each(posts.map((post) => [post.slug, post] as const))(
     '%s answers at least three questions in an FAQ section',
     (_slug, post) => {
-      const faq = extractFaq(post.body);
+      const faq = postFaq(post, post.body);
       expect(faq.length).toBeGreaterThanOrEqual(3);
       // An answer of a few words is not an answer an engine will cite.
       for (const item of faq) {
@@ -49,19 +49,21 @@ describe('published post structure', () => {
   );
 
   it.each(posts.map((post) => [post.slug, post] as const))(
-    '%s produces FAQPage schema whose questions all appear in the body',
+    '%s produces FAQPage schema whose questions all appear on the page',
     (_slug, post) => {
-      const faq = extractFaq(post.body);
+      const faq = postFaq(post, post.body);
       const schema = faqJsonLd(postUrl(post), faq) as {
         mainEntity: Array<{ name: string; acceptedAnswer: { text: string } }>;
       } | null;
 
       expect(schema).not.toBeNull();
       // Schema that claims a question the page does not show is exactly what
-      // Google penalises. Derived-from-body means this cannot drift, and this
-      // assertion is what keeps it that way if the derivation changes.
+      // Google penalises. Frontmatter FAQ or body-derived FAQ must match.
+      const visible = post.faq?.length
+        ? post.faq.map((item) => item.question).join('\n')
+        : post.body;
       for (const entry of schema!.mainEntity) {
-        expect(post.body).toContain(entry.name);
+        expect(visible).toContain(entry.name);
       }
     }
   );

@@ -7,7 +7,7 @@
  * SPA and a post that renders into static HTML cannot disagree.
  */
 import { parseFrontmatter } from "./frontmatter";
-import type { BlogPost, BlogPostError, ParsedPosts } from "./types";
+import type { BlogPost, BlogPostError, FaqEntry, ParsedPosts } from "./types";
 
 export const DEFAULT_LANG = "no";
 const WORDS_PER_MINUTE = 200;
@@ -56,6 +56,19 @@ function asStringArray(value: unknown): string[] | undefined {
   return single ? [single] : undefined;
 }
 
+function asFaq(value: unknown): FaqEntry[] | undefined {
+  if (!Array.isArray(value)) return undefined;
+  const items = value
+    .map((entry) => {
+      if (!entry || typeof entry !== "object") return null;
+      const question = asString((entry as { question?: unknown }).question);
+      const answer = asString((entry as { answer?: unknown }).answer);
+      return question && answer ? { question, answer } : null;
+    })
+    .filter((item): item is FaqEntry => item !== null);
+  return items.length ? items : undefined;
+}
+
 /**
  * Parse one markdown file.
  *
@@ -97,22 +110,34 @@ export function parsePost(raw: string, file: string): BlogPost | BlogPostError {
     }
   }
 
+  const dateModified = asString(data.dateModified);
+  if (dateModified && !/^\d{4}-\d{2}-\d{2}/.test(dateModified)) {
+    return { file, reason: `dateModified must be YYYY-MM-DD, got "${dateModified}"` };
+  }
+
   const readingValue = data.readingMinutes;
+  const coverAltText = asString(data.coverAlt);
+  const alt = asString(data.alt) ?? coverAltText;
   return {
     slug: asString(data.slug) ?? slugFromFilename(file),
     title: title as string,
     seoTitle: asString(data.seoTitle),
     description: description as string,
     date: (date as string).slice(0, 10),
+    dateModified: dateModified?.slice(0, 10),
     author: asString(data.author) ?? "Xala Technologies",
     role: asString(data.role),
     readingMinutes:
       typeof readingValue === "number" && readingValue > 0 ? readingValue : readingMinutes(body),
     tag: asString(data.tag),
     cover: asString(data.cover),
-    alt: asString(data.alt),
+    alt,
+    coverAlt: coverAltText,
     keywords,
     hashtags: hashtagsRaw,
+    faq: asFaq(data.faq),
+    excludeRelated: asStringArray(data.excludeRelated),
+    excludeServices: asStringArray(data.excludeServices),
     lang: asString(data.lang) ?? DEFAULT_LANG,
     draft: data.draft === true,
     topicHashtags: data.topicHashtags === false ? false : undefined,
@@ -210,18 +235,32 @@ export function relatedSlugsFromBody(body: string): string[] {
  * and both crawlers and answer engines weigh a page by what links to it.
  * An authored Relaterte artikler list of two or more wins over that ranking.
  */
+function isExcludedRelatedSlug(slug: string, patterns: string[]): boolean {
+  const lower = slug.toLowerCase();
+  return patterns.some((pattern) => {
+    const normalized = pattern.toLowerCase();
+    return normalized.endsWith('*')
+      ? lower.startsWith(normalized.slice(0, -1))
+      : lower === normalized;
+  });
+}
+
 export function relatedPosts(posts: BlogPost[], post: BlogPost, limit = 3): BlogPost[] {
+  const excludedPatterns = post.excludeRelated ?? [];
+  const allowed = (candidate: BlogPost) =>
+    candidate.slug !== post.slug && !isExcludedRelatedSlug(candidate.slug, excludedPatterns);
+
   const authored = relatedSlugsFromBody(post.body);
   if (authored.length >= 2) {
     return authored
       .map((slug) => findPost(posts, slug, post.lang))
-      .filter((item): item is BlogPost => Boolean(item) && item.slug !== post.slug)
+      .filter((item): item is BlogPost => Boolean(item) && allowed(item))
       .slice(0, limit);
   }
 
   const keywords = new Set((post.keywords ?? []).map((k) => k.toLowerCase()));
   const scored = publishedPosts(posts, post.lang)
-    .filter((p) => p.slug !== post.slug)
+    .filter(allowed)
     .map((p) => {
       const shared = (p.keywords ?? []).filter((k) => keywords.has(k.toLowerCase())).length;
       return { post: p, score: shared * 2 + (p.tag && p.tag === post.tag ? 1 : 0) };
@@ -255,9 +294,10 @@ export function coverAlt(post: {
   title: string;
   seoTitle?: string;
   alt?: string;
+  coverAlt?: string;
   cover?: string;
 }): string {
-  const explicit = post.alt?.trim();
+  const explicit = (post.coverAlt ?? post.alt)?.trim();
   if (explicit && !isFilenameAlt(explicit, post.cover)) return explicit;
   return (post.seoTitle ?? post.title).trim();
 }

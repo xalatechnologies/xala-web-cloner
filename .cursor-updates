@@ -1,3 +1,11 @@
+Blog: CTR enrich hva-er-et-saksbehandlingssystem (second pass)
+
+- Replaced post copy, meta, six FAQ entries in frontmatter, and diagram cover with ?v=2 cache bust
+- Wired dateModified, coverAlt, frontmatter FAQ rendering, og:image:alt, and article:modified_time for all posts
+- Extended frontmatter parser for structured FAQ block lists; excludeRelated wildcard and excludeServices per post
+- Removed /priser and skjenkebevilling from template-driven related cards on this post
+- Lint, test (1033), build, and verify-dist pass
+
 PR #193 review (R1): derive override test expectations from post frontmatter
 
 - verify-live-topics and topics tests use expectedVisibleHashtags / sakslPost.hashtags instead of hardcoded tags

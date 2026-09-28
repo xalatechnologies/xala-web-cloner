@@ -9,6 +9,11 @@
  * See the fleet's tools/content-agent/src/generate.ts (BLOG_SYSTEM).
  */
 
+export interface FaqEntry {
+  question: string;
+  answer: string;
+}
+
 export interface BlogFrontmatter {
   slug: string;
   title: string;
@@ -26,6 +31,8 @@ export interface BlogFrontmatter {
   description: string;
   /** ISO date, YYYY-MM-DD. */
   date: string;
+  /** Last substantive update, YYYY-MM-DD. Falls back to `date` in metadata. */
+  dateModified?: string;
   author: string;
   /** The author's role line, e.g. "Grunnlegger, Xala Technologies". */
   role?: string;
@@ -41,6 +48,14 @@ export interface BlogFrontmatter {
    * cannot ship an empty hero alt.
    */
   alt?: string;
+  /** Alias for `alt` in CTR-enriched drafts. `coverAlt()` accepts either. */
+  coverAlt?: string;
+  /** FAQ pairs rendered on the page and in FAQPage JSON-LD when present. */
+  faq?: FaqEntry[];
+  /** Related-post slugs to omit from sidebar and footer cards for this post. */
+  excludeRelated?: string[];
+  /** Internal service links to omit from «Relevant hos oss» for this post. */
+  excludeServices?: string[];
   keywords?: string[];
   /**
    * Optional override for the visible last-line topic hashtags. Each entry must

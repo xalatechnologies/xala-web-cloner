@@ -66,19 +66,28 @@ export interface PostMeta {
   description: string;
   canonical: string;
   image?: string;
+  imageAlt?: string;
   keywords?: string;
   /** 3–5 topic keywords for article:tag. Not the audience chip. */
   articleTags: string[];
+  dateModified: string;
 }
 
-export function postMeta(post: BlogPost): PostMeta {
+/** Last update for structured data and article:modified_time. */
+export function effectiveDateModified(post: Pick<BlogPost, "date" | "dateModified">): string {
+  return post.dateModified ?? post.date;
+}
+
+export function postMeta(post: BlogPost, imageAlt?: string): PostMeta {
   return {
     title: `${post.seoTitle ?? post.title} | ${BRAND}`,
     description: post.description,
     canonical: postUrl(post),
     image: absolute(post.cover),
+    imageAlt,
     keywords: post.keywords?.join(", "),
     articleTags: topicKeywords(post),
+    dateModified: effectiveDateModified(post),
   };
 }
 
@@ -100,7 +109,7 @@ export function articleJsonLd(post: BlogPost): Record<string, unknown> {
         headline: post.title,
         description: post.description,
         datePublished: post.date,
-        dateModified: post.date,
+        dateModified: effectiveDateModified(post),
         inLanguage: post.lang === "en" ? "en" : "nb-NO",
         author: { "@type": "Person", name: post.author, ...(post.role ? { jobTitle: post.role } : {}) },
         publisher: { "@id": ORG_ID },
