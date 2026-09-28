@@ -137,24 +137,53 @@ describe("parsePost", () => {
     const post = ok(
       parsePost(
         md({
-          keywords: '["saksbehandlingsløsning", "innføring av nytt saksbehandlingssystem"]',
-          hashtags: '["saksbehandlingsløsning"]',
+          keywords:
+            '["saksbehandlingsløsning", "saksbehandling", "offentligsektor", "digitalisering"]',
+          hashtags:
+            '["saksbehandlingsløsning", "saksbehandling", "offentligsektor", "digitalisering"]',
         }),
         "/blog/a.md",
       ),
     );
-    expect(post.hashtags).toEqual(["saksbehandlingsløsning"]);
+    expect(post.hashtags).toEqual([
+      "saksbehandlingsløsning",
+      "saksbehandling",
+      "offentligsektor",
+      "digitalisering",
+    ]);
   });
 
   it("rejects hashtags that are not listed in keywords", () => {
     const result = parsePost(
       md({
-        keywords: '["saksbehandlingsløsning"]',
-        hashtags: '["ukjent"]',
+        keywords: '["saksbehandlingsløsning", "saksbehandling", "offentligsektor"]',
+        hashtags: '["saksbehandlingsløsning", "saksbehandling", "ukjent"]',
       }),
       "/blog/a.md",
     );
     expect(isError(result) && result.reason).toMatch(/hashtags must be a subset of keywords/);
+  });
+
+  it("rejects a hashtags override shorter or longer than 3–5", () => {
+    const tooFew = parsePost(
+      md({
+        keywords: '["saksbehandlingsløsning", "saksbehandling", "offentligsektor"]',
+        hashtags: '["saksbehandlingsløsning"]',
+      }),
+      "/blog/a.md",
+    );
+    expect(isError(tooFew) && tooFew.reason).toMatch(/hashtags must be 3–5 topic tags, got 1/);
+
+    const tooMany = parsePost(
+      md({
+        keywords:
+          '["saksbehandlingsløsning", "saksbehandling", "offentligsektor", "digitalisering", "arkiv", "noark"]',
+        hashtags:
+          '["saksbehandlingsløsning", "saksbehandling", "offentligsektor", "digitalisering", "arkiv", "noark"]',
+      }),
+      "/blog/a.md",
+    );
+    expect(isError(tooMany) && tooMany.reason).toMatch(/hashtags must be 3–5 topic tags, got 6/);
   });
 
   it("rejects a file with no frontmatter", () => {

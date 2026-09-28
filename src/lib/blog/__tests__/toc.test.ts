@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  articleHeadings,
   extractFaq,
   extractHeadings,
   faqJsonLd,
@@ -322,6 +323,34 @@ describe('stripRelatedArticles', () => {
   it('returns body unchanged when no Relaterte artikler section exists', () => {
     const body = '## Innledning\n\nTekst.\n\n## Konklusjon\n\nMer tekst.';
     expect(stripRelatedArticles(body)).toBe(body);
+  });
+});
+
+describe('articleHeadings', () => {
+  it('appends Vanlige spørsmål when frontmatter FAQ is rendered outside the body', () => {
+    const body = ['## Innledning', 'Tekst.', '', '## Neste', 'Mer.'].join('\n');
+    expect(articleHeadings({ faq: [{ question: 'Hva?', answer: 'Svar.' }] }, body)).toEqual([
+      { id: 'innledning', text: 'Innledning' },
+      { id: 'neste', text: 'Neste' },
+      { id: 'vanlige-sporsmal', text: 'Vanlige spørsmål' },
+    ]);
+  });
+
+  it('does not duplicate Vanlige spørsmål when the body already has that section', () => {
+    const body = [
+      '## Innledning',
+      'Tekst.',
+      '',
+      '## Vanlige spørsmål',
+      '',
+      '**Hva?**',
+      'Svar.',
+    ].join('\n');
+
+    expect(articleHeadings({ faq: [{ question: 'Front?', answer: 'Front svar.' }] }, body)).toEqual([
+      { id: 'innledning', text: 'Innledning' },
+      { id: 'vanlige-sporsmal', text: 'Vanlige spørsmål' },
+    ]);
   });
 });
 

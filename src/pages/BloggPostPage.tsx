@@ -12,7 +12,7 @@ import NotFound from './NotFound';
 import { allPosts } from '@/lib/blog';
 import { coverAlt, findPost, relatedPosts } from '@/lib/blog/posts';
 import {
-  extractHeadings,
+  articleHeadings,
   faqJsonLd,
   faqToMarkdown,
   postFaq,
@@ -45,7 +45,10 @@ export default function BloggPostPage() {
     () => (post?.faq?.length ? stripFaqSection(strippedBody) : strippedBody),
     [post, strippedBody],
   );
-  const headings = useMemo(() => extractHeadings(articleBody), [articleBody]);
+  const headings = useMemo(
+    () => (post ? articleHeadings(post, articleBody) : []),
+    [post, articleBody],
+  );
   const faq = useMemo(() => (post ? postFaq(post, strippedBody) : []), [post, strippedBody]);
   const faqMarkdown = useMemo(() => (post?.faq?.length ? faqToMarkdown(post.faq) : ''), [post]);
   const { lead, rest } = useMemo(() => splitLeadSection(articleBody), [articleBody]);
