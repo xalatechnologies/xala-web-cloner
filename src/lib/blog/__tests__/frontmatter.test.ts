@@ -59,6 +59,25 @@ describe("parseFrontmatter", () => {
     expect(result?.data.after).toBe("x");
   });
 
+  it("reads a block list of structured FAQ entries", () => {
+    const result = parseFrontmatter(
+      [
+        "---",
+        "faq:",
+        '  - question: "Hva?"',
+        '    answer: "Svar."',
+        '  - question: "Hvor?"',
+        '    answer: "Her."',
+        "---",
+        "body",
+      ].join("\n"),
+    );
+    expect(result?.data.faq).toEqual([
+      { question: "Hva?", answer: "Svar." },
+      { question: "Hvor?", answer: "Her." },
+    ]);
+  });
+
   it("ignores comments and blank lines", () => {
     const result = parseFrontmatter("---\n# a comment\n\ntitle: T\n---\nx");
     expect(result?.data).toEqual({ title: "T" });

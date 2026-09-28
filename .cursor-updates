@@ -1,3 +1,11 @@
+Blog: CTR enrich hva-er-et-saksbehandlingssystem (second pass)
+
+- Replaced post copy, meta, six FAQ entries in frontmatter, and diagram cover with ?v=2 cache bust
+- Wired dateModified, coverAlt, frontmatter FAQ rendering, og:image:alt, and article:modified_time for all posts
+- Extended frontmatter parser for structured FAQ block lists; excludeRelated wildcard and excludeServices per post
+- Removed /priser and skjenkebevilling from template-driven related cards on this post
+- Lint, test (1033), build, and verify-dist pass
+
 Merge main into PR #192 (saksbehandlingslosning hashtags 3-5)
 
 - Merged origin/main (67c61bf, PR #193) into cursor/saksbehandlingslosning-hashtags-3-5-8827

@@ -30,7 +30,14 @@ import { articleMarkdownComponents } from "../src/components/blog/ArticleMarkdow
 import { coverAlt, parsePosts, publishedPosts, relatedPosts } from "../src/lib/blog/posts";
 import { blogListingHtml } from "../src/lib/blog/listingHtml";
 import { blogListingQueries, blogQueryFileKey, filterBlogPosts } from "../src/lib/blog/search";
-import { extractFaq, faqJsonLd, splitLeadSection, stripRelatedArticles } from "../src/lib/blog/toc";
+import {
+  faqJsonLd,
+  faqToMarkdown,
+  postFaq,
+  splitLeadSection,
+  stripFaqSection,
+  stripRelatedArticles,
+} from "../src/lib/blog/toc";
 import { getPageSEO } from "../src/components/seo/seoContent";
 import { CANONICAL_ALIASES, resolveRoute } from "../src/components/seo/routeRules";
 import { staticRouteVisibleHeading } from "../src/lib/staticRouteHeading";
@@ -110,6 +117,8 @@ interface HeadFields {
   /** Further schema blocks (FAQPage, …) emitted as their own script tags. */
   extraJsonLd?: Record<string, unknown>[];
   publishedTime?: string;
+  modifiedTime?: string;
+  imageAlt?: string;
   /** Post-specific keywords. Without this the shell keeps the homepage string. */
   keywords?: string;
   /** Open Graph article:tag values — the same 3–5 topics as the visible hashtags. */
@@ -150,6 +159,7 @@ function renderHead(shell: string, fields: HeadFields): string {
   // Blog posts pass their cover; everything else uses /og-image.png.
   const image = fields.image ?? `${SITE_ORIGIN}/og-image.png`;
   replaceMeta("property", "og:image", image);
+  if (fields.imageAlt) replaceMeta("property", "og:image:alt", fields.imageAlt);
   replaceMeta("property", "twitter:card", "summary_large_image");
   replaceMeta("property", "twitter:title", fields.title);
   replaceMeta("property", "twitter:description", fields.description);
@@ -175,6 +185,9 @@ function renderHead(shell: string, fields: HeadFields): string {
     `<link rel="alternate" type="application/rss+xml" title="${escapeHtml(getPageSEO("blog", "no").title)}" href="${SITE_ORIGIN}${BLOG_PATH}/rss.xml" />`,
     fields.publishedTime
       ? `<meta property="article:published_time" content="${fields.publishedTime}" data-rh="true" />`
+      : "",
+    fields.modifiedTime
+      ? `<meta property="article:modified_time" content="${fields.modifiedTime}" data-rh="true" />`
       : "",
     ...(fields.articleTags ?? []).map(
       (tag) => `<meta property="article:tag" content="${escapeHtml(tag)}" data-rh="true" />`,
@@ -329,9 +342,11 @@ function postArticleHtml(post: BlogPost, related: BlogPost[]): string {
         .join("")}</ul></section>`
     : "";
   const strippedBody = stripRelatedArticles(post.body);
-  const { lead, rest } = splitLeadSection(strippedBody);
+  const articleBody = post.faq?.length ? stripFaqSection(strippedBody) : strippedBody;
+  const { lead, rest } = splitLeadSection(articleBody);
   const leadHtml = lead ? `<div>${markdownToHtml(lead)}</div>` : "";
   const bodyHtml = rest ? `<div>${markdownToHtml(rest)}</div>` : "";
+  const faqHtml = post.faq?.length ? `<div>${markdownToHtml(faqToMarkdown(post.faq))}</div>` : "";
 
   return `<div class="min-h-screen flex flex-col"><main><article>
 <nav aria-label="Brødsmuler"><a href="/">Forside</a> / <a href="${BLOG_PATH}">Blogg</a> / <span aria-current="page">${escapeHtml(post.title)}</span></nav>
@@ -342,6 +357,7 @@ ${leadHtml}
 </header>
 ${cover}
 ${bodyHtml}
+${faqHtml}
 ${topicHashtagLineHtml(post)}
 ${shareRowHtml(postUrl(post), post.title)}
 <aside><h2>Snakk med oss om dette</h2><p>${escapeHtml(ORGANIZATION)} bygger løsninger som denne for offentlig sektor og næringsliv.</p><a href="/kontakt">Kontakt oss</a></aside>
@@ -419,7 +435,7 @@ function main(): void {
     // Same title / description / canonical / image as Helmet. A second
     // formula here is how crawlers kept seeing `title | Xala Technologies AS`
     // after seoTitle + BRAND already existed in postMeta().
-    const meta = postMeta(post);
+    const meta = postMeta(post, coverAlt(post));
     const strippedBody = stripRelatedArticles(post.body);
     write(
       path.join(DIST, "blogg", post.slug, "index.html"),
@@ -429,15 +445,17 @@ function main(): void {
           description: meta.description,
           canonical: meta.canonical,
           image: meta.image,
+          imageAlt: meta.imageAlt,
           ogType: "article",
           publishedTime: post.date,
+          modifiedTime: meta.dateModified,
           keywords: meta.keywords,
           articleTags: meta.articleTags,
           jsonLd: articleJsonLd(post),
           // The rendered page derives this from the body; the static HTML a
           // crawler reads has to carry the same thing, or the FAQ only exists
           // for visitors whose browser ran the bundle.
-          extraJsonLd: [faqJsonLd(postUrl(post), extractFaq(strippedBody))].filter(
+          extraJsonLd: [faqJsonLd(postUrl(post), postFaq(post, strippedBody))].filter(
             (block): block is Record<string, unknown> => block !== null,
           ),
         }),
