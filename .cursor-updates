@@ -2,7 +2,8 @@ verify-live: visible hashtags in topicHashtags=false path (R1 of #196)
 
 - Cherry-picked 1e9432e onto main: isPostTopicHead uses visibleHtmlHashtags when topicHashtags is false
 - Added fixtures for topicHashtags:false with TOC anchors and override without data-topic-hashtags
-- pnpm lint, typecheck, test (1043), verify-live (56 posts on xala.no) pass
+- PR #197 R1: negative tests for topicHashtags:false with visible hashtag line (marker + legacy)
+- pnpm lint, typecheck, test (1044), verify-live (56 posts on xala.no) pass
 
 verify-live: count only visible hashtags (ignore TOC anchors) — follow-up #195
 

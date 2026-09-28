@@ -277,6 +277,37 @@ ${topics.map((tag) => `<meta property="article:tag" content="${tag}" />`).join('
     expect(isPostTopicHead(html, asExpectedPost(fixture))).toBe(true);
   });
 
+  it('fails topicHashtags: false when a visible hashtag line is still rendered', () => {
+    const fixture: BlogPost = {
+      ...gebyrPost,
+      topicHashtags: false,
+      hashtags: undefined,
+    };
+    const topics = topicKeywords(fixture);
+    const meta = postMeta(fixture);
+    const hashtagLine = '#skjenkebevilling #gebyr #omsetningsoppgave';
+    const head = `<html><head>
+<title>${meta.title}</title>
+<meta name="keywords" content="${meta.keywords}" />
+${topics.map((tag) => `<meta property="article:tag" content="${tag}" />`).join('\n')}
+</head><body><div id="root">`;
+
+    const withMarker = `${head}
+<p data-topic-hashtags>${hashtagLine}</p>
+<aside><p>Del artikkelen</p><a href="https://www.linkedin.com/sharing/share-offsite/?url=x">LinkedIn</a></aside>
+</div></body></html>`;
+    expect(visibleHtmlHashtags(withMarker).length).toBeGreaterThan(0);
+    expect(isPostTopicHead(withMarker, asExpectedPost(fixture))).toBe(false);
+
+    const legacy = `${head}
+<p>${hashtagLine}</p>
+<aside><p>Del artikkelen</p><a href="https://www.linkedin.com/sharing/share-offsite/?url=x">LinkedIn</a></aside>
+</div></body></html>`;
+    expect(legacy).not.toContain('data-topic-hashtags');
+    expect(visibleHtmlHashtags(legacy).length).toBeGreaterThan(0);
+    expect(isPostTopicHead(legacy, asExpectedPost(fixture))).toBe(false);
+  });
+
   it('matches numeric topic hashtags like #360 but excludes hex color tokens', () => {
     const VISMA_TOPICS = ['skjenkebevilling', '360', 'visma', 'integrasjon', 'bevilling'];
     const liveVisma = `<html><head>
