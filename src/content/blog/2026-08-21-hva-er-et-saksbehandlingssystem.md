@@ -102,8 +102,6 @@ Det kan være en [Bevillingsportal](/produkter/bevillingsportal) eller en [Tilsk
 
 Vi har bidratt til Altinn hos Digdir, men vi eier ikke Altinn. Jobben vår er at saken kommer inn, blir behandlet og kan forklares.
 
-## Snakk med oss om dette
-
 Vil dere se hvordan dette ser ut i praksis? [Se hvordan vi bygger saksbehandlingssystemer](/tjenester/saksbehandlingssystem). Har dere en konkret sak, [kontakt oss](/kontakt).
 
 ## Relaterte artikler
