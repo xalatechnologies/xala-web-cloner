@@ -1,3 +1,12 @@
+PR #193 review (R1): derive override test expectations from post frontmatter
+
+- verify-live-topics and topics tests use expectedVisibleHashtags / sakslPost.hashtags instead of hardcoded tags
+- Added synthetic #192-shape fixture (four short hashtags override, keywords with long-tails)
+- isPostTopicHead requires exact visible hashtag count when override is active
+- Simplified topicHashtagLine; removed redundant topicHashtags !== false wrapper in verify-live
+- Typecheck fixes for ExpectedPost, unicode regex match typing, and pages.ts word match
+- pnpm lint, typecheck, test (1030), and build pass
+
 Follow-up to PR #190: table swipe hint a11y, gender-neutral copy, diagram cover
 
 - Mobile table swipe hint already carries aria-hidden="true" in ArticleMarkdown (SPA and prerender share articleMarkdownComponents)
