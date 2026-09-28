@@ -60,16 +60,17 @@ function asExpectedPost(post: BlogPost): ExpectedPost {
   };
 }
 
-function livePostHtml(post: BlogPost): string {
+function livePostHtml(post: BlogPost, { marker = true }: { marker?: boolean } = {}): string {
   const topics = topicKeywords(post);
   const visible = expectedVisibleHashtags(post);
   const meta = postMeta(post);
+  const markerAttr = marker ? ' data-topic-hashtags' : '';
   return `<html><head>
 <title>${meta.title}</title>
 <meta name="keywords" content="${meta.keywords}" />
 ${topics.map((tag) => `<meta property="article:tag" content="${tag}" />`).join('\n')}
 </head><body><div id="root">
-<p data-topic-hashtags>${visible.join(' ')}</p>
+<p${markerAttr}>${visible.join(' ')}</p>
 <aside><p>Del artikkelen</p><a href="https://www.linkedin.com/sharing/share-offsite/?url=x">LinkedIn</a></aside>
 </div></body></html>`;
 }
@@ -241,6 +242,39 @@ describe('verify-live first-HTML topics', () => {
     );
     expect(visibleHtmlHashtags(extraOnHashtagLine).length).toBeGreaterThan(visible.length);
     expect(isPostTopicHead(extraOnHashtagLine, asExpectedPost(fixture))).toBe(false);
+
+    const legacyPrerender = livePostHtml(fixture, { marker: false });
+    const withTocLegacy = legacyPrerender.replace(
+      '<div id="root">',
+      '<div id="root"><nav><a href="#innhold">Innhold</a><a href="#kort-svar">Kort svar</a></nav>',
+    );
+    expect(legacyPrerender).not.toContain('data-topic-hashtags');
+    expect(visibleHtmlHashtags(withTocLegacy)).toEqual(visible);
+    expect(isPostTopicHead(withTocLegacy, asExpectedPost(fixture))).toBe(true);
+  });
+
+  it('passes topicHashtags: false when TOC anchors are the only hash tokens', () => {
+    const fixture: BlogPost = {
+      ...gebyrPost,
+      topicHashtags: false,
+      hashtags: undefined,
+    };
+    const topics = topicKeywords(fixture);
+    const meta = postMeta(fixture);
+    const html = `<html><head>
+<title>${meta.title}</title>
+<meta name="keywords" content="${meta.keywords}" />
+${topics.map((tag) => `<meta property="article:tag" content="${tag}" />`).join('\n')}
+</head><body><div id="root">
+<nav><a href="#kort-svar">Kort svar</a><a href="#innhold">Innhold</a></nav>
+<aside><p>Del artikkelen</p><a href="https://www.linkedin.com/sharing/share-offsite/?url=x">LinkedIn</a></aside>
+</div></body></html>`;
+
+    expect(fixture.topicHashtags).toBe(false);
+    expect(expectedVisibleHashtags(fixture)).toEqual([]);
+    expect(firstHtmlHashtags(html)).toContain('#kort-svar');
+    expect(visibleHtmlHashtags(html)).toEqual([]);
+    expect(isPostTopicHead(html, asExpectedPost(fixture))).toBe(true);
   });
 
   it('matches numeric topic hashtags like #360 but excludes hex color tokens', () => {
