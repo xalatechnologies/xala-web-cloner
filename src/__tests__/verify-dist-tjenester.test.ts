@@ -8,6 +8,7 @@ import {
   hovedmenyNavInRoot,
   productSlugs,
   servicePageSlugs,
+  tjenesterHubHasBodyMarker,
   tjenesterHubLede,
 } from "../../scripts/verify-dist.mjs";
 import servicePages from "@/data/service-pages.json";
@@ -64,6 +65,22 @@ describe("verify-dist /tjenester first HTML", () => {
   it("reads Article JSON-LD headline from a case page", () => {
     const html = `<script type="application/ld+json">{"@graph":[{"@type":"Article","headline":"Altinn &amp; Studio"}]}</script>`;
     expect(articleHeadlineFromHtml(html)).toBe("Altinn &amp; Studio");
+  });
+
+  it("requires the hub body marker inside #root so a soft shell fails", () => {
+    const shell =
+      '<div id="root"><h1>Tjenester</h1><p>Lede</p><nav aria-label="Hovedmeny"><a href="/tjenester">Tjenester</a></nav></div>';
+    expect(tjenesterHubHasBodyMarker(shell)).toBe(false);
+    const withBody = shell.replace(
+      "</div>",
+      '<section aria-labelledby="tjenester-neste"><h2 id="tjenester-neste">Neste</h2></section></div>',
+    );
+    expect(tjenesterHubHasBodyMarker(withBody)).toBe(true);
+    expect(
+      tjenesterHubHasBodyMarker(
+        '<h2 id="tjenester-neste">outside</h2><div id="root"><h1>Tjenester</h1></div>',
+      ),
+    ).toBe(false);
   });
 
   it("finds exactly 10 Hovedmeny links inside #root", () => {

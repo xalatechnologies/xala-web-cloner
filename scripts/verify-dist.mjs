@@ -217,6 +217,16 @@ export function tjenesterHubLede(html) {
   return decodeHtmlEntities(text);
 }
 
+/**
+ * True when #root contains the hub body marker from tjenesterHubBodyHtml.
+ * H1, lede, and Hovedmeny alone are a soft shell and must fail the build.
+ */
+export function tjenesterHubHasBodyMarker(html) {
+  const root = rootInnerHtml(html);
+  if (!root) return false;
+  return root.includes('id="tjenester-neste"');
+}
+
 function fail(message) {
   console.error(message);
   process.exit(1);
@@ -329,6 +339,11 @@ function main() {
   }
   if (hovedmenyLinks.length !== 10) {
     fail(`verify-dist: /tjenester Hovedmeny must have exactly 10 links, found ${hovedmenyLinks.length}.`);
+  }
+  if (!tjenesterHubHasBodyMarker(hubHtml)) {
+    fail(
+      'verify-dist: /tjenester hub is missing id="tjenester-neste" inside #root — H1, lede, and Hovedmeny alone are an empty shell.',
+    );
   }
 
   const caseSlugs = detailSlugsFromLocs(locs, origin, '/caser');
