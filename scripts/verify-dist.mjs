@@ -93,18 +93,54 @@ export function listingCardHrefs(html) {
   return [...html.matchAll(/<h2><a href="(\/blogg\/[^"]+)"/g)].map((m) => m[1]);
 }
 
-/** True when #root has no visible text — the SPA-only shell the prerender must not ship. */
-export function hasEmptyRoot(html) {
-  const match = html.match(/<div id="root">([\s\S]*?)<\/div>/i);
-  if (!match) return true;
-  const inner = match[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-  return inner.length === 0;
+/**
+ * Inner HTML of #root, or null when the marker is missing.
+ *
+ * A non-greedy `[\s\S]*?</div>` stops at the first closing tag and breaks on
+ * nested divs inside prerendered markup, so we walk div open/close depth instead.
+ */
+export function rootInnerHtml(html) {
+  const marker = /<div id="root">/i.exec(html);
+  if (!marker) return null;
+
+  let depth = 1;
+  let index = marker.index + marker[0].length;
+  const start = index;
+
+  while (index < html.length && depth > 0) {
+    const nextOpen = html.indexOf('<div', index);
+    const nextClose = html.indexOf('</div>', index);
+    if (nextClose === -1) return null;
+
+    if (nextOpen !== -1 && nextOpen < nextClose) {
+      depth += 1;
+      index = nextOpen + 4;
+      continue;
+    }
+
+    depth -= 1;
+    if (depth === 0) return html.slice(start, nextClose);
+    index = nextClose + 6;
+  }
+
+  return null;
 }
 
-/** First <h1> text content, or null when the page has no H1. */
+/** True when #root has no visible text — the SPA-only shell the prerender must not ship. */
+export function hasEmptyRoot(html) {
+  const inner = rootInnerHtml(html);
+  if (inner === null) return true;
+  const visible = inner.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  return visible.length === 0;
+}
+
+/** First <h1> text inside #root, with inner tags stripped, or null when absent. */
 export function firstH1(html) {
-  const match = html.match(/<h1[^>]*>([^<]*)<\/h1>/i);
-  return match ? match[1].trim() : null;
+  const root = rootInnerHtml(html);
+  if (!root) return null;
+  const match = root.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  if (!match) return null;
+  return match[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
 /** Service detail pages that must ship real first HTML, not an empty #root. */

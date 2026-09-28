@@ -1,6 +1,4 @@
 import { describe, expect, it } from "vitest";
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
 import { firstH1, hasEmptyRoot, servicePageSlugs } from "../../scripts/verify-dist.mjs";
 import servicePages from "@/data/service-pages.json";
 
@@ -20,9 +18,10 @@ describe("verify-dist /tjenester first HTML", () => {
     expect(servicePageSlugs().length).toBeGreaterThanOrEqual(10);
   });
 
-  it("requires the prerender to call renderBody for service pages", () => {
-    const source = readFileSync(resolve(__dirname, "../../scripts/prerender-blog.ts"), "utf8");
-    expect(source).toContain("servicePageHtml(slug, { posts })");
-    expect(source).toMatch(/renderBody\(\s*renderHead\(shell,\s*\{[\s\S]*?\}\),\s*servicePageHtml\(slug/);
+  it("scopes firstH1 to #root and strips inner tags", () => {
+    const html =
+      '<div id="root"><main><h1 class="page-heading">Visible <span>title</span></h1></main></div>' +
+      '<h1 class="page-heading">Outside root</h1>';
+    expect(firstH1(html)).toBe("Visible title");
   });
 });
