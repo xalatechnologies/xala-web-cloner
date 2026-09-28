@@ -87,6 +87,12 @@ export function parsePost(raw: string, file: string): BlogPost | BlogPostError {
   const keywords = asStringArray(data.keywords);
   const hashtagsRaw = asStringArray(data.hashtags);
   if (hashtagsRaw?.length) {
+    if (hashtagsRaw.length < 3 || hashtagsRaw.length > 5) {
+      return {
+        file,
+        reason: `hashtags must be 3–5 topic tags, got ${hashtagsRaw.length}`,
+      };
+    }
     const allowed = new Set((keywords ?? []).map((k) => k.trim().toLowerCase()));
     const invalid = hashtagsRaw.filter((tag) => !allowed.has(tag.trim().toLowerCase()));
     if (invalid.length) {

@@ -203,8 +203,16 @@ describe('topic keywords and hashtags', () => {
       (post) => post.slug === 'saksbehandlingslosning-sporsmal-til-leverandoren',
     );
     expect(SAKSL, 'saksbehandlingslosning post missing').toBeDefined();
-    expect(SAKSL!.hashtags).toEqual(['saksbehandlingsløsning']);
-    expect(topicHashtagLine(SAKSL!)).toBe('#saksbehandlingsløsning');
+    expect(SAKSL!.hashtags).toEqual([
+      'saksbehandlingsløsning',
+      'saksbehandling',
+      'offentligsektor',
+      'digitalisering',
+    ]);
+    expect(topicHashtagLine(SAKSL!)).toBe(
+      '#saksbehandlingsløsning #saksbehandling #offentligsektor #digitalisering',
+    );
+    expect(topicHashtagLine(SAKSL!).split(' ')).toHaveLength(4);
     expect(topicHashtagLine(SAKSL!)).not.toContain('#sammenligneleverandøreravsaksbehandlingsløsninger');
     expect(topicKeywords(SAKSL!).length).toBeGreaterThanOrEqual(3);
     expect(postMeta(SAKSL!).articleTags).toEqual(topicKeywords(SAKSL!));
