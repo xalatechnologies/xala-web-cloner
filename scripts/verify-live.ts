@@ -296,7 +296,10 @@ export function isPostTopicHead(html: string, post: ExpectedPost): boolean {
   if (post.topicHashtags === false) {
     if (hashtags.length > 0) return false;
   } else if (expectedHashtags.length > 0) {
-    if (hashtags.length !== expectedHashtags.length) return false;
+    // Exact count only for a frontmatter `hashtags:` override. Default posts
+    // stay include-only so TOC `href="#…"` and other incidental `#` tokens
+    // in `#root` do not fail verify-live.
+    if (post.hashtags?.length && hashtags.length !== expectedHashtags.length) return false;
     for (const hashtag of expectedHashtags) {
       if (!hashtags.includes(hashtag)) return false;
     }

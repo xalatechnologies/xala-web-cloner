@@ -1,3 +1,10 @@
+PR #193 review (R2): exact hashtag count is override-only
+
+- isPostTopicHead length equality is gated on post.hashtags?.length
+- Default posts stay include-only so TOC href="#…" does not fail verify-live
+- Dropped .ts import extensions in verify-live tests (TS5097)
+- Topic unit tests (89), typecheck, and verify-live against https://xala.no (56 posts) pass
+
 PR #193 review (R1): derive override test expectations from post frontmatter
 
 - verify-live-topics and topics tests use expectedVisibleHashtags / sakslPost.hashtags instead of hardcoded tags
