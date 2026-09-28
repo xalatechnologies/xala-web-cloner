@@ -1,3 +1,9 @@
+Merge origin/main into PR #194 (hva-er-et-saksbehandlingssystem CTR enrich)
+
+- Merged origin/main (89ed7fc, PR #192) into cursor/ctr-enrich-hva-er-et-saksbehandlingssystem-c7b1
+- Resolved topics.test.ts conflict: took main's SAKSL override assertions (expectedVisibleHashtags, explicit four-tag line)
+- Kept #194 work: hva-er-et-saksbehandlingssystem post, dateModified/coverAlt/faq wiring, articleHeadings FAQ TOC, BloggPostPage changes
+
 Blog: CTR enrich hva-er-et-saksbehandlingssystem (second pass)
 
 - Replaced post copy, meta, six FAQ entries in frontmatter, and diagram cover with ?v=2 cache bust
