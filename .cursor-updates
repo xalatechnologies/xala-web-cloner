@@ -1,3 +1,11 @@
+Follow-up to PR #190: table swipe hint a11y, gender-neutral copy, diagram cover
+
+- Mobile table swipe hint already carries aria-hidden="true" in ArticleMarkdown (SPA and prerender share articleMarkdownComponents)
+- Rewrote one sentence in saksbehandlingslosning-sporsmal-til-leverandoren to remove generic «hun»
+- Replaced cover with diagram-only 1200x675 webp; cover frontmatter uses ?v=2 for cache bust (og:image, img, prerender)
+- XWEB-211: strip react-markdown node prop from table/th/td overrides; rename table H2 to «Ta med denne tabellen til leverandørmøtet»
+- Lint, test (1027), and build pass
+
 Blog: Saksbehandlingsløsning – spørsmål før dere kjøper (2026-09-28)
 
 - Added new blog post at /blogg/saksbehandlingslosning-sporsmal-til-leverandoren

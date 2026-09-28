@@ -10,7 +10,13 @@ interface ArticleMarkdownProps {
   heading: (tag: 'h2' | 'h3') => HeadingRenderer;
 }
 
-function ArticleTable({ children, ...props }: React.TableHTMLAttributes<HTMLTableElement>) {
+type MarkdownNodeProps = { node?: unknown };
+
+function ArticleTable({
+  children,
+  node: _node,
+  ...props
+}: React.TableHTMLAttributes<HTMLTableElement> & MarkdownNodeProps) {
   return (
     <div className="article-table my-8 w-full min-w-0 not-prose">
       <p className="mb-2 text-xs text-muted-foreground md:hidden" aria-hidden="true">
@@ -25,7 +31,11 @@ function ArticleTable({ children, ...props }: React.TableHTMLAttributes<HTMLTabl
   );
 }
 
-function ArticleTh({ children, ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) {
+function ArticleTh({
+  children,
+  node: _node,
+  ...props
+}: React.ThHTMLAttributes<HTMLTableCellElement> & MarkdownNodeProps) {
   return (
     <th
       {...props}
@@ -36,7 +46,11 @@ function ArticleTh({ children, ...props }: React.ThHTMLAttributes<HTMLTableCellE
   );
 }
 
-function ArticleTd({ children, ...props }: React.TdHTMLAttributes<HTMLTableCellElement>) {
+function ArticleTd({
+  children,
+  node: _node,
+  ...props
+}: React.TdHTMLAttributes<HTMLTableCellElement> & MarkdownNodeProps) {
   return (
     <td
       {...props}

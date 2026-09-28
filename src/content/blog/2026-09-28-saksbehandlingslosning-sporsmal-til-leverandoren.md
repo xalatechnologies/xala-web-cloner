@@ -7,7 +7,7 @@ date: 2026-09-28
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
-cover: "/images/blog/saksbehandlingslosning-sporsmal-til-leverandoren.webp"
+cover: "/images/blog/saksbehandlingslosning-sporsmal-til-leverandoren.webp?v=2"
 keywords:
   - sammenligne leverandører av saksbehandlingsløsninger
   - fordeler med moderne saksbehandlingsløsning
@@ -39,7 +39,7 @@ Spør leverandøren:
 
 **Varseltegn:** Dere får bare skjermbilder av oversikter og et løfte om at resten «fungerer på samme måte».
 
-Det avgjør om saksbehandleren får en kø med frister, eller en innboks hun må rydde selv hver morgen.
+Det avgjør om saksbehandleren får en kø med frister, eller en innboks som må ryddes for hånd hver morgen.
 
 ## Vedtak som tåler en klage
 
@@ -127,7 +127,7 @@ Spør leverandøren:
 
 Vi blir gjerne med videre gjennom [forvaltning og drift](https://xala.no/tjenester/forvaltning-og-drift), men vi kan også overlevere til kommunens eget team med dokumentasjon og opplæring. Kommunen skal ikke være låst, og innbyggerne skal ikke miste historikken sin fordi systemet byttes.
 
-## Godt svar / Varseltegn
+## Ta med denne tabellen til leverandørmøtet
 
 Skriv ut tabellen og bruk den i hver demo. Samme spørsmål, samme tabell, for alle leverandørene.
 
