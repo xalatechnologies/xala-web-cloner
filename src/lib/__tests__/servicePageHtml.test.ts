@@ -56,9 +56,9 @@ describe("servicePageHtml", () => {
     const h1Matches = html.match(/<h1 class="page-heading">/g) ?? [];
 
     expect(h1Matches).toHaveLength(1);
-    expect(html).toContain(`<h1 class="page-heading">${page.no.title}</h1>`);
+    expect(html).toContain(`<h1 class="page-heading">${escapeHtml(page.no.title)}</h1>`);
     for (const item of page.no.faq) {
-      expect(html).toContain(item.question);
+      expect(html).toContain(escapeHtml(item.question));
     }
   });
 
