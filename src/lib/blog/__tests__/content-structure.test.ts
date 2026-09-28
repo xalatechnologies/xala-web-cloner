@@ -2,7 +2,15 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { coverAlt, isPostFile, parsePost } from '../posts';
-import { extractHeadings, faqJsonLd, postFaq, splitLeadSection } from '../toc';
+import {
+  extractHeadings,
+  faqJsonLd,
+  faqToMarkdown,
+  postFaq,
+  splitLeadSection,
+  stripFaqSection,
+  stripRelatedArticles,
+} from '../toc';
 import { postUrl } from '../seo';
 import type { BlogPost } from '../types';
 
@@ -58,10 +66,15 @@ describe('published post structure', () => {
 
       expect(schema).not.toBeNull();
       // Schema that claims a question the page does not show is exactly what
-      // Google penalises. Frontmatter FAQ or body-derived FAQ must match.
+      // Google penalises. Check the markdown the page actually renders:
+      // frontmatter FAQ goes through faqToMarkdown, body FAQ stays in the body.
       const visible = post.faq?.length
-        ? post.faq.map((item) => item.question).join('\n')
+        ? `${stripFaqSection(stripRelatedArticles(post.body))}\n\n${faqToMarkdown(post.faq)}`
         : post.body;
+      if (post.faq?.length) {
+        expect(visible).toContain('## Vanlige spørsmål');
+        for (const item of post.faq) expect(visible).toContain(item.answer);
+      }
       for (const entry of schema!.mainEntity) {
         expect(visible).toContain(entry.name);
       }
@@ -95,6 +108,18 @@ describe('published post structure', () => {
       expect(new Set(ids).size).toBe(ids.length);
     }
   );
+
+  it('keeps the saksbehandlingssystem CTA heading unique and the FAQ last', () => {
+    const post = posts.find((item) => item.slug === 'hva-er-et-saksbehandlingssystem');
+    expect(post?.faq?.length).toBeGreaterThanOrEqual(3);
+    expect(post!.body).not.toMatch(/^##\s+Snakk med oss om dette\s*$/m);
+
+    const visible = `${stripFaqSection(stripRelatedArticles(post!.body))}\n\n${faqToMarkdown(post!.faq!)}`;
+    const h2s = [...visible.matchAll(/^##\s+(.+)$/gm)].map((match) => match[1]);
+    expect(h2s.filter((heading) => heading === 'Snakk med oss om dette')).toEqual([]);
+    expect(h2s.at(-1)).toBe('Vanlige spørsmål');
+    expect(post!.cover).toContain('?v=2');
+  });
 
   it('lifts Kort svar on the automatisering post so the template can put it above the cover', () => {
     const post = posts.find((item) => item.slug === 'automatisering-av-saksbehandling-hva-boer-og-ikke');
