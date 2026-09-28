@@ -1,6 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { getPageSEO } from '@/components/seo/seoContent';
-import { keywordToHashtag as libHashtag, topicHashtags, topicKeywords } from '@/lib/blog/topics';
+import {
+  expectedVisibleHashtags,
+  keywordToHashtag as libHashtag,
+  topicHashtags,
+  topicKeywords,
+} from '@/lib/blog/topics';
+import { postMeta } from '@/lib/blog/seo';
 import { parsePost } from '@/lib/blog/posts';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -16,7 +22,7 @@ import {
   keywordToHashtag,
   parseKeywords,
   topicKeywordsFromList,
-} from '../../scripts/verify-live.mjs';
+} from '../../scripts/verify-live.ts';
 
 const GEBYR_PATH = resolve(
   __dirname,
@@ -31,6 +37,13 @@ const VISMA_PATH = resolve(
 );
 const vismaPost = parsePost(readFileSync(VISMA_PATH, 'utf8'), VISMA_PATH);
 if ('reason' in vismaPost) throw new Error(vismaPost.reason);
+
+const SAKSL_PATH = resolve(
+  __dirname,
+  '../content/blog/2026-09-28-saksbehandlingslosning-sporsmal-til-leverandoren.md',
+);
+const sakslPost = parsePost(readFileSync(SAKSL_PATH, 'utf8'), SAKSL_PATH);
+if ('reason' in sakslPost) throw new Error(sakslPost.reason);
 
 const GEBYR_TOPICS = [
   'skjenkebevilling',
@@ -109,6 +122,38 @@ describe('verify-live first-HTML topics', () => {
 
     const noShare = LIVE_GEBYR.replace('Del artikkelen', 'Kopier');
     expect(isPostTopicHead(noShare, gebyrPost)).toBe(false);
+  });
+
+  it('accepts a hashtags: override with one visible tag while article:tag stays keyword-derived', () => {
+    const row = expectedPosts().find(
+      (post) => post.slug === 'saksbehandlingslosning-sporsmal-til-leverandoren',
+    );
+    expect(row, 'saksbehandlingslosning missing from expectedPosts()').toBeDefined();
+    expect(row!.hashtags).toEqual(['saksbehandlingsløsning']);
+
+    const topics = topicKeywords(sakslPost);
+    const meta = postMeta(sakslPost);
+    const liveSaksl = `<html><head>
+<title>${meta.title}</title>
+<meta name="keywords" content="${meta.keywords}" />
+${topics.map((tag) => `<meta property="article:tag" content="${tag}" />`).join('\n')}
+</head><body><div id="root">
+<p>${expectedVisibleHashtags(sakslPost).join(' ')}</p>
+<aside><p>Del artikkelen</p><a href="https://www.linkedin.com/sharing/share-offsite/?url=x">LinkedIn</a></aside>
+</div></body></html>`;
+
+    expect(firstHtmlHashtags(liveSaksl)).toEqual(['#saksbehandlingsløsning']);
+    expect(firstHtmlArticleTags(liveSaksl)).toEqual(topics);
+    expect(isPostTopicHead(liveSaksl, sakslPost)).toBe(true);
+
+    const derivedLongOnly = liveSaksl.replace(
+      '#saksbehandlingsløsning',
+      topics
+        .filter((topic) => topic !== 'saksbehandlingsløsning')
+        .map((topic) => keywordToHashtag(topic))
+        .join(' '),
+    );
+    expect(isPostTopicHead(derivedLongOnly, sakslPost)).toBe(false);
   });
 
   it('matches numeric topic hashtags like #360 but excludes hex color tokens', () => {

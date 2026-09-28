@@ -6,7 +6,7 @@ import {
   documentTitleFromPost,
   expectedPosts,
   isOwnDocumentTitle,
-} from '../../scripts/verify-live.mjs';
+} from '../../scripts/verify-live.ts';
 
 /**
  * Deploy #103 failed 24 posts because verify-live required the long

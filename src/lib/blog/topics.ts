@@ -43,15 +43,23 @@ export function topicHashtags(post: Pick<BlogPost, "keywords" | "tag">): string[
   return topicKeywords(post).map(keywordToHashtag).filter(Boolean);
 }
 
+/** Visible last-line hashtags a live post should show (with # prefix). */
+export function expectedVisibleHashtags(
+  post: Pick<BlogPost, "keywords" | "tag" | "topicHashtags" | "hashtags">,
+): string[] {
+  if (post.topicHashtags === false) return [];
+  if (post.hashtags?.length) {
+    return post.hashtags.map(keywordToHashtag).filter(Boolean);
+  }
+  return topicHashtags(post);
+}
+
 /** Last line of the post: three to five hashtags, space-separated. */
 export function topicHashtagLine(
   post: Pick<BlogPost, "keywords" | "tag" | "topicHashtags" | "hashtags">,
 ): string {
-  if (post.topicHashtags === false) return "";
-  if (post.hashtags?.length) {
-    return post.hashtags.map(keywordToHashtag).filter(Boolean).join(" ");
-  }
-  return topicHashtags(post).join(" ");
+  const line = expectedVisibleHashtags(post).join(" ");
+  return line;
 }
 
 export function topicHashtagLineHtml(
