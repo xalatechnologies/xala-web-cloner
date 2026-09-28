@@ -127,7 +127,7 @@ Spør leverandøren:
 
 Vi blir gjerne med videre gjennom [forvaltning og drift](https://xala.no/tjenester/forvaltning-og-drift), men vi kan også overlevere til kommunens eget team med dokumentasjon og opplæring. Kommunen skal ikke være låst, og innbyggerne skal ikke miste historikken sin fordi systemet byttes.
 
-## Godt svar / Varseltegn
+## Ta med denne tabellen til leverandørmøtet
 
 Skriv ut tabellen og bruk den i hver demo. Samme spørsmål, samme tabell, for alle leverandørene.
 
