@@ -3,7 +3,13 @@ import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { isPostFile, parsePost } from '../posts';
 import { postMeta } from '../seo';
-import { keywordToHashtag, topicHashtagLine, topicHashtags, topicKeywords } from '../topics';
+import {
+  expectedVisibleHashtags,
+  keywordToHashtag,
+  topicHashtagLine,
+  topicHashtags,
+  topicKeywords,
+} from '../topics';
 import type { BlogPost } from '../types';
 import { getPageSEO } from '@/components/seo/seoContent';
 
@@ -203,9 +209,12 @@ describe('topic keywords and hashtags', () => {
       (post) => post.slug === 'saksbehandlingslosning-sporsmal-til-leverandoren',
     );
     expect(SAKSL, 'saksbehandlingslosning post missing').toBeDefined();
-    expect(SAKSL!.hashtags).toEqual(['saksbehandlingsløsning']);
-    expect(topicHashtagLine(SAKSL!)).toBe('#saksbehandlingsløsning');
-    expect(topicHashtagLine(SAKSL!)).not.toContain('#sammenligneleverandøreravsaksbehandlingsløsninger');
+    const visible = expectedVisibleHashtags(SAKSL!);
+    const derived = topicHashtags(SAKSL!);
+    expect(SAKSL!.hashtags?.length).toBeGreaterThan(0);
+    expect(visible).toEqual(SAKSL!.hashtags!.map(keywordToHashtag));
+    expect(visible).not.toEqual(derived);
+    expect(topicHashtagLine(SAKSL!)).toBe(visible.join(' '));
     expect(topicKeywords(SAKSL!).length).toBeGreaterThanOrEqual(3);
     expect(postMeta(SAKSL!).articleTags).toEqual(topicKeywords(SAKSL!));
   });

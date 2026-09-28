@@ -99,4 +99,4 @@ jobs:
       - name: Verify the site is live
         run: |
           sleep 5
-          node scripts/verify-live.mjs
+          pnpm exec tsx scripts/verify-live.ts
