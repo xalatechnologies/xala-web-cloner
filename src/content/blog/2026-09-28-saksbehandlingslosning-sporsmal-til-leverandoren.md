@@ -39,7 +39,7 @@ Spør leverandøren:
 
 **Varseltegn:** Dere får bare skjermbilder av oversikter og et løfte om at resten «fungerer på samme måte».
 
-Det avgjør om saksbehandleren får en kø med frister, eller en innboks hun må rydde selv hver morgen.
+Det avgjør om saksbehandleren får en kø med frister, eller en innboks som må ryddes selv hver morgen.
 
 ## Vedtak som tåler en klage
 
