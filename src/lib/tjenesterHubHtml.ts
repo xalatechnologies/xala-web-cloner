@@ -2,6 +2,7 @@
  * The no-JS /tjenester hub body.
  *
  * Same textual content the SPA renders from no.json and tjenester-hub-content.
+ * The prerender composes this inside staticRouteHtml (H1, lede, Hovedmeny, styles).
  */
 import {
   TJENESTER_HUB_CTA,
@@ -10,7 +11,6 @@ import {
   TJENESTER_HUB_SECTIONS,
 } from "@/data/tjenester-hub-content";
 import no from "@/i18n/locales/no.json";
-import { SERVICES_PAGE_HEADING } from "@/lib/staticRouteHeading";
 import { escapeHtml, richInlineHtml } from "@/lib/richInlineHtml";
 
 function definitionListHtml(items: { question: string; answer: string }[]): string {
@@ -57,22 +57,16 @@ function nextStepsHtml(): string {
 </section>`;
 }
 
-export function tjenesterHubHtml(): string {
-  const description = no.servicesPage.description;
-  const eyebrow = no.servicesPage.eyebrow;
-
-  return `<div class="min-h-screen flex flex-col"><main id="main">
-<header>
-<p>${escapeHtml(eyebrow)}</p>
-<h1 class="page-heading">${escapeHtml(SERVICES_PAGE_HEADING)}</h1>
-<p>${escapeHtml(description)}</p>
-</header>
-<section>
-<p class="lead">${escapeHtml(TJENESTER_HUB_LEAD)}</p>
+/** Hub prose below the static shell header, nav and lede. */
+export function tjenesterHubBodyHtml(): string {
+  return `<p class="lead">${escapeHtml(TJENESTER_HUB_LEAD)}</p>
 ${sectionsHtml()}
-</section>
-${nextStepsHtml()}
-</main></div>`;
+${nextStepsHtml()}`;
+}
+
+/** Full hub body when not wrapped in staticRouteHtml (tests). */
+export function tjenesterHubHtml(): string {
+  return tjenesterHubBodyHtml();
 }
 
 /** Lede under the H1 — what verify-dist compares to the React page. */

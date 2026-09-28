@@ -5,7 +5,7 @@ import productsData from "@/data/products.json";
 import no from "@/i18n/locales/no.json";
 import { parsePosts, publishedPosts } from "@/lib/blog/posts";
 import { productPageHtml } from "@/lib/productPageHtml";
-import { escapeHtml } from "@/lib/richInlineHtml";
+import { escapeHtml } from "@/lib/escapeHtml";
 
 const CONTENT_DIR = resolve(__dirname, "../../content/blog");
 

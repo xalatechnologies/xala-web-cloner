@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  decodeHtmlEntities,
   detailSlugsFromLocs,
   firstH1,
   hasEmptyRoot,
@@ -37,7 +38,14 @@ describe("verify-dist /tjenester first HTML", () => {
     const html =
       '<div id="root"><header><h1 class="page-heading">Title</h1><p>Hub lede copy</p></header></div>';
     expect(tjenesterHubLede(html)).toBe("Hub lede copy");
+    expect(decodeHtmlEntities("A &amp; B &quot;quoted&quot;")).toBe('A & B "quoted"');
     expect(no.servicesPage.description.length).toBeGreaterThan(20);
+  });
+
+  it("expects the prerendered hub to keep Hovedmeny navigation", () => {
+    const html =
+      '<div id="root"><nav aria-label="Hovedmeny"><a href="/tjenester">Tjenester</a></nav></div>';
+    expect(html).toContain('aria-label="Hovedmeny"');
   });
 
   it("lists product slugs from products.json and parses case slugs from sitemap locs", () => {

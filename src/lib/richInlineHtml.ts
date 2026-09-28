@@ -1,29 +1,29 @@
-/** Escape text nodes in static prerender HTML. */
-export function escapeHtml(value: string): string {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
-}
+import { escapeHtml } from "@/lib/escapeHtml";
+import { isAllowedHref, isExternalHref } from "@/lib/markdownLinkHref";
+import { parseMarkdownLinks } from "@/lib/markdownLinks";
 
-const MARKDOWN_LINK = /\[([^\]]+)\]\(([^)]+)\)/g;
+export { escapeHtml, decodeHtmlEntities } from "@/lib/escapeHtml";
 
 /** Turn approved markdown links into anchors; everything else is escaped. */
 export function richInlineHtml(text: string): string {
+  const links = parseMarkdownLinks(text);
+  if (!links.length) return escapeHtml(text);
+
   const parts: string[] = [];
   let last = 0;
-  const pattern = new RegExp(MARKDOWN_LINK.source, "g");
-  for (const match of text.matchAll(pattern)) {
-    const start = match.index ?? 0;
-    if (start > last) parts.push(escapeHtml(text.slice(last, start)));
-    const label = escapeHtml(match[1]);
-    const href = escapeHtml(match[2]);
-    const external = match[2].startsWith("http");
-    parts.push(
-      `<a href="${href}"${external ? ' target="_blank" rel="noopener noreferrer"' : ""}>${label}</a>`,
-    );
-    last = start + match[0].length;
+  for (const link of links) {
+    if (link.start > last) parts.push(escapeHtml(text.slice(last, link.start)));
+    const label = escapeHtml(link.label);
+    if (!isAllowedHref(link.href)) {
+      parts.push(label);
+    } else {
+      const href = escapeHtml(link.href.trim());
+      const external = isExternalHref(link.href);
+      parts.push(
+        `<a href="${href}"${external ? ' target="_blank" rel="noopener noreferrer"' : ""}>${label}</a>`,
+      );
+    }
+    last = link.end;
   }
   if (last < text.length) parts.push(escapeHtml(text.slice(last)));
   return parts.join("");

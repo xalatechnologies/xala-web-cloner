@@ -40,7 +40,9 @@ import {
 } from "../src/lib/blog/toc";
 import { getPageSEO } from "../src/components/seo/seoContent";
 import { CANONICAL_ALIASES, resolveRoute } from "../src/components/seo/routeRules";
-import { staticRouteVisibleHeading } from "../src/lib/staticRouteHeading";
+import { SERVICES_PAGE_HEADING, staticRouteVisibleHeading } from "../src/lib/staticRouteHeading";
+import { escapeHtml } from "../src/lib/escapeHtml";
+import no from "../src/i18n/locales/no.json";
 import {
   BLOG_PATH,
   ORGANIZATION,
@@ -76,7 +78,7 @@ import servicePages from "../src/data/service-pages.json";
 import faqData from "../src/data/faq.json";
 import { generateFAQSchema } from "../src/components/seo/sectionSchemas";
 import { servicePageHtml } from "../src/lib/servicePageHtml";
-import { tjenesterHubHtml } from "../src/lib/tjenesterHubHtml";
+import { tjenesterHubBodyHtml } from "../src/lib/tjenesterHubHtml";
 import { caseStudyPageHtml } from "../src/lib/caseStudyPageHtml";
 import { productPageHtml } from "../src/lib/productPageHtml";
 
@@ -99,9 +101,6 @@ function readContentFiles(): Record<string, string> {
   walk(CONTENT_DIR);
   return files;
 }
-
-const escapeHtml = (value: string): string =>
-  value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 /** Render markdown exactly the way the SPA does — same component, same plugin. */
 function markdownToHtml(body: string): string {
@@ -218,7 +217,7 @@ function renderBody(shell: string, inner: string): string {
   if (!pattern.test(shell)) {
     throw new Error('prerender: dist/index.html has no <div id="root"></div> to render into');
   }
-  return shell.replace(pattern, `<div id="root">${inner}</div>`);
+  return shell.replace(pattern, () => `<div id="root">${inner}</div>`);
 }
 
 /**
@@ -278,7 +277,7 @@ interface CaseLink { slug: string; title: string }
  * sitemap is for and which is already working: thirteen of them moved from
  * "unknown to Google" to "discovered" within two hours of submission.
  */
-function staticRouteHtml(heading: string, description: string, links: NavLink[]): string {
+function staticRouteHtml(heading: string, description: string, links: NavLink[], body = ""): string {
   const page =
     "min-height:100vh;background:#0b0b0d;color:#f5f5f4;font-family:Inter,system-ui,sans-serif;" +
     "display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:3rem 1.5rem;text-align:center";
@@ -297,6 +296,7 @@ function staticRouteHtml(heading: string, description: string, links: NavLink[])
     `<h1 style="${h1}">${escapeHtml(heading)}</h1>` +
     `<p style="${lead}">${escapeHtml(description)}</p>` +
     nav +
+    body +
     `</div>`
   );
 }
@@ -485,7 +485,12 @@ function main(): void {
     const heading = staticRouteVisibleHeading(route.path, copy.title);
     const inner =
       route.path === "/tjenester"
-        ? tjenesterHubHtml()
+        ? staticRouteHtml(
+            SERVICES_PAGE_HEADING,
+            no.servicesPage.description,
+            MAIN_NAV,
+            tjenesterHubBodyHtml(),
+          )
         : route.path === "/faq"
           ? faqRouteHtml(heading, copy.description, faqData.no, MAIN_NAV)
           : staticRouteHtml(heading, copy.description, MAIN_NAV);
@@ -522,11 +527,13 @@ function main(): void {
   // 17 of them: the page still rendered once React took over, so it looked
   // fine in a browser, while every crawler that followed the sitemap was told
   // the page does not exist.
+  const caseStudyH1No: Record<string, string> = {};
   for (const study of caseStudies) {
     if (!study.slug) continue;
     const url = `${SITE_ORIGIN}/caser/${study.slug}`;
     const localized = localizeCaseStudy(study, "no");
     const seo = localizedSeo(study, "no");
+    caseStudyH1No[study.slug] = localized.title;
     write(
       path.join(DIST, "caser", study.slug, "index.html"),
       renderBody(
@@ -567,6 +574,7 @@ function main(): void {
       ),
     );
   }
+  write(path.join(DIST, "case-study-h1.no.json"), JSON.stringify(caseStudyH1No, null, 2));
 
   // A file per service landing page, each with its own title, description and
   // FAQ schema. These are the pages meant to rank for the head terms, so they

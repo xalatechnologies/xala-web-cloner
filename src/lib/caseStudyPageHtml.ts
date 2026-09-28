@@ -6,7 +6,9 @@
 import { caseStudyBySlug } from "@/data/case-studies";
 import { localizeCaseStudy } from "@/data/case-studies/localized";
 import no from "@/i18n/locales/no.json";
-import { escapeHtml, richInlineHtml, richParagraphsHtml } from "@/lib/richInlineHtml";
+import { escapeHtml } from "@/lib/escapeHtml";
+import { PRERENDER_BACK_NAV_ARIA_LABEL } from "@/lib/prerenderLabels";
+import { richInlineHtml, richParagraphsHtml } from "@/lib/richInlineHtml";
 import type { CaseStudy } from "@/types/caseStudy";
 
 const labels = no.caseStudy;
@@ -53,7 +55,6 @@ export function caseStudyPageHtmlFromStudy(cs: CaseStudy): string {
 
   const kortSvar = cs.kortSvar
     ? `<section id="kort-svar">
-<p>${escapeHtml(labels.sections.kortSvar.accent)}</p>
 <h2>${escapeHtml(labels.sections.kortSvar.heading)}</h2>
 ${richParagraphsHtml(cs.kortSvar)}
 </section>`
@@ -203,7 +204,7 @@ ${cs.videre ? `<div>${richParagraphsHtml(cs.videre)}</div>` : ""}
 </section>`;
 
   return `<div class="min-h-screen flex flex-col"><main id="main">
-<nav aria-label="Tilbake"><a href="/caser">${escapeHtml(labels.backToAll)}</a> / <span>${escapeHtml(cs.title)}</span></nav>
+<nav aria-label="${escapeHtml(PRERENDER_BACK_NAV_ARIA_LABEL)}"><a href="/caser">${escapeHtml(labels.backToAll)}</a> / <span>${escapeHtml(cs.title)}</span></nav>
 <header>
 <p>${escapeHtml(cs.industry)}</p>
 ${cs.deliveryPeriod ? `<p>${escapeHtml(cs.deliveryPeriod)}</p>` : ""}
@@ -222,7 +223,7 @@ ${kortSvar}
 </section>
 ${scope}${coreTech}
 <section aria-labelledby="project-details">
-<h2 id="project-details">${escapeHtml(labels.projectDetails)}</h2>
+<p id="project-details">${escapeHtml(labels.projectDetails)}</p>
 <dl>${metaRows}</dl>
 </section>
 ${objectives}

@@ -14,7 +14,8 @@ import { findPost } from "@/lib/blog/posts";
 import { BLOG_PATH } from "@/lib/blog/seo";
 import type { BlogPost } from "@/lib/blog/types";
 import { productCopy, type ProductDetails } from "@/lib/product-details";
-import { escapeHtml } from "@/lib/richInlineHtml";
+import { escapeHtml } from "@/lib/escapeHtml";
+import { PRERENDER_BACK_NAV_ARIA_LABEL } from "@/lib/prerenderLabels";
 
 export interface ProductPageHtmlOptions {
   posts: readonly BlogPost[];
@@ -150,7 +151,7 @@ export function productPageHtml(slug: string, options: ProductPageHtmlOptions): 
       : "";
 
   return `<div class="min-h-screen flex flex-col"><main id="main">
-<nav aria-label="Tilbake"><a href="/produkter">${escapeHtml(labels.back)}</a></nav>
+<nav aria-label="${escapeHtml(PRERENDER_BACK_NAV_ARIA_LABEL)}"><a href="/produkter">${escapeHtml(labels.back)}</a></nav>
 <header>
 <h1>${escapeHtml(product.title)}<span>${escapeHtml(copy.tagline)}</span></h1>
 <p>${escapeHtml(copy.intro)}</p>

@@ -150,9 +150,20 @@ export function servicePageSlugs() {
   return Object.keys(servicePages);
 }
 
-/** Routable /caser/:slug paths from products.json (Norwegian catalog). */
+/** Routable /produkter/:slug paths from products.json (Norwegian catalog). */
 export function productSlugs() {
   return productsData.no.filter((product) => product.slug).map((product) => product.slug);
+}
+
+/** Reverse common entities when comparing prerendered text to source copy. */
+export function decodeHtmlEntities(value) {
+  return value
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'");
 }
 
 /** Detail slugs under a top-level path, e.g. /caser/altinn → altinn. */
@@ -169,7 +180,7 @@ export function detailSlugsFromLocs(locs, origin, prefix) {
 export function tjenesterHubLede(html) {
   const root = rootInnerHtml(html);
   if (!root) return null;
-  const match = root.match(/<h1[^>]*>[\s\S]*?<\/h1>\s*<p>([\s\S]*?)<\/p>/i);
+  const match = root.match(/<h1[^>]*>[\s\S]*?<\/h1>\s*<p[^>]*>([\s\S]*?)<\/p>/i);
   if (!match) return null;
   return match[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 }
@@ -275,13 +286,37 @@ function main() {
   }
   const hubLede = tjenesterHubLede(hubHtml);
   const expectedLede = no.servicesPage.description;
-  if (hubLede !== expectedLede) {
+  if (decodeHtmlEntities(hubLede ?? '') !== expectedLede) {
     fail(
       `verify-dist: /tjenester hub lede does not match no.json servicesPage.description.\n  expected: ${expectedLede}\n  got: ${hubLede}`,
     );
   }
+  if (!hubHtml.includes('aria-label="Hovedmeny"')) {
+    fail('verify-dist: /tjenester hub is missing Hovedmeny navigation.');
+  }
 
   const caseSlugs = detailSlugsFromLocs(locs, origin, '/caser');
+  if (caseSlugs.length < 17) {
+    fail(`verify-dist: expected at least 17 /caser/* sitemap entries, found ${caseSlugs.length}.`);
+  }
+  const caseH1ManifestPath = join(DIST, 'case-study-h1.no.json');
+  if (!existsSync(caseH1ManifestPath)) {
+    fail('verify-dist: dist/case-study-h1.no.json missing — case H1 manifest was not written.');
+  }
+  const caseH1Manifest = JSON.parse(readFileSync(caseH1ManifestPath, 'utf8'));
+  const caseTitleMismatches = caseSlugs.filter((slug) => {
+    const file = join(DIST, 'caser', slug, 'index.html');
+    const html = readFileSync(file, 'utf8');
+    const title = firstH1(html);
+    const expected = caseH1Manifest[slug];
+    return !expected || title !== expected;
+  });
+  if (caseTitleMismatches.length) {
+    console.error(`verify-dist: ${caseTitleMismatches.length} /caser/* page(s) have an H1 that does not match the localized title:`);
+    for (const slug of caseTitleMismatches) console.error(`  /caser/${slug}`);
+    process.exit(1);
+  }
+
   const hollowCases = caseSlugs.filter((slug) => {
     const file = join(DIST, 'caser', slug, 'index.html');
     if (!existsSync(file)) return true;

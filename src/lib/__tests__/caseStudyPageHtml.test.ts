@@ -5,7 +5,7 @@ import { caseStudies } from "@/data/case-studies";
 import { localizeCaseStudy } from "@/data/case-studies/localized";
 import no from "@/i18n/locales/no.json";
 import { caseStudyPageHtml, caseStudyPageHtmlFromStudy } from "@/lib/caseStudyPageHtml";
-import { escapeHtml } from "@/lib/richInlineHtml";
+import { escapeHtml } from "@/lib/escapeHtml";
 
 describe("caseStudyPageHtml", () => {
   it("reads section labels from no.json so static HTML cannot drift from the SPA", () => {
@@ -15,6 +15,14 @@ describe("caseStudyPageHtml", () => {
     expect(html).toContain(`id="faq-heading">${no.caseStudy.sections.faq.heading}</h2>`);
     expect(html).toContain(no.caseStudy.backToAll);
     expect(html).toContain(no.caseStudy.cta.contact);
+  });
+
+  it("renders kort svar without a separate accent paragraph", () => {
+    const html = caseStudyPageHtml("altinn");
+    const heading = no.caseStudy.sections.kortSvar.heading;
+
+    expect(html).toContain(`<h2>${escapeHtml(heading)}</h2>`);
+    expect(html).not.toContain(`<p>${escapeHtml(heading)}</p>`);
   });
 
   it("renders altinn with one H1 and the localized Norwegian title", () => {
