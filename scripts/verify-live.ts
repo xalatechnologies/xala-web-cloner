@@ -17,7 +17,7 @@
  *     canonical, and Article JSON-LD
  *   - sitemap.xml and rss.xml parse and list the same posts
  *
- * Usage: node scripts/verify-live.mjs [origin]
+ * Usage: tsx scripts/verify-live.ts [origin]
  */
 import dns from "node:dns/promises";
 import fs from "node:fs";
@@ -25,9 +25,17 @@ import http from "node:http";
 import https from "node:https";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  expectedVisibleHashtags,
+  keywordToHashtag,
+  topicKeywords,
+} from "../src/lib/blog/topics";
+import { parseHashtags, parseKeywords } from "./verify-parse.mjs";
 
 /** Same brand suffix prerender writes via postMeta() after XWEB-184. */
 export const BRAND = "Xala";
+
+export { keywordToHashtag };
 
 const ORIGIN = (process.argv[2] || process.env.VERIFY_ORIGIN || "https://xala.no").replace(/\/$/, "");
 /**
@@ -48,11 +56,27 @@ const DEPLOY_IP = process.env.VERIFY_DEPLOY_IP || "72.61.23.56";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CONTENT_DIR = path.join(ROOT, "src", "content", "blog");
 
-const failures = [];
-const check = (ok, message) => {
+const failures: string[] = [];
+const check = (ok: boolean, message: string) => {
   console.log(`${ok ? "  ok  " : "  FAIL"}  ${message}`);
   if (!ok) failures.push(message);
 };
+
+export interface ExpectedPost {
+  slug: string;
+  title?: string;
+  seoTitle?: string;
+  tag?: string;
+  keywords?: string[];
+  hashtags?: string[];
+  topicHashtags?: boolean;
+}
+
+interface FetchResult {
+  status: number;
+  body: string;
+  error?: Error;
+}
 
 /**
  * GET a URL with the connection pinned to DEPLOY_IP, following redirects.
@@ -62,7 +86,7 @@ const check = (ok, message) => {
  * still carry the real hostname, so nginx picks the right vhost and TLS
  * validates against the real certificate; only the TCP destination is pinned.
  */
-function get(url, { redirectsLeft = 5 } = {}) {
+function get(url: string, { redirectsLeft = 5 }: { redirectsLeft?: number } = {}): Promise<FetchResult> {
   return new Promise((resolve) => {
     const u = new URL(url);
     const mod = u.protocol === "https:" ? https : http;
@@ -85,7 +109,7 @@ function get(url, { redirectsLeft = 5 } = {}) {
       },
       (res) => {
         const location = res.headers.location;
-        if (location && res.statusCode >= 300 && res.statusCode < 400 && redirectsLeft > 0) {
+        if (location && res.statusCode && res.statusCode >= 300 && res.statusCode < 400 && redirectsLeft > 0) {
           res.resume();
           resolve(get(new URL(location, url).href, { redirectsLeft: redirectsLeft - 1 }));
           return;
@@ -93,7 +117,7 @@ function get(url, { redirectsLeft = 5 } = {}) {
         let body = "";
         res.setEncoding("utf-8");
         res.on("data", (c) => (body += c));
-        res.on("end", () => resolve({ status: res.statusCode, body }));
+        res.on("end", () => resolve({ status: res.statusCode ?? 0, body }));
       },
     );
     req.on("error", (error) => resolve({ status: 0, body: "", error }));
@@ -106,8 +130,8 @@ function get(url, { redirectsLeft = 5 } = {}) {
 }
 
 /** Retry: an atomic symlink flip is instant, but nginx and TLS need a moment. */
-async function fetchText(url, { attempts = 4 } = {}) {
-  let last = { status: 0, body: "" };
+async function fetchText(url: string, { attempts = 4 }: { attempts?: number } = {}): Promise<FetchResult> {
+  let last: FetchResult = { status: 0, body: "" };
   for (let i = 0; i < attempts; i += 1) {
     last = await get(url);
     if (last.status) return last;
@@ -123,9 +147,9 @@ async function fetchText(url, { attempts = 4 } = {}) {
  * build failure — but silently ignoring it would hide a real cutover that never
  * happened. Say it out loud instead.
  */
-async function reportDns(hostname) {
-  const addrs = await dns.resolve4(hostname).catch(() => []);
-  const v6 = await dns.resolve6(hostname).catch(() => []);
+async function reportDns(hostname: string) {
+  const addrs = await dns.resolve4(hostname).catch(() => [] as string[]);
+  const v6 = await dns.resolve6(hostname).catch(() => [] as string[]);
   const onTarget = addrs.includes(DEPLOY_IP);
   console.log(`  ${onTarget ? "ok  " : "note"}  public DNS: ${hostname} A → ${addrs.join(", ") || "(none)"}${
     v6.length ? ` · AAAA → ${v6.join(", ")}` : ""
@@ -140,7 +164,7 @@ async function reportDns(hostname) {
 }
 
 /** The posts we expect to be live, read from source — not from the site. */
-export function expectedPosts() {
+export function expectedPosts(): ExpectedPost[] {
   if (!fs.existsSync(CONTENT_DIR)) return [];
   return fs
     .readdirSync(CONTENT_DIR)
@@ -149,68 +173,37 @@ export function expectedPosts() {
       const raw = fs.readFileSync(path.join(CONTENT_DIR, file), "utf-8");
       const block = /^---\r?\n([\s\S]*?)\r?\n---/.exec(raw);
       if (!block) return null;
-      const field = (name) => {
+      const field = (name: string) => {
         const m = new RegExp(`^${name}:\\s*(.*)$`, "m").exec(block[1]);
         return m ? m[1].trim().replace(/^["']|["']$/g, "") : undefined;
       };
       if (field("draft") === "true") return null;
       const topicHashtagsField = field("topicHashtags");
-      return {
+      const hashtags = parseHashtags(block[1]);
+      const post: ExpectedPost = {
         slug: field("slug") || file.replace(/\.mdx?$/, "").replace(/^\d{4}-\d{2}-\d{2}-/, ""),
         title: field("title"),
         seoTitle: field("seoTitle") || undefined,
         tag: field("tag") || undefined,
         keywords: parseKeywords(block[1]),
+        hashtags: hashtags.length ? hashtags : undefined,
         topicHashtags: topicHashtagsField === "false" ? false : undefined,
       };
+      return post;
     })
-    .filter(Boolean);
+    .filter((post): post is ExpectedPost => post !== null);
 }
 
-/** Inline `keywords: ["a", "b"]` or a block list. Same shapes the content agent writes. */
-export function parseKeywords(block) {
-  const inline = /^keywords:\s*(\[[\s\S]*?\])\s*$/m.exec(block);
-  if (inline) {
-    return [...inline[1].matchAll(/"([^"]+)"|'([^']+)'/g)].map((m) => m[1] || m[2]).filter(Boolean);
-  }
-  const start = /^keywords:[ \t]*$/m.exec(block);
-  if (!start) return [];
-  const items = [];
-  for (const line of block.slice(start.index + start[0].length).split(/\r?\n/)) {
-    if (!line.trim()) continue;
-    const item = /^\s+-\s+(.+)$/.exec(line);
-    if (!item) break;
-    items.push(item[1].trim().replace(/^["']|["']$/g, ""));
-  }
-  return items;
-}
+export { parseHashtags, parseKeywords };
 
 const AUDIENCE = new Set(["it-leder", "arkitekt", "utvikler"]);
 
 /** Same 3–5 topic pick as `topicKeywords()` in src/lib/blog/topics.ts. */
-export function topicKeywordsFromList(keywords, audienceTag) {
-  const audience = audienceTag?.trim().toLowerCase();
-  const seen = new Set();
-  const topics = [];
-  for (const raw of keywords ?? []) {
-    const keyword = raw.trim();
-    if (!keyword) continue;
-    const key = keyword.toLowerCase();
-    if (AUDIENCE.has(key) || (audience && key === audience)) continue;
-    if (seen.has(key)) continue;
-    seen.add(key);
-    topics.push(keyword);
-    if (topics.length === 5) break;
-  }
-  return topics;
+export function topicKeywordsFromList(keywords?: string[], audienceTag?: string): string[] {
+  return topicKeywords({ keywords, tag: audienceTag });
 }
 
-export function keywordToHashtag(keyword) {
-  const body = keyword.trim().replace(/\s+/g, "").replace(/[^\p{L}\p{N}-]/gu, "");
-  return body ? `#${body}` : "";
-}
-
-const decode = (html) =>
+const decode = (html: string) =>
   html
     .replace(/&amp;/g, "&")
     .replace(/&lt;/g, "<")
@@ -219,7 +212,7 @@ const decode = (html) =>
     .replace(/&#39;|&apos;/g, "'");
 
 /** First HTML `<title>`, decoded — the string a crawler reads before JS. */
-export function firstHtmlTitle(html) {
+export function firstHtmlTitle(html: string): string {
   return decode(/<title>([\s\S]*?)<\/title>/i.exec(html)?.[1] ?? "").trim();
 }
 
@@ -227,13 +220,13 @@ export function firstHtmlTitle(html) {
  * The document title prerender writes: `postMeta()` = `(seoTitle ?? title) | Xala`.
  * The long frontmatter `title` is the listing card / H1, not this string.
  */
-export function documentTitleFromPost(post) {
+export function documentTitleFromPost(post: Pick<ExpectedPost, "title" | "seoTitle">): string {
   const topic = post.seoTitle ?? post.title;
   return topic ? `${topic} | ${BRAND}` : "";
 }
 
 /** True only when the first `<title>` is the post's own postMeta(), not the shell. */
-export function isOwnDocumentTitle(html, post) {
+export function isOwnDocumentTitle(html: string, post: Pick<ExpectedPost, "title" | "seoTitle">): boolean {
   const expected = documentTitleFromPost(post);
   return Boolean(expected) && firstHtmlTitle(html) === expected;
 }
@@ -250,13 +243,13 @@ export const HOMEPAGE_KEYWORDS =
   "systemutvikling, skreddersydd programvare, AI-utvikling, skyløsninger, systemintegrasjon, cybersikkerhet, Asker, Norge, offentlig sektor";
 export const BLOGPOST_CANNED_KEYWORDS = "fagartikkel, systemutvikling, arkitektur, AI, digitalisering";
 
-export function firstHtmlKeywords(html) {
+export function firstHtmlKeywords(html: string): string {
   return decode(
     /<meta\s+[^>]*name=["']keywords["'][^>]*content=["']([^"']*)["']/i.exec(html)?.[1] ?? "",
   ).trim();
 }
 
-export function firstHtmlArticleTags(html) {
+export function firstHtmlArticleTags(html: string): string[] {
   return [
     ...html.matchAll(/<meta\s+[^>]*property=["']article:tag["'][^>]*content=["']([^"']*)["']/gi),
   ].map((m) => decode(m[1]));
@@ -266,8 +259,8 @@ export function firstHtmlArticleTags(html) {
  * Hashtags in `#root`, including numeric ones like #360, but excluding hex
  * color tokens like #0F1117 (6-digit) or #RRGGBBAA (8-digit).
  */
-export function firstHtmlHashtags(html) {
-  const all = rootInner(html).match(/#[\p{L}\p{N}][\p{L}\p{N}-]*/gu) ?? [];
+export function firstHtmlHashtags(html: string): string[] {
+  const all: string[] = rootInner(html).match(/#[\p{L}\p{N}][\p{L}\p{N}-]*/gu) ?? [];
   return all.filter((tag) => {
     const body = tag.slice(1);
     if (/^[0-9A-Fa-f]{6}$/.test(body)) return false;
@@ -276,7 +269,7 @@ export function firstHtmlHashtags(html) {
   });
 }
 
-export function hasShareRow(html) {
+export function hasShareRow(html: string): boolean {
   return rootInner(html).includes("Del artikkelen");
 }
 
@@ -284,8 +277,8 @@ export function hasShareRow(html) {
  * True only when first HTML has this post's topics — not an empty title-style
  * match, not the homepage keyword string, not audience-only (IT-leder).
  */
-export function isPostTopicHead(html, post) {
-  const expected = topicKeywordsFromList(post.keywords, post.tag);
+export function isPostTopicHead(html: string, post: ExpectedPost): boolean {
+  const expected = topicKeywords(post);
   if (expected.length < 3) return false;
   const keywords = firstHtmlKeywords(html);
   if (!keywords || keywords === HOMEPAGE_KEYWORDS || keywords === BLOGPOST_CANNED_KEYWORDS) {
@@ -298,14 +291,21 @@ export function isPostTopicHead(html, post) {
   if (tags.join("\0") !== expected.join("\0")) return false;
   for (const topic of expected) {
     if (!keywords.includes(topic)) return false;
-    if (post.topicHashtags !== false && !hashtags.includes(keywordToHashtag(topic))) return false;
   }
-  if (post.topicHashtags === false && hashtags.length > 0) return false;
+  const expectedHashtags = expectedVisibleHashtags(post);
+  if (post.topicHashtags === false) {
+    if (hashtags.length > 0) return false;
+  } else if (expectedHashtags.length > 0) {
+    if (hashtags.length !== expectedHashtags.length) return false;
+    for (const hashtag of expectedHashtags) {
+      if (!hashtags.includes(hashtag)) return false;
+    }
+  }
   return hasShareRow(html);
 }
 
 /** Inner HTML of `#root`, including nested divs — first `</div>` is not enough. */
-export function rootInner(html) {
+export function rootInner(html: string): string {
   const start = html.search(/<div id="root">/i);
   if (start < 0) return "";
   const open = html.indexOf(">", start) + 1;

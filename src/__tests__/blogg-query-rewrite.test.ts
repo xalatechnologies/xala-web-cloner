@@ -33,7 +33,7 @@ describe('host mapping for /blogg?q=', () => {
   it('fails the deploy unless the rewrite is in the serving block', () => {
     const deploy = readFileSync(resolve(ROOT, 'deploy.sh'), 'utf8');
     const installer = readFileSync(resolve(ROOT, 'deploy/install-blogg-query.sh'), 'utf8');
-    const live = readFileSync(resolve(ROOT, 'scripts/verify-live.mjs'), 'utf8');
+    const live = readFileSync(resolve(ROOT, 'scripts/verify-live.ts'), 'utf8');
 
     expect(deploy).not.toMatch(/\|\|\s*log /);
     expect(deploy).not.toMatch(/scp[\s\S]*\|\|\s*true/);

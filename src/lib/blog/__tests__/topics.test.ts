@@ -3,7 +3,13 @@ import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { isPostFile, parsePost } from '../posts';
 import { postMeta } from '../seo';
-import { keywordToHashtag, topicHashtagLine, topicHashtags, topicKeywords } from '../topics';
+import {
+  expectedVisibleHashtags,
+  keywordToHashtag,
+  topicHashtagLine,
+  topicHashtags,
+  topicKeywords,
+} from '../topics';
 import type { BlogPost } from '../types';
 import { getPageSEO } from '@/components/seo/seoContent';
 
@@ -209,6 +215,12 @@ describe('topic keywords and hashtags', () => {
       'offentligsektor',
       'digitalisering',
     ]);
+    const visible = expectedVisibleHashtags(SAKSL!);
+    const derived = topicHashtags(SAKSL!);
+    expect(SAKSL!.hashtags!.length).toBe(4);
+    expect(visible).toEqual(SAKSL!.hashtags!.map(keywordToHashtag));
+    expect(visible).not.toEqual(derived);
+    expect(topicHashtagLine(SAKSL!)).toBe(visible.join(' '));
     expect(topicHashtagLine(SAKSL!)).toBe(
       '#saksbehandlingsløsning #saksbehandling #offentligsektor #digitalisering',
     );
@@ -249,6 +261,7 @@ describe('topic keywords and hashtags', () => {
     (_slug, post) => {
       const topics = topicKeywords(post);
       const hashtags = topicHashtags(post);
+      const visible = expectedVisibleHashtags(post);
       const homepage = getPageSEO('home', 'no').keywords;
       const canned = getPageSEO('blogPost', 'no').keywords;
 
@@ -256,6 +269,20 @@ describe('topic keywords and hashtags', () => {
       expect(topics.length).toBeGreaterThanOrEqual(3);
       expect(topics.length).toBeLessThanOrEqual(5);
       expect(hashtags).toHaveLength(topics.length);
+      if (post.topicHashtags !== false) {
+        expect(visible.length).toBeGreaterThanOrEqual(3);
+        expect(visible.length).toBeLessThanOrEqual(5);
+        if (post.hashtags?.length) {
+          expect(visible.length).toBe(post.hashtags.length);
+          expect(visible).toEqual(post.hashtags.map(keywordToHashtag));
+        } else {
+          expect(visible).toEqual(hashtags);
+        }
+        expect(topicHashtagLine(post)).toBe(visible.join(' '));
+      } else {
+        expect(visible).toEqual([]);
+        expect(topicHashtagLine(post)).toBe('');
+      }
       expect(topics.map((topic) => topic.toLowerCase())).not.toContain((post.tag ?? '').toLowerCase());
       expect(postMeta(post).articleTags).toEqual(topics);
       expect(postMeta(post).keywords).not.toBe(homepage);
