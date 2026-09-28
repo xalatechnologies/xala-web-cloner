@@ -45,14 +45,17 @@ export function topicHashtags(post: Pick<BlogPost, "keywords" | "tag">): string[
 
 /** Last line of the post: three to five hashtags, space-separated. */
 export function topicHashtagLine(
-  post: Pick<BlogPost, "keywords" | "tag" | "topicHashtags">,
+  post: Pick<BlogPost, "keywords" | "tag" | "topicHashtags" | "hashtags">,
 ): string {
   if (post.topicHashtags === false) return "";
+  if (post.hashtags?.length) {
+    return post.hashtags.map(keywordToHashtag).filter(Boolean).join(" ");
+  }
   return topicHashtags(post).join(" ");
 }
 
 export function topicHashtagLineHtml(
-  post: Pick<BlogPost, "keywords" | "tag" | "topicHashtags">,
+  post: Pick<BlogPost, "keywords" | "tag" | "topicHashtags" | "hashtags">,
 ): string {
   const line = topicHashtagLine(post);
   if (!line) return "";

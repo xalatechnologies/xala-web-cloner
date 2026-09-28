@@ -198,6 +198,18 @@ describe('topic keywords and hashtags', () => {
     expect(keywordToHashtag('WCAG 2.2 AA')).toBe('#WCAG22AA');
   });
 
+  it('uses frontmatter hashtags override instead of derived long phrase tags', () => {
+    const SAKSL = posts.find(
+      (post) => post.slug === 'saksbehandlingslosning-sporsmal-til-leverandoren',
+    );
+    expect(SAKSL, 'saksbehandlingslosning post missing').toBeDefined();
+    expect(SAKSL!.hashtags).toEqual(['saksbehandlingsløsning']);
+    expect(topicHashtagLine(SAKSL!)).toBe('#saksbehandlingsløsning');
+    expect(topicHashtagLine(SAKSL!)).not.toContain('#sammenligneleverandøreravsaksbehandlingsløsninger');
+    expect(topicKeywords(SAKSL!).length).toBeGreaterThanOrEqual(3);
+    expect(postMeta(SAKSL!).articleTags).toEqual(topicKeywords(SAKSL!));
+  });
+
   it('gives the KI vaner post one styled last line of five tags, no leftover dump', () => {
     const KI = posts.find((post) => post.slug === 'ki-pa-gamle-vaner-holder-ikke');
     expect(KI, 'ki-pa-gamle-vaner post missing').toBeDefined();
