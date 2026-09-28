@@ -20,6 +20,8 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseKeywords } from './verify-parse.mjs';
 import servicePages from '../src/data/service-pages.json' with { type: 'json' };
+import productsData from '../src/data/products.json' with { type: 'json' };
+import no from '../src/i18n/locales/no.json' with { type: 'json' };
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = resolve(process.cwd(), 'dist');
@@ -148,6 +150,30 @@ export function servicePageSlugs() {
   return Object.keys(servicePages);
 }
 
+/** Routable /caser/:slug paths from products.json (Norwegian catalog). */
+export function productSlugs() {
+  return productsData.no.filter((product) => product.slug).map((product) => product.slug);
+}
+
+/** Detail slugs under a top-level path, e.g. /caser/altinn → altinn. */
+export function detailSlugsFromLocs(locs, origin, prefix) {
+  const base = `${prefix}/`;
+  return locs
+    .map((loc) => loc.replace(origin, '').replace(/\/$/, ''))
+    .filter((path) => path.startsWith(base) && path !== prefix.replace(/\/$/, ''))
+    .map((path) => path.slice(base.length))
+    .filter(Boolean);
+}
+
+/** First paragraph after the page H1 inside #root — the hub lede from no.json. */
+export function tjenesterHubLede(html) {
+  const root = rootInnerHtml(html);
+  if (!root) return null;
+  const match = root.match(/<h1[^>]*>[\s\S]*?<\/h1>\s*<p>([\s\S]*?)<\/p>/i);
+  if (!match) return null;
+  return match[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
 function fail(message) {
   console.error(message);
   process.exit(1);
@@ -239,9 +265,52 @@ function main() {
     process.exit(1);
   }
 
+  const hubFile = join(DIST, 'tjenester', 'index.html');
+  if (!existsSync(hubFile)) {
+    fail('verify-dist: dist/tjenester/index.html missing — the services hub was not prerendered.');
+  }
+  const hubHtml = readFileSync(hubFile, 'utf8');
+  if (hasEmptyRoot(hubHtml) || !firstH1(hubHtml)) {
+    fail('verify-dist: /tjenester hub has an empty #root or no <h1>.');
+  }
+  const hubLede = tjenesterHubLede(hubHtml);
+  const expectedLede = no.servicesPage.description;
+  if (hubLede !== expectedLede) {
+    fail(
+      `verify-dist: /tjenester hub lede does not match no.json servicesPage.description.\n  expected: ${expectedLede}\n  got: ${hubLede}`,
+    );
+  }
+
+  const caseSlugs = detailSlugsFromLocs(locs, origin, '/caser');
+  const hollowCases = caseSlugs.filter((slug) => {
+    const file = join(DIST, 'caser', slug, 'index.html');
+    if (!existsSync(file)) return true;
+    const html = readFileSync(file, 'utf8');
+    return hasEmptyRoot(html) || !firstH1(html);
+  });
+  if (hollowCases.length) {
+    console.error(`verify-dist: ${hollowCases.length} /caser/* page(s) have an empty #root or no <h1>:`);
+    for (const slug of hollowCases) console.error(`  /caser/${slug}`);
+    process.exit(1);
+  }
+
+  const productSlugList = productSlugs();
+  const hollowProducts = productSlugList.filter((slug) => {
+    const file = join(DIST, 'produkter', slug, 'index.html');
+    if (!existsSync(file)) return true;
+    const html = readFileSync(file, 'utf8');
+    return hasEmptyRoot(html) || !firstH1(html);
+  });
+  if (hollowProducts.length) {
+    console.error(`verify-dist: ${hollowProducts.length} /produkter/* page(s) have an empty #root or no <h1>:`);
+    for (const slug of hollowProducts) console.error(`  /produkter/${slug}`);
+    process.exit(1);
+  }
+
   console.log(`verify-dist: ${locs.length} sitemap URLs, all served by a file in dist/`);
   console.log(`verify-dist: ${aliases.length} canonical alias(es), all served by a file in dist/`);
   console.log(`verify-dist: ${serviceSlugs.length} /tjenester/* page(s) with real first HTML`);
+  console.log(`verify-dist: /tjenester hub lede matches no.json (${caseSlugs.length} cases, ${productSlugList.length} products)`);
   console.log('verify-dist: /blogg?q=gebyr is a filtered listing, /blogg is not');
 }
 

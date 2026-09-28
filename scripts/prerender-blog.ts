@@ -76,6 +76,9 @@ import servicePages from "../src/data/service-pages.json";
 import faqData from "../src/data/faq.json";
 import { generateFAQSchema } from "../src/components/seo/sectionSchemas";
 import { servicePageHtml } from "../src/lib/servicePageHtml";
+import { tjenesterHubHtml } from "../src/lib/tjenesterHubHtml";
+import { caseStudyPageHtml } from "../src/lib/caseStudyPageHtml";
+import { productPageHtml } from "../src/lib/productPageHtml";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CONTENT_DIR = path.join(ROOT, "src", "content", "blog");
@@ -481,9 +484,11 @@ function main(): void {
         : [];
     const heading = staticRouteVisibleHeading(route.path, copy.title);
     const inner =
-      route.path === "/faq"
-        ? faqRouteHtml(heading, copy.description, faqData.no, MAIN_NAV)
-        : staticRouteHtml(heading, copy.description, MAIN_NAV);
+      route.path === "/tjenester"
+        ? tjenesterHubHtml()
+        : route.path === "/faq"
+          ? faqRouteHtml(heading, copy.description, faqData.no, MAIN_NAV)
+          : staticRouteHtml(heading, copy.description, MAIN_NAV);
     write(
       path.join(DIST, route.path.replace(/^\//, ""), "index.html"),
       renderBody(
@@ -524,39 +529,42 @@ function main(): void {
     const seo = localizedSeo(study, "no");
     write(
       path.join(DIST, "caser", study.slug, "index.html"),
-      renderHead(shell, {
-        title: seo.title,
-        description: seo.description,
-        canonical: url,
-        ogType: "article",
-        jsonLd: {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "@id": `${url}#article`,
-              headline: localized.title,
-              description: seo.description,
-              inLanguage: "nb-NO",
-              publisher: { "@id": ORG_ID },
-              mainEntityOfPage: { "@type": "WebPage", "@id": url },
-              ...(localized.client ? { about: { "@type": "Organization", name: localized.client } } : {}),
-            },
-            {
-              "@type": "BreadcrumbList",
-              "@id": `${url}#breadcrumb`,
-              itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Forside", item: SITE_ORIGIN },
-                { "@type": "ListItem", position: 2, name: "Kundecaser", item: `${SITE_ORIGIN}/caser` },
-                { "@type": "ListItem", position: 3, name: localized.title, item: url },
-              ],
-            },
-          ],
-        },
-        extraJsonLd: [caseStudyFaqJsonLd(url, localized)].filter(
-          (block): block is Record<string, unknown> => Boolean(block),
-        ),
-      }),
+      renderBody(
+        renderHead(shell, {
+          title: seo.title,
+          description: seo.description,
+          canonical: url,
+          ogType: "article",
+          jsonLd: {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Article",
+                "@id": `${url}#article`,
+                headline: localized.title,
+                description: seo.description,
+                inLanguage: "nb-NO",
+                publisher: { "@id": ORG_ID },
+                mainEntityOfPage: { "@type": "WebPage", "@id": url },
+                ...(localized.client ? { about: { "@type": "Organization", name: localized.client } } : {}),
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": `${url}#breadcrumb`,
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Forside", item: SITE_ORIGIN },
+                  { "@type": "ListItem", position: 2, name: "Kundecaser", item: `${SITE_ORIGIN}/caser` },
+                  { "@type": "ListItem", position: 3, name: localized.title, item: url },
+                ],
+              },
+            ],
+          },
+          extraJsonLd: [caseStudyFaqJsonLd(url, localized)].filter(
+            (block): block is Record<string, unknown> => Boolean(block),
+          ),
+        }),
+        caseStudyPageHtml(study.slug),
+      ),
     );
   }
 
@@ -615,38 +623,41 @@ function main(): void {
     const faq = details?.no?.faq ?? [];
     write(
       path.join(DIST, "produkter", product.slug, "index.html"),
-      renderHead(shell, {
-        title: `${product.title} | ${ORGANIZATION}`,
-        description: product.description,
-        canonical: url,
-        ogType: "website",
-        jsonLd: {
-          "@context": "https://schema.org",
-          "@type": "SoftwareApplication",
-          "@id": `${url}#product`,
-          name: product.title,
+      renderBody(
+        renderHead(shell, {
+          title: `${product.title} | ${ORGANIZATION}`,
           description: product.description,
-          url,
-          applicationCategory: "BusinessApplication",
-          operatingSystem: "Web",
-          publisher: { "@id": ORG_ID },
-          ...(product.features?.length ? { featureList: product.features } : {}),
-        },
-        extraJsonLd: faq.length
-          ? [
-              {
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                "@id": `${url}#faq`,
-                mainEntity: faq.map((item) => ({
-                  "@type": "Question",
-                  name: item.question,
-                  acceptedAnswer: { "@type": "Answer", text: item.answer },
-                })),
-              },
-            ]
-          : undefined,
-      }),
+          canonical: url,
+          ogType: "website",
+          jsonLd: {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "@id": `${url}#product`,
+            name: product.title,
+            description: product.description,
+            url,
+            applicationCategory: "BusinessApplication",
+            operatingSystem: "Web",
+            publisher: { "@id": ORG_ID },
+            ...(product.features?.length ? { featureList: product.features } : {}),
+          },
+          extraJsonLd: faq.length
+            ? [
+                {
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  "@id": `${url}#faq`,
+                  mainEntity: faq.map((item) => ({
+                    "@type": "Question",
+                    name: item.question,
+                    acceptedAnswer: { "@type": "Answer", text: item.answer },
+                  })),
+                },
+              ]
+            : undefined,
+        }),
+        productPageHtml(product.slug as string, { posts }),
+      ),
     );
   }
 
