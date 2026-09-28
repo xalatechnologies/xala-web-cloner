@@ -67,9 +67,9 @@ export interface ExpectedPost {
   title?: string;
   seoTitle?: string;
   tag?: string;
-  keywords: string[];
+  keywords?: string[];
   hashtags?: string[];
-  topicHashtags?: false;
+  topicHashtags?: boolean;
 }
 
 interface FetchResult {
@@ -180,7 +180,7 @@ export function expectedPosts(): ExpectedPost[] {
       if (field("draft") === "true") return null;
       const topicHashtagsField = field("topicHashtags");
       const hashtags = parseHashtags(block[1]);
-      return {
+      const post: ExpectedPost = {
         slug: field("slug") || file.replace(/\.mdx?$/, "").replace(/^\d{4}-\d{2}-\d{2}-/, ""),
         title: field("title"),
         seoTitle: field("seoTitle") || undefined,
@@ -189,6 +189,7 @@ export function expectedPosts(): ExpectedPost[] {
         hashtags: hashtags.length ? hashtags : undefined,
         topicHashtags: topicHashtagsField === "false" ? false : undefined,
       };
+      return post;
     })
     .filter((post): post is ExpectedPost => post !== null);
 }
@@ -259,7 +260,7 @@ export function firstHtmlArticleTags(html: string): string[] {
  * color tokens like #0F1117 (6-digit) or #RRGGBBAA (8-digit).
  */
 export function firstHtmlHashtags(html: string): string[] {
-  const all = rootInner(html).match(/#[\p{L}\p{N}][\p{L}\p{N}-]*/gu) ?? [];
+  const all: string[] = rootInner(html).match(/#[\p{L}\p{N}][\p{L}\p{N}-]*/gu) ?? [];
   return all.filter((tag) => {
     const body = tag.slice(1);
     if (/^[0-9A-Fa-f]{6}$/.test(body)) return false;
@@ -292,12 +293,14 @@ export function isPostTopicHead(html: string, post: ExpectedPost): boolean {
     if (!keywords.includes(topic)) return false;
   }
   const expectedHashtags = expectedVisibleHashtags(post);
-  if (post.topicHashtags !== false) {
+  if (post.topicHashtags === false) {
+    if (hashtags.length > 0) return false;
+  } else if (expectedHashtags.length > 0) {
+    if (hashtags.length !== expectedHashtags.length) return false;
     for (const hashtag of expectedHashtags) {
       if (!hashtags.includes(hashtag)) return false;
     }
   }
-  if (post.topicHashtags === false && hashtags.length > 0) return false;
   return hasShareRow(html);
 }
 

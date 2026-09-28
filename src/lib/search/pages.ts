@@ -82,7 +82,8 @@ const WORD = /[\p{L}\p{N}]{2,}/gu;
 /** True when `needle` is its own word in `haystack`, not only a compound part. */
 function hasWholeWord(haystack: string, needle: string): boolean {
   if (/\s/.test(needle)) return haystack.includes(needle);
-  return (haystack.match(WORD) ?? []).includes(needle);
+  const words: string[] = haystack.match(WORD) ?? [];
+  return words.includes(needle);
 }
 
 /**

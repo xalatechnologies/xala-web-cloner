@@ -58,8 +58,7 @@ export function expectedVisibleHashtags(
 export function topicHashtagLine(
   post: Pick<BlogPost, "keywords" | "tag" | "topicHashtags" | "hashtags">,
 ): string {
-  const line = expectedVisibleHashtags(post).join(" ");
-  return line;
+  return expectedVisibleHashtags(post).join(" ");
 }
 
 export function topicHashtagLineHtml(
