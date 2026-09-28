@@ -1,3 +1,11 @@
+verify-live: count only visible hashtags (ignore TOC anchors) — follow-up #195
+
+- Added data-topic-hashtags marker on prerender and SPA hashtag line
+- visibleHtmlHashtags scopes extraction to that element; fallback strips attribute values
+- isPostTopicHead uses hasHashtagsOverride for exact-count on override posts only
+- Flipped override+TOC test to PASS; added missing-tag and extra-hashtag FAIL cases
+- pnpm lint, typecheck, test (1042), build, verify-live (56 posts on xala.no) pass
+
 Blog: CTR enrich hva-er-et-saksbehandlingssystem (second pass)
 
 - Replaced post copy, meta, six FAQ entries in frontmatter, and diagram cover with ?v=2 cache bust

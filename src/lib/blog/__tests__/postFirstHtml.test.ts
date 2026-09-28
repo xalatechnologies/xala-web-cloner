@@ -42,7 +42,7 @@ function hashtagLinesInFirstHtml(bodyMarkdown: string, styledHtml: string): stri
   const leftover = bodyMarkdown.match(
     /(?:^|\n)(#[\p{L}][\p{L}\p{N}-]*(?:\s+#[\p{L}][\p{L}\p{N}-]*)+)\s*$/u,
   );
-  const styled = [...styledHtml.matchAll(/<p>(#[^<]+)<\/p>/g)].map((match) => match[1]);
+  const styled = [...styledHtml.matchAll(/<p[^>]*>(#[^<]+)<\/p>/g)].map((match) => match[1]);
   return [...(leftover ? [leftover[1]] : []), ...styled];
 }
 

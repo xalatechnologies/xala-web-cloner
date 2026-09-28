@@ -255,18 +255,46 @@ export function firstHtmlArticleTags(html: string): string[] {
   ].map((m) => decode(m[1]));
 }
 
+/** Drop hex color tokens (#0F1117, #RRGGBBAA) that look like hashtags. */
+function isTopicHashtagToken(tag: string): boolean {
+  const body = tag.slice(1);
+  if (/^[0-9A-Fa-f]{6}$/.test(body)) return false;
+  if (/^[0-9A-Fa-f]{8}$/.test(body)) return false;
+  return true;
+}
+
+function extractHashtagsFromText(text: string): string[] {
+  const all: string[] = text.match(/#[\p{L}\p{N}][\p{L}\p{N}-]*/gu) ?? [];
+  return all.filter(isTopicHashtagToken);
+}
+
 /**
  * Hashtags in `#root`, including numeric ones like #360, but excluding hex
  * color tokens like #0F1117 (6-digit) or #RRGGBBAA (8-digit).
  */
 export function firstHtmlHashtags(html: string): string[] {
-  const all: string[] = rootInner(html).match(/#[\p{L}\p{N}][\p{L}\p{N}-]*/gu) ?? [];
-  return all.filter((tag) => {
-    const body = tag.slice(1);
-    if (/^[0-9A-Fa-f]{6}$/.test(body)) return false;
-    if (/^[0-9A-Fa-f]{8}$/.test(body)) return false;
-    return true;
-  });
+  return extractHashtagsFromText(rootInner(html));
+}
+
+/** Remove quoted attribute values so `href="#innhold"` does not count as a hashtag. */
+function stripAttributeValues(html: string): string {
+  return html.replace(/\s[a-zA-Z_:][\w:.-]*=(?:"[^"]*"|'[^']*')/g, " ");
+}
+
+/**
+ * Hashtags from the rendered topic-hashtag line only (`data-topic-hashtags`),
+ * so TOC `href="#…"` and other incidental `#` tokens in `#root` are ignored.
+ * When the marker is absent (older prerender), attribute values are stripped
+ * before scanning so anchor targets still do not inflate the count.
+ */
+export function visibleHtmlHashtags(html: string): string[] {
+  const root = rootInner(html);
+  const match = /<[^>]*\bdata-topic-hashtags\b[^>]*>([\s\S]*?)<\/[^>]+>/i.exec(root);
+  if (match) {
+    const text = decode(match[1].replace(/<[^>]+>/g, ""));
+    return extractHashtagsFromText(text);
+  }
+  return extractHashtagsFromText(stripAttributeValues(decode(root)));
 }
 
 export function hasShareRow(html: string): boolean {
@@ -285,7 +313,6 @@ export function isPostTopicHead(html: string, post: ExpectedPost): boolean {
     return false;
   }
   const tags = firstHtmlArticleTags(html);
-  const hashtags = firstHtmlHashtags(html);
   if (tags.length < 3 || tags.length > 5) return false;
   if (tags.some((tag) => AUDIENCE.has(tag.toLowerCase()))) return false;
   if (tags.join("\0") !== expected.join("\0")) return false;
@@ -293,13 +320,15 @@ export function isPostTopicHead(html: string, post: ExpectedPost): boolean {
     if (!keywords.includes(topic)) return false;
   }
   const expectedHashtags = expectedVisibleHashtags(post);
+  const hasHashtagsOverride = (post.hashtags?.length ?? 0) > 0;
   if (post.topicHashtags === false) {
+    const hashtags = firstHtmlHashtags(html);
     if (hashtags.length > 0) return false;
   } else if (expectedHashtags.length > 0) {
-    // Exact count only for a frontmatter `hashtags:` override. Default posts
-    // stay include-only so TOC `href="#…"` and other incidental `#` tokens
-    // in `#root` do not fail verify-live.
-    if (post.hashtags?.length && hashtags.length !== expectedHashtags.length) return false;
+    // Override posts: exact count on the visible hashtag line only.
+    // Default posts: include-only scan of #root so TOC anchors do not fail.
+    const hashtags = hasHashtagsOverride ? visibleHtmlHashtags(html) : firstHtmlHashtags(html);
+    if (hasHashtagsOverride && hashtags.length !== expectedHashtags.length) return false;
     for (const hashtag of expectedHashtags) {
       if (!hashtags.includes(hashtag)) return false;
     }

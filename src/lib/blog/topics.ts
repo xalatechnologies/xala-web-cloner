@@ -66,7 +66,7 @@ export function topicHashtagLineHtml(
 ): string {
   const line = topicHashtagLine(post);
   if (!line) return "";
-  return `<p>${escapeHtml(line)}</p>`;
+  return `<p data-topic-hashtags>${escapeHtml(line)}</p>`;
 }
 
 function escapeHtml(value: string): string {

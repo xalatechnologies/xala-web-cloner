@@ -24,6 +24,7 @@ import {
   keywordToHashtag,
   parseKeywords,
   topicKeywordsFromList,
+  visibleHtmlHashtags,
 } from '../../scripts/verify-live.ts';
 
 const GEBYR_PATH = resolve(
@@ -68,7 +69,7 @@ function livePostHtml(post: BlogPost): string {
 <meta name="keywords" content="${meta.keywords}" />
 ${topics.map((tag) => `<meta property="article:tag" content="${tag}" />`).join('\n')}
 </head><body><div id="root">
-<p>${visible.join(' ')}</p>
+<p data-topic-hashtags>${visible.join(' ')}</p>
 <aside><p>Del artikkelen</p><a href="https://www.linkedin.com/sharing/share-offsite/?url=x">LinkedIn</a></aside>
 </div></body></html>`;
 }
@@ -183,7 +184,7 @@ describe('verify-live first-HTML topics', () => {
 
     const liveSaksl = livePostHtml(sakslPost);
 
-    expect(firstHtmlHashtags(liveSaksl)).toEqual(visible);
+    expect(visibleHtmlHashtags(liveSaksl)).toEqual(visible);
     expect(firstHtmlArticleTags(liveSaksl)).toEqual(topics);
     expect(isPostTopicHead(liveSaksl, asExpectedPost(sakslPost))).toBe(true);
 
@@ -215,7 +216,7 @@ describe('verify-live first-HTML topics', () => {
     expect(visible).not.toEqual(derived);
 
     const liveFixture = livePostHtml(fixture);
-    expect(firstHtmlHashtags(liveFixture)).toEqual(visible);
+    expect(visibleHtmlHashtags(liveFixture)).toEqual(visible);
     expect(firstHtmlArticleTags(liveFixture)).toEqual(topics);
     expect(isPostTopicHead(liveFixture, asExpectedPost(fixture))).toBe(true);
 
@@ -224,10 +225,22 @@ describe('verify-live first-HTML topics', () => {
 
     const withToc = liveFixture.replace(
       '<div id="root">',
-      '<div id="root"><nav><a href="#innhold">Innhold</a></nav>',
+      '<div id="root"><nav><a href="#innhold">Innhold</a><a href="#kort-svar">Kort svar</a></nav>',
     );
     expect(firstHtmlHashtags(withToc)).toContain('#innhold');
-    expect(isPostTopicHead(withToc, asExpectedPost(fixture))).toBe(false);
+    expect(visibleHtmlHashtags(withToc)).toEqual(visible);
+    expect(isPostTopicHead(withToc, asExpectedPost(fixture))).toBe(true);
+
+    const missingOverrideTag = liveFixture.replace('#system', '');
+    expect(visibleHtmlHashtags(missingOverrideTag).length).toBeLessThan(visible.length);
+    expect(isPostTopicHead(missingOverrideTag, asExpectedPost(fixture))).toBe(false);
+
+    const extraOnHashtagLine = liveFixture.replace(
+      `>${visible.join(' ')}</p>`,
+      `>${visible.join(' ')} #ekstra</p>`,
+    );
+    expect(visibleHtmlHashtags(extraOnHashtagLine).length).toBeGreaterThan(visible.length);
+    expect(isPostTopicHead(extraOnHashtagLine, asExpectedPost(fixture))).toBe(false);
   });
 
   it('matches numeric topic hashtags like #360 but excludes hex color tokens', () => {
