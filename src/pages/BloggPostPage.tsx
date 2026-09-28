@@ -223,7 +223,12 @@ export default function BloggPostPage() {
               ) : null}
 
               {hashtagLine ? (
-                <p className="mt-10 max-w-[68ch] text-sm text-muted-foreground">{hashtagLine}</p>
+                <p
+                  data-topic-hashtags
+                  className="mt-10 max-w-[68ch] text-sm text-muted-foreground"
+                >
+                  {hashtagLine}
+                </p>
               ) : null}
 
               {services.length > 0 && (
