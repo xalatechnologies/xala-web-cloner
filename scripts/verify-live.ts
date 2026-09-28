@@ -322,8 +322,7 @@ export function isPostTopicHead(html: string, post: ExpectedPost): boolean {
   const expectedHashtags = expectedVisibleHashtags(post);
   const hasHashtagsOverride = (post.hashtags?.length ?? 0) > 0;
   if (post.topicHashtags === false) {
-    const hashtags = firstHtmlHashtags(html);
-    if (hashtags.length > 0) return false;
+    if (visibleHtmlHashtags(html).length > 0) return false;
   } else if (expectedHashtags.length > 0) {
     // Override posts: exact count on the visible hashtag line only.
     // Default posts: include-only scan of #root so TOC anchors do not fail.
