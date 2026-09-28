@@ -84,6 +84,19 @@ export function parsePost(raw: string, file: string): BlogPost | BlogPostError {
   }
   if (!body.trim()) return { file, reason: "empty body" };
 
+  const keywords = asStringArray(data.keywords);
+  const hashtagsRaw = asStringArray(data.hashtags);
+  if (hashtagsRaw?.length) {
+    const allowed = new Set((keywords ?? []).map((k) => k.trim().toLowerCase()));
+    const invalid = hashtagsRaw.filter((tag) => !allowed.has(tag.trim().toLowerCase()));
+    if (invalid.length) {
+      return {
+        file,
+        reason: `hashtags must be a subset of keywords; unknown: ${invalid.join(", ")}`,
+      };
+    }
+  }
+
   const readingValue = data.readingMinutes;
   return {
     slug: asString(data.slug) ?? slugFromFilename(file),
@@ -98,7 +111,8 @@ export function parsePost(raw: string, file: string): BlogPost | BlogPostError {
     tag: asString(data.tag),
     cover: asString(data.cover),
     alt: asString(data.alt),
-    keywords: asStringArray(data.keywords),
+    keywords,
+    hashtags: hashtagsRaw,
     lang: asString(data.lang) ?? DEFAULT_LANG,
     draft: data.draft === true,
     topicHashtags: data.topicHashtags === false ? false : undefined,

@@ -1,3 +1,14 @@
+Blog: Saksbehandlingsløsning – spørsmål før dere kjøper (2026-09-28)
+
+- Added new blog post at /blogg/saksbehandlingslosning-sporsmal-til-leverandoren
+- Cover image at public/images/blog/saksbehandlingslosning-sporsmal-til-leverandoren.webp
+- FAQ section with six Q&A pairs under Vanlige spørsmål; FAQPage JSON-LD from body
+- seoTitle: Saksbehandlingsløsning: spørsmål før dere kjøper | Xala
+- H1: Kjøpe saksbehandlingsløsning? Dette bør dere spørre om
+- Optional frontmatter hashtags override for short visible tag line (#saksbehandlingsløsning)
+- Responsive article tables via shared ArticleMarkdown wrapper (horizontal scroll on mobile)
+- Lint, test (1027), and build pass
+
 Blog: Systemintegrasjon i kommunen – 5 myter og fakta (2026-09-27)
 
 - Added new blog post at /blogg/systemintegrasjon-i-kommunen-myter-og-fakta

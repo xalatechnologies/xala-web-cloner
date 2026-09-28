@@ -133,6 +133,30 @@ describe("parsePost", () => {
     expect(post.draft).toBe(true);
   });
 
+  it("reads optional hashtags that must be a subset of keywords", () => {
+    const post = ok(
+      parsePost(
+        md({
+          keywords: '["saksbehandlingsløsning", "innføring av nytt saksbehandlingssystem"]',
+          hashtags: '["saksbehandlingsløsning"]',
+        }),
+        "/blog/a.md",
+      ),
+    );
+    expect(post.hashtags).toEqual(["saksbehandlingsløsning"]);
+  });
+
+  it("rejects hashtags that are not listed in keywords", () => {
+    const result = parsePost(
+      md({
+        keywords: '["saksbehandlingsløsning"]',
+        hashtags: '["ukjent"]',
+      }),
+      "/blog/a.md",
+    );
+    expect(isError(result) && result.reason).toMatch(/hashtags must be a subset of keywords/);
+  });
+
   it("rejects a file with no frontmatter", () => {
     const result = parsePost("# nope\n", "/blog/a.md");
     expect(isError(result) && result.reason).toMatch(/no frontmatter/);

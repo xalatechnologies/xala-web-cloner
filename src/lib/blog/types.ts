@@ -42,6 +42,12 @@ export interface BlogFrontmatter {
    */
   alt?: string;
   keywords?: string[];
+  /**
+   * Optional override for the visible last-line topic hashtags. Each entry must
+   * match one of `keywords` exactly (case-insensitive). When absent, hashtags
+   * are derived from the first 3–5 keywords as usual.
+   */
+  hashtags?: string[];
   /** `no` (default) or `en`. */
   lang?: string;
   /** Excluded from listings, sitemap and RSS while true. */

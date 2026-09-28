@@ -26,6 +26,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
+import { articleMarkdownComponents } from "../src/components/blog/ArticleMarkdown";
 import { coverAlt, parsePosts, publishedPosts, relatedPosts } from "../src/lib/blog/posts";
 import { blogListingHtml } from "../src/lib/blog/listingHtml";
 import { blogListingQueries, blogQueryFileKey, filterBlogPosts } from "../src/lib/blog/search";
@@ -94,7 +95,7 @@ const escapeHtml = (value: string): string =>
 /** Render markdown exactly the way the SPA does — same component, same plugin. */
 function markdownToHtml(body: string): string {
   return renderToStaticMarkup(
-    createElement(ReactMarkdown, { remarkPlugins: [remarkGfm] }, body),
+    createElement(ReactMarkdown, { remarkPlugins: [remarkGfm], components: articleMarkdownComponents }, body),
   );
 }
 
