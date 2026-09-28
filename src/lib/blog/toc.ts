@@ -30,6 +30,9 @@ export interface FaqItem {
 /** Headings whose section is treated as the post's FAQ. */
 const FAQ_HEADING = /^(ofte stilte sp(ø|o)rsm(å|a)l|vanlige sp(ø|o)rsm(å|a)l|sp(ø|o)rsm(å|a)l og svar|faq|frequently asked questions)\b/i;
 
+/** Default h2 for frontmatter FAQ — must match `faqToMarkdown()` and TOC ids. */
+export const FRONTMATTER_FAQ_HEADING = 'Vanlige spørsmål';
+
 /**
  * Opening "Kort svar" / "Short answer" — the house lead. Lifted above the
  * cover so the answer is on the first screen instead of two viewports down.
@@ -169,6 +172,33 @@ export function extractHeadings(body: string): TocHeading[] {
 }
 
 /**
+ * TOC headings for the article body, including frontmatter FAQ when rendered.
+ *
+ * Frontmatter FAQ is stripped from `articleBody` before render, so the sidebar
+ * and mobile TOC need an explicit entry that anchors to the rendered section.
+ */
+export function articleHeadings(
+  post: { faq?: FaqItem[] },
+  articleBody: string,
+): TocHeading[] {
+  const headings = extractHeadings(articleBody);
+  const hasFaqSection = headings.some((heading) => FAQ_HEADING.test(heading.text));
+  if (!post.faq?.length || hasFaqSection) return headings;
+
+  const base = slugify(FRONTMATTER_FAQ_HEADING) || 'vanlige-sporsmal';
+  const count = headings.filter(
+    (heading) => heading.id === base || heading.id.startsWith(`${base}-`),
+  ).length;
+  return [
+    ...headings,
+    {
+      id: count === 0 ? base : `${base}-${count + 1}`,
+      text: FRONTMATTER_FAQ_HEADING,
+    },
+  ];
+}
+
+/**
  * Question/answer pairs from the post's FAQ section, if it has one.
  *
  * An answer is every line between one question and the next heading, joined
@@ -187,7 +217,7 @@ export function postFaq(
 }
 
 /** Markdown for a visible FAQ section, matching the bold-question body style. */
-export function faqToMarkdown(items: FaqItem[], heading = 'Vanlige spørsmål'): string {
+export function faqToMarkdown(items: FaqItem[], heading = FRONTMATTER_FAQ_HEADING): string {
   if (!items.length) return '';
   const blocks = items.map((item) => `**${item.question}**\n${item.answer}`);
   return `## ${heading}\n\n${blocks.join('\n\n')}`;

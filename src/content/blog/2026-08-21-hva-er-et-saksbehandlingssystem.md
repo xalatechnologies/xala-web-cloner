@@ -15,6 +15,14 @@ keywords:
   - sak og arkiv
   - fagsystem
   - kommune
+  - hva er et saksbehandlingssystem
+  - krav til saksbehandlingssystem
+  - saksbehandlingssystem kommune
+hashtags:
+  - saksbehandlingssystem
+  - sak og arkiv
+  - fagsystem
+  - kommune
 excludeRelated:
   - skjenkebevilling*
 excludeServices:

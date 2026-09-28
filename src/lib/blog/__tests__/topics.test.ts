@@ -240,18 +240,29 @@ describe('topic keywords and hashtags', () => {
     expect(topicHashtagLine(KI!).split(' ')).toHaveLength(5);
   });
 
-  it('gives the saksbehandlingssystem post four topic hashtags from keywords', () => {
+  it('gives the saksbehandlingssystem post short hashtags and capped article tags', () => {
     const SAKS = posts.find((post) => post.slug === 'hva-er-et-saksbehandlingssystem');
     expect(SAKS, 'saksbehandlingssystem post missing').toBeDefined();
     expect(leftoverHashtagDump(SAKS!.body)).toBeUndefined();
+    expect(SAKS!.hashtags).toEqual([
+      'saksbehandlingssystem',
+      'sak og arkiv',
+      'fagsystem',
+      'kommune',
+    ]);
     expect(topicHashtagLine(SAKS!)).toBe(
       '#saksbehandlingssystem #sakogarkiv #fagsystem #kommune',
+    );
+    expect(topicHashtagLine(SAKS!).split(' ')).toHaveLength(4);
+    expect(postMeta(SAKS!).keywords).toBe(
+      'saksbehandlingssystem, sak og arkiv, fagsystem, kommune, hva er et saksbehandlingssystem, krav til saksbehandlingssystem, saksbehandlingssystem kommune',
     );
     expect(topicKeywords(SAKS!)).toEqual([
       'saksbehandlingssystem',
       'sak og arkiv',
       'fagsystem',
       'kommune',
+      'hva er et saksbehandlingssystem',
     ]);
     expect(postMeta(SAKS!).articleTags).toEqual(topicKeywords(SAKS!));
   });
