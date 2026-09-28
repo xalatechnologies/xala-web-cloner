@@ -64,11 +64,6 @@ ${sectionsHtml()}
 ${nextStepsHtml()}`;
 }
 
-/** Full hub body when not wrapped in staticRouteHtml (tests). */
-export function tjenesterHubHtml(): string {
-  return tjenesterHubBodyHtml();
-}
-
 /** Lede under the H1 — what verify-dist compares to the React page. */
 export function tjenesterHubLede(): string {
   return no.servicesPage.description;

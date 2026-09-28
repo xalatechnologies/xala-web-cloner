@@ -291,12 +291,16 @@ function staticRouteHtml(heading: string, description: string, links: NavLink[],
     links.map((l) => `<a href="${escapeHtml(l.href)}" style="${linkStyle}">${escapeHtml(l.label)}</a>`).join("") +
     `</nav>`;
 
+  const bodyWrap = body
+    ? `<div style="max-width:52rem;width:100%;text-align:left;margin-top:1.5rem">${body}</div>`
+    : "";
+
   return (
     `<div style="${page}">` +
     `<h1 style="${h1}">${escapeHtml(heading)}</h1>` +
     `<p style="${lead}">${escapeHtml(description)}</p>` +
     nav +
-    body +
+    bodyWrap +
     `</div>`
   );
 }
@@ -527,13 +531,11 @@ function main(): void {
   // 17 of them: the page still rendered once React took over, so it looked
   // fine in a browser, while every crawler that followed the sitemap was told
   // the page does not exist.
-  const caseStudyH1No: Record<string, string> = {};
   for (const study of caseStudies) {
     if (!study.slug) continue;
     const url = `${SITE_ORIGIN}/caser/${study.slug}`;
     const localized = localizeCaseStudy(study, "no");
     const seo = localizedSeo(study, "no");
-    caseStudyH1No[study.slug] = localized.title;
     write(
       path.join(DIST, "caser", study.slug, "index.html"),
       renderBody(
@@ -574,7 +576,6 @@ function main(): void {
       ),
     );
   }
-  write(path.join(DIST, "case-study-h1.no.json"), JSON.stringify(caseStudyH1No, null, 2));
 
   // A file per service landing page, each with its own title, description and
   // FAQ schema. These are the pages meant to rank for the head terms, so they

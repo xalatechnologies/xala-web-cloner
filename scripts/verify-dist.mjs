@@ -136,13 +136,55 @@ export function hasEmptyRoot(html) {
   return visible.length === 0;
 }
 
+/** Reverse common entities when comparing prerendered text to source copy. */
+export function decodeHtmlEntities(value) {
+  return value
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'");
+}
+
 /** First <h1> text inside #root, with inner tags stripped, or null when absent. */
 export function firstH1(html) {
   const root = rootInnerHtml(html);
   if (!root) return null;
   const match = root.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
   if (!match) return null;
-  return match[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  const text = match[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  return decodeHtmlEntities(text);
+}
+
+/** href values from the Hovedmeny nav inside #root. */
+export function hovedmenyNavInRoot(html) {
+  const root = rootInnerHtml(html);
+  if (!root) return null;
+  const match = root.match(/<nav[^>]*aria-label="Hovedmeny"[^>]*>([\s\S]*?)<\/nav>/i);
+  if (!match) return null;
+  return [...match[1].matchAll(/<a\s+href="([^"]+)"/gi)].map((entry) => entry[1]);
+}
+
+/** Article headline from JSON-LD already written into the page head. */
+export function articleHeadlineFromHtml(html) {
+  const scripts = [
+    ...html.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi),
+  ];
+  for (const match of scripts) {
+    try {
+      const data = JSON.parse(match[1]);
+      const nodes = data['@graph'] ?? [data];
+      for (const node of nodes) {
+        if (node['@type'] === 'Article' && node.headline) {
+          return node.headline;
+        }
+      }
+    } catch {
+      // ignore malformed blocks
+    }
+  }
+  return null;
 }
 
 /** Service detail pages that must ship real first HTML, not an empty #root. */
@@ -153,17 +195,6 @@ export function servicePageSlugs() {
 /** Routable /produkter/:slug paths from products.json (Norwegian catalog). */
 export function productSlugs() {
   return productsData.no.filter((product) => product.slug).map((product) => product.slug);
-}
-
-/** Reverse common entities when comparing prerendered text to source copy. */
-export function decodeHtmlEntities(value) {
-  return value
-    .replace(/&amp;/g, '&')
-    .replace(/&quot;/g, '"')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&#39;/g, "'")
-    .replace(/&apos;/g, "'");
 }
 
 /** Detail slugs under a top-level path, e.g. /caser/altinn → altinn. */
@@ -182,7 +213,8 @@ export function tjenesterHubLede(html) {
   if (!root) return null;
   const match = root.match(/<h1[^>]*>[\s\S]*?<\/h1>\s*<p[^>]*>([\s\S]*?)<\/p>/i);
   if (!match) return null;
-  return match[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  const text = match[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  return decodeHtmlEntities(text);
 }
 
 function fail(message) {
@@ -286,43 +318,48 @@ function main() {
   }
   const hubLede = tjenesterHubLede(hubHtml);
   const expectedLede = no.servicesPage.description;
-  if (decodeHtmlEntities(hubLede ?? '') !== expectedLede) {
+  if (hubLede !== expectedLede) {
     fail(
       `verify-dist: /tjenester hub lede does not match no.json servicesPage.description.\n  expected: ${expectedLede}\n  got: ${hubLede}`,
     );
   }
-  if (!hubHtml.includes('aria-label="Hovedmeny"')) {
-    fail('verify-dist: /tjenester hub is missing Hovedmeny navigation.');
+  const hovedmenyLinks = hovedmenyNavInRoot(hubHtml);
+  if (!hovedmenyLinks) {
+    fail('verify-dist: /tjenester hub is missing Hovedmeny navigation inside #root.');
+  }
+  if (hovedmenyLinks.length !== 10) {
+    fail(`verify-dist: /tjenester Hovedmeny must have exactly 10 links, found ${hovedmenyLinks.length}.`);
   }
 
   const caseSlugs = detailSlugsFromLocs(locs, origin, '/caser');
   if (caseSlugs.length < 17) {
     fail(`verify-dist: expected at least 17 /caser/* sitemap entries, found ${caseSlugs.length}.`);
   }
-  const caseH1ManifestPath = join(DIST, 'case-study-h1.no.json');
-  if (!existsSync(caseH1ManifestPath)) {
-    fail('verify-dist: dist/case-study-h1.no.json missing — case H1 manifest was not written.');
-  }
-  const caseH1Manifest = JSON.parse(readFileSync(caseH1ManifestPath, 'utf8'));
-  const caseTitleMismatches = caseSlugs.filter((slug) => {
+
+  const caseTitleMismatches = [];
+  const hollowCases = [];
+  for (const slug of caseSlugs) {
     const file = join(DIST, 'caser', slug, 'index.html');
+    if (!existsSync(file)) {
+      fail(`verify-dist: dist/caser/${slug}/index.html missing — /caser/${slug} was not prerendered.`);
+    }
     const html = readFileSync(file, 'utf8');
-    const title = firstH1(html);
-    const expected = caseH1Manifest[slug];
-    return !expected || title !== expected;
-  });
+    if (hasEmptyRoot(html) || !firstH1(html)) {
+      hollowCases.push(slug);
+      continue;
+    }
+    const headline = articleHeadlineFromHtml(html);
+    if (!headline || firstH1(html) !== decodeHtmlEntities(headline)) {
+      caseTitleMismatches.push(slug);
+    }
+  }
   if (caseTitleMismatches.length) {
-    console.error(`verify-dist: ${caseTitleMismatches.length} /caser/* page(s) have an H1 that does not match the localized title:`);
+    console.error(
+      `verify-dist: ${caseTitleMismatches.length} /caser/* page(s) have an H1 that does not match the Article JSON-LD headline:`,
+    );
     for (const slug of caseTitleMismatches) console.error(`  /caser/${slug}`);
     process.exit(1);
   }
-
-  const hollowCases = caseSlugs.filter((slug) => {
-    const file = join(DIST, 'caser', slug, 'index.html');
-    if (!existsSync(file)) return true;
-    const html = readFileSync(file, 'utf8');
-    return hasEmptyRoot(html) || !firstH1(html);
-  });
   if (hollowCases.length) {
     console.error(`verify-dist: ${hollowCases.length} /caser/* page(s) have an empty #root or no <h1>:`);
     for (const slug of hollowCases) console.error(`  /caser/${slug}`);

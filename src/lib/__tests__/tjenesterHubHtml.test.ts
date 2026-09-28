@@ -1,11 +1,12 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
+import { TJENESTER_HUB_LEAD } from "@/data/tjenester-hub-content";
 import no from "@/i18n/locales/no.json";
 import { tjenesterHubBodyHtml, tjenesterHubLede } from "@/lib/tjenesterHubHtml";
 import { escapeHtml } from "@/lib/escapeHtml";
 
-describe("tjenesterHubHtml", () => {
+describe("tjenesterHubBodyHtml", () => {
   it("reads labels from no.json so static HTML cannot drift from the SPA", () => {
     const html = tjenesterHubBodyHtml();
 
@@ -40,6 +41,3 @@ describe("tjenesterHubHtml", () => {
     );
   });
 });
-
-const TJENESTER_HUB_LEAD =
-  "Innbyggeren sender. Saksbehandleren åpner saken. Loggen er der. Vedtaket er et menneske.";

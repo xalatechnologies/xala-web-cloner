@@ -21,6 +21,11 @@ describe("markdownLinkHref", () => {
     expect(isAllowedHref("vbscript:msgbox")).toBe(false);
   });
 
+  it("rejects protocol-relative and backslash-prefixed paths", () => {
+    expect(isAllowedHref("//evil.com")).toBe(false);
+    expect(isAllowedHref("/\\evil.com")).toBe(false);
+  });
+
   it("treats only http(s) as external", () => {
     expect(isExternalHref("https://digilist.no")).toBe(true);
     expect(isExternalHref("http://example.com")).toBe(true);
@@ -42,5 +47,8 @@ describe("richInlineHtml", () => {
     );
     expect(richInlineHtml("[x](javascript:alert(1))")).toBe("x");
     expect(richInlineHtml("[y](data:text/html,evil)")).toBe("y");
+    expect(richInlineHtml("[z](//evil.com)")).toBe("z");
+    expect(richInlineHtml("[w](/\\evil.com)")).toBe("w");
+    expect(richInlineHtml("[z](//evil.com)")).not.toContain("//evil.com");
   });
 });

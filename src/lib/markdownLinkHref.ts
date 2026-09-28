@@ -1,9 +1,13 @@
 const ALLOWED_SCHEME = /^(https:|http:|mailto:|tel:)/i;
 
+/** Protocol-relative and backslash-prefixed paths must not pass as internal links. */
+const PROTOCOL_RELATIVE = /^\/[/\\]/;
+
 /** True when a markdown link target is safe to render as an anchor. */
 export function isAllowedHref(href: string): boolean {
   const trimmed = href.trim();
   if (!trimmed) return false;
+  if (PROTOCOL_RELATIVE.test(trimmed)) return false;
   if (trimmed.startsWith("/") || trimmed.startsWith("#")) return true;
   return ALLOWED_SCHEME.test(trimmed);
 }
