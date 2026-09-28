@@ -10,7 +10,7 @@ Blog: CTR enrich hva-er-et-saksbehandlingssystem (second pass)
 - Wired dateModified, coverAlt, frontmatter FAQ rendering, og:image:alt, and article:modified_time for all posts
 - Extended frontmatter parser for structured FAQ block lists; excludeRelated wildcard and excludeServices per post
 - Removed /priser and skjenkebevilling from template-driven related cards on this post
-- Lint, test (1033), build, and verify-dist pass
+- Lint, test (1041), build, and verify-live pass
 
 PR #193 review (R1): derive override test expectations from post frontmatter
 
