@@ -131,6 +131,21 @@ describe('verify-live first-HTML topics', () => {
     expect(isPostTopicHead(LIVE_GEBYR, asExpectedPost(gebyrPost))).toBe(true);
   });
 
+  it('keeps default posts include-only when #root has incidental hash tokens', () => {
+    expect(gebyrPost.hashtags).toBeUndefined();
+    const withToc = LIVE_GEBYR.replace(
+      '<div id="root">',
+      '<div id="root"><nav><a href="#kort-svar">Kort svar</a></nav>',
+    );
+    const found = firstHtmlHashtags(withToc);
+    expect(found).toContain('#kort-svar');
+    expect(found.length).toBeGreaterThan(expectedVisibleHashtags(gebyrPost).length);
+    expect(isPostTopicHead(withToc, asExpectedPost(gebyrPost))).toBe(true);
+
+    const missingOne = LIVE_GEBYR.replace('#alkoholloven', '');
+    expect(isPostTopicHead(missingOne, asExpectedPost(gebyrPost))).toBe(false);
+  });
+
   it('fails on the homepage keyword string, audience-only tags, or a missing share row', () => {
     expect(HOMEPAGE_KEYWORDS).toBe(getPageSEO('home', 'no').keywords);
     expect(BLOGPOST_CANNED_KEYWORDS).toBe(getPageSEO('blogPost', 'no').keywords);
@@ -206,6 +221,13 @@ describe('verify-live first-HTML topics', () => {
 
     const derivedOnly = liveFixture.replace(visible.join(' '), derived.join(' '));
     expect(isPostTopicHead(derivedOnly, asExpectedPost(fixture))).toBe(false);
+
+    const withToc = liveFixture.replace(
+      '<div id="root">',
+      '<div id="root"><nav><a href="#innhold">Innhold</a></nav>',
+    );
+    expect(firstHtmlHashtags(withToc)).toContain('#innhold');
+    expect(isPostTopicHead(withToc, asExpectedPost(fixture))).toBe(false);
   });
 
   it('matches numeric topic hashtags like #360 but excludes hex color tokens', () => {
