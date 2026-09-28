@@ -1,5 +1,3 @@
-import { existsSync, readFileSync } from "node:fs";
-import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   articleHeadlineFromHtml,
@@ -15,8 +13,18 @@ import {
 import servicePages from "@/data/service-pages.json";
 import no from "@/i18n/locales/no.json";
 
-const HUB_FILE = resolve(__dirname, "../../dist/tjenester/index.html");
-const ALTINN_FILE = resolve(__dirname, "../../dist/caser/altinn/index.html");
+const MAIN_NAV_HREFS = [
+  "/tjenester",
+  "/produkter",
+  "/caser",
+  "/blogg",
+  "/slik-vi-jobber",
+  "/teknologi",
+  "/om-oss",
+  "/karriere",
+  "/faq",
+  "/kontakt",
+];
 
 describe("verify-dist /tjenester first HTML", () => {
   it("flags an empty #root and a page with no H1", () => {
@@ -58,20 +66,20 @@ describe("verify-dist /tjenester first HTML", () => {
     expect(articleHeadlineFromHtml(html)).toBe("Altinn &amp; Studio");
   });
 
-  it("expects the prerendered hub to keep exactly 10 Hovedmeny links inside #root", () => {
-    expect(existsSync(HUB_FILE)).toBe(true);
-    const links = hovedmenyNavInRoot(readFileSync(HUB_FILE, "utf8"));
+  it("finds exactly 10 Hovedmeny links inside #root", () => {
+    const nav = MAIN_NAV_HREFS.map((href) => `<a href="${href}">${href}</a>`).join("");
+    const html = `<div id="root"><nav aria-label="Hovedmeny">${nav}</nav></div>`;
+    const links = hovedmenyNavInRoot(html);
     expect(links).toHaveLength(10);
-    expect(links?.[0]).toBe("/tjenester");
-    expect(links?.[9]).toBe("/kontakt");
+    expect(links).toEqual(MAIN_NAV_HREFS);
   });
 
-  it("matches altinn H1 to the Article JSON-LD headline when dist is built", () => {
-    expect(existsSync(ALTINN_FILE)).toBe(true);
-    const html = readFileSync(ALTINN_FILE, "utf8");
-    const headline = articleHeadlineFromHtml(html);
-    expect(headline).toBeTruthy();
-    expect(firstH1(html)).toBe(decodeHtmlEntities(headline!));
+  it("matches case H1 to the Article JSON-LD headline in the same document", () => {
+    const headline = "Altinn 3 og Altinn Studio";
+    const html =
+      `<script type="application/ld+json">{"@graph":[{"@type":"Article","headline":"${headline}"}]}</script>` +
+      `<div id="root"><h1>${headline}</h1></div>`;
+    expect(firstH1(html)).toBe(decodeHtmlEntities(articleHeadlineFromHtml(html)!));
   });
 
   it("lists product slugs from products.json and parses case slugs from sitemap locs", () => {

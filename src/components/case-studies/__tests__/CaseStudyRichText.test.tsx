@@ -7,7 +7,7 @@ describe("CaseStudyRichInline", () => {
   it("drops protocol-relative hrefs to plain text", () => {
     render(
       <MemoryRouter>
-        <CaseStudyRichInline text="Bad [evil](//evil.com) and [slash](/\\evil.com)." />
+        <CaseStudyRichInline text={'Bad [evil](//evil.com) and [slash](/\\evil.com).'} />
       </MemoryRouter>,
     );
     expect(screen.queryByRole("link")).toBeNull();
