@@ -19,6 +19,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseKeywords } from './verify-parse.mjs';
+import servicePages from '../src/data/service-pages.json' with { type: 'json' };
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = resolve(process.cwd(), 'dist');
@@ -90,6 +91,25 @@ export function leakedListingCards(hrefs, posts, query) {
 
 export function listingCardHrefs(html) {
   return [...html.matchAll(/<h2><a href="(\/blogg\/[^"]+)"/g)].map((m) => m[1]);
+}
+
+/** True when #root has no visible text — the SPA-only shell the prerender must not ship. */
+export function hasEmptyRoot(html) {
+  const match = html.match(/<div id="root">([\s\S]*?)<\/div>/i);
+  if (!match) return true;
+  const inner = match[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  return inner.length === 0;
+}
+
+/** First <h1> text content, or null when the page has no H1. */
+export function firstH1(html) {
+  const match = html.match(/<h1[^>]*>([^<]*)<\/h1>/i);
+  return match ? match[1].trim() : null;
+}
+
+/** Service detail pages that must ship real first HTML, not an empty #root. */
+export function servicePageSlugs() {
+  return Object.keys(servicePages);
 }
 
 function fail(message) {
@@ -169,8 +189,23 @@ function main() {
     fail('verify-dist: /blogg with no q no longer prerenders the full listing.');
   }
 
+  const serviceSlugs = servicePageSlugs();
+  const hollowServices = serviceSlugs.filter((slug) => {
+    const file = join(DIST, 'tjenester', slug, 'index.html');
+    if (!existsSync(file)) return true;
+    const html = readFileSync(file, 'utf8');
+    return hasEmptyRoot(html) || !firstH1(html);
+  });
+
+  if (hollowServices.length) {
+    console.error(`verify-dist: ${hollowServices.length} /tjenester/* page(s) have an empty #root or no <h1>:`);
+    for (const slug of hollowServices) console.error(`  /tjenester/${slug}`);
+    process.exit(1);
+  }
+
   console.log(`verify-dist: ${locs.length} sitemap URLs, all served by a file in dist/`);
   console.log(`verify-dist: ${aliases.length} canonical alias(es), all served by a file in dist/`);
+  console.log(`verify-dist: ${serviceSlugs.length} /tjenester/* page(s) with real first HTML`);
   console.log('verify-dist: /blogg?q=gebyr is a filtered listing, /blogg is not');
 }
 
