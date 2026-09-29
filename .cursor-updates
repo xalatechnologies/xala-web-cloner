@@ -1,9 +1,3 @@
-Blog: fagsystem-eller-saksbehandlingssystem (2026-09-29)
-
-- New post at /blogg/fagsystem-eller-saksbehandlingssystem with diagram cover, six frontmatter FAQ entries, and topicHashtags false
-- Removed public-360 link from plain-text phrase in body; kept definition, systemintegrasjon, modernisering, and saksbehandling CTA links
-- pnpm test (1070), build, verify-dist pass
-
 verify-live: visible hashtags in topicHashtags=false path (R1 of #196)
 
 - Cherry-picked 1e9432e onto main: isPostTopicHead uses visibleHtmlHashtags when topicHashtags is false
