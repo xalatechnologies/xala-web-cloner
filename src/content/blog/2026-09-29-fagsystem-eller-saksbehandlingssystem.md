@@ -14,7 +14,6 @@ keywords:
   - fagsystemer
   - fagregler
   - kommune
-topicHashtags: false
 faq:
   - question: "Hva er et fagsystem i en kommune?"
     answer: "Et system som holder fagreglene, beregningen og dataene for én type sak, ikke bare en kø."
