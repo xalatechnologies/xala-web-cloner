@@ -20,6 +20,8 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseKeywords } from './verify-parse.mjs';
 import servicePages from '../src/data/service-pages.json' with { type: 'json' };
+import productsData from '../src/data/products.json' with { type: 'json' };
+import no from '../src/i18n/locales/no.json' with { type: 'json' };
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = resolve(process.cwd(), 'dist');
@@ -134,18 +136,95 @@ export function hasEmptyRoot(html) {
   return visible.length === 0;
 }
 
+/** Reverse common entities when comparing prerendered text to source copy. */
+export function decodeHtmlEntities(value) {
+  return value
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'");
+}
+
 /** First <h1> text inside #root, with inner tags stripped, or null when absent. */
 export function firstH1(html) {
   const root = rootInnerHtml(html);
   if (!root) return null;
   const match = root.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
   if (!match) return null;
-  return match[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  const text = match[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  return decodeHtmlEntities(text);
+}
+
+/** href values from the Hovedmeny nav inside #root. */
+export function hovedmenyNavInRoot(html) {
+  const root = rootInnerHtml(html);
+  if (!root) return null;
+  const match = root.match(/<nav[^>]*aria-label="Hovedmeny"[^>]*>([\s\S]*?)<\/nav>/i);
+  if (!match) return null;
+  return [...match[1].matchAll(/<a\s+href="([^"]+)"/gi)].map((entry) => entry[1]);
+}
+
+/** Article headline from JSON-LD already written into the page head. */
+export function articleHeadlineFromHtml(html) {
+  const scripts = [
+    ...html.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi),
+  ];
+  for (const match of scripts) {
+    try {
+      const data = JSON.parse(match[1]);
+      const nodes = data['@graph'] ?? [data];
+      for (const node of nodes) {
+        if (node['@type'] === 'Article' && node.headline) {
+          return node.headline;
+        }
+      }
+    } catch {
+      // ignore malformed blocks
+    }
+  }
+  return null;
 }
 
 /** Service detail pages that must ship real first HTML, not an empty #root. */
 export function servicePageSlugs() {
   return Object.keys(servicePages);
+}
+
+/** Routable /produkter/:slug paths from products.json (Norwegian catalog). */
+export function productSlugs() {
+  return productsData.no.filter((product) => product.slug).map((product) => product.slug);
+}
+
+/** Detail slugs under a top-level path, e.g. /caser/altinn → altinn. */
+export function detailSlugsFromLocs(locs, origin, prefix) {
+  const base = `${prefix}/`;
+  return locs
+    .map((loc) => loc.replace(origin, '').replace(/\/$/, ''))
+    .filter((path) => path.startsWith(base) && path !== prefix.replace(/\/$/, ''))
+    .map((path) => path.slice(base.length))
+    .filter(Boolean);
+}
+
+/** First paragraph after the page H1 inside #root — the hub lede from no.json. */
+export function tjenesterHubLede(html) {
+  const root = rootInnerHtml(html);
+  if (!root) return null;
+  const match = root.match(/<h1[^>]*>[\s\S]*?<\/h1>\s*<p[^>]*>([\s\S]*?)<\/p>/i);
+  if (!match) return null;
+  const text = match[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  return decodeHtmlEntities(text);
+}
+
+/**
+ * True when #root contains the hub body marker from tjenesterHubBodyHtml.
+ * H1, lede, and Hovedmeny alone are a soft shell and must fail the build.
+ */
+export function tjenesterHubHasBodyMarker(html) {
+  const root = rootInnerHtml(html);
+  if (!root) return false;
+  return root.includes('id="tjenester-neste"');
 }
 
 function fail(message) {
@@ -239,9 +318,86 @@ function main() {
     process.exit(1);
   }
 
+  const hubFile = join(DIST, 'tjenester', 'index.html');
+  if (!existsSync(hubFile)) {
+    fail('verify-dist: dist/tjenester/index.html missing — the services hub was not prerendered.');
+  }
+  const hubHtml = readFileSync(hubFile, 'utf8');
+  if (hasEmptyRoot(hubHtml) || !firstH1(hubHtml)) {
+    fail('verify-dist: /tjenester hub has an empty #root or no <h1>.');
+  }
+  const hubLede = tjenesterHubLede(hubHtml);
+  const expectedLede = no.servicesPage.description;
+  if (hubLede !== expectedLede) {
+    fail(
+      `verify-dist: /tjenester hub lede does not match no.json servicesPage.description.\n  expected: ${expectedLede}\n  got: ${hubLede}`,
+    );
+  }
+  const hovedmenyLinks = hovedmenyNavInRoot(hubHtml);
+  if (!hovedmenyLinks) {
+    fail('verify-dist: /tjenester hub is missing Hovedmeny navigation inside #root.');
+  }
+  if (hovedmenyLinks.length !== 10) {
+    fail(`verify-dist: /tjenester Hovedmeny must have exactly 10 links, found ${hovedmenyLinks.length}.`);
+  }
+  if (!tjenesterHubHasBodyMarker(hubHtml)) {
+    fail(
+      'verify-dist: /tjenester hub is missing id="tjenester-neste" inside #root — H1, lede, and Hovedmeny alone are an empty shell.',
+    );
+  }
+
+  const caseSlugs = detailSlugsFromLocs(locs, origin, '/caser');
+  if (caseSlugs.length < 17) {
+    fail(`verify-dist: expected at least 17 /caser/* sitemap entries, found ${caseSlugs.length}.`);
+  }
+
+  const caseTitleMismatches = [];
+  const hollowCases = [];
+  for (const slug of caseSlugs) {
+    const file = join(DIST, 'caser', slug, 'index.html');
+    if (!existsSync(file)) {
+      fail(`verify-dist: dist/caser/${slug}/index.html missing — /caser/${slug} was not prerendered.`);
+    }
+    const html = readFileSync(file, 'utf8');
+    if (hasEmptyRoot(html) || !firstH1(html)) {
+      hollowCases.push(slug);
+      continue;
+    }
+    const headline = articleHeadlineFromHtml(html);
+    if (!headline || firstH1(html) !== decodeHtmlEntities(headline)) {
+      caseTitleMismatches.push(slug);
+    }
+  }
+  if (caseTitleMismatches.length) {
+    console.error(
+      `verify-dist: ${caseTitleMismatches.length} /caser/* page(s) have an H1 that does not match the Article JSON-LD headline:`,
+    );
+    for (const slug of caseTitleMismatches) console.error(`  /caser/${slug}`);
+    process.exit(1);
+  }
+  if (hollowCases.length) {
+    console.error(`verify-dist: ${hollowCases.length} /caser/* page(s) have an empty #root or no <h1>:`);
+    for (const slug of hollowCases) console.error(`  /caser/${slug}`);
+    process.exit(1);
+  }
+
+  const productSlugList = productSlugs();
+  const hollowProducts = productSlugList.filter((slug) => {
+    const file = join(DIST, 'produkter', slug, 'index.html');
+    if (!existsSync(file)) return true;
+    const html = readFileSync(file, 'utf8');
+    return hasEmptyRoot(html) || !firstH1(html);
+  });
+  if (hollowProducts.length) {
+    console.error(`verify-dist: ${hollowProducts.length} /produkter/* page(s) have an empty #root or no <h1>:`);
+    for (const slug of hollowProducts) console.error(`  /produkter/${slug}`);
+    process.exit(1);
+  }
+
   console.log(`verify-dist: ${locs.length} sitemap URLs, all served by a file in dist/`);
   console.log(`verify-dist: ${aliases.length} canonical alias(es), all served by a file in dist/`);
   console.log(`verify-dist: ${serviceSlugs.length} /tjenester/* page(s) with real first HTML`);
+  console.log(`verify-dist: /tjenester hub lede matches no.json (${caseSlugs.length} cases, ${productSlugList.length} products)`);
   console.log('verify-dist: /blogg?q=gebyr is a filtered listing, /blogg is not');
 }
 

@@ -12,15 +12,10 @@ import no from "@/i18n/locales/no.json";
 import { findPost } from "@/lib/blog/posts";
 import { BLOG_PATH } from "@/lib/blog/seo";
 import type { BlogPost } from "@/lib/blog/types";
+import { escapeHtml } from "@/lib/escapeHtml";
+import { PRERENDER_BACK_NAV_ARIA_LABEL } from "@/lib/prerenderLabels";
 
-/** Exported for escaping regression tests. */
-export function escapeHtml(value: string): string {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
-}
+export { escapeHtml };
 
 interface Capability {
   title: string;
@@ -150,7 +145,7 @@ export function servicePageHtmlFromPage(
       : "";
 
   return `<div class="min-h-screen flex flex-col"><main id="main">
-<nav aria-label="Tilbake"><a href="${escapeHtml(backHref)}">${escapeHtml(backLabel)}</a></nav>
+<nav aria-label="${escapeHtml(PRERENDER_BACK_NAV_ARIA_LABEL)}"><a href="${escapeHtml(backHref)}">${escapeHtml(backLabel)}</a></nav>
 <header>
 <h1 class="page-heading">${escapeHtml(copy.title)}</h1>
 <p>${escapeHtml(copy.intro)}</p>

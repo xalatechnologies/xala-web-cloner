@@ -40,7 +40,9 @@ import {
 } from "../src/lib/blog/toc";
 import { getPageSEO } from "../src/components/seo/seoContent";
 import { CANONICAL_ALIASES, resolveRoute } from "../src/components/seo/routeRules";
-import { staticRouteVisibleHeading } from "../src/lib/staticRouteHeading";
+import { SERVICES_PAGE_HEADING, staticRouteVisibleHeading } from "../src/lib/staticRouteHeading";
+import { escapeHtml } from "../src/lib/escapeHtml";
+import no from "../src/i18n/locales/no.json";
 import {
   BLOG_PATH,
   ORGANIZATION,
@@ -76,6 +78,9 @@ import servicePages from "../src/data/service-pages.json";
 import faqData from "../src/data/faq.json";
 import { generateFAQSchema } from "../src/components/seo/sectionSchemas";
 import { servicePageHtml } from "../src/lib/servicePageHtml";
+import { tjenesterHubBodyHtml } from "../src/lib/tjenesterHubHtml";
+import { caseStudyPageHtml } from "../src/lib/caseStudyPageHtml";
+import { productPageHtml } from "../src/lib/productPageHtml";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CONTENT_DIR = path.join(ROOT, "src", "content", "blog");
@@ -96,9 +101,6 @@ function readContentFiles(): Record<string, string> {
   walk(CONTENT_DIR);
   return files;
 }
-
-const escapeHtml = (value: string): string =>
-  value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 /** Render markdown exactly the way the SPA does — same component, same plugin. */
 function markdownToHtml(body: string): string {
@@ -215,7 +217,7 @@ function renderBody(shell: string, inner: string): string {
   if (!pattern.test(shell)) {
     throw new Error('prerender: dist/index.html has no <div id="root"></div> to render into');
   }
-  return shell.replace(pattern, `<div id="root">${inner}</div>`);
+  return shell.replace(pattern, () => `<div id="root">${inner}</div>`);
 }
 
 /**
@@ -275,7 +277,7 @@ interface CaseLink { slug: string; title: string }
  * sitemap is for and which is already working: thirteen of them moved from
  * "unknown to Google" to "discovered" within two hours of submission.
  */
-function staticRouteHtml(heading: string, description: string, links: NavLink[]): string {
+function staticRouteHtml(heading: string, description: string, links: NavLink[], body = ""): string {
   const page =
     "min-height:100vh;background:#0b0b0d;color:#f5f5f4;font-family:Inter,system-ui,sans-serif;" +
     "display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:3rem 1.5rem;text-align:center";
@@ -289,11 +291,16 @@ function staticRouteHtml(heading: string, description: string, links: NavLink[])
     links.map((l) => `<a href="${escapeHtml(l.href)}" style="${linkStyle}">${escapeHtml(l.label)}</a>`).join("") +
     `</nav>`;
 
+  const bodyWrap = body
+    ? `<div style="max-width:52rem;width:100%;text-align:left;margin-top:1.5rem">${body}</div>`
+    : "";
+
   return (
     `<div style="${page}">` +
     `<h1 style="${h1}">${escapeHtml(heading)}</h1>` +
     `<p style="${lead}">${escapeHtml(description)}</p>` +
     nav +
+    bodyWrap +
     `</div>`
   );
 }
@@ -481,9 +488,16 @@ function main(): void {
         : [];
     const heading = staticRouteVisibleHeading(route.path, copy.title);
     const inner =
-      route.path === "/faq"
-        ? faqRouteHtml(heading, copy.description, faqData.no, MAIN_NAV)
-        : staticRouteHtml(heading, copy.description, MAIN_NAV);
+      route.path === "/tjenester"
+        ? staticRouteHtml(
+            SERVICES_PAGE_HEADING,
+            no.servicesPage.description,
+            MAIN_NAV,
+            tjenesterHubBodyHtml(),
+          )
+        : route.path === "/faq"
+          ? faqRouteHtml(heading, copy.description, faqData.no, MAIN_NAV)
+          : staticRouteHtml(heading, copy.description, MAIN_NAV);
     write(
       path.join(DIST, route.path.replace(/^\//, ""), "index.html"),
       renderBody(
@@ -524,39 +538,42 @@ function main(): void {
     const seo = localizedSeo(study, "no");
     write(
       path.join(DIST, "caser", study.slug, "index.html"),
-      renderHead(shell, {
-        title: seo.title,
-        description: seo.description,
-        canonical: url,
-        ogType: "article",
-        jsonLd: {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Article",
-              "@id": `${url}#article`,
-              headline: localized.title,
-              description: seo.description,
-              inLanguage: "nb-NO",
-              publisher: { "@id": ORG_ID },
-              mainEntityOfPage: { "@type": "WebPage", "@id": url },
-              ...(localized.client ? { about: { "@type": "Organization", name: localized.client } } : {}),
-            },
-            {
-              "@type": "BreadcrumbList",
-              "@id": `${url}#breadcrumb`,
-              itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Forside", item: SITE_ORIGIN },
-                { "@type": "ListItem", position: 2, name: "Kundecaser", item: `${SITE_ORIGIN}/caser` },
-                { "@type": "ListItem", position: 3, name: localized.title, item: url },
-              ],
-            },
-          ],
-        },
-        extraJsonLd: [caseStudyFaqJsonLd(url, localized)].filter(
-          (block): block is Record<string, unknown> => Boolean(block),
-        ),
-      }),
+      renderBody(
+        renderHead(shell, {
+          title: seo.title,
+          description: seo.description,
+          canonical: url,
+          ogType: "article",
+          jsonLd: {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Article",
+                "@id": `${url}#article`,
+                headline: localized.title,
+                description: seo.description,
+                inLanguage: "nb-NO",
+                publisher: { "@id": ORG_ID },
+                mainEntityOfPage: { "@type": "WebPage", "@id": url },
+                ...(localized.client ? { about: { "@type": "Organization", name: localized.client } } : {}),
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": `${url}#breadcrumb`,
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Forside", item: SITE_ORIGIN },
+                  { "@type": "ListItem", position: 2, name: "Kundecaser", item: `${SITE_ORIGIN}/caser` },
+                  { "@type": "ListItem", position: 3, name: localized.title, item: url },
+                ],
+              },
+            ],
+          },
+          extraJsonLd: [caseStudyFaqJsonLd(url, localized)].filter(
+            (block): block is Record<string, unknown> => Boolean(block),
+          ),
+        }),
+        caseStudyPageHtml(study.slug),
+      ),
     );
   }
 
@@ -615,38 +632,41 @@ function main(): void {
     const faq = details?.no?.faq ?? [];
     write(
       path.join(DIST, "produkter", product.slug, "index.html"),
-      renderHead(shell, {
-        title: `${product.title} | ${ORGANIZATION}`,
-        description: product.description,
-        canonical: url,
-        ogType: "website",
-        jsonLd: {
-          "@context": "https://schema.org",
-          "@type": "SoftwareApplication",
-          "@id": `${url}#product`,
-          name: product.title,
+      renderBody(
+        renderHead(shell, {
+          title: `${product.title} | ${ORGANIZATION}`,
           description: product.description,
-          url,
-          applicationCategory: "BusinessApplication",
-          operatingSystem: "Web",
-          publisher: { "@id": ORG_ID },
-          ...(product.features?.length ? { featureList: product.features } : {}),
-        },
-        extraJsonLd: faq.length
-          ? [
-              {
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                "@id": `${url}#faq`,
-                mainEntity: faq.map((item) => ({
-                  "@type": "Question",
-                  name: item.question,
-                  acceptedAnswer: { "@type": "Answer", text: item.answer },
-                })),
-              },
-            ]
-          : undefined,
-      }),
+          canonical: url,
+          ogType: "website",
+          jsonLd: {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "@id": `${url}#product`,
+            name: product.title,
+            description: product.description,
+            url,
+            applicationCategory: "BusinessApplication",
+            operatingSystem: "Web",
+            publisher: { "@id": ORG_ID },
+            ...(product.features?.length ? { featureList: product.features } : {}),
+          },
+          extraJsonLd: faq.length
+            ? [
+                {
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  "@id": `${url}#faq`,
+                  mainEntity: faq.map((item) => ({
+                    "@type": "Question",
+                    name: item.question,
+                    acceptedAnswer: { "@type": "Answer", text: item.answer },
+                  })),
+                },
+              ]
+            : undefined,
+        }),
+        productPageHtml(product.slug as string, { posts }),
+      ),
     );
   }
 
