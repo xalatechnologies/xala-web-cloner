@@ -1,9 +1,3 @@
-Blog: draft PR for svarfristen-ligger-pa-saken (2026-10-01)
-
-- Added post markdown with six frontmatter FAQ items, cover at public/images/blog/svarfristen-ligger-pa-saken.webp
-- Slug /blogg/svarfristen-ligger-pa-saken; H1 Kollegaen ser svarfristen på saken; seoTitle Svarfristen ligger på saken, ikke i postkassen
-- pnpm lint, typecheck, build pass; content-structure test fails on two short FAQ answers (approved copy)
-
 verify-live: visible hashtags in topicHashtags=false path (R1 of #196)
 
 - Cherry-picked 1e9432e onto main: isPostTopicHead uses visibleHtmlHashtags when topicHashtags is false
