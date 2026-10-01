@@ -15,7 +15,7 @@ keywords:
   - frist
 faq:
   - question: "Ser kollegaen svarfristen når den som fikk e-posten er borte?"
-    answer: "Før nei. Etter ja, fordi datoen ligger på saken."
+    answer: "Før nei. Etter ja, fordi datoen ligger på saken, ikke i postkassen."
   - question: "Holder det at datoen står i en kalenderinvitasjon?"
     answer: "Nei. Det er den tilstanden vi hadde før. Datoen må ligge på saken."
   - question: "Skal søkeren slutte å ringe?"
@@ -25,7 +25,7 @@ faq:
   - question: "Er dette en sak som ligger ufordelt?"
     answer: "Nei. Saken er allerede hos noen. Datoen er det som mangler på saken, og den manglet fordi den lå i postkassen."
   - question: "Fatter systemet vedtaket når datoen er på saken?"
-    answer: "Nei. Datoen er synlig. Saksbehandleren skriver vedtaket."
+    answer: "Nei. Datoen er synlig på saken. Saksbehandleren skriver vedtaket."
 lang: no
 draft: false
 ---
