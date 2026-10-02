@@ -17,13 +17,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 86,
+        "performance": 84,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
         "lcp": 3976,
         "cls": 0.0001880243853903182,
-        "tbt": 0
+        "tbt": 1
       }
     },
     {
@@ -37,13 +37,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 95,
+        "performance": 96,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 2560.5,
+        "lcp": 2552,
         "cls": 0.0001880243853903182,
-        "tbt": 4
+        "tbt": 51
       }
     },
     {
@@ -57,11 +57,11 @@
         "overall": null
       },
       "lab": {
-        "performance": 84,
+        "performance": 79,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3751,
+        "lcp": 3976,
         "cls": 0,
         "tbt": 0
       }
@@ -77,13 +77,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 90,
+        "performance": 96,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3007.5,
-        "cls": 0,
-        "tbt": 0
+        "lcp": 2558,
+        "cls": 0.0001880243853903182,
+        "tbt": 16
       }
     },
     {
@@ -97,13 +97,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 80,
+        "performance": 79,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3751,
-        "cls": 0,
-        "tbt": 0
+        "lcp": 3676,
+        "cls": 0.0008844416067068238,
+        "tbt": 206
       }
     },
     {
@@ -117,12 +117,12 @@
         "overall": null
       },
       "lab": {
-        "performance": 83,
+        "performance": 79,
         "accessibility": 95,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3729,
-        "cls": 0,
+        "lcp": 4126.5,
+        "cls": 0.0006663947312779279,
         "tbt": 0
       }
     },
@@ -142,7 +142,7 @@
         "seo": 100,
         "bestPractices": 100,
         "lcp": 3901,
-        "cls": 0.0001705337188462729,
+        "cls": 0.0002308535058617668,
         "tbt": 0
       }
     },
@@ -157,11 +157,11 @@
         "overall": null
       },
       "lab": {
-        "performance": 86,
+        "performance": 85,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3151,
+        "lcp": 3226,
         "cls": 0,
         "tbt": 0
       }
