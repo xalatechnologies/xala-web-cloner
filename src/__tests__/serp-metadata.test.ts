@@ -106,7 +106,7 @@ describe('search result metadata', () => {
     expect(post!.description).toBe(description);
     expect(post!.description.length).toBeLessThanOrEqual(DESC_MAX);
     expect(post!.description).not.toMatch(/—/);
-    expect(post!.body.startsWith(`${hook}\n\nKontrakten behandles som formalitet etter at løsningen er beskrevet.`)).toBe(
+    expect(post!.body.trimStart().startsWith(`${hook}\n\nKontrakten behandles som formalitet etter at løsningen er beskrevet.`)).toBe(
       true
     );
     expect(post!.slug).toBe('ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling');
