@@ -30,7 +30,7 @@ draft: false
 
 Forhåndsvarselet er teksten parten får før kommunen treffer et vedtak de ikke allerede har uttalt seg om. Den ene setningen må si hvilket utfall som vurderes, og hvilket faktum det hviler på.
 
-## Scene
+## Setningen i varslet
 
 Leseren ser bare denne setningen, midt i varslet.
 
@@ -40,7 +40,7 @@ Den sier hvilket utfall som vurderes, og hvilket faktum utfallet hviler på. Avs
 
 Nordre Follo har en [tilskudds- og bevillingsportal fra Xala](/caser/nordre-follo-tilskuddsportal-bevillingsportal). Det er ikke bevis for et beløp, en frist, eller at noen fikk et varsel.
 
-## Rule
+## Utfall og faktum
 
 Setningen må holde to ting. Det ene er utfallet som vurderes. Det andre er det konkrete faktumet parten må kunne svare på.
 
@@ -52,7 +52,7 @@ Har parten allerede uttalt seg om akkurat dette faktumet, kan setningen være un
 
 Grunnlaget i saken er en annen tekst: [saken må være opplyst før vedtak](/blogg/saken-ma-vaere-opplyst-for-vedtak).
 
-## Takeaway
+## Når setningen er vag
 
 Er setningen vag, mangler faktumet parten skulle ha svart på. Parten svarer på feil ting, eller ikke i det hele tatt. Vedtaket siden hviler på noe parten aldri fikk møte.
 

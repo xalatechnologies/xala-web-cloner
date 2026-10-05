@@ -30,13 +30,13 @@ draft: false
 
 Når behandleren er inhabil, er øyeblikket at saken går til en annen person. Med saken skal dokumentene, fristen og det parten er spurt om, følge med, så neste person slipper å lete.
 
-## Scene
+## Saken legges over til en kollega
 
 En saksbehandler på en tilskudds- eller bevillingssak er avklart inhabil, for eksempel fordi saksbehandleren sitter i styret hos søkeren. Saken legges over til en kollega.
 
 Nordre Follo har en [tilskudds- og bevillingsportal fra Xala](/caser/nordre-follo-tilskuddsportal-bevillingsportal). Det handler om portalen, ikke om at noen der var inhabil.
 
-## Rule
+## Dette skal følge med saken
 
 Med saken skal hvilken søknad og hvilken ordning følge med. Det samme gjelder dokumentene som allerede ligger der, hva parten er spurt om og hva som kom tilbake, og fristen som ligger på saken. Det skal også følge med at forrige saksbehandler er inhabil og ikke skal fullføre vurderingen.
 
@@ -46,7 +46,7 @@ Er lederen inhabil, skal vedtaket ikke legges hos en direkte underordnet i samme
 
 Lov 20. juni 2025 nr. 81 er vedtatt, men ikke i kraft.
 
-## Takeaway
+## Neste person skal ikke lete
 
 Neste person skal ikke lete etter hvorfor saken kom, hvilke dokumenter som er inne, eller hva parten er lovet. Neste person skal ikke ringe den inhabile for å få vurderingen ferdig. Mangler noe av dette, er byttet bare et nytt navn på samme private notat.
 
