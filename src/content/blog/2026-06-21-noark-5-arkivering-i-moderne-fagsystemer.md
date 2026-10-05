@@ -17,7 +17,7 @@ Arkivplikten er ikke til forhandling for offentlige virksomheter, men den behand
 
 ## Problemet med å arkivere i etterkant
 
-Bygger man saksbehandlingsløsningen først og tenker arkiv etterpå, må integrasjonen rekonstruere en journalpost fra data som aldri ble strukturert for formålet.
+Bygger man saksbehandlingsløsningen først og tenker arkiv etterpå, må integrasjonen, en [Noark 5-integrasjon mot fagsystemet](/tjenester/systemintegrasjon), rekonstruere en journalpost fra data som aldri ble strukturert for formålet.
 
 Hvem var parten? Hva var saken? Hvilket dokument er selve vedtaket, og hvilke er vedlegg? Systemet vet det kanskje visuelt, men ikke i datamodellen. Da blir integrasjonen full av gjetting, og gjetting i arkivet er en revisjonsanmerkning som venter på å skje.
 

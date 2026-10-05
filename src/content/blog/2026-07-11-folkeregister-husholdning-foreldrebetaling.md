@@ -71,7 +71,7 @@ Bor foreldrene hver for seg og barnet bor fast hos begge, er det husholdningen t
 
 ## Hva som kan slås opp, og hva som må spørres
 
-Det som kan slås opp: husholdningen etter § 20-1. [Skatteetaten](https://www.skatteetaten.no/deling/folkeregisteret/intro/) ber kommunen søke tilgang, så velge teknisk løsning. Maskinporten er døren. Kommunen er behandlingsansvarlig.
+Det som kan slås opp: husholdningen etter § 20-1, som et [registeroppslag inn i fagsystemet](/tjenester/systemintegrasjon). [Skatteetaten](https://www.skatteetaten.no/deling/folkeregisteret/intro/) ber kommunen søke tilgang, så velge teknisk løsning. Maskinporten er døren. Kommunen er behandlingsansvarlig.
 
 Det som ikke skal automatiseres: samboer uten felles barn. Skjønnet. Klagen. Vedtaket.
 

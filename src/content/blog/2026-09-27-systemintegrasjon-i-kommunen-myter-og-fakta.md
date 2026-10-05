@@ -37,7 +37,7 @@ Det gjør hverdagen lettere fordi saksbehandleren får vite om feilen før innby
 
 Fredag ettermiddag svarer ikke registeret. Saksbehandleren får en rød feilmelding uten forklaring, legger saken til side og håper det løser seg over helgen.
 
-**Fakta:** En god integrasjon regner med at andre systemer av og til er nede. Meldingen legges i en kø og sendes på nytt automatisk når tjenesten svarer igjen. Imens viser saken en tydelig status, for eksempel «venter på svar fra registeret». Det er ikke en feil. Det er en tilstand saken kan stå i.
+**Fakta:** En god [systemintegrasjon](/tjenester/systemintegrasjon) regner med at andre systemer av og til er nede. Meldingen legges i en kø og sendes på nytt automatisk når tjenesten svarer igjen. Imens viser saken en tydelig status, for eksempel «venter på svar fra registeret». Det er ikke en feil. Det er en tilstand saken kan stå i.
 
 **Slik gjør vi det:** Vi avgjør for hver kobling hva saken kan gjøre mens svaret uteblir. Ofte kan søknaden sendes inn og saken jobbes videre med, mens oppslaget venter i køen. Statusmeldingen er skrevet på vanlig norsk og fungerer også med skjermleser og tastatur, fordi universell utforming gjelder feilmeldinger like mye som skjemaer.
 

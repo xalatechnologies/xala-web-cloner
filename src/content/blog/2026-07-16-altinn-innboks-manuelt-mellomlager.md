@@ -66,7 +66,7 @@ Når saken først er inne, og likevel ligger uten eier, er det et annet steg. De
 
 ## Hva som kan sendes, og hva som må leses
 
-Dere kan rute søknaden inn i eByggesak, eller sette SvarInn til saksbehandlingssystemet. Da lander den i fagsystemet dere har. Ikke bygg et fjerde mottak.
+Dere kan rute søknaden inn i eByggesak, eller sette SvarInn til saksbehandlingssystemet, for å [hente innsendingen rett inn i saken](/tjenester/systemintegrasjon). Da lander den i fagsystemet dere har. Ikke bygg et fjerde mottak.
 
 Dere kan ikke koble selve byggesaksvedtaket. Xala fatter ikke tillatelsen.
 

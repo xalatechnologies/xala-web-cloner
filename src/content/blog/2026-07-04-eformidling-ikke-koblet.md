@@ -64,7 +64,7 @@ Altinn-innboksen som blir igjen uten kobling, er skrevet i [Innboksen er ikke mo
 
 ## Hva som kan settes opp, og hva som må limes
 
-Det som kan settes opp: integrasjonspunktet inn i fagsystemet dere har. Da festes innkommende meldinger på saken.
+Det som kan settes opp: integrasjonspunktet inn i fagsystemet dere har, via [integrasjonslaget mellom systemene](/tjenester/systemintegrasjon). Da festes innkommende meldinger på saken.
 
 Det som ikke skal automatiseres: vedtaket. Ikke å late som 360 alene er eFormidling. Ikke å bygge en privat postkasse ved siden av. E-post og ettersendelse er det som blir igjen når koblingen mangler. Det er ikke et Digdir-sitat.
 

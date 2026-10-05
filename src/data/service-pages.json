@@ -1172,12 +1172,14 @@
       "norsk-helsenett-healthcare-infrastructure"
     ],
     "postSlugs": [
-      "integrasjoner-mot-nasjonale-felleskomponenter"
+      "integrasjoner-mot-nasjonale-felleskomponenter",
+      "systemintegrasjon-i-kommunen-myter-og-fakta",
+      "public-360-og-fagsystem-snakker-ikke"
     ],
     "no": {
-      "title": "Systemintegrasjon",
-      "metaTitle": "Systemintegrasjon mot Altinn og fagsystemer | Xala",
-      "metaDescription": "Vi kobler sammen fagsystemer, registre og nasjonale felleskomponenter, og bygger integrasjonene slik at nedetid hos andre ikke stopper saksgangen.",
+      "title": "Systemintegrasjon for fagsystemer i offentlig sektor",
+      "metaTitle": "Systemintegrasjon for kommunen: fagsystem og arkiv | Xala",
+      "metaDescription": "Vi kobler fagsystemet til Noark-arkiv, Folkeregisteret og Altinn, også når det gamle systemet mangler API. Saken går videre når andre er nede.",
       "intro": "Et system som ikke snakker med noe annet, finnes knapt i offentlig sektor. Integrasjonene er derfor sjelden en detalj i prosjektet. De er ofte det prosjektet faktisk handler om, og de er der de fleste forsinkelsene oppstår.",
       "problemHeading": "Der prosjekter sporer av",
       "problem": "Tilgang til felleskomponentene er en prosess med avtaler, roller og godkjenninger, ikke en konfigurasjon. Starter søknadene i sprint to, blir tilgangen den kritiske stien. Og testmiljøene ligner produksjon uten å være det, så noe oppfører seg alltid annerledes første gang det møter ekte data.",

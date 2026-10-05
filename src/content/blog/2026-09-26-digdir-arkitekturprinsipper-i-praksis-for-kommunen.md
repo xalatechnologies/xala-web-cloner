@@ -132,7 +132,7 @@ Be tilbyderen vise loggen for en testsak i demoen. Spør også hvordan de tenker
 
 ## Slik gjør Xala det
 
-Vi bygger løsninger som skal tåle disse spørsmålene. Ikke fordi de står i et konkurransegrunnlag, men fordi det er det som gjør hverdagen lettere for saksbehandleren og innbyggeren.
+Vi bygger løsninger som skal tåle disse spørsmålene, med [integrasjoner som deler og gjenbruker data](/tjenester/systemintegrasjon). Ikke fordi de står i et konkurransegrunnlag, men fordi det er det som gjør hverdagen lettere for saksbehandleren og innbyggeren.
 
 I [Tilskuddsportal](https://xala.no/produkter/tilskuddsportal) spør skjemaet bare om det som påvirker vedtaket. Det lagrer underveis. Reglene ligger ett sted, så de kan endres når retningslinjene endres. Universell utforming ligger inne fra start. Saksbehandleren får en kø, ikke en innboks.
 

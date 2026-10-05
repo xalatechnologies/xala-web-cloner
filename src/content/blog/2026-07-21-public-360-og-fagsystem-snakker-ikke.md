@@ -44,7 +44,7 @@ Digdir: «Mange av saksbehandlingssystemene inneholder støtte for journalførin
 
 Og: «I disse tilfellene er det vanligvis ønskelig at kommunikasjonen går direkte mellom virksomhetenes saksbehandlingssystem slik at dokumentene som sendes og mottas automatisk kan knyttes til den aktuelle saken.»
 
-Søkeren venter. Brevet som kommer, matcher ikke det som ble sendt inn. De to systemene har drevet fra hverandre.
+Søkeren venter. Brevet som kommer, matcher ikke det som ble sendt inn. De to systemene har drevet fra hverandre uten å [koble fagsystemet til sak og arkiv](/tjenester/systemintegrasjon).
 
 ## Hva journalplikt faktisk krever
 

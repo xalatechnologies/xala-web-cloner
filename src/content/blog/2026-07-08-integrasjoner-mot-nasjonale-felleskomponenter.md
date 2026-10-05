@@ -31,7 +31,7 @@ Konsekvensen er at feilhåndtering er den delen som er dårligst dekket når lø
 
 ## Nedetid hos andre er en normaltilstand
 
-En felleskomponent vil være utilgjengelig av og til. Spørsmålet er ikke om, men hva løsningen din gjør da.
+En felleskomponent vil være utilgjengelig av og til. Spørsmålet er ikke om, men hva løsningen din gjør da med en [integrasjon som tåler nedetid hos andre](/tjenester/systemintegrasjon).
 
 To valg avgjør opplevelsen:
 
