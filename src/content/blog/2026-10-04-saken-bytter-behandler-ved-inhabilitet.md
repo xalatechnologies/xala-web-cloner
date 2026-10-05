@@ -7,7 +7,7 @@ author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
 cover: "/images/blog/saken-bytter-behandler-ved-inhabilitet.webp"
-coverAlt: "Diagram sett ovenfra: to grunne brett med et mellomrom, en stabel med tre blanke ark som krysser mellomrommet, én oransje binders, og en liten lukket strek på venstre brett. Overskrift «SAKEN FØLGER MED»."
+coverAlt: "Diagram sett ovenfra: to grunne brett med et mellomrom, en stabel med tre blanke ark som krysser mellomrommet, én oransje foldeklemme, og en liten lukket strek på venstre brett. Overskrift «SAKEN FØLGER MED» og undertekst «Neste person skal ikke lete.»."
 keywords:
   - inhabil saksbehandler
   - habilitet i kommunen
@@ -40,7 +40,7 @@ Nordre Follo har en [tilskudds- og bevillingsportal fra Xala](/caser/nordre-foll
 
 Med saken skal hvilken søknad og hvilken ordning følge med. Det samme gjelder dokumentene som allerede ligger der, hva parten er spurt om og hva som kom tilbake, og fristen som ligger på saken. Det skal også følge med at forrige saksbehandler er inhabil og ikke skal fullføre vurderingen.
 
-§ 6 i lov 10. februar 1967 om behandlingsmåten i forvaltningssaker er grunnen til byttet. Loven sier ugild. Her sier vi inhabil, fordi det er ordet i søket. Det er samme regel, ikke to. Paragrafen er ikke en liste over typer.
+§ 6 i lov 10. februar 1967 om behandlingsmåten i forvaltningssaker er grunnen til byttet. Loven sier ugild. I dagligtale heter det inhabil. Det er samme regel, ikke to. Teksten går ikke gjennom grunnene i § 6.
 
 Er lederen inhabil, skal vedtaket ikke legges hos en direkte underordnet i samme organ: «Er den overordnede tjenestemann ugild, kan avgjørelse i saken heller ikke treffes av en direkte underordnet tjenestemann i samme forvaltningsorgan.»
 
@@ -48,6 +48,6 @@ Lov 20. juni 2025 nr. 81 er vedtatt, men ikke i kraft.
 
 ## Neste person skal ikke lete
 
-Neste person skal ikke lete etter hvorfor saken kom, hvilke dokumenter som er inne, eller hva parten er lovet. Neste person skal ikke ringe den inhabile for å få vurderingen ferdig. Mangler noe av dette, er byttet bare et nytt navn på samme private notat.
+Neste person skal ikke lete etter hvorfor saken kom, hvilke dokumenter som er inne, eller hva parten er spurt om. Neste person skal ikke ringe den inhabile for å få vurderingen ferdig. Mangler noe av dette, er byttet bare et nytt navn på samme private notat.
 
 Saken skal åpnes i [Bevillingsportal for kommuner](/tjenester/bevillingsportal), ikke i et privat notat.
