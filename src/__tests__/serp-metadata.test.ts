@@ -85,6 +85,36 @@ describe('search result metadata', () => {
     }
   );
 
+  it('renders the SSA-S / SSA-L document title once, inside 60 characters', () => {
+    // postMeta appends " | Xala" to seoTitle. The suffix stays out of frontmatter.
+    const post = posts.find((p) => p.slug === 'ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling');
+    expect(post, 'SSA post missing from the published set').toBeDefined();
+    const topic = 'SSA-S eller SSA-L? Smidigavtalen mot tjenestekjøp';
+    const description =
+      'SSA-S (Smidigavtalen) er for programvare som utvikles i etapper. SSA-L er for en ferdig tjeneste dere kjøper over tid. Velg etter hva dere faktisk kjøper.';
+    const hook =
+      'Kort svar: SSA-S er for programvare som utvikles i etapper. SSA-L er for en ferdig tjeneste dere kjøper over tid.';
+
+    expect(post!.title).toBe(topic);
+    expect(post!.seoTitle).toBe(topic);
+    expect(post!.seoTitle).not.toMatch(/\| Xala/);
+    expect(postMeta(post!).title).toBe(`${topic} | Xala`);
+    expect(postMeta(post!).title).toHaveLength(56);
+    expect(postMeta(post!).title.length).toBeLessThanOrEqual(TITLE_MAX);
+    expect(postMeta(post!).title.match(/ \| Xala/g)).toEqual([' | Xala']);
+    expect(postMeta(post!).title).not.toMatch(/—/);
+    expect(post!.description).toBe(description);
+    expect(post!.description.length).toBeLessThanOrEqual(DESC_MAX);
+    expect(post!.description).not.toMatch(/—/);
+    expect(
+      post!.body
+        .trimStart()
+        .startsWith(`${hook}\n\nLikevel behandles kontrakten ofte som en formalitet etter at løsningen er beskrevet.`)
+    ).toBe(true);
+    expect(post!.slug).toBe('ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling');
+    expect(post!.cover).toBe('/images/blog/ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling.webp');
+  });
+
   it('renders the systemintegrasjon document title once, inside 60 characters', () => {
     // Service pages emit metaTitle as the <title>. Nothing appends " | Xala"
     // again, so the suffix belongs in this string and only here.
