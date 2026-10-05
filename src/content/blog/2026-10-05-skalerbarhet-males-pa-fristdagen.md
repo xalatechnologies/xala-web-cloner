@@ -1,6 +1,7 @@
 ---
 slug: skalerbarhet-males-pa-fristdagen
 title: "Skalerbarhet betyr at fristdagen ikke blir et prosjekt"
+seoTitle: "Skalerbarhet: fristdagen blir ikke et prosjekt"
 description: "Skalerbarhet betyr at kommunen tar imot flere søknader og en ny ordning uten et nytt prosjekt. Fristdagen er testen, ikke ordet i kravet."
 date: 2026-10-05
 author: "Ibrahim Rahmani"
