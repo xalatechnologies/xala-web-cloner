@@ -1,6 +1,6 @@
 ---
 slug: skalerbarhet-males-pa-fristdagen
-title: "Skalerbarhet betyr at fristdagen ikke blir et prosjekt"
+title: "Skalerbarhet betyr at fristdagen ikke blir prosjekt"
 description: "Skalerbarhet betyr at kommunen tar imot flere søknader og en ny ordning uten et nytt prosjekt. Fristdagen er testen, ikke ordet i kravet."
 date: 2026-10-05
 author: "Ibrahim Rahmani"
@@ -10,6 +10,9 @@ cover: "/images/blog/skalerbarhet-males-pa-fristdagen.webp"
 coverAlt: "Diagram med grå søyler som stiger mot høyre over dagene i en søknadsperiode. Bare den siste søylen, fristdagen, er oransje. Under søylene går én flat grå linje merket samme kø. Overskrift «SKALERBARHET»."
 keywords:
   - skalerbarhet
+  - fristdagen
+  - tilskuddsordning
+  - kravspesifikasjon
 faq:
   - question: "Handler skalerbarhet bare om servere?"
     answer: "Nei. Kommunen merker skalerbarhet som en fristdag og en ny ordning, ikke som maskinvare. Spørsmålet er om noen må gjøre noe manuelt den dagen."
