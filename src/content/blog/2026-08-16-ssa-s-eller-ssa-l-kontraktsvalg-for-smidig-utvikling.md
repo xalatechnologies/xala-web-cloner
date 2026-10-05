@@ -13,9 +13,9 @@ lang: no
 draft: false
 ---
 
-Kort svar: SSA-S er for programvare som utvikles i etapper. SSA-L er for en ferdig tjeneste dere kjøper over internett.
+Kort svar: SSA-S er for programvare som utvikles i etapper. SSA-L er for en ferdig tjeneste dere kjøper over tid.
 
-Kontrakten behandles som formalitet etter at løsningen er beskrevet.
+Likevel behandles kontrakten ofte som en formalitet etter at løsningen er beskrevet.
 
 I praksis er det motsatt. Kontrakten bestemmer hvor detaljert løsningen må beskrives på forhånd, og dermed hvor mye risiko som flyttes til et tidspunkt der ingen ennå vet nok.
 
@@ -23,7 +23,7 @@ I praksis er det motsatt. Kontrakten bestemmer hvor detaljert løsningen må bes
 
 SSA-S er Smidigavtalen. Den er laget for programvare som utvikles i etapper, der omfanget avklares underveis.
 
-SSA-L er Avtale om løpende tjenestekjøp. Den er laget for en ferdig tjeneste du kjøper over tid, ofte i skyen.
+SSA-L er Avtale om løpende tjenestekjøp. Den er laget for en ferdig tjeneste dere kjøper over tid, ofte i skyen.
 
 Xala bruker den avtalen som matcher jobben. Ny funksjon i etapper peker mot SSA-S. En ferdig tjeneste med løpende drift peker mot SSA-L.
 

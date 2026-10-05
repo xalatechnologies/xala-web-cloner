@@ -93,7 +93,7 @@ describe('search result metadata', () => {
     const description =
       'SSA-S (Smidigavtalen) er for programvare som utvikles i etapper. SSA-L er for en ferdig tjeneste dere kjøper over tid. Velg etter hva dere faktisk kjøper.';
     const hook =
-      'Kort svar: SSA-S er for programvare som utvikles i etapper. SSA-L er for en ferdig tjeneste dere kjøper over internett.';
+      'Kort svar: SSA-S er for programvare som utvikles i etapper. SSA-L er for en ferdig tjeneste dere kjøper over tid.';
 
     expect(post!.title).toBe(topic);
     expect(post!.seoTitle).toBe(topic);
@@ -106,9 +106,11 @@ describe('search result metadata', () => {
     expect(post!.description).toBe(description);
     expect(post!.description.length).toBeLessThanOrEqual(DESC_MAX);
     expect(post!.description).not.toMatch(/—/);
-    expect(post!.body.trimStart().startsWith(`${hook}\n\nKontrakten behandles som formalitet etter at løsningen er beskrevet.`)).toBe(
-      true
-    );
+    expect(
+      post!.body
+        .trimStart()
+        .startsWith(`${hook}\n\nLikevel behandles kontrakten ofte som en formalitet etter at løsningen er beskrevet.`)
+    ).toBe(true);
     expect(post!.slug).toBe('ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling');
     expect(post!.cover).toBe('/images/blog/ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling.webp');
   });
