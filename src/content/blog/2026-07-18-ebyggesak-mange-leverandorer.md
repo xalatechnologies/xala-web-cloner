@@ -66,7 +66,7 @@ Det er formatet. Det er ikke et fjerde eByggesak. Det er ikke en sjette søknad.
 
 ## Hva som kan kobles, og hva som blir manuelt
 
-Det som kan kobles: navngitt mottaksvei og formatmapping. Hvilken søknadsløsning sendte. Hvilket FtPB-format kom. Hvilken mottaksvei kommunen bruker. Hvilket av de tre eByggesak-systemene som skal ha dataene. Logg hvilket system som tok imot hva. Kommunen er behandlingsansvarlig. Databehandleravtale med eByggesak-leverandøren og med søknadsløsningen.
+Det som kan kobles: navngitt mottaksvei og formatmapping, med en [integrasjon på tvers av leverandører](/tjenester/systemintegrasjon). Hvilken søknadsløsning sendte. Hvilket FtPB-format kom. Hvilken mottaksvei kommunen bruker. Hvilket av de tre eByggesak-systemene som skal ha dataene. Logg hvilket system som tok imot hva. Kommunen er behandlingsansvarlig. Databehandleravtale med eByggesak-leverandøren og med søknadsløsningen.
 
 Det som ikke skal automatiseres: å bygge en sjette søknad. Ikke et fjerde eByggesak. Ikke å late som Xala erstatter FtPB. Vedtaket blir hos saksbehandleren. Xala fatter ikke tillatelsen.
 

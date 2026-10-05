@@ -85,6 +85,26 @@ describe('search result metadata', () => {
     }
   );
 
+  it('renders the systemintegrasjon document title once, inside 60 characters', () => {
+    // Service pages emit metaTitle as the <title>. Nothing appends " | Xala"
+    // again, so the suffix belongs in this string and only here.
+    const copy = (
+      servicePages as Record<string, { no: { title: string; metaTitle: string; metaDescription: string } }>
+    ).systemintegrasjon.no;
+    const title = 'Systemintegrasjon for kommunen: fagsystem og arkiv | Xala';
+    const description =
+      'Vi kobler fagsystemet til Noark-arkiv, Folkeregisteret og Altinn, også når det gamle systemet mangler API. Saken går videre når andre er nede.';
+
+    expect(copy.metaTitle).toBe(title);
+    expect(copy.metaTitle.length).toBeLessThanOrEqual(TITLE_MAX);
+    expect(copy.metaTitle.match(/ \| Xala/g)).toEqual([' | Xala']);
+    expect(copy.metaTitle).not.toMatch(/—/);
+    expect(copy.metaDescription).toBe(description);
+    expect(copy.metaDescription.length).toBeLessThanOrEqual(DESC_MAX);
+    expect(copy.metaDescription).not.toMatch(/—/);
+    expect(copy.title).toBe('Systemintegrasjon for fagsystemer i offentlig sektor');
+  });
+
   it('keeps the em-dash out of metadata', () => {
     // A standing instruction on this site: em-dashes read as machine-written
     // Norwegian. They had survived in the blog index description.

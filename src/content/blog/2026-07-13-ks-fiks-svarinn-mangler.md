@@ -68,7 +68,7 @@ Nedlastingen fra Altinn er et annet steg. Det er skrevet i [Byggesøknaden skal 
 
 ## Hva som kan settes opp, og hva som må ventes
 
-Det som kan settes opp: avtalen, mottakersystemet, og at SvarInn peker på saksbehandlingssystemet. Logg hvilket mottakersystem som importerte hva. Kommunen er behandlingsansvarlig. SvarInn bærer sensitive forsendelser.
+Det som kan settes opp: avtalen, mottakersystemet, og at SvarInn peker på saksbehandlingssystemet, for å [koble mottaket til fagsystemet](/tjenester/systemintegrasjon). Logg hvilket mottakersystem som importerte hva. Kommunen er behandlingsansvarlig. SvarInn bærer sensitive forsendelser.
 
 Det som ikke skal automatiseres: vedtaket. Ikke å registrere organisasjonsnummeret før fagsystemet kan importere. Ikke å bygge et privat mottak ved siden av FIKS.
 

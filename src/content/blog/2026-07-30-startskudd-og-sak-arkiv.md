@@ -64,7 +64,7 @@ SvarInn som mangler, er et annet steg. Det er skrevet i [SvarInn er ikke slått 
 
 ## Hva som kan kobles, og hva som blir manuelt
 
-Det som kan kobles: FIKS/SvarInn fra Startskudd inn i sak/arkiv dere har. Innkommende dokumenter festes på saken. Logg hvilket system som skrev hva. Kommunen er behandlingsansvarlig. Databehandleravtale med Husbanken og med sak/arkiv. Ikke kopier hele Startskudd-saken inn i 360 «for sikkerhets skyld».
+Det som kan kobles: FIKS/SvarInn fra Startskudd inn i sak/arkiv dere har, med en [integrasjon mot sak og arkiv](/tjenester/systemintegrasjon). Innkommende dokumenter festes på saken. Logg hvilket system som skrev hva. Kommunen er behandlingsansvarlig. Databehandleravtale med Husbanken og med sak/arkiv. Ikke kopier hele Startskudd-saken inn i 360 «for sikkerhets skyld».
 
 Det som ikke skal automatiseres: å behandle Startskudd som journalen. Ikke hopp over journalplikt. Ikke late som forskriften krever en 360-kobling. Skjønnet i saken blir hos saksbehandleren. Xala avgjør ikke saken.
 

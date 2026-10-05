@@ -44,7 +44,7 @@ Kommunen er behandlingsansvarlig. Det skal finnes databehandleravtale med 360, V
 
 ## Hva som kan kobles, og hva som blir manuelt
 
-Det som kan kobles: journalføring i 360 når søknaden er komplett, og fakturafelt til Visma når gebyr er i saken. Én skriving. To systemer som lytter.
+Det som kan kobles med [systemintegrasjon](/tjenester/systemintegrasjon): journalføring i 360 når søknaden er komplett, og fakturafelt til Visma når gebyr er i saken. Én skriving. To systemer som lytter.
 
 Det som ikke skal automatiseres: å behandle «vi har 360 og Visma» som integrasjon. Og selve bevillingsvedtaket. Vedtaket blir hos saksbehandleren.
 

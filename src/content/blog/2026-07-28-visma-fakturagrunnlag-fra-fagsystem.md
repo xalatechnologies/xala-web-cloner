@@ -58,7 +58,7 @@ Journalen mot fagsystemet er et annet steg. Det er skrevet i [To faner er ikke �
 
 ## Hva som kan sendes, og hva som må leses
 
-Dere kan sende fakturafeltene fra gebyret som allerede er satt, inn i Visma. Ett grunnlag. Logg hvilket system som skrev feltene. Kommunen er behandlingsansvarlig. Databehandleravtale med Visma og med fagsystemet. Ikke kopier hele økonomimappa inn i sak og arkiv «for sikkerhets skyld».
+Dere kan sende fakturafeltene fra gebyret som allerede er satt, inn i Visma, med en [integrasjon mellom fagsystem og økonomi](/tjenester/systemintegrasjon). Ett grunnlag. Logg hvilket system som skrev feltene. Kommunen er behandlingsansvarlig. Databehandleravtale med Visma og med fagsystemet. Ikke kopier hele økonomimappa inn i sak og arkiv «for sikkerhets skyld».
 
 Dere kan ikke sende en sats dere fant på. Ikke bevillingsvedtaket. Ikke en ufullstendig oppgave rett i Visma. En person leser når oppgaven skurrer.
 
