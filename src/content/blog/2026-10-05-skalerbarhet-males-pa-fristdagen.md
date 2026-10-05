@@ -10,6 +10,10 @@ cover: "/images/blog/skalerbarhet-males-pa-fristdagen.webp"
 coverAlt: "Diagram med grå søyler som stiger mot høyre over dagene i en søknadsperiode. Bare den siste søylen, fristdagen, er oransje. Under søylene går én flat grå linje merket samme kø. Overskrift «SKALERBARHET»."
 keywords:
   - skalerbarhet
+  - fristdag
+  - tilskudd
+  - saksbehandling
+  - kommune
 faq:
   - question: "Handler skalerbarhet bare om servere?"
     answer: "Nei. Kommunen merker skalerbarhet som en fristdag og en ny ordning, ikke som maskinvare. Spørsmålet er om noen må gjøre noe manuelt den dagen."
@@ -39,7 +43,7 @@ Scenen er tenkt. Nordre Follo har en [tilskudds- og bevillingsportal fra Xala](/
 
 Skalerbar betyr at mer av det samme ikke krever et nytt prosjekt. For kommunen er mer av det samme to ting: flere søknader på fristdagen, og en ordning til.
 
-Testen er én setning. Går fristdagen og den nye ordningen uten at noen må ringe leverandøren, forlenge fristen eller be søkerne sende på e-post, er løsningen skalerbar for kommunen.
+Går fristdagen og den nye ordningen uten at noen må ringe leverandøren, forlenge fristen eller be søkerne sende på e-post, er løsningen skalerbar for kommunen.
 
 Testen handler ikke om maskiner. Den handler om hva folk må gjøre for hånd den dagen. Må noen gjøre noe ekstra for at søkerne skal komme gjennom, har dere ikke skalerbarhet. Dere har en innsats.
 
