@@ -22,7 +22,7 @@ faq:
   - question: "Hva skal stå i kravspesifikasjonen?"
     answer: "Fristdagen, beskrevet som en scene. Ordet skalerbar alene sier ikke hva som skal skje den dagen."
 lang: no
-draft: true
+draft: false
 ---
 
 Skalerbarhet betyr at kommunen tar imot flere søknader og en ny ordning uten at noen må starte et nytt prosjekt. Testen er fristdagen, ikke ordet i kravspesifikasjonen. Ordet står i mange krav, men det blir først tydelig når dere ser for dere én bestemt dag.
