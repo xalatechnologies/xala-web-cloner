@@ -37,9 +37,9 @@ Skrivende funksjoner kommer etterpå, og der er det verdt å kjøre en periode m
 
 ## Vær ærlig om integrasjonene
 
-Erfaringsmessig er det ikke fagsystemet som er vanskelig, det er [systemintegrasjon for fagsystemer](/tjenester/systemintegrasjon) og alt som henger i det. Et system som har stått i ti år har gjerne rapporter noen henter manuelt, en filoverføring til et regnskapssystem, en integrasjon mot en felleskomponent, og et par Excel-ark som i praksis er del av arbeidsflyten.
+Erfaringsmessig er det ikke fagsystemet som er vanskelig, det er alt som henger i det. Et system som har stått i ti år har gjerne rapporter noen henter manuelt, en filoverføring til et regnskapssystem, en integrasjon mot en felleskomponent, og et par Excel-ark som i praksis er del av arbeidsflyten.
 
-Koble det som allerede virker. Ikke bygg et nytt register ved siden av. Kartlegg dette før du starter, ikke underveis. Den enkleste øvelsen er å følge dataene: hvor kommer de inn, hvor går de ut, og hvem oppdager det hvis de stopper. Svarene på det siste spørsmålet er ofte de viktigste, fordi de peker på integrasjoner ingen har dokumentert.
+Koble det som allerede virker. Ikke bygg et nytt register ved siden av. Kartlegg dette før du starter, ikke underveis. Den enkleste øvelsen er å følge dataene: hvor kommer de inn, hvor går de ut, og hvem oppdager det hvis de stopper. Svarene på det siste spørsmålet er ofte de viktigste, fordi de peker på integrasjoner ingen har dokumentert. Det er dette vi gjør i [systemintegrasjon for fagsystemer](/tjenester/systemintegrasjon).
 
 ## Hva dette betyr for anskaffelsen
 

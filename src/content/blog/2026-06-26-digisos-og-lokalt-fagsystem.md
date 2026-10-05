@@ -62,7 +62,7 @@ Det er ikke plikt at Digisos *er* fagsystemet. Søknaden skal inn dit behandling
 
 ## Hva som kan settes opp, og hva som må ventes
 
-Det som kan settes opp: Fiks Digisos inn i fagsystemet dere har, for å [koble det lokale fagsystemet](/tjenester/systemintegrasjon). Logg hvilket system som skrev hva. Kommunen er behandlingsansvarlig. Innsyn viser søkeren et utsnitt. Ikke kopier hele fagsystemet inn i innsyn «for sikkerhets skyld».
+Det som kan settes opp: Fiks Digisos inn i fagsystemet dere har. Det er en jobb for å [koble det lokale fagsystemet](/tjenester/systemintegrasjon) til Fiks, ikke å bytte det ut. Logg hvilket system som skrev hva. Kommunen er behandlingsansvarlig. Innsyn viser søkeren et utsnitt. Ikke kopier hele fagsystemet inn i innsyn «for sikkerhets skyld».
 
 Det som ikke skal automatiseres: vedtaket. Kode 6 og 7. Den individuelle vurderingen, skrevet i [Satsen er veiledende. Den er ikke vedtaket](/blogg/okonomisk-sosialhjelp-individuell-vurdering). Xala fatter ikke vedtaket.
 

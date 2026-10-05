@@ -40,7 +40,7 @@ const PLACEMENTS: ReadonlyArray<{ slug: string; heading: string; anchor: string 
   {
     slug: 'noark-5-arkivering-i-moderne-fagsystemer',
     heading: 'Problemet med å arkivere i etterkant',
-    anchor: 'Noark 5-integrasjon mot fagsystemet',
+    anchor: 'Noark 5-integrasjonen mot fagsystemet',
   },
   {
     slug: 'visma-fakturagrunnlag-fra-fagsystem',
