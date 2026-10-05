@@ -51,25 +51,3 @@ Lov 20. juni 2025 nr. 81 er vedtatt, men ikke i kraft.
 Neste person skal ikke lete etter hvorfor saken kom, hvilke dokumenter som er inne, eller hva parten er lovet. Neste person skal ikke ringe den inhabile for å få vurderingen ferdig. Mangler noe av dette, er byttet bare et nytt navn på samme private notat.
 
 Saken skal åpnes i [Bevillingsportal for kommuner](/tjenester/bevillingsportal), ikke i et privat notat.
-
-## Ofte stilte spørsmål
-
-**Er dette en liste over hvem som er inhabil?**
-
-Nei. Dette er bare byttet etter at spørsmålet er avklart, ikke bokstavene i § 6.
-
-**Er dette første fordeling av en ny sak?**
-
-Nei. Her har saken allerede en saksbehandler. Første fordeling av en ny sak er en annen tekst.
-
-**Er dette innstilling mot vedtak?**
-
-Nei. To roller på en startlånsak er en annen tekst: [Innstilling er ikke vedtaket](/blogg/startlan-innstilling-og-behovsproving).
-
-**Flytter fristen seg til en postkasse?**
-
-Nei. Fristen følger saken. Postkasseinnlegget er en annen tekst: [Svarfristen ligger på saken](/blogg/svarfristen-ligger-pa-saken).
-
-**Kan den inhabile fullføre vurderingen hvis neste person spør?**
-
-Nei. Neste person skal ikke trenge det, og den inhabile skal ikke tilrettelegge avgjørelsen.
