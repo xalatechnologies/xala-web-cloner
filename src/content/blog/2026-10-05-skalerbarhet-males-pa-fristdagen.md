@@ -14,7 +14,7 @@ keywords:
   - tilskuddsportal
   - kravspesifikasjon
   - fristdag
-  - offentligsektor
+  - offentlig sektor
 faq:
   - question: "Handler skalerbarhet bare om servere?"
     answer: "Nei. Kommunen merker skalerbarhet som en fristdag og en ny ordning, ikke som maskinvare. Spørsmålet er om noen må gjøre noe manuelt den dagen."
