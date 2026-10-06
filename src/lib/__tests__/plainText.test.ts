@@ -35,6 +35,32 @@ describe('markdownToPlainText', () => {
     expect(markdownToPlainText('snake_case_name')).toBe('snake_case_name');
     expect(markdownToPlainText('5 * 3')).toBe('5 * 3');
     expect(markdownToPlainText('2*3*4')).toBe('2*3*4');
+    expect(markdownToPlainText('*')).toBe('*');
+    expect(markdownToPlainText('_')).toBe('_');
+  });
+
+  it('strips star emphasis longest-first, including a suffix on the closer', () => {
+    expect(markdownToPlainText('**Xala**s')).toBe('Xalas');
+    expect(markdownToPlainText('2*3*4')).toBe('2*3*4');
+    expect(markdownToPlainText('***a***')).toBe('a');
+    expect(markdownToPlainText('**a**')).toBe('a');
+    expect(markdownToPlainText('*a*')).toBe('a');
+  });
+
+  it('replaces an image with its alt text', () => {
+    expect(markdownToPlainText('![alt](src)')).toBe('alt');
+    expect(markdownToPlainText('Se ![alt](/images/x.png) her.')).toBe('Se alt her.');
+  });
+
+  it('unwraps inline code without stripping inside the span', () => {
+    expect(markdownToPlainText('`a*b*c`')).toBe('a*b*c');
+    expect(markdownToPlainText('`**Xala**s`')).toBe('**Xala**s');
+    expect(markdownToPlainText('Bruk `a*b*c` og *kursiv*.')).toBe('Bruk a*b*c og kursiv.');
+  });
+
+  it('keeps an escaped asterisk as a literal asterisk', () => {
+    expect(markdownToPlainText('\\*not emphasis\\*')).toBe('*not emphasis*');
+    expect(markdownToPlainText('2\\*3')).toBe('2*3');
   });
 
   it('keeps id_token in plain heading-style labels', () => {
