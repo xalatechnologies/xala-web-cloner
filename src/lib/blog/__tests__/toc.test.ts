@@ -243,6 +243,34 @@ describe('faqJsonLd', () => {
       },
     ]);
   });
+
+  it('strips markdown links from question names and answers', () => {
+    const schema = faqJsonLd('https://xala.no/blogg/x', [
+      {
+        question: 'Er dette **innstilling**?',
+        answer:
+          'Nei. Se [Innstilling er ikke vedtaket](/blogg/startlan-innstilling-og-behovsproving).',
+      },
+      {
+        question: 'Uten lenke?',
+        answer: 'Ja, bare ren tekst.',
+      },
+    ]) as {
+      mainEntity: Array<{ name: string; acceptedAnswer: { text: string } }>;
+    };
+
+    for (const entry of schema.mainEntity) {
+      expect(entry.name).not.toMatch(/\]\(/);
+      expect(entry.name).not.toMatch(/\[/);
+      expect(entry.acceptedAnswer.text).not.toMatch(/\]\(/);
+      expect(entry.acceptedAnswer.text).not.toMatch(/\[/);
+    }
+    expect(schema.mainEntity[0].name).toBe('Er dette innstilling?');
+    expect(schema.mainEntity[0].acceptedAnswer.text).toBe(
+      'Nei. Se Innstilling er ikke vedtaket.',
+    );
+    expect(schema.mainEntity[1].acceptedAnswer.text).toBe('Ja, bare ren tekst.');
+  });
 });
 
 describe('stripRelatedArticles', () => {

@@ -15,6 +15,7 @@
  *
  * Everything here is pure so the prerender build and the browser agree.
  */
+import { markdownToPlainText } from '@/lib/plainText';
 import { slugify } from '@/lib/slug';
 
 export interface TocHeading {
@@ -44,15 +45,6 @@ export interface LeadSection {
   lead: string;
   /** The rest of the article, with the lead section removed. */
   rest: string;
-}
-
-/** Inline markdown emphasis/code marks, stripped so heading text reads clean. */
-function plainText(markdown: string): string {
-  return markdown
-    .replace(/`([^`]+)`/g, '$1')
-    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
-    .replace(/[*_]{1,3}/g, '')
-    .trim();
 }
 
 /**
@@ -86,7 +78,7 @@ function proseLines(body: string): string[] {
 function headingAt(line: string, level: number): string | null {
   const match = new RegExp(`^\\s{0,3}#{${level}}\\s+(.+?)\\s*#*\\s*$`).exec(line);
   if (!match) return null;
-  const text = plainText(match[1]);
+  const text = markdownToPlainText(match[1]);
   return text || null;
 }
 
@@ -233,7 +225,7 @@ export function extractFaq(body: string): FaqItem[] {
 
   const flush = () => {
     if (question) {
-      const text = plainText(answer.join(' ').replace(/\s+/g, ' '));
+      const text = markdownToPlainText(answer.join(' ').replace(/\s+/g, ' '));
       if (text) items.push({ question, answer: text });
     }
     question = null;
@@ -259,7 +251,7 @@ export function extractFaq(body: string): FaqItem[] {
     const bold = /^\s*\*\*(.+?\?)\*\*\s*$/.exec(line);
     if (bold) {
       flush();
-      question = plainText(bold[1]);
+      question = markdownToPlainText(bold[1]);
       continue;
     }
 
@@ -285,8 +277,11 @@ export function faqJsonLd(url: string, items: FaqItem[]): Record<string, unknown
     '@id': `${url}#faq`,
     mainEntity: items.map((item) => ({
       '@type': 'Question',
-      name: item.question,
-      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+      name: markdownToPlainText(item.question),
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: markdownToPlainText(item.answer),
+      },
     })),
   };
 }
