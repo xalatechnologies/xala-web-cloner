@@ -7,16 +7,13 @@ author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
 cover: "/images/blog/responstid-per-hendelsestype.webp"
-coverAlt: "Hendelsespanel der gylne signalbaner løper inn i en klokkeskive, med ulik frist for hver type hendelse"
+coverAlt: "Diagram av et prisme. Én stråle merket henvendelse kommer inn fra venstre og deles i tre: sikkerhetshendelse i oransje, driftsstans og ordinær henvendelse i grått. Overskrift «ULIK HENDELSE, ULIK FRIST»."
 keywords:
   - responstid
   - driftsavtale
   - forvaltningsavtale
   - sikkerhetshendelse
   - driftsstans
-  - responstid forvaltningsavtale
-  - forvaltningsavtale responstid
-  - responstid sikkerhetshendelse
 hashtags:
   - responstid
   - driftsavtale
