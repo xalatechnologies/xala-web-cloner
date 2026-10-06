@@ -790,7 +790,7 @@
     "ctaTitle": "Questions about operations or SLA?",
     "ctaDescription": "Tell us about your system, and we will walk through which uptime and SLA terms fit.",
     "ctaContact": "Contact us",
-    "statusBefore": "We do not publish a public status board. Uptime and incidents are reported through the channel set out in the operations agreement."
+    "statusBefore": "We have no public status page."
   },
   "statusPage": {
     "eyebrow": "Operations",

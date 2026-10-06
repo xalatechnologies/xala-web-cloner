@@ -8,7 +8,7 @@ import { resolveRoute } from '@/components/seo/routeRules';
 /**
  * Pins the combined XWEB-6 / XWEB-14 surface: /status and /transparens both
  * exist, and /transparency is only an alias of /transparens. /status stays
- * the thin “no public statusboard” page and links to /transparens.
+ * the thin page that says there is no public status page and links to /transparens.
  * /transparens does not link to a public status page.
  */
 vi.mock('react-i18next', () => ({
@@ -57,7 +57,8 @@ describe('status and transparens pages', () => {
     const body = container.textContent ?? '';
     const links = screen.queryAllByRole('link').filter((a) => a.getAttribute('href') === '/status');
     expect(links).toHaveLength(0);
-    expect(body).toMatch(/rapporteres gjennom kanalen som er avtalt i driftsavtalen/);
+    expect(body).toMatch(/Vi har ingen offentlig statusside/);
+    expect(body).toMatch(/kanalen som er avtalt i driftsavtalen/);
     expect(body).not.toMatch(/status-siden|Statusside/);
     expect(body).not.toMatch(/99[,.]99/);
   });

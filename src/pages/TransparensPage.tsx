@@ -61,7 +61,7 @@ export default function TransparensPage() {
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             {t(
               'transparensPage.statusBefore',
-              'Vi har ikke et offentlig statusboard. Oppetid og hendelser rapporteres gjennom kanalen som er avtalt i driftsavtalen.'
+              'Vi har ingen offentlig statusside.'
             )}
           </p>
         </header>

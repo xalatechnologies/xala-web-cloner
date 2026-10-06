@@ -4,10 +4,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { PageCTA, PageHeader } from '@/components/layouts/PageFrame';
 
-/**
- * Short “no public statusboard” page. SLA, oppetid and sertifiseringer live
- * on /transparens — this route only exists so /status is not a 404.
- */
 export default function StatusPage() {
   const { t } = useTranslation();
 

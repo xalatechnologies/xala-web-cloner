@@ -790,7 +790,7 @@
     "ctaTitle": "Spørsmål om drift eller SLA?",
     "ctaDescription": "Fortell oss om systemet deres, så går vi gjennom hvilke oppetids- og SLA-vilkår som passer.",
     "ctaContact": "Kontakt oss",
-    "statusBefore": "Vi har ikke et offentlig statusboard. Oppetid og hendelser rapporteres gjennom kanalen som er avtalt i driftsavtalen."
+    "statusBefore": "Vi har ingen offentlig statusside."
   },
   "statusPage": {
     "eyebrow": "Drift",
