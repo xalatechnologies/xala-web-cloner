@@ -33,7 +33,7 @@ describe('status and transparens pages', () => {
     expect(resolveRoute('/transparency').pageId).not.toBe('notFound');
   });
 
-  it('says there is no public status board and links to /transparens', () => {
+  it('says there is no public status page and links to /transparens', () => {
     const { container } = render(
       <MemoryRouter initialEntries={['/status']}>
         <StatusPage />

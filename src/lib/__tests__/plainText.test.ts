@@ -76,6 +76,19 @@ describe('markdownToPlainText', () => {
     expect(markdownToPlainText('\\\\*x*')).toBe('\\x');
   });
 
+  it('turns an escaped backslash into a single backslash', () => {
+    expect(markdownToPlainText('\\\\')).toBe('\\');
+    expect(markdownToPlainText('C:\\\\temp')).toBe('C:\\temp');
+  });
+
+  it('strips private-use marks before they can collide with placeholders', () => {
+    const input =
+      'See \uE0010\uE001 and \uE0001\uE000 and \uE0022\uE002 next to `a*b*c` and *kursiv*.';
+    const out = markdownToPlainText(input);
+    expect(out).not.toMatch(/[\uE000\uE001\uE002]/);
+    expect(out).toBe('See 0 and 1 and 2 next to a*b*c and kursiv.');
+  });
+
   it('keeps id_token in plain heading-style labels', () => {
     expect(markdownToPlainText('Hva id_token ikke er')).toBe('Hva id_token ikke er');
   });

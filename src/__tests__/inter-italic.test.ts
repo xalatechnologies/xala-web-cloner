@@ -190,6 +190,34 @@ describe('Inter italic', () => {
     expect(published).toBe(fontsCss);
   });
 
+  it('does not preload the italic face, and shared chrome is not italic', () => {
+    const html = readFileSync(resolve(ROOT, 'index.html'), 'utf8');
+    const preloads = [...html.matchAll(/<link\s+rel="preload"[^>]*>/g)].map((match) => match[0]);
+    expect(preloads).toEqual([
+      '<link rel="preload" href="/fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>',
+    ]);
+    expect(html).not.toContain('inter-italic');
+
+    // / and /transparens share this chrome. An italic class, an italic inline
+    // style, or an element the user agent slants would fetch inter-italic-latin
+    // on both pages. Emphasis in articles comes from markdown, not these files.
+    const shared = [
+      'src/App.tsx',
+      'src/pages/Index.tsx',
+      'src/pages/TransparensPage.tsx',
+      'src/components/Navbar.tsx',
+      'src/components/Footer.tsx',
+      'src/components/PageLoader.tsx',
+      'src/components/gdpr/GDPRNotification.tsx',
+    ];
+    for (const file of shared) {
+      const source = readFileSync(resolve(ROOT, file), 'utf8');
+      expect(source, file).not.toMatch(/(?:^|[\s"'`])(?:[\w-]+:)*italic(?:[\s"'`]|$)/);
+      expect(source, file).not.toMatch(/fontStyle\s*:\s*['"]italic['"]/);
+      expect(source, file).not.toMatch(/<(em|i|cite|address|dfn|var)\b/);
+    }
+  });
+
   it('ships the upstream OFL for Inter and Noto Sans Arabic', () => {
     const license = readFileSync(resolve(ROOT, 'public/fonts/OFL.txt'), 'utf8');
     expect(license).toContain(
