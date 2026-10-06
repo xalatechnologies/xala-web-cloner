@@ -101,9 +101,40 @@ function fixed16(raw: number): number {
   return raw / 65536;
 }
 
-/** Drop line comments, block comments, and JSX comments before matching. */
+/**
+ * Drop line comments, block comments, and JSX comments before matching.
+ * A `//` inside a string, including a protocol-relative URL, stays put.
+ */
 function stripComments(source: string): string {
-  return source.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[^:])\/\/.*$/gm, '$1');
+  const withoutBlocks = source.replace(/\/\*[\s\S]*?\*\//g, '');
+  let out = '';
+  let quote: "'" | '"' | '`' | null = null;
+  for (let i = 0; i < withoutBlocks.length; i += 1) {
+    const char = withoutBlocks[i];
+    const next = withoutBlocks[i + 1];
+    if (quote) {
+      out += char;
+      if (char === '\\' && next !== undefined) {
+        out += next;
+        i += 1;
+      } else if (char === quote) {
+        quote = null;
+      }
+      continue;
+    }
+    if (char === "'" || char === '"' || char === '`') {
+      quote = char;
+      out += char;
+      continue;
+    }
+    if (char === '/' && next === '/') {
+      const lineEnd = withoutBlocks.indexOf('\n', i);
+      i = lineEnd === -1 ? withoutBlocks.length : lineEnd - 1;
+      continue;
+    }
+    out += char;
+  }
+  return out;
 }
 
 function parseLinkAttrs(tag: string): Map<string, string> {
@@ -140,7 +171,7 @@ const PROSE_CLASS = /(?:^|[\s])(?:[\w-]+:)*prose(?:-[\w-]+)?(?:[\s]|$)/;
 
 /** Tailwind `prose` inside a string. A variable named prose is not the class. */
 function usesProseClass(source: string): boolean {
-  const strings = source.match(/(['"`])(?:\\.|(?!\1)[\s\S])*?\1/g) ?? [];
+  const strings: string[] = source.match(/(['"`])(?:\\.|(?!\1)[\s\S])*?\1/g) ?? [];
   return strings.some((literal) => PROSE_CLASS.test(` ${literal.slice(1, -1)} `));
 }
 
@@ -160,19 +191,23 @@ function resolveSpec(fromFile: string, spec: string): string | null {
   return candidates.find((candidate) => existsSync(candidate) && statSync(candidate).isFile()) ?? null;
 }
 
-function specsIn(source: string): string[] {
+const APP_FILE = resolve(ROOT, 'src/App.tsx');
+
+function specsIn(source: string, file: string): string[] {
   const specs: string[] = [];
-  for (const pattern of [
-    /from\s+['"]([^'"]+)['"]/g,
-    /import\s+['"]([^'"]+)['"]/g,
-    /import\s*\(\s*['"]([^'"]+)['"]\s*\)/g,
-  ]) {
+  for (const pattern of [/from\s+['"]([^'"]+)['"]/g, /import\s+['"]([^'"]+)['"]/g]) {
     for (const match of source.matchAll(pattern)) specs.push(match[1]);
+  }
+  for (const match of source.matchAll(/import\s*\(\s*['"]([^'"]+)['"]\s*\)/g)) {
+    const spec = match[1];
+    // App.tsx lazy-loads every route, including blog posts whose <em> is intentional.
+    if (file === APP_FILE && /(?:^|\/)pages\//.test(spec)) continue;
+    specs.push(spec);
   }
   return specs;
 }
 
-/** Static import graph of the two pages, plus CSS they pull in. */
+/** Import graph of the upright pages and the app shell, plus CSS they pull in. */
 function walkPages(entries: string[]): { code: string[]; css: string[] } {
   const code: string[] = [];
   const css: string[] = [];
@@ -193,7 +228,7 @@ function walkPages(entries: string[]): { code: string[]; css: string[] } {
     }
     if (!file.endsWith('.ts') && !file.endsWith('.tsx')) continue;
     code.push(file);
-    for (const spec of specsIn(source)) {
+    for (const spec of specsIn(source, file)) {
       const resolved = resolveSpec(file, spec);
       if (resolved) queue.push(resolved);
     }
@@ -304,6 +339,11 @@ describe('Inter italic', () => {
     const pages = walkPages([
       resolve(ROOT, 'src/pages/Index.tsx'),
       resolve(ROOT, 'src/pages/TransparensPage.tsx'),
+      APP_FILE,
+      resolve(ROOT, 'src/components/PageLoader.tsx'),
+      resolve(ROOT, 'src/components/gdpr/GDPRNotification.tsx'),
+      resolve(ROOT, 'src/components/error/RouteErrorBoundary.tsx'),
+      resolve(ROOT, 'src/components/chat/ChatWidget.tsx'),
     ]);
     const css = [
       ...new Set([
@@ -314,6 +354,18 @@ describe('Inter italic', () => {
     const reached = pages.code.map((file) => relative(ROOT, file));
     expect(reached).toContain('src/components/hero/VideoHero.tsx');
     expect(reached).toContain('src/components/ui/surface-card.tsx');
+    expect(reached).toEqual(
+      expect.arrayContaining([
+        'src/App.tsx',
+        'src/components/PageLoader.tsx',
+        'src/components/gdpr/GDPRNotification.tsx',
+        'src/components/error/RouteErrorBoundary.tsx',
+        'src/components/chat/ChatWidget.tsx',
+        'src/components/ScrollToTop.tsx',
+        'src/components/providers/AppProviders.tsx',
+      ]),
+    );
+    expect(reached).not.toContain('src/pages/BloggPostPage.tsx');
     expect(css.map((file) => relative(ROOT, file))).toEqual(
       expect.arrayContaining(['src/index.css', 'src/fonts.css', 'src/styles/digilist-root.css']),
     );
@@ -346,9 +398,15 @@ describe('Inter italic', () => {
         '/* font-style: italic */',
         '{/* keep this upright, never italic here */}',
         'className="font-medium"',
+        'const secure = "https://example.com/upright"; // italic stays in this comment',
       ].join('\n'),
     );
+    expect(commented).toContain('https://example.com/upright');
+    expect(commented).not.toContain('italic stays in this comment');
     expect(commented).not.toMatch(ITALIC_CLASS);
+    const protocolRelative = stripComments("const href = '//cdn.example/a'; className=\"italic\"");
+    expect(protocolRelative).toContain('className="italic"');
+    expect(protocolRelative).toMatch(ITALIC_CLASS);
     expect(commented).not.toMatch(ARBITRARY_ITALIC);
     expect(commented).not.toMatch(/font-style\s*:\s*italic/);
 
