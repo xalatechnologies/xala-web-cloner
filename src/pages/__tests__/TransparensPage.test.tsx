@@ -44,9 +44,13 @@ describe('TransparensPage', () => {
     expect(container.textContent ?? '').not.toMatch(/99[,.]99/);
   });
 
-  it('links to /status so the openness page is not a dead end', () => {
-    renderPage();
-    const links = screen.getAllByRole('link').filter((a) => a.getAttribute('href') === '/status');
-    expect(links.length).toBeGreaterThan(0);
+  it('reports incidents through the operations agreement and does not offer a status page', () => {
+    const { container } = renderPage();
+    const body = container.textContent ?? '';
+    expect(body).toMatch(/ikke et offentlig statusboard/i);
+    expect(body).toMatch(/rapporteres gjennom kanalen som er avtalt i driftsavtalen/);
+    expect(body).not.toMatch(/status-siden|Statusside/);
+    const links = screen.queryAllByRole('link').filter((a) => a.getAttribute('href') === '/status');
+    expect(links).toHaveLength(0);
   });
 });

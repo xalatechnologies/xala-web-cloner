@@ -15,7 +15,6 @@ keywords:
   - sikkerhetshendelse
   - driftsstans
   - responstid forvaltningsavtale
-  - forvaltningsavtale responstid
   - responstid sikkerhetshendelse
 hashtags:
   - responstid
@@ -40,7 +39,7 @@ draft: false
 
 Et sikkerhetsvarsel lander i samme kø som et spørsmål om et skjermbilde. Saksbehandleren kommer ikke inn. Søknadene fra innbyggerne hoper seg opp. Sikkerhetsvarselet og spørsmålet om skjermbildet venter på den samme fristen.
 
-En frist for alt betyr at det viktigste venter like lenge som det minste.
+Én frist for alt betyr at det viktigste venter like lenge som det minste.
 
 Responstidene står i forvaltningsavtalen. Oppetid og hvordan vi rapporterer hendelser står i driftsavtalen. Tar dere over systemet selv, setter dere responstidene i eget team.
 
