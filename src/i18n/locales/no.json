@@ -790,15 +790,12 @@
     "ctaTitle": "Spørsmål om drift eller SLA?",
     "ctaDescription": "Fortell oss om systemet deres, så går vi gjennom hvilke oppetids- og SLA-vilkår som passer.",
     "ctaContact": "Kontakt oss",
-    "ctaStatus": "Statusside",
-    "statusBefore": "Vi har ikke et offentlig statusboard. Se",
-    "statusLink": "status-siden",
-    "statusAfter": "."
+    "statusBefore": "Vi har ingen offentlig statusside."
   },
   "statusPage": {
     "eyebrow": "Drift",
     "title": "Ingen offentlig statusside",
-    "description": "Vi har ikke et offentlig, sanntids dashbord. Oppetid og hendelser rapporteres til kunden gjennom kanalen som er avtalt i driftsavtalen.",
+    "description": "Vi har ikke et offentlig sanntidsdashbord. Oppetid og hendelser rapporteres til kunden gjennom kanalen som er avtalt i driftsavtalen.",
     "transparensBefore": "For oppetidsforpliktelser, SLA og sertifiseringer, se",
     "transparensLink": "siden om åpenhet",
     "transparensAfter": ".",

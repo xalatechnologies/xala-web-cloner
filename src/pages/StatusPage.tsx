@@ -4,10 +4,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { PageCTA, PageHeader } from '@/components/layouts/PageFrame';
 
-/**
- * Short “no public statusboard” page. SLA, oppetid and sertifiseringer live
- * on /transparens — this route only exists so /status is not a 404.
- */
 export default function StatusPage() {
   const { t } = useTranslation();
 
@@ -21,7 +17,7 @@ export default function StatusPage() {
           title={t('statusPage.title', 'Ingen offentlig statusside')}
           description={t(
             'statusPage.description',
-            'Vi har ikke et offentlig, sanntids dashbord. Oppetid og hendelser rapporteres til kunden gjennom kanalen som er avtalt i driftsavtalen.'
+            'Vi har ikke et offentlig sanntidsdashbord. Oppetid og hendelser rapporteres til kunden gjennom kanalen som er avtalt i driftsavtalen.'
           )}
         />
 

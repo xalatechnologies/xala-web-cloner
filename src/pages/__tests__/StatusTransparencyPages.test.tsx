@@ -7,8 +7,9 @@ import { resolveRoute } from '@/components/seo/routeRules';
 
 /**
  * Pins the combined XWEB-6 / XWEB-14 surface: /status and /transparens both
- * exist, /transparency is only an alias of /transparens, and the two pages
- * cross-link. /status stays the thin “no public statusboard” page.
+ * exist, and /transparency is only an alias of /transparens. /status stays
+ * the thin page that says there is no public status page and links to /transparens.
+ * /transparens does not link to a public status page.
  */
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
@@ -46,15 +47,19 @@ describe('status and transparens pages', () => {
     expect(links.length).toBeGreaterThan(0);
   });
 
-  it('links from /transparens back to /status without inventing uptime figures', () => {
+  it('does not point /transparens at a status page or invent uptime figures', () => {
     const { container } = render(
       <MemoryRouter initialEntries={['/transparens']}>
         <TransparensPage />
       </MemoryRouter>
     );
 
-    const links = screen.getAllByRole('link').filter((a) => a.getAttribute('href') === '/status');
-    expect(links.length).toBeGreaterThan(0);
-    expect(container.textContent ?? '').not.toMatch(/99[,.]99/);
+    const body = container.textContent ?? '';
+    const links = screen.queryAllByRole('link').filter((a) => a.getAttribute('href') === '/status');
+    expect(links).toHaveLength(0);
+    expect(body).toMatch(/Vi har ingen offentlig statusside/);
+    expect(body).toMatch(/kanalen som er avtalt i driftsavtalen/);
+    expect(body).not.toMatch(/status-siden|Statusside/);
+    expect(body).not.toMatch(/99[,.]99/);
   });
 });

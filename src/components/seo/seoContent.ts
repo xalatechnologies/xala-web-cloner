@@ -100,7 +100,7 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
     status: {
       title: 'Driftsstatus | Xala Technologies',
       description:
-        'Ingen offentlig statusside. Oppetid og hendelser rapporteres til kunden gjennom driftsavtalen, ikke som et sanntids dashbord.',
+        'Ingen offentlig statusside. Oppetid og hendelser rapporteres til kunden gjennom driftsavtalen, ikke som et sanntidsdashbord.',
       keywords: 'driftsstatus, statusside, oppetid, hendelser, drift, forvaltning'
     },
     transparens: {
