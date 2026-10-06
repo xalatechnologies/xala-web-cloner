@@ -81,6 +81,11 @@ describe('markdownToPlainText', () => {
     expect(markdownToPlainText('C:\\\\temp')).toBe('C:\\temp');
   });
 
+  it('leaves private-use characters above U+E002 unchanged', () => {
+    expect(markdownToPlainText('a\uE003b')).toBe('a\uE003b');
+    expect(markdownToPlainText('a\uF8FFb')).toBe('a\uF8FFb');
+  });
+
   it('strips private-use marks before they can collide with placeholders', () => {
     const input =
       'See \uE0010\uE001 and \uE0001\uE000 and \uE0022\uE002 next to `a*b*c` and *kursiv*.';

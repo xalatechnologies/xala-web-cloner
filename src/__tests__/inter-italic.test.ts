@@ -1,7 +1,7 @@
 import { brotliDecompressSync } from 'node:zlib';
 import { createHash } from 'node:crypto';
-import { readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { existsSync, readFileSync, statSync } from 'node:fs';
+import { dirname, relative, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 /**
@@ -101,6 +101,106 @@ function fixed16(raw: number): number {
   return raw / 65536;
 }
 
+/** Drop line comments, block comments, and JSX comments before matching. */
+function stripComments(source: string): string {
+  return source.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[^:])\/\/.*$/gm, '$1');
+}
+
+function parseLinkAttrs(tag: string): Map<string, string> {
+  const attrs = new Map<string, string>();
+  const body = tag.replace(/^<\s*link\b/i, '').replace(/\/?\s*>$/, '');
+  const re = /([^\s=<>]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>]+)))?/g;
+  for (const match of body.matchAll(re)) {
+    attrs.set(match[1].toLowerCase(), match[2] ?? match[3] ?? match[4] ?? '');
+  }
+  return attrs;
+}
+
+/** Font preloads only, compared by href, type and crossorigin — not attribute order. */
+function fontPreloads(html: string): Array<{ href: string; type: string; crossorigin: string }> {
+  const tags = html.match(/<link\b[^>]*>/gi) ?? [];
+  const found: Array<{ href: string; type: string; crossorigin: string }> = [];
+  for (const tag of tags) {
+    const attrs = parseLinkAttrs(tag);
+    if (attrs.get('rel') !== 'preload' || attrs.get('as') !== 'font') continue;
+    found.push({
+      href: attrs.get('href') ?? '',
+      type: attrs.get('type') ?? '',
+      crossorigin: attrs.has('crossorigin') ? attrs.get('crossorigin') || 'anonymous' : '',
+    });
+  }
+  return found;
+}
+
+const ITALIC_CLASS = /(?:^|[\s"'`])(?:[\w-]+:)*italic(?:[\s"'`]|$)/;
+const ARBITRARY_ITALIC = /\[font-style\s*:\s*italic\]/;
+const INLINE_ITALIC = /fontStyle\s*:\s*['"]italic['"]/;
+const SLANTED_TAG = /<(em|i|cite|address|dfn|var)\b/;
+const PROSE_CLASS = /(?:^|[\s])(?:[\w-]+:)*prose(?:-[\w-]+)?(?:[\s]|$)/;
+
+/** Tailwind `prose` inside a string. A variable named prose is not the class. */
+function usesProseClass(source: string): boolean {
+  const strings = source.match(/(['"`])(?:\\.|(?!\1)[\s\S])*?\1/g) ?? [];
+  return strings.some((literal) => PROSE_CLASS.test(` ${literal.slice(1, -1)} `));
+}
+
+function resolveSpec(fromFile: string, spec: string): string | null {
+  let base: string | null = null;
+  if (spec.startsWith('@/')) base = resolve(ROOT, 'src', spec.slice(2));
+  else if (spec.startsWith('.')) base = resolve(dirname(fromFile), spec);
+  if (!base) return null;
+  const candidates = [
+    base,
+    `${base}.tsx`,
+    `${base}.ts`,
+    `${base}.css`,
+    resolve(base, 'index.tsx'),
+    resolve(base, 'index.ts'),
+  ];
+  return candidates.find((candidate) => existsSync(candidate) && statSync(candidate).isFile()) ?? null;
+}
+
+function specsIn(source: string): string[] {
+  const specs: string[] = [];
+  for (const pattern of [
+    /from\s+['"]([^'"]+)['"]/g,
+    /import\s+['"]([^'"]+)['"]/g,
+    /import\s*\(\s*['"]([^'"]+)['"]\s*\)/g,
+  ]) {
+    for (const match of source.matchAll(pattern)) specs.push(match[1]);
+  }
+  return specs;
+}
+
+/** Static import graph of the two pages, plus CSS they pull in. */
+function walkPages(entries: string[]): { code: string[]; css: string[] } {
+  const code: string[] = [];
+  const css: string[] = [];
+  const seen = new Set<string>();
+  const queue = [...entries];
+  while (queue.length) {
+    const file = queue.pop();
+    if (!file || seen.has(file) || !existsSync(file) || !statSync(file).isFile()) continue;
+    seen.add(file);
+    const source = readFileSync(file, 'utf8');
+    if (file.endsWith('.css')) {
+      css.push(file);
+      for (const match of source.matchAll(/@import\s+['"]([^'"]+)['"]/g)) {
+        const resolved = resolveSpec(file, match[1]);
+        if (resolved) queue.push(resolved);
+      }
+      continue;
+    }
+    if (!file.endsWith('.ts') && !file.endsWith('.tsx')) continue;
+    code.push(file);
+    for (const spec of specsIn(source)) {
+      const resolved = resolveSpec(file, spec);
+      if (resolved) queue.push(resolved);
+    }
+  }
+  return { code, css };
+}
+
 describe('Inter italic', () => {
   const fontsCss = readFileSync(resolve(ROOT, 'src/fonts.css'), 'utf8');
   const faces = fontFaces(fontsCss);
@@ -190,32 +290,80 @@ describe('Inter italic', () => {
     expect(published).toBe(fontsCss);
   });
 
-  it('does not preload the italic face, and shared chrome is not italic', () => {
+  it('does not preload the italic face, and / and /transparens are not italic', () => {
     const html = readFileSync(resolve(ROOT, 'index.html'), 'utf8');
-    const preloads = [...html.matchAll(/<link\s+rel="preload"[^>]*>/g)].map((match) => match[0]);
-    expect(preloads).toEqual([
-      '<link rel="preload" href="/fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>',
-    ]);
     expect(html).not.toContain('inter-italic');
+    expect(fontPreloads(html)).toEqual([
+      {
+        href: '/fonts/inter-400-latin.woff2',
+        type: 'font/woff2',
+        crossorigin: 'anonymous',
+      },
+    ]);
 
-    // / and /transparens share this chrome. An italic class, an italic inline
-    // style, or an element the user agent slants would fetch inter-italic-latin
-    // on both pages. Emphasis in articles comes from markdown, not these files.
-    const shared = [
-      'src/App.tsx',
-      'src/pages/Index.tsx',
-      'src/pages/TransparensPage.tsx',
-      'src/components/Navbar.tsx',
-      'src/components/Footer.tsx',
-      'src/components/PageLoader.tsx',
-      'src/components/gdpr/GDPRNotification.tsx',
+    const pages = walkPages([
+      resolve(ROOT, 'src/pages/Index.tsx'),
+      resolve(ROOT, 'src/pages/TransparensPage.tsx'),
+    ]);
+    const css = [
+      ...new Set([
+        ...pages.css,
+        ...walkPages([resolve(ROOT, 'src/index.css')]).css,
+      ]),
     ];
-    for (const file of shared) {
-      const source = readFileSync(resolve(ROOT, file), 'utf8');
-      expect(source, file).not.toMatch(/(?:^|[\s"'`])(?:[\w-]+:)*italic(?:[\s"'`]|$)/);
-      expect(source, file).not.toMatch(/fontStyle\s*:\s*['"]italic['"]/);
-      expect(source, file).not.toMatch(/<(em|i|cite|address|dfn|var)\b/);
+    const reached = pages.code.map((file) => relative(ROOT, file));
+    expect(reached).toContain('src/components/hero/VideoHero.tsx');
+    expect(reached).toContain('src/components/ui/surface-card.tsx');
+    expect(css.map((file) => relative(ROOT, file))).toEqual(
+      expect.arrayContaining(['src/index.css', 'src/fonts.css', 'src/styles/digilist-root.css']),
+    );
+
+    // Typography's `.prose blockquote` is italic. These pages do not use the
+    // prose class, so that rule cannot apply and is not allowlisted.
+    for (const file of pages.code) {
+      const source = stripComments(readFileSync(file, 'utf8'));
+      const label = relative(ROOT, file);
+      expect(source, label).not.toMatch(ITALIC_CLASS);
+      expect(source, label).not.toMatch(ARBITRARY_ITALIC);
+      expect(source, label).not.toMatch(INLINE_ITALIC);
+      expect(source, label).not.toMatch(SLANTED_TAG);
+      expect(
+        usesProseClass(source),
+        `${label} uses prose, so Typography would italicise its blockquotes`,
+      ).toBe(false);
     }
+
+    for (const file of css) {
+      const source = stripComments(readFileSync(file, 'utf8')).replace(/@font-face\s*\{[^}]*\}/g, '');
+      expect(source, relative(ROOT, file)).not.toMatch(/font-style\s*:\s*italic/);
+    }
+  });
+
+  it('ignores italic words in comments and matches font preloads by attribute', () => {
+    const commented = stripComments(
+      [
+        '// keep this upright, never italic here',
+        '/* font-style: italic and [font-style:italic] */',
+        '{/* keep this upright, never italic here */}',
+        'className="font-medium"',
+      ].join('\n'),
+    );
+    expect(commented).not.toMatch(ITALIC_CLASS);
+    expect(commented).not.toMatch(ARBITRARY_ITALIC);
+    expect(commented).not.toMatch(/font-style\s*:\s*italic/);
+
+    const html = [
+      '<link rel="preload" as="image" href="/og.png">',
+      '<link href="/fonts/inter-400-latin.woff2" crossorigin type="font/woff2" as="font" rel="preload">',
+    ].join('\n');
+    expect(html).not.toContain('inter-italic');
+    expect(fontPreloads(html)).toEqual([
+      {
+        href: '/fonts/inter-400-latin.woff2',
+        type: 'font/woff2',
+        crossorigin: 'anonymous',
+      },
+    ]);
   });
 
   it('ships the upstream OFL for Inter and Noto Sans Arabic', () => {
