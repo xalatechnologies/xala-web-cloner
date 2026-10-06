@@ -35,6 +35,34 @@ function nodeText(node: ReactNode): string {
   return '';
 }
 
+/**
+ * Heading renderers have to be stable across renders.
+ *
+ * A TOC click writes a hash, and that re-renders the post. A Heading
+ * function created inside the component is a new type every time, so React
+ * remounts every heading. The scroll spy's observer then watches nodes that
+ * have left the document and never fires again.
+ */
+function makeHeading(Tag: 'h2' | 'h3') {
+  function Heading({ children, ...props }: { children?: ReactNode }) {
+    return (
+      <Tag id={slugify(nodeText(children))} className="scroll-mt-28" {...props}>
+        {children}
+      </Tag>
+    );
+  }
+  return Heading;
+}
+
+const articleHeading = {
+  h2: makeHeading('h2'),
+  h3: makeHeading('h3'),
+};
+
+function anchored(tag: 'h2' | 'h3') {
+  return articleHeading[tag];
+}
+
 export default function BloggPostPage() {
   const { slug = '' } = useParams<{ slug: string }>();
   const posts = useMemo(() => allPosts(), []);
@@ -62,17 +90,6 @@ export default function BloggPostPage() {
   const url = postUrl(post);
   const faqSchema = faqJsonLd(url, faq);
   const hashtagLine = topicHashtagLine(post);
-
-  // Anchor ids come from the same slugify() the TOC used, so every link in the
-  // sidebar lands on a heading that exists.
-  const anchored = (Tag: 'h2' | 'h3') =>
-    function Heading({ children, ...props }: { children?: ReactNode }) {
-      return (
-        <Tag id={slugify(nodeText(children))} className="scroll-mt-28" {...props}>
-          {children}
-        </Tag>
-      );
-    };
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -204,7 +221,7 @@ export default function BloggPostPage() {
                   article carries its own copy at the point of use. */}
               {headings.length >= 2 && (
                 <div className="mt-10 rounded-2xl border border-border bg-muted/40 p-6 lg:hidden">
-                  <ArticleToc headings={headings} />
+                  <ArticleToc headings={headings} mode="mobile" />
                 </div>
               )}
 
@@ -264,39 +281,47 @@ export default function BloggPostPage() {
               )}
             </div>
 
-            <aside aria-label="Artikkelinfo">
-              <div className="flex flex-col gap-8 lg:sticky lg:top-28 lg:border-l lg:border-border lg:pl-8">
-                <div className="hidden lg:block">
-                  <ArticleToc headings={headings} />
+            {/* The TOC sticks inside its own box, which ends before related
+                articles and share. Those links used to slide under the sticky
+                TOC, so a focused link sat fully hidden. The box still fills
+                the column above them, so «I denne artikkelen» stays on screen
+                while the FAQ is at reading position. */}
+            <aside
+              aria-label="Artikkelinfo"
+              className="flex flex-col gap-8 lg:border-l lg:border-border lg:pl-8"
+            >
+              <div className="hidden lg:block lg:min-h-0 lg:flex-1">
+                <div className="lg:sticky lg:top-28">
+                  <ArticleToc headings={headings} mode="desktop" />
                 </div>
-
-                {related.length > 0 && (
-                  <div>
-                    <p className="mb-4 eyebrow">
-                      Relaterte artikler
-                    </p>
-                    <ul className="flex flex-col divide-y divide-border border-y border-border">
-                      {related.map((item) => (
-                        <li key={`${item.lang}/${item.slug}`}>
-                          <Link
-                            to={`${BLOG_PATH}/${item.slug}`}
-                            className="group flex flex-col gap-1.5 py-3.5"
-                          >
-                            <span className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-                              {item.tag ?? 'Artikkel'}
-                            </span>
-                            <span className="text-[1.05rem] font-medium leading-snug text-foreground transition-colors group-hover:text-primary">
-                              {item.title}
-                            </span>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                <ShareLinks url={url} title={post.title} />
               </div>
+
+              {related.length > 0 && (
+                <div>
+                  <p className="mb-4 eyebrow">
+                    Relaterte artikler
+                  </p>
+                  <ul className="flex flex-col divide-y divide-border border-y border-border">
+                    {related.map((item) => (
+                      <li key={`${item.lang}/${item.slug}`}>
+                        <Link
+                          to={`${BLOG_PATH}/${item.slug}`}
+                          className="group flex flex-col gap-1.5 py-3.5"
+                        >
+                          <span className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                            {item.tag ?? 'Artikkel'}
+                          </span>
+                          <span className="text-[1.05rem] font-medium leading-snug text-foreground transition-colors group-hover:text-primary">
+                            {item.title}
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <ShareLinks url={url} title={post.title} />
             </aside>
           </div>
         </article>
