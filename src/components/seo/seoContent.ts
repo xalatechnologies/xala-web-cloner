@@ -231,8 +231,8 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
     status: {
       title: 'Status | Xala Technologies',
       description:
-        'There is no public status board. Uptime and incidents are reported to the client through the operations agreement, not a real-time dashboard.',
-      keywords: 'status, status board, uptime, incidents, operations, maintenance'
+        'There is no public status page. Uptime and incidents are reported to the client through the operations agreement, not a real-time dashboard.',
+      keywords: 'status, status page, uptime, incidents, operations, maintenance'
     },
     transparens: {
       title: 'Transparency: Uptime, SLA and Operations | Xala Technologies',
