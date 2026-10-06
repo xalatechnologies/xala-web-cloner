@@ -14,6 +14,9 @@ keywords:
   - forvaltningsavtale
   - sikkerhetshendelse
   - driftsstans
+  - responstid forvaltningsavtale
+  - forvaltningsavtale responstid
+  - responstid sikkerhetshendelse
 hashtags:
   - responstid
   - driftsavtale
