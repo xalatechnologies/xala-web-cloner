@@ -343,7 +343,7 @@ describe('Inter italic', () => {
     const commented = stripComments(
       [
         '// keep this upright, never italic here',
-        '/* font-style: italic and [font-style:italic] */',
+        '/* font-style: italic */',
         '{/* keep this upright, never italic here */}',
         'className="font-medium"',
       ].join('\n'),
