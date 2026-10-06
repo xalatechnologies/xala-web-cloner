@@ -1,0 +1,38 @@
+name: CI
+
+# The deploy workflow runs the suite only after a push to main. This is the
+# check that fails a pull request on a type error or a broken test.
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+# Cancel a superseded run when new commits land on the same pull request.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Typecheck and unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # No version input: pnpm is pinned by "packageManager" in package.json.
+      # Setting both errors with "Multiple versions of pnpm specified".
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Test
+        run: pnpm test
