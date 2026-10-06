@@ -28,6 +28,17 @@ describe('host mapping for /blogg?q=', () => {
     expect(nginx).toContain('rewrite ^ /blogg/q/_none/index.html last;');
     expect(nginx).toContain('try_files /blogg/index.html =404;');
     expect(nginx).toContain('if ($arg_q ~ "\\.\\.")');
+    expect(nginx).toContain('location ^~ /fonts/');
+    expect(nginx).toContain('expires off;');
+    expect(nginx).toContain('font/woff2 woff2;');
+    expect(nginx).toContain('text/css css;');
+    expect(nginx).toContain('add_header Cache-Control "public, max-age=604800" always;');
+    expect(nginx).toContain('add_header X-Content-Type-Options "nosniff" always;');
+    expect(nginx).toContain(
+      'add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;',
+    );
+    expect(nginx).toContain('Rename a font file whenever its bytes change');
+    expect(nginx).not.toContain('immutable');
   });
 
   it('fails the deploy unless the rewrite is in the serving block', () => {

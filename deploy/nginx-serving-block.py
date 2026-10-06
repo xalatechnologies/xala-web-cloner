@@ -249,12 +249,21 @@ def cmd_install(args: argparse.Namespace) -> int:
     return 0
 
 
-def cmd_restore(args: argparse.Namespace) -> int:
-    roots: list[Path] = []
+def restore_roots() -> list[Path]:
+    """Directories whose backup maps this restore may apply.
+
+    XALA_NGINX_BACKUP_DIR is the current invocation's directory. When it is
+    set, older maps under /var/backups/nginx or /tmp/nginx-backups are ignored.
+    Replaying those wiped a live /blogg?q= include on a later failed install.
+    """
     override = os.environ.get(BACKUP_ENV)
     if override:
-        roots.append(Path(override))
-    roots.extend(BACKUP_DIRS)
+        return [Path(override)]
+    return list(BACKUP_DIRS)
+
+
+def cmd_restore(args: argparse.Namespace) -> int:
+    roots = restore_roots()
     restored = 0
     seen: set[str] = set()
     for root in roots:
@@ -301,7 +310,10 @@ def main(argv: list[str] | None = None) -> int:
     install_p.add_argument("--backup-suffix", default=".bak-blogg-query")
     install_p.set_defaults(func=cmd_install)
 
-    restore_p = sub.add_parser("restore", help="restore serving blocks from backups outside nginx load dirs")
+    restore_p = sub.add_parser(
+        "restore",
+        help="restore serving blocks from this run's backup dir, or the default dirs when unset",
+    )
     restore_p.add_argument("--backup-suffix", default=".bak-blogg-query")
     restore_p.set_defaults(func=cmd_restore)
 
