@@ -34,5 +34,14 @@ describe('markdownToPlainText', () => {
   it('leaves lone asterisks and underscores in identifiers and math', () => {
     expect(markdownToPlainText('snake_case_name')).toBe('snake_case_name');
     expect(markdownToPlainText('5 * 3')).toBe('5 * 3');
+    expect(markdownToPlainText('2*3*4')).toBe('2*3*4');
+  });
+
+  it('keeps id_token in plain heading-style labels', () => {
+    expect(markdownToPlainText('Hva id_token ikke er')).toBe('Hva id_token ikke er');
+  });
+
+  it('unwraps nested emphasis inside bold', () => {
+    expect(markdownToPlainText('**fet _kursiv_ fet**')).toBe('fet kursiv fet');
   });
 });

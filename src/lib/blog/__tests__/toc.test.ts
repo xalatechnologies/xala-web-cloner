@@ -64,6 +64,12 @@ describe('extractHeadings', () => {
     ]);
   });
 
+  it('keeps id_token in heading labels', () => {
+    expect(extractHeadings('## Hva id_token ikke er')).toEqual([
+      { id: 'hva-idtoken-ikke-er', text: 'Hva id_token ikke er' },
+    ]);
+  });
+
   it('gives repeated headings distinct ids so links do not collide', () => {
     const body = '## Oppsummering\n\ntext\n\n## Oppsummering\n\ntext';
     expect(extractHeadings(body).map((h) => h.id)).toEqual([
