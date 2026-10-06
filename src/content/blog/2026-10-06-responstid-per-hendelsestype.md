@@ -1,14 +1,13 @@
 ---
-host: xala
-title: "Responstid i driftsavtalen: ulik frist per hendelse"
-description: "En god driftsavtale har ulike responstider for sikkerhetshendelser, driftsstans og vanlige henvendelser. Slik avtaler Xala fristene, og hvorfor."
-h1: "Responstid i driftsavtalen: ulik frist per type hendelse"
 slug: responstid-per-hendelsestype
-canonical: https://xala.no/blogg/responstid-per-hendelsestype
+title: "Responstid i driftsavtalen: ulik frist per type hendelse"
+seoTitle: "Responstid i driftsavtalen: ulik frist per hendelse"
+description: "En god driftsavtale har ulike responstider for sikkerhetshendelser, driftsstans og vanlige henvendelser. Slik avtaler Xala fristene, og hvorfor."
 date: 2026-10-06
-language: nb
-status: draft
-cover: /images/blog/responstid-per-hendelsestype.webp
+author: "Ibrahim Rahmani"
+role: "Grunnlegger, Xala Technologies"
+tag: "Arkitekt"
+cover: "/images/blog/responstid-per-hendelsestype.webp"
 coverAlt: "Diagram av et prisme. Én stråle merket henvendelse kommer inn fra venstre og deles i tre: sikkerhetshendelse i oransje, driftsstans og ordinær henvendelse i grått. Overskrift «ULIK HENDELSE, ULIK FRIST»."
 keywords:
   - responstid driftsavtale
@@ -25,9 +24,9 @@ faq:
     answer: "Nei. Oppetid og hendelser rapporteres til kunden gjennom driftsavtalen, ikke som et sanntids dashbord."
   - question: "Må vi ha forvaltningsavtale med Xala?"
     answer: "Nei. De fleste kundene velger det, men Xala kan også overlevere til deres eget utviklingsteam med dokumentasjon og opplæring."
+lang: no
+draft: false
 ---
-
-# Responstid i driftsavtalen: ulik frist per type hendelse
 
 En god driftsavtale gir sikkerhetshendelser, driftsstans og vanlige henvendelser hver sin responstid. Derfor avtaler vi ulike frister per hendelsestype i forvaltningsavtalen. Under forklarer vi to valg vi sier nei til, og hva vi gjør i stedet.
 
