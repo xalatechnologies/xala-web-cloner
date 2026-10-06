@@ -1,18 +1,28 @@
 ---
 slug: responstid-per-hendelsestype
-title: "Responstid i driftsavtalen: ulik frist per type hendelse"
-seoTitle: "Responstid i driftsavtalen: ulik frist per hendelse"
+title: "Driftsavtalen bør ha egen responstid per hendelse"
 description: "En god driftsavtale har ulike responstider for sikkerhetshendelser, driftsstans og vanlige henvendelser. Slik avtaler Xala fristene, og hvorfor."
 date: 2026-10-06
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
 cover: "/images/blog/responstid-per-hendelsestype.webp"
-coverAlt: "Diagram av et prisme. Én stråle merket henvendelse kommer inn fra venstre og deles i tre: sikkerhetshendelse i oransje, driftsstans og ordinær henvendelse i grått. Overskrift «ULIK HENDELSE, ULIK FRIST»."
+coverAlt: "Hendelsespanel der gylne signalbaner løper inn i en klokkeskive, med ulik frist for hver type hendelse"
 keywords:
+  - responstid
+  - driftsavtale
+  - forvaltningsavtale
+  - sikkerhetshendelse
+  - driftsstans
   - responstid driftsavtale
   - forvaltningsavtale responstid
   - responstid sikkerhetshendelse
+hashtags:
+  - responstid
+  - driftsavtale
+  - forvaltningsavtale
+  - sikkerhetshendelse
+  - driftsstans
 faq:
   - question: "Hva er responstid i en driftsavtale?"
     answer: "Responstid er fristen leverandøren har for å reagere på en hendelse. Hos Xala avtales den per type hendelse i forvaltningsavtalen, ikke som én frist for alt."
@@ -21,14 +31,18 @@ faq:
   - question: "Hvor mange timer bør responstiden være?"
     answer: "Timene avtales per avtale og oppgis ikke som et fast tall. Hos Xala står fristene i forvaltningsavtalen, ulikt for hver type hendelse."
   - question: "Har Xala en offentlig statusside?"
-    answer: "Nei. Oppetid og hendelser rapporteres til kunden gjennom driftsavtalen, ikke som et sanntids dashbord."
+    answer: "Nei. Oppetid og hendelser rapporteres til kunden gjennom driftsavtalen, ikke som et sanntidsdashbord."
   - question: "Må vi ha forvaltningsavtale med Xala?"
     answer: "Nei. De fleste kundene velger det, men Xala kan også overlevere til deres eget utviklingsteam med dokumentasjon og opplæring."
 lang: no
 draft: false
 ---
 
-En god driftsavtale gir sikkerhetshendelser, driftsstans og vanlige henvendelser hver sin responstid. Derfor avtaler vi ulike frister per hendelsestype i forvaltningsavtalen. Under forklarer vi to valg vi sier nei til, og hva vi gjør i stedet.
+Et sikkerhetsvarsel lander i samme kø som et spørsmål om et skjermbilde. Begge venter på den samme fristen.
+
+En god driftsavtale gir sikkerhetshendelser, driftsstans og vanlige henvendelser hver sin responstid. Responstidene står i forvaltningsavtalen, og uten den kan vi overlevere til deres eget utviklingsteam med dokumentasjon og opplæring.
+
+Nedenfor forklarer vi to valg vi sier nei til, og hva vi gjør i stedet.
 
 ## Én felles responstid er valget vi sier nei til
 
@@ -48,7 +62,7 @@ Fristen er bare halve jobben. Den andre halvdelen er å ikke vente på at noe sk
 
 En responstid for driftsstans begynner når noen vet at systemet står. Er det brukerne som oppdager det først, har fristen i praksis startet for sent.
 
-Målet vårt er at dere skal vite at noe er galt før brukerne melder det. Det gjelder også når feilen ligger hos en tredjepart dere er avhengige av. Et fagsystem henter ofte data fra andre tjenester, og [nedetid hos andre](https://xala.no/tjenester/integrasjoner) er noe avtalen bør ta høyde for.
+Målet vårt er at dere skal vite at noe er galt før brukerne melder det. Det gjelder også når feilen ligger hos en tredjepart dere er avhengige av. Et fagsystem henter ofte data fra andre tjenester, og [nedetid hos andre](/tjenester/integrasjoner) er noe avtalen bør ta høyde for.
 
 Derfor hører overvåking og varsling med i forvaltningen. En driftsstans får sin egen frist, og den fristen er bare verdt noe hvis stansen blir sett tidlig.
 
@@ -62,7 +76,7 @@ Også disse henvendelsene har en avtalt frist. Den er bare ikke den samme som fo
 
 Det andre valget vi sier nei til, er et offentlig dashbord med oppetid. Det frister fordi det ser åpent ut. Alle kan se grønt eller rødt, når som helst.
 
-Vi har [ingen offentlig statusside](https://xala.no/status). Oppetid og hendelser rapporteres til kunden gjennom driftsavtalen, ikke som et sanntids dashbord. Rapporteringen går til dere som kunde, ikke til en side alle kan åpne.
+Vi har ingen offentlig statusside. Les [hvordan vi avtaler oppetid og SLA](/transparens). Oppetid og hendelser rapporteres til kunden gjennom driftsavtalen, ikke som et sanntidsdashbord.
 
 ## Fristene hører hjemme i forvaltningsavtalen
 
@@ -70,8 +84,8 @@ Hos oss avtales responstidene i forvaltningsavtalen. Den dekker oppdateringer og
 
 Forvaltningsavtale er likevel ikke påkrevd. De fleste kundene våre velger det, men vi kan også overlevere til deres eget utviklingsteam med dokumentasjon og opplæring. Vi låser ingen inn.
 
-Valget henger sammen med hvordan systemet bygges. Et system som skal driftes i ti år, designes annerledes enn ett som skal demonstreres én gang. Les mer om teknologivalg for et [system som skal leve i ti år](https://xala.no/blogg/teknologivalg-for-fagsystemer-som-skal-vare).
+Valget henger sammen med hvordan systemet bygges. Et system som skal driftes i ti år, designes annerledes enn ett som skal demonstreres én gang. Les mer om teknologivalg for et [system som skal leve i ti år](/blogg/teknologivalg-for-fagsystemer-som-skal-vare).
 
 ## Tre typer hendelser, tre frister i avtalen
 
-En responstid i driftsavtalen bør skille mellom sikkerhetshendelser, driftsstans og ordinære henvendelser. Hos oss får hver type sin egen frist, avtalt i forvaltningsavtalen. Se [hva en forvaltningsavtale med Xala dekker](https://xala.no/tjenester/forvaltning-og-drift).
+En responstid i driftsavtalen bør skille mellom sikkerhetshendelser, driftsstans og ordinære henvendelser. Hos oss får hver type sin egen frist, avtalt i forvaltningsavtalen. Se [hva en forvaltningsavtale med Xala dekker](/tjenester/forvaltning-og-drift).
