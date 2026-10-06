@@ -35,6 +35,7 @@ describe('markdownToPlainText', () => {
     expect(markdownToPlainText('snake_case_name')).toBe('snake_case_name');
     expect(markdownToPlainText('5 * 3')).toBe('5 * 3');
     expect(markdownToPlainText('2*3*4')).toBe('2*3*4');
+    expect(markdownToPlainText('2 *3*4')).toBe('2 34');
     expect(markdownToPlainText('*')).toBe('*');
     expect(markdownToPlainText('_')).toBe('_');
   });
@@ -54,13 +55,25 @@ describe('markdownToPlainText', () => {
 
   it('unwraps inline code without stripping inside the span', () => {
     expect(markdownToPlainText('`a*b*c`')).toBe('a*b*c');
+    expect(markdownToPlainText('`*args*`')).toBe('*args*');
     expect(markdownToPlainText('`**Xala**s`')).toBe('**Xala**s');
     expect(markdownToPlainText('Bruk `a*b*c` og *kursiv*.')).toBe('Bruk a*b*c og kursiv.');
+  });
+
+  it('strips links and emphasis that wrap a code span', () => {
+    expect(markdownToPlainText('[`x`](/y)')).toBe('x');
+    expect(markdownToPlainText('**`pnpm test`**')).toBe('pnpm test');
+    expect(markdownToPlainText('_`code`_')).toBe('code');
+    expect(markdownToPlainText('*a `b` c*')).toBe('a b c');
   });
 
   it('keeps an escaped asterisk as a literal asterisk', () => {
     expect(markdownToPlainText('\\*not emphasis\\*')).toBe('*not emphasis*');
     expect(markdownToPlainText('2\\*3')).toBe('2*3');
+  });
+
+  it('treats an escaped backslash as literal and lets the following star be emphasis', () => {
+    expect(markdownToPlainText('\\\\*x*')).toBe('\\x');
   });
 
   it('keeps id_token in plain heading-style labels', () => {

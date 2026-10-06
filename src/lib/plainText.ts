@@ -9,7 +9,12 @@
  * requires start-of-text or a non-word character, so `2*3*4` stays.
  * Underscores keep both guards (`snake_case_name`). No lookbehind — Safari
  * before 16.4.
- * Inline code loses its backticks only. An escaped `\*` stays a literal `*`.
+ *
+ * Inline code is parked (a different private-use mark from escaped stars)
+ * before links and emphasis run, then restored without backticks. Markers
+ * that wrap a span still match; the inner text is not interpreted.
+ * `\\` is parked before `\*`, so an escaped backslash stays `\` and the
+ * following star can still be emphasis. A lone `\*` stays a literal `*`.
  */
 const TRIPLE_STAR = /(^|[^\w])\*\*\*(?=\S)([\s\S]*?\S)\*\*\*/g;
 const DOUBLE_STAR = /(^|[^\w])\*\*(?=\S)([\s\S]*?\S)\*\*/g;
@@ -17,8 +22,11 @@ const SINGLE_STAR = /(^|[^\w])\*(?=\S)([\s\S]*?\S)\*/g;
 const UNDERSCORE_EMPHASIS = /(^|[^\w])(_{1,3})(?=\S)([\s\S]*?\S)\2(?!\w)/g;
 const CODE_SPAN = /`([^`]+)`/g;
 const LINK_OR_IMAGE = /!?\[([^\]]*)\]\([^)]*\)/g;
+const ESCAPED_BACKSLASH = /\\\\/g;
 const ESCAPED_STAR = /\\\*/g;
 const PARKED_STAR = /\uE000\d+\uE000/g;
+const PARKED_CODE = /\uE001(\d+)\uE001/g;
+const PARKED_BACKSLASH = /\uE002\d+\uE002/g;
 
 function stripInlineEmphasis(text: string): string {
   let prev = text;
@@ -34,23 +42,22 @@ function stripInlineEmphasis(text: string): string {
   return prev;
 }
 
-/** Hide `\*` so it cannot open or close emphasis, then put `*` back. */
-function withLiteralStars(text: string): string {
+function park(text: string, pattern: RegExp, mark: string): string {
   let count = 0;
-  const parked = text.replace(ESCAPED_STAR, () => `\uE000${count++}\uE000`);
-  return stripInlineEmphasis(parked.replace(LINK_OR_IMAGE, '$1')).replace(PARKED_STAR, '*');
+  return text.replace(pattern, () => `${mark}${count++}${mark}`);
 }
 
 export function markdownToPlainText(markdown: string): string {
-  const parts: string[] = [];
-  const codeSpan = new RegExp(CODE_SPAN.source, 'g');
-  let last = 0;
+  const code: string[] = [];
+  const parkedCode = markdown.replace(CODE_SPAN, (_match, inner: string) => {
+    code.push(inner);
+    return `\uE001${code.length - 1}\uE001`;
+  });
+  const parked = park(park(parkedCode, ESCAPED_BACKSLASH, '\uE002'), ESCAPED_STAR, '\uE000');
 
-  for (let match = codeSpan.exec(markdown); match; match = codeSpan.exec(markdown)) {
-    parts.push(withLiteralStars(markdown.slice(last, match.index)));
-    parts.push(match[1]);
-    last = match.index + match[0].length;
-  }
-  parts.push(withLiteralStars(markdown.slice(last)));
-  return parts.join('').trim();
+  return stripInlineEmphasis(parked.replace(LINK_OR_IMAGE, '$1'))
+    .replace(PARKED_STAR, '*')
+    .replace(PARKED_BACKSLASH, '\\')
+    .replace(PARKED_CODE, (_match, index: string) => code[Number(index)] ?? '')
+    .trim();
 }
