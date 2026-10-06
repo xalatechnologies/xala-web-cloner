@@ -264,39 +264,44 @@ export default function BloggPostPage() {
               )}
             </div>
 
-            <aside aria-label="Artikkelinfo">
-              <div className="flex flex-col gap-8 lg:sticky lg:top-28 lg:border-l lg:border-border lg:pl-8">
-                <div className="hidden lg:block">
-                  <ArticleToc headings={headings} />
-                </div>
-
-                {related.length > 0 && (
-                  <div>
-                    <p className="mb-4 eyebrow">
-                      Relaterte artikler
-                    </p>
-                    <ul className="flex flex-col divide-y divide-border border-y border-border">
-                      {related.map((item) => (
-                        <li key={`${item.lang}/${item.slug}`}>
-                          <Link
-                            to={`${BLOG_PATH}/${item.slug}`}
-                            className="group flex flex-col gap-1.5 py-3.5"
-                          >
-                            <span className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-                              {item.tag ?? 'Artikkel'}
-                            </span>
-                            <span className="text-[1.05rem] font-medium leading-snug text-foreground transition-colors group-hover:text-primary">
-                              {item.title}
-                            </span>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                <ShareLinks url={url} title={post.title} />
+            {/* The aside is the full article column, FAQ included. Only the TOC
+                sticks: the old sticky stack (TOC + related + share) is taller
+                than the room left once «Vanlige spørsmål» is on screen, so
+                the label scrolled away before that section did. */}
+            <aside
+              aria-label="Artikkelinfo"
+              className="flex flex-col gap-8 lg:border-l lg:border-border lg:pl-8"
+            >
+              <div className="z-10 hidden bg-background lg:sticky lg:top-28 lg:block">
+                <ArticleToc headings={headings} />
               </div>
+
+              {related.length > 0 && (
+                <div>
+                  <p className="mb-4 eyebrow">
+                    Relaterte artikler
+                  </p>
+                  <ul className="flex flex-col divide-y divide-border border-y border-border">
+                    {related.map((item) => (
+                      <li key={`${item.lang}/${item.slug}`}>
+                        <Link
+                          to={`${BLOG_PATH}/${item.slug}`}
+                          className="group flex flex-col gap-1.5 py-3.5"
+                        >
+                          <span className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                            {item.tag ?? 'Artikkel'}
+                          </span>
+                          <span className="text-[1.05rem] font-medium leading-snug text-foreground transition-colors group-hover:text-primary">
+                            {item.title}
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <ShareLinks url={url} title={post.title} />
             </aside>
           </div>
         </article>

@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import type { TocHeading } from '@/lib/blog/toc';
+import { useArticleTocActive } from './useArticleTocActive';
 
 interface ArticleTocProps {
   headings: TocHeading[];
@@ -19,35 +19,7 @@ interface ArticleTocProps {
  * rather than when it first clips the viewport edge.
  */
 export default function ArticleToc({ headings, label = 'I denne artikkelen' }: ArticleTocProps) {
-  const [activeId, setActiveId] = useState<string>('');
-
-  useEffect(() => {
-    if (!headings.length) return;
-
-    const elements = headings
-      .map((heading) => document.getElementById(heading.id))
-      .filter((element): element is HTMLElement => element !== null);
-    if (!elements.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // Track every heading's state, not just the ones that changed this
-        // tick: scrolling fast fires one callback covering several headings,
-        // and reacting to only the last entry picks an arbitrary winner.
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .map((entry) => entry.target.id);
-        if (visible.length) {
-          const first = elements.find((element) => visible.includes(element.id));
-          if (first) setActiveId(first.id);
-        }
-      },
-      { rootMargin: '-96px 0px -70% 0px', threshold: 0 }
-    );
-
-    elements.forEach((element) => observer.observe(element));
-    return () => observer.disconnect();
-  }, [headings]);
+  const { activeId, selectHeading } = useArticleTocActive(headings);
 
   if (headings.length < 2) return null;
 
@@ -62,6 +34,7 @@ export default function ArticleToc({ headings, label = 'I denne artikkelen' }: A
               <a
                 href={`#${heading.id}`}
                 aria-current={isActive ? 'true' : undefined}
+                onClick={() => selectHeading(heading.id)}
                 className={`-ml-px block border-l-2 py-1.5 pl-4 text-sm leading-snug transition-colors ${
                   isActive
                     ? 'border-primary font-medium text-foreground'
