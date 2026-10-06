@@ -795,7 +795,7 @@
   "statusPage": {
     "eyebrow": "Drift",
     "title": "Ingen offentlig statusside",
-    "description": "Vi har ikke et offentlig, sanntidsdashbord. Oppetid og hendelser rapporteres til kunden gjennom kanalen som er avtalt i driftsavtalen.",
+    "description": "Vi har ikke et offentlig sanntidsdashbord. Oppetid og hendelser rapporteres til kunden gjennom kanalen som er avtalt i driftsavtalen.",
     "transparensBefore": "For oppetidsforpliktelser, SLA og sertifiseringer, se",
     "transparensLink": "siden om åpenhet",
     "transparensAfter": ".",

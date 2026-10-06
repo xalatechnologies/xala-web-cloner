@@ -795,7 +795,7 @@
   "statusPage": {
     "eyebrow": "Operations",
     "title": "No public status board",
-    "description": "We do not publish a public, real-time dashboard. Uptime and incidents are reported to the client through the channel set out in the operations agreement.",
+    "description": "We do not publish a public real-time dashboard. Uptime and incidents are reported to the client through the channel set out in the operations agreement.",
     "transparensBefore": "For uptime commitments, SLA and certifications, see",
     "transparensLink": "the transparency page",
     "transparensAfter": ".",

@@ -21,7 +21,7 @@ export default function StatusPage() {
           title={t('statusPage.title', 'Ingen offentlig statusside')}
           description={t(
             'statusPage.description',
-            'Vi har ikke et offentlig, sanntidsdashbord. Oppetid og hendelser rapporteres til kunden gjennom kanalen som er avtalt i driftsavtalen.'
+            'Vi har ikke et offentlig sanntidsdashbord. Oppetid og hendelser rapporteres til kunden gjennom kanalen som er avtalt i driftsavtalen.'
           )}
         />
 
