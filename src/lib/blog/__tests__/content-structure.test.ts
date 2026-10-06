@@ -121,6 +121,26 @@ describe('published post structure', () => {
     expect(post!.cover).toContain('?v=2');
   });
 
+  it('emits FAQPage JSON-LD without markdown link syntax on affected posts', () => {
+    for (const slug of [
+      'skalerbarhet-males-pa-fristdagen',
+      'saken-bytter-behandler-ved-inhabilitet',
+    ]) {
+      const post = posts.find((item) => item.slug === slug);
+      expect(post).toBeTruthy();
+      const faq = postFaq(post!, post!.body);
+      const schema = faqJsonLd(postUrl(post!), faq) as {
+        mainEntity: Array<{ name: string; acceptedAnswer: { text: string } }>;
+      };
+      for (const entry of schema.mainEntity) {
+        expect(entry.name).not.toMatch(/\]\(/);
+        expect(entry.name).not.toMatch(/\[/);
+        expect(entry.acceptedAnswer.text).not.toMatch(/\]\(/);
+        expect(entry.acceptedAnswer.text).not.toMatch(/\[/);
+      }
+    }
+  });
+
   it('lifts Kort svar on the automatisering post so the template can put it above the cover', () => {
     const post = posts.find((item) => item.slug === 'automatisering-av-saksbehandling-hva-boer-og-ikke');
     expect(post).toBeTruthy();
