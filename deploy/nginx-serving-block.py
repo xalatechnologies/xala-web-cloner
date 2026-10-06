@@ -249,6 +249,14 @@ def cmd_install(args: argparse.Namespace) -> int:
     return 0
 
 
+def default_backup_dirs() -> list[Path]:
+    """Historical backup directories. Tests can point this at a temp dir."""
+    raw = os.environ.get("XALA_NGINX_DEFAULT_BACKUP_DIRS")
+    if raw is None:
+        return list(BACKUP_DIRS)
+    return [Path(part) for part in raw.split(os.pathsep) if part]
+
+
 def restore_roots() -> list[Path]:
     """Directories whose backup maps this restore may apply.
 
@@ -259,13 +267,16 @@ def restore_roots() -> list[Path]:
     override = os.environ.get(BACKUP_ENV)
     if override:
         return [Path(override)]
-    return list(BACKUP_DIRS)
+    return default_backup_dirs()
 
 
 def cmd_restore(args: argparse.Namespace) -> int:
     roots = restore_roots()
     restored = 0
-    seen: set[str] = set()
+    # The first backup of a file in this run is the pre-run bytes. A later
+    # line is an intermediate (for example after the blogg include and before
+    # the fonts include). Restoring the first one returns the pre-run file.
+    seen_sources: set[str] = set()
     for root in roots:
         map_file = root / BACKUP_MAP
         if not map_file.is_file():
@@ -274,7 +285,7 @@ def cmd_restore(args: argparse.Namespace) -> int:
             if not line.strip() or "\t" not in line:
                 continue
             source_s, dest_s = line.split("\t", 1)
-            if dest_s in seen:
+            if source_s in seen_sources:
                 continue
             dest = Path(dest_s)
             source = Path(source_s)
@@ -282,7 +293,7 @@ def cmd_restore(args: argparse.Namespace) -> int:
                 continue
             source.parent.mkdir(parents=True, exist_ok=True)
             source.write_text(dest.read_text(encoding="utf-8"), encoding="utf-8")
-            seen.add(dest_s)
+            seen_sources.add(source_s)
             restored += 1
     print(f"restored {restored} serving-block backup(s)")
     return 0
