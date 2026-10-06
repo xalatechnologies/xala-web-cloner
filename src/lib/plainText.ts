@@ -8,11 +8,6 @@ export function markdownToPlainText(markdown: string): string {
   return markdown
     .replace(/`([^`]+)`/g, '$1')
     .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
-    .replace(/[*_]{1,3}/g, '')
+    .replace(/(\*{1,3}|(?<!\w)_{1,3})(?=\S)([\s\S]*?\S)\1(?!\w)/g, '$2')
     .trim();
-}
-
-/** @deprecated Prefer markdownToPlainText — kept for callers that only need links. */
-export function stripMarkdownLinks(text: string): string {
-  return markdownToPlainText(text);
 }

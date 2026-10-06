@@ -24,9 +24,15 @@ describe('markdownToPlainText', () => {
     );
   });
 
-  it('strips inline code and emphasis', () => {
+  it('strips inline code and paired emphasis', () => {
     expect(markdownToPlainText('Bruk `useMemo` for **tunge** beregninger.')).toBe(
       'Bruk useMemo for tunge beregninger.',
     );
+    expect(markdownToPlainText('_kursiv_ ord')).toBe('kursiv ord');
+  });
+
+  it('leaves lone asterisks and underscores in identifiers and math', () => {
+    expect(markdownToPlainText('snake_case_name')).toBe('snake_case_name');
+    expect(markdownToPlainText('5 * 3')).toBe('5 * 3');
   });
 });
