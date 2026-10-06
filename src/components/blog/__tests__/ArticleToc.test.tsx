@@ -1,6 +1,7 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import ArticleToc from '../ArticleToc';
+import { CLICK_SETTLE_MS } from '../useArticleTocActive';
 import type { TocHeading } from '@/lib/blog/toc';
 
 /**
@@ -35,13 +36,24 @@ const HEADINGS: TocHeading[] = [
   { id: 'vanlige-sporsmal', text: 'Vanlige spørsmål' },
 ];
 
-function renderToc() {
+function installBrowserFakes() {
+  vi.stubGlobal('IntersectionObserver', FakeIntersectionObserver);
+  vi.stubGlobal('requestAnimationFrame', (callback: FrameRequestCallback) => {
+    callback(0);
+    return 1;
+  });
+  vi.stubGlobal('cancelAnimationFrame', () => {});
+}
+
+function renderToc(headings: TocHeading[] = HEADINGS) {
   return render(
     <div>
-      <h2 id="intro">Innledning</h2>
-      <h2 id="krav">Kravet</h2>
-      <h2 id="vanlige-sporsmal">Vanlige spørsmål</h2>
-      <ArticleToc headings={HEADINGS} />
+      {headings.map((heading) => (
+        <h2 key={heading.id} id={heading.id}>
+          {heading.text}
+        </h2>
+      ))}
+      <ArticleToc headings={headings} />
     </div>,
   );
 }
@@ -67,15 +79,40 @@ function setScrollPosition(y: number, scrollHeight: number, innerHeight: number)
   vi.spyOn(document.documentElement, 'scrollHeight', 'get').mockReturnValue(scrollHeight);
 }
 
+function mockRect(id: string, top: number, height = 40) {
+  const element = document.getElementById(id);
+  if (!element) throw new Error(`missing #${id}`);
+  vi.spyOn(element, 'getBoundingClientRect').mockReturnValue({
+    top,
+    bottom: top + height,
+    left: 0,
+    right: 0,
+    width: 0,
+    height,
+    x: 0,
+    y: top,
+    toJSON() {
+      return {};
+    },
+  });
+}
+
+function scrollToEnd() {
+  act(() => {
+    window.dispatchEvent(new Event('scroll'));
+  });
+}
+
 afterEach(() => {
   observers.length = 0;
+  vi.useRealTimers();
   vi.restoreAllMocks();
   vi.unstubAllGlobals();
 });
 
 describe('ArticleToc scroll spy', () => {
   it('marks Vanlige spørsmål active when that heading intersects', () => {
-    vi.stubGlobal('IntersectionObserver', FakeIntersectionObserver);
+    installBrowserFakes();
     renderToc();
 
     expect(observers[0].observed.map((element) => element.id)).toContain('vanlige-sporsmal');
@@ -87,35 +124,21 @@ describe('ArticleToc scroll spy', () => {
     expect(link('Innledning')).not.toHaveAttribute('aria-current');
   });
 
-  it('marks Vanlige spørsmål active on click and keeps it after the scroll settles', () => {
-    vi.stubGlobal('IntersectionObserver', FakeIntersectionObserver);
+  it('marks Vanlige spørsmål active on click and keeps it when the page is at the end', () => {
+    installBrowserFakes();
     renderToc();
 
     fireEvent.click(link('Vanlige spørsmål'));
     expect(link('Vanlige spørsmål')).toHaveAttribute('aria-current', 'true');
 
-    // Headings that pass through the band while the smooth scroll runs
-    // must not steal the row the reader just chose.
+    // Headings that pass through the band while the scroll runs must not
+    // steal the row the reader just chose.
     intersect('krav', true);
     expect(link('Vanlige spørsmål')).toHaveAttribute('aria-current', 'true');
     expect(link('Kravet')).not.toHaveAttribute('aria-current');
 
-    const faq = document.getElementById('vanlige-sporsmal')!;
-    vi.spyOn(faq, 'getBoundingClientRect').mockReturnValue({
-      top: 128,
-      bottom: 168,
-      left: 0,
-      right: 0,
-      width: 0,
-      height: 40,
-      x: 0,
-      y: 128,
-      toJSON() {
-        return {};
-      },
-    });
-    // Scrolled as far as the page allows: the FAQ heading sits in view,
-    // below the spy band, because nothing is left underneath it.
+    // Below the band (top 30% of 800px is 240). Only the end rule keeps it.
+    mockRect('vanlige-sporsmal', 500);
     setScrollPosition(1000, 1804, 800);
 
     act(() => {
@@ -127,7 +150,7 @@ describe('ArticleToc scroll spy', () => {
   });
 
   it('keeps the earlier heading that intersects when the page is not at the end', () => {
-    vi.stubGlobal('IntersectionObserver', FakeIntersectionObserver);
+    installBrowserFakes();
     renderToc();
 
     intersect('intro', true);
@@ -150,17 +173,14 @@ describe('ArticleToc scroll spy', () => {
   });
 
   it('activates the last heading when the page is scrolled to the end', () => {
-    vi.stubGlobal('IntersectionObserver', FakeIntersectionObserver);
+    installBrowserFakes();
     renderToc();
 
     intersect('krav', true);
     expect(link('Kravet')).toHaveAttribute('aria-current', 'true');
 
-    // FAQ is on screen, but the page cannot lift it into the spy band.
     setScrollPosition(1400, 1704, 300);
-    act(() => {
-      window.dispatchEvent(new Event('scroll'));
-    });
+    scrollToEnd();
 
     expect(link('Vanlige spørsmål')).toHaveAttribute('aria-current', 'true');
     expect(link('Kravet')).not.toHaveAttribute('aria-current');
@@ -168,5 +188,133 @@ describe('ArticleToc scroll spy', () => {
     // An earlier heading still reporting intersection must not win at the end.
     intersect('krav', true);
     expect(link('Vanlige spørsmål')).toHaveAttribute('aria-current', 'true');
+  });
+
+  it('releases the click lock so a later heading can become active', () => {
+    installBrowserFakes();
+    renderToc();
+
+    fireEvent.click(link('Vanlige spørsmål'));
+    intersect('krav', true);
+    expect(link('Vanlige spørsmål')).toHaveAttribute('aria-current', 'true');
+
+    mockRect('vanlige-sporsmal', 500);
+    setScrollPosition(100, 5000, 800);
+    act(() => {
+      window.dispatchEvent(new Event('scrollend'));
+    });
+
+    intersect('krav', true);
+    expect(link('Kravet')).toHaveAttribute('aria-current', 'true');
+    expect(link('Vanlige spørsmål')).not.toHaveAttribute('aria-current');
+  });
+
+  it('leaves the FAQ when the page scrolls up from the bottom', () => {
+    installBrowserFakes();
+    renderToc();
+
+    setScrollPosition(1400, 1704, 300);
+    scrollToEnd();
+    expect(link('Vanlige spørsmål')).toHaveAttribute('aria-current', 'true');
+
+    setScrollPosition(400, 5000, 800);
+    scrollToEnd();
+    intersect('intro', true);
+
+    expect(link('Innledning')).toHaveAttribute('aria-current', 'true');
+    expect(link('Vanlige spørsmål')).not.toHaveAttribute('aria-current');
+  });
+
+  it('drops a clicked row that is on screen but outside the band', () => {
+    installBrowserFakes();
+    renderToc();
+
+    fireEvent.click(link('Vanlige spørsmål'));
+    // On screen (top < 800) but below the band, which ends at 240.
+    mockRect('vanlige-sporsmal', 500);
+    setScrollPosition(100, 5000, 800);
+
+    act(() => {
+      window.dispatchEvent(new Event('scrollend'));
+    });
+
+    expect(link('Vanlige spørsmål')).not.toHaveAttribute('aria-current');
+  });
+
+  it('keeps the clicked row when it is in the band and the page is not at the end', () => {
+    installBrowserFakes();
+    renderToc();
+
+    fireEvent.click(link('Kravet'));
+    mockRect('krav', 120);
+    setScrollPosition(100, 5000, 800);
+
+    act(() => {
+      window.dispatchEvent(new Event('scrollend'));
+    });
+
+    expect(link('Kravet')).toHaveAttribute('aria-current', 'true');
+  });
+
+  it('prefers the last heading when a click releases at the end of the page', () => {
+    installBrowserFakes();
+    renderToc();
+
+    fireEvent.click(link('Innledning'));
+    mockRect('intro', 120);
+    setScrollPosition(1000, 1804, 800);
+
+    act(() => {
+      window.dispatchEvent(new Event('scrollend'));
+    });
+
+    expect(link('Vanlige spørsmål')).toHaveAttribute('aria-current', 'true');
+    expect(link('Innledning')).not.toHaveAttribute('aria-current');
+  });
+
+  it('releases a click that never scrolls once the settle time has passed', () => {
+    vi.useFakeTimers();
+    installBrowserFakes();
+    renderToc();
+
+    fireEvent.click(link('Vanlige spørsmål'));
+    act(() => {
+      vi.advanceTimersByTime(CLICK_SETTLE_MS - 1);
+    });
+    intersect('krav', true);
+    expect(link('Vanlige spørsmål')).toHaveAttribute('aria-current', 'true');
+
+    act(() => {
+      vi.advanceTimersByTime(1);
+    });
+    intersect('krav', true);
+    expect(link('Kravet')).toHaveAttribute('aria-current', 'true');
+    expect(link('Vanlige spørsmål')).not.toHaveAttribute('aria-current');
+  });
+
+  it('clears the active row when the heading list changes', () => {
+    installBrowserFakes();
+    const { rerender } = renderToc();
+
+    intersect('vanlige-sporsmal', true);
+    expect(link('Vanlige spørsmål')).toHaveAttribute('aria-current', 'true');
+
+    const next: TocHeading[] = [
+      { id: 'annet', text: 'Annet' },
+      { id: 'vanlige-sporsmal', text: 'Vanlige spørsmål' },
+    ];
+    rerender(
+      <div>
+        {next.map((heading) => (
+          <h2 key={heading.id} id={heading.id}>
+            {heading.text}
+          </h2>
+        ))}
+        <ArticleToc headings={next} />
+      </div>,
+    );
+
+    expect(link('Vanlige spørsmål')).not.toHaveAttribute('aria-current');
+    expect(link('Annet')).not.toHaveAttribute('aria-current');
   });
 });

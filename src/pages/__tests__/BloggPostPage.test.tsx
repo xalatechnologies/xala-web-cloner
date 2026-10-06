@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { describe, it, expect, vi } from 'vitest';
@@ -31,8 +31,8 @@ vi.stubGlobal('IntersectionObserver', FakeIntersectionObserver);
 
 const SLUG = 'automatisering-av-saksbehandling-hva-boer-og-ikke';
 
-function renderPost(slug = SLUG) {
-  return render(
+function postTree(slug: string) {
+  return (
     <HelmetProvider>
       <MemoryRouter initialEntries={[`/blogg/${slug}`]}>
         <Routes>
@@ -41,6 +41,10 @@ function renderPost(slug = SLUG) {
       </MemoryRouter>
     </HelmetProvider>
   );
+}
+
+function renderPost(slug = SLUG) {
+  return render(postTree(slug));
 }
 
 describe('BloggPostPage lead vs cover', () => {
@@ -204,6 +208,19 @@ describe('BloggPostPage frontmatter FAQ', () => {
     const delivers = screen.getByRole('heading', { level: 2, name: 'Hva Xala leverer' });
     expect(delivers.compareDocumentPosition(faqHeading) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(screen.queryByRole('heading', { level: 2, name: 'Snakk med oss om dette' })).not.toBeInTheDocument();
+  });
+
+  it('keeps the same heading nodes when a TOC click re-renders the post', () => {
+    const { rerender } = renderPost(slug);
+    const before = document.getElementById('vanlige-sporsmal');
+    expect(before).toBeTruthy();
+
+    fireEvent.click(screen.getAllByRole('link', { name: 'Vanlige spørsmål' })[0]);
+    rerender(postTree(slug));
+
+    const after = document.getElementById('vanlige-sporsmal');
+    expect(after).toBe(before);
+    expect(after?.isConnected).toBe(true);
   });
 
   it('prerenders the shared CTA aside after the FAQ so the heading stays unique', () => {

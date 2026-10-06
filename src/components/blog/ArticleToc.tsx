@@ -1,9 +1,42 @@
+import { useEffect, useState } from 'react';
 import type { TocHeading } from '@/lib/blog/toc';
 import { useArticleTocActive } from './useArticleTocActive';
 
 interface ArticleTocProps {
   headings: TocHeading[];
   label?: string;
+  /**
+   * `desktop` is the sticky sidebar (lg and up). `mobile` is the inline
+   * copy. Only the one that is actually on screen runs the scroll spy, so
+   * the hidden copy does not keep a second observer.
+   */
+  mode?: 'always' | 'mobile' | 'desktop';
+}
+
+const DESKTOP_QUERY = '(min-width: 1024px)';
+
+function mediaMatches(query: string, fallback: boolean): boolean {
+  if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return fallback;
+  return window.matchMedia(query).matches;
+}
+
+function useTocEnabled(mode: 'always' | 'mobile' | 'desktop'): boolean {
+  const [enabled, setEnabled] = useState(() => {
+    if (mode === 'always') return true;
+    // No matchMedia (jsdom): one spy, on the inline copy.
+    return mediaMatches(DESKTOP_QUERY, false) === (mode === 'desktop');
+  });
+
+  useEffect(() => {
+    if (mode === 'always' || typeof window.matchMedia !== 'function') return;
+    const media = window.matchMedia(DESKTOP_QUERY);
+    const onChange = () => setEnabled(media.matches === (mode === 'desktop'));
+    onChange();
+    media.addEventListener('change', onChange);
+    return () => media.removeEventListener('change', onChange);
+  }, [mode]);
+
+  return mode === 'always' ? true : enabled;
 }
 
 /**
@@ -18,8 +51,13 @@ interface ArticleTocProps {
  * header, so a heading counts as current when it reaches reading position
  * rather than when it first clips the viewport edge.
  */
-export default function ArticleToc({ headings, label = 'I denne artikkelen' }: ArticleTocProps) {
-  const { activeId, selectHeading } = useArticleTocActive(headings);
+export default function ArticleToc({
+  headings,
+  label = 'I denne artikkelen',
+  mode = 'always',
+}: ArticleTocProps) {
+  const enabled = useTocEnabled(mode);
+  const { activeId, selectHeading } = useArticleTocActive(headings, enabled);
 
   if (headings.length < 2) return null;
 

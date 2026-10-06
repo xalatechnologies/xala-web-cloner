@@ -4,16 +4,16 @@ import type { TocHeading } from '@/lib/blog/toc';
 /**
  * Spy band, just under the sticky header.
  *
- * `rootMargin` shrinks the viewport so a heading counts as current when it
- * reaches reading position, not when it first clips the edge. The bottom
- * margin keeps that band in the top 30%. Earlier sections rely on this and
- * the threshold stays 0 — same observer as before.
+ * The bottom root margin keeps the band in the top 30% of the viewport.
+ * A heading is in that band when its box meets the same edges the
+ * IntersectionObserver uses: below 96px and above 30% of the height.
  */
 const SPY_TOP_PX = 96;
+const BAND_END_RATIO = 0.3;
 const SPY_ROOT_MARGIN = `-${SPY_TOP_PX}px 0px -70% 0px`;
 
 /** How long a TOC click keeps the spy from overwriting the chosen section. */
-const CLICK_SETTLE_MS = 1000;
+export const CLICK_SETTLE_MS = 1000;
 
 function isScrolledToEnd(): boolean {
   const root = document.scrollingElement ?? document.documentElement;
@@ -23,26 +23,33 @@ function isScrolledToEnd(): boolean {
   return window.scrollY > 1 && remaining <= 4;
 }
 
-function headingInView(element: HTMLElement): boolean {
+/** Same band the observer uses. "Anywhere on screen" is not enough. */
+function headingInBand(element: HTMLElement): boolean {
   const rect = element.getBoundingClientRect();
-  return rect.bottom > SPY_TOP_PX && rect.top < window.innerHeight;
+  return rect.bottom > SPY_TOP_PX && rect.top < window.innerHeight * BAND_END_RATIO;
 }
 
 /**
  * Which TOC row is current.
  *
- * IntersectionObserver handles every section that can reach the reading
- * band. The last section often cannot: the page runs out of room before
- * «Vanlige spørsmål» crosses into that band, so the callback never selects
- * it and the previous row stays lit — or nothing does, right after a click
- * that scrolled as far as the page allows. Reaching the end of the scroll
- * selects the last heading.
+ * A TOC click used to kill the spy. The hash change re-rendered the post,
+ * and the heading components were created inside that render, so React
+ * remounted every heading. The observer kept the detached nodes and never
+ * fired again. The headings are stable now; this hook still releases the
+ * click lock so a later intersection can move the row.
+ *
+ * The FAQ heading can reach the band — the footer and the next articles
+ * sit below it. Reaching the end of the scroll still selects the last
+ * heading, as a safety net when a short page cannot.
  *
  * A click selects its row immediately. The selection stays through the
- * smooth scroll; the spy takes over again once that scroll has settled,
- * unless the page is at the end, in which case the last heading remains.
+ * scroll, then the lock releases. It keeps the clicked row only when that
+ * heading is in the band, or the last row when the page is at the end.
  */
-export function useArticleTocActive(headings: TocHeading[]): {
+export function useArticleTocActive(
+  headings: TocHeading[],
+  enabled = true,
+): {
   activeId: string;
   selectHeading: (id: string) => void;
 } {
@@ -54,11 +61,14 @@ export function useArticleTocActive(headings: TocHeading[]): {
   });
 
   useEffect(() => {
-    if (!headings.length) return;
+    setActiveId('');
+    clickedId.current = null;
+    window.clearTimeout(settleTimer.current);
+    if (!enabled || !headings.length) return;
 
     const elements = headings
       .map((heading) => document.getElementById(heading.id))
-      .filter((element): element is HTMLElement => element !== null);
+      .filter((element): element is HTMLElement => element !== null && element.isConnected);
     if (!elements.length) return;
 
     const lastId = elements[elements.length - 1].id;
@@ -73,7 +83,14 @@ export function useArticleTocActive(headings: TocHeading[]): {
         return;
       }
       const target = document.getElementById(id);
-      if (target && headingInView(target)) setActiveId(id);
+      if (target?.isConnected && headingInBand(target)) {
+        setActiveId(id);
+        return;
+      }
+      // The click's row is not the one in the band. Drop it so the spy
+      // can name whoever is.
+      const inBand = elements.find((element) => element.isConnected && headingInBand(element));
+      setActiveId(inBand?.id ?? '');
     };
     releaseRef.current = releaseClick;
 
@@ -92,7 +109,7 @@ export function useArticleTocActive(headings: TocHeading[]): {
           return;
         }
         const visible = entries
-          .filter((entry) => entry.isIntersecting)
+          .filter((entry) => entry.isIntersecting && entry.target.isConnected)
           .map((entry) => entry.target.id);
         if (visible.length) {
           const first = elements.find((element) => visible.includes(element.id));
@@ -104,12 +121,18 @@ export function useArticleTocActive(headings: TocHeading[]): {
 
     elements.forEach((element) => observer.observe(element));
 
+    let frame = 0;
     const onScroll = () => {
       if (clickedId.current) {
         armSettleTimer();
         return;
       }
-      if (isScrolledToEnd()) setActiveId(lastId);
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        if (clickedId.current) return;
+        if (isScrolledToEnd()) setActiveId(lastId);
+      });
     };
 
     const onScrollEnd = () => {
@@ -123,10 +146,11 @@ export function useArticleTocActive(headings: TocHeading[]): {
     return () => {
       observer.disconnect();
       window.clearTimeout(settleTimer.current);
+      if (frame) window.cancelAnimationFrame(frame);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('scrollend', onScrollEnd);
     };
-  }, [headings]);
+  }, [headings, enabled]);
 
   const selectHeading = (id: string) => {
     clickedId.current = id;
