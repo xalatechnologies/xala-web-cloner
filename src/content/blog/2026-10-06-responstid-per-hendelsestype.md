@@ -1,7 +1,7 @@
 ---
 slug: responstid-per-hendelsestype
 title: "Ulike hendelser trenger ulik responstid"
-description: "En god driftsavtale har ulike responstider for sikkerhetshendelser, driftsstans og vanlige henvendelser. Slik avtaler Xala fristene, og hvorfor."
+description: "En god forvaltningsavtale har ulike responstider for sikkerhetshendelser, driftsstans og vanlige henvendelser. Slik avtaler Xala fristene, og hvorfor."
 date: 2026-10-06
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
