@@ -1,6 +1,6 @@
 ---
 slug: legacy-modernisering-ssb-fra-java-til-net-core
-title: "Legacy-modernisering i praksis: SSB fra Java til .NET Core"
+title: "Legacy-modernisering: først samme svar, så ny plattform"
 seoTitle: "Legacy-modernisering: SSB fra Java til .NET Core"
 description: "SSB flyttet eldre Java-systemer til .NET Core med bevart funksjonalitet. Slik bidro Xala: kartlegging, overgang side om side og regresjonstester."
 date: 2026-10-08
@@ -8,11 +8,21 @@ author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
 cover: "/images/blog/legacy-modernisering-ssb-fra-java-til-net-core.webp"
-coverAlt: "Gull strektegning på nesten svart bakgrunn: en skålvekt i balanse med tre like kuber i hver skål. Bare omdreiningspunktet lyser i gull."
+coverAlt: "Strektegning i gull på nesten svart bakgrunn: en skålvekt i balanse med tre like kuber i hver skål. Bare omdreiningspunktet lyser."
 keywords:
-  - legacy-system modernisering
   - legacy modernisering
-  - modernisering av legacy-systemer
+  - migrering
+  - teknisk gjeld
+  - regresjonstesting
+  - offentlig sektor
+  - legacy-system modernisering
+  - Java til .NET Core
+hashtags:
+  - legacy modernisering
+  - migrering
+  - teknisk gjeld
+  - regresjonstesting
+  - offentlig sektor
 faq:
   - question: "Hva er legacy-modernisering?"
     answer: "Det er å flytte eldre systemer over på en ny plattform uten å miste data eller funksjonalitet underveis. I SSB-caset betydde det å migrere Java-baserte systemer til .NET Core med bevart funksjonalitet."
@@ -28,17 +38,19 @@ lang: no
 draft: false
 ---
 
-Legacy-modernisering er ikke å skrive gammel kode på nytt og håpe at den gjør det samme. Det er å bytte plattform uten å miste data eller funksjonalitet underveis. Moderniseringen hos Statistisk sentralbyrå (SSB) er et eksempel på nettopp det kravet.
+Tenk deg at en statistikk kjøres i det nye systemet for første gang. Tallet er nesten likt det gamle, men ikke helt. Ingen kan si hvilket som er riktig.
 
-Xala bidro i arbeidet, blant annet med analyse, migrering og testing, da eldre Java-baserte løsninger ble flyttet til .NET Core. Under går vi gjennom caset i den rekkefølgen arbeidet ble gjort, bare med det som står i det publiserte caset.
+Scenen er tenkt, men det er den du må unngå når et gammelt system skal flyttes. Regelen er enkel: Vis at det nye gir samme svar som det gamle før du forbedrer noe.
+
+Statistisk sentralbyrå (SSB) flyttet eldre Java-systemer til .NET Core med det kravet. Xala bidro blant annet med analyse, migrering og testing. Nedenfor går vi gjennom caset steg for steg, bare med det som står i det publiserte caset.
 
 ## Utgangspunktet var Java-systemer med høy teknisk gjeld
 
 SSB er avhengig av robuste digitale systemer for viktige offentlige oppgaver. Flere av dem var bygd på eldre Java-baserte løsninger.
 
-Problemet var ikke at systemene hadde sluttet å virke. Problemet var teknisk gjeld. Den gjorde både vedlikehold og videreutvikling tungt.
+Systemene var i bruk, men teknisk gjeld gjorde vedlikehold og videreutvikling tungt. Teknisk gjeld er gamle løsninger og snarveier som gjør hver endring dyrere enn den burde være.
 
-Samtidig kunne ikke alt bare legges om. Systemene bar komplekse datarørledninger og statistiske arbeidsflyter. De måtte bevares gjennom hele migreringen.
+Samtidig kunne ikke alt bare legges om. Systemene hentet, flyttet og regnet på data i mange steg før tallene var ferdige. De stegene måtte virke likt hele veien.
 
 ## Kravet var null datatap og ingen funksjonell regresjon
 
@@ -54,27 +66,27 @@ Arbeidet startet med de eksisterende Java-systemene. De ble analysert sammen med
 
 Deretter ble kravene avklart. Hvilken funksjonalitet er forretningskritisk, og hva skal være med i migreringen? Kravanalysen hadde særlig vekt på at driften skulle fortsette mens arbeidet pågikk.
 
-Først da ble målarkitekturen definert. Den beskrev tjenestegrensene, hvordan migreringen skulle gjøres og hvilke integrasjonsmønstre de nye tjenestene skulle bruke mot systemene rundt.
+Først da ble det tegnet opp hvordan det nye skulle se ut: hvilke deler det skulle bestå av, i hvilken rekkefølge de skulle flyttes, og hvordan de skulle snakke med systemene rundt.
 
-Rekkefølgen er poenget. Når kravet er at ingenting skal forsvinne, må dere vite hva som finnes før dere flytter det.
+Rekkefølgen er poenget. Når kravet er at ingenting skal forsvinne, må du vite hva som finnes før du flytter det.
 
 ## Forretningslogikken ble skrevet på nytt i .NET Core, med samme oppførsel
 
-Kjernetjenestene og forretningslogikken ble reimplementert i .NET Core og C#. Logikk som tidligere var bundet til Java-applikasjonene, fikk en ny implementasjon.
+Reglene systemene regner etter, ble skrevet på nytt i .NET Core og C#. Det som tidligere lå i Java-applikasjonene, fikk en ny utgave.
 
 Målet var funksjonell likhet. Den nye koden skulle oppføre seg som den gamle, også i tilfellene ingen husker å nevne i et kravdokument. Det er en annen oppgave enn å skrive et nytt system fra bunnen. Forbedringer kan komme senere, når likheten er bekreftet.
 
-Plattformen rundt besto av Microsoft Azure, SQL Server, REST-API-er og CI/CD. Forretningsdata og rapportering skulle henge sammen gjennom hele prosessen.
+Det nye kjører i Microsoft Azure med SQL Server som database. Systemene snakker sammen via API-er, og nye versjoner bygges og testes automatisk (CI/CD). Forretningsdata og rapportering skulle henge sammen gjennom hele prosessen.
 
-Denne posten handler ikke om selve språkvalget. Det har vi skrevet om i en egen artikkel om [hvorfor vi velger .NET for systemer som skal vare](https://xala.no/blogg/teknologivalg-for-fagsystemer-som-skal-vare).
+Denne posten handler ikke om selve språkvalget. Det har vi skrevet om i en egen artikkel om [hvorfor vi velger .NET for systemer som skal vare](/blogg/teknologivalg-for-fagsystemer-som-skal-vare).
 
 ## Gammelt og nytt kjørte side om side i overgangen
 
 Et system som skal være i drift hele veien, kan ikke byttes ut på én dag. I SSB-caset ble det bygd et overgangslag mellom de moderniserte tjenestene og de gamle Java-komponentene.
 
-Laget besto av API-er, koblinger til eldre komponenter og tjenester som støttet selve migreringen. Det lot gammelt og nytt fungere side om side, med gradvis overgang. De nye tjenestene ble koblet til systemene rundt og validert, slik at de oppførte seg riktig gjennom hele overgangsperioden.
+Laget var en mellomstasjon. Nye deler kunne snakke med gamle deler, og funksjoner kunne flyttes én etter én. Hver ny del ble koblet til systemene rundt og sjekket før neste.
 
-Parallellkjøring med sammenligning av resultater og rullende utrulling med mulighet for tilbakerulling er en del av hvordan vi jobber med modernisering. Caset sier ikke at tilbakerulling ble brukt hos SSB, og det påstår vi heller ikke her.
+Slik jobber vi generelt med modernisering: Gammelt og nytt kjører parallelt, vi sammenligner svarene, og vi ruller ut litt om gangen med mulighet til å gå tilbake. Det er ikke en beskrivelse av hva som ble gjort hos SSB. [Slik moderniserer vi et fagsystem uten driftsstans](/blogg/modernisere-fagsystem-uten-driftsstans).
 
 ## Regresjonstester bar tilliten til det som ble flyttet
 
@@ -84,24 +96,24 @@ Ifølge caset besto teamet av seks personer: en teamleder, en prosjektleder, to 
 
 Regresjonstesting og kvalitetssikring ga økt trygghet for at den migrerte funksjonaliteten virket, og for at hver leveranse var klar til å tas i bruk.
 
-Vi har skrevet egne råd om [hva som er verdt å automatisere i testene](https://xala.no/blogg/testautomatisering-for-fagsystemer).
+Vi har skrevet egne råd om [hva som er verdt å automatisere i testene](/blogg/testautomatisering-for-fagsystemer).
 
 ## Resultatet var samme funksjonalitet på en plattform som kan videreutvikles
 
 Arbeidet ble avsluttet med kontrollert utrulling og støtte i overgangen. Status i caset er levert.
 
-Caset oppgir fire resultater. Eldre Java-systemer er migrert til .NET Core, og funksjonaliteten er bevart. Vedlikeholdbarheten er bedre, og den tekniske gjelden er redusert. Arkitekturen er modernisert og støtter kontinuerlig levering. Og SSBs digitale plattform har fått sterkere teknisk bærekraft på lang sikt.
+Caset oppgir fire resultater. Eldre Java-systemer er migrert til .NET Core, og funksjonaliteten er bevart. Systemet er lettere å rette og endre, og den tekniske gjelden er redusert. Plattformen er bygd for jevnlige leveranser, og den står sterkere for årene som kommer.
 
 Legg merke til hva som står først. Ikke ny funksjonalitet, men bevart funksjonalitet. I en migrering som denne er det selve målet. Det nye ligger i plattformen: den er lettere å vedlikeholde og klar for kontinuerlig levering.
 
-Les [hele SSB-caset](https://xala.no/caser/ssb-legacy-system-modernization) for leveransene og arkitekturen i detalj.
+Les [hele SSB-caset](/caser/ssb-legacy-system-modernization) for leveransene og arkitekturen i detalj.
 
-## Dette sier caset ikke
+## Dette står ikke i caset
 
 Et case er en oppsummering, ikke en prosjektrapport.
 
 Budsjettet er konfidensielt. Leveranseperioden er oppgitt som 12 til 24 måneder, ikke som en eksakt varighet. Caset har ingen tall for ytelse og ingen tall for besparelser. Vi fyller ikke de hullene med anslag.
 
-Det caset viser, er rekkefølgen og kravene. Kartlegging før kode. Samme oppførsel før forbedringer. Gammelt og nytt side om side i overgangen. Tester som kan vise at ingenting forsvant. Står dere selv med et eldre system som må flyttes uten at data eller funksjonalitet går tapt, er det der vi ville begynt samtalen.
+Det caset viser, er rekkefølgen og kravene. Kartlegging før kode. Samme oppførsel før forbedringer. Gammelt og nytt side om side i overgangen. Tester som kan vise at ingenting forsvant. Står du med et eldre system som må flyttes uten at data eller funksjonalitet går tapt, er det der vi ville begynt samtalen.
 
-[Se hvordan Xala moderniserer fagsystemer uten driftsstans](https://xala.no/tjenester/modernisering-av-fagsystemer).
+[Se hvordan Xala moderniserer fagsystemer uten driftsstans](/tjenester/modernisering-av-fagsystemer).
