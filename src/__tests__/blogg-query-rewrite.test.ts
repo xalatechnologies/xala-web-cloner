@@ -28,6 +28,26 @@ describe('host mapping for /blogg?q=', () => {
     expect(nginx).toContain('rewrite ^ /blogg/q/_none/index.html last;');
     expect(nginx).toContain('try_files /blogg/index.html =404;');
     expect(nginx).toContain('if ($arg_q ~ "\\.\\.")');
+    expect(nginx).not.toContain('location ^~ /fonts/');
+  });
+
+  it('caches /fonts/ for 7 days and repeats the live security headers', () => {
+    const fonts = readFileSync(resolve(ROOT, 'deploy/nginx-fonts-cache.conf'), 'utf8');
+
+    expect(fonts).toContain('location ^~ /fonts/');
+    expect(fonts).toContain('expires off;');
+    expect(fonts).toContain('font/woff2 woff2;');
+    expect(fonts).toContain('text/css css;');
+    expect(fonts).toContain('add_header Cache-Control "public, max-age=604800";');
+    expect(fonts).not.toContain('max-age=604800" always');
+    expect(fonts).toContain('add_header X-Content-Type-Options "nosniff" always;');
+    expect(fonts).toContain('add_header X-Frame-Options "DENY" always;');
+    expect(fonts).toContain('add_header Referrer-Policy "strict-origin-when-cross-origin" always;');
+    expect(fonts).toContain(
+      'add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;',
+    );
+    expect(fonts).toContain('Rename a font file whenever its bytes change');
+    expect(fonts).not.toContain('immutable');
   });
 
   it('fails the deploy unless the rewrite is in the serving block', () => {
@@ -39,6 +59,8 @@ describe('host mapping for /blogg?q=', () => {
     expect(deploy).not.toMatch(/scp[\s\S]*\|\|\s*true/);
     expect(deploy).toContain('|| die "nginx /blogg?q= rewrite is not in the serving block');
     expect(deploy).toContain('nginx-serving-block.py');
+    expect(deploy).toContain('deploy/nginx-fonts-cache.conf');
+    expect(deploy).toContain('/tmp/xala-fonts-cache.conf');
 
     expect(installer).toContain('root/current');
     expect(installer).toContain('exit 1');
