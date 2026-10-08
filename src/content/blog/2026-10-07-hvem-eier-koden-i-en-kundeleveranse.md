@@ -1,7 +1,6 @@
 ---
 slug: hvem-eier-koden-i-en-kundeleveranse
 title: "Hvem eier koden? Dere, når det er en kundeleveranse"
-seoTitle: "Hvem eier koden? Dere, i en kundeleveranse"
 description: "I en kundeleveranse eier dere koden. Bygger Xala på et eget produkt, avtales lisens for den delen. Slik bør eierskapet stå i avtalen."
 date: 2026-10-07
 author: "Ibrahim Rahmani"
@@ -30,13 +29,13 @@ draft: false
 
 «Hvem eier koden? Dere, hvis det er en kundeleveranse.» Det står på siden vår om SaaS-applikasjonsutvikling, og det er svaret vi gir når spørsmålet kommer. Svaret har ett unntak. Bygger vi videre på et av våre egne produkter, avtaler vi lisens i stedet.
 
-Under går vi gjennom fem innvendinger vi ofte hører fra innkjøpere og IT-ledere, og hva vi svarer.
+Under går vi gjennom seks innvendinger vi ofte hører fra innkjøpere og IT-ledere, og hva vi svarer.
 
 ## Koden er deres når den er en kundeleveranse
 
 «Vi betaler for utviklingen, men leverandøren beholder koden.» Den bekymringen er forståelig. Mange har opplevd å stå uten kontroll over noe de har betalt for.
 
-Hos oss er utgangspunktet det motsatte. Er det en kundeleveranse, eier dere koden. Det følger også hovedregelen i en utviklingsavtale: oppdragsgiver får rettighetene til det som utvikles.
+Hos oss er utgangspunktet det motsatte. Er det en kundeleveranse, eier dere koden.
 
 Dere betaler for at noe lages for dere. Da er det deres.
 
@@ -48,7 +47,7 @@ Det betyr ikke at spørsmålet er dumt å stille. Det er nettopp det dere bør s
 
 Det som utvikles for dere, er deres. Det som allerede fantes som vårt eget produkt før prosjektet, er vårt. For den delen avtaler vi lisens i stedet for eierskap.
 
-Grunnen er enkel. Et eksisterende produkt kan gi dere en løsning raskere, men det er ikke laget for dere alene. Lisensen gir dere bruken av det. Alt som bygges på toppen for deres behov, følger hovedregelen.
+Grunnen er enkel. Et eksisterende produkt kan gi dere en løsning raskere, men det er ikke laget for dere alene. Lisensen gir dere bruken av det. Alt som bygges på toppen for deres behov, er deres.
 
 Vil dere lese mer om [hvordan kontraktsformen påvirker dette](https://xala.no/blogg/ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling), har vi skrevet om det i en egen artikkel.
 
@@ -84,7 +83,7 @@ Det er et valg dere tar, ikke et krav vi stiller. Noen ønsker å bygge egen kom
 
 «Bytter vi leverandør midt i, sitter vi med et halvferdig prosjekt.» Det er en reell risiko når alt leveres på én gang til slutt.
 
-Vi leverer heller [modul for modul](https://xala.no/blogg/modernisere-fagsystem-uten-driftsstans). Det gir også en reell exit: hvis samarbeidet ikke fungerer, har du et fungerende system og en dokumentert fasade, ikke et halvferdig prosjekt.
+Vi leverer heller [modul for modul](https://xala.no/blogg/modernisere-fagsystem-uten-driftsstans). Det gir også en reell exit: hvis samarbeidet ikke fungerer, har dere et fungerende system og en dokumentert fasade, ikke et halvferdig prosjekt.
 
 Eierskap til koden hjelper lite hvis koden ikke virker. Moduler som er i drift, gjør eierskapet til noe dere kan bruke.
 
