@@ -5,13 +5,27 @@ description: "I en kundeleveranse eier dere koden. Bygger Xala på et eget produ
 date: 2026-10-07
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
-tag: "Arkitekt"
+tag: "IT-leder"
 cover: "/images/blog/hvem-eier-koden-i-en-kundeleveranse.webp"
-coverAlt: "«Gull strektegning på nesten svart bakgrunn: to overlappende sirkler, der bare overlappen mellom dem lyser i gull.»"
+coverAlt: "Strektegning i gull på nesten svart bakgrunn: to overlappende sirkler, der bare overlappen mellom dem lyser i gull."
 keywords:
+  - kildekode
+  - eierskap
+  - lisens
+  - kundeleveranse
+  - leverandørbytte
   - hvem eier koden
-  - eierskap til kildekode
-  - hvem eier kildekoden
+  - kildekode kundeleveranse
+  - lisens egenutviklet produkt
+  - eierskap i IT-kontrakt
+  - bytte leverandør offentlig sektor
+  - overlevering av kode
+hashtags:
+  - kildekode
+  - eierskap
+  - lisens
+  - kundeleveranse
+  - leverandørbytte
 faq:
   - question: "Hvem eier koden når Xala utvikler en løsning for oss?"
     answer: "Dere gjør, når det er en kundeleveranse. Det som utvikles for dere, er deres."
@@ -27,9 +41,11 @@ lang: no
 draft: false
 ---
 
-«Hvem eier koden? Dere, hvis det er en kundeleveranse.» Det står på siden vår om SaaS-applikasjonsutvikling, og det er svaret vi gir når spørsmålet kommer. Svaret har ett unntak. Bygger vi videre på et av våre egne produkter, avtaler vi lisens i stedet.
+En IT-leder i kommunen skal bytte leverandør. Hun ber om kildekoden og får til svar at den tilhører leverandøren.
 
-Under går vi gjennom seks innvendinger vi ofte hører fra innkjøpere og IT-ledere, og hva vi svarer.
+Det skal ikke skje i en kundeleveranse. Eierskapet skal stå i avtalen, og da er koden deres. Bygger vi videre på et av våre egne produkter, avtaler vi lisens i stedet.
+
+Nedenfor går vi gjennom seks innvendinger vi ofte hører fra innkjøpere og IT-ledere, og hva vi svarer.
 
 ## Koden er deres når den er en kundeleveranse
 
@@ -37,7 +53,7 @@ Under går vi gjennom seks innvendinger vi ofte hører fra innkjøpere og IT-led
 
 Hos oss er utgangspunktet det motsatte. Er det en kundeleveranse, eier dere koden.
 
-Dere betaler for at noe lages for dere. Da er det deres.
+Dere betaler for at noe lages for dere. Derfor står det i avtalen at det er deres.
 
 Det betyr ikke at spørsmålet er dumt å stille. Det er nettopp det dere bør spørre om tidlig, før arbeidet starter og før noen har skrevet en linje kode for dere.
 
@@ -49,7 +65,7 @@ Det som utvikles for dere, er deres. Det som allerede fantes som vårt eget prod
 
 Grunnen er enkel. Et eksisterende produkt kan gi dere en løsning raskere, men det er ikke laget for dere alene. Lisensen gir dere bruken av det. Alt som bygges på toppen for deres behov, er deres.
 
-Vil dere lese mer om [hvordan kontraktsformen påvirker dette](https://xala.no/blogg/ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling), har vi skrevet om det i en egen artikkel.
+Vil dere lese mer om [hvordan kontraktsformen påvirker dette](/blogg/ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling), har vi skrevet om det i en egen artikkel.
 
 ## Eierskapet bør stå i avtalen, ikke forutsettes
 
@@ -77,16 +93,16 @@ Spør derfor ikke bare hvem som eier koden. Spør også hva dere får med den, o
 
 De fleste kundene våre velger det. Men vi kan også overlevere til deres eget utviklingsteam med dokumentasjon og opplæring. Vi låser ingen inn.
 
-Det er et valg dere tar, ikke et krav vi stiller. Noen ønsker å bygge egen kompetanse over tid, andre vil heller kjøpe forvaltningen. Begge deler er greit, og begge forutsetter at dere eier det dere har betalt for. Les mer om [overlevering til eget team](https://xala.no/tjenester/forvaltning-og-drift) og hva forvaltning hos oss dekker.
+Det er et valg dere tar, ikke et krav vi stiller. Noen ønsker å bygge egen kompetanse over tid, andre vil heller kjøpe forvaltningen. Begge deler er greit, og begge forutsetter at dere eier det dere har betalt for. Les mer om [overlevering til eget team](/tjenester/forvaltning-og-drift) og hva forvaltning hos oss dekker.
 
-## Levering i moduler gjør exit til et reelt valg
+## Levering i moduler gjør det mulig å bytte leverandør
 
 «Bytter vi leverandør midt i, sitter vi med et halvferdig prosjekt.» Det er en reell risiko når alt leveres på én gang til slutt.
 
-Vi leverer heller [modul for modul](https://xala.no/blogg/modernisere-fagsystem-uten-driftsstans). Det gir også en reell exit: hvis samarbeidet ikke fungerer, har dere et fungerende system og en dokumentert fasade, ikke et halvferdig prosjekt.
+Vi leverer heller [modul for modul](/blogg/modernisere-fagsystem-uten-driftsstans). Det gir også et reelt valg om å bytte: hvis samarbeidet ikke fungerer, har dere et system som virker og er dokumentert, ikke et halvferdig prosjekt.
 
 Eierskap til koden hjelper lite hvis koden ikke virker. Moduler som er i drift, gjør eierskapet til noe dere kan bruke.
 
 ## Spør om eierskapet før dere signerer
 
-En kundeleveranse gir dere eierskap til koden. Bygger løsningen på et eget produkt, avtales lisens for den delen. Begge deler skal stå i avtalen. [Les hvordan Xala bygger og leverer SaaS for offentlig sektor](https://xala.no/tjenester/saas-applikasjonsutvikling).
+En kundeleveranse gir dere eierskap til koden. Bygger løsningen på et eget produkt, avtales lisens for den delen. Begge deler skal stå i avtalen. [Les hvordan Xala bygger og leverer SaaS for offentlig sektor](/tjenester/saas-applikasjonsutvikling).
