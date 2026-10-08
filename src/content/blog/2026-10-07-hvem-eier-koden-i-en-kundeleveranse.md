@@ -7,7 +7,7 @@ author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
 cover: "/images/blog/hvem-eier-koden-i-en-kundeleveranse.webp"
-coverAlt: "Venn-diagram med to sirkler. Venstre sirkel, kundeleveranse, har oransje omriss og ordet deres under seg. Høyre sirkel er grå og merket eget produkt. Overlappen er merket lisens. Overskrift «HVEM EIER KODEN?»."
+coverAlt: "«Gull strektegning på nesten svart bakgrunn: to overlappende sirkler, der bare overlappen mellom dem lyser i gull.»"
 keywords:
   - hvem eier koden
   - eierskap til kildekode
