@@ -129,6 +129,7 @@ EOF
 # server block that has `root` / `current`. Artifacts under /blogg/q/ are not
 # enough. A no-op install must fail the deploy.
 [ -f deploy/nginx-blogg-query.conf ] || die "missing deploy/nginx-blogg-query.conf"
+[ -f deploy/nginx-fonts-cache.conf ] || die "missing deploy/nginx-fonts-cache.conf"
 [ -f deploy/nginx-serving-block.py ] || die "missing deploy/nginx-serving-block.py"
 [ -f deploy/install-blogg-query.sh ] || die "missing deploy/install-blogg-query.sh"
 
@@ -136,6 +137,9 @@ log "Installing nginx /blogg?q= rewrite in the serving block…"
 scp -q "${SSH_OPTS[@]}" deploy/nginx-blogg-query.conf \
   "${VPS_USER}@${VPS_HOST}:/tmp/xala-blogg-query.conf" \
   || die "could not upload deploy/nginx-blogg-query.conf"
+scp -q "${SSH_OPTS[@]}" deploy/nginx-fonts-cache.conf \
+  "${VPS_USER}@${VPS_HOST}:/tmp/xala-fonts-cache.conf" \
+  || die "could not upload deploy/nginx-fonts-cache.conf"
 scp -q "${SSH_OPTS[@]}" deploy/nginx-serving-block.py \
   "${VPS_USER}@${VPS_HOST}:/tmp/nginx-serving-block.py" \
   || die "could not upload deploy/nginx-serving-block.py"

@@ -131,4 +131,77 @@ server {
     const checked = run(['--include', INCLUDE, 'check', live, join(dir, 'xala.no.conf.bak-blogg-query')]);
     expect(checked.status, checked.stderr).toBe(0);
   });
+
+  it('restores a serving block from this run only', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'xala-nginx-'));
+    const live = join(dir, 'xala.no.conf');
+    const runDir = join(dir, 'run');
+    mkdirSync(runDir);
+    const withInclude = FIXTURE.replace(
+      'root /home/root/domains/xala.no/current;',
+      `root /home/root/domains/xala.no/current;\n    ${INCLUDE}`,
+    );
+    writeFileSync(live, withInclude);
+    const backup = join(runDir, 'xala.no.conf.bak-blogg-query');
+    writeFileSync(backup, FIXTURE);
+    writeFileSync(join(runDir, 'blogg-query-backup.map'), `${live}\t${backup}\n`);
+
+    const restored = run(['restore'], undefined, { XALA_NGINX_BACKUP_DIR: runDir });
+    expect(restored.status, restored.stderr).toBe(0);
+    expect(restored.stdout).toContain('restored 1');
+    expect(readFileSync(live, 'utf8')).not.toContain(INCLUDE);
+  });
+
+  it('does not apply a stale default-dir backup when this run has its own backup dir', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'xala-nginx-'));
+    const live = join(dir, 'xala.no.conf');
+    const runDir = join(dir, 'run');
+    const staleRoot = join(dir, 'stale-defaults');
+    mkdirSync(runDir);
+    mkdirSync(staleRoot);
+    const withInclude = FIXTURE.replace(
+      'root /home/root/domains/xala.no/current;',
+      `root /home/root/domains/xala.no/current;\n    ${INCLUDE}`,
+    );
+    writeFileSync(live, withInclude);
+    const staleBackup = join(staleRoot, 'xala.no.conf.bak-blogg-query');
+    writeFileSync(staleBackup, FIXTURE);
+    writeFileSync(join(staleRoot, 'blogg-query-backup.map'), `${live}\t${staleBackup}\n`);
+
+    const skipped = run(['restore'], undefined, {
+      XALA_NGINX_BACKUP_DIR: runDir,
+      XALA_NGINX_DEFAULT_BACKUP_DIRS: staleRoot,
+    });
+    expect(skipped.status, skipped.stderr).toBe(0);
+    expect(skipped.stdout).toContain('restored 0');
+    expect(readFileSync(live, 'utf8')).toContain(INCLUDE);
+
+    const applied = run(['restore'], undefined, {
+      XALA_NGINX_BACKUP_DIR: '',
+      XALA_NGINX_DEFAULT_BACKUP_DIRS: staleRoot,
+    });
+    expect(applied.status, applied.stderr).toBe(0);
+    expect(applied.stdout).toContain('restored 1');
+    expect(readFileSync(live, 'utf8')).not.toContain(INCLUDE);
+  });
+
+  it('restores the first backup of a file when this run wrote two', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'xala-nginx-'));
+    const live = join(dir, 'xala.no.conf');
+    const runDir = join(dir, 'run');
+    mkdirSync(runDir);
+    const original = `${FIXTURE}\n# pre-run\n`;
+    const intermediate = `${FIXTURE}\n# pre-run\n    ${INCLUDE}\n`;
+    writeFileSync(live, `${intermediate}\n# fonts-include\n`);
+    const first = join(runDir, 'xala.no.conf.bak-blogg-query');
+    const second = join(runDir, 'xala.no.conf.bak-blogg-query.2');
+    writeFileSync(first, original);
+    writeFileSync(second, intermediate);
+    writeFileSync(join(runDir, 'blogg-query-backup.map'), `${live}\t${first}\n${live}\t${second}\n`);
+
+    const restored = run(['restore'], undefined, { XALA_NGINX_BACKUP_DIR: runDir });
+    expect(restored.status, restored.stderr).toBe(0);
+    expect(restored.stdout).toContain('restored 1');
+    expect(readFileSync(live, 'utf8')).toBe(original);
+  });
 });
