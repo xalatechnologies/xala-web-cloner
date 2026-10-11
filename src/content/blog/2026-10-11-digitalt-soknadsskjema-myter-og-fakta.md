@@ -25,7 +25,7 @@ faq:
   - question: "Hvor mange felt bør et søknadsskjema ha?"
     answer: "Så få som mulig. Still ett spørsmål per felt: påvirker svaret vedtaket? Hvis ikke, fjern det."
   - question: "Må et digitalt søknadsskjema oppfylle WCAG 2.2 AA?"
-    answer: "Ja, for offentlige tjenester er det et krav. Det er billigst å bygge det inn fra start."
+    answer: "Ja. For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. Vi bygger etter WCAG 2.2 AA. Det er billigst å bygge det inn fra start."
   - question: "Kan skjemaet avgjøre søknaden?"
     answer: "Nei. Skjemaet fanger mangler, men saken skal være så godt opplyst som mulig før vedtak, og saksbehandleren gjør vurderingen."
   - question: "Hvorfor bør reglene ligge ett sted?"
@@ -66,7 +66,7 @@ Det gir også ro i hverdagen. Når reglene står samlet, er det ett sted å lese
 
 ## Universell utforming kan tas til slutt
 
-For offentlige tjenester er WCAG 2.2 AA et krav, ikke en ambisjon. Likevel blir universell utforming ofte behandlet som en oppgave på slutten, når skjemaet ellers er ferdig.
+For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. Vi bygger etter WCAG 2.2 AA. Likevel blir universell utforming ofte behandlet som en oppgave på slutten, når skjemaet ellers er ferdig.
 
 Et skjema som ikke kan brukes med skjermleser, kan ikke brukes av alle som har rett til å søke. Og flere av de viktigste valgene tas tidlig. Den vanligste feilen er en feilmelding øverst på siden, uten at skjermleserbrukeren får vite hvilket felt den gjelder. Feilmeldingen må knyttes til feltet.
 
