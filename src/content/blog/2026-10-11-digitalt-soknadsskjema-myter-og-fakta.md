@@ -24,8 +24,8 @@ faq:
     answer: "Teknisk validering fanger ugyldige felt. Regelvalidering sjekker om søkeren er innenfor målgruppen, om beløpet er innenfor rammen og om fristen er passert."
   - question: "Hvor mange felt bør et søknadsskjema ha?"
     answer: "Så få som mulig. Still ett spørsmål per felt: påvirker svaret vedtaket? Hvis ikke, fjern det."
-  - question: "Må et digitalt søknadsskjema oppfylle WCAG 2.2 AA?"
-    answer: "Ja. For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. Vi bygger etter WCAG 2.2 AA. Det er billigst å bygge det inn fra start."
+  - question: "Hvilke krav til universell utforming gjelder for et digitalt søknadsskjema?"
+    answer: "For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. Xala bygger etter WCAG 2.2 AA, og det er billigst å bygge det inn fra start."
   - question: "Kan skjemaet avgjøre søknaden?"
     answer: "Nei. Skjemaet fanger mangler, men saken skal være så godt opplyst som mulig før vedtak, og saksbehandleren gjør vurderingen."
   - question: "Hvorfor bør reglene ligge ett sted?"
@@ -38,7 +38,7 @@ Før kommunen fatter et enkeltvedtak, skal saken være så godt opplyst som muli
 
 Hver antakelse står som overskrift. Det som faktisk gjelder, står i første setning under.
 
-## Papirskjemaet kan legges rett på nett
+## Kan papirskjemaet legges rett på nett?
 
 Et digitalt skjema bør ikke være en kopi av papiret, fordi hvert felt skal tjene vedtaket. Papirskjemaer samler felt gjennom mange år. Få tør å fjerne noe, og når skjemaet digitaliseres som det er, følger alle feltene med.
 
@@ -48,7 +48,7 @@ Still derfor ett spørsmål per felt: påvirker svaret vedtaket? Hvis ikke, kan 
 
 Vi har skrevet en lengre gjennomgang av [tilskuddsportalen som faktisk blir brukt](https://xala.no/blogg/tilskuddsportal-som-faktisk-brukes).
 
-## Validering betyr at feltene er fylt ut riktig
+## Betyr validering bare at feltene er fylt ut riktig?
 
 At feltene er fylt ut riktig, er bare den tekniske delen av valideringen. Teknisk validering sier fra når et organisasjonsnummer ikke er gyldig. Den er enkel å bygge, og den trengs.
 
@@ -56,7 +56,7 @@ Men et skjema kan være teknisk feilfritt og likevel ende i en søknad som ikke 
 
 Forskjellen merkes hos begge parter. Søkeren får beskjed mens skjemaet fortsatt er åpent og svarene er friske. Saksbehandleren sparer tid, fordi spørsmålene er stilt før søknaden kommer inn.
 
-## Reglene må bygges inn i selve skjemaet
+## Må reglene bygges inn i selve skjemaet?
 
 Reglene bør ligge ett sted, ikke spredt rundt i koden til skjemaet. Retningslinjer endres. Målgrupper justeres, rammer flyttes og nye vilkår kommer til.
 
@@ -64,7 +64,7 @@ Ligger reglene i frontend-koden, blir hver slik endring en utviklingsjobb og en 
 
 Det gir også ro i hverdagen. Når reglene står samlet, er det ett sted å lese dem og ett sted å rette dem.
 
-## Universell utforming kan tas til slutt
+## Kan universell utforming tas til slutt?
 
 For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. Vi bygger etter WCAG 2.2 AA. Likevel blir universell utforming ofte behandlet som en oppgave på slutten, når skjemaet ellers er ferdig.
 
@@ -74,7 +74,7 @@ Et annet eksempel er plassholderteksten. Den er ikke en ledetekst. Hvert felt tr
 
 Begge deler handler om hvordan skjemaet er bygd, ikke om pynt til slutt. Vi går nærmere inn på dette i [WCAG 2.2 AA i praksis for fagsystemer](https://xala.no/blogg/wcag-2-2-aa-i-praksis-for-fagsystemer).
 
-## Et komplett skjema gjør saken klar for vedtak
+## Gjør et komplett skjema saken klar for vedtak?
 
 Et skjema fatter ikke vedtak, og et komplett skjema er ikke det samme som en opplyst sak. Forvaltningsloven av 1967 § 17 første ledd sier: «Forvaltningsorganet skal påse at saken er så godt opplyst som mulig før vedtak treffes.»
 
