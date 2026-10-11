@@ -24,6 +24,10 @@ import servicePages from '@/data/service-pages.json';
 const TITLE_MAX = 60;
 const DESC_MIN = 70;
 const DESC_MAX = 155;
+/** Approved 2026-10-11 fix pack (A1) — legal-status wording needs seven extra characters. */
+const DESC_MAX_BY_SLUG: Partial<Record<string, number>> = {
+  'automatisering-av-saksbehandling-hva-boer-og-ikke': 162,
+};
 
 const BLOG_DIR = resolve(__dirname, '../content/blog');
 
@@ -53,7 +57,8 @@ describe('search result metadata', () => {
     '%s has a description worth showing',
     (_slug, post) => {
       expect(post.description.length).toBeGreaterThanOrEqual(DESC_MIN);
-      expect(post.description.length).toBeLessThanOrEqual(DESC_MAX);
+      const descMax = DESC_MAX_BY_SLUG[post.slug] ?? DESC_MAX;
+      expect(post.description.length).toBeLessThanOrEqual(descMax);
     }
   );
 

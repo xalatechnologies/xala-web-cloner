@@ -206,7 +206,7 @@
         },
         {
           "question": "Må en tilskuddsportal oppfylle WCAG 2.2 AA?",
-          "answer": "For offentlige tjenester er det et krav, ikke en ambisjon. Det er også vesentlig billigere å bygge inn enn å rette i etterkant."
+          "answer": "For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. Vi bygger etter WCAG 2.2 AA. Det er også vesentlig billigere å bygge inn enn å rette i etterkant."
         },
         {
           "question": "Er dette Fiks, Altinn eller Startskudd?",
@@ -257,7 +257,7 @@
         },
         {
           "question": "Does a grant portal have to meet WCAG 2.2 AA?",
-          "answer": "For public services it is a requirement, and cheaper to build in than to retrofit."
+          "answer": "For public bodies, universal design is a legal requirement, currently WCAG 2.1 through EN 301 549. We build to WCAG 2.2 AA. It is also considerably cheaper to build in than to retrofit."
         },
         {
           "question": "Is this Fiks, Altinn or Startskudd?",
@@ -308,7 +308,7 @@
         },
         {
           "question": "هل يجب أن تلبّي البوابة معيار WCAG 2.2 AA؟",
-          "answer": "للخدمات العامة هو شرط، وبناؤه من البداية أرخص من تصحيحه لاحقاً."
+          "answer": "للجهات العامة التصميم الشامل التزام قانوني، اليوم وفق WCAG 2.1 عبر EN 301 549. نبني وفق WCAG 2.2 AA. وبناؤه من البداية أرخص من تصحيحه لاحقاً."
         },
         {
           "question": "هل هذا Fiks أو Altinn أو Startskudd؟",
@@ -853,7 +853,7 @@
         },
         {
           "title": "Universell utforming",
-          "body": "Et skjema som ikke kan brukes med skjermleser, kan ikke brukes av alle som har rett til å søke. WCAG 2.2 AA er et krav for offentlige tjenester."
+          "body": "Et skjema som ikke kan brukes med skjermleser, kan ikke brukes av alle som har rett til å søke. For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. Vi bygger etter WCAG 2.2 AA."
         },
         {
           "title": "Innsending og kvittering",
@@ -900,7 +900,7 @@
         },
         {
           "title": "Accessibility",
-          "body": "A form that cannot be used with a screen reader cannot be used by everyone entitled to apply. WCAG 2.2 AA is a requirement for public services."
+          "body": "A form that cannot be used with a screen reader cannot be used by everyone entitled to apply. For public bodies, universal design is a legal requirement, currently WCAG 2.1 through EN 301 549. We build to WCAG 2.2 AA."
         },
         {
           "title": "Submission and receipt",
@@ -947,7 +947,7 @@
         },
         {
           "title": "إمكانية الوصول",
-          "body": "نموذج لا يُستخدم بقارئ الشاشة لا يستطيع استخدامه كل من له حق التقديم. WCAG 2.2 AA شرط للخدمات العامة."
+          "body": "نموذج لا يُستخدم بقارئ الشاشة لا يستطيع استخدامه كل من له حق التقديم. للجهات العامة التصميم الشامل التزام قانوني، اليوم وفق WCAG 2.1 عبر EN 301 549. نبني وفق WCAG 2.2 AA."
         },
         {
           "title": "الإرسال والإيصال",
