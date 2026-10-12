@@ -36,7 +36,7 @@ draft: false
 
 Før kommunen fatter et enkeltvedtak, skal saken være så godt opplyst som mulig, og for de fleste søknader begynner det arbeidet i skjemaet. Flere antakelser om digitale søknadsskjema lever likevel videre, og denne teksten tar for seg fem av dem.
 
-Hver antakelse står som overskrift. Det som faktisk gjelder, står i første setning under.
+Hver antakelse står som et spørsmål i overskriften. Det som faktisk gjelder, står i første setning under.
 
 ## Kan papirskjemaet legges rett på nett?
 

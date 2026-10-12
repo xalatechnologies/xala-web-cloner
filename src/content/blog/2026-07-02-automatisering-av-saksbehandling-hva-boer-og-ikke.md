@@ -2,7 +2,7 @@
 slug: automatisering-av-saksbehandling-hva-boer-og-ikke
 title: "Elektronisk saksbehandling: hva som kan automatiseres"
 seoTitle: "Elektronisk saksbehandling: hva som kan automatiseres"
-description: "Regelstyrte steg og registerinnhenting kan automatiseres. Skjønnsvedtak kan ikke. Forvaltningsloven åpner for helautomatiserte vedtak."
+description: "Regelstyrte steg og registerinnhenting kan automatiseres. Skjønnsvedtak kan ikke. Ny forvaltningslov, som ennå ikke er i kraft, åpner for helautomatiserte vedtak."
 date: 2026-07-02
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
@@ -15,13 +15,13 @@ draft: false
 
 ## Kort svar
 
-Regelstyrte steg og registerinnhenting kan automatiseres. Skjønnsvedtak kan ikke. Ny forvaltningslov (lov 20. juni 2025 nr. 81, Prop. 79 L) åpner for helautomatiserte vedtak når hjemmelen er der og utfallet kan begrunnes. Begynn med arbeidet rundt vedtaket, ikke vedtaket selv. Det er skillet [Digdir](https://www.digdir.no/datadeling/hel-eller-delvis-automatisering/2901) kaller hel eller delvis automatisering. [Prop. 79 L kap. 8](https://www.regjeringen.no/no/dokumenter/prop.-79-l-20242025/id3094317/?ch=32) lovfester det. [Forskriftsarbeidet](https://www.regjeringen.no/no/dokumenter/forskrift-om-automatisert-saksbehandling-i-forvaltningen-invitasjon-til-a-gi-innspill/id3117749/) følger.
+Regelstyrte steg og registerinnhenting kan automatiseres. Skjønnsvedtak kan ikke. Den nye forvaltningsloven (lov 20. juni 2025 nr. 81, Prop. 79 L), som er vedtatt, men ikke trådt i kraft, åpner for helautomatiserte vedtak når hjemmelen er der og utfallet kan begrunnes. Inntil den trer i kraft, gjelder forvaltningsloven av 1967. Begynn med arbeidet rundt vedtaket, ikke vedtaket selv. Det er skillet [Digdir](https://www.digdir.no/datadeling/hel-eller-delvis-automatisering/2901) kaller hel eller delvis automatisering. [Prop. 79 L kap. 8](https://www.regjeringen.no/no/dokumenter/prop.-79-l-20242025/id3094317/?ch=32) ligger til grunn for den nye regelen. [Forskriftsarbeidet](https://www.regjeringen.no/no/dokumenter/forskrift-om-automatisert-saksbehandling-i-forvaltningen-invitasjon-til-a-gi-innspill/id3117749/) følger.
 
 Automatisering i saksbehandling diskuteres ofte som ett spørsmål. Det er to, og de har forskjellige svar. Det første er om en avgjørelse kan tas maskinelt. Det andre er om arbeidet rundt avgjørelsen kan tas maskinelt. Nesten alltid er svaret nei på det første og ja på det andre. Prosjekter som blander dem, bruker tiden på feil sted.
 
 ## Skillet går ved skjønn
 
-Et vedtak som følger av regelverket alene (er søkeren innenfor målgruppen, er fristen overholdt, er beløpet innenfor rammen) kan i prinsippet fattes automatisk. Den vedtatte nye forvaltningsloven (lov 20. juni 2025 nr. 81) §§ 11 til 13 åpner for det, forutsatt at hjemmelen er på plass og at avgjørelsen kan begrunnes og etterprøves. For automatiserte avgjørelser som rammes av personvernforordningen artikkel 22, kreves særlig hjemmel.
+Et vedtak som følger av regelverket alene (er søkeren innenfor målgruppen, er fristen overholdt, er beløpet innenfor rammen) kan i prinsippet fattes automatisk. Den vedtatte nye forvaltningsloven (lov 20. juni 2025 nr. 81), som ennå ikke har trådt i kraft, åpner for det i §§ 11 til 13, forutsatt at hjemmelen er på plass og at avgjørelsen kan begrunnes og etterprøves. For automatiserte avgjørelser som rammes av personvernforordningen artikkel 22, kreves særlig hjemmel.
 
 Et vedtak som forutsetter en vurdering (er dette forsvarlig, er søkeren egnet, er tiltaket i tråd med formålet) kan det ikke. Ikke fordi teknologien mangler, men fordi ansvaret ikke kan flyttes.
 
@@ -42,7 +42,7 @@ Ingenting av dette krever skjønn. Alt kan automatiseres uten å flytte vedtaksk
 
 ## Automatiserte vedtak må kunne forklares
 
-Der man faktisk automatiserer et vedtak, følger et krav som ofte undervurderes: parten har rett til å forstå hvorfor. Prop. 79 L lovfester forklaring og, der artikkel 22 slår inn, manuell kontroll. Organet skal også dokumentere det rettslige innholdet i systemene som treffer automatiserte avgjørelser.
+Der man faktisk automatiserer et vedtak, følger et krav som ofte undervurderes: parten har rett til å forstå hvorfor. Den nye forvaltningsloven vil, når den trer i kraft, kreve forklaring og, der artikkel 22 slår inn, manuell kontroll. Organet skal da også dokumentere det rettslige innholdet i systemene som treffer automatiserte avgjørelser.
 
 Det betyr at reglene må være uttrykt slik at de kan gjengis i klartekst, ikke bare kjøres. En regelmotor som kan produsere «avslag fordi X» er langt mer verdt enn en som bare produserer «avslag». Også internt, den dagen noen skal svare på en klage.
 
@@ -66,7 +66,7 @@ Automatiser det som følger av regler som kan skrives ned uttømmende: frister, 
 
 ### Er automatiserte vedtak lovlige i norsk forvaltning?
 
-Ja, helautomatiserte vedtak er tillatt når hjemmelen er der, men de må kunne begrunnes. Ny forvaltningslov (lov 20. juni 2025 nr. 81, Prop. 79 L §§ 11 til 13) sier det samme, og krever forklaring og dokumentasjon av det rettslige innholdet. I praksis må regelmotoren kunne gjengi i klartekst hvorfor et utfall ble som det ble, ikke bare produsere utfallet.
+Ja, helautomatiserte vedtak er tillatt når hjemmelen er der, men de må kunne begrunnes. Den nye forvaltningsloven (lov 20. juni 2025 nr. 81, §§ 11 til 13) er vedtatt, men ikke trådt i kraft, og i dag gjelder forvaltningsloven av 1967. Når den nye loven trer i kraft, sier den det samme og krever forklaring og dokumentasjon av det rettslige innholdet. I praksis må regelmotoren kunne gjengi i klartekst hvorfor et utfall ble som det ble, ikke bare produsere utfallet.
 
 ### Hvordan måler vi om automatiseringen faktisk virker?
 

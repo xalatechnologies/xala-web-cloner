@@ -73,7 +73,7 @@ describe('BloggPostPage lead vs cover', () => {
     renderPost();
 
     expect(
-      screen.getByText(/Ny forvaltningslov \(lov 20\. juni 2025 nr\. 81, Prop\. 79 L\)/)
+      screen.getByText(/Den nye forvaltningsloven \(lov 20\. juni 2025 nr\. 81, Prop\. 79 L\)/)
     ).toBeInTheDocument();
     expect(
       screen.getByText(/Begynn med arbeidet rundt vedtaket, ikke vedtaket selv/)

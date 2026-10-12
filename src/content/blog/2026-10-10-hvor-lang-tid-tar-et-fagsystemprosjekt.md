@@ -7,12 +7,17 @@ author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "IT-leder"
 cover: "/images/blog/hvor-lang-tid-tar-et-fagsystemprosjekt.webp"
-coverAlt: "Timeglass på kremfarget bakgrunn. Øvre kolbe er merket kartlegging, halsen første sprint, og sanden i nedre kolbe ligger i tre lag merket miljøer, delleveranse og produksjon. En stiplet linje ved siden av er merket tilgang. Overskrift «FRA OPPSTART TIL PRODUKSJON»."
+coverAlt: "Timeglass på kremfarget bakgrunn. Øvre kolbe er merket kartlegging, og halsen er markert i oransje. Sanden i nedre kolbe ligger i tre lag merket miljøer, delleveranse og produksjon. En stiplet linje ved siden av er merket tilgang. Overskrift «FRA OPPSTART TIL PRODUKSJON» og undertittel «Hvor lang tid tar et fagsystemprosjekt?»."
 keywords:
   - hvor lang tid tar et it-prosjekt
   - fagsystemprosjekt
   - delleveranser
   - tidsplan for fagsystem
+  - fagsystem
+hashtags:
+  - fagsystem
+  - fagsystemprosjekt
+  - delleveranser
 faq:
   - question: "Hvor lang tid tar et fagsystemprosjekt?"
     answer: "En avgrenset leveranse tar vanligvis 6 til 12 uker fra oppstart til produksjon. Større fagsystemer deles opp i delleveranser som settes i drift underveis."
@@ -86,6 +91,6 @@ To ting står utenfor tidslinjen over. Det ene er datamigrering fra et eksistere
 
 Begge har egne forutsetninger og egen risiko. Hvor lang tid en migrering tar, avhenger av dataene som ligger der i dag. Hvor lang tid en integrasjon uten avtale tar, avhenger av en part utenfor prosjektet. Ingen av delene kan planlegges godt før de er kartlagt.
 
-Derfor behandler vi dem som egne løp. Det gjør tidslinjen over ærlig. Og det gjør det lettere å se hva som faktisk forlenger et prosjekt.
+Derfor prises de som egne poster. Det gjør tidslinjen over ærlig. Og det gjør det lettere å se hva som faktisk forlenger et prosjekt.
 
 [Se hvordan Xala jobber fra behov til drift](https://xala.no/slik-vi-jobber).
