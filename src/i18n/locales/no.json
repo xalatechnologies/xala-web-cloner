@@ -710,7 +710,7 @@
       },
       "accessibility": {
         "title": "Universell utforming",
-        "body": "WCAG 2.2 AA er et krav for offentlige tjenester. Det er billigere å bygge inn enn å rette etter at løsningen er i drift."
+        "body": "For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. Vi bygger etter WCAG 2.2 AA. Det er billigere å bygge inn enn å rette etter at løsningen er i drift."
       },
       "archive": {
         "title": "Arkivering",

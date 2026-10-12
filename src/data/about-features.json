@@ -15,7 +15,7 @@
         {
             "id": "uu",
             "title": "Universell utforming fra start",
-            "description": "WCAG 2.2 AA er et krav for offentlige tjenester, ikke en ambisjon. Det er dessuten vesentlig billigere å bygge inn enn å rette i etterkant.",
+            "description": "For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. Vi bygger etter WCAG 2.2 AA. Det er dessuten vesentlig billigere å bygge inn enn å rette i etterkant.",
             "icon": "Accessibility"
         },
         {
@@ -41,7 +41,7 @@
         {
             "id": "uu",
             "title": "Accessibility from the start",
-            "description": "WCAG 2.2 AA is a requirement for public services, not an ambition, and considerably cheaper to build in than to retrofit.",
+            "description": "For public bodies, universal design is a legal requirement, currently WCAG 2.1 through EN 301 549. We build to WCAG 2.2 AA. It is also considerably cheaper to build in than to retrofit.",
             "icon": "Accessibility"
         },
         {
@@ -67,7 +67,7 @@
         {
             "id": "uu",
             "title": "إمكانية الوصول من البداية",
-            "description": "معيار WCAG 2.2 AA شرط للخدمات العامة لا طموح، وبناؤه من البداية أرخص بكثير من تصحيحه لاحقاً.",
+            "description": "للجهات العامة التصميم الشامل التزام قانوني، اليوم وفق WCAG 2.1 عبر EN 301 549. نبني وفق WCAG 2.2 AA. وبناؤه من البداية أرخص بكثير من تصحيحه لاحقاً.",
             "icon": "Accessibility"
         },
         {
