@@ -42,7 +42,7 @@
         },
         {
           "title": "Universell utforming",
-          "body": "WCAG 2.2 AA er et krav for offentlige tjenester, og vesentlig billigere å bygge inn enn å rette i etterkant."
+          "body": "For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. Vi bygger etter WCAG 2.2 AA, og det er vesentlig billigere å bygge inn enn å rette i etterkant."
         }
       ],
       "faq": [
@@ -105,7 +105,7 @@
         },
         {
           "title": "Accessibility",
-          "body": "WCAG 2.2 AA is a requirement for public services, and considerably cheaper to build in than to retrofit."
+          "body": "For public bodies, universal design is a legal requirement, currently WCAG 2.1 through EN 301 549. We build to WCAG 2.2 AA, and it is considerably cheaper to build in than to retrofit."
         }
       ],
       "faq": [
@@ -168,7 +168,7 @@
         },
         {
           "title": "إمكانية الوصول",
-          "body": "معيار WCAG 2.2 AA شرط للخدمات العامة، وبناؤه من البداية أرخص بكثير."
+          "body": "للجهات العامة التصميم الشامل التزام قانوني، اليوم وفق WCAG 2.1 عبر EN 301 549. نبني وفق WCAG 2.2 AA، وبناؤه من البداية أرخص بكثير."
         }
       ],
       "faq": [
@@ -253,7 +253,7 @@
         },
         {
           "question": "Må en tilskuddsportal oppfylle WCAG 2.2 AA?",
-          "answer": "For offentlige tjenester er det et krav, ikke en ambisjon. Det er også vesentlig billigere å bygge inn enn å rette i etterkant."
+          "answer": "For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. Vi bygger etter WCAG 2.2 AA. Det er også vesentlig billigere å bygge inn enn å rette i etterkant."
         },
         {
           "question": "Kan søkerne logge inn med ID-porten?",
@@ -312,7 +312,7 @@
         },
         {
           "question": "Does a grant portal have to meet WCAG 2.2 AA?",
-          "answer": "For public services it is a requirement, and cheaper to build in than to retrofit."
+          "answer": "For public bodies, universal design is a legal requirement, currently WCAG 2.1 through EN 301 549. We build to WCAG 2.2 AA. It is also considerably cheaper to build in than to retrofit."
         },
         {
           "question": "Can applicants sign in with ID-porten?",
@@ -371,7 +371,7 @@
         },
         {
           "question": "هل يجب أن تلبّي البوابة معيار WCAG 2.2 AA؟",
-          "answer": "للخدمات العامة هو شرط، وبناؤه من البداية أرخص من تصحيحه لاحقاً."
+          "answer": "للجهات العامة التصميم الشامل التزام قانوني، اليوم وفق WCAG 2.1 عبر EN 301 549. نبني وفق WCAG 2.2 AA. وبناؤه من البداية أرخص من تصحيحه لاحقاً."
         },
         {
           "question": "هل يمكن الدخول عبر ID-porten؟",
