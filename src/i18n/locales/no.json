@@ -46,7 +46,6 @@
     "scrollToNext": "Bla til neste seksjon",
     "certifications": {
       "iso": "ISO 27001 & 27701",
-      "gdpr": "GDPR-sertifisert",
       "microsoft": "Microsoft Partner",
       "aws": "AWS Partner"
     },
@@ -239,7 +238,7 @@
   "products": {
     "digilist": {
       "title": "Digilist",
-      "description": "Digital listehåndtering og sjekklister for kvalitetssikring og compliance i bedrifter.",
+      "description": "Digital markedsplass for utleie og booking av lokaler og tjenester. I drift på digilist.no.",
       "status": "Tilgjengelig"
     },
     "digiskjema": {

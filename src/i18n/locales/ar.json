@@ -46,7 +46,6 @@
     "scrollToNext": "انتقل للقسم التالي",
     "certifications": {
       "iso": "ISO 27001 & 27701",
-      "gdpr": "متوافق مع GDPR",
       "microsoft": "شريك مايكروسوفت",
       "aws": "شريك AWS"
     },
@@ -239,7 +238,7 @@
   "products": {
     "digilist": {
       "title": "Digilist",
-      "description": "إدارة القوائم الرقمية وقوائم التحقق لضمان الجودة والامتثال في الشركات.",
+      "description": "سوق رقمي لتأجير وحجز المرافق والخدمات. قيد التشغيل على digilist.no.",
       "status": "متوفر"
     },
     "digiskjema": {
