@@ -40,7 +40,7 @@ draft: false
 
 Tenk deg at en statistikk kjøres i det nye systemet for første gang. Tallet er nesten likt det gamle, men ikke helt. Ingen kan si hvilket som er riktig.
 
-Det er den du må unngå når et gammelt system skal flyttes. Regelen er enkel: Vis at det nye gir samme svar som det gamle før du forbedrer noe.
+Det er det du må unngå når et gammelt system skal flyttes. Regelen er enkel: Vis at det nye gir samme svar som det gamle før du forbedrer noe.
 
 Statistisk sentralbyrå (SSB) flyttet eldre Java-systemer til .NET Core med det kravet. Xala bidro blant annet med analyse, migrering og testing. Nedenfor går vi gjennom caset steg for steg, bare med det som står i det publiserte caset.
 
