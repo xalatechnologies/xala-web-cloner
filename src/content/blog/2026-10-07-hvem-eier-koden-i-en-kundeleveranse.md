@@ -41,7 +41,7 @@ lang: no
 draft: false
 ---
 
-En IT-leder i kommunen skal bytte leverandør. Hun ber om kildekoden og får til svar at den tilhører leverandøren.
+En IT-leder i kommunen skal bytte leverandør, ber om kildekoden og får til svar at den tilhører leverandøren.
 
 Det skal ikke skje i en kundeleveranse. Eierskapet skal stå i avtalen, og da er koden deres. Bygger vi videre på et av våre egne produkter, avtaler vi lisens i stedet.
 
