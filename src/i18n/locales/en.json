@@ -46,7 +46,7 @@
     "scrollToNext": "Scroll to next section",
     "certifications": {
       "iso": "ISO 27001 & 27701",
-      "gdpr": "GDPR Compliant",
+      "gdpr": "With GDPR obligations",
       "microsoft": "Microsoft Partner",
       "aws": "AWS Partner"
     },
@@ -239,7 +239,7 @@
   "products": {
     "digilist": {
       "title": "Digilist",
-      "description": "Digital list management and checklists for quality assurance and compliance in businesses.",
+      "description": "Digital marketplace for rental and booking of venues and services. Live at digilist.no.",
       "status": "Available"
     },
     "digiskjema": {
