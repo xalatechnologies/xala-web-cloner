@@ -74,12 +74,12 @@ Samle resultatet i en kort rapport: hvilken kopi, hvilket miljø, hvor lang tid 
 
 Oppdater driftsdokumentasjonen med det dere lærte. En rutine som ble endret under testen, skal ikke bare leve i hodet til den som kjørte den. Steget er ferdig når rapporten er lagret der neste person finner den.
 
-## Steg 7: Legg neste test i driftsavtalen
+## Steg 7: Legg neste test i forvaltningsavtalen
 
-En test som ikke er avtalt, blir lett utsatt. Gjør gjenopprettingstesten til en fast del av driftsavtalen, på samme måte som oppetid og hendelser rapporteres gjennom den.
+En test som ikke er avtalt, blir lett utsatt. Gjør gjenopprettingstesten til en fast del av forvaltningsavtalen, med hyppighet og ansvar skrevet inn.
 
-Avtal hvem som tar initiativ, hvem som deltar, og at større endringer i systemet utløser en ny test. Hvis dere også jobber med sikkerhetsstyring, passer testen naturlig inn i det arbeidet, slik vi beskriver i [ISO 27001 i praksis](https://xala.no/blogg/iso-27001-i-praksis-for-utviklingsprosjekter). Steget er ferdig når neste test har en eier i avtalen.
+Avtal hvem som tar initiativ, hvem som deltar, og at større endringer i systemet utløser en ny test. Hvis dere også jobber med sikkerhetsstyring, passer testen naturlig inn i det arbeidet, slik vi beskriver i [ISO 27001 i praksis](/blogg/iso-27001-i-praksis-for-utviklingsprosjekter). Steget er ferdig når neste test har en eier i avtalen.
 
-Backup er en del av driften som varer lenge etter lansering, noe vi har skrevet mer om i [Driftbarhet: lansering er midtveis](https://xala.no/blogg/driftbarhet-lansering-er-midtveis).
+Backup er en del av driften som varer lenge etter lansering, noe vi har skrevet mer om i [Driftbarhet: lansering er midtveis](/blogg/driftbarhet-lansering-er-midtveis).
 
-[Se hva en forvaltningsavtale med sikkerhetskopiering og gjenopprettingstest dekker](https://xala.no/tjenester/forvaltning-og-drift)
+[Se hva en forvaltningsavtale med sikkerhetskopiering og gjenopprettingstest dekker](/tjenester/forvaltning-og-drift)
