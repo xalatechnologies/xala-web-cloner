@@ -76,7 +76,7 @@ Oppdater driftsdokumentasjonen med det dere lærte. En rutine som ble endret und
 
 ## Steg 7: Legg neste test i forvaltningsavtalen
 
-En test som ikke er avtalt, blir lett utsatt. Gjør gjenopprettingstesten til en fast del av forvaltningsavtalen, på samme måte som oppetid og hendelser rapporteres gjennom den.
+En test som ikke er avtalt, blir lett utsatt. Gjør gjenopprettingstesten til en fast del av forvaltningsavtalen, med hyppighet og ansvar skrevet inn.
 
 Avtal hvem som tar initiativ, hvem som deltar, og at større endringer i systemet utløser en ny test. Hvis dere også jobber med sikkerhetsstyring, passer testen naturlig inn i det arbeidet, slik vi beskriver i [ISO 27001 i praksis](/blogg/iso-27001-i-praksis-for-utviklingsprosjekter). Steget er ferdig når neste test har en eier i avtalen.
 
