@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 import servicePages from '@/data/service-pages.json';
 
 /**
- * The 16 in-body links into /tjenester/systemintegrasjon, plus the two return
+ * The 17 in-body links into /tjenester/systemintegrasjon, plus the two return
  * links on the service page. Anchors are assigned. At most three of them may
  * be the bare word "systemintegrasjon".
  */
@@ -92,6 +92,11 @@ const PLACEMENTS: ReadonlyArray<{ slug: string; heading: string; anchor: string 
     heading: 'Slik gjør Xala det',
     anchor: 'integrasjoner som deler og gjenbruker data',
   },
+  {
+    slug: 'fagsystem-uten-api',
+    heading: 'Hvis du har valgt vei, så skriv ned avhengigheten',
+    anchor: 'Se hvordan vi bygger integrasjoner mot fagsystemer',
+  },
 ];
 
 const LEAVE_ALONE = [
@@ -170,7 +175,7 @@ describe('systemintegrasjon contextual links', () => {
     ]);
   });
 
-  it('adds the link only on the sixteen assigned posts', () => {
+  it('adds the link only on the seventeen assigned posts', () => {
     const linked = readdirSync(BLOG)
       .filter((name) => name.endsWith('.md') && name !== 'README.md')
       .filter((name) => linksToService(readFileSync(join(BLOG, name), 'utf8')).length > 0)

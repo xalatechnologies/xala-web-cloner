@@ -43,7 +43,7 @@ Saksbehandleren trenger å se hva som venter, hva som haster, hva som mangler do
 
 ## Universell utforming er ikke et sluttsjekkpunkt
 
-For offentlige tjenester er WCAG 2.2 AA et krav, ikke en ambisjon. Det er også vesentlig billigere å bygge inn enn å rette i etterkant: tastaturnavigasjon, feilmeldinger som er knyttet til feltet de gjelder, og kontrast som holder, er arkitekturvalg like mye som designvalg.
+For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. Vi bygger etter WCAG 2.2 AA. Det er også vesentlig billigere å bygge inn enn å rette i etterkant: tastaturnavigasjon, feilmeldinger som er knyttet til feltet de gjelder, og kontrast som holder, er arkitekturvalg like mye som designvalg.
 
 En portal som ikke kan brukes med skjermleser, kan ikke brukes av alle som har rett til å søke. Det er hele poenget med en offentlig tilskuddsordning.
 
@@ -55,7 +55,7 @@ Så få som mulig — still ett spørsmål per felt: påvirker svaret vedtaket? 
 
 ### Må en tilskuddsportal oppfylle WCAG 2.2 AA?
 
-For offentlige tjenester er WCAG 2.2 AA et krav, ikke en ambisjon. Det er også vesentlig billigere å bygge inn enn å rette i etterkant — tastaturnavigasjon, feilmeldinger knyttet til feltet de gjelder, og kontrast som holder, er arkitekturvalg like mye som designvalg.
+For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. Vi bygger etter WCAG 2.2 AA. Det er også vesentlig billigere å bygge inn enn å rette i etterkant — tastaturnavigasjon, feilmeldinger knyttet til feltet de gjelder, og kontrast som holder, er arkitekturvalg like mye som designvalg.
 
 ### Hvorfor er automatisk lagring så viktig?
 
