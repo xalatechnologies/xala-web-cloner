@@ -894,7 +894,7 @@
       },
       "compliance": {
         "title": "Krav i offentlig sektor",
-        "description": "Universell utforming etter WCAG 2.2 AA, krav i personvernforordningen og dokumentasjon som holder i en anskaffelse."
+        "description": "For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. Vi bygger etter WCAG 2.2 AA, med krav i personvernforordningen og dokumentasjon som holder i en anskaffelse."
       }
     }
   },
