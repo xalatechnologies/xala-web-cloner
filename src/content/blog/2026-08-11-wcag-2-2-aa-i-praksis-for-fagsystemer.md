@@ -2,7 +2,7 @@
 slug: wcag-2-2-aa-i-praksis-for-fagsystemer
 title: "WCAG 2.2 AA i praksis: det som faktisk feller offentlige løsninger"
 seoTitle: "WCAG 2.2 AA i praksis for fagsystemer"
-description: "Lovkrav: WCAG 2.1 via EN 301 549. Vi bygger etter WCAG 2.2 AA. Det som feller løsninger i tilgjengelighetstest, er som regel fire arkitekturvalg."
+description: "Offentlige virksomheter må følge WCAG 2.1 via EN 301 549. Vi bygger etter 2.2 AA. Det som feller en tilgjengelighetstest, er som regel fire arkitekturvalg."
 date: 2026-08-11
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
@@ -13,7 +13,7 @@ lang: no
 draft: false
 ---
 
-For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. Vi bygger etter WCAG 2.2 AA. Likevel er det få krav som oftere behandles som en oppgave på slutten av prosjektet.
+For offentlige virksomheter er universell utforming et lovkrav, ikke en ambisjon. I dag er kravet WCAG 2.1 gjennom EN 301 549. Likevel er det få krav som oftere behandles som en oppgave på slutten av prosjektet. Vi bygger etter WCAG 2.2 AA.
 
 Det er dyrt, fordi de fleste bruddene ikke er stylingfeil. De er konsekvenser av valg som ble tatt i arkitekturen.
 
@@ -59,7 +59,7 @@ Det hjelper mye, men det er ikke nok. Biblioteket sikrer at komponenten oppføre
 
 ### Må interne fagsystemer også oppfylle kravene?
 
-Kravene i forskriften gjelder løsninger rettet mot innbyggere, og for offentlige virksomheter også intranett og ekstranett publisert etter 1. februar 2023, etter WCAG 2.1 gjennom EN 301 549, men saksbehandlere har også rett til et arbeidsverktøy de kan bruke. I praksis anbefaler vi at dere bygger etter WCAG 2.2 AA, blant annet fordi det er billigere enn å ha to standarder i samme kodebase.
+Forskriften gjelder først og fremst løsninger rettet mot innbyggere. Private virksomheter må følge WCAG 2.0 A og AA, unntatt 1.2.3, 1.2.4 og 1.2.5. Systemer som ansatte bruker i arbeidet, er som regel utenfor forskriften. Offentlige virksomheter må også gjøre intranett og ekstranett universelt utformet. Det gjelder innhold som er publisert eller vesentlig endret etter 1. februar 2023. For offentlige virksomheter er kravet WCAG 2.1 gjennom EN 301 549. Saksbehandlere har også rett til et arbeidsverktøy de kan bruke. Vi anbefaler at dere bygger etter WCAG 2.2 AA, blant annet fordi det er billigere enn å ha to standarder i samme kodebase.
 
 ### Hvordan dokumenterer vi samsvar i en anskaffelse?
 

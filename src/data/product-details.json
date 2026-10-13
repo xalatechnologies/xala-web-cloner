@@ -697,7 +697,7 @@
         },
         {
           "title": "Krav i offentlig sektor",
-          "body": "For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. Vi bygger etter WCAG 2.2 AA, oppfyller kravene i personvernforordningen og leverer dokumentasjon som holder i en anskaffelse."
+          "body": "For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. Vi bygger etter WCAG 2.2 AA, med krav i personvernforordningen og dokumentasjon som holder i en anskaffelse."
         }
       ],
       "faq": [
@@ -752,7 +752,7 @@
         },
         {
           "title": "Public-sector requirements",
-          "body": "For public bodies, universal design is a legal requirement, currently WCAG 2.1 through EN 301 549. We build to WCAG 2.2 AA, meet GDPR obligations and deliver documentation that holds up in a procurement."
+          "body": "For public bodies, universal design is a legal requirement, currently WCAG 2.1 through EN 301 549. We build to WCAG 2.2 AA, with GDPR obligations and documentation that holds up in a procurement."
         }
       ],
       "faq": [
@@ -807,7 +807,7 @@
         },
         {
           "title": "متطلبات القطاع العام",
-          "body": "للجهات العامة التصميم الشامل التزام قانوني، اليوم وفق WCAG 2.1 عبر EN 301 549. نبني وفق WCAG 2.2 AA، ونفي بالتزامات GDPR، ونقدّم توثيقاً يصمد في عملية شراء عامة."
+          "body": "للجهات العامة التصميم الشامل التزام قانوني، اليوم وفق WCAG 2.1 عبر EN 301 549. نبني وفق WCAG 2.2 AA، مع التزامات حماية البيانات وتوثيق يصمد في عملية شراء عامة."
         }
       ],
       "faq": [

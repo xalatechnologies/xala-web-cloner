@@ -894,7 +894,7 @@
       },
       "compliance": {
         "title": "What the public sector requires",
-        "description": "For public bodies, universal design is a legal requirement, currently WCAG 2.1 through EN 301 549. We build to WCAG 2.2 AA, meet GDPR obligations and deliver documentation that holds up in a procurement."
+        "description": "For public bodies, universal design is a legal requirement, currently WCAG 2.1 through EN 301 549. We build to WCAG 2.2 AA, with GDPR obligations and documentation that holds up in a procurement."
       }
     }
   },
