@@ -67,7 +67,7 @@ const CAPABILITIES = [
     key: 'digilist.capabilities.compliance',
     title: 'Krav i offentlig sektor',
     description:
-      'For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. Vi bygger etter WCAG 2.2 AA, med krav i personvernforordningen og dokumentasjon som holder i en anskaffelse.',
+      'For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. Vi bygger etter WCAG 2.2 AA, oppfyller kravene i personvernforordningen og leverer dokumentasjon som holder i en anskaffelse.',
   },
 ] as const;
 

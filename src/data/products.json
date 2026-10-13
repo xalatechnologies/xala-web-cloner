@@ -71,7 +71,7 @@
         "Innlogging med ID-porten",
         "Søknad, vedtak og arkiv mot Noark",
         "Fakturering og betaling",
-        "Lovkrav WCAG 2.1 via EN 301 549; bygget til WCAG 2.2 AA"
+        "Universell utforming etter WCAG 2.2 AA (lovkrav: WCAG 2.1)"
       ],
       "status": "live",
       "slug": "digilist"
@@ -193,7 +193,7 @@
         "Sign-in with ID-porten",
         "Application, decision and Noark archiving",
         "Invoicing and payment",
-        "WCAG 2.1 through EN 301 549 required; built to WCAG 2.2 AA"
+        "Accessibility to WCAG 2.2 AA (legal minimum: WCAG 2.1)"
       ],
       "status": "live",
       "slug": "digilist"
@@ -315,7 +315,7 @@
         "تسجيل الدخول عبر ID-porten",
         "الطلب والقرار والأرشفة وفق Noark",
         "الفوترة والدفع",
-        "WCAG 2.1 عبر EN 301 549 التزام قانوني؛ نبني وفق WCAG 2.2 AA"
+        "إمكانية الوصول وفق WCAG 2.2 AA (الحد القانوني: WCAG 2.1)"
       ],
       "status": "live",
       "slug": "digilist"

@@ -2,7 +2,7 @@
 slug: wcag-2-2-aa-i-praksis-for-fagsystemer
 title: "WCAG 2.2 AA i praksis: det som faktisk feller offentlige løsninger"
 seoTitle: "WCAG 2.2 AA i praksis for fagsystemer"
-description: "Lovkrav: WCAG 2.1 via EN 301 549. Vi bygger WCAG 2.2 AA. Det som feller offentlige løsninger i tilgjengelighetstest er som regel fire arkitekturvalg."
+description: "Lovkrav: WCAG 2.1 via EN 301 549. Vi bygger etter WCAG 2.2 AA. Det som feller løsninger i tilgjengelighetstest, er som regel fire arkitekturvalg."
 date: 2026-08-11
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
@@ -59,7 +59,7 @@ Det hjelper mye, men det er ikke nok. Biblioteket sikrer at komponenten oppføre
 
 ### Må interne fagsystemer også oppfylle kravene?
 
-Kravene i forskriften gjelder først og fremst løsninger rettet mot innbyggere, etter WCAG 2.1 gjennom EN 301 549, men saksbehandlere har også rett til et arbeidsverktøy de kan bruke. I praksis anbefaler vi at dere bygger etter WCAG 2.2 AA, blant annet fordi det er billigere enn å ha to standarder i samme kodebase.
+Kravene i forskriften gjelder løsninger rettet mot innbyggere, og for offentlige virksomheter også intranett og ekstranett publisert etter 1. februar 2023, etter WCAG 2.1 gjennom EN 301 549, men saksbehandlere har også rett til et arbeidsverktøy de kan bruke. I praksis anbefaler vi at dere bygger etter WCAG 2.2 AA, blant annet fordi det er billigere enn å ha to standarder i samme kodebase.
 
 ### Hvordan dokumenterer vi samsvar i en anskaffelse?
 
