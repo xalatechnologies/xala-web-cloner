@@ -40,7 +40,7 @@ draft: false
 
 Tenk deg at en statistikk kjøres i det nye systemet for første gang. Tallet er nesten likt det gamle, men ikke helt. Ingen kan si hvilket som er riktig.
 
-Scenen er tenkt, men det er den du må unngå når et gammelt system skal flyttes. Regelen er enkel: Vis at det nye gir samme svar som det gamle før du forbedrer noe.
+Det er den du må unngå når et gammelt system skal flyttes. Regelen er enkel: Vis at det nye gir samme svar som det gamle før du forbedrer noe.
 
 Statistisk sentralbyrå (SSB) flyttet eldre Java-systemer til .NET Core med det kravet. Xala bidro blant annet med analyse, migrering og testing. Nedenfor går vi gjennom caset steg for steg, bare med det som står i det publiserte caset.
 
@@ -84,9 +84,7 @@ Denne posten handler ikke om selve språkvalget. Det har vi skrevet om i en egen
 
 Et system som skal være i drift hele veien, kan ikke byttes ut på én dag. I SSB-caset ble det bygd et overgangslag mellom de moderniserte tjenestene og de gamle Java-komponentene.
 
-Laget var en mellomstasjon. Nye deler kunne snakke med gamle deler, og funksjoner kunne flyttes én etter én. Hver ny del ble koblet til systemene rundt og sjekket før neste.
-
-Slik jobber vi generelt med modernisering: Gammelt og nytt kjører parallelt, vi sammenligner svarene, og vi ruller ut litt om gangen med mulighet til å gå tilbake. Det er ikke en beskrivelse av hva som ble gjort hos SSB. [Slik moderniserer vi et fagsystem uten driftsstans](/blogg/modernisere-fagsystem-uten-driftsstans).
+Laget var en mellomstasjon. Nye deler kunne snakke med gamle deler, og flyttingen skjedde gradvis. De nye tjenestene ble koblet til systemene rundt og sjekket.
 
 ## Regresjonstester bar tilliten til det som ble flyttet
 
@@ -102,11 +100,15 @@ Vi har skrevet egne råd om [hva som er verdt å automatisere i testene](/blogg/
 
 Arbeidet ble avsluttet med kontrollert utrulling og støtte i overgangen. Status i caset er levert.
 
-Caset oppgir fire resultater. Eldre Java-systemer er migrert til .NET Core, og funksjonaliteten er bevart. Systemet er lettere å rette og endre, og den tekniske gjelden er redusert. Plattformen er bygd for jevnlige leveranser, og den står sterkere for årene som kommer.
+Caset oppgir fire resultater. Eldre Java-systemer er migrert til .NET Core, og funksjonaliteten er bevart. Systemet er lettere å rette og endre, og den tekniske gjelden er redusert. Plattformen er bygd for jevnlige leveranser. Den står sterkere for årene som kommer.
 
 Legg merke til hva som står først. Ikke ny funksjonalitet, men bevart funksjonalitet. I en migrering som denne er det selve målet. Det nye ligger i plattformen: den er lettere å vedlikeholde og klar for kontinuerlig levering.
 
 Les [hele SSB-caset](/caser/ssb-legacy-system-modernization) for leveransene og arkitekturen i detalj.
+
+## Dette er metoden vår, ikke SSB-caset
+
+Gammelt og nytt kjører parallelt, vi sammenligner svarene, og vi ruller ut litt om gangen med mulighet til å gå tilbake. Det er slik vi jobber med modernisering generelt, ikke en beskrivelse av hva som ble gjort hos SSB. Les mer i [artikkelen om å modernisere et fagsystem uten driftsstans](/blogg/modernisere-fagsystem-uten-driftsstans).
 
 ## Dette står ikke i caset
 
