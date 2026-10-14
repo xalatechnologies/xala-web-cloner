@@ -51,7 +51,7 @@ Den første sprinten bruker vi på grunnmuren. Miljøene settes opp. Leveransel�
 
 Det høres lite synlig ut. Effekten er det motsatte. Når løpet står, ser dere fungerende programvare tidlig.
 
-Det samme gjelder integrasjoner. Rådet vårt er enkelt: [sett opp integrasjonen mot testmiljøet i første sprint](https://xala.no/blogg/id-porten-eller-maskinporten-hva-velger-du), selv om resten av løsningen ikke er klar.
+Det samme gjelder integrasjoner. Rådet vårt er enkelt: [sett opp integrasjonen mot testmiljøet i første sprint](/blogg/id-porten-eller-maskinporten-hva-velger-du), selv om resten av løsningen ikke er klar.
 
 ## Parallelt fra start: søknadene om tilgang til felleskomponentene
 
@@ -59,7 +59,7 @@ Noe av arbeidet går ikke i sprinter. Søknadene om tilgang til nasjonale felles
 
 Derfor starter vi dem tidlig og parallelt med utviklingen. Venter man til koden er klar, blir tilgangen den kritiske stien i prosjektet. Da står et ferdig system og venter på en godkjenning.
 
-Vi har skrevet mer om [hvorfor tilgang tar tid](https://xala.no/blogg/integrasjoner-mot-nasjonale-felleskomponenter). Poenget her er bare tidspunktet. Søknadene hører hjemme i starten av planen, ikke på slutten.
+Vi har skrevet mer om [hvorfor tilgang tar tid](/blogg/integrasjoner-mot-nasjonale-felleskomponenter). Poenget her er bare tidspunktet. Søknadene hører hjemme i starten av planen, ikke på slutten.
 
 ## Underveis: fungerende programvare dere kan ta stilling til
 
@@ -83,7 +83,7 @@ Et større fagsystem passer ikke inn i ett slikt løp. Det deles derfor opp i de
 
 Fordelen er at dere får verdi før hele prosjektet er ferdig. Den første delen er i bruk mens den neste utvikles.
 
-Delleveranser påvirker også avtalen. Vi har en egen tekst om [hvordan delleveranser passer i kontrakten](https://xala.no/blogg/ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling).
+Delleveranser påvirker også avtalen. Vi har en egen tekst om [hvordan delleveranser passer i kontrakten](/blogg/ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling).
 
 ## Det som går på egen klokke: datamigrering og integrasjoner uten avtale
 
@@ -93,4 +93,4 @@ Begge har egne forutsetninger og egen risiko. Hvor lang tid en migrering tar, av
 
 Derfor prises de som egne poster. Det gjør tidslinjen over ærlig. Og det gjør det lettere å se hva som faktisk forlenger et prosjekt.
 
-[Se hvordan Xala jobber fra behov til drift](https://xala.no/slik-vi-jobber).
+[Se hvordan Xala jobber fra behov til drift](/slik-vi-jobber).

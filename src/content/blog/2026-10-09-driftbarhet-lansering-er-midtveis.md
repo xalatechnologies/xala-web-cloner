@@ -66,7 +66,7 @@ I den første planen oppdateres avhengighetene når det har oppstått et problem
 
 I den andre planen oppdateres avhengighetene løpende. Små steg, ofte, mens det er rolig. Hvert steg er lite nok til å forstå.
 
-Hvor mye denne jobben koster over tid, avhenger også av valgene som ble gjort tidlig. Vi har skrevet om [hvorfor antall avhengigheter er en langtidskostnad](https://xala.no/blogg/teknologivalg-for-fagsystemer-som-skal-vare).
+Hvor mye denne jobben koster over tid, avhenger også av valgene som ble gjort tidlig. Vi har skrevet om [hvorfor antall avhengigheter er en langtidskostnad](/blogg/teknologivalg-for-fagsystemer-som-skal-vare).
 
 ## Dokumentasjonen følger systemet, ikke prosjektslutt
 
@@ -90,7 +90,7 @@ I den første planen blir hver regelverksendring et nytt prosjekt. Noen må sett
 
 I den andre planen er videreutvikling en del av driften. Et fagsystem endres i hele sin levetid. Regelverk endres, integrasjoner endres, folk slutter. Det er lettere å følge med når teamet allerede kjenner koden.
 
-Det hjelper også å ha [tester som gjør at endringer kan gjøres trygt](https://xala.no/blogg/testautomatisering-for-fagsystemer).
+Det hjelper også å ha [tester som gjør at endringer kan gjøres trygt](/blogg/testautomatisering-for-fagsystemer).
 
 ## Driftbarhet bestemmes før lanseringsdagen
 
@@ -98,8 +98,8 @@ Gå tilbake til de to planene. På lanseringsdagen ser systemene like ut. Begge 
 
 Forskjellen ligger i alt som skjer etterpå. Den ene planen må bygge overvåking, logging, oppdateringsrutiner og dokumentasjon i et system som allerede er i bruk. Den andre har det på plass.
 
-Derfor er driftbarhet et designvalg hos oss. Vi tar det tidlig, fordi det er da det er billigst. Og fordi vi blir værende etter lansering. Hendelser i drift er heller ikke like, og [ulike hendelser trenger ulik responstid](https://xala.no/blogg/responstid-per-hendelsestype).
+Derfor er driftbarhet et designvalg hos oss. Vi tar det tidlig, fordi det er da det er billigst. Og fordi vi blir værende etter lansering. Hendelser i drift er heller ikke like, og [ulike hendelser trenger ulik responstid](/blogg/responstid-per-hendelsestype).
 
 Lansering er ikke målstreken. Den er midtveis.
 
-[Se hva Xala gjør etter lansering, i forvaltning og drift av fagsystemer](https://xala.no/tjenester/forvaltning-og-drift).
+[Se hva Xala gjør etter lansering, i forvaltning og drift av fagsystemer](/tjenester/forvaltning-og-drift).

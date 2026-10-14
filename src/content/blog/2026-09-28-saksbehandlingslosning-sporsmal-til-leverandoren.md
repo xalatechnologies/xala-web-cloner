@@ -27,7 +27,7 @@ draft: false
 
 En demo viser hvordan løsningen ser ut en god dag. Spørsmålene under viser hvordan den oppfører seg en vanlig tirsdag, den dagen det kommer en klage, og den dagen dere vil bytte. Ta dem med i markedsdialogen eller neste demo, og still de samme spørsmålene til alle.
 
-Er dere usikre på om dere trenger noe skreddersydd i det hele tatt? Start med [hva et saksbehandlingssystem er, og når hyllevare holder](https://xala.no/blogg/hva-er-et-saksbehandlingssystem).
+Er dere usikre på om dere trenger noe skreddersydd i det hele tatt? Start med [hva et saksbehandlingssystem er, og når hyllevare holder](/blogg/hva-er-et-saksbehandlingssystem).
 
 Hver del under har en kort scene, spørsmålene dere kan stille, og hvordan et godt svar og et varseltegn høres ut. Til slutt samler vi alt i én tabell dere kan ta med i møtet.
 
@@ -78,7 +78,7 @@ Spør leverandøren:
 
 **Varseltegn:** «Integrasjon mot arkiv kommer i fase 2.»
 
-Vi har skrevet mer om hvorfor [Noark 5-arkivering bør følge av saksgangen](https://xala.no/blogg/noark-5-arkivering-i-moderne-fagsystemer). For kommuneansatte betyr det færre dobbeltregistreringer og en arkivar som slipper å rekonstruere saker i etterkant.
+Vi har skrevet mer om hvorfor [Noark 5-arkivering bør følge av saksgangen](/blogg/noark-5-arkivering-i-moderne-fagsystemer). For kommuneansatte betyr det færre dobbeltregistreringer og en arkivar som slipper å rekonstruere saker i etterkant.
 
 ## Alle skal kunne bruke den
 
@@ -94,7 +94,7 @@ Spør leverandøren:
 
 **Varseltegn:** Bare søkerskjemaet er testet, og resten er «på veikartet».
 
-Universell utforming er også god UX. Et skjema som fungerer med skjermleser, er som regel lettere for alle. Se [hva som faktisk feller offentlige løsninger på WCAG 2.2 AA](https://xala.no/blogg/wcag-2-2-aa-i-praksis-for-fagsystemer).
+Universell utforming er også god UX. Et skjema som fungerer med skjermleser, er som regel lettere for alle. Se [hva som faktisk feller offentlige løsninger på WCAG 2.2 AA](/blogg/wcag-2-2-aa-i-praksis-for-fagsystemer).
 
 ## Nye ordninger uten nytt system
 
@@ -110,9 +110,9 @@ Spør leverandøren:
 
 **Varseltegn:** Ett system per ordning, hver med sine egne koblinger og sin egen forvaltning.
 
-Det er slik vi bygger [Tilskuddsportal](https://xala.no/produkter/tilskuddsportal) og [Bevillingsportal](https://xala.no/produkter/bevillingsportal): på en felles [saksbehandlingsplattform](https://xala.no/tjenester/saksbehandlingsplattform) der arkiv, innlogging og registeroppslag bygges én gang og gjenbrukes. Et eksempel er Nordre Follo kommune. Ifølge casen leverte Xala digitale portaler for tilskudd og bevillinger, med arbeidsflytstøtte for søknadsbehandling, rollestyrt tilgang for saksbehandlere og skjemaer med innebygd validering for innbyggerne. Arkitekturen følger kommunens egne arkitekturprinsipper. [Les casen om Nordre Follo](https://xala.no/caser/nordre-follo-tilskuddsportal-bevillingsportal).
+Det er slik vi bygger [Tilskuddsportal](/produkter/tilskuddsportal) og [Bevillingsportal](/produkter/bevillingsportal): på en felles [saksbehandlingsplattform](/tjenester/saksbehandlingsplattform) der arkiv, innlogging og registeroppslag bygges én gang og gjenbrukes. Et eksempel er Nordre Follo kommune. Ifølge casen leverte Xala digitale portaler for tilskudd og bevillinger, med arbeidsflytstøtte for søknadsbehandling, rollestyrt tilgang for saksbehandlere og skjemaer med innebygd validering for innbyggerne. Arkitekturen følger kommunens egne arkitekturprinsipper. [Les casen om Nordre Follo](/caser/nordre-follo-tilskuddsportal-bevillingsportal).
 
-Vil dere se hvordan Digdirs arkitekturprinsipper blir til praktiske valg i systemene dere kjører, har vi samlet det i [Arkitekturprinsipper](https://xala.no/produkter/arkitekturprinsipper).
+Vil dere se hvordan Digdirs arkitekturprinsipper blir til praktiske valg i systemene dere kjører, har vi samlet det i [Arkitekturprinsipper](/produkter/arkitekturprinsipper).
 
 For saksbehandlerne betyr det én arbeidsflate for flere ordninger, ikke én ny skjerm per vedtak i kommunestyret.
 
@@ -131,7 +131,7 @@ Spør leverandøren:
 
 **Varseltegn:** «Det tar vi når det blir aktuelt.»
 
-Vi blir gjerne med videre gjennom [forvaltning og drift](https://xala.no/tjenester/forvaltning-og-drift), men vi kan også overlevere til kommunens eget team med dokumentasjon og opplæring. Kommunen skal ikke være låst, og innbyggerne skal ikke miste historikken sin fordi systemet byttes.
+Vi blir gjerne med videre gjennom [forvaltning og drift](/tjenester/forvaltning-og-drift), men vi kan også overlevere til kommunens eget team med dokumentasjon og opplæring. Kommunen skal ikke være låst, og innbyggerne skal ikke miste historikken sin fordi systemet byttes.
 
 ## Ta med denne tabellen til leverandørmøtet
 
@@ -172,6 +172,6 @@ Avtal uttrekk av saker, dokumenter og historikk i et åpent format før dere sig
 
 ## Neste steg
 
-Skal dere vurdere en saksbehandlingsløsning? [Se hvordan vi bygger en som tar saken fra søknad til vedtak og arkiv](https://xala.no/tjenester/saksbehandlingssystem).
+Skal dere vurdere en saksbehandlingsløsning? [Se hvordan vi bygger en som tar saken fra søknad til vedtak og arkiv](/tjenester/saksbehandlingssystem).
 
-Vil du heller se det i praksis? [Book en demo](https://xala.no/book-demo).
+Vil du heller se det i praksis? [Book en demo](/book-demo).

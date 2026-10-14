@@ -61,7 +61,7 @@ Be om tre ting:
 - En demo der noen bruker bare tastaturet, uten mus.
 - Tilgjengelighetserklæringen for løsningen.
 
-Svarer tilbyderen med en lysbildepresentasjon, har du fått et svar likevel. Vil du gå dypere på kravene, les [WCAG i praksis for fagsystemer](https://xala.no/blogg/wcag-2-2-aa-i-praksis-for-fagsystemer).
+Svarer tilbyderen med en lysbildepresentasjon, har du fått et svar likevel. Vil du gå dypere på kravene, les [WCAG i praksis for fagsystemer](/blogg/wcag-2-2-aa-i-praksis-for-fagsystemer).
 
 ## Rett nivå og regelverk: hvem bestemmer hva?
 
@@ -100,9 +100,9 @@ Still ett spørsmål med to deler:
 - Hvilke fellesløsninger bruker dere, og hva har dere bygget selv?
 - For det dere har bygget selv: hvorfor?
 
-Det finnes gode grunner til å bygge noe selv. Men grunnen bør kunne sies i én setning. Hvordan integrasjonene faktisk driftes, med tilgang, testmiljø og nedetid, har vi skrevet om i [integrasjoner mot nasjonale felleskomponenter](https://xala.no/blogg/integrasjoner-mot-nasjonale-felleskomponenter).
+Det finnes gode grunner til å bygge noe selv. Men grunnen bør kunne sies i én setning. Hvordan integrasjonene faktisk driftes, med tilgang, testmiljø og nedetid, har vi skrevet om i [integrasjoner mot nasjonale felleskomponenter](/blogg/integrasjoner-mot-nasjonale-felleskomponenter).
 
-En ærlig presisering: Xala bidro hos Digdir til utvikling og modernisering av Altinn, inkludert Altinn Studio. Xala eier ikke Altinn. Det står i [Altinn-casen vår](https://xala.no/caser/altinn).
+En ærlig presisering: Xala bidro hos Digdir til utvikling og modernisering av Altinn, inkludert Altinn Studio. Xala eier ikke Altinn. Det står i [Altinn-casen vår](/caser/altinn).
 
 ## Samhandling: kan data komme ut igjen?
 
@@ -128,19 +128,19 @@ En søker ringer. Hen fikk avslag og vil vite hvorfor. Saksbehandleren åpner sa
 - Tilgangsstyring, så bare de som skal se en sak, ser den.
 - Automatiske steg som kan forklares, og som saksbehandleren kan overstyre.
 
-Be tilbyderen vise loggen for en testsak i demoen. Spør også hvordan de tenker sikkerhet fra start, for eksempel med NSMs grunnprinsipper for IKT-sikkerhet som rettesnor. Mer om automatiserte steg og manuell kontroll finner du i [automatisert vedtak: forklaring og manuell kontroll](https://xala.no/blogg/automatisert-vedtak-forklaring-og-manuell-kontroll).
+Be tilbyderen vise loggen for en testsak i demoen. Spør også hvordan de tenker sikkerhet fra start, for eksempel med NSMs grunnprinsipper for IKT-sikkerhet som rettesnor. Mer om automatiserte steg og manuell kontroll finner du i [automatisert vedtak: forklaring og manuell kontroll](/blogg/automatisert-vedtak-forklaring-og-manuell-kontroll).
 
 ## Slik gjør Xala det
 
 Vi bygger løsninger som skal tåle disse spørsmålene, med [integrasjoner som deler og gjenbruker data](/tjenester/systemintegrasjon). Ikke fordi de står i et konkurransegrunnlag, men fordi det er det som gjør hverdagen lettere for saksbehandleren og innbyggeren.
 
-I [Tilskuddsportal](https://xala.no/produkter/tilskuddsportal) spør skjemaet bare om det som påvirker vedtaket. Det lagrer underveis. Reglene ligger ett sted, så de kan endres når retningslinjene endres. Universell utforming ligger inne fra start. Saksbehandleren får en kø, ikke en innboks.
+I [Tilskuddsportal](/produkter/tilskuddsportal) spør skjemaet bare om det som påvirker vedtaket. Det lagrer underveis. Reglene ligger ett sted, så de kan endres når retningslinjene endres. Universell utforming ligger inne fra start. Saksbehandleren får en kø, ikke en innboks.
 
-I [Bevillingsportal](https://xala.no/produkter/bevillingsportal) går høringene parallelt. Frister, purringer og dokumentasjon av hvem som gjorde hva og når automatiseres. Skjønnsvurderingen ligger hos saksbehandleren. Portalen fatter ikke vedtaket. Noark ligger i datamodellen fra start.
+I [Bevillingsportal](/produkter/bevillingsportal) går høringene parallelt. Frister, purringer og dokumentasjon av hvem som gjorde hva og når automatiseres. Skjønnsvurderingen ligger hos saksbehandleren. Portalen fatter ikke vedtaket. Noark ligger i datamodellen fra start.
 
-[Arkitekturprinsipper](https://xala.no/produkter/arkitekturprinsipper) er produktet vi bygger når en kommune skal følge Digdirs sju arkitekturprinsipper i egne løsninger. Det peker på Digdir og omskriver ikke prinsippene. Det hjelper kommunen å holde dem i valgene som faktisk bygges, for eksempel med konfigurasjon som data, så kommunen kan sette opp regler og skjemaer selv.
+[Arkitekturprinsipper](/produkter/arkitekturprinsipper) er produktet vi bygger når en kommune skal følge Digdirs sju arkitekturprinsipper i egne løsninger. Det peker på Digdir og omskriver ikke prinsippene. Det hjelper kommunen å holde dem i valgene som faktisk bygges, for eksempel med konfigurasjon som data, så kommunen kan sette opp regler og skjemaer selv.
 
-For Nordre Follo kommune leverte vi digitale tilskudds- og bevillingsportaler, med en arkitektur som følger Nordre Follo kommunes prinsipper. Portalene har rollestyrt tilgang og API-er som kobler portalene til kommunale systemer. [Les casen om Nordre Follo](https://xala.no/caser/nordre-follo-tilskuddsportal-bevillingsportal).
+For Nordre Follo kommune leverte vi digitale tilskudds- og bevillingsportaler, med en arkitektur som følger Nordre Follo kommunes prinsipper. Portalene har rollestyrt tilgang og API-er som kobler portalene til kommunale systemer. [Les casen om Nordre Follo](/caser/nordre-follo-tilskuddsportal-bevillingsportal).
 
 Vi er ikke Digdir. Prinsippene står hos dem.
 
@@ -180,6 +180,6 @@ Nei, Digdir eier prinsippene. Xala bygger løsninger og et produkt som hjelper k
 
 ## Neste steg
 
-Vil du se hvordan prinsippene kan holdes i løsningen, ikke bare i dokumentet? [Se hvordan Arkitekturprinsipper hjelper kommunen å følge Digdirs prinsipper](https://xala.no/produkter/arkitekturprinsipper).
+Vil du se hvordan prinsippene kan holdes i løsningen, ikke bare i dokumentet? [Se hvordan Arkitekturprinsipper hjelper kommunen å følge Digdirs prinsipper](/produkter/arkitekturprinsipper).
 
-Står dere foran en anskaffelse nå? [Snakk med oss om dette](https://xala.no/kontakt).
+Står dere foran en anskaffelse nå? [Snakk med oss om dette](/kontakt).

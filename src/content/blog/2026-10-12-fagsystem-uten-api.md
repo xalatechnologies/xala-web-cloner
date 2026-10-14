@@ -48,7 +48,7 @@ Det siste spørsmålet er det som oftest mangler svar. Mange integrasjoner funge
 
 Da er saken enkel: bruk det. Men legg kallene bak en API-gateway med tilgangsstyring, slik at det er tydelig hvem som får kalle hva.
 
-Gatewayen gir dere ett sted å styre tilgang og ett sted å se trafikken, i stedet for at hver løsning snakker direkte med fagsystemet på egen hånd. Mange av de vanlige misforståelsene om integrasjon starter med antagelsen om at et API løser alt. Vi har skrevet om noen av dem i [fem myter om systemintegrasjon i kommunen](https://xala.no/blogg/systemintegrasjon-i-kommunen-myter-og-fakta).
+Gatewayen gir dere ett sted å styre tilgang og ett sted å se trafikken, i stedet for at hver løsning snakker direkte med fagsystemet på egen hånd. Mange av de vanlige misforståelsene om integrasjon starter med antagelsen om at et API løser alt. Vi har skrevet om noen av dem i [fem myter om systemintegrasjon i kommunen](/blogg/systemintegrasjon-i-kommunen-myter-og-fakta).
 
 ## Hvis det ikke finnes et API, så se etter databasen, filen eller eksportjobben
 
@@ -66,13 +66,13 @@ Det betyr at de to systemene ikke må være tilgjengelige samtidig. Et fagsystem
 
 Da må dere bestemme retry, timeout og fallback for hver tjeneste, ikke én felles regel for alt. Legg også på overvåking og varsling ved nedetid hos tredjepart.
 
-Ulike systemer feiler på ulike måter, og en regel som passer det ene, kan gi kø eller hengende kall mot det andre. Det samme gjelder når dere kobler mot nasjonale tjenester; vi har skrevet mer om det i [integrasjoner mot nasjonale felleskomponenter](https://xala.no/blogg/integrasjoner-mot-nasjonale-felleskomponenter). Poenget her er enklere: hver avhengighet trenger sin egen plan for når den ikke svarer.
+Ulike systemer feiler på ulike måter, og en regel som passer det ene, kan gi kø eller hengende kall mot det andre. Det samme gjelder når dere kobler mot nasjonale tjenester; vi har skrevet mer om det i [integrasjoner mot nasjonale felleskomponenter](/blogg/integrasjoner-mot-nasjonale-felleskomponenter). Poenget her er enklere: hver avhengighet trenger sin egen plan for når den ikke svarer.
 
 ## Hvis saken kan gå videre uten oppslaget, så ikke blokker innsending
 
 Da skal innsendingen ikke stoppe. Vi spør for hvert oppslag om saksgangen kan fortsette uten det, og hva brukeren ser.
 
-Data kan ofte hentes senere, og saken merkes som ufullstendig. Det som ikke fungerer, er en feilmelding som bare sier «teknisk feil». Den gir telefoner. En melding som sier hva som skjedde, og at søknaden er lagret, gjør det ikke. Når to systemer ikke snakker sammen, ender saksbehandleren ofte med å sy sammen bildet selv, som vi beskrev i [To faner er ikke én sak](https://xala.no/blogg/public-360-og-fagsystem-snakker-ikke).
+Data kan ofte hentes senere, og saken merkes som ufullstendig. Det som ikke fungerer, er en feilmelding som bare sier «teknisk feil». Den gir telefoner. En melding som sier hva som skjedde, og at søknaden er lagret, gjør det ikke. Når to systemer ikke snakker sammen, ender saksbehandleren ofte med å sy sammen bildet selv, som vi beskrev i [To faner er ikke én sak](/blogg/public-360-og-fagsystem-snakker-ikke).
 
 ## Hvis du har valgt vei, så skriv ned avhengigheten
 
@@ -80,4 +80,4 @@ Da er siste steg å skrive ned hva dere har koblet: hvilke tjenester som kalles,
 
 Få prosjekter har en samlet oversikt over hvilke eksterne tjenester løsningen kaller. Det er likevel det første noen spør etter ved en sikkerhetsgjennomgang. En integrasjon mot et system uten API er ikke ferdig når dataene flyter. Den er ferdig når neste person kan se hva som er koblet, og hvem som eier det.
 
-[Se hvordan vi bygger integrasjoner mot fagsystemer](https://xala.no/tjenester/systemintegrasjon)
+[Se hvordan vi bygger integrasjoner mot fagsystemer](/tjenester/systemintegrasjon)

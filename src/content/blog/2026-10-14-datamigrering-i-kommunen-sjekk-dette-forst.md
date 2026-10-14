@@ -58,7 +58,7 @@ Mangler eieren, blir migreringen godkjent av den som har minst grunnlag for å v
 
 Sjekk hvilke saker som er avsluttet, og som etter arkivplikten skal til arkiv i stedet for inn i det nye systemet. Det gamle systemet kan ikke slås av før dette er avklart med arkivtjenesten.
 
-Svaret er godt nok når arkivtjenesten har godkjent hva som avleveres, i hvilket format, og hvem som gjør det. Hvordan arkivering kan følge saksgangen i et moderne system, har vi skrevet om i [Noark 5 i moderne fagsystemer](https://xala.no/blogg/noark-5-arkivering-i-moderne-fagsystemer).
+Svaret er godt nok når arkivtjenesten har godkjent hva som avleveres, i hvilket format, og hvem som gjør det. Hvordan arkivering kan følge saksgangen i et moderne system, har vi skrevet om i [Noark 5 i moderne fagsystemer](/blogg/noark-5-arkivering-i-moderne-fagsystemer).
 
 Mangler avklaringen, risikerer dere å slå av et system som fortsatt er den eneste kilden til avsluttede saker.
 
@@ -86,4 +86,4 @@ Svaret er godt nok når migreringen har egen beskrivelse, egne akseptkriterier o
 
 Mangler den egne posten, blir migreringen fort det som skvises når tiden blir knapp, selv om det er den delen brukerne merker først.
 
-[Se hvordan Xala kartlegger dataflyten og migrerer med avstemming](https://xala.no/tjenester/modernisering-av-fagsystemer)
+[Se hvordan Xala kartlegger dataflyten og migrerer med avstemming](/tjenester/modernisering-av-fagsystemer)
