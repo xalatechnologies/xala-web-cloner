@@ -78,6 +78,6 @@ Reell kontroll krever at saksbehandleren ser hva systemet la vekt på, kan endre
 
 ## Relaterte artikler
 
-- [Agentiske arbeidsflyter i saksbehandling: hvor de hører hjemme, og hvor de ikke gjør det](https://xala.no/blogg/agentiske-arbeidsflyter-i-saksbehandling). En agent som kan handle på egen hånd er nyttig i forarbeidet og farlig i vedtaket. Skillet er verdt å gjøre eksplisitt.
+- [Agentiske arbeidsflyter i saksbehandling: hvor de hører hjemme, og hvor de ikke gjør det](/blogg/agentiske-arbeidsflyter-i-saksbehandling). En agent som kan handle på egen hånd er nyttig i forarbeidet og farlig i vedtaket. Skillet er verdt å gjøre eksplisitt.
 
 Kartlegging av hvilke steg som er regelstyrt og hvilke som er skjønn, er det første steget. Det er det vi gjør i [modernisering av fagsystemer](/tjenester/modernisering-av-fagsystemer).

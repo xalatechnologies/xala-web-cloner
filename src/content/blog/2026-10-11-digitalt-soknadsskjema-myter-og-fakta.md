@@ -46,7 +46,7 @@ Resultatet er kjent. Søkere ringer servicetorget for å forstå hva de skal sva
 
 Still derfor ett spørsmål per felt: påvirker svaret vedtaket? Hvis ikke, kan feltet gå ut. Finnes svaret i et register kommunen allerede har tilgang til, bør skjemaet hente det. Organisasjonsnummeret gir for eksempel navn, adresse og roller fra Enhetsregisteret.
 
-Vi har skrevet en lengre gjennomgang av [tilskuddsportalen som faktisk blir brukt](https://xala.no/blogg/tilskuddsportal-som-faktisk-brukes).
+Vi har skrevet en lengre gjennomgang av [tilskuddsportalen som faktisk blir brukt](/blogg/tilskuddsportal-som-faktisk-brukes).
 
 ## Betyr validering bare at feltene er fylt ut riktig?
 
@@ -72,7 +72,7 @@ Et skjema som ikke kan brukes med skjermleser, kan ikke brukes av alle som har r
 
 Et annet eksempel er plassholderteksten. Den er ikke en ledetekst. Hvert felt trenger en synlig ledetekst.
 
-Begge deler handler om hvordan skjemaet er bygd, ikke om pynt til slutt. Vi går nærmere inn på dette i [WCAG 2.2 AA i praksis for fagsystemer](https://xala.no/blogg/wcag-2-2-aa-i-praksis-for-fagsystemer).
+Begge deler handler om hvordan skjemaet er bygd, ikke om pynt til slutt. Vi går nærmere inn på dette i [WCAG 2.2 AA i praksis for fagsystemer](/blogg/wcag-2-2-aa-i-praksis-for-fagsystemer).
 
 ## Gjør et komplett skjema saken klar for vedtak?
 
@@ -80,8 +80,8 @@ Et skjema fatter ikke vedtak, og et komplett skjema er ikke det samme som en opp
 
 Plikten ligger hos forvaltningsorganet. Skjemaet kan fange mangler, hente opplysninger fra registre og si fra når en søknad faller utenfor regelverket. Men en søknad i køen er bare grunnlaget. Saksbehandleren vurderer saken og fatter vedtaket. Systemet gjør ikke vurderingen.
 
-Vi har skrevet mer om [hvorfor saken må være opplyst før vedtak](https://xala.no/blogg/saken-ma-vaere-opplyst-for-vedtak).
+Vi har skrevet mer om [hvorfor saken må være opplyst før vedtak](/blogg/saken-ma-vaere-opplyst-for-vedtak).
 
 Et eksempel på et skjema bygd slik er tilskuddsportalen vi lager for kommuner. Den har en skjemabygger med regelbasert validering, og reglene for hva som er gyldig ligger ett sted. Prinsippene gjelder like mye for andre søknadsskjema i kommunen.
 
-[Se hvordan tilskuddsportalen validerer mot regelverket](https://xala.no/tjenester/tilskuddsportal).
+[Se hvordan tilskuddsportalen validerer mot regelverket](/tjenester/tilskuddsportal).

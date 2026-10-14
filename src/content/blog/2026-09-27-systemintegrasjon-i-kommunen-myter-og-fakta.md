@@ -19,7 +19,7 @@ draft: false
 
 Systemintegrasjon betyr at to eller flere systemer utveksler opplysninger uten at et menneske kopierer dem. I kommunen avgjør det om saksbehandleren jobber i én sak eller i fem faner. Her er fem myter vi hører ofte, og hva som faktisk gjelder.
 
-Er du usikker på hva selve fagsystemet gjør, kan du starte med [hva et saksbehandlingssystem er](https://xala.no/blogg/hva-er-et-saksbehandlingssystem).
+Er du usikker på hva selve fagsystemet gjør, kan du starte med [hva et saksbehandlingssystem er](/blogg/hva-er-et-saksbehandlingssystem).
 
 Tre ord går igjen i teksten. Et **API** er en fast dør inn til et system, der andre systemer kan spørre og få svar. En **kø** er et venterom for meldinger som ikke kom fram ennå. Et **integrasjonslag** er ett felles sted der koblingene samles, i stedet for at hvert system snakker med alle de andre.
 
@@ -29,7 +29,7 @@ Et halvt år etter lansering slutter søknadene å komme inn i fagsystemet. Inge
 
 **Fakta:** En integrasjon er en avtale mellom to systemer som begge endrer seg. Den andre parten lanserer en ny versjon. Et sertifikat går ut. Et felt får nytt navn. Hver slik endring kan stoppe flyten uten at noen på kommunens side har gjort noe galt. Derfor må koblingen følges med på, og noen må eie den etter lansering.
 
-**Slik gjør vi det:** Hver kobling har overvåking og varsling. Stopper den, får noen beskjed med en gang, ikke når telefonen ringer. Vi blir også med videre etter lansering, gjennom [forvaltning og drift](https://xala.no/tjenester/forvaltning-og-drift).
+**Slik gjør vi det:** Hver kobling har overvåking og varsling. Stopper den, får noen beskjed med en gang, ikke når telefonen ringer. Vi blir også med videre etter lansering, gjennom [forvaltning og drift](/tjenester/forvaltning-og-drift).
 
 Det gjør hverdagen lettere fordi saksbehandleren får vite om feilen før innbyggeren gjør det.
 
@@ -59,7 +59,7 @@ Integrasjonen henter hele personprofilen fra registeret. Saken trenger bare adre
 
 **Fakta:** Hent bare det saken trenger. Personvernregelverket kaller det dataminimering. Gi også integrasjonen minst mulig tilgang, og logg hvem som hentet hva og når. NSMs grunnprinsipper for IKT-sikkerhet peker i samme retning, med vekt på tilgangsstyring og logging.
 
-**Slik gjør vi det:** Tilgang gis per formål. Felt saken ikke trenger, hentes ikke. Hvert oppslag havner i en revisjonslogg, så kommunen kan svare når noen spør hvem som så på opplysningene deres. Vil du vite mer om tilgang og testmiljøer mot registrene, har vi skrevet om [integrasjoner mot nasjonale felleskomponenter](https://xala.no/blogg/integrasjoner-mot-nasjonale-felleskomponenter).
+**Slik gjør vi det:** Tilgang gis per formål. Felt saken ikke trenger, hentes ikke. Hvert oppslag havner i en revisjonslogg, så kommunen kan svare når noen spør hvem som så på opplysningene deres. Vil du vite mer om tilgang og testmiljøer mot registrene, har vi skrevet om [integrasjoner mot nasjonale felleskomponenter](/blogg/integrasjoner-mot-nasjonale-felleskomponenter).
 
 Det gir mindre å beskytte, enklere innsynssvar og tryggere behandling for innbyggeren.
 
@@ -71,9 +71,9 @@ IT har koblet systemene. Så kommer det første svaret fra registeret tilbake to
 
 **Slik gjør vi det:** Fagfolk og utviklere avklarer sammen hva som skal skje i saken før koblingen bygges. Kontrollen blir liggende hos saksbehandleren. Integrasjonen henter og sender, men den tar ikke beslutningen.
 
-Et eksempel er tilskudds- og bevillingsportalene vi leverte for Nordre Follo kommune. Ifølge casen ble arbeidsflytene analysert sammen med kommunale interessenter og omsatt til tjeneste- og systemkrav, og portalene ble koblet til kommunale systemer gjennom API-er. [Les casen om Nordre Follo](https://xala.no/caser/nordre-follo-tilskuddsportal-bevillingsportal).
+Et eksempel er tilskudds- og bevillingsportalene vi leverte for Nordre Follo kommune. Ifølge casen ble arbeidsflytene analysert sammen med kommunale interessenter og omsatt til tjeneste- og systemkrav, og portalene ble koblet til kommunale systemer gjennom API-er. [Les casen om Nordre Follo](/caser/nordre-follo-tilskuddsportal-bevillingsportal).
 
-Når journal og sak ikke henger sammen, ser du hvor dyrt det blir å hoppe over den faglige regelen. Det har vi skrevet om i [to faner er ikke én sak](https://xala.no/blogg/public-360-og-fagsystem-snakker-ikke).
+Når journal og sak ikke henger sammen, ser du hvor dyrt det blir å hoppe over den faglige regelen. Det har vi skrevet om i [to faner er ikke én sak](/blogg/public-360-og-fagsystem-snakker-ikke).
 
 Færre omveier for saksbehandleren betyr raskere svar til innbyggeren.
 
@@ -89,7 +89,7 @@ Neste gang noen sier at integrasjonen er ferdig, spør hvem som får beskjed nå
 Systemintegrasjon betyr at to eller flere systemer utveksler opplysninger automatisk, slik at ingen må kopiere dem manuelt. I kommunen gjelder det for eksempel fagsystem, arkiv, registre og innbyggerportal.
 
 **Hvilke integrasjoner er viktige for et saksbehandlingssystem?**
-De viktigste er de som henter opplysninger saken trenger, som registeroppslag, sender dokumenter til arkiv og gir innbyggeren status. Mer om de nasjonale fellesløsningene finner du i [integrasjoner mot nasjonale felleskomponenter](https://xala.no/blogg/integrasjoner-mot-nasjonale-felleskomponenter).
+De viktigste er de som henter opplysninger saken trenger, som registeroppslag, sender dokumenter til arkiv og gir innbyggeren status. Mer om de nasjonale fellesløsningene finner du i [integrasjoner mot nasjonale felleskomponenter](/blogg/integrasjoner-mot-nasjonale-felleskomponenter).
 
 **Hva skjer med saken når et annet system er nede?**
 Med kø og nye forsøk venter saken på svar i stedet for å stoppe, og saksbehandleren ser status. Når tjenesten er oppe igjen, sendes meldingen automatisk.
@@ -105,6 +105,6 @@ Bare det saken trenger, og med logging av hvem som hentet hva. Da er det mindre 
 
 ## Neste steg
 
-Skal dere koble et fagsystem til flere systemer? [Se hvordan vi bygger integrasjoner som tåler nedetid](https://xala.no/tjenester/systemintegrasjon).
+Skal dere koble et fagsystem til flere systemer? [Se hvordan vi bygger integrasjoner som tåler nedetid](/tjenester/systemintegrasjon).
 
-Vil du heller se det i en løsning? [Book en demo](https://xala.no/book-demo).
+Vil du heller se det i en løsning? [Book en demo](/book-demo).
