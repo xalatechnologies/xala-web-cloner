@@ -1,7 +1,7 @@
 ---
 slug: revisjonsspor-i-fagsystemet
 title: "Revisjonssporet må bygges inn fra start"
-description: "Hvem så saken, hvem endret den, og kan vi bevise det? Svar på de vanligste spørsmålene ledelsen stiller IT-lederen om revisjonsspor i fagsystemet."
+description: "Hvem så saken, og hvem endret den? Ledelsen spør IT-lederen om revisjonssporet. Sporbarhet må bygges inn fra start, ellers kan dere ikke vise det."
 date: 2026-10-15
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
@@ -36,7 +36,7 @@ faq:
 
 Tenk deg at kommunedirektøren spør IT-lederen hvem som har åpnet en sak. Svaret finnes bare hvis systemet har ført et revisjonsspor.
 
-Spørsmålet kommer gjerne fra ledelsen. En kommunedirektør vil vite om noen har sett en sak de ikke skulle se. En kommunalsjef vil vite hvem som endret et vedtak. Et personvernombud vil vite om oppslag kan etterprøves. Under har vi samlet spørsmålene IT-lederen oftest får, med et kort svar først og deretter hva du bør kunne vise fram.
+Spørsmålet kommer gjerne fra ledelsen. En kommunalsjef vil vite hvem som endret et vedtak. Et personvernombud vil vite om oppslag kan etterprøves. Under har vi samlet spørsmålene IT-lederen oftest får, med et kort svar først og deretter hva du bør kunne vise fram.
 
 ## Kan vi se hvem som har åpnet en sak?
 
@@ -72,7 +72,7 @@ Det du bør kunne vise fram, er at revisjonssporet dekker oppslag i personopplys
 
 ## Kan vi legge det inn senere hvis vi trenger det?
 
-Kort svar: sjelden. Det er for sent å legge inn sporbarhet etterpå, fordi hendelsene som allerede har skjedd, aldri ble registrert.
+Kort svar: nei, da er det for sent. Sporbarhet kan ikke legges inn etterpå, fordi hendelsene som allerede har skjedd, aldri ble registrert.
 
 Det du bør kunne vise fram, er at sporbarhet er bygd inn i datamodellen fra starten, ikke lagt på som en rapport til slutt. Står du foran en ny løsning, er det her du bør stille kravet.
 
