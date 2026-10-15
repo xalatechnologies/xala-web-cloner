@@ -72,7 +72,7 @@ Det du bør kunne vise fram, er at revisjonssporet dekker oppslag i personopplys
 
 ## Kan vi legge det inn senere hvis vi trenger det?
 
-Kort svar: nei, da er det for sent. Sporbarhet kan ikke legges inn etterpå, fordi hendelsene som allerede har skjedd, aldri ble registrert.
+Kort svar: ikke for det som allerede har skjedd. Hendelser fra før sporet ble slått på, ble aldri registrert, og de kan ikke hentes fram i ettertid.
 
 Det du bør kunne vise fram, er at sporbarhet er bygd inn i datamodellen fra starten, ikke lagt på som en rapport til slutt. Står du foran en ny løsning, er det her du bør stille kravet.
 
