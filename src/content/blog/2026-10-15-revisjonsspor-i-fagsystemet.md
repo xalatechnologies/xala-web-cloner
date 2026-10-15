@@ -36,7 +36,7 @@ faq:
 
 Et revisjonsspor er som kvitteringsrullen i et kassaapparat: ingen leser den mens alt stemmer, og alle vil ha den den dagen noe ikke gjør det.
 
-Den dagen kommer gjerne som et spørsmål fra ledelsen. En rådmann vil vite om noen har sett en sak de ikke skulle se. En kommunalsjef vil vite hvem som endret et vedtak. Et personvernombud vil vite om oppslag kan etterprøves. Under har vi samlet spørsmålene IT-lederen oftest får, med et kort svar først og deretter hva du bør kunne vise fram.
+Den dagen kommer gjerne som et spørsmål fra ledelsen. En kommunedirektør vil vite om noen har sett en sak de ikke skulle se. En kommunalsjef vil vite hvem som endret et vedtak. Et personvernombud vil vite om oppslag kan etterprøves. Under har vi samlet spørsmålene IT-lederen oftest får, med et kort svar først og deretter hva du bør kunne vise fram.
 
 ## Kan vi se hvem som har åpnet en sak?
 
@@ -62,11 +62,11 @@ Det du bør kunne vise fram, er at begge deler finnes, og at ingen tror det ene 
 
 Kort svar: få skal lese den, og ingen av dem den logger skal kunne endre den. En logg som saksbehandleren selv kan redigere, beviser ingenting.
 
-Det du bør kunne vise fram, er hvilke roller som har tilgang til loggen, og at tilgangen styres på samme måte som tilgangen til sakene. Tilgangsstyring per saksområde eller per ordning gjør det lettere å svare presist. Bruker virksomheten ISO 27001, er dette en del av den samme styringen av tilganger.
+Det du bør kunne vise fram, er hvilke roller som har tilgang til loggen, og at tilgangen styres på samme måte som tilgangen til sakene. Tilgangsstyring per saksområde eller per ordning gjør det lettere å svare presist. Bruker virksomheten [ISO 27001](/blogg/iso-27001-i-praksis-for-utviklingsprosjekter), er dette en del av den samme styringen av tilganger.
 
 ## Hva sier personvernforordningen om dette?
 
-Kort svar: at behandling av personopplysninger skal kunne etterprøves. Når noen slår opp i en sak om en innbygger, må virksomheten kunne vise at oppslaget hadde et tjenstlig formål.
+Kort svar: at behandling av personopplysninger skal kunne etterprøves. Når noen slår opp i en sak om en innbygger, må virksomheten kunne dokumentere at oppslaget var nødvendig for å løse en oppgave.
 
 Det du bør kunne vise fram, er at revisjonssporet dekker oppslag i personopplysninger, og at personvernombudet vet hvordan loggen brukes. Hvor lenge loggen skal ligge, er en avklaring virksomheten må gjøre selv, sammen med personvernombudet.
 
