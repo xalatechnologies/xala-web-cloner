@@ -1,7 +1,7 @@
 ---
 slug: revisjonsspor-i-fagsystemet
-title: "Revisjonsspor i fagsystemet: det ledelsen spør om"
-description: "Hvem så saken, hvem endret den, og kan vi bevise det? Svar på de vanligste spørsmålene ledelsen stiller IT-lederen om revisjonsspor i fagsystemet."
+title: "Revisjonssporet må bygges inn fra start"
+description: "Hvem så saken, og hvem endret den? Ledelsen spør IT-lederen om revisjonssporet. Sporbarhet må bygges inn fra start, ellers kan dere ikke vise det."
 date: 2026-10-15
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
@@ -31,12 +31,12 @@ faq:
   - question: "Hvor lenge skal loggen lagres?"
     answer: "Det er en avklaring virksomheten selv må gjøre, sammen med personvernombudet."
   - question: "Hjelper revisjonssporet ved en klage?"
-    answer: "Ja, det viser hvem som behandlet saken og på hvilket grunnlag."
+    answer: "Det kan hjelpe. Sporet viser hvem som behandlet saken og hva som ble endret. Selve grunnlaget for vedtaket skal stå i vedtaket."
 ---
 
-Et revisjonsspor er som kvitteringsrullen i et kassaapparat: ingen leser den mens alt stemmer, og alle vil ha den den dagen noe ikke gjør det.
+Tenk deg at kommunedirektøren spør IT-lederen hvem som har åpnet en sak. Svaret finnes bare hvis systemet har ført et revisjonsspor.
 
-Den dagen kommer gjerne som et spørsmål fra ledelsen. En kommunedirektør vil vite om noen har sett en sak de ikke skulle se. En kommunalsjef vil vite hvem som endret et vedtak. Et personvernombud vil vite om oppslag kan etterprøves. Under har vi samlet spørsmålene IT-lederen oftest får, med et kort svar først og deretter hva du bør kunne vise fram.
+Spørsmålet kommer gjerne fra ledelsen. En kommunalsjef vil vite hvem som endret et vedtak. Et personvernombud vil vite om oppslag kan etterprøves. Under har vi samlet spørsmålene IT-lederen oftest får, med et kort svar først og deretter hva du bør kunne vise fram.
 
 ## Kan vi se hvem som har åpnet en sak?
 
@@ -50,7 +50,7 @@ Kort svar: det bør du kunne, for hvert felt som betyr noe for vedtaket. Det hol
 
 Det du bør kunne vise fram, er historikken for en sak fra mottak til vedtak. Sporet skal kunne vise hvilket grunnlag som lå der da vedtaket ble fattet. Selve begrunnelsen hører hjemme i vedtaket, og det har vi skrevet om i [Vedtaket skal si hvorfor](/blogg/automatisert-vedtak-forklaring-og-manuell-kontroll).
 
-Ved en klage etter forvaltningsloven av 1967 er det dette sporet som viser hvordan saken faktisk ble behandlet. Det er det første noen spør om, og det kan ikke rekonstrueres i ettertid.
+Ved en klage etter forvaltningsloven er det dette sporet som viser hvordan saken faktisk ble behandlet. Det er det første noen spør om, og det kan ikke rekonstrueres i ettertid.
 
 ## Er revisjonssporet det samme som arkivet?
 
@@ -62,17 +62,17 @@ Det du bør kunne vise fram, er at begge deler finnes, og at ingen tror det ene 
 
 Kort svar: få skal lese den, og ingen av dem den logger skal kunne endre den. En logg som saksbehandleren selv kan redigere, beviser ingenting.
 
-Det du bør kunne vise fram, er hvilke roller som har tilgang til loggen, og at tilgangen styres på samme måte som tilgangen til sakene. Tilgangsstyring per saksområde eller per ordning gjør det lettere å svare presist. Bruker virksomheten [ISO 27001](/blogg/iso-27001-i-praksis-for-utviklingsprosjekter), er dette en del av den samme styringen av tilganger.
+Det du bør kunne vise fram, er hvilke roller som har tilgang til loggen, og at tilgangen styres på samme måte som tilgangen til sakene. Tilgangsstyring per saksområde eller per ordning gjør det lettere å svare presist. Jobber virksomheten etter [ISO 27001](/blogg/iso-27001-i-praksis-for-utviklingsprosjekter), hjelper loggen når dere skal dokumentere tilgangskontrollen.
 
 ## Hva sier personvernforordningen om dette?
 
-Kort svar: at behandling av personopplysninger skal kunne etterprøves. Når noen slår opp i en sak om en innbygger, må virksomheten kunne dokumentere at oppslaget var nødvendig for å løse en oppgave.
+Kort svar: at behandling av personopplysninger skal kunne etterprøves. Når noen slår opp i en sak om en innbygger, må virksomheten kunne vise at oppslaget hadde et tjenstlig formål.
 
 Det du bør kunne vise fram, er at revisjonssporet dekker oppslag i personopplysninger, og at personvernombudet vet hvordan loggen brukes. Hvor lenge loggen skal ligge, er en avklaring virksomheten må gjøre selv, sammen med personvernombudet.
 
 ## Kan vi legge det inn senere hvis vi trenger det?
 
-Kort svar: sjelden. Det er for sent å legge inn sporbarhet etterpå, fordi hendelsene som allerede har skjedd, aldri ble registrert.
+Kort svar: ikke for det som allerede har skjedd. Hendelser fra før sporet ble slått på, ble aldri registrert, og de kan ikke hentes fram i ettertid.
 
 Det du bør kunne vise fram, er at sporbarhet er bygd inn i datamodellen fra starten, ikke lagt på som en rapport til slutt. Står du foran en ny løsning, er det her du bør stille kravet.
 
