@@ -1,7 +1,8 @@
 ---
 slug: tilgjengelighetserklaering-hvem-skriver-den
-title: "Tilgjengelighetserklæring: hvem skriver den?"
-description: "Kommunen kjøper en ny portal. Hvem skriver tilgjengelighetserklæringen, hva skal stå i den, og hvilket krav gjelder? Korte svar på det kommunen lurer på."
+title: "Tilgjengelighetserklæringen er kommunens, ikke leverandørens"
+seoTitle: "Erklæringen er kommunens, ikke leverandørens"
+description: "Tilgjengelighetserklæringen er kommunens, ikke leverandørens. Leverandøren kan levere grunnlaget. Kommunen publiserer teksten."
 date: 2026-10-16
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
@@ -26,24 +27,24 @@ faq:
   - question: "Er WCAG 2.2 et krav?"
     answer: "Nei, kravet i offentlig sektor er i dag WCAG 2.1 gjennom EN 301 549."
   - question: "Kan leverandøren skrive erklæringen for oss?"
-    answer: "Leverandøren kan levere grunnlaget, men kommunen står ansvarlig for det som publiseres."
+    answer: "Nei. Tilgjengelighetserklæringen er kommunens, ikke leverandørens. Leverandøren kan levere grunnlaget, men kommunen står ansvarlig for det som publiseres."
   - question: "Er det greit å oppgi avvik?"
     answer: "Ja, en ærlig erklæring med kjente avvik og en plan er mer nyttig enn en som sier at alt er i orden."
   - question: "Hva bør vi spørre om i anskaffelsen?"
     answer: "Hvilket nivå løsningen er testet mot, hvilke avvik som er kjent, og hvordan dere får oppdatert grunnlag etter endringer."
   - question: "Når må teksten oppdateres?"
-    answer: "Minst én gang i året, og når portalen endres vesentlig. En ny skjemaside, en ny innloggingsflyt eller en rettet feil kan endre hva som er oppfylt, og da stemmer ikke erklæringen lenger."
+    answer: "[Minst én gang i året](https://www.uutilsynet.no/veiledning/tilgjengelighetserklaering/1127), og ved [større endringer i løsningen](https://www.uutilsynet.no/tilgjengelighetserklaering/ofte-stilte-sporsmal-om-tilgjengelighetserklaeringen/894). En ny skjemaside, en ny innloggingsflyt eller en rettet feil kan endre hva som er oppfylt, og da stemmer ikke erklæringen lenger."
 ---
 
-Nederst på nesten hver kommunale nettside står en lenke som heter «Tilgjengelighetserklæring». Når kommunen tar i bruk en ny søknadsportal, skal den også ha en.
+Tenk deg at kommunen skal kjøpe en ny søknadsportal. I møtet spør noen hvem som skriver tilgjengelighetserklæringen. Ingen svarer.
 
-Spørsmålet som dukker opp i anskaffelsen, er sjelden hva en erklæring er. Det er hvem som skal skrive den når det er en leverandør som har bygget løsningen, og hva kommunen trenger fra leverandøren for å kunne stå inne for teksten. Under har vi samlet de spørsmålene vi oftest hører, med korte svar.
+Svaret er at tilgjengelighetserklæringen er kommunens, ikke leverandørens. Kravet gjelder hver nettside og hver app kommunen har ansvar for, også den nye portalen. Under står spørsmålene som dukker opp når en leverandør har bygget løsningen, med korte svar.
 
 ## Hvem eier erklæringen når en leverandør har bygget portalen?
 
-Kommunen. Det er kommunen som tilbyr portalen til innbyggerne, og det er kommunen som står ansvarlig for at den er universelt utformet og for det erklæringen sier.
+Kommunen. Tilgjengelighetserklæringen er kommunens, ikke leverandørens. Det er kommunen som tilbyr portalen til innbyggerne, og det er kommunen som står ansvarlig for at den er universelt utformet og for det erklæringen sier.
 
-Leverandøren har likevel en viktig rolle. Det er leverandøren som kjenner løsningen, har testet den og vet hvor svakhetene er. Den naturlige arbeidsdelingen er at kommunen skriver og publiserer erklæringen i Digdirs løsning uustatus.no, og at leverandøren leverer grunnlaget og kan legge det inn direkte i leverandørportalen der.
+Leverandøren kjenner løsningen, har testet den og vet hvor svakhetene er. Kommunen fyller inn og publiserer erklæringen i Digdirs løsning [uustatus.no](https://uustatus.no/nb). Leverandøren kan legge sin vurdering inn i [leverandørportalen](https://www.uutilsynet.no/tilgjengelighetserklaering/slik-bruker-du-leverandorportalen/2880), slik at kommunen har et grunnlag.
 
 ## Hvilket krav måles portalen mot?
 
@@ -65,7 +66,7 @@ En ærlig erklæring med kjente avvik er også mer nyttig for innbyggeren. Den s
 
 ## Når må teksten oppdateres?
 
-Minst én gang i året, og når portalen endres vesentlig. En ny skjemaside, en ny innloggingsflyt eller en rettet feil kan endre hva som er oppfylt, og da stemmer ikke erklæringen lenger.
+[Minst én gang i året](https://www.uutilsynet.no/veiledning/tilgjengelighetserklaering/1127), og ved [større endringer i løsningen](https://www.uutilsynet.no/tilgjengelighetserklaering/ofte-stilte-sporsmal-om-tilgjengelighetserklaeringen/894). En ny skjemaside, en ny innloggingsflyt eller en rettet feil kan endre hva som er oppfylt, og da stemmer ikke erklæringen lenger.
 
 Den enkleste måten å holde den oppdatert på, er å gjøre det til en del av leveransen. Avtal med leverandøren at oppdatert grunnlag følger med når løsningen endres, slik at kommunen ikke må be om det hver gang.
 
@@ -75,4 +76,4 @@ Mindre å rette og mindre å forklare. Det er vesentlig billigere å bygge inn u
 
 Det gir også en enklere erklæring å skrive. Hvordan dette henger sammen med at en portal faktisk blir brukt, har vi skrevet om i [Tilskuddsportalen som faktisk blir brukt](/blogg/tilskuddsportal-som-faktisk-brukes).
 
-[Se hvordan tilskuddsportalen bygges etter WCAG 2.2 AA, mer enn kravet i dag.](/tjenester/tilskuddsportal)
+For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. [Vi bygger etter WCAG 2.2 AA](/tjenester/tilskuddsportal).
