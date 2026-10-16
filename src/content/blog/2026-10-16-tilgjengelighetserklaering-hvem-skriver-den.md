@@ -19,11 +19,12 @@ hashtags:
   - tilgjengelighetserklæring
   - WCAG
   - portal
+  - universell utforming
 lang: no
 draft: false
 faq:
   - question: "Må hver portal ha sin egen tilgjengelighetserklæring?"
-    answer: "Ja. Hvert nettsted og hver app kommunen tilbyr innbyggerne skal ha sin egen erklæring."
+    answer: "Ja. I offentlig sektor skal hvert nettsted og hver app virksomheten tilbyr innbyggerne ha sin egen erklæring."
   - question: "Er WCAG 2.2 et krav?"
     answer: "Nei, kravet i offentlig sektor er i dag WCAG 2.1 gjennom EN 301 549."
   - question: "Kan leverandøren skrive erklæringen for oss?"
