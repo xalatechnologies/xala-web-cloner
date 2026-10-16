@@ -22,7 +22,7 @@ lang: no
 draft: false
 faq:
   - question: "Må hver portal ha sin egen tilgjengelighetserklæring?"
-    answer: "Hver løsning kommunen tilbyr innbyggerne bør ha en erklæring som beskriver nettopp den."
+    answer: "Ja. Hvert nettsted og hver app kommunen tilbyr innbyggerne skal ha sin egen erklæring."
   - question: "Er WCAG 2.2 et krav?"
     answer: "Nei, kravet i offentlig sektor er i dag WCAG 2.1 gjennom EN 301 549."
   - question: "Kan leverandøren skrive erklæringen for oss?"
@@ -31,6 +31,8 @@ faq:
     answer: "Ja, en ærlig erklæring med kjente avvik og en plan er mer nyttig enn en som sier at alt er i orden."
   - question: "Hva bør vi spørre om i anskaffelsen?"
     answer: "Hvilket nivå løsningen er testet mot, hvilke avvik som er kjent, og hvordan dere får oppdatert grunnlag etter endringer."
+  - question: "Når må teksten oppdateres?"
+    answer: "Minst én gang i året, og når portalen endres vesentlig. En ny skjemaside, en ny innloggingsflyt eller en rettet feil kan endre hva som er oppfylt, og da stemmer ikke erklæringen lenger."
 ---
 
 Nederst på nesten hver kommunale nettside står en lenke som heter «Tilgjengelighetserklæring». Når kommunen tar i bruk en ny søknadsportal, skal den også ha en.
@@ -41,7 +43,7 @@ Spørsmålet som dukker opp i anskaffelsen, er sjelden hva en erklæring er. Det
 
 Kommunen. Det er kommunen som tilbyr portalen til innbyggerne, og det er kommunen som står ansvarlig for at den er universelt utformet og for det erklæringen sier.
 
-Leverandøren har likevel en viktig rolle. Det er leverandøren som kjenner løsningen, har testet den og vet hvor svakhetene er. Den naturlige arbeidsdelingen er at leverandøren leverer grunnlaget, og at kommunen skriver og publiserer erklæringen der myndighetene anviser.
+Leverandøren har likevel en viktig rolle. Det er leverandøren som kjenner løsningen, har testet den og vet hvor svakhetene er. Den naturlige arbeidsdelingen er at kommunen skriver og publiserer erklæringen i Digdirs løsning uustatus.no, og at leverandøren leverer grunnlaget og kan legge det inn direkte i leverandørportalen der.
 
 ## Hvilket krav måles portalen mot?
 
@@ -63,7 +65,7 @@ En ærlig erklæring med kjente avvik er også mer nyttig for innbyggeren. Den s
 
 ## Når må teksten oppdateres?
 
-Når portalen endres. En ny skjemaside, en ny innloggingsflyt eller en rettet feil kan endre hva som er oppfylt, og da stemmer ikke erklæringen lenger.
+Minst én gang i året, og når portalen endres vesentlig. En ny skjemaside, en ny innloggingsflyt eller en rettet feil kan endre hva som er oppfylt, og da stemmer ikke erklæringen lenger.
 
 Den enkleste måten å holde den oppdatert på, er å gjøre det til en del av leveransen. Avtal med leverandøren at oppdatert grunnlag følger med når løsningen endres, slik at kommunen ikke må be om det hver gang.
 
