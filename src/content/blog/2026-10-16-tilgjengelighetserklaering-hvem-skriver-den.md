@@ -2,7 +2,7 @@
 slug: tilgjengelighetserklaering-hvem-skriver-den
 title: "Tilgjengelighetserklæringen er kommunens, ikke leverandørens"
 seoTitle: "Erklæringen er kommunens, ikke leverandørens"
-description: "Tilgjengelighetserklæringen er kommunens, ikke leverandørens. Leverandøren kan levere grunnlaget. Kommunen publiserer teksten."
+description: "Kommunen kjøper en ny portal, og ingen vet hvem som skriver tilgjengelighetserklæringen. Her er hvem som eier den, og hva leverandøren bør levere."
 date: 2026-10-16
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
@@ -28,7 +28,7 @@ faq:
   - question: "Er WCAG 2.2 et krav?"
     answer: "Nei, kravet i offentlig sektor er i dag WCAG 2.1 gjennom EN 301 549."
   - question: "Kan leverandøren skrive erklæringen for oss?"
-    answer: "Nei. Tilgjengelighetserklæringen er kommunens, ikke leverandørens. Leverandøren kan levere grunnlaget, men kommunen står ansvarlig for det som publiseres."
+    answer: "Nei. Leverandøren kan levere grunnlaget, men kommunen står ansvarlig for det som publiseres."
   - question: "Er det greit å oppgi avvik?"
     answer: "Ja, en ærlig erklæring med kjente avvik og en plan er mer nyttig enn en som sier at alt er i orden."
   - question: "Hva bør vi spørre om i anskaffelsen?"
@@ -43,7 +43,7 @@ Svaret er at tilgjengelighetserklæringen er kommunens, ikke leverandørens. Kra
 
 ## Hvem eier erklæringen når en leverandør har bygget portalen?
 
-Kommunen. Tilgjengelighetserklæringen er kommunens, ikke leverandørens. Det er kommunen som tilbyr portalen til innbyggerne, og det er kommunen som står ansvarlig for at den er universelt utformet og for det erklæringen sier.
+Kommunen. Det er kommunen som tilbyr portalen til innbyggerne, og det er kommunen som står ansvarlig for at den er universelt utformet og for det erklæringen sier.
 
 Leverandøren kjenner løsningen, har testet den og vet hvor svakhetene er. Kommunen fyller inn og publiserer erklæringen i Digdirs løsning [uustatus.no](https://uustatus.no/nb). Leverandøren kan legge sin vurdering inn i [leverandørportalen](https://www.uutilsynet.no/tilgjengelighetserklaering/slik-bruker-du-leverandorportalen/2880), slik at kommunen har et grunnlag.
 
@@ -77,4 +77,4 @@ Mindre å rette og mindre å forklare. Det er vesentlig billigere å bygge inn u
 
 Det gir også en enklere erklæring å skrive. Hvordan dette henger sammen med at en portal faktisk blir brukt, har vi skrevet om i [Tilskuddsportalen som faktisk blir brukt](/blogg/tilskuddsportal-som-faktisk-brukes).
 
-For offentlige virksomheter er universell utforming et lovkrav, i dag etter WCAG 2.1 gjennom EN 301 549. [Vi bygger etter WCAG 2.2 AA](/tjenester/tilskuddsportal).
+[Vi bygger etter WCAG 2.2 AA](/tjenester/tilskuddsportal).
