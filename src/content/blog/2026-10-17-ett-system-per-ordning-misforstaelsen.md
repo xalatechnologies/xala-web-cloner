@@ -6,8 +6,8 @@ date: 2026-10-17
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
-cover: "/images/blog/ett-system-per-ordning-misforstaelsen.webp"
-coverAlt: "Infografikk på kremfarget bakgrunn: en bikube av sekskanter merket tilskudd, bevilling, dispensasjon og tilsyn, pluss tomme celler merket neste, der én er oransje. En felles ramme rundt er merket sak, vedtak, arkiv og innlogging. Overskrift «ÉN RAMME, MANGE ORDNINGER»."
+cover: "/images/blog/ett-system-per-ordning-misforstaelsen-v2.webp"
+coverAlt: "Illustrasjon i sort og gull: én felles saksramme som rommer mange små ordningsceller."
 keywords:
   - felles saksmodell
   - plattform
@@ -69,7 +69,7 @@ Under forskjellene ligger et mønster som går igjen: noen søker, noen vurderer
 - **Partene**, altså søkeren og eventuelle andre som berøres.
 - **Dokumentene** som kommer inn og går ut.
 - **Fristene** som saken må forholde seg til.
-- **Vedtaket**, med begrunnelse, hjemmel og opplysning om klageadgang. Dette er krav etter forvaltningsloven av 1967, og de gjelder likt for alle ordningene.
+- **Vedtaket**, med begrunnelse, hjemmel og opplysning om klageadgang. Dette er krav i forvaltningsloven, og kravene gjelder likt for alle ordningene.
 - **Arkivet**, der alt skal ende.
 
 Dette er ikke konfigurasjon. Det er selve modellen, og den trenger bare å finnes én gang.
