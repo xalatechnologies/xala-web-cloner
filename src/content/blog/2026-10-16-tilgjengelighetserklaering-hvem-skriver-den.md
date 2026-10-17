@@ -8,7 +8,7 @@ author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Kommune"
 cover: "/images/blog/tilgjengelighetserklaering-hvem-skriver-den.webp"
-coverAlt: "Infografikk på kremfarget bakgrunn: et hengemerke festet med tråd til et portalvindu, med feltene krav: WCAG 2.1, oppfylt, avvik og plan. Feltet avvik er oransje med et blyantikon. Overskrift «ETIKETTEN PÅ PORTALEN»."
+coverAlt: "Illustrasjon i sort og gull: et hengemerke festet med tråd til et portalvindu."
 keywords:
   - tilgjengelighetserklæring
   - universell utforming
