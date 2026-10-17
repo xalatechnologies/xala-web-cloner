@@ -23,7 +23,7 @@ lang: no
 draft: false
 faq:
   - question: "Passer alle ordninger på én plattform?"
-    answer: "De som følger mønsteret søknad, vurdering, vedtak og arkiv passer godt, for eksempel tilskudd, bevillinger og dispensasjoner. Det samme gjelder når kommunen starter et tilsyn."
+    answer: "De som følger mønsteret søknad, vurdering, vedtak og arkiv passer godt, for eksempel tilskudd, bevillinger og dispensasjoner. Tilsyn passer også, selv om det er kommunen som starter saken, ikke en søknad."
   - question: "Blir ikke én plattform et stort og sårbart system?"
     answer: "Én plattform samler risikoen, men også innsatsen. En sikkerhetsfiks gjelder alle ordningene samtidig, i stedet for at hver må fikses for seg, på hver leverandørs tidsplan."
   - question: "Hva om to ordninger har helt ulike regler?"
@@ -40,7 +40,7 @@ Misforståelsen er at hver ordning er så ulik de andre at den trenger sitt eget
 
 ## Hvorfor det virker riktig å kjøpe ett system per ordning
 
-Fra innsiden ser hver ordning unik ut. Tilskudd til kultur har andre kriterier enn skjenkebevillinger, og en dispensasjon etter plan- og bygningsloven vurderes av andre fagfolk enn når kommunen fører tilsyn. Hver avdeling har sitt eget regelverk, sine egne skjemaer og sitt eget språk.
+Fra innsiden ser hver ordning unik ut. Tilskudd til kultur har andre kriterier enn skjenkebevillinger, og en dispensasjon etter plan- og bygningsloven vurderes av andre fagfolk enn de som fører tilsyn. Hver avdeling har sitt eget regelverk, sine egne skjemaer og sitt eget språk.
 
 Kjøpene skjer dessuten til ulik tid. Én avdeling får et behov og et budsjett, finner et system som passer akkurat deres ordning, og tar det i bruk. Ingen gjør noe galt. Det er summen av mange fornuftige enkeltbeslutninger som blir dyr.
 
