@@ -7,7 +7,7 @@ date: 2026-10-16
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Kommune"
-cover: "/images/blog/tilgjengelighetserklaering-hvem-skriver-den.webp"
+cover: "/images/blog/tilgjengelighetserklaering-hvem-skriver-den-v2.webp"
 coverAlt: "Illustrasjon i sort og gull: et hengemerke festet med tråd til et portalvindu."
 keywords:
   - tilgjengelighetserklæring
