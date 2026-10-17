@@ -6,8 +6,8 @@ date: 2026-10-17
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
-cover: "/images/blog/ett-system-per-ordning-misforstaelsen-v2.webp"
-coverAlt: "Illustrasjon i sort og gull: én felles saksramme som rommer mange små ordningsceller."
+cover: "/images/blog/ett-system-per-ordning-misforstaelsen-v3.webp"
+coverAlt: "Illustrasjon i sort og gull: én felles saksramme som rommer flere adskilte ordningsceller."
 keywords:
   - felles saksmodell
   - plattform
@@ -23,9 +23,9 @@ lang: no
 draft: false
 faq:
   - question: "Passer alle ordninger på én plattform?"
-    answer: "De som følger mønsteret søknad, vurdering, vedtak og arkiv passer godt, for eksempel tilskudd, bevillinger, dispensasjoner og tilsyn."
+    answer: "De som følger mønsteret søknad, vurdering, vedtak og arkiv passer godt, for eksempel tilskudd, bevillinger og dispensasjoner. Det samme gjelder når kommunen starter et tilsyn."
   - question: "Blir ikke én plattform et stort og sårbart system?"
-    answer: "En felles modell betyr at en sikkerhetsfiks gjelder alle ordningene samtidig, i stedet for at hver må fikses for seg."
+    answer: "Én plattform samler risikoen, men også innsatsen. En sikkerhetsfiks gjelder alle ordningene samtidig, i stedet for at hver må fikses for seg, på hver leverandørs tidsplan."
   - question: "Hva om to ordninger har helt ulike regler?"
     answer: "Regler og skjemaer er det som er forskjellig, og det bør ligge som konfigurasjon, ikke som et nytt system."
   - question: "Kan vi beholde eksisterende systemer?"
@@ -34,21 +34,21 @@ faq:
     answer: "Med én ordning, tegnet slik at den neste kan bruke samme modell."
 ---
 
-Ny ordning, nytt regelverk, nytt system. Det høres ryddig ut, og det er nettopp derfor kommunen ender med tre systemer som alle må koble seg til det samme arkivet.
+Det er tredje gang i år en avdeling kommer til deg med et nytt system som skal kobles til arkivet. Ny ordning, nytt regelverk, nytt system. Hver gang høres det ryddig ut, og hver gang ender kommunen med enda en kobling som må forvaltes.
 
 Misforståelsen er at hver ordning er så ulik de andre at den trenger sitt eget system. Den er lett å tro på, og den koster lite den første gangen. Regningen kommer senere, og den havner hos arkitekten.
 
 ## Hvorfor det virker riktig å kjøpe ett system per ordning
 
-Fra innsiden ser hver ordning unik ut. Tilskudd til kultur har andre kriterier enn skjenkebevillinger, og en dispensasjon etter plan- og bygningsloven vurderes av andre fagfolk enn et tilsyn. Hver avdeling har sitt eget regelverk, sine egne skjemaer og sitt eget språk.
+Fra innsiden ser hver ordning unik ut. Tilskudd til kultur har andre kriterier enn skjenkebevillinger, og en dispensasjon etter plan- og bygningsloven vurderes av andre fagfolk enn når kommunen fører tilsyn. Hver avdeling har sitt eget regelverk, sine egne skjemaer og sitt eget språk.
 
 Kjøpene skjer dessuten til ulik tid. Én avdeling får et behov og et budsjett, finner et system som passer akkurat deres ordning, og tar det i bruk. Ingen gjør noe galt. Det er summen av mange fornuftige enkeltbeslutninger som blir dyr.
 
 ## Det tredje systemet er der kostnaden ligger
 
-Det første systemet koster det det koster. Det andre ser også overkommelig ut. Men hvert system må kobles mot arkivet, mot innlogging og mot registrene, og hver av disse koblingene må forvaltes for seg. Som vi skriver på tjenestesiden: kostnaden ligger ikke i det første systemet, den ligger i det tredje.
+Det første systemet koster det det koster. Det andre ser også overkommelig ut. Men hvert system må kobles mot arkivet, mot innlogging og mot registrene, og hver av disse koblingene må forvaltes for seg. Kostnaden ligger ikke i det første systemet, den ligger i det tredje.
 
-For arkitekten betyr det flere ting som vokser samtidig. Saksbehandleren må lære flere arbeidsflater. Rapportering på tvers av ordninger blir et eget prosjekt, fordi dataene ligger i ulike modeller. Og når en sårbarhet må tettes, må den tettes i hvert system, på hver leverandørs tidsplan.
+Det betyr at flere ting vokser samtidig. Saksbehandleren må lære flere arbeidsflater. Rapportering på tvers av ordninger blir et eget prosjekt, fordi dataene ligger i ulike modeller. Og når en sårbarhet må tettes, må den tettes i hvert system, på hver leverandørs tidsplan.
 
 ## Hva som faktisk er forskjellig fra ordning til ordning
 
