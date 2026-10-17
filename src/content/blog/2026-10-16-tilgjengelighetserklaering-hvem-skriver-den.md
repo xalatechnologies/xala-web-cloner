@@ -34,7 +34,7 @@ faq:
   - question: "Hva bør vi spørre om i anskaffelsen?"
     answer: "Hvilket nivå løsningen er testet mot, hvilke avvik som er kjent, og hvordan dere får oppdatert grunnlag etter endringer."
   - question: "Når må teksten oppdateres?"
-    answer: "[Minst én gang i året](https://www.uutilsynet.no/veiledning/tilgjengelighetserklaering/1127), og ved [større endringer i løsningen](https://www.uutilsynet.no/tilgjengelighetserklaering/ofte-stilte-sporsmal-om-tilgjengelighetserklaeringen/894). En ny skjemaside, en ny innloggingsflyt eller en rettet feil kan endre hva som er oppfylt, og da stemmer ikke erklæringen lenger."
+    answer: "Minst én gang i året, og ved større endringer i løsningen. En ny skjemaside, en ny innloggingsflyt eller en rettet feil kan endre hva som er oppfylt, og da stemmer ikke erklæringen lenger."
 ---
 
 Tenk deg at kommunen skal kjøpe en ny søknadsportal. I møtet spør noen hvem som skriver tilgjengelighetserklæringen. Ingen svarer.
