@@ -1,6 +1,6 @@
 ---
 slug: personvern-i-nytt-fagsystem-sjekkliste
-title: "Personvern i nytt fagsystem: én sjekkliste"
+title: "Personvern må være på plass før første sak"
 description: "Trenger, minimerer, dokumenterer, sletter. Én sjekkliste for personvern når kommunen får nytt fagsystem, fra hvilke opplysninger til hvor dataene ligger."
 date: 2026-10-18
 author: "Ibrahim Rahmani"
@@ -31,10 +31,8 @@ faq:
   - question: "Kan sletting gjøres manuelt?"
     answer: "Det kan det, men det er sårbart. Det er bedre at systemet støtter sletting etter faste regler."
   - question: "Må dataene ligge i Norge?"
-    answer: "Kravet varierer, men for offentlige kunder er det vanlig å holde dataene innenfor EU/EØS."
+    answer: "Nei. Dataene trenger ikke ligge i Norge. For offentlige kunder holder vi data innenfor EU/EØS."
 ---
-
-Kartlegger. Minimerer. Dokumenterer. Setter opp sletterutiner. Slik står det i vårt eget svar om personvern, og sammen med avtalen og stedet dataene ligger, blir det en sjekkliste som passer på én side.
 
 Når kommunen får et nytt fagsystem, er det fristende å la personvernet bli et punkt i siste fase, rett før systemet settes i drift. Da er datamodellen ferdig og skjemaene laget, og det som burde vært et designvalg, blir en lapp som limes på til slutt. Sjekklisten under er laget for å brukes tidlig, mens det fortsatt er enkelt å endre.
 
