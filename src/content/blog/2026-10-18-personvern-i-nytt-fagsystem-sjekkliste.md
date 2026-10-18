@@ -1,7 +1,7 @@
 ---
 slug: personvern-i-nytt-fagsystem-sjekkliste
 title: "Personvern i nytt fagsystem må inn før skjemaene"
-description: "Trenger, minimerer, dokumenterer, sletter. Én sjekkliste for personvern når kommunen får nytt fagsystem, fra hvilke opplysninger til hvor dataene ligger."
+description: "Personvern i nytt fagsystem må inn før skjemaene er laget. Sju punkter kommunen bør sjekke, fra feltlisten til hvor dataene lagres."
 date: 2026-10-18
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
@@ -34,7 +34,7 @@ faq:
     answer: "Nei, personvernregelverket krever ikke at dataene ligger i Norge. Overføring ut av EU/EØS krever et gyldig overføringsgrunnlag, og derfor krever mange offentlige kunder at dataene blir innenfor EU/EØS."
 ---
 
-Tenk deg at personvernombudet åpner skjemaet i det nye fagsystemet og finner fritekstfeltet Andre opplysninger. Feltet er kopiert fra det gamle systemet, og ingen kan forklare hva det skal brukes til. Et felt som ingen kan forklare formålet med, skal ikke inn.
+Tenk deg at personvernombudet åpner skjemaet i det nye fagsystemet og finner fritekstfeltet «Andre opplysninger». Feltet er kopiert fra det gamle systemet, og ingen kan forklare hva det skal brukes til. Et felt som ingen kan forklare formålet med, skal ikke inn.
 
 Når kommunen får et nytt fagsystem, er det fristende å la personvernet bli et punkt i siste fase, rett før systemet settes i drift. Da er datamodellen ferdig og skjemaene laget, og det som burde vært et designvalg, blir en lapp som limes på til slutt. Sjekklisten under er laget for å brukes tidlig, mens det fortsatt er enkelt å endre.
 
@@ -44,9 +44,9 @@ Tabellen kan skrives ut og brukes alene. Hvert punkt har et svar som noen må ei
 
 | Punkt | Hva du sjekker | Hvem eier svaret | Når i prosjektet |
 |---|---|---|---|
-| Hvilke personopplysninger trengs | At hvert felt i systemet har et formål som kan forklares (art. 5) | Fagavdelingen, med støtte fra personvernombudet | Før kravspesifikasjonen er ferdig |
+| Hvilke personopplysninger trengs | At hvert felt i systemet har et formål som kan forklares (art. 5 nr. 1 bokstav b) | Fagavdelingen, med støtte fra personvernombudet | Før kravspesifikasjonen er ferdig |
 | Vurdering av personvernkonsekvenser (DPIA) | Om behandlingen sannsynligvis gir høy risiko for de registrerte (art. 35) | Kommunen, med personvernombudet | Før kravspesifikasjonen er ferdig |
-| Minimere innsamlingen | At skjemaer og datakilder ikke henter mer enn formålet krever (art. 5) | Fagavdelingen og leverandøren sammen | Når skjemaer og datamodell tegnes |
+| Minimere innsamlingen | At skjemaer og datakilder ikke henter mer enn formålet krever (art. 5 nr. 1 bokstav c) | Fagavdelingen og leverandøren sammen | Når skjemaer og datamodell tegnes |
 | Behandlingsgrunnlag dokumentert | At grunnlaget etter art. 6 står skriftlig, og at de registrerte får informasjon | Kommunen som behandlingsansvarlig | Før de første opplysningene registreres |
 | Sletterutiner satt opp | At systemet kan slette eller anonymisere etter regel, ikke bare ved manuell rydding | Kommunen bestemmer regelen, leverandøren bygger den | Før systemet settes i drift |
 | Databehandleravtale inngått | At avtalen etter art. 28 dekker akkurat denne leverandøren og denne behandlingen | Kommunen, med innkjøp og jurist | Før leverandøren får tilgang til ekte data |
@@ -64,7 +64,7 @@ Se også etter fritekstfelt. De er nyttige for saksbehandleren, men de samler in
 
 ## Mindre innsamling gir mindre å beskytte
 
-Dataminimering høres ut som en juridisk plikt, og det er det, etter art. 5. Men det er også det enkleste sikkerhetstiltaket du har. En opplysning som aldri samles inn, kan ikke komme på avveie, trenger ingen sletterutine og trenger ikke forklares for den registrerte.
+Dataminimering høres ut som en juridisk plikt, og det er det, etter art. 5 nr. 1 bokstav c. Men det er også det enkleste sikkerhetstiltaket du har. En opplysning som aldri samles inn, kan ikke komme på avveie, trenger ingen sletterutine og trenger ikke forklares for den registrerte.
 
 I praksis handler det om små valg i skjema og datamodell. Spør bare én gang om det samme. Ikke gjør felt obligatoriske fordi det er greit å ha dem. Hent ikke en hel person fra et register når saken bare trenger én opplysning. Og la standardvalget være det som samler minst.
 
