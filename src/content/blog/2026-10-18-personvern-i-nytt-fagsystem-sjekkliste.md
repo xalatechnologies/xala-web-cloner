@@ -6,8 +6,8 @@ date: 2026-10-18
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "IT-leder"
-cover: "/images/blog/personvern-i-nytt-fagsystem-sjekkliste.webp"
-coverAlt: "Infografikk på kremfarget bakgrunn: et apotekskap med seks små skuffer merket trengs, minimer, grunnlag, slett, avtale og EU/EØS. Fem skuffer er lukket med en hake, og skuffen slett står halvveis åpen i oransje. Overskrift «SEKS SKUFFER FØR START»."
+cover: "/images/blog/personvern-i-nytt-fagsystem-sjekkliste-v2.webp"
+coverAlt: "Illustrasjon i sort og gull: et dobbelt linjeskjold med en hengelås uten nøkkelhull, og tre tomme avrundede ruter til høyre."
 keywords:
   - personvern
   - dataminimering
