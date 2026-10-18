@@ -1,7 +1,7 @@
 ---
 slug: personvern-i-nytt-fagsystem-sjekkliste
 title: "Personvern i nytt fagsystem: én sjekkliste"
-description: "Trenger, minimerer, dokumenterer, sletter. Én sjekkliste for personvern når kommunen får et nytt fagsystem, fra hvilke opplysninger til hvor dataene ligger."
+description: "Trenger, minimerer, dokumenterer, sletter. Én sjekkliste for personvern når kommunen får nytt fagsystem, fra hvilke opplysninger til hvor dataene ligger."
 date: 2026-10-18
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
@@ -34,7 +34,7 @@ faq:
     answer: "Kravet varierer, men for offentlige kunder er det vanlig å holde dataene innenfor EU/EØS."
 ---
 
-Trenger. Minimerer. Dokumenterer. Sletter. Fire verb står i Xalas eget svar om personvern, og sammen med avtalen og stedet dataene ligger, blir de en sjekkliste som passer på én side.
+Kartlegger. Minimerer. Dokumenterer. Setter opp sletterutiner. Slik står det i vårt eget svar om personvern, og sammen med avtalen og stedet dataene ligger, blir det en sjekkliste som passer på én side.
 
 Når kommunen får et nytt fagsystem, er det fristende å la personvernet bli et punkt i siste fase, rett før systemet settes i drift. Da er datamodellen ferdig og skjemaene laget, og det som burde vært et designvalg, blir en lapp som limes på til slutt. Sjekklisten under er laget for å brukes tidlig, mens det fortsatt er enkelt å endre.
 
@@ -63,7 +63,7 @@ Se også etter fritekstfelt. De er nyttige for saksbehandleren, men de samler in
 
 ## Mindre innsamling gir mindre å beskytte
 
-Dataminimering høres ut som en juridisk plikt, og det er det. Men det er også det enkleste sikkerhetstiltaket dere har. En opplysning som aldri samles inn, kan ikke komme på avveie, trenger ingen sletterutine og må ikke forklares for den registrerte.
+Dataminimering høres ut som en juridisk plikt, og det er det. Men det er også det enkleste sikkerhetstiltaket dere har. En opplysning som aldri samles inn, kan ikke komme på avveie, trenger ingen sletterutine og trenger ikke forklares for den registrerte.
 
 I praksis handler det om små valg i skjema og datamodell. Spør bare én gang om det samme. Ikke gjør felt obligatoriske fordi det er greit å ha dem. Hent ikke en hel person fra et register når saken bare trenger én opplysning. Og la standardvalget være det som samler minst.
 
@@ -91,4 +91,4 @@ Når leverandøren behandler personopplysninger på vegne av kommunen, trengs en
 
 Det siste punktet er hvor dataene ligger. For offentlige kunder holder vi data innenfor EU/EØS, og det bør være dokumentert, ikke antatt. Hvilke valg det innebærer når løsningen kjører i skyen, går vi gjennom i [Azure for offentlig sektor: hvor data ligger, og hva dere må kunne dokumentere](/blogg/azure-for-offentlig-sektor-krav-og-valg).
 
-[Les hvordan Xala legger personvern inn i arkitekturen fra start.](/faq)
+[Les hvordan vi legger personvern inn i arkitekturen fra start.](/faq)
