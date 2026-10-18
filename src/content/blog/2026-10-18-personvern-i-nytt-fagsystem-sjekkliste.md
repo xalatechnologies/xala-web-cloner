@@ -6,8 +6,8 @@ date: 2026-10-18
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "IT-leder"
-cover: "/images/blog/personvern-i-nytt-fagsystem-sjekkliste-v2.webp"
-coverAlt: "Illustrasjon i sort og gull: et dobbelt linjeskjold med en hengelås uten nøkkelhull, og tre tomme avrundede ruter til høyre."
+cover: "/images/blog/personvern-i-nytt-fagsystem-sjekkliste.webp"
+coverAlt: "Krem infografikk av et apotekskap med seks skuffer, der skuffen merket slett står åpen i oransje."
 keywords:
   - personvern
   - dataminimering
