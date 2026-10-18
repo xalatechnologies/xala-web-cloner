@@ -27,6 +27,7 @@ const DESC_MAX = 155;
 /** Approved 2026-10-11 fix pack (A1) — legal-status wording needs seven extra characters. */
 const DESC_MAX_BY_SLUG: Partial<Record<string, number>> = {
   'automatisering-av-saksbehandling-hva-boer-og-ikke': 162,
+  'personvern-i-nytt-fagsystem-sjekkliste': 156,
 };
 
 const BLOG_DIR = resolve(__dirname, '../content/blog');
