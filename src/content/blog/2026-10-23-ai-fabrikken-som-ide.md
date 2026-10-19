@@ -22,25 +22,25 @@ hashtags:
 lang: no
 draft: false
 faq:
-  - question: "Hva er en AI-fabrikk?"
+  - question: "Hva er AI-fabrikken?"
     answer: "For oss er det en måte å jobbe på der samme løp, fra intensjon til gjennomgang, kjøres hver gang. Det er ikke et sted eller en maskinpark."
-  - question: "Hva er forskjellen på en AI-fabrikk og å bruke en god prompt?"
+  - question: "Hva er forskjellen på AI-fabrikken og å bruke en god prompt?"
     answer: "En prompt gir et svar én gang, mens et løp med mal og kontroller kan gjentas og forbedres."
-  - question: "Tar en AI-fabrikk bort behovet for utviklere?"
+  - question: "Tar AI-fabrikken bort behovet for utviklere?"
     answer: "Nei. Mennesker eier intensjonen, gjennomgangen og godkjenningen."
-  - question: "Kan en AI-fabrikk brukes i offentlig sektor?"
-    answer: "Tanken passer der sporbarhet er viktig, men hver virksomhet må avgjøre hva agentene får gjøre."
-  - question: "Har Xala en ferdig AI-fabrikk?"
+  - question: "Kan AI-fabrikken brukes i offentlig sektor?"
+    answer: "Tanken passer der sporbarhet er viktig, men hver virksomhet må avgjøre hva KI-agentene får gjøre."
+  - question: "Har dere AI-fabrikken ferdig?"
     answer: "Nei, det er en idé vi prøver ut i eget arbeid og bygger videre på."
 ---
 
-Når vi sier AI-fabrikk, mener vi ikke en hall full av maskiner, og heller ikke mer regnekraft. Vi mener at det samme arbeidet skal gå gjennom det samme løpet hver gang, slik at resultatet ikke avhenger av en heldig formulering.
+Når vi sier AI-fabrikken, et fast løp for utvikling med KI-agenter, mener vi ikke en hall full av maskiner, og heller ikke mer regnekraft. Vi mener at det samme arbeidet skal gå gjennom det samme løpet hver gang, slik at resultatet ikke avhenger av en heldig formulering.
 
 Det er en idé vi prøver ut i eget arbeid, ikke noe vi har ferdig. Tanken handler om repeterbarhet, ikke om fart. Løpet er det samme hver gang: intensjon, spesifikasjon, plan, bygg og gjennomgang. Den andre kjøringen skal ligne den første. Når noe går galt, forbedrer vi malen og løpet, ikke prompten.
 
 ## Samme oppdrag, to måter å løse det på
 
-Den første måten kjenner mange. Noen skriver en lang og gjennomtenkt beskjed til en agent og får et godt svar. Uka etter kommer et nytt oppdrag av samme slag, og beskjeden skrives på nytt etter hukommelsen. Svaret blir dårligere, og ingen kan si hvorfor. Var det formuleringen, rekkefølgen eller bare flaks? Det som virket, satt i én beskjed som ingen tok vare på.
+Den første måten kjenner mange. Noen skriver en lang og gjennomtenkt beskjed til en KI-agent og får et godt svar. Uka etter kommer et nytt oppdrag av samme slag, og beskjeden skrives på nytt etter hukommelsen. Svaret blir dårligere, og ingen kan si hvorfor. Var det formuleringen, rekkefølgen eller bare flaks? Det som virket, satt i én beskjed som ingen tok vare på.
 
 Den andre måten er et løp. Det samme oppdraget går gjennom den samme briefmalen, de samme stasjonene og de samme kontrollene. Blir resultatet dårligere, kan vi se hvilket steg som sviktet, og rette det steget. Slik lager vi blogginnleggene våre: hvert nytt innlegg går gjennom det samme løpet som det forrige. Engangsprompten er håndverk som ikke kan gjentas. Fabrikken er håndverket skrevet ned.
 
@@ -56,7 +56,7 @@ At intensjonen bør gjøres tydelig før det skrives kode, er ikke nytt. Vi har 
 
 Dette er kjernen i tanken. Når kontrollen finner en feil, retter vi ikke bare teksten. Regelen som hadde hindret feilen, går inn i malen.
 
-Noen eksempler fra løpet vårt: en fast formulering om hvilket regelverk for universell utforming som gjelder, en regel om at omslag skal være lyse diagrammer uten mennesker, og at verbet skal være «koble». Alle kom fra feil som ble funnet i kontroll. Nå står de i hver brief, og neste utkast starter med dem.
+Noen eksempler fra løpet vårt: en fast formulering om hvilket regelverk for universell utforming som gjelder, en regel om at omslag skal være lyse diagrammer uten mennesker, og at vi holder samme ordvalg når vi skriver om integrasjoner. Alle kom fra feil som ble funnet i kontroll. Nå står de i hver brief, og neste utkast starter med dem.
 
 Prompten er glemt etter én kjøring. Malen husker. Det er derfor vi heller bruker tiden på malen enn på å finne den perfekte formuleringen. Prisen er at malen vokser og må ryddes, slik at reglene som står der, fortsatt er de som trengs.
 
@@ -70,7 +70,7 @@ Det som gjør dette repeterbart, er overleveringene. Mellom hver stasjon går en
 
 En fabrikk trenger en stoppregel. Når et steg feiler, går arbeidet tilbake, ikke videre. Det er bedre at et innlegg kommer en dag for sent enn at det publiseres feil.
 
-Regelen gjelder også når det går tregt. Settes tilgangen på pause, blir ferdig arbeid stående og vente i stedet for å finne en annen vei. Det føles tregt, men det er riktig.
+Regelen gjelder også når det går tregt. Mangler et steg det trenger, venter arbeidet i stedet for å ta en snarvei. Det føles tregt, men det er riktig.
 
 ## Det en fabrikk ikke er
 
