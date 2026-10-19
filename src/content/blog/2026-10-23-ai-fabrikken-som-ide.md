@@ -34,7 +34,7 @@ faq:
     answer: "Nei, det er en idé vi prøver ut i eget arbeid og bygger videre på."
 ---
 
-Når vi sier AI-fabrikken, et fast løp for utvikling med KI-agenter, mener vi ikke en hall full av maskiner, og heller ikke mer regnekraft. Vi mener at det samme arbeidet skal gå gjennom det samme løpet hver gang, slik at resultatet ikke avhenger av en heldig formulering.
+AI-fabrikken er for oss et fast løp for utvikling med KI-agenter. Vi mener ikke en hall full av maskiner, og heller ikke mer regnekraft. Vi mener at det samme arbeidet skal gå gjennom det samme løpet hver gang, slik at resultatet ikke avhenger av en heldig formulering.
 
 Det er en idé vi prøver ut i eget arbeid, ikke noe vi har ferdig. Tanken handler om repeterbarhet, ikke om fart. Løpet er det samme hver gang: intensjon, spesifikasjon, plan, bygg og gjennomgang. Den andre kjøringen skal ligne den første. Når noe går galt, forbedrer vi malen og løpet, ikke prompten.
 
@@ -62,7 +62,7 @@ Prompten er glemt etter én kjøring. Malen husker. Det er derfor vi heller bruk
 
 ## Hver stasjon har én jobb og leverer videre skriftlig
 
-Løpet er delt i stasjoner. Research skriver briefen. En skribent skriver utkastet. En kontroll går gjennom det. En utvikler lager endringsforslaget, en annen gjennomgår det, og en siste sjekk går gjennom den levende siden.
+Løpet er delt i stasjoner. Undersøkelse skriver briefen. En skribent skriver utkastet. En kontroll går gjennom det. En utvikler lager endringsforslaget, en annen gjennomgår det, og en siste sjekk går gjennom den levende siden.
 
 Det som gjør dette repeterbart, er overleveringene. Mellom hver stasjon går en fil eller et endringsforslag, ikke en samtale. En samtale forsvinner. En fil kan neste stasjon lese, og den kan vi lese i ettertid når vi vil forstå hvorfor resultatet ble som det ble.
 
