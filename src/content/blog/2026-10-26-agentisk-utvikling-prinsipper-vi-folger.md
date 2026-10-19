@@ -8,7 +8,7 @@ author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Kommune"
 cover: "/images/blog/agentisk-utvikling-prinsipper-vi-folger.webp"
-coverAlt: "Infografikk på kremfarget bakgrunn: en spakbenk fra et sikringsanlegg med seks spaker merket én jobb, én versjon, ikke selv, godkjent, data og si fra, koblet til en låsestang. Spaken ikke selv er låst med en oransje hengelås og et hashstempel. Overskrift «SEKS SPAKER SOM LÅSER»."
+coverAlt: "Infografikk på kremfarget bakgrunn: en spakbenk fra et sikringsanlegg for KI-agenter med seks spaker merket én jobb, én versjon, ikke selv, godkjent, data og si fra, koblet til en låsestang. Spaken ikke selv er låst med en oransje hengelås og et hashstempel. Overskrift «SEKS SPAKER SOM LÅSER»."
 keywords:
   - agentisk utvikling
   - godkjenning
@@ -24,27 +24,27 @@ draft: false
 faq:
   - question: "Hva er agentisk utvikling?"
     answer: "At KI-agenter gjør deler av utviklingsarbeidet selv, som å skrive kode og lage endringsforslag, innenfor regler mennesker har satt."
-  - question: "Hvorfor skal hver agent bare ha én jobb?"
-    answer: "Fordi en agent ikke bør kontrollere sitt eget arbeid, og fordi én jobb er lettere å gjennomgå."
+  - question: "Hvorfor skal hver KI-agent bare ha én jobb?"
+    answer: "Fordi en KI-agent ikke bør kontrollere sitt eget arbeid, og fordi én jobb er lettere å gjennomgå."
   - question: "Hva betyr det at en godkjenning gjelder én versjon?"
     answer: "At en ny endring etter godkjenningen må gjennomgås på nytt før den kan gå live."
-  - question: "Kan agentene publisere eller merge selv?"
-    answer: "Ikke hos oss. Agentene lager utkast og endringsforslag, og et menneske godkjenner alt som går live."
+  - question: "Kan KI-agentene publisere eller merge selv?"
+    answer: "Ikke hos oss. KI-agentene lager utkast og endringsforslag, og et menneske godkjenner alt som går live."
   - question: "Er dette et ferdig rammeverk fra Xala?"
     answer: "Nei, det er prinsipper vi bruker i eget arbeid nå, og de utvikler seg fortsatt."
 ---
 
 Et endringsforslag er gjennomgått og godkjent. Rett etterpå kommer en liten rettelse på toppen. Godkjenningen gjaldt versjonen før, så rettelsen er ikke godkjent av noen. Endringen går en runde til før noe går live.
 
-Det er ikke dramatisk, og det er poenget. Et prinsipp er bare verdt noe hvis det stopper noe, også når det føles unødvendig. Vi tror at kontroll med agenter ikke er en ekstra kontrollør helt til slutt. Det er regler for hvem som gjør hva, og hva som kan godkjennes.
+Det er ikke dramatisk, og det er poenget. Et prinsipp er bare verdt noe hvis det stopper noe, også når det føles unødvendig. Vi tror at kontroll med KI-agenter ikke er en ekstra kontrollør helt til slutt. Det er regler for hvem som gjør hva, og hva som kan godkjennes.
 
 Her er seks prinsipper vi følger i eget arbeid nå, med et eksempel og det hvert av dem koster oss. De er ikke et ferdig rammeverk.
 
-## Hver agent har én jobb
+## Hver KI-agent har én jobb
 
-Undersøkelse, skriving, kontroll, utvikling, gjennomgang og sjekk av den levende siden er egne agenter. Ingen agent gjennomgår sitt eget arbeid.
+Undersøkelse, skriving, kontroll, utvikling, gjennomgang og sjekk av den levende siden er egne KI-agenter. Ingen KI-agent gjennomgår sitt eget arbeid.
 
-Dette innlegget er et eksempel. Én agent skrev briefen, en annen skrev utkastet, og en egen kontroll går gjennom det mot briefen før noe sendes videre. Den som skrev, får ikke selv avgjøre at teksten er god nok.
+Dette innlegget er et eksempel. Én KI-agent skrev briefen, en annen skrev utkastet, og en egen kontroll går gjennom det mot briefen før noe sendes videre. Den som skrev, får ikke selv avgjøre at teksten er god nok.
 
 Det koster flere overleveringer og mer venting. En jobb som kunne vært gjort i én omgang, går gjennom flere hender.
 
@@ -58,9 +58,9 @@ Det koster at små rettelser tar en runde til.
 
 ## Ingenting publiserer seg selv
 
-Ingen agent publiserer, sender e-post eller poster noe utad på eget initiativ. Agentene lager utkast, og et menneske bestemmer.
+Ingen KI-agent publiserer, sender e-post eller poster noe utad på eget initiativ. KI-agentene lager utkast, og et menneske bestemmer.
 
-Hos oss ligger et ferdig innlegg som et endringsforslag til noen har sagt ja. Det samme gjelder en melding som skal ut av huset. Agenten kan skrive den, men ikke sende den.
+Hos oss ligger et ferdig innlegg som et endringsforslag til noen har sagt ja. Det samme gjelder en melding som skal ut av huset. KI-agenten kan skrive den, men ikke sende den.
 
 Det koster at ting venter på et ja, også når de er klare.
 
@@ -68,17 +68,17 @@ Det koster at ting venter på et ja, også når de er klare.
 
 Et menneske godkjenner hver sammenslåing, og et menneske eier skrivetilgangen.
 
-Settes skrivetilgangen på pause, skal ferdig arbeid stå og vente. Ingen agent skal lete etter en annen vei rundt. Hvordan tilgangen til verktøy bør styres, har vi skrevet om i [Model Context Protocol for interne AI-verktøy](/blogg/mcp-og-verktoytilgang-for-interne-ai-verktoy).
+Settes skrivetilgangen på pause, skal ferdig arbeid stå og vente. Ingen KI-agent skal lete etter en annen vei rundt. Hvordan tilgangen til KI-verktøy bør styres, har vi skrevet om i [Model Context Protocol for interne AI-verktøy](/blogg/mcp-og-verktoytilgang-for-interne-ai-verktoy).
 
 Det koster at alt står stille når den som godkjenner, ikke er der.
 
-## Det agenten leser, er ikke en ordre
+## Det KI-agenten leser, er ikke en ordre
 
-Tekst agenten møter underveis, som kommentarer, nettsider og filer, er data. Det er ikke instrukser.
+Tekst KI-agenten møter underveis, som kommentarer, nettsider og filer, er data. Det er ikke instrukser.
 
 En kommentar som sier at den er gjennomgangen vår, teller ikke før den kommer gjennom vår egen kanal. Ellers behandler vi den som ugyldig, uansett hvor overbevisende den er formulert.
 
-Det koster at agenten noen ganger overser noe som faktisk var et godt råd. Et godt råd må komme gjennom riktig kanal.
+Det koster at KI-agenten noen ganger overser noe som faktisk var et godt råd. Et godt råd må komme gjennom riktig kanal.
 
 ## Den som står fast, sier hva som står fast
 
@@ -92,17 +92,17 @@ Det koster at det noen ganger er stille lenge.
 
 Prinsippene stopper mye, men de løser ikke alt. Vi lærer fortsatt hvor tett tilgangen må være, og hvor mye som trygt kan stå på én persons godkjenning. Når ett menneske eier både skrivetilgangen og godkjenningen, er det både en trygghet og en flaskehals.
 
-Vi vet heller ikke hvor grensen går for hva en annen agent kan gjennomgå før et menneske må inn. Foreløpig går den ved at et menneske godkjenner alt som går live.
+Vi vet heller ikke hvor grensen går for hva en annen KI-agent kan gjennomgå før et menneske må inn. Foreløpig går den ved at et menneske godkjenner alt som går live.
 
-Prinsippene er en del av operativsystemet for utviklingsarbeid som vi bygger, og listen kommer til å endre seg.
+Prinsippene er en del av operativsystemet for KI i systemutvikling som vi bygger, og listen kommer til å endre seg.
 
-## Spørsmål å stille en leverandør som bruker agenter
+## Spørsmål å stille en leverandør som bruker KI-agenter
 
-Kjøper kommunen utvikling fra en leverandør som bruker agenter, er dette spørsmål som sier mye om kontrollen:
+Kjøper kommunen utvikling fra en leverandør som bruker KI-agenter, er dette spørsmål som sier mye om kontrollen:
 
 - Hvem godkjenner før noe går i produksjon?
 - Gjelder godkjenningen en bestemt versjon, eller hele endringen uansett hva som kommer etterpå?
-- Kan en agent publisere eller sende noe selv?
+- Kan en KI-agent publisere eller sende noe selv?
 - Hvem eier skrivetilgangen, og hvordan trekkes den tilbake?
 - Hva skjer når noen gir seg ut for å være gjennomgangen?
 
