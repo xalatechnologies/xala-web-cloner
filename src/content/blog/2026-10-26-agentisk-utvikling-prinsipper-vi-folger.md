@@ -16,6 +16,7 @@ keywords:
   - leverandør
   - endringsforslag
 hashtags:
+  - agentisk utvikling
   - godkjenning
   - leverandør
   - endringsforslag
