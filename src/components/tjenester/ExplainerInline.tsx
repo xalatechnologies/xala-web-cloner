@@ -18,7 +18,7 @@ export function ExplainerInline({ text }: { text: string }) {
   let index = 0;
   for (const link of links) {
     if (link.start > last) nodes.push(text.slice(last, link.start));
-    const href = link.href.trim();
+    const href = link.href;
     const key = `${href}-${index++}`;
     if (isExplainerLinkHref(href)) {
       nodes.push(

@@ -21,7 +21,7 @@ export function explainerInlineHtml(text: string): string {
     if (link.start > last) parts.push(escapeHtml(text.slice(last, link.start)));
     const label = escapeHtml(link.label);
     if (isExplainerLinkHref(link.href)) {
-      const href = escapeHtml(link.href.trim());
+      const href = escapeHtml(link.href);
       parts.push(`<a href="${href}">${label}</a>`);
     } else {
       parts.push(label);
