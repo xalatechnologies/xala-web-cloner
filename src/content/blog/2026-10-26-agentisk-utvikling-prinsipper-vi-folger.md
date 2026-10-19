@@ -2,7 +2,7 @@
 slug: agentisk-utvikling-prinsipper-vi-folger
 title: "Agentisk utvikling: seks prinsipper vi faktisk følger"
 seoTitle: "Agentisk utvikling: seks prinsipper vi følger"
-description: "Én agent per jobb, godkjenning på én versjon, ingenting publiserer seg selv. Seks prinsipper for agentisk utvikling slik vi bruker og hva vi ikke har løst."
+description: "Én agent per jobb, godkjenning på én versjon, ingenting publiserer seg selv. Seks prinsipper for agentisk utvikling vi bruker, og hva vi ikke har løst."
 date: 2026-10-26
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
@@ -29,7 +29,7 @@ faq:
   - question: "Hva betyr det at en godkjenning gjelder én versjon?"
     answer: "At en ny endring etter godkjenningen må gjennomgås på nytt før den kan gå live."
   - question: "Kan agentene publisere eller merge selv?"
-    answer: "Ikke hos oss. Et menneske godkjenner det som går live, ikke en agent på eget initiativ."
+    answer: "Ikke hos oss. Agentene lager utkast og endringsforslag, og et menneske godkjenner alt som går live."
   - question: "Er dette et ferdig rammeverk fra Xala?"
     answer: "Nei, det er prinsipper vi bruker i eget arbeid nå, og de utvikler seg fortsatt."
 ---
@@ -42,7 +42,7 @@ Her er seks prinsipper vi følger i eget arbeid nå, med et eksempel og det hver
 
 ## Hver agent har én jobb
 
-Research, skriving, kontroll, utvikling, gjennomgang og sjekk av den levende siden er egne agenter. Ingen agent gjennomgår sitt eget arbeid.
+Undersøkelse, skriving, kontroll, utvikling, gjennomgang og sjekk av den levende siden er egne agenter. Ingen agent gjennomgår sitt eget arbeid.
 
 Dette innlegget er et eksempel. Én agent skrev briefen, en annen skrev utkastet, og en egen kontroll går gjennom det mot briefen før noe sendes videre. Den som skrev, får ikke selv avgjøre at teksten er god nok.
 
