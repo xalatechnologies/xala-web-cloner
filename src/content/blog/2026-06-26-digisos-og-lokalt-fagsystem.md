@@ -68,6 +68,8 @@ Det som ikke skal automatiseres: vedtaket. Kode 6 og 7. Den individuelle vurderi
 
 Xala kan koble Digisos inn i fagsystemet dere har. Xala eier ikke Digisos. Xala eier ikke fagsystemet.
 
+Kan ikke det lokale fagsystemet ta imot det KS sender, er det et tegn på at det trenger en [modernisering](/tjenester/modernisering-av-fagsystemer), ikke enda en manuell rutine.
+
 ## Ofte stilte spørsmål
 
 **Er innsyn på nav.no saksbehandling?**

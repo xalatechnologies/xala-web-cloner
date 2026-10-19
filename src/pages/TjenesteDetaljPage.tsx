@@ -9,6 +9,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import NotFound from './NotFound';
 import { PageCTA } from '../components/layouts/PageFrame';
+import { ExplainerInline } from '../components/tjenester/ExplainerInline';
 import servicePages from '@/data/service-pages.json';
 import { caserEntries } from '@/data/caser-page-entries';
 import { localizedCardExcerpt } from '@/data/case-studies/localized';
@@ -32,6 +33,11 @@ interface LocalisedPage {
   metaTitle: string;
   metaDescription: string;
   intro: string;
+  /** Short "what is this, when do you need it" section. All four are optional and render together. */
+  explainerHeading?: string;
+  explainer?: string;
+  explainerSignals?: string[];
+  explainerOutro?: string;
   problemHeading: string;
   problem: string;
   capabilityHeading: string;
@@ -176,6 +182,25 @@ export default function TjenesteDetaljPage() {
           </p>
         </header>
 
+        {copy.explainerHeading && copy.explainer && copy.explainerSignals && copy.explainerOutro && (
+          <section aria-labelledby="explainer-heading" className="container mx-auto px-4 pb-14 md:pb-20">
+            <h2 id="explainer-heading" className="max-w-[24ch] subsection-heading">
+              {copy.explainerHeading}
+            </h2>
+            <p className="mt-5 max-w-[62ch] section-lead">{copy.explainer}</p>
+            <ul className="mt-5 max-w-[62ch] list-disc space-y-2 pl-5 leading-relaxed text-muted-foreground">
+              {copy.explainerSignals.map((signal) => (
+                <li key={signal}>
+                  <ExplainerInline text={signal} />
+                </li>
+              ))}
+            </ul>
+            <p className="mt-5 max-w-[62ch] leading-relaxed text-muted-foreground">
+              <ExplainerInline text={copy.explainerOutro} />
+            </p>
+          </section>
+        )}
+
         <section
           aria-labelledby="problem-heading"
           className="border-y border-border bg-muted/30 py-14 md:py-20"
@@ -209,7 +234,9 @@ export default function TjenesteDetaljPage() {
                 <h3 className="card-heading">
                   {capability.title}
                 </h3>
-                <p className="mt-3 leading-relaxed text-muted-foreground">{capability.body}</p>
+                <p className="mt-3 leading-relaxed text-muted-foreground">
+                  <ExplainerInline text={capability.body} />
+                </p>
               </li>
             ))}
           </ul>

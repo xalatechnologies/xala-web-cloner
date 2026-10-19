@@ -13,6 +13,7 @@ import { findPost } from "@/lib/blog/posts";
 import { BLOG_PATH } from "@/lib/blog/seo";
 import type { BlogPost } from "@/lib/blog/types";
 import { escapeHtml } from "@/lib/escapeHtml";
+import { explainerInlineHtml } from "@/lib/explainerInlineHtml";
 import { PRERENDER_BACK_NAV_ARIA_LABEL } from "@/lib/prerenderLabels";
 
 export { escapeHtml };
@@ -31,6 +32,11 @@ interface LocalisedPage {
   metaTitle: string;
   metaDescription: string;
   intro: string;
+  /** Short "what is this, when do you need it" section. All four are optional and render together. */
+  explainerHeading?: string;
+  explainer?: string;
+  explainerSignals?: string[];
+  explainerOutro?: string;
   problemHeading: string;
   problem: string;
   capabilityHeading: string;
@@ -89,9 +95,19 @@ export function servicePageHtmlFromPage(
   const capabilities = copy.capabilities
     .map(
       (capability) =>
-        `<li><h3>${escapeHtml(capability.title)}</h3><p>${escapeHtml(capability.body)}</p></li>`,
+        `<li><h3>${escapeHtml(capability.title)}</h3><p>${explainerInlineHtml(capability.body)}</p></li>`,
     )
     .join("\n");
+
+  const explainer =
+    copy.explainerHeading && copy.explainer && copy.explainerSignals && copy.explainerOutro
+      ? `<section aria-labelledby="explainer-heading">
+<h2 id="explainer-heading">${escapeHtml(copy.explainerHeading)}</h2>
+<p>${escapeHtml(copy.explainer)}</p>
+<ul>${copy.explainerSignals.map((signal) => `<li>${explainerInlineHtml(signal)}</li>`).join("")}</ul>
+<p>${explainerInlineHtml(copy.explainerOutro)}</p>
+</section>`
+      : "";
 
   const features =
     copy.features && copy.features.length > 0
@@ -150,6 +166,7 @@ export function servicePageHtmlFromPage(
 <h1 class="page-heading">${escapeHtml(copy.title)}</h1>
 <p>${escapeHtml(copy.intro)}</p>
 </header>
+${explainer}
 <section aria-labelledby="problem-heading">
 <h2 id="problem-heading">${escapeHtml(copy.problemHeading)}</h2>
 <p>${escapeHtml(copy.problem)}</p>

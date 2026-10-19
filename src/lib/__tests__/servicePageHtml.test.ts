@@ -62,7 +62,7 @@ describe("servicePageHtml", () => {
     }
   });
 
-  it("tolerates missing caseSlugs and postSlugs", () => {
+  it("tolerates missing caseSlugs and postSlugs, and renders no explainer section when the fields are absent", () => {
     const fixture: ServicePage = {
       slug: "fixture",
       no: {
@@ -85,6 +85,85 @@ describe("servicePageHtml", () => {
     expect(html).toContain("<dd>A &lt;tag&gt; &amp; &quot;quoted&quot;</dd>");
     expect(html).not.toContain("<title>");
     expect(html).not.toMatch(/<dd>A <tag>/);
+    expect(html).not.toContain("explainer-heading");
+  });
+
+  it("renders the explainer section — heading, paragraph, signal list and outro — only for a page that sets all four fields", () => {
+    const fixture: ServicePage = {
+      slug: "fixture-explainer",
+      no: {
+        title: "Fixture",
+        metaTitle: "Fixture",
+        metaDescription: "Fixture",
+        intro: "Intro",
+        explainerHeading: "Hva er dette?",
+        explainer: "En kort forklaring.",
+        explainerSignals: [
+          "Et vanlig tegn.",
+          "Et tegn med [en lenke](/blogg/fagsystem-uten-api) i seg.",
+        ],
+        explainerOutro: "Les mer i [artikkelen](/blogg/modernisere-fagsystem-uten-driftsstans).",
+        problemHeading: "Problem",
+        problem: "Problem body",
+        capabilityHeading: "Capabilities",
+        capabilities: [
+          { title: "One", body: "Body uten lenke." },
+          {
+            title: "Two",
+            body: "Body med [en lenke](/blogg/testautomatisering-for-fagsystemer) og [en annen](/tjenester/systemintegrasjon) som ikke skal bli en lenke.",
+          },
+        ],
+        faq: [{ question: "Q?", answer: "A." }],
+      },
+    };
+
+    const html = servicePageHtmlFromPage(fixture, { "fixture-explainer": fixture }, { posts: [] });
+
+    expect(html).toContain('<section aria-labelledby="explainer-heading">');
+    expect(html).toContain('<h2 id="explainer-heading">Hva er dette?</h2>');
+    expect(html).toContain("<p>En kort forklaring.</p>");
+    expect(html).toContain("<li>Et vanlig tegn.</li>");
+    expect(html).toContain('<li>Et tegn med <a href="/blogg/fagsystem-uten-api">en lenke</a> i seg.</li>');
+    expect(html).toContain(
+      '<p>Les mer i <a href="/blogg/modernisere-fagsystem-uten-driftsstans">artikkelen</a>.</p>',
+    );
+
+    // Capability bodies go through the same allowlisted renderer.
+    expect(html).toContain("<p>Body uten lenke.</p>");
+    expect(html).toContain(
+      '<p>Body med <a href="/blogg/testautomatisering-for-fagsystemer">en lenke</a> og en annen som ikke skal bli en lenke.</p>',
+    );
+
+    // Explainer section sits right after the header, before the problem section.
+    const headerIndex = html.indexOf("</header>");
+    const explainerIndex = html.indexOf('<section aria-labelledby="explainer-heading">');
+    const problemIndex = html.indexOf('<section aria-labelledby="problem-heading">');
+    expect(headerIndex).toBeGreaterThan(-1);
+    expect(explainerIndex).toBeGreaterThan(headerIndex);
+    expect(problemIndex).toBeGreaterThan(explainerIndex);
+  });
+
+  it("renders the modernisering-av-fagsystemer explainer section from the real data", () => {
+    const html = servicePageHtml("modernisering-av-fagsystemer", { posts });
+    const page = pageMap["modernisering-av-fagsystemer"];
+
+    expect(html).toContain(`<h2 id="explainer-heading">${escapeHtml(page.no.explainerHeading!)}</h2>`);
+    expect(html).toContain('<a href="/blogg/altinn-3-hva-endrer-seg-for-fagsystemet">');
+    expect(html).toContain('<a href="/blogg/teknologivalg-for-fagsystemer-som-skal-vare">');
+    expect(html).toContain('<a href="/blogg/fagsystem-uten-api">');
+    expect(html).toContain('<a href="/blogg/testautomatisering-for-fagsystemer">');
+    expect(html).toContain(
+      '<a href="/blogg/modernisere-fagsystem-uten-driftsstans">slik moderniserer du et fagsystem modul for modul</a>',
+    );
+    // postSlugs is empty for this page, so there is no "Les mer om dette" list.
+    expect(html).not.toContain(no.servicePage.readMore);
+  });
+
+  it.each(
+    Object.keys(servicePages).filter((slug) => slug !== "modernisering-av-fagsystemer"),
+  )("renders %s with no explainer section (field is absent)", (slug) => {
+    const html = servicePageHtml(slug, { posts });
+    expect(html).not.toContain("explainer-heading");
   });
 
   it("escapes HTML special characters in titles and FAQ answers", () => {

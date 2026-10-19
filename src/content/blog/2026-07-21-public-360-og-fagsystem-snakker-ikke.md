@@ -70,6 +70,8 @@ Journalmetadata fra hendelsen i fagsystemet inn i 360, eller inn i journalen der
 
 Xala kan koble 360 og fagsystemet dere har. Xala eier ikke Public 360. Xala eier ikke fagsystemet.
 
+Er det fagsystemet selv som ikke kan sende hendelsen videre, hører den jobben hjemme i en [modernisering av fagsystemet](/tjenester/modernisering-av-fagsystemer).
+
 ## Ofte stilte spørsmål
 
 **Må fagsystemet kobles mot Public 360?**

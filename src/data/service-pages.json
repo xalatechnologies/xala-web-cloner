@@ -1363,14 +1363,22 @@
       "ssb-legacy-system-modernization",
       "altinn"
     ],
-    "postSlugs": [
-      "modernisere-fagsystem-uten-driftsstans"
-    ],
+    "postSlugs": [],
     "no": {
-      "title": "Modernisering av fagsystemer",
-      "metaTitle": "Modernisering av fagsystemer uten driftsstans | Xala",
-      "metaDescription": "Vi moderniserer fagsystemer modul for modul bak en fasade, slik at driften går mens systemet byttes ut.",
-      "intro": "Et gammelt fagsystem er sjelden ett problem. Det er en samling avhengigheter som er blitt usynlige fordi de har fungert lenge. Modernisering handler først om å finne dem, og deretter om å bytte ut én om gangen mens alt annet fortsetter å virke.",
+      "title": "Modernisering av fagsystemer for offentlig sektor",
+      "metaTitle": "Modernisering av fagsystemer for offentlig sektor | Xala",
+      "metaDescription": "Modernisering av fagsystemer for offentlig sektor: vi kartlegger avhengighetene og bytter én modul om gangen mens systemet er i drift.",
+      "intro": "Xala moderniserer fagsystemer for offentlig sektor, og systemet er i drift mens vi jobber. Et gammelt fagsystem er sjelden ett problem. Det er en samling avhengigheter som er blitt usynlige fordi de har fungert lenge. Modernisering handler først om å finne dem, og deretter om å bytte ut én om gangen mens alt annet fortsetter å virke.",
+      "explainerHeading": "Hva er et fagsystem, og når må det moderniseres?",
+      "explainer": "Et fagsystem bærer fagreglene og dataene for én type sak. Når det skal byttes ut, er det reglene og dataene som må være med over. Disse tegnene betyr at det er på tide å modernisere:",
+      "explainerSignals": [
+        "Teknisk gjeld gjør vedlikehold og videreutvikling tungt.",
+        "Systemet har ikke et API, og dataene må hentes fra en database, en fil eller en eksportjobb.",
+        "Systemet klarer ikke [koblingen til Altinn 3](/blogg/altinn-3-hva-endrer-seg-for-fagsystemet) eller andre nasjonale fellesløsninger det skal snakke med.",
+        "Arkiveringen er lagt på i etterkant og ligger ikke i datamodellen.",
+        "Systemet [lever lenger enn rammeverkene](/blogg/teknologivalg-for-fagsystemer-som-skal-vare) det ble bygget på."
+      ],
+      "explainerOutro": "Hele metoden, steg for steg, står i artikkelen [slik moderniserer du et fagsystem modul for modul](/blogg/modernisere-fagsystem-uten-driftsstans).",
       "problemHeading": "Hvorfor store omskrivinger feiler",
       "problem": "Den vanligste planen er å bygge det nye ved siden av det gamle og bytte på en gitt dato. Den datoen kommer sjelden, fordi det gamle systemet gjør flere ting enn noen husker, og fordi alt må være ferdig samtidig. Risikoen samles på ett punkt i stedet for å fordeles.",
       "capabilityHeading": "Slik gjør vi det",
@@ -1385,11 +1393,11 @@
         },
         {
           "title": "Følg dataene",
-          "body": "Hvor kommer de inn, hvor går de ut, og hvem oppdager det hvis de stopper. Svaret på det siste peker på integrasjonene ingen har dokumentert."
+          "body": "Hvor kommer de inn, hvor går de ut, og hvem oppdager det hvis de stopper. Svaret på det siste peker på integrasjonene ingen har dokumentert. Mangler systemet et API, finnes det som regel [en annen vei inn til dataene](/blogg/fagsystem-uten-api)."
         },
         {
           "title": "Én modul om gangen",
-          "body": "Hver modul gir noe som virker, og gjør estimatet på den neste mer realistisk."
+          "body": "Hver modul gir noe som virker, og gjør estimatet på den neste mer realistisk. Før en modul byttes, kjører gammel og ny side om side, og [automatiske tester](/blogg/testautomatisering-for-fagsystemer) viser om de gir samme resultat."
         },
         {
           "title": "Anskaffelsen må tåle etapper",
@@ -1397,6 +1405,14 @@
         }
       ],
       "faq": [
+        {
+          "question": "Hva er et fagsystem?",
+          "answer": "Et fagsystem bærer fagreglene og dataene for én type sak. Når det moderniseres, er det reglene og dataene som må være med over i det nye."
+        },
+        {
+          "question": "Når bør et fagsystem moderniseres?",
+          "answer": "Når teknisk gjeld gjør vedlikehold og videreutvikling tungt, når systemet mangler et API, når det ikke kan kobles til de nasjonale fellesløsningene det skal snakke med, når arkiveringen er lagt på i etterkant, eller når systemet har levd lenger enn rammeverkene det ble bygget på."
+        },
         {
           "question": "Kan systemet være i drift mens dere jobber?",
           "answer": "Ja, det er hele poenget med metoden. Vi bytter modul for modul bak en fasade i stedet for å erstatte alt på én dato."
@@ -1408,6 +1424,10 @@
         {
           "question": "Hva om vi ikke vet hva systemet gjør?",
           "answer": "Det er det vanlige. Vi følger dataene inn og ut og kartlegger avhengighetene før noe røres. Kartleggingen er ofte den mest verdifulle leveransen i seg selv."
+        },
+        {
+          "question": "Kan dere flytte fagsystemet fra lokal drift til Azure?",
+          "answer": "Ja. Flytting fra lokal drift til Azure er en del av tjenesten. Den følger samme metode som resten: lesing først, så én modul om gangen."
         },
         {
           "question": "Hvilken kontraktsform passer?",

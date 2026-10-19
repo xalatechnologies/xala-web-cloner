@@ -140,6 +140,49 @@ describe('search result metadata', () => {
     expect(copy.title).toBe('Systemintegrasjon for fagsystemer i offentlig sektor');
   });
 
+  it('renders the modernisering-av-fagsystemer title and meta once, inside the search-result gates', () => {
+    // XWG-1019: de-duplicated from the blog post's title/meta so Google stops
+    // swapping the two for the head query "modernisering av fagsystemer".
+    const copy = (
+      servicePages as Record<string, { no: { title: string; metaTitle: string; metaDescription: string } }>
+    )['modernisering-av-fagsystemer'].no;
+    const title = 'Modernisering av fagsystemer for offentlig sektor';
+    const metaTitle = 'Modernisering av fagsystemer for offentlig sektor | Xala';
+    const metaDescription =
+      'Modernisering av fagsystemer for offentlig sektor: vi kartlegger avhengighetene og bytter én modul om gangen mens systemet er i drift.';
+
+    expect(copy.title).toBe(title);
+    expect(copy.metaTitle).toBe(metaTitle);
+    expect(copy.metaTitle).toHaveLength(56);
+    expect(copy.metaTitle.length).toBeLessThanOrEqual(TITLE_MAX);
+    expect(copy.metaTitle.match(/ \| Xala/g)).toEqual([' | Xala']);
+    expect(copy.metaTitle).not.toMatch(/—/);
+    expect(copy.metaDescription).toBe(metaDescription);
+    expect(copy.metaDescription).toHaveLength(134);
+    expect(copy.metaDescription.length).toBeGreaterThanOrEqual(DESC_MIN);
+    expect(copy.metaDescription.length).toBeLessThanOrEqual(DESC_MAX);
+    expect(copy.metaDescription).not.toMatch(/—/);
+  });
+
+  it('gives the modernisering-av-fagsystemer blog post a title and meta that no longer duplicate the service page', () => {
+    const post = posts.find((p) => p.slug === 'modernisere-fagsystem-uten-driftsstans');
+    expect(post, 'modernisere-fagsystem-uten-driftsstans post missing from the published set').toBeDefined();
+    const title = 'Slik moderniserer du et fagsystem uten driftsstans';
+    const description =
+      'Slik moderniserer du et fagsystem uten driftsstans: bytt ut modul for modul, start med lesing og vær ærlig om integrasjonene.';
+
+    expect(post!.title).toBe(title);
+    expect(post!.seoTitle).toBeUndefined();
+    expect(postMeta(post!).title).toBe(`${title} | Xala`);
+    expect(postMeta(post!).title).toHaveLength(57);
+    expect(postMeta(post!).title.length).toBeLessThanOrEqual(TITLE_MAX);
+    expect(post!.description).toBe(description);
+    expect(post!.description).toHaveLength(125);
+    expect(post!.description.length).toBeLessThanOrEqual(DESC_MAX);
+    expect(post!.keywords).not.toContain('modernisering av fagsystemer');
+    expect(post!.keywords?.length).toBeGreaterThanOrEqual(3);
+  });
+
   it('keeps the em-dash out of metadata', () => {
     // A standing instruction on this site: em-dashes read as machine-written
     // Norwegian. They had survived in the blog index description.

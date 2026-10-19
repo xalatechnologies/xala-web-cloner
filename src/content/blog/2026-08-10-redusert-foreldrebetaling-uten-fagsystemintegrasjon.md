@@ -30,7 +30,7 @@ Xala er integrasjonslaget mellom Skatteetaten eller Fiks og fagsystemet dere all
 
 Det som kan automatiseres først, er å legge inntekten der saksbehandleren allerede jobber. Ett oppslag mot Fiks eller leverandørens Skatteetaten-integrasjon, skrevet inn i saken. Ikke et nytt søknadsskjema, og ikke en ny runde der familien laster opp det kommunen allerede kan hente. [Prinsipp 4](https://www.digdir.no/digital-samhandling/prinsipp-4-del-og-gjenbruk-data/1061) er kun én gang: familien skal ikke laste opp det kommunen allerede kan slå opp. [Prinsipp 5](https://www.digdir.no/digital-samhandling/prinsipp-5-del-og-gjenbruk-losninger/1062) er å bruke fellesløsningen: ikke bygg et kommunalt inntektsregister eller en ny portal. Koble Fiks eller Skatteetaten inn i fagsystemet dere allerede har. Det er [fagsystemintegrasjon](/tjenester/systemintegrasjon), ikke en ny portal.
 
-Det som ikke skal automatiseres, er å behandle «vi har fått tilgang» som «vi bruker tilgangen». KS Digital skiller de to. En bekreftelse på API-tilgang uten felt i fagsystemet er fortsatt nattarbeid i to vinduer.
+Det som ikke skal automatiseres, er å behandle «vi har fått tilgang» som «vi bruker tilgangen». KS Digital skiller de to. En bekreftelse på API-tilgang uten felt i fagsystemet er fortsatt nattarbeid i to vinduer. Mangler fagsystemet et felt å ta imot oppslaget i, hører den jobben hjemme i en større [modernisering av fagsystemet](/tjenester/modernisering-av-fagsystemer).
 
 ## Kommunen er behandlingsansvarlig
 

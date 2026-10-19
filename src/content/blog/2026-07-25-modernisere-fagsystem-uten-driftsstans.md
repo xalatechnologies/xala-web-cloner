@@ -1,14 +1,13 @@
 ---
 slug: modernisere-fagsystem-uten-driftsstans
-title: "Modernisering av fagsystemer uten driftsstans"
-seoTitle: "Modernisering av fagsystemer uten driftsstans"
-description: "Modernisering av fagsystemer uten driftsstans: Slik gjør du det modul for modul, med full drift underveis, uten én stor overgangsdato."
+title: "Slik moderniserer du et fagsystem uten driftsstans"
+description: "Slik moderniserer du et fagsystem uten driftsstans: bytt ut modul for modul, start med lesing og vær ærlig om integrasjonene."
 date: 2026-07-25
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "IT-leder"
 cover: "/images/blog/modernisere-fagsystem-uten-driftsstans.webp"
-keywords: ["fagsystem", "modernisering av fagsystemer", "strangler", "uten driftsstans", "offentlig sektor"]
+keywords: ["fagsystem", "strangler", "uten driftsstans", "offentlig sektor"]
 ---
 
 Fagsystemet gjør jobben. Det har gjort det i årevis. Men ingen tør å røre det lenger. Leverandøren er borte, dokumentasjonen er tynn, og hver endring tar lengre tid enn den forrige. Samtidig vokser teknisk gjeld, og virksomheten er sårbar for den dagen noe stopper.
@@ -51,6 +50,7 @@ Det gir også en reell exit: hvis samarbeidet ikke fungerer, har du et fungerend
 
 Et gammelt fagsystem er sjelden ett problem. Det er en samling avhengigheter som er blitt usynlige fordi de har fungert lenge. Strangler-mønsteret løser ikke det, men det gjør at du oppdager dem én om gangen, mens driften går.
 
+Vil du ha hjelp til å gjøre dette i praksis, kan du lese hvordan vi jobber med [modernisering av fagsystemer](/tjenester/modernisering-av-fagsystemer).
 
 ## Ofte stilte spørsmål
 

@@ -41,6 +41,8 @@ En plassholdertekst er ikke en ledetekst. Den forsvinner når brukeren begynner 
 
 Hvert felt trenger en synlig `label`. Det gjelder også søkefelt, filtre og skjemaer som «ser åpenbare ut», fordi det som er åpenbart visuelt ikke nødvendigvis er det for noen som navigerer med tastatur eller skjermleser.
 
+Sitter feilene dypt i et eldre grensesnitt, er det ofte enklere å rette dem som en del av en [modernisering av fagsystemet](/tjenester/modernisering-av-fagsystemer) enn å lappe skjerm for skjerm.
+
 ## Test med hjelpemiddel, ikke bare med verktøy
 
 Automatiske verktøy fanger kanskje halvparten av bruddene. De ser ikke at rekkefølgen i tabben er ulogisk, at en feilmelding aldri annonseres, eller at en knapp heter «Les mer» tolv ganger på samme side.

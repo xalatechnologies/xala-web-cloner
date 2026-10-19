@@ -21,6 +21,8 @@ Er det ett sted testene betaler seg, er det i reglene som avgjør utfallet av en
 
 Slike tester er billige å skrive, kjører på millisekunder, og de fanger nøyaktig den feilen som er dyrest å oppdage sent: at systemet fatter feil vedtak.
 
+Testene er ekstra verdifulle når vi [moderniserer fagsystemer](/tjenester/modernisering-av-fagsystemer), fordi gammel og ny modul skal gi samme resultat før noe byttes.
+
 ## Integrasjoner testes mot kontrakten, ikke mot registeret
 
 Det er fristende å teste mot testmiljøet til Folkeregisteret. Det gjør testene trege og avhengige av at noen andres miljø er oppe.
