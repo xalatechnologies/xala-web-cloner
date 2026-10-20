@@ -21,7 +21,7 @@ Bygger man saksbehandlingsløsningen først og tenker arkiv etterpå, må [Noark
 
 Hvem var parten? Hva var saken? Hvilket dokument er selve vedtaket, og hvilke er vedlegg? Systemet vet det kanskje visuelt, men ikke i datamodellen. Da blir integrasjonen full av gjetting, og gjetting i arkivet er en revisjonsanmerkning som venter på å skje.
 
-Ligger arkiveringen utenfor datamodellen i dag, er det lettest å bygge den inn [når et gammelt fagsystem skal byttes ut](/tjenester/modernisering-av-fagsystemer).
+Ligger arkiveringen utenfor datamodellen i dag, er det lettest å bygge den inn [når et gammelt fagsystem skal moderniseres](/tjenester/modernisering-av-fagsystemer).
 
 ## Sak, dokument og part fra første rad
 
