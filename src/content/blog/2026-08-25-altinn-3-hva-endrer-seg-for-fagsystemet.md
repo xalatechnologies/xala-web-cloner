@@ -63,7 +63,7 @@ Noen etat-scopes kommer fra etaten, ikke fra Digdir. De tildeles ikke av seg sel
 
 Test i TT02 før dere peker produksjon dit.
 
-Er fagsystemet så gammelt at koblingen til Altinn 3 ikke lar seg bygge på, kan det være på tide å se på en [modernisering av fagsystemet](/tjenester/modernisering-av-fagsystemer).
+Er fagsystemet så gammelt at koblingen til Altinn 3 ikke lar seg bygge på, kan det være på tide å se på [modernisering av eldre fagsystemer](/tjenester/modernisering-av-fagsystemer).
 
 ## Innsending og melding nå
 

@@ -38,7 +38,7 @@ Kode skrives om. Data blir liggende. Datamodellen er derfor det valget som har l
 
 Vi bruker PostgreSQL som standard. Bruk tid på modellen, navngi ting slik at neste utvikler forstår dem, og la databasen håndheve det som skal være sant, ikke bare applikasjonen.
 
-Når koden rundt en database som skal leve videre må byttes, kan det gjøres som en [modernisering av fagsystemet](/tjenester/modernisering-av-fagsystemer), én modul om gangen.
+Når koden rundt en database som skal leve videre må byttes, kan det gjøres som [et moderniseringsløp modul for modul](/tjenester/modernisering-av-fagsystemer).
 
 ## Skriv ned hvorfor, ikke bare hva
 

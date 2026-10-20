@@ -67,7 +67,7 @@ Da er det én løsning med to roller. Fagregelen og saken deler historikk. Det e
 
 Saksbehandleren slipper å føre det samme to steder. Innbyggeren møter ett løp.
 
-Klarer ikke fagsystemet lenger å bære fagreglene trygt, er svaret ofte en [modernisering av fagsystemet](/tjenester/modernisering-av-fagsystemer) og ikke et nytt system ved siden av.
+Klarer ikke fagsystemet lenger å bære fagreglene trygt, er svaret ofte [hjelp til å modernisere fagsystemet](/tjenester/modernisering-av-fagsystemer) og ikke et nytt system ved siden av.
 
 Nordre Follo kommune bruker en tilskudds- og bevillingsportal levert av Xala. Portalen bærer søknad, vilkår og vedtak for de ordningene. Den er ikke kommunens sak- og arkivsystem.
 
