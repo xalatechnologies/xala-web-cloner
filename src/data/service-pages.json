@@ -434,7 +434,7 @@
       "faq": [
         {
           "question": "Hva kan automatiseres i en bevillingssak?",
-          "answer": "Alt rundt vurderingen: frister, purringer, statusvarsler og dokumentasjon av hvem som gjorde hva og når. Selve skjønnsvurderingen skal ligge hos saksbehandleren."
+          "answer": "Alt rundt vurderingen: frister, purringer, statusvarsler og dokumentasjon av hvem som gjorde hva og når. Selve skjønnsvurderingen gjøres av kommunen, ikke av systemet."
         },
         {
           "question": "Hvordan håndteres høringsuttalelser?",
@@ -493,7 +493,7 @@
       "faq": [
         {
           "question": "What can be automated in a licensing case?",
-          "answer": "Everything around the assessment: deadlines, reminders, status notices and the record of who did what and when. The discretionary judgement stays with the caseworker."
+          "answer": "Everything around the assessment: deadlines, reminders, status notices and the record of who did what and when. The discretionary assessment itself is made by the municipality, not by the system."
         },
         {
           "question": "How are consultation statements handled?",
@@ -552,7 +552,7 @@
       "faq": [
         {
           "question": "ما الذي يمكن أتمتته في قضية ترخيص؟",
-          "answer": "كل ما يحيط بالتقييم: المواعيد والتذكيرات والإشعارات وسجل الإجراءات. يبقى التقدير لموظف الحالة."
+          "answer": "كل ما يحيط بالتقييم: المواعيد والتذكيرات والإشعارات وسجل الإجراءات. التقدير الاستنسابي نفسه تجريه البلدية، وليس النظام."
         },
         {
           "question": "كيف تُعالج ردود الاستشارة؟",

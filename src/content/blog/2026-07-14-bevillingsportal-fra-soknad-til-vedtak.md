@@ -33,7 +33,7 @@ Sender systemet alle forespørslene samtidig når saken er komplett, og følger 
 
 ## Automatiser purringen, ikke vurderingen
 
-Det er fristende å tenke at automatisering betyr at systemet skal foreslå vedtak. For bevillingssaker er det feil sted å begynne — vurderingen av vandel og egnethet er skjønn, og skjønn skal utøves av mennesker med ansvar.
+Det er fristende å tenke at automatisering betyr at systemet skal foreslå vedtak. For bevillingssaker er det feil sted å begynne. Vandel og egnethet er skjønn. Den vurderingen gjøres av kommunen, ikke av systemet.
 
 Det som trygt kan automatiseres er alt rundt: frister, purringer, statusvarsler til søkeren, dokumentasjon av hvem som gjorde hva og når. Det er også der mesteparten av tidsbruken ligger.
 
@@ -53,7 +53,7 @@ Noark-integrasjonen bør være en del av datamodellen fra start: hva er saken, h
 
 ### Hva bør en bevillingsportal automatisere?
 
-Alt rundt vurderingen: frister, purringer, statusvarsler til søkeren og dokumentasjon av hvem som gjorde hva og når. Selve skjønnsvurderingen skal ligge hos saksbehandleren. Det er dessuten rundt vurderingen mesteparten av tidsbruken faktisk ligger.
+Alt rundt vurderingen: frister, purringer, statusvarsler til søkeren og dokumentasjon av hvem som gjorde hva og når. Selve skjønnsvurderingen gjøres av kommunen, ikke av systemet. Det er dessuten rundt vurderingen mesteparten av tidsbruken faktisk ligger.
 
 ### Hvordan håndterer man høringsuttalelser effektivt?
 
