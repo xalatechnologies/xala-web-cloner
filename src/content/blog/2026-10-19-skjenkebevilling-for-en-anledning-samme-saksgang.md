@@ -40,11 +40,11 @@ Likevel er det lett å la de små sakene leve sitt eget liv. Den ordinære skjen
 
 ## Samme saksgang, ulikt regelverk
 
-Når vi får spørsmål om bevillingsportalen dekker mer enn ordinære skjenke- og salgsbevillinger, er svaret vårt kort: ja, også kunnskapsprøver, eierskifter og bevilling for en bestemt del av året etter alkoholloven § 1-6. «De deler saksgang og skiller seg i regelverk.»
+Når det stilles spørsmål om bevillingsportalen dekker mer enn ordinære skjenke- og salgsbevillinger, er svaret kort: ja, også kunnskapsprøver, eierskifter og bevilling for en bestemt del av året etter alkoholloven § 1-6. «De deler saksgang og skiller seg i regelverk.»
 
 Saksgangen er det som går igjen i hver sak: en søknad, høringer, status til søkeren, et vedtak og et arkiv. Regelverket er det som skiller: hva som kreves av søkeren, og hvor lenge bevillingen gjelder. Det første kan kommunen bygge én gang. Det andre må ligge som vilkår for hver sakstype, slik at saksbehandleren slipper å huske dem. Uttalelse fra politiet og sosialtjenesten skal innhentes før søknaden avgjøres, for alle typer, etter alkoholloven § 1-7. Ved tildeling av bevilling for en enkelt bestemt anledning gjelder ikke kravet om dokumentert kunnskap for styrer og stedfortreder, etter § 1-7c.
 
-Og én ting er lik uansett type. Som vi skriver om [Bevillingsportal](/produkter/bevillingsportal): systemet fatter ikke vedtak. Skjønnsvurderingen av vandel og egnethet ligger hos saksbehandleren.
+Og én ting er lik uansett type. Som det står i [Bevillingsportal](/produkter/bevillingsportal): systemet fatter ikke vedtak. Skjønnsvurderingen av vandel og egnethet ligger hos saksbehandleren.
 
 ## Bevilling for én anledning: kort tid, samme krav til et komplett grunnlag
 
@@ -68,7 +68,7 @@ Det som ikke automatiseres, er vurderingen. Hva en bevilling for en bestemt del 
 
 Samme adresse, samme navn på døren og samme meny. Det eneste som er nytt, er eieren. Da er det fristende å behandle eierskiftet som en formalitet.
 
-Men den som skal vurderes, er den som nå skal drive. Vandel og egnethet vurderes av saksbehandleren for den nye eieren. Etter alkoholloven § 1-10 faller bevillingen bort når virksomheten overdras, og når alle eller en dominerende andel av aksjene eller andelene overdras. Den gamle bevillingen kan likevel gjelde i inntil tre måneder, hvis bevillingsmyndigheten får beskjed og det søkes om ny bevilling uten ugrunnet opphold, senest innen 30 dager. Uttalelse fra politiet og sosialtjenesten skal innhentes før den nye søknaden avgjøres, etter § 1-7. Hvordan uttalelsene fra politi og sosialtjeneste brukes, har vi skrevet om i [Skjenkebevilling: uttalelse fra politi og sosial kommer før vedtaket](/blogg/skjenkebevilling-uttalelse-fra-politi-og-sosial).
+Men den som skal vurderes, er den som nå skal drive. Vandel og egnethet vurderes av saksbehandleren for den nye eieren. Etter alkoholloven § 1-10 faller bevillingen bort når virksomheten overdras, og når alle eller en dominerende andel av aksjene eller andelene overdras. Den gamle bevillingen kan likevel gjelde i inntil tre måneder, hvis bevillingsmyndigheten får beskjed og det søkes om ny bevilling uten ugrunnet opphold, senest innen 30 dager. Uttalelse fra politiet og sosialtjenesten skal innhentes før den nye søknaden avgjøres, etter § 1-7. Hvordan uttalelsene fra politi og sosialtjeneste brukes, er det skrevet om i [Skjenkebevilling: uttalelse fra politi og sosial kommer før vedtaket](/blogg/skjenkebevilling-uttalelse-fra-politi-og-sosial).
 
 Det flyten kan gjøre, er å holde historikken for stedet samlet. Når eierskiftet ligger i samme flyt som den opprinnelige bevillingen, ser saksbehandleren tidligere vedtak og saksdokumenter uten å lete i flere systemer. Den nye vurderingen blir fortsatt ny, men den starter ikke i blinde.
 
@@ -80,6 +80,6 @@ Det andre er én måte å vise status på. Søkeren får de samme varslene enten
 
 Det tredje er vedtakene. Hvert vedtak skal ha begrunnelse og opplyse om klageadgang etter forvaltningsloven av 1967, og det er enklere å få til likt når malen er den samme for alle sakstyper.
 
-Og så er det tiden. Hvor den faktisk går i en bevillingssak, og hva som kan automatiseres, har vi gått gjennom i [Bevillingssaker: hvor tiden faktisk går, og hva som kan automatiseres](/blogg/bevillingsportal-fra-soknad-til-vedtak). Poenget her er enklere: tre sakstyper i én flyt betyr én ting å lære, én ting å forbedre og ett sted å lete.
+Og så er det tiden. Hvor den faktisk går i en bevillingssak, og hva som kan automatiseres, er det gått gjennom i [Bevillingssaker: hvor tiden faktisk går, og hva som kan automatiseres](/blogg/bevillingsportal-fra-soknad-til-vedtak). Poenget her er enklere: tre sakstyper i én flyt betyr én ting å lære, én ting å forbedre og ett sted å lete.
 
 [Se hvordan bevillingsportalen samler søknad om skjenke- og salgsbevilling i én saksgang.](/produkter/bevillingsportal)
