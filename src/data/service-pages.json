@@ -38,7 +38,7 @@
         },
         {
           "title": "Automatisering med skjønnet i behold",
-          "body": "Frister, purringer, statusvarsler og kontroll av vedlegg automatiseres. Skjønnsvurderingen blir liggende hos saksbehandleren."
+          "body": "Frister, purringer, statusvarsler og kontroll av vedlegg automatiseres. Skjønnsvurderingen gjøres av kommunen, ikke av systemet."
         },
         {
           "title": "Universell utforming",
@@ -101,7 +101,7 @@
         },
         {
           "title": "Automation that leaves judgement alone",
-          "body": "Deadlines, reminders, status notices and attachment checks are automated. The discretionary assessment stays with the caseworker."
+          "body": "Deadlines, reminders, status notices and attachment checks are automated. The discretionary assessment is made by the municipality, not by the system."
         },
         {
           "title": "Accessibility",
@@ -164,7 +164,7 @@
         },
         {
           "title": "أتمتة تُبقي التقدير للإنسان",
-          "body": "تُؤتمت المواعيد والتذكيرات والإشعارات وفحص المرفقات، ويبقى التقدير لموظف الحالة."
+          "body": "تُؤتمت المواعيد والتذكيرات والإشعارات وفحص المرفقات. التقدير الاستنسابي تجريه البلدية، وليس النظام."
         },
         {
           "title": "إمكانية الوصول",
@@ -446,7 +446,7 @@
         },
         {
           "question": "Dekker portalen både skjenke- og salgsbevilling?",
-          "answer": "Ja, og også kunnskapsprøver, eierskifter og midlertidige bevillinger. De deler saksgang og skiller seg i regelverk."
+          "answer": "Ja, og også kunnskapsprøver, eierskifter og bevilling for en bestemt del av året. De deler saksgang og skiller seg i regelverk."
         }
       ],
       "features": [
@@ -454,7 +454,7 @@
         "Parallell utsending av høringer med frist",
         "Automatisk purring på manglende uttalelser",
         "Kunnskapsprøver og eierskifter",
-        "Midlertidige og enkeltanledningsbevillinger",
+        "Bevillinger for en bestemt del av året og enkeltanledningsbevillinger",
         "Vedtak med begrunnelse og klageadgang",
         "Statusvarsler til søkeren underveis",
         "Noark-arkivering av hele saksgangen"
@@ -505,7 +505,7 @@
         },
         {
           "question": "Does it cover both serving and sales licences?",
-          "answer": "Yes, along with knowledge tests, changes of ownership and temporary licences. They share a case flow and differ in regulation."
+          "answer": "Yes, along with knowledge tests, changes of ownership and a licence for a specified part of the year. They share a case flow and differ in regulation."
         }
       ],
       "features": [
@@ -513,7 +513,7 @@
         "Parallel consultation requests with deadlines",
         "Automatic chasing of missing statements",
         "Knowledge tests and changes of ownership",
-        "Temporary and single-occasion licences",
+        "Licences for a specified part of the year and single-occasion licences",
         "Decisions with reasoning and right of appeal",
         "Status notifications to the applicant",
         "Noark archiving of the whole case flow"
@@ -564,7 +564,7 @@
         },
         {
           "question": "هل تغطّي تراخيص التقديم والبيع معاً؟",
-          "answer": "نعم، وكذلك اختبارات المعرفة وتغيّر الملكية والتراخيص المؤقتة."
+          "answer": "نعم، وكذلك اختبارات المعرفة وتغيّر الملكية وترخيص لجزء محدد من السنة."
         }
       ],
       "features": [
@@ -572,7 +572,7 @@
         "إرسال متوازٍ للاستشارات بمواعيد",
         "ملاحقة تلقائية للردود الناقصة",
         "اختبارات المعرفة وتغيّر الملكية",
-        "تراخيص مؤقتة ولمناسبة واحدة",
+        "تراخيص لجزء محدد من السنة ولمناسبة واحدة",
         "قرارات مع التبرير وحق التظلّم",
         "إشعارات حالة للمتقدّم",
         "أرشفة Noark لكامل المسار"

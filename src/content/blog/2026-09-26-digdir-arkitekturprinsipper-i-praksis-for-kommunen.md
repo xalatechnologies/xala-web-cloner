@@ -136,7 +136,7 @@ Vi bygger løsninger som skal tåle disse spørsmålene, med [integrasjoner som 
 
 I [Tilskuddsportal](/produkter/tilskuddsportal) spør skjemaet bare om det som påvirker vedtaket. Det lagrer underveis. Reglene ligger ett sted, så de kan endres når retningslinjene endres. Universell utforming ligger inne fra start. Saksbehandleren får en kø, ikke en innboks.
 
-I [Bevillingsportal](/produkter/bevillingsportal) går høringene parallelt. Frister, purringer og dokumentasjon av hvem som gjorde hva og når automatiseres. Skjønnsvurderingen ligger hos saksbehandleren. Portalen fatter ikke vedtaket. Noark ligger i datamodellen fra start.
+I [Bevillingsportal](/produkter/bevillingsportal) går høringene parallelt. Frister, purringer og dokumentasjon av hvem som gjorde hva og når automatiseres. Skjønnsvurderingen gjøres av kommunen, ikke av systemet. Portalen fatter ikke vedtaket. Noark ligger i datamodellen fra start.
 
 [Arkitekturprinsipper](/produkter/arkitekturprinsipper) er produktet vi bygger når en kommune skal følge Digdirs sju arkitekturprinsipper i egne løsninger. Det peker på Digdir og omskriver ikke prinsippene. Det hjelper kommunen å holde dem i valgene som faktisk bygges, for eksempel med konfigurasjon som data, så kommunen kan sette opp regler og skjemaer selv.
 

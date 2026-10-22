@@ -60,7 +60,7 @@ Ja. Helsedir skriver at oppgaven skal dekke forrige års omsetning og forventet 
 Nei. Xala kan kjøre formelen og sende feltene til Visma. Xala setter ikke satsen. Xala eier ikke Visma.
 
 **Skal bevillingsvedtaket automatiseres når gebyret er regnet?**
-Nei. Formelen og fakturafeltene kan automatiseres. Vedtaket blir hos saksbehandleren. En mangelfull oppgave sjekkes av et menneske.
+Nei. Formelen og fakturafeltene kan automatiseres. Vedtaket fattes av kommunestyret eller den kommunestyret har delegert myndigheten til. En mangelfull oppgave sjekkes av et menneske.
 
 ## Relaterte artikler
 

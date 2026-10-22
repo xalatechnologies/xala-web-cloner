@@ -46,7 +46,7 @@ Kommunen er behandlingsansvarlig. Det skal finnes databehandleravtale med 360, V
 
 Det som kan kobles med [systemintegrasjon](/tjenester/systemintegrasjon): journalføring i 360 når søknaden er komplett, og fakturafelt til Visma når gebyr er i saken. Én skriving. To systemer som lytter.
 
-Det som ikke skal automatiseres: å behandle «vi har 360 og Visma» som integrasjon. Og selve bevillingsvedtaket. Vedtaket blir hos saksbehandleren.
+Det som ikke skal automatiseres: å behandle «vi har 360 og Visma» som integrasjon. Og selve bevillingsvedtaket. Vedtaket fattes av kommunestyret eller den kommunestyret har delegert myndigheten til.
 
 Nordre Follo vil ha koblingen. Det er et ønske i spesifikasjonen, ikke et ferdig Xala-produkt.
 
