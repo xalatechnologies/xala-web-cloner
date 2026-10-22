@@ -38,7 +38,7 @@
         },
         {
           "title": "Automatisering med skjønnet i behold",
-          "body": "Frister, purringer, statusvarsler og kontroll av vedlegg automatiseres. Skjønnsvurderingen gjøres av kommunen, ikke av systemet."
+          "body": "Frister, purringer, statusvarsler og kontroll av vedlegg automatiseres. Skjønnsvurderingen gjøres av kommunen eller etaten, ikke av systemet."
         },
         {
           "title": "Universell utforming",
@@ -101,7 +101,7 @@
         },
         {
           "title": "Automation that leaves judgement alone",
-          "body": "Deadlines, reminders, status notices and attachment checks are automated. The discretionary assessment is made by the municipality, not by the system."
+          "body": "Deadlines, reminders, status notices and attachment checks are automated. The discretionary assessment is made by the municipality or agency, not by the system."
         },
         {
           "title": "Accessibility",
@@ -164,7 +164,7 @@
         },
         {
           "title": "أتمتة تُبقي التقدير للإنسان",
-          "body": "تُؤتمت المواعيد والتذكيرات والإشعارات وفحص المرفقات. التقدير الاستنسابي تجريه البلدية، وليس النظام."
+          "body": "تُؤتمت المواعيد والتذكيرات والإشعارات وفحص المرفقات. التقدير الاستنسابي تجريه البلدية أو الجهة، وليس النظام."
         },
         {
           "title": "إمكانية الوصول",
@@ -446,7 +446,7 @@
         },
         {
           "question": "Dekker portalen både skjenke- og salgsbevilling?",
-          "answer": "Ja, og også kunnskapsprøver, eierskifter og bevilling for en bestemt del av året. De deler saksgang og skiller seg i regelverk."
+          "answer": "Ja, og også kunnskapsprøver, eierskifter og bevillinger for en bestemt del av året. De deler saksgang og skiller seg i regelverk."
         }
       ],
       "features": [
@@ -505,7 +505,7 @@
         },
         {
           "question": "Does it cover both serving and sales licences?",
-          "answer": "Yes, along with knowledge tests, changes of ownership and a licence for a specified part of the year. They share a case flow and differ in regulation."
+          "answer": "Yes, along with knowledge tests, changes of ownership and licences for a specified part of the year. They share a case flow and differ in regulation."
         }
       ],
       "features": [
@@ -564,7 +564,7 @@
         },
         {
           "question": "هل تغطّي تراخيص التقديم والبيع معاً؟",
-          "answer": "نعم، وكذلك اختبارات المعرفة وتغيّر الملكية وترخيص لجزء محدد من السنة."
+          "answer": "نعم، وكذلك اختبارات المعرفة وتغيّر الملكية والتراخيص لجزء محدد من السنة."
         }
       ],
       "features": [
