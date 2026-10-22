@@ -25,7 +25,7 @@
         },
         {
           "title": "Purring, ikke skjønn",
-          "body": "Frister, purringer, statusvarsler og dokumentasjon av hvem som gjorde hva automatiseres. Selve vurderingen skal ligge hos saksbehandleren."
+          "body": "Frister, purringer, statusvarsler og dokumentasjon av hvem som gjorde hva automatiseres. Skjønnsvurderingen av vandel og egnethet gjøres av kommunen, ikke av systemet."
         },
         {
           "title": "Ærlig status uten å ringe",
@@ -39,7 +39,7 @@
       "faq": [
         {
           "question": "Hva kan automatiseres i en bevillingssak?",
-          "answer": "Alt rundt vurderingen: frister, purringer, statusvarsler og dokumentasjon av hvem som gjorde hva og når. Selve skjønnsvurderingen skal ligge hos saksbehandleren."
+          "answer": "Alt rundt vurderingen: frister, purringer, statusvarsler og dokumentasjon av hvem som gjorde hva og når. Skjønnsvurderingen av vandel og egnethet gjøres av kommunen, ikke av systemet."
         },
         {
           "question": "Hvordan håndteres høringsuttalelser?",
@@ -63,7 +63,7 @@
       "doesHeading": "What it does",
       "does": "The form catches what is missing while the applicant is still filling it in. Consultations run in parallel. Reminders and deadlines are automated. The applicant sees an honest status without phoning. Noark is in the data model from the start.",
       "doesNotHeading": "What it does not do",
-      "doesNot": "It does not make the decision. Judgement on conduct and suitability stays with the caseworker. It does not replace the archive. It archives to Noark. It is not a national shared component.",
+      "doesNot": "It does not make the decision. The discretionary assessment of conduct and suitability is made by the municipality, not by the system. It does not replace the archive. It archives to Noark. It is not a national shared component.",
       "capabilityHeading": "What is worth building",
       "capabilities": [
         {
@@ -114,7 +114,7 @@
       "doesHeading": "ماذا يفعل",
       "does": "يلتقط النموذج النواقص بينما ما يزال المتقدّم يملأ الطلب. تسير الاستشارات بالتوازي. تُؤتمت التذكيرات والمهل. يرى المتقدّم حالة صادقة دون أن يتصل. Noark جزء من نموذج البيانات من البداية.",
       "doesNotHeading": "ما لا يفعله",
-      "doesNot": "لا يتّخذ القرار. تقدير السيرة والأهلية يبقى لدى موظف الحالة. لا يستبدل الأرشيف. يؤرشف وفق Noark. ليس مكوّناً وطنياً مشتركاً.",
+      "doesNot": "لا يتّخذ القرار. التقدير الاستنسابي للسيرة والأهلية تجريه البلدية، وليس النظام. لا يستبدل الأرشيف. يؤرشف وفق Noark. ليس مكوّناً وطنياً مشتركاً.",
       "capabilityHeading": "ما يستحق البناء",
       "capabilities": [
         {
