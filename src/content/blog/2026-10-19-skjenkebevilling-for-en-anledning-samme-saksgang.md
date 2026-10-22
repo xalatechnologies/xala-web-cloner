@@ -25,7 +25,7 @@ faq:
   - question: "Må en bevilling for én anledning gjennom samme saksgang som en vanlig skjenkebevilling?"
     answer: "Saksgangen kan være den samme. Alkoholloven § 1-7 krever uttalelse fra politiet og sosialtjenesten for alle typer. Ved tildeling av bevilling for en enkelt bestemt anledning krever § 1-7c ikke dokumentert kunnskap hos styrer og stedfortreder."
   - question: "Kan portalen avgjøre slike saker automatisk?"
-    answer: "Nei. Frister, purringer og status kan automatiseres, men vurderingen ligger hos saksbehandleren."
+    answer: "Nei. Frister, purringer og status kan automatiseres, men vurderingen gjøres av kommunen, ikke av portalen."
   - question: "Hvorfor bør eierskifte ligge i samme flyt?"
     answer: "Fordi det er en ny vurdering av en eksisterende virksomhet, og historikken bør være samlet ett sted."
   - question: "Må slike saker arkiveres?"
@@ -64,7 +64,7 @@ En slik sak kommer ofte med et tydelig press. Virksomheten vil holde åpent, sø
 
 Fart i slike saker kommer fra færre ventepunkter, ikke fra færre steg. La søkeren se status uten å ringe, og hold statusene ærlige: står saken på høring, skal det stå at den står på høring. Statusvarsler underveis tar mange av samtalene før de oppstår. Automatisk purring på manglende uttalelser gjør at ingen trenger å følge med på en kalender.
 
-Det som ikke automatiseres, er vurderingen. Du avgjør ut fra regelverket hva en bevilling for en bestemt del av året kan omfatte. Portalen gjør det ikke. Automatiser purringen, ikke vurderingen.
+Det som ikke automatiseres, er vurderingen. Hva en bevilling for en bestemt del av året kan omfatte, avgjør kommunen ut fra regelverket. Portalen gjør det ikke. Automatiser purringen, ikke vurderingen.
 
 ## Eierskifte: ny eier, samme virksomhet, ny vurdering
 
