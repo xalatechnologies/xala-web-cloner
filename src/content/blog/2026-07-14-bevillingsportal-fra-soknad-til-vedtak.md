@@ -33,7 +33,7 @@ Sender systemet alle forespørslene samtidig når saken er komplett, og følger 
 
 ## Automatiser purringen, ikke vurderingen
 
-Det er fristende å tenke at automatisering betyr at systemet skal foreslå vedtak. For bevillingssaker er det feil sted å begynne. Selve skjønnsvurderingen gjøres av kommunen, ikke av systemet.
+Det er fristende å tenke at automatisering betyr at systemet skal foreslå vedtak. For bevillingssaker er det feil sted å begynne. Vandel og egnethet er skjønn. Den vurderingen gjøres av kommunen, ikke av systemet.
 
 Det som trygt kan automatiseres er alt rundt: frister, purringer, statusvarsler til søkeren, dokumentasjon av hvem som gjorde hva og når. Det er også der mesteparten av tidsbruken ligger.
 

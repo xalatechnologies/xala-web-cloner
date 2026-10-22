@@ -25,7 +25,7 @@
         },
         {
           "title": "Purring, ikke skjønn",
-          "body": "Frister, purringer, statusvarsler og dokumentasjon av hvem som gjorde hva automatiseres. Selve skjønnsvurderingen gjøres av kommunen, ikke av systemet."
+          "body": "Frister, purringer, statusvarsler og dokumentasjon av hvem som gjorde hva automatiseres. Vurderingen gjør kommunen."
         },
         {
           "title": "Ærlig status uten å ringe",
@@ -76,7 +76,7 @@
         },
         {
           "title": "Reminders, not judgement",
-          "body": "Deadlines, reminders, status notices and a record of who did what are automated. The discretionary assessment itself is made by the municipality, not by the system."
+          "body": "Deadlines, reminders, status notices and a record of who did what are automated. The municipality makes the assessment."
         },
         {
           "title": "Honest status without a phone call",
@@ -127,7 +127,7 @@
         },
         {
           "title": "تذكير لا تقدير",
-          "body": "المهَل والتذكيرات وإشعارات الحالة وتوثيق من فعل ماذا تُؤتمت. التقدير الاستنسابي نفسه تجريه البلدية، وليس النظام."
+          "body": "المهَل والتذكيرات وإشعارات الحالة وتوثيق من فعل ماذا تُؤتمت. البلدية هي التي تجري التقدير."
         },
         {
           "title": "حالة صادقة دون اتصال",
