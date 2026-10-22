@@ -25,7 +25,7 @@
         },
         {
           "title": "Purring, ikke skjønn",
-          "body": "Frister, purringer, statusvarsler og dokumentasjon av hvem som gjorde hva automatiseres. Skjønnsvurderingen av vandel og egnethet gjøres av kommunen, ikke av systemet."
+          "body": "Frister, purringer, statusvarsler og dokumentasjon av hvem som gjorde hva automatiseres. Selve skjønnsvurderingen gjøres av kommunen, ikke av systemet."
         },
         {
           "title": "Ærlig status uten å ringe",
@@ -39,7 +39,7 @@
       "faq": [
         {
           "question": "Hva kan automatiseres i en bevillingssak?",
-          "answer": "Alt rundt vurderingen: frister, purringer, statusvarsler og dokumentasjon av hvem som gjorde hva og når. Skjønnsvurderingen av vandel og egnethet gjøres av kommunen, ikke av systemet."
+          "answer": "Alt rundt vurderingen: frister, purringer, statusvarsler og dokumentasjon av hvem som gjorde hva og når. Selve skjønnsvurderingen gjøres av kommunen, ikke av systemet."
         },
         {
           "question": "Hvordan håndteres høringsuttalelser?",
@@ -76,7 +76,7 @@
         },
         {
           "title": "Reminders, not judgement",
-          "body": "Deadlines, reminders, status notices and a record of who did what are automated. The assessment itself stays with the caseworker."
+          "body": "Deadlines, reminders, status notices and a record of who did what are automated. The discretionary assessment itself is made by the municipality, not by the system."
         },
         {
           "title": "Honest status without a phone call",
@@ -90,7 +90,7 @@
       "faq": [
         {
           "question": "What can be automated in a licensing case?",
-          "answer": "Everything around the assessment: deadlines, reminders, status notices and a record of who did what and when. Judgement stays with the caseworker."
+          "answer": "Everything around the assessment: deadlines, reminders, status notices and a record of who did what and when. The discretionary assessment itself is made by the municipality, not by the system."
         },
         {
           "question": "How are consultation statements handled?",
@@ -127,7 +127,7 @@
         },
         {
           "title": "تذكير لا تقدير",
-          "body": "المهَل والتذكيرات وإشعارات الحالة وتوثيق من فعل ماذا تُؤتمت. التقييم نفسه يبقى لدى موظف الحالة."
+          "body": "المهَل والتذكيرات وإشعارات الحالة وتوثيق من فعل ماذا تُؤتمت. التقدير الاستنسابي نفسه تجريه البلدية، وليس النظام."
         },
         {
           "title": "حالة صادقة دون اتصال",
@@ -141,7 +141,7 @@
       "faq": [
         {
           "question": "ما الذي يمكن أتمتته في معاملة ترخيص؟",
-          "answer": "كل ما حول التقييم: المهَل والتذكيرات وإشعارات الحالة وتوثيق من فعل ماذا ومتى. التقدير نفسه يبقى لدى موظف الحالة."
+          "answer": "كل ما حول التقييم: المهَل والتذكيرات وإشعارات الحالة وتوثيق من فعل ماذا ومتى. التقدير الاستنسابي نفسه تجريه البلدية، وليس النظام."
         },
         {
           "question": "كيف تُعالَج بيانات الاستشارة؟",

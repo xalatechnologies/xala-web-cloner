@@ -33,7 +33,7 @@ export const TJENESTER_HUB_SECTIONS: HubSection[] = [
     heading: "Portaler som er i drift",
     paragraphs: [
       "Tre portaler. De er levert. De kan spre til neste kommune.",
-      "[Bevillingsportal](/produkter/bevillingsportal). Søknad om skjenke- og salgsbevilling. Høringene går parallelt. Søkeren ser ærlig status. Noark fra start. Portalen fatter ikke vedtaket.",
+      "[Bevillingsportal](/produkter/bevillingsportal). Søknad om skjenke- og salgsbevilling. Høringene går parallelt. Søkeren ser ærlig status. Noark fra start. Selve skjønnsvurderingen gjøres av kommunen, ikke av systemet.",
       "[Tilskuddsportal](/produkter/tilskuddsportal). Søkeren blir ferdig. Saksbehandleren får et komplett grunnlag. Kø, ikke innboks. Portalen fatter ikke vedtaket.",
       "[Redusert foreldrebetaling](/produkter/redusert-foreldrebetaling). Henter oppgjør inn i saken når det finnes. Unntaket står. Varig nedgang er en vurdering. Xala kjører ikke SFO-portalen.",
       "Digilist er i drift på [digilist.no](https://digilist.no). Booking av lokaler. En annen jobb enn sak og vedtak.",
