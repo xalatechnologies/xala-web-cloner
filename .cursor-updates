@@ -1,3 +1,9 @@
+Skjenkebevilling én anledning: impersonal tone, cream cover restore
+
+- Blog post skjenkebevilling-for-en-anledning-samme-saksgang: impersonal Bokmål from 491c07ba with kept legal updates (§ 4-4 tredje ledd, § 1-10 30 dager, FAQ kommunen vurderer)
+- Restored cream TRE TOG cover (1200x675), removed -v2 asset
+- pnpm build pass on branch cursor/skjenkebevilling-impersonal-cover-ade7
+
 verify-live: visible hashtags in topicHashtags=false path (R1 of #196)
 
 - Cherry-picked 1e9432e onto main: isPostTopicHead uses visibleHtmlHashtags when topicHashtags is false
