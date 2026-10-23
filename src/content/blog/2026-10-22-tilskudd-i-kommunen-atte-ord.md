@@ -8,7 +8,7 @@ author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Kommune"
 cover: "/images/blog/tilskudd-i-kommunen-atte-ord.webp"
-coverAlt: '«Infografikk på kremfarget bakgrunn: en åpen oppslagsbok med åtte faner (utlysning, tildelingskriterier, vurdering, tilsagn, vilkår, utbetaling, rapporteringskrav og klageadgang), der fanen for tilsagn er markert i oransje. Overskrift «TILSKUDD I KOMMUNEN: ÅTTE ORD».»'
+coverAlt: 'Infografikk på kremfarget bakgrunn: en åpen oppslagsbok med åtte faner (utlysning, tildelingskriterier, vurdering, tilsagn, vilkår, utbetaling, rapporteringskrav og klageadgang), der fanen for tilsagn er markert i oransje. Overskrift «TILSKUDD I KOMMUNEN: ÅTTE ORD».'
 keywords:
   - tilskuddsordning
   - tilskuddsbrev
