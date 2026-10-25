@@ -2,13 +2,13 @@
 slug: tilgangsstyring-i-fagsystemet-grensetilfeller
 title: "Tilgangsstyring i fagsystemet: fem grensetilfeller"
 seoTitle: "Tilgangsstyring i fagsystemet: fem grensetilfeller"
-description: "Tilgangsstyring i fagsystemet holder først når den tåler unntakene: vikaren, den inhabile, den som slutter, leverandøren og KI-verktøyet. Slik bør rollene settes opp for hvert av dem."
+description: "Tilgangsstyring i fagsystemet holder når den tåler unntakene: vikaren, den inhabile, den som slutter, leverandøren og KI-verktøyet. Slik settes rollene opp."
 date: 2026-10-24
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "IT-leder"
 cover: "/images/blog/tilgangsstyring-i-fagsystemet-grensetilfeller.webp"
-coverAlt: "Krem infografikk av årringer sett ovenfra, fem ringer med porter merket vikar, inhabil, slutter, leverandør og KI rundt en oransje kjerne merket rolle, under overskriften Tilgangsstyring: fem grensetilfeller."
+coverAlt: "Infografikk på kremfarget bakgrunn: konsentriske ringer rundt en oransje kjerne merket rolle, med etikettene vikar, inhabil, slutter, leverandør og KI. Overskrift «TILGANGSSTYRING: FEM GRENSETILFELLER»."
 keywords:
   - tilgangsstyring i fagsystemet
   - rollebasert tilgang
@@ -42,7 +42,7 @@ Tilgang skal følge rollen og ordningen, ikke personen. Den regelen er lett å s
 
 En ny saksbehandler starter. Noen spør hvem saksbehandleren skal ligne på, og kopierer rettighetene til en kollega.
 
-Det er der det glipper. Rettighetene bør høre til en rolle, som saksbehandler for en bestemt ordning, og personen bør få rollen. Da gir dere roller per ordning, ikke tilgang per navn. Det kalles minste privilegium: hver bruker får det oppgaven krever, og ikke mer.
+Det er der det glipper. Rettighetene bør høre til en rolle, som saksbehandler for en bestemt ordning, og personen bør få rollen. Da gis roller per ordning, ikke tilgang per navn. Det kalles minste privilegium: hver bruker får det oppgaven krever, og ikke mer.
 
 Rollene koster lite når de er bygget inn i datamodellen fra start. Lagt på et ferdig system blir de en omskriving.
 
@@ -52,13 +52,13 @@ Den faste går ut i permisjon. Vikaren får en kopi av kontoen, og kopien blir l
 
 En vikar bør få den samme rollen som andre i ordningen, men som en midlertidig rolle med sluttdato i systemet. Datoen settes når rollen gis, ikke når noen husker å rydde.
 
-Den som tildeler en midlertidig rolle, bør også sette når den skal ta slutt.
+Sluttdato for en midlertidig rolle bør settes når rollen gis.
 
 ## Den inhabile mister saken, ikke resten av jobben
 
-En saksbehandler oppdager at saksbehandleren kjenner søkeren. Saken skal over til en kollega, men resten av porteføljen er like riktig som før.
+En saksbehandler oppdager at søkeren er en bekjent. Saken skal over til en kollega, men resten av porteføljen er like riktig som før.
 
-Etter forvaltningsloven 1967 § 6 skal den som er inhabil, ikke behandle saken. Tilgangen bør derfor sperres for den ene saken, mens rollen i ordningen står. Saken følger med til kollegaen, sammen med beskjeden om at forrige saksbehandler er inhabil. Hvordan det overføres, har vi skrevet om i [Ved inhabilitet skal saken følge med](https://xala.no/blogg/saken-bytter-behandler-ved-inhabilitet).
+Etter forvaltningsloven 1967 § 6 skal den som er inhabil, ikke behandle saken. Tilgangen bør derfor sperres for den ene saken, mens rollen i ordningen står. Saken følger med til kollegaen, sammen med beskjeden om at forrige saksbehandler er inhabil. Hvordan det overføres, er det skrevet om i [Ved inhabilitet skal saken følge med](/blogg/saken-bytter-behandler-ved-inhabilitet).
 
 Inhabilitet er et unntak på saksnivå, og systemet bør kunne sperre på saksnivå.
 
@@ -66,7 +66,7 @@ Inhabilitet er et unntak på saksnivå, og systemet bør kunne sperre på saksni
 
 En ansatt slutter på fredag. Kontoen stenges i virksomhetens katalog, men fagsystemet har sin egen bruker som fortsatt virker.
 
-Ansatte bør logge inn i fagsystemet med virksomhetens egen identitetsløsning. Når kontoen stenges der, skal fagsystemet følge uten et eget steg. Innlogging for innbyggere utenfra er en annen sak, som vi går gjennom i [ID-porten eller Maskinporten: hva velger du](https://xala.no/blogg/id-porten-eller-maskinporten-hva-velger-du).
+Ansatte bør logge inn i fagsystemet med virksomhetens egen identitetsløsning. Når kontoen stenges der, skal fagsystemet følge uten et eget steg. Innlogging for innbyggere utenfra er en annen sak, som er gått gjennom i [ID-porten eller Maskinporten: hva velger du](/blogg/id-porten-eller-maskinporten-hva-velger-du).
 
 Én konto å stenge er bedre enn mange å huske.
 
@@ -76,16 +76,16 @@ Noe feiler en kveld, og leverandøren logger inn for å finne feilen. Med samme 
 
 Leverandørtilgang bør være en egen rolle, avtalt i forvaltningsavtalen. Den gir tilgang til drift og feilsøking. Trenger en oppgave innsyn i en sak, bør det gis for den oppgaven og trekkes tilbake etterpå.
 
-Spør hva leverandøren faktisk trenger for å holde systemet oppe, og gi ikke mer.
+Leverandøren bør få det som trengs for å holde systemet oppe, og ikke mer.
 
 ## KI-verktøyet ser aldri mer enn brukeren bak det
 
 En saksbehandler ber et KI-verktøy oppsummere sine saker. Verktøyet er koblet til systemet med en bred tjenestekonto og kan lese alle ordninger.
 
-Tilgangsstyringen hører til systemet, ikke til modellen. Verktøyet skal arve rettighetene til personen som bruker det, med autorisasjon per operasjon og lesetilgang først. Mer om hvordan det settes opp, står i [Model Context Protocol for interne AI-verktøy](https://xala.no/blogg/mcp-og-verktoytilgang-for-interne-ai-verktoy).
+Tilgangsstyringen hører til systemet, ikke til modellen. Verktøyet skal arve rettighetene til personen som bruker det, med autorisasjon per operasjon og lesetilgang først. Mer om hvordan det settes opp, står i [MCP og verktøytilgang for interne KI-verktøy](/blogg/mcp-og-verktoytilgang-for-interne-ai-verktoy).
 
-Gi KI-verktøyet brukerens rolle, ikke en egen og bredere en.
+KI-verktøyet bør få brukerens rolle, ikke en egen og bredere en.
 
 Tilgangsstyring som er tenkt inn fra start, tåler unntakene uten nye regler.
 
-[Se hvordan vi holder tilgangsstyringen ved like etter lansering.](https://xala.no/tjenester/forvaltning-og-drift)
+[Se hvordan tilgangsstyringen holdes ved like etter lansering.](/tjenester/forvaltning-og-drift)
