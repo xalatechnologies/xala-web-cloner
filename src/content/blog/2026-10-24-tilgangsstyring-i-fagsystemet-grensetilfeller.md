@@ -2,7 +2,7 @@
 slug: tilgangsstyring-i-fagsystemet-grensetilfeller
 title: "Tilgangsstyring i fagsystemet: fem grensetilfeller"
 seoTitle: "Tilgangsstyring i fagsystemet: fem grensetilfeller"
-description: "Tilgangsstyring i fagsystemet holder når den tåler unntakene: vikaren, den inhabile, den som slutter, leverandøren og KI-verktøyet. Slik settes rollene opp."
+description: "Tilgangsstyring i fagsystemet holder når den tåler unntakene: vikaren, den inhabile, den som slutter, leverandøren, KI-verktøyet. Slik settes rollene opp."
 date: 2026-10-24
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
