@@ -34,4 +34,16 @@ describe("HubRichInline", () => {
     expect(screen.queryByRole("link")).toBeNull();
     expect(screen.getByText(/Bad evil and slash/)).toBeInTheDocument();
   });
+
+  it("turns a [label](/blogg/...) feature into an anchor", () => {
+    renderInline("Parallellkjøring, [testet automatisk](/blogg/testautomatisering-for-fagsystemer).");
+    const link = screen.getByRole("link", { name: "testet automatisk" });
+    expect(link).toHaveAttribute("href", "/blogg/testautomatisering-for-fagsystemer");
+  });
+
+  it("renders a plain feature with no markdown link as plain text", () => {
+    renderInline("Datamigrasjon med avstemming");
+    expect(screen.queryByRole("link")).toBeNull();
+    expect(screen.getByText("Datamigrasjon med avstemming")).toBeInTheDocument();
+  });
 });
