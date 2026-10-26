@@ -1366,11 +1366,14 @@
     "postSlugs": [
       "modernisere-fagsystem-uten-driftsstans"
     ],
+    "singleCta": true,
     "no": {
-      "title": "Modernisering av fagsystemer",
-      "metaTitle": "Modernisering av fagsystemer uten driftsstans | Xala",
-      "metaDescription": "Vi moderniserer fagsystemer modul for modul bak en fasade, slik at driften går mens systemet byttes ut.",
+      "title": "Modernisering av fagsystemer for offentlig sektor",
+      "metaTitle": "Modernisering av fagsystemer for offentlig sektor",
+      "metaDescription": "Modernisering av fagsystemer for offentlig sektor: vi kartlegger avhengighetene og bytter én modul om gangen mens systemet er i drift.",
       "intro": "Et gammelt fagsystem er sjelden ett problem. Det er en samling avhengigheter som er blitt usynlige fordi de har fungert lenge. Modernisering handler først om å finne dem, og deretter om å bytte ut én om gangen mens alt annet fortsetter å virke.",
+      "definitionHeading": "Hva er et fagsystem, og når må det moderniseres?",
+      "definitionBody": "Et fagsystem bærer fagreglene og dataene for én type sak. Flere signaler pleier å dukke opp samtidig når det er på tide å modernisere det. Systemet har samlet teknisk gjeld som gjør vedlikehold og videreutvikling tyngre for hvert år. Det mangler et API, og alt som går inn og ut, må gjennom databasen, en fil eller en eksportjobb, slik vi beskriver i [fagsystem uten API](/blogg/fagsystem-uten-api). Det klarer ikke å koble seg til de nasjonale komponentene det skal snakke med, som [Altinn 3](/blogg/altinn-3-hva-endrer-seg-for-fagsystemet). Arkiveringen er limt på i etterkant i stedet for bygget inn i datamodellen fra start. Og systemet lever lenger enn [rammeverkene](/blogg/teknologivalg-for-fagsystemer-som-skal-vare) det ble bygget med.",
       "problemHeading": "Hvorfor store omskrivinger feiler",
       "problem": "Den vanligste planen er å bygge det nye ved siden av det gamle og bytte på en gitt dato. Den datoen kommer sjelden, fordi det gamle systemet gjør flere ting enn noen husker, og fordi alt må være ferdig samtidig. Risikoen samles på ett punkt i stedet for å fordeles.",
       "capabilityHeading": "Slik gjør vi det",
@@ -1398,6 +1401,14 @@
       ],
       "faq": [
         {
+          "question": "Hva er et fagsystem?",
+          "answer": "Et fagsystem bærer fagreglene og dataene for én type sak."
+        },
+        {
+          "question": "Når bør et fagsystem moderniseres?",
+          "answer": "Når det har samlet teknisk gjeld som gjør vedlikehold tyngre, mangler et API, ikke klarer å koble seg til nasjonale komponenter, har arkivering limt på i etterkant, eller lever lenger enn rammeverkene det ble bygget med."
+        },
+        {
           "question": "Kan systemet være i drift mens dere jobber?",
           "answer": "Ja, det er hele poenget med metoden. Vi bytter modul for modul bak en fasade i stedet for å erstatte alt på én dato."
         },
@@ -1410,6 +1421,10 @@
           "answer": "Det er det vanlige. Vi følger dataene inn og ut og kartlegger avhengighetene før noe røres. Kartleggingen er ofte den mest verdifulle leveransen i seg selv."
         },
         {
+          "question": "Kan dere flytte fagsystemet fra lokal drift til Azure?",
+          "answer": "Ja, det er en av modulene vi flytter. Det gjøres modul for modul som alt annet, uten én stor overgangsdato."
+        },
+        {
           "question": "Hvilken kontraktsform passer?",
           "answer": "En avtale som gir rom for etapper, for eksempel SSA-S eller en smidig utviklingsavtale. Da finansierer de første modulene læringen som gjør estimatene på de neste realistiske."
         }
@@ -1420,7 +1435,7 @@
         "Modulvis migrasjon med produksjon i drift",
         "Flytting fra lokal drift til Azure",
         "Datamigrasjon med avstemming",
-        "Parallellkjøring og sammenligning av resultater",
+        "Parallellkjøring og sammenligning av resultater, [testet automatisk](/blogg/testautomatisering-for-fagsystemer)",
         "Rullende utrulling med mulighet for tilbakerulling",
         "Dokumentasjon og overlevering underveis"
       ]

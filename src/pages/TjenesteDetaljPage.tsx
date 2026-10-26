@@ -15,6 +15,7 @@ import { localizedCardExcerpt } from '@/data/case-studies/localized';
 import { allPosts } from '@/lib/blog';
 import { findPost } from '@/lib/blog/posts';
 import { BLOG_PATH, ORG_ID, SITE_ORIGIN } from '@/lib/blog/seo';
+import { HubRichInline } from '@/components/tjenester/HubRichInline';
 
 type Language = 'no' | 'en' | 'ar';
 
@@ -32,6 +33,9 @@ interface LocalisedPage {
   metaTitle: string;
   metaDescription: string;
   intro: string;
+  /** Short "what is it / when does it need this" section, between the intro and the problem section. */
+  definitionHeading?: string;
+  definitionBody?: string;
   problemHeading: string;
   problem: string;
   capabilityHeading: string;
@@ -46,6 +50,8 @@ interface ServicePage {
   children?: string[];
   caseSlugs: string[];
   postSlugs: string[];
+  /** One CTA (Kontakt oss) instead of the usual Kontakt + Slik vi jobber pair. */
+  singleCta?: boolean;
   no: LocalisedPage;
   en: LocalisedPage;
   ar: LocalisedPage;
@@ -176,6 +182,17 @@ export default function TjenesteDetaljPage() {
           </p>
         </header>
 
+        {copy.definitionHeading && copy.definitionBody && (
+          <section aria-labelledby="definition-heading" className="container mx-auto px-4 pb-14 md:pb-20">
+            <h2 id="definition-heading" className="max-w-[28ch] subsection-heading">
+              {copy.definitionHeading}
+            </h2>
+            <p className="mt-5 max-w-[70ch] section-lead">
+              <HubRichInline text={copy.definitionBody} />
+            </p>
+          </section>
+        )}
+
         <section
           aria-labelledby="problem-heading"
           className="border-y border-border bg-muted/30 py-14 md:py-20"
@@ -236,7 +253,9 @@ export default function TjenesteDetaljPage() {
                 {copy.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
                     <Check className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-                    <span className="leading-relaxed text-foreground">{feature}</span>
+                    <span className="leading-relaxed text-foreground">
+                      <HubRichInline text={feature} />
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -363,7 +382,11 @@ export default function TjenesteDetaljPage() {
             'Fortell oss hva dere har i dag, så sier vi hva vi ville gjort først og hva vi ville ventet med.'
           )}
           primary={{ to: '/kontakt', label: t('servicePage.ctaContact', 'Kontakt oss') }}
-          secondary={{ to: '/slik-vi-jobber', label: t('servicePage.ctaProcess', 'Slik vi jobber') }}
+          secondary={
+            page.singleCta
+              ? undefined
+              : { to: '/slik-vi-jobber', label: t('servicePage.ctaProcess', 'Slik vi jobber') }
+          }
         />
       </main>
 
