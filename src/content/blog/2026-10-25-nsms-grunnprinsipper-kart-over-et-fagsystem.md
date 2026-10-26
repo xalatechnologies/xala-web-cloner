@@ -8,7 +8,7 @@ author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
 cover: "/images/blog/nsms-grunnprinsipper-kart-over-et-fagsystem.webp"
-coverAlt: "Kompassrose med fagsystemet i midten og fire felt: identifisere og kartlegge, beskytte og opprettholde, oppdage, håndtere og gjenopprette"
+coverAlt: "Infografikk på kremfarget bakgrunn: kompassrose med N, Ø, S og V, fagsystem i midten og fire felt merket identifisere og kartlegge, beskytte og opprettholde, oppdage, og håndtere og gjenopprette. Overskrift «KART OVER FAGSYSTEMET»."
 keywords:
   - NSMs grunnprinsipper
   - grunnprinsipper
@@ -87,7 +87,7 @@ Tegnet på at det mangler: gjenoppretting står i avtalen, men har aldri vært p
 
 Et kart som var riktig ved lansering, blir feil ved første endring. Dokumentasjon som holdes ved like, er det som gjør kartet brukbart etter et år i drift. Det er også det som gjør exit uten innlåsing mulig, fordi en ny leverandør kan lese hva som finnes.
 
-Oppdater kartet som en del av hver endring, ikke som en egen øvelse.
+Kartet oppdateres som en del av hver endring, ikke som en egen øvelse.
 
 Kartet er et arbeidsdokument, ikke et vedlegg.
 
