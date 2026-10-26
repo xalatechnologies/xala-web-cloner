@@ -76,4 +76,6 @@ Kort svar: ikke for det som allerede har skjedd. Hendelser fra før sporet ble s
 
 Det du bør kunne vise fram, er at sporbarhet er bygd inn i datamodellen fra starten, ikke lagt på som en rapport til slutt. Står du foran en ny løsning, er det her du bør stille kravet.
 
+Skal revisjonssporet inn i et eldre system, er det ofte enklest å ta det med når dere uansett gjør en [modernisering av fagsystemet](/tjenester/modernisering-av-fagsystemer), én modul om gangen.
+
 [Se hvordan plattformen gir full sporbarhet og tilgangsstyring per ordning.](/tjenester/saksbehandlingsplattform)

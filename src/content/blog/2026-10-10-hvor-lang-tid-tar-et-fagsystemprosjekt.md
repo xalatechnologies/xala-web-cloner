@@ -85,6 +85,8 @@ Fordelen er at dere får verdi før hele prosjektet er ferdig. Den første delen
 
 Delleveranser påvirker også avtalen. Vi har en egen tekst om [hvordan delleveranser passer i kontrakten](/blogg/ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling).
 
+Det er samme tanke som ligger bak vår [modernisering av fagsystemer](/tjenester/modernisering-av-fagsystemer): det gamle systemet går videre mens modulene byttes ut én etter én.
+
 ## Det som går på egen klokke: datamigrering og integrasjoner uten avtale
 
 To ting står utenfor tidslinjen over. Det ene er datamigrering fra et eksisterende system. Det andre er integrasjoner dere ikke allerede har avtale og tilgang til.

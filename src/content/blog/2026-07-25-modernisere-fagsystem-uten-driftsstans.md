@@ -51,6 +51,7 @@ Det gir også en reell exit: hvis samarbeidet ikke fungerer, har du et fungerend
 
 Et gammelt fagsystem er sjelden ett problem. Det er en samling avhengigheter som er blitt usynlige fordi de har fungert lenge. Strangler-mønsteret løser ikke det, men det gjør at du oppdager dem én om gangen, mens driften går.
 
+Vil dere ha hjelp til å gjøre dette i praksis, kan dere lese hvordan vi jobber med [modernisering av fagsystemer](/tjenester/modernisering-av-fagsystemer).
 
 ## Ofte stilte spørsmål
 
