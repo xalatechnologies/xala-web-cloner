@@ -96,14 +96,14 @@ export default function PriserPage() {
             {COST_DRIVERS.map(({ key, icon: Icon }) => (
               <li key={key}>
                 <SurfaceCard>
-                  <div className="mb-5 flex items-center gap-4">
+                  <div className="mb-5 flex items-center gap-4 max-[386px]:flex-wrap">
                     <CardIcon>
                       <Icon
                         className="h-8 w-8 text-primary transition-transform duration-300 group-hover:scale-110"
                         aria-hidden="true"
                       />
                     </CardIcon>
-                    <h3 className="card-heading transition-colors duration-300 group-hover:text-primary">
+                    <h3 className="card-heading transition-colors duration-300 group-hover:text-primary max-[386px]:min-w-0">
                       {t(`pricesPage.drivers.${key}.title`)}
                     </h3>
                   </div>
