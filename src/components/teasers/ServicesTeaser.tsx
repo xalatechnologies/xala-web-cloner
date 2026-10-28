@@ -60,16 +60,16 @@ export default function ServicesTeaser() {
           {services.map((service) => {
             const Icon = iconFor(service.icon);
             return (
-              <li key={service.id}>
+              <li key={service.id} className="min-w-0">
                 <Link
                   to="/tjenester"
-                  className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:p-7"
+                  className="group flex h-full min-w-0 flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:p-7"
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex min-w-0 items-center gap-3">
                     <span className="card-icon group-hover:bg-primary/20">
                       <Icon aria-hidden="true" />
                     </span>
-                    <h3 className="flex items-center gap-2 card-heading">
+                    <h3 className={`flex min-w-0 items-center gap-2 card-heading ${language === 'no' ? 'hyphenate-no' : 'break-words'}`}>
                       {service.title}
                       <ArrowRight
                         className="h-4 w-4 shrink-0 text-primary opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100"

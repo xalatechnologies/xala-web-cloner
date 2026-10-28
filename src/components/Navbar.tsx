@@ -207,7 +207,8 @@ const Navbar = () => {
           />
           <div className="relative z-10 flex flex-col h-full">
             <div className="flex items-center justify-between px-6 py-6">
-              <img src={logoSrc} alt="Xala Technologies" className="h-11 w-auto" />
+              {/* The header renders above the drawer and owns the mark, so the drawer keeps only a spacer. */}
+              <div className="h-11" aria-hidden="true" />
             </div>
 
             <div className="flex-1 flex flex-col justify-center px-8">
