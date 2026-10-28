@@ -71,7 +71,9 @@ export default function ProcessTeaser() {
                   <span className="card-icon">
                     <Icon aria-hidden="true" />
                   </span>
-                  <h3 className="min-w-0 card-heading">{step.title}</h3>
+                  <h3 className={`min-w-0 card-heading ${language === 'no' ? 'hyphenate-no' : 'break-words'}`}>
+                    {step.title}
+                  </h3>
                 </div>
                 <p className="mt-4 card-body">
                   {step.description}
