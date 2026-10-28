@@ -43,7 +43,12 @@ for (const width of [768, 1024]) {
         let found = false;
         while (card && steps < 8) {
           const cs = getComputedStyle(card);
-          if (cs.borderTopWidth !== '0px' || cs.backgroundColor !== 'rgba(0, 0, 0, 0)') {
+          const bordered =
+            cs.borderTopWidth !== '0px' ||
+            cs.borderRightWidth !== '0px' ||
+            cs.borderBottomWidth !== '0px' ||
+            cs.borderLeftWidth !== '0px';
+          if (bordered || cs.backgroundColor !== 'rgba(0, 0, 0, 0)') {
             found = true;
             break;
           }
@@ -103,6 +108,7 @@ test('/blogg does not overflow at 320px without hyphenation', async ({ page }) =
     let who = '';
     let count = 0;
     const unmatched: string[] = [];
+    const noInk: string[] = [];
     for (const h of document.querySelectorAll('h1,h2,h3,h4,h5,h6')) {
       let card: Element | null = h;
       let steps = 0;
@@ -133,7 +139,13 @@ test('/blogg does not overflow at 320px without hyphenation', async ({ page }) =
       for (const rect of range.getClientRects()) {
         if (rect.right > inkRight) inkRight = rect.right;
       }
-      if (!Number.isFinite(inkRight)) continue;
+      // A heading whose Range yields no rects has nothing to measure, and
+      // skipping it silently is the same trap as the walk above: the test
+      // would pass by not looking. Collect it and assert the list is empty.
+      if (!Number.isFinite(inkRight)) {
+        noInk.push((h.textContent || '').trim().slice(0, 40));
+        continue;
+      }
       count++;
       const over = Math.round(inkRight - card.getBoundingClientRect().right);
       if (over > worst) {
@@ -142,13 +154,18 @@ test('/blogg does not overflow at 320px without hyphenation', async ({ page }) =
       }
     }
 
-    return { docOverflow, worst, who, count, unmatched };
+    return { docOverflow, worst, who, count, unmatched, noInk };
   });
 
   expect(
     measured.unmatched,
     `no card edge found for ${measured.unmatched.length} heading(s) within 8 steps: ` +
       `${measured.unmatched.slice(0, 3).join(' | ')}${measured.unmatched.length > 3 ? ' | …' : ''}`,
+  ).toHaveLength(0);
+  expect(
+    measured.noInk,
+    `no painted text found for ${measured.noInk.length} heading(s): ` +
+      `${measured.noInk.slice(0, 3).join(' | ')}${measured.noInk.length > 3 ? ' | …' : ''}`,
   ).toHaveLength(0);
   expect(measured.count, 'no listing title was measured').toBeGreaterThan(0);
   expect(
@@ -197,6 +214,7 @@ test('/blogg keeps a long compound inside the listing row at 320px', async ({ pa
     let who = '';
     let count = 0;
     const unmatched: string[] = [];
+    const noInk: string[] = [];
     for (const h of document.querySelectorAll('h1,h2,h3,h4,h5,h6')) {
       let card: Element | null = h;
       let steps = 0;
@@ -225,7 +243,13 @@ test('/blogg keeps a long compound inside the listing row at 320px', async ({ pa
       for (const rect of range.getClientRects()) {
         if (rect.right > inkRight) inkRight = rect.right;
       }
-      if (!Number.isFinite(inkRight)) continue;
+      // A heading whose Range yields no rects has nothing to measure, and
+      // skipping it silently is the same trap as the walk above: the test
+      // would pass by not looking. Collect it and assert the list is empty.
+      if (!Number.isFinite(inkRight)) {
+        noInk.push((h.textContent || '').trim().slice(0, 40));
+        continue;
+      }
       count++;
       const over = Math.round(inkRight - card.getBoundingClientRect().right);
       if (over > worst) {
@@ -234,10 +258,15 @@ test('/blogg keeps a long compound inside the listing row at 320px', async ({ pa
       }
     }
 
-    return { docOverflow, worst, who, count, unmatched };
+    return { docOverflow, worst, who, count, unmatched, noInk };
   });
 
   expect(measured.unmatched, `no card edge found for ${measured.unmatched.length} heading(s)`).toHaveLength(0);
+  expect(
+    measured.noInk,
+    `no painted text found for ${measured.noInk.length} heading(s): ` +
+      `${measured.noInk.slice(0, 3).join(' | ')}${measured.noInk.length > 3 ? ' | …' : ''}`,
+  ).toHaveLength(0);
   expect(measured.count, 'no heading was measured').toBeGreaterThan(0);
   expect(
     measured.docOverflow,
