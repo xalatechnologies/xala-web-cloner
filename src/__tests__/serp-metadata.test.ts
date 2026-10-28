@@ -94,13 +94,14 @@ describe('search result metadata', () => {
     // postMeta appends " | Xala" to seoTitle. The suffix stays out of frontmatter.
     const post = posts.find((p) => p.slug === 'ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling');
     expect(post, 'SSA post missing from the published set').toBeDefined();
-    const topic = 'SSA-S eller SSA-L? Smidigavtalen mot tjenestekjøp';
+    const topic = 'SSA-L eller SSA-S: kjøpe tjenesten eller utvikle?';
     const description =
-      'SSA-S (Smidigavtalen) er for programvare som utvikles i etapper. SSA-L er for en ferdig tjeneste dere kjøper over tid. Velg etter hva dere faktisk kjøper.';
+      'SSA-L er statens avtale om løpende tjenestekjøp. SSA-S er Smidigavtalen for utvikling i etapper. Slik ser du hvilken du trenger.';
     const hook =
       'Kort svar: SSA-S er for programvare som utvikles i etapper. SSA-L er for en ferdig tjeneste dere kjøper over tid.';
 
-    expect(post!.title).toBe(topic);
+    // The H1 and the search title are now different strings (SEO brief 27 Oct).
+    expect(post!.title).toBe('SSA-S eller SSA-L? Smidigavtalen mot tjenestekjøp');
     expect(post!.seoTitle).toBe(topic);
     expect(post!.seoTitle).not.toMatch(/\| Xala/);
     expect(postMeta(post!).title).toBe(`${topic} | Xala`);

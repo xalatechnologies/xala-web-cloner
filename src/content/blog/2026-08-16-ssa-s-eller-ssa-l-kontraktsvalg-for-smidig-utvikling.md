@@ -1,8 +1,8 @@
 ---
 slug: ssa-s-eller-ssa-l-kontraktsvalg-for-smidig-utvikling
 title: "SSA-S eller SSA-L? Smidigavtalen mot tjenestekjøp"
-seoTitle: "SSA-S eller SSA-L? Smidigavtalen mot tjenestekjøp"
-description: "SSA-S (Smidigavtalen) er for programvare som utvikles i etapper. SSA-L er for en ferdig tjeneste dere kjøper over tid. Velg etter hva dere faktisk kjøper."
+seoTitle: "SSA-L eller SSA-S: kjøpe tjenesten eller utvikle?"
+description: "SSA-L er statens avtale om løpende tjenestekjøp. SSA-S er Smidigavtalen for utvikling i etapper. Slik ser du hvilken du trenger."
 date: 2026-08-16
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"

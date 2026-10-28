@@ -1,8 +1,8 @@
 ---
 slug: skjenkebevilling-integrasjon-360-visma
 title: "Skjenkebevilling: når 360 og Visma ikke snakker med portalen"
-seoTitle: "Skjenkebevilling: 360 og Visma mot portalen"
-description: "360 og Visma i hver sin fane er ikke integrasjon. Samme sak lever i tre systemer."
+seoTitle: "Skjenkebevilling i 360 og Visma: tast saken én gang"
+description: "Søknaden i portalen, journalen i 360, fakturaen i Visma. Skjenkebevillingen er én sak. Slik kobles den."
 date: 2026-08-08
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
