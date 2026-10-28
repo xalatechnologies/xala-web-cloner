@@ -143,4 +143,14 @@ describe('Navbar', () => {
 
     expect(screen.getAllByAltText('Xala Technologies')[0]).toBeInTheDocument();
   });
+
+  it('shows a single logo when the mobile menu is open', () => {
+    renderNavbar();
+
+    fireEvent.click(screen.getByLabelText('Åpne meny'));
+
+    // The header paints above the drawer. A second logo in the drawer stacks
+    // on the header mark; the open menu must leave exactly one.
+    expect(document.querySelectorAll('img[alt="Xala Technologies"]')).toHaveLength(1);
+  });
 });

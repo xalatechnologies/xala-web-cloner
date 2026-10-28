@@ -390,6 +390,7 @@
     @apply font-bold uppercase text-primary;
     font-size: var(--ds-text-eyebrow);
     letter-spacing: var(--ds-tracking-eyebrow);
+    min-width: 0;
   }
 
   /* The heading that names a page section. */
@@ -399,6 +400,10 @@
        and the smaller floor made half the page headings look secondary. */
     font-size: clamp(2.25rem, 4vw, var(--ds-text-section));
     line-height: var(--ds-leading-tight);
+    min-width: 0;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
   }
 
   /* A heading inside a section. */
@@ -420,6 +425,10 @@
     @apply text-muted-foreground;
     font-size: clamp(var(--ds-text-lead), 1.6vw, 1.25rem);
     line-height: var(--ds-leading-relaxed);
+    min-width: 0;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
   }
 
   /*

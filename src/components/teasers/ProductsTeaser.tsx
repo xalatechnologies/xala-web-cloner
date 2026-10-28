@@ -59,16 +59,16 @@ export default function ProductsTeaser() {
             const Icon = iconFor(product.icon);
             const comingSoon = product.status === 'coming-soon';
             return (
-              <li key={product.id}>
+              <li key={product.id} className="min-w-0">
                 <Link
                   to={`/produkter/${product.slug}`}
-                  className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:p-7"
+                  className="group flex h-full min-w-0 flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:p-7"
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex min-w-0 items-center gap-3">
                     <span className="card-icon group-hover:bg-primary/20">
                       <Icon aria-hidden="true" />
                     </span>
-                    <h3 className="card-heading">
+                    <h3 className="min-w-0 card-heading">
                       {product.title}
                     </h3>
                     {comingSoon && (
