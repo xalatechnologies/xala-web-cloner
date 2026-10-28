@@ -57,9 +57,9 @@ export default function ProcessTeaser() {
             return (
               <li
                 key={step.id}
-                className="flex h-full flex-col rounded-2xl border border-border bg-card p-6 md:p-7"
+                className="flex h-full min-w-0 flex-col rounded-2xl border border-border bg-card p-6 md:p-7"
               >
-                <div className="flex items-center gap-4">
+                <div className="flex min-w-0 items-center gap-4">
                   {/* Number, icon and title on one line: the number is the
                       card's index, not a heading of its own. */}
                   <span
@@ -71,7 +71,7 @@ export default function ProcessTeaser() {
                   <span className="card-icon">
                     <Icon aria-hidden="true" />
                   </span>
-                  <h3 className="card-heading">{step.title}</h3>
+                  <h3 className="min-w-0 card-heading">{step.title}</h3>
                 </div>
                 <p className="mt-4 card-body">
                   {step.description}
