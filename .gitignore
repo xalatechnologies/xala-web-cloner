@@ -30,7 +30,7 @@ dist-ssr
 # pnpm
 .pnpm-store/
 .pnpm-debug.log
-package-lock.json
+/package-lock.json
 
 # Build outputs
 *.tsbuildinfo
