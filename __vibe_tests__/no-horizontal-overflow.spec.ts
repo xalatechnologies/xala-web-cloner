@@ -394,9 +394,13 @@ const produkterCardEscape = async (page: import('@playwright/test').Page) =>
     };
   });
 
-// Real content. 320/375/390 are below the wrap edge, 768 and 1024 sit inside
-// the nowrap stretch where the bug is absent, and 1280 is above everything the
-// fix touches — the last three are there to prove the fix does not leak.
+// Real content. The widths are chosen for what they prove, not evenly. 320
+// and 375 are below the wrap edge, where the base build spills by 72.09 and
+// 17.09. 1024 and 1100 are inside the 1024-1134 wrap band, where the base
+// build spills by 37.44 and 12.09 — so both wrap bands are covered by a
+// case that fails without the fix. 768 and 1280 sit in the nowrap stretches
+// where the base build is already clean, and are here to prove the fix does
+// not leak into widths it was not meant to touch.
 for (const width of [320, 375, 768, 1024, 1100, 1280]) {
   test(`product cards contain their title and badge at ${width}px without hyphenation`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
@@ -414,7 +418,7 @@ for (const width of [320, 375, 768, 1024, 1100, 1280]) {
 
     expect(
       result.unmatched,
-      `no card edge found for ${result.unmatched.length} product card(s) within 8 steps: ` +
+      `no card edge found for ${result.unmatched.length} product card(s) (closest('a, .group') returned no card): ` +
         `${result.unmatched.slice(0, 3).join(' | ')}${result.unmatched.length > 3 ? ' | …' : ''}`,
     ).toHaveLength(0);
     expect(
