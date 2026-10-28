@@ -289,7 +289,13 @@ test('/blogg keeps a long compound inside the listing row at 320px', async ({ pa
 // escaped: the per-card Range probe below is the only assertion that sees it.
 const produkterCardEscape = async (page: import('@playwright/test').Page) =>
   page.evaluate(() => {
-    const rows: Array<{ title: string; child: string; escape: number }> = [];
+    const rows: Array<{
+      title: string;
+      child: string;
+      escape: number;
+      /** Border-box right edge minus the card's, for the bordered badge span. */
+      badgeBoxEscape: number;
+    }> = [];
     const unmatched: string[] = [];
     const noInk: string[] = [];
 
@@ -306,28 +312,17 @@ const produkterCardEscape = async (page: import('@playwright/test').Page) =>
     for (const heading of document.querySelectorAll('#core-products h3.card-heading')) {
       const title = (heading.textContent || '').trim().slice(0, 40);
 
-      // Walk out to the card: the first ancestor with any border or a
-      // non-transparent background. An exhausted walk means the edge is
-      // unknown, so refuse to measure rather than compare against whatever
-      // element we happened to land on.
-      let card: Element | null = heading;
-      let steps = 0;
-      let found = false;
-      while (card && steps < 8) {
-        const cs = getComputedStyle(card);
-        const bordered =
-          cs.borderTopWidth !== '0px' ||
-          cs.borderRightWidth !== '0px' ||
-          cs.borderBottomWidth !== '0px' ||
-          cs.borderLeftWidth !== '0px';
-        if (bordered || cs.backgroundColor !== 'rgba(0, 0, 0, 0)') {
-          found = true;
-          break;
-        }
-        card = card.parentElement;
-        steps++;
-      }
-      if (!found || !card) {
+      // Resolve the card by structure, not by sniffing computed styles. The
+      // card is the <a class="group"> from Link, or a <div class="group">
+      // when a product has no slug. A border/background walk is fragile in a
+      // way that fails silently: it compares against one literal spelling of
+      // "transparent", and a browser that reports the colour without spaces
+      // makes the walk consume the heading itself — after which every heading
+      // measures against its own right edge and the case passes on a build
+      // that is 72px broken. closest() cannot do that; the identity guard
+      // below is belt-and-braces.
+      const card: Element | null = heading.closest('a, .group');
+      if (!card || card === heading) {
         unmatched.push(title);
         continue;
       }
@@ -358,6 +353,14 @@ const produkterCardEscape = async (page: import('@playwright/test').Page) =>
           title,
           child,
           escape: Math.round((inkRight - cardRight) * 100) / 100,
+          // The badge is a bordered span, so its border box — not its glyph
+          // ink — is what a person actually sees. For the title this stays
+          // NaN and is never read: a squeezed h3 has a clean box while its
+          // text still spills, which is why the title is measured on ink.
+          badgeBoxEscape:
+            el === heading
+              ? Number.NaN
+              : Math.round((el.getBoundingClientRect().right - cardRight) * 100) / 100,
         });
       }
     }
@@ -367,12 +370,26 @@ const produkterCardEscape = async (page: import('@playwright/test').Page) =>
       return only.length ? Math.max(...only.map((r) => r.escape)) : 0;
     };
 
+    const badgeRows = rows.filter((r) => r.child === 'badge');
+
     return {
       unmatched,
       noInk,
       count: rows.length,
       worstHeading: worstOf('heading'),
       worstBadge: worstOf('badge'),
+      // worstOf() returns 0 when there is no badge at all, and 0 satisfies a
+      // "<= 1" assertion. /produkter renders exactly ONE «Kommer» badge
+      // (Digiskjema, 1 of 6 cards), so if that product stops being
+      // comingSoon the "and badge" half of these cases would quietly assert
+      // nothing. The count is asserted alongside so that cannot happen
+      // silently.
+      badgeCount: badgeRows.length,
+      // The badge is a bordered span, so its BORDER box is what a person
+      // sees. Measured directly, in addition to its glyph ink.
+      worstBadgeBox: badgeRows.length
+        ? Math.max(...badgeRows.map((r) => r.badgeBoxEscape))
+        : null,
       escapeCount: rows.filter((r) => r.escape > 1).length,
     };
   });
@@ -406,8 +423,17 @@ for (const width of [320, 375, 768, 1024, 1100, 1280]) {
         `${result.noInk.slice(0, 3).join(' | ')}${result.noInk.length > 3 ? ' | …' : ''}`,
     ).toHaveLength(0);
     expect(result.count, 'no product card text was measured').toBeGreaterThan(0);
+    // Guard the badge assertion below: worstBadge is 0 when there is no badge,
+    // and 0 passes. One «Kommer» badge is rendered (Digiskjema); if that ever
+    // stops being so, this fails loudly instead of passing vacuously.
+    expect(result.badgeCount, 'no «Kommer» badge was measured, so the badge assertion would be vacuous').toBeGreaterThan(0);
     expect(result.worstHeading, `a product title escapes its card by ${result.worstHeading}px`).toBeLessThanOrEqual(1);
     expect(result.worstBadge, `a «Kommer» badge escapes its card by ${result.worstBadge}px`).toBeLessThanOrEqual(1);
+    // The badge's border box is what a person sees, so assert it too.
+    expect(result.worstBadgeBox, `a «Kommer» badge border box escapes its card by ${result.worstBadgeBox}px`).toBeLessThanOrEqual(1);
+    // A count rather than a max: when it fails, the message says how many
+    // things escaped, which the single worst value cannot.
+    expect(result.escapeCount, `${result.escapeCount} product card element(s) escape their card`).toBe(0);
   });
 }
 
@@ -449,4 +475,5 @@ test('/produkter keeps a long compound inside the card at 320px', async ({ page 
   expect(result.unmatched, `no card edge found for ${result.unmatched.length} product card(s)`).toHaveLength(0);
   expect(result.noInk, `no painted text found for ${result.noInk.length} card child(ren)`).toHaveLength(0);
   expect(result.worstHeading, `long compound escapes its card by ${result.worstHeading}px`).toBeLessThanOrEqual(1);
+  expect(result.escapeCount, `${result.escapeCount} product card element(s) escape their card`).toBe(0);
 });
