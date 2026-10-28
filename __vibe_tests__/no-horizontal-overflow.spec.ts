@@ -35,16 +35,29 @@ for (const width of [768, 1024]) {
     const worst = await page.evaluate(() => {
       let worst = 0;
       let who = '';
+      let measured = 0;
+      const unmatched: string[] = [];
       for (const h of document.querySelectorAll('h1,h2,h3,h4,h5,h6')) {
-        let card = h;
+        let card: Element | null = h;
         let steps = 0;
+        let found = false;
         while (card && steps < 8) {
           const cs = getComputedStyle(card);
-          if (cs.borderTopWidth !== '0px' || cs.backgroundColor !== 'rgba(0, 0, 0, 0)') break;
+          if (cs.borderTopWidth !== '0px' || cs.backgroundColor !== 'rgba(0, 0, 0, 0)') {
+            found = true;
+            break;
+          }
           card = card.parentElement;
           steps++;
         }
-        if (!card) continue;
+        // A walk that runs out of ancestors must not silently measure against
+        // whatever element it landed on: that edge is the container, not the
+        // card, and the assertion would pass without saying anything.
+        if (!found || !card) {
+          unmatched.push((h.textContent || '').trim().slice(0, 40));
+          continue;
+        }
+        measured++;
         const over = Math.round(
           h.getBoundingClientRect().right - card.getBoundingClientRect().right
         );
@@ -53,9 +66,15 @@ for (const width of [768, 1024]) {
           who = (h.textContent || '').trim().slice(0, 40);
         }
       }
-      return { worst, who };
+      return { worst, who, measured, unmatched };
     });
 
+    expect(
+      worst.unmatched,
+      `no card edge found for ${worst.unmatched.length} heading(s) within 8 steps: ` +
+        `${worst.unmatched.slice(0, 3).join(' | ')}${worst.unmatched.length > 3 ? ' | …' : ''}`,
+    ).toHaveLength(0);
+    expect(worst.measured, 'no heading was measured').toBeGreaterThan(0);
     expect(worst.worst, `«${worst.who}» escapes its card by ${worst.worst}px`).toBeLessThanOrEqual(1);
   });
 }
@@ -82,9 +101,12 @@ test('/blogg does not overflow at 320px without hyphenation', async ({ page }) =
 
     let worst = 0;
     let who = '';
+    let count = 0;
+    const unmatched: string[] = [];
     for (const h of document.querySelectorAll('h1,h2,h3,h4,h5,h6')) {
-      let card = h;
+      let card: Element | null = h;
       let steps = 0;
+      let found = false;
       while (card && steps < 8) {
         const cs = getComputedStyle(card);
         const bordered =
@@ -92,11 +114,19 @@ test('/blogg does not overflow at 320px without hyphenation', async ({ page }) =
           cs.borderRightWidth !== '0px' ||
           cs.borderBottomWidth !== '0px' ||
           cs.borderLeftWidth !== '0px';
-        if (bordered || cs.backgroundColor !== 'rgba(0, 0, 0, 0)') break;
+        if (bordered || cs.backgroundColor !== 'rgba(0, 0, 0, 0)') {
+          found = true;
+          break;
+        }
         card = card.parentElement;
         steps++;
       }
-      if (!card) continue;
+      // Same guard as the homepage cases: an exhausted walk means the card
+      // edge is unknown, so refuse to measure instead of guessing at a node.
+      if (!found || !card) {
+        unmatched.push((h.textContent || '').trim().slice(0, 40));
+        continue;
+      }
       const range = document.createRange();
       range.selectNodeContents(h);
       let inkRight = -Infinity;
@@ -104,6 +134,7 @@ test('/blogg does not overflow at 320px without hyphenation', async ({ page }) =
         if (rect.right > inkRight) inkRight = rect.right;
       }
       if (!Number.isFinite(inkRight)) continue;
+      count++;
       const over = Math.round(inkRight - card.getBoundingClientRect().right);
       if (over > worst) {
         worst = over;
@@ -111,9 +142,15 @@ test('/blogg does not overflow at 320px without hyphenation', async ({ page }) =
       }
     }
 
-    return { docOverflow, worst, who };
+    return { docOverflow, worst, who, count, unmatched };
   });
 
+  expect(
+    measured.unmatched,
+    `no card edge found for ${measured.unmatched.length} heading(s) within 8 steps: ` +
+      `${measured.unmatched.slice(0, 3).join(' | ')}${measured.unmatched.length > 3 ? ' | …' : ''}`,
+  ).toHaveLength(0);
+  expect(measured.count, 'no listing title was measured').toBeGreaterThan(0);
   expect(
     measured.docOverflow,
     `document overflow ${measured.docOverflow}px; «${measured.who}» escapes its card by ${measured.worst}px`,
