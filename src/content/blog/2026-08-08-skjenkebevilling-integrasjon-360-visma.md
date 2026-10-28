@@ -2,13 +2,14 @@
 slug: skjenkebevilling-integrasjon-360-visma
 title: "Skjenkebevilling: når 360 og Visma ikke snakker med portalen"
 seoTitle: "Skjenkebevilling i 360 og Visma: tast saken én gang"
-description: "Søknaden i portalen, journalen i 360, fakturaen i Visma. Skjenkebevillingen er én sak. Slik kobles den."
+description: "Søknaden i portalen, journalen i 360, fakturaen i Visma. Skjenkebevillingen er én sak. Slik kan den kobles."
 date: 2026-08-08
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 readingMinutes: 3
 tag: "IT-leder"
 cover: "/images/blog/skjenkebevilling-integrasjon-360-visma.webp"
+alt: "Skjenkebevilling: når 360 og Visma ikke snakker med portalen"
 keywords: ["skjenkebevilling", "360", "visma", "integrasjon", "bevilling", "offentlig sektor"]
 lang: no
 draft: false

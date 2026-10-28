@@ -96,7 +96,7 @@ describe('search result metadata', () => {
     expect(post, 'SSA post missing from the published set').toBeDefined();
     const topic = 'SSA-L eller SSA-S: kjøpe tjenesten eller utvikle?';
     const description =
-      'SSA-L er statens avtale om løpende tjenestekjøp. SSA-S er Smidigavtalen for utvikling i etapper. Slik ser du hvilken du trenger.';
+      'SSA-L er statens avtale om løpende tjenestekjøp. SSA-S er Smidigavtalen for utvikling i etapper. Slik ser dere hvilken dere trenger.';
     const hook =
       'Kort svar: SSA-S er for programvare som utvikles i etapper. SSA-L er for en ferdig tjeneste dere kjøper over tid.';
 
@@ -112,6 +112,12 @@ describe('search result metadata', () => {
     expect(post!.description).toBe(description);
     expect(post!.description.length).toBeLessThanOrEqual(DESC_MAX);
     expect(post!.description).not.toMatch(/—/);
+    // The description renders as the deck under the H1 and on the index cards,
+    // so it has to address the reader the same way the body does. A "du" deck
+    // over a "dere" body reads as two different articles, and the literal above
+    // moves with the copy, so it cannot catch the mismatch.
+    expect(post!.body.match(/\bdere\b/gi)?.length ?? 0).toBeGreaterThan(0);
+    expect(post!.description).not.toMatch(/\bdu\b/i);
     expect(
       post!.body
         .trimStart()
