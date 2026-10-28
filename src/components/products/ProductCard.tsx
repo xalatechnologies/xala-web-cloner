@@ -31,11 +31,11 @@ const ProductCard = ({ title, description, icon, to, comingSoon }: ProductCardPr
 
   const body = (
     <>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 max-[391px]:flex-wrap min-[392px]:max-[1023px]:flex-nowrap min-[1024px]:max-[1134px]:flex-wrap min-[1135px]:flex-nowrap">
         <span className="card-icon group-hover:bg-primary/20">
           <Icon aria-hidden="true" />
         </span>
-        <h3 className="card-heading">{title}</h3>
+        <h3 className="card-heading max-[391px]:min-w-0">{title}</h3>
         {comingSoon && (
           <span className="rounded-full border border-border px-2.5 py-1 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
             {t('products.comingSoon', 'Kommer')}
