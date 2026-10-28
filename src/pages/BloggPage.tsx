@@ -331,7 +331,7 @@ export default function BloggPage() {
                             </time>
                           </div>
                         </div>
-                        <div className={`order-3 ${post.cover ? 'lg:col-span-7' : 'lg:col-span-10'}`}>
+                        <div className={`order-3 min-w-0 ${post.cover ? 'lg:col-span-7' : 'lg:col-span-10'}`}>
                           <h3 className="subsection-heading leading-tight transition-transform duration-300 group-hover:translate-x-1">
                             {post.title}
                             <ArrowUpRight
