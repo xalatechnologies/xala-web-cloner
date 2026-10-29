@@ -17,12 +17,12 @@
         "overall": null
       },
       "lab": {
-        "performance": 82,
+        "performance": 81,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
         "lcp": 4201,
-        "cls": 0.0001880243853903182,
+        "cls": 0.0019243453282594722,
         "tbt": 0
       }
     },
@@ -37,11 +37,11 @@
         "overall": null
       },
       "lab": {
-        "performance": 88,
+        "performance": 90,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3022,
+        "lcp": 3007.5,
         "cls": 0,
         "tbt": 0
       }
@@ -57,13 +57,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 87,
+        "performance": 83,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
         "lcp": 3976,
-        "cls": 0.0001880243853903182,
-        "tbt": 20
+        "cls": 0,
+        "tbt": 7.5
       }
     },
     {
@@ -97,11 +97,11 @@
         "overall": null
       },
       "lab": {
-        "performance": 80,
+        "performance": 88,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3751,
+        "lcp": 3151,
         "cls": 0,
         "tbt": 0
       }
@@ -117,13 +117,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 78,
+        "performance": 79,
         "accessibility": 95,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 4052.5,
-        "cls": 0,
-        "tbt": 0
+        "lcp": 4503.5,
+        "cls": 0.0007920560829547392,
+        "tbt": 6.5
       }
     },
     {
@@ -137,13 +137,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 75,
+        "performance": 86,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 4426.5,
-        "cls": 0,
-        "tbt": 0
+        "lcp": 3604,
+        "cls": 0.0002092653715614848,
+        "tbt": 26.5
       }
     },
     {
