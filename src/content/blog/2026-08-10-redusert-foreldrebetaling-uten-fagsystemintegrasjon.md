@@ -32,6 +32,8 @@ Det som kan automatiseres først, er å legge inntekten der saksbehandleren alle
 
 Det som ikke skal automatiseres, er å behandle «vi har fått tilgang» som «vi bruker tilgangen». KS Digital skiller de to. En bekreftelse på API-tilgang uten felt i fagsystemet er fortsatt nattarbeid i to vinduer.
 
+Mangler fagsystemet et sted å ta imot oppslaget, hører det hjemme i en større [modernisering av fagsystemet](/tjenester/modernisering-av-fagsystemer).
+
 ## Kommunen er behandlingsansvarlig
 
 KS Digital: kommunen er behandlingsansvarlig og skal ha databehandleravtale med leverandøren når fagsystemet henter på vegne av kommunen. Kommunen svarer for at vedtaket bruker riktige opplysninger.

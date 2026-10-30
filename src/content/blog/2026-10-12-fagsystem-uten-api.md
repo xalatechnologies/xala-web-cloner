@@ -80,4 +80,6 @@ Da er siste steg å skrive ned hva dere har koblet: hvilke tjenester som kalles,
 
 Få prosjekter har en samlet oversikt over hvilke eksterne tjenester løsningen kaller. Det er likevel det første noen spør etter ved en sikkerhetsgjennomgang. En integrasjon mot et system uten API er ikke ferdig når dataene flyter. Den er ferdig når neste person kan se hva som er koblet, og hvem som eier det.
 
+Blir listen over avhengigheter lang, er den et godt utgangspunkt for å [modernisere fagsystemet](/tjenester/modernisering-av-fagsystemer) modul for modul i stedet for å bygge flere omveier rundt det.
+
 [Se hvordan vi bygger integrasjoner mot fagsystemer](/tjenester/systemintegrasjon)

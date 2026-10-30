@@ -92,6 +92,105 @@ describe("servicePageHtml", () => {
     expect(escapeHtml(raw)).toBe("Foo &lt;bar&gt; &amp; &quot;baz&quot;");
   });
 
+  it("drops the /slik-vi-jobber CTA only when singleCta is set, and leaves the default page unchanged", () => {
+    const fixture: ServicePage = {
+      slug: "fixture",
+      no: {
+        title: "Fixture",
+        metaTitle: "Fixture",
+        metaDescription: "Fixture",
+        intro: "Intro",
+        problemHeading: "Problem",
+        problem: "Problem body",
+        capabilityHeading: "Capabilities",
+        capabilities: [{ title: "One", body: "Body" }],
+        faq: [{ question: "Q?", answer: "A." }],
+      },
+    };
+
+    const defaultHtml = servicePageHtmlFromPage(fixture, { fixture }, { posts: [] });
+    expect(defaultHtml).toContain(
+      '<a href="/kontakt">Kontakt oss</a> · <a href="/slik-vi-jobber">Slik vi jobber</a>',
+    );
+
+    const singlePage: ServicePage = { ...fixture, singleCta: true };
+    const singleHtml = servicePageHtmlFromPage(singlePage, { fixture: singlePage }, { posts: [] });
+    expect(singleHtml).not.toContain("/slik-vi-jobber");
+    expect(singleHtml).toContain('<p><a href="/kontakt">Kontakt oss</a></p>');
+
+    const explicitlyOff: ServicePage = { ...fixture, singleCta: false };
+    const explicitlyOffHtml = servicePageHtmlFromPage(explicitlyOff, { fixture: explicitlyOff }, { posts: [] });
+    expect(explicitlyOffHtml).toBe(defaultHtml);
+  });
+
+  it("renders the definition section only when both definitionHeading and definitionBody are present", () => {
+    const baseNo = {
+      title: "Fixture",
+      metaTitle: "Fixture",
+      metaDescription: "Fixture",
+      intro: "Intro",
+      problemHeading: "Problem",
+      problem: "Problem body",
+      capabilityHeading: "Capabilities",
+      capabilities: [{ title: "One", body: "Body" }],
+      faq: [{ question: "Q?", answer: "A." }],
+    };
+
+    const neither = servicePageHtmlFromPage(
+      { slug: "fixture", no: baseNo },
+      { fixture: { slug: "fixture", no: baseNo } },
+      { posts: [] },
+    );
+    expect(neither).not.toContain('id="definition-heading"');
+
+    const headingOnly = { ...baseNo, definitionHeading: "Heading" };
+    const headingOnlyHtml = servicePageHtmlFromPage(
+      { slug: "fixture", no: headingOnly },
+      { fixture: { slug: "fixture", no: headingOnly } },
+      { posts: [] },
+    );
+    expect(headingOnlyHtml).not.toContain('id="definition-heading"');
+
+    const bodyOnly = { ...baseNo, definitionBody: "Body text" };
+    const bodyOnlyHtml = servicePageHtmlFromPage(
+      { slug: "fixture", no: bodyOnly },
+      { fixture: { slug: "fixture", no: bodyOnly } },
+      { posts: [] },
+    );
+    expect(bodyOnlyHtml).not.toContain('id="definition-heading"');
+
+    const both = { ...baseNo, definitionHeading: "Heading", definitionBody: "Body text" };
+    const bothHtml = servicePageHtmlFromPage(
+      { slug: "fixture", no: both },
+      { fixture: { slug: "fixture", no: both } },
+      { posts: [] },
+    );
+    expect(bothHtml).toContain('<h2 id="definition-heading">Heading</h2>');
+    expect(bothHtml).toContain("<p>Body text</p>");
+  });
+
+  it("turns a markdown link in a feature into an anchor, and keeps plain features escaped", () => {
+    const fixture: ServicePage = {
+      slug: "fixture",
+      no: {
+        title: "Fixture",
+        metaTitle: "Fixture",
+        metaDescription: "Fixture",
+        intro: "Intro",
+        problemHeading: "Problem",
+        problem: "Problem body",
+        capabilityHeading: "Capabilities",
+        capabilities: [{ title: "One", body: "Body" }],
+        faq: [{ question: "Q?", answer: "A." }],
+        features: ["Plain <feature>", "See [the post](/blogg/example) for more"],
+      },
+    };
+
+    const html = servicePageHtmlFromPage(fixture, { fixture }, { posts: [] });
+    expect(html).toContain("<li>Plain &lt;feature&gt;</li>");
+    expect(html).toContain('<li>See <a href="/blogg/example">the post</a> for more</li>');
+  });
+
   it("renders child links with span titles on a category page", () => {
     const html = servicePageHtml("saksbehandlingsplattform", { posts });
 

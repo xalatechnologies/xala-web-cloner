@@ -69,6 +69,8 @@ Saksbehandleren slipper å føre det samme to steder. Innbyggeren møter ett lø
 
 Nordre Follo kommune bruker en tilskudds- og bevillingsportal levert av Xala. Portalen bærer søknad, vilkår og vedtak for de ordningene. Den er ikke kommunens sak- og arkivsystem.
 
+Klarer ikke fagsystemet lenger å bære fagreglene trygt, er svaret ofte en [modernisering av fagsystemet](/tjenester/modernisering-av-fagsystemer) og ikke et nytt system ved siden av.
+
 ## Når kommunen trenger begge, og koblingen mellom dem
 
 Fagdataene bor allerede i et system avdelingen ikke kan legge ned, og saken må likevel følges opp lokalt.

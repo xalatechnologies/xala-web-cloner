@@ -14,6 +14,7 @@ import { BLOG_PATH } from "@/lib/blog/seo";
 import type { BlogPost } from "@/lib/blog/types";
 import { escapeHtml } from "@/lib/escapeHtml";
 import { PRERENDER_BACK_NAV_ARIA_LABEL } from "@/lib/prerenderLabels";
+import { richInlineHtml } from "@/lib/richInlineHtml";
 
 export { escapeHtml };
 
@@ -31,6 +32,9 @@ interface LocalisedPage {
   metaTitle: string;
   metaDescription: string;
   intro: string;
+  /** Short "what is it / when does it need this" section, between the intro and the problem section. */
+  definitionHeading?: string;
+  definitionBody?: string;
   problemHeading: string;
   problem: string;
   capabilityHeading: string;
@@ -43,6 +47,8 @@ export interface ServicePage {
   children?: string[];
   caseSlugs?: string[];
   postSlugs?: string[];
+  /** One CTA (Kontakt oss) instead of the usual Kontakt + Slik vi jobber pair. */
+  singleCta?: boolean;
   no: LocalisedPage;
 }
 
@@ -97,7 +103,15 @@ export function servicePageHtmlFromPage(
     copy.features && copy.features.length > 0
       ? `<section aria-labelledby="features-heading">
 <h2 id="features-heading">${escapeHtml(labels.featuresTitle)}</h2>
-<ul>${copy.features.map((feature) => `<li>${escapeHtml(feature)}</li>`).join("")}</ul>
+<ul>${copy.features.map((feature) => `<li>${richInlineHtml(feature)}</li>`).join("")}</ul>
+</section>`
+      : "";
+
+  const definitionSection =
+    copy.definitionHeading && copy.definitionBody
+      ? `<section aria-labelledby="definition-heading">
+<h2 id="definition-heading">${escapeHtml(copy.definitionHeading)}</h2>
+<p>${richInlineHtml(copy.definitionBody)}</p>
 </section>`
       : "";
 
@@ -150,6 +164,7 @@ export function servicePageHtmlFromPage(
 <h1 class="page-heading">${escapeHtml(copy.title)}</h1>
 <p>${escapeHtml(copy.intro)}</p>
 </header>
+${definitionSection}
 <section aria-labelledby="problem-heading">
 <h2 id="problem-heading">${escapeHtml(copy.problemHeading)}</h2>
 <p>${escapeHtml(copy.problem)}</p>
@@ -169,7 +184,9 @@ ${relatedPosts}
 <section aria-labelledby="tjeneste-cta">
 <h2 id="tjeneste-cta">${escapeHtml(labels.ctaTitle)}</h2>
 <p>${escapeHtml(labels.ctaDescription)}</p>
-<p><a href="/kontakt">${escapeHtml(labels.ctaContact)}</a> · <a href="/slik-vi-jobber">${escapeHtml(labels.ctaProcess)}</a></p>
+<p><a href="/kontakt">${escapeHtml(labels.ctaContact)}</a>${
+    page.singleCta ? "" : ` · <a href="/slik-vi-jobber">${escapeHtml(labels.ctaProcess)}</a>`
+  }</p>
 </section>
 </main></div>`;
 }

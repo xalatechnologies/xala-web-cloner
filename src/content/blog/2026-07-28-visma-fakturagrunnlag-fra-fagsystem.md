@@ -64,6 +64,8 @@ Dere kan ikke sende en sats dere fant på. Ikke bevillingsvedtaket. Ikke en uful
 
 Xala kan sende feltene til økonomisystemet dere har. Xala eier ikke Visma. Xala eier ikke fagsystemet.
 
+Kan ikke fagsystemet sende feltene i det hele tatt, er det et tegn på at en [modernisering av fagsystemet](/tjenester/modernisering-av-fagsystemer) bør stå på planen.
+
 ## Ofte stilte spørsmål
 
 **Må gebyret lande i Visma etter loven?**
