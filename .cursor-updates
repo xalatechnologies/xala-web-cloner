@@ -1,3 +1,8 @@
+Blog: kravspesifikasjon for fagsystem (2026-10-27)
+
+- Added post kravspesifikasjon-for-fagsystem-ett-krav-tre-versjoner with cream cover under public/images/blog
+- Frontmatter matches recent posts (seoTitle, coverAlt, FAQ); listing, RSS and sitemap via prerender
+
 verify-live: visible hashtags in topicHashtags=false path (R1 of #196)
 
 - Cherry-picked 1e9432e onto main: isPostTopicHead uses visibleHtmlHashtags when topicHashtags is false
