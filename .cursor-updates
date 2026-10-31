@@ -1,8 +1,3 @@
-Blog: KI-agenten starter blank (2026-10-28)
-
-- Added post ki-agenten-starter-blank with cream cover under public/images/blog
-- Frontmatter matches recent posts; prerender updates listing, RSS and sitemap
-
 verify-live: visible hashtags in topicHashtags=false path (R1 of #196)
 
 - Cherry-picked 1e9432e onto main: isPostTopicHead uses visibleHtmlHashtags when topicHashtags is false
