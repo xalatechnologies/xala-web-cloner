@@ -100,7 +100,7 @@ const PLACEMENTS: ReadonlyArray<{ slug: string; heading: string; anchor: string 
   {
     slug: 'oversikt-over-integrasjoner-bordovelse',
     heading: 'Øvelsen kan gjentas jevnlig',
-    anchor: 'Fortell oss hva dere har koblet i dag, så hjelper vi dere med oversikten.',
+    anchor: 'Se hvordan Xala bygger integrasjoner mot fagsystemer.',
   },
 ];
 

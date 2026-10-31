@@ -8,7 +8,7 @@ author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Arkitekt"
 cover: "/images/blog/oversikt-over-integrasjoner-bordovelse.webp"
-coverAlt: "Teknisk infografikk på kremfarget bakgrunn: et koblingspanel med fire porter merket Hva er koblet, Tilgang, Avtale og Eier, der eierkoblingen ender i en oransje boks merket Ukjent."
+coverAlt: "Teknisk infografikk på kremfarget bakgrunn: et koblingspanel med fire porter merket Hva er koblet, Tilgang, Avtale og Eier, med ledninger ned til boksene Fagsystem, Integrasjon og Leverandør, og en oransje boks merket Ukjent."
 keywords:
   - oversikt over integrasjoner
   - systemintegrasjon
@@ -40,9 +40,9 @@ faq:
 
 Et ark ligger på bordet i møterommet: «Søknadene kommer ikke inn i fagsystemet.» Én åpner wikien. Én åpner koden. Én ringer leverandøren. Ingen åpner oversikten over integrasjoner, fordi den ikke finnes.
 
-En slik oversikt er ikke dokumentasjon for arkivet. Den er det første verktøyet dere tar fram når noe stopper. Den beste måten å teste den på er en bordøvelse: ett kort på bordet, og teamet får bare svare med det som står skrevet. Fire runder, ett spørsmål hver.
+En slik oversikt er ikke dokumentasjon for arkivet. Den er det første verktøyet teamet tar fram når noe stopper. Den beste måten å teste den på er en bordøvelse: ett kort på bordet, og teamet svarer bare med det som står skrevet. Fire runder, ett spørsmål hver.
 
-## Første runde viser om dere vet hva som faktisk er koblet
+## Første runde viser om teamet vet hva som faktisk er koblet
 
 Ordstyreren spør: hvilke tjenester kaller løsningen, og hvilke kaller den? Teamet leter etter en liste. Ofte finner de en tegning fra prosjektstart og et par koblinger ingen har skrevet ned siden.
 
@@ -50,7 +50,7 @@ Mangler listen, blir feilsøkingen en runde med gjetting. Folk leser kode for å
 
 Feltene som skal inn: tjenesten, retningen og om meldingen går direkte eller via kø. Samles koblingene i et [integrasjonslag](/blogg/systemintegrasjon-i-kommunen-myter-og-fakta), er listen lettere å holde ved like.
 
-Kan dere ikke nevne alle koblingene, kan dere heller ikke vite hvilken som stoppet.
+Kan ingen nevne alle koblingene, vet heller ingen hvilken som stoppet.
 
 ## Andre runde avslører tilgangen ingen husker å fornye
 
@@ -66,11 +66,11 @@ Et sertifikat som går ut, er en planlagt hendelse. Behandle det slik.
 
 Tredje spørsmål: hvilken avtale hviler koblingen på, og hvem hos den andre parten tar telefonen? Teamet blar i e-post og innkjøpsmapper.
 
-Uten avtalen vet dere ikke hva dere har krav på, eller hvem dere skal kontakte. Feilen blir liggende mens noen leter etter et navn.
+Uten avtalen vet teamet ikke hva kommunen har krav på, eller hvem som skal kontaktes. Feilen blir liggende mens noen leter etter et navn.
 
 Feltene som skal inn: avtalen og kontaktpunktet hos den andre parten.
 
-En kobling uten avtale i oversikten er en kobling dere bare håper på.
+En kobling uten avtale i oversikten er en kobling kommunen bare håper på.
 
 ## Fjerde runde stopper ved spørsmålet om hvem som eier den
 
@@ -82,8 +82,8 @@ En kobling uten eier får ingen varsel og ingen retting.
 
 ## Øvelsen kan gjentas jevnlig
 
-Kjør den enkelt. Én ordstyrer, ett kort med en tenkt hendelse, og bare oversikten åpen på skjermen. Ingen wiki, ingen kode, ingen telefon. Hvert hull dere finner, blir et nytt felt eller en ny rad.
+Kjør den enkelt. Én ordstyrer, ett kort med en tenkt hendelse, og bare oversikten åpen på skjermen. Ingen wiki, ingen kode, ingen telefon. Hvert hull teamet finner, blir et nytt felt eller en ny rad.
 
 Bytt kort neste gang. La en ny i teamet svare. Oversikten er ferdig når en ny person kan svare på alle fire rundene uten å ringe noen.
 
-[Fortell oss hva dere har koblet i dag, så hjelper vi dere med oversikten.](/tjenester/systemintegrasjon)
+[Se hvordan Xala bygger integrasjoner mot fagsystemer.](/tjenester/systemintegrasjon)
