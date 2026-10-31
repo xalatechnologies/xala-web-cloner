@@ -97,6 +97,11 @@ const PLACEMENTS: ReadonlyArray<{ slug: string; heading: string; anchor: string 
     heading: 'Hvis du har valgt vei, så skriv ned avhengigheten',
     anchor: 'Se hvordan vi bygger integrasjoner mot fagsystemer',
   },
+  {
+    slug: 'oversikt-over-integrasjoner-bordovelse',
+    heading: 'Øvelsen kan gjentas jevnlig',
+    anchor: 'Fortell oss hva dere har koblet i dag, så hjelper vi dere med oversikten.',
+  },
 ];
 
 const LEAVE_ALONE = [

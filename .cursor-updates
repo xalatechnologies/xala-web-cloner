@@ -1,3 +1,8 @@
+Blog: oversikt over integrasjoner bordøvelse (2026-10-29)
+
+- Added post oversikt-over-integrasjoner-bordovelse with cream cover under public/images/blog
+- Registered systemintegrasjon service CTA in systemintegrasjon-ctr-links test placement list
+
 verify-live: visible hashtags in topicHashtags=false path (R1 of #196)
 
 - Cherry-picked 1e9432e onto main: isPostTopicHead uses visibleHtmlHashtags when topicHashtags is false
