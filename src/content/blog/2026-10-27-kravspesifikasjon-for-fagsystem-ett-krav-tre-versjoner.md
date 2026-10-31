@@ -1,8 +1,8 @@
 ---
 slug: kravspesifikasjon-for-fagsystem-ett-krav-tre-versjoner
-title: "Kravspesifikasjon for fagsystem: ett krav skrevet om tre ganger"
+title: "Kravspesifikasjon for fagsystem: ett krav i tre versjoner"
 seoTitle: "Kravspesifikasjon for fagsystem: ett krav i tre steg"
-description: "Et godt krav sier hva systemet skal gjøre, hvordan det testes og hva leverandøren må legge ved. Her følger vi ett krav gjennom tre versjoner, fra ønske til testbart krav."
+description: "Et godt krav sier hva systemet skal gjøre, hvordan det testes og hva leverandøren må legge ved. Ett krav følges gjennom tre versjoner til et testbart krav."
 date: 2026-10-27
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
@@ -40,7 +40,7 @@ faq:
 
 Fem leverandører svarer «oppfylt» på samme krav. Evalueringen stopper. Ingen av svarene kan testes, og ingen av dem er feil.
 
-Et krav alle kan si ja til, skiller ingen. Her følger vi ett krav gjennom tre versjoner, fra ønske til noe kommunen faktisk kan prøve.
+Et krav alle kan si ja til, skiller ingen. Her følges ett krav gjennom tre versjoner, fra ønske til noe kommunen faktisk kan prøve.
 
 ## Et krav alle kan svare ja på, skiller ingen leverandører
 
@@ -62,7 +62,7 @@ Et ønske er et godt utgangspunkt for et krav. Det er ikke et krav i seg selv.
 
 *Innbyggerdelen av systemet skal oppfylle WCAG 2.1 via EN 301 549.*
 
-Nå finnes det en målestokk. Leverandøren kan ikke lenger svare med et adjektiv, og kommunen kan sammenligne svarene. For offentlige virksomheter er dette kravet for løsninger innbyggerne bruker. Systemer som ansatte bruker i arbeidet, er som regel utenfor forskriften, men kommunen kan stille det samme kravet likevel. Hvordan dette ser ut i arkitekturen, har vi skrevet om i [universell utforming i praksis for fagsystemer](/blogg/wcag-2-2-aa-i-praksis-for-fagsystemer).
+Nå finnes det en målestokk. Leverandøren kan ikke lenger svare med et adjektiv, og kommunen kan sammenligne svarene. For offentlige virksomheter er dette kravet for løsninger innbyggerne bruker. Systemer som ansatte bruker i arbeidet, er som regel utenfor forskriften, men kommunen kan stille det samme kravet likevel. Hvordan dette ser ut i arkitekturen, står i [universell utforming i praksis for fagsystemer](/blogg/wcag-2-2-aa-i-praksis-for-fagsystemer).
 
 En standard gjør kravet målbart. Den sier fortsatt ikke hvordan det skal bevises.
 
