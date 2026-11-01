@@ -8,9 +8,13 @@ author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Kommune"
 cover: "/images/blog/forste-oppgave-for-ki-agenter.webp"
-coverAlt: "Infografikk på kremfarget bakgrunn: et rutenett med fire ruter etter hvor lett en oppgave er å sjekke og å angre, med et oransje frø i ruten merket start her og piler fra lag fasit og lag vei tilbake."
+coverAlt: "Infografikk på kremfarget bakgrunn med overskriften «VELG DEN FØRSTE OPPGAVEN»: et rutenett med fire ruter etter hvor lett en oppgave er å sjekke og å angre, med et oransje frø i ruten merket start her og piler fra lag fasit og lag vei tilbake."
 keywords:
   - første oppgave for KI-agenter
+  - pilot
+  - systemutvikling
+  - kommune
+hashtags:
   - pilot
   - systemutvikling
   - kommune
@@ -28,7 +32,7 @@ faq:
   - question: "Hvem godkjenner det agenten lager?"
     answer: "Et menneske godkjenner det agenten lager, før noe går i bruk eller publiseres utad."
   - question: "Er dette et ferdig produkt fra Xala?"
-    answer: "Nei. Det er en måte Xala tenker om utviklingsarbeid nå, og den utvikler seg fortsatt."
+    answer: "Nei. Innlegget beskriver arbeidspraksis under utvikling, ikke et ferdig produkt eller rammeverk fra Xala."
 ---
 
 I et møte foreslår noen å la en agent ta hele flyttingen av det gamle skjemaet. Alle nikker. Ingen spør hvordan man ser om det ble riktig, eller hva som skjer hvis det ikke ble det.
@@ -66,13 +70,13 @@ Lag og prøv tilbakerullingen før agenten starter.
 
 ## Vanskelig å sjekke og vanskelig å angre er ikke en første oppgave
 
-En endring som berører vedtak eller rettighetene til innbyggerne. Det som skal kunne etterprøves etter forvaltningsloven, krever både en sjekk og en vei tilbake før agenter slipper til. Det er mennesker som fatter vedtak, ikke agenter.
+Ta en endring som berører vedtak eller rettighetene til innbyggerne. Det som skal kunne etterprøves etter forvaltningsloven, krever både en sjekk og en vei tilbake før agenter slipper til. Det er mennesker som fatter vedtak, ikke agenter.
 
 Det samme gjelder tilgjengelighet. En endring i brukerflaten må kunne sjekkes mot WCAG 2.1, som kreves via EN 301 549, før den går ut.
 
 Uansett rute godkjenner et menneske det som går live. Det er et av prinsippene som omtales i [Agentisk utvikling: seks prinsipper i praksis](/blogg/agentisk-utvikling-seks-prinsipper).
 
-Et nyttig spørsmål til leverandøren: hvilken rute leverandøren mener oppgaven hører til, og hva som skal til for å flytte den?
+Et nyttig spørsmål til leverandøren: hvilken rute hører oppgaven til, og hva skal til for å flytte den?
 
 ## En oppgave kan flytte seg til en bedre rute
 
@@ -86,6 +90,6 @@ Det som virket første gang, kan bli en fast del av løpet neste gang. Det er ta
 
 Det finnes ingen fast liste over gode første oppgaver. Grensene mellom rutene er skjønn, og to team kan plassere den samme oppgaven ulikt.
 
-Dette er en del av operativsystemet for utviklingsarbeid som er under bygging, og det endrer seg etter hvert som erfaringen vokser.
+Praksis for første oppgaver med KI-agenter endrer seg i takt med erfaring. Det som fungerer i ett team, må testes i neste.
 
-[Les mer om automatisering og KI.](/tjenester/automatisering-og-ai)
+[Se hvordan Xala hjelper kommuner med automatisering og KI.](/tjenester/automatisering-og-ai)
