@@ -68,6 +68,6 @@ En agent som følger tråden, gjør det den skal: den retter alt som henger samm
 
 Hele systemet trenger ikke bygges om. Et godt første steg er å markere kjernen og grensesnittene i det systemet som finnes. Resten er åpen sone.
 
-Regelen er enkel: tegn grensene først, så holder endringene seg små.
+Kartet trenger ikke være perfekt. Det må bare finnes, slik at både agent og gjennomgang vet hvilken sone en endring havner i. Hvem som godkjenner hva, er et annet lag, beskrevet i [seks prinsipper for agentisk utvikling](/blogg/agentisk-utvikling-seks-prinsipper). Regelen er enkel: tegn grensene først, så holder endringene seg små.
 
 [Xala hjelper med å gjøre kodebasen klar for KI-agenter gjennom automatisering og KI.](/tjenester/automatisering-og-ai)
