@@ -581,11 +581,11 @@ test('/produkter keeps a long compound inside the card at 320px', async ({ page 
 //
 // FONT
 // Every number above is an Inter 600 measurement, and the result depends on it.
-// With the Inter woff2 files blocked, the fallback font makes «felleskomponenter»
-// 223.06px against a 222px content box at 320, so it splits mid-word on this fix
-// (1 of the /priser cases fails). `document.fonts.check('600 24px Inter')` still
-// returns true in that state, so it cannot be the guard; each /priser case below
-// instead requires an Inter weight-600 FontFace with status 'loaded' first.
+// With the Inter woff2 files blocked, the fallback font puts «felleskomponenter»
+// +1.06px past the content box and -31.94px inside the border at 320 on this fix,
+// with no mid-word split. `document.fonts.check('600 24px Inter')` still returns
+// true in that state, so it cannot be the guard; each /priser case below instead
+// requires an Inter weight-600 FontFace with status 'loaded', which fails all 23 first.
 // ---------------------------------------------------------------------------
 
 // The cost driver headings, and only them: the row is the direct parent.
