@@ -8,7 +8,7 @@ author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "IT-leder"
 cover: "/images/blog/nar-ki-agenten-tar-feil.webp"
-coverAlt: "Infografikk på kremfarget bakgrunn: et fiskebeindiagram med fem steg fra idé til gjennomgang og en oransje pil som sporer en feil i koden tilbake til spesifikasjonen."
+coverAlt: "Infografikk på kremfarget bakgrunn med overskriften «RETT DER FEILEN KOM INN»: et fiskebeindiagram med fem steg fra idé til gjennomgang og en oransje pil som sporer en feil i koden tilbake til spesifikasjonen."
 keywords:
   - feil fra KI-agenter
   - KI-agenter
@@ -23,11 +23,11 @@ faq:
   - question: "Skal man rette koden eller spesifikasjonen når en KI-agent tar feil?"
     answer: "Begge kan trenges, men spesifikasjonen må rettes for at feilen ikke skal komme tilbake."
   - question: "Hva er en rotårsak i systemutvikling?"
-    answer: "Steget der feilen kom inn i løpet, ikke stedet den ble oppdaget."
+    answer: "Steget der feilen kom inn i løpet, ikke stedet i løpet der feilen ble oppdaget."
   - question: "Kan kodegjennomgang alene fange feil fra KI-agenter?"
-    answer: "Den fanger mye, men den oppdager feil. Den forhindrer dem ikke."
+    answer: "Den fanger mye, men den oppdager feil etter at de er laget. Den forhindrer dem ikke."
   - question: "Hva bør en IT-leder spørre en leverandør som bruker KI-agenter?"
-    answer: "Hvordan feil spores tilbake i løpet, og hvor rettingen skjer."
+    answer: "Hvordan feil spores tilbake i løpet, og i hvilket steg rettingen faktisk skjer."
 ---
 
 Et tenkt eksempel: et skjema godtar en dato i feil format. Utvikleren ber KI-agenten rette det, og rettingen er på plass etter få minutter. Uka etter bygger agenten et nytt skjema, og den samme feilen er tilbake.
@@ -58,7 +58,9 @@ Spesifikasjonen sa at skjemaet skulle ta imot en dato. Den sa ikke hvilken. Et �
 
 Krav som kan besvares med ja eller nei, gir agenten noe å bygge mot og gjennomgangen noe å sjekke mot. Det bygger på tanken om at hvert steg etterlater noe som kan leses, beskrevet i [Når agenten skriver koden](/blogg/nar-agenten-skriver-koden). Rettes kravet her, rettes alle senere bygg samtidig.
 
-## Noen feil sitter i selve idéen
+Steget der feilen kom inn i løpet, ikke stedet i løpet der feilen ble oppdaget.
+
+## Noen feil sitter i selve ideen
 
 Av og til er beskrivelsen presis, planen grundig og koden riktig, og resultatet er likevel feil. Oppgaven var formulert feil fra starten. Kanskje trengte ikke brukerne et nytt skjema i det hele tatt.
 
@@ -68,6 +70,6 @@ Da hjelper ingen kodeendring. Det som må rettes, er spørsmålet løpet startet
 
 Når beskrivelsen rettes, blir neste kjøring riktig av seg selv. Det er fordelen med et løp som kan gjentas: en retting oppstrøms virker hver gang løpet kjøres. Tanken er beskrevet i [AI-fabrikken som idé](/blogg/ai-fabrikken-som-ide).
 
-Dette er et utviklingsarbeid på idéstadiet, ikke et ferdig system. Regelen er likevel enkel: når en KI-agent tar feil, spor feilen bakover og rett den i steget der feilen kom inn i løpet, ikke stedet den ble oppdaget.
+Regelen er enkel: når en KI-agent tar feil, spor feilen bakover og rett den i steget der den kom inn, ikke der den ble oppdaget.
 
-[Hvordan håndteres feil når KI-agenter er med i utviklingen? Ta kontakt med Xala.](/kontakt)
+[Se hvordan Xala bygger fagsystemer med testbare leveranser.](/tjenester/saas-applikasjonsutvikling)
