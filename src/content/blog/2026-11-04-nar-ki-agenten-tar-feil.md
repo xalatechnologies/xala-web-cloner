@@ -58,8 +58,6 @@ Spesifikasjonen sa at skjemaet skulle ta imot en dato. Den sa ikke hvilken. Et �
 
 Krav som kan besvares med ja eller nei, gir agenten noe å bygge mot og gjennomgangen noe å sjekke mot. Det bygger på tanken om at hvert steg etterlater noe som kan leses, beskrevet i [Når agenten skriver koden](/blogg/nar-agenten-skriver-koden). Rettes kravet her, rettes alle senere bygg samtidig.
 
-Steget der feilen kom inn i løpet, ikke stedet i løpet der feilen ble oppdaget.
-
 ## Noen feil sitter i selve ideen
 
 Av og til er beskrivelsen presis, planen grundig og koden riktig, og resultatet er likevel feil. Oppgaven var formulert feil fra starten. Kanskje trengte ikke brukerne et nytt skjema i det hele tatt.
