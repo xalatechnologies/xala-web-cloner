@@ -23,7 +23,7 @@ faq:
   - question: "Skal man rette koden eller spesifikasjonen når en KI-agent tar feil?"
     answer: "Begge kan trenges, men spesifikasjonen må rettes for at feilen ikke skal komme tilbake."
   - question: "Hva er en rotårsak i systemutvikling?"
-    answer: "Steget der feilen kom inn, ikke stedet den ble oppdaget."
+    answer: "Steget der feilen kom inn i løpet, ikke stedet den ble oppdaget."
   - question: "Kan kodegjennomgang alene fange feil fra KI-agenter?"
     answer: "Den fanger mye, men den oppdager feil. Den forhindrer dem ikke."
   - question: "Hva bør en IT-leder spørre en leverandør som bruker KI-agenter?"
@@ -68,6 +68,6 @@ Da hjelper ingen kodeendring. Det som må rettes, er spørsmålet løpet startet
 
 Når beskrivelsen rettes, blir neste kjøring riktig av seg selv. Det er fordelen med et løp som kan gjentas: en retting oppstrøms virker hver gang løpet kjøres. Tanken er beskrevet i [AI-fabrikken som idé](/blogg/ai-fabrikken-som-ide).
 
-Dette er et utviklingsarbeid på idéstadiet, ikke et ferdig system. Regelen er likevel enkel: når en KI-agent tar feil, spor feilen bakover og rett den i steget der den kom inn.
+Dette er et utviklingsarbeid på idéstadiet, ikke et ferdig system. Regelen er likevel enkel: når en KI-agent tar feil, spor feilen bakover og rett den i steget der feilen kom inn i løpet, ikke stedet den ble oppdaget.
 
 [Hvordan håndteres feil når KI-agenter er med i utviklingen? Ta kontakt med Xala.](/kontakt)

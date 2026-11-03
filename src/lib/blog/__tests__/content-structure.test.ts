@@ -51,7 +51,7 @@ describe('published post structure', () => {
       // An answer of a few words is not an answer an engine will cite.
       for (const item of faq) {
         expect(item.question.length).toBeGreaterThan(10);
-        expect(item.answer.length).toBeGreaterThan(55);
+        expect(item.answer.length).toBeGreaterThan(60);
       }
     }
   );
