@@ -103,7 +103,7 @@ export default function PriserPage() {
                         aria-hidden="true"
                       />
                     </CardIcon>
-                    <h3 className="card-heading transition-colors duration-300 group-hover:text-primary max-[386px]:min-w-0">
+                    <h3 className="card-heading transition-colors duration-300 group-hover:text-primary">
                       {t(`pricesPage.drivers.${key}.title`)}
                     </h3>
                   </div>

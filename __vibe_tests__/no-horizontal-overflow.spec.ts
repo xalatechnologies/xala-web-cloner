@@ -502,11 +502,19 @@ test('/produkter keeps a long compound inside the card at 320px', async ({ page 
 //                                and clean at 388 (-0.66).
 //
 // THE FIX (scoped, and nothing else on the page)
-// Row: `max-[386px]:flex-wrap`, h3: `max-[386px]:min-w-0`. When the icon and the
+// One class string on the row: `max-[386px]:flex-wrap`. When the icon and the
 // title cannot both fit, the title drops to its own line and gets the card's full
-// content width, where it fits whole. Only the 8 CostDriver row headings get it;
-// the 2 `h3.card-heading` headings in the scope cards keep `nowrap` and are
-// asserted untouched below.
+// content width, where it fits whole. Only the 8 CostDriver rows get it; the 2
+// `h3.card-heading` headings in the scope cards keep `nowrap` and are asserted
+// untouched below.
+//
+// The h3 is deliberately left at main's `min-width: auto`. An earlier revision
+// also added `max-[386px]:min-w-0` to the h3; measured in system Chrome at every
+// in-band width (320, 340, 350, 353, 354, 360, 375, 380, 384, 385, 386) and with
+// «Vedlikeholdsavtale» injected at 385/386, the wrap-only build is identical to
+// the wrap+min-w-0 build to 2dp: page height, every card rect, every h3 rect, every
+// ink rect, and zero mid-word breaks on both. Once the title has its own line it
+// is no longer squeezed, so min-w-0 had nothing to do.
 //
 // WHY THE BAND ENDS AT 386 AND NOT 387
 // At 387 on main the only remaining defect is 0.34px of ink that lands inside the
@@ -548,10 +556,11 @@ test('/produkter keeps a long compound inside the card at 320px', async ({ page 
 // asserts ink against the border box AND the content box for that reason.
 //
 // MID-WORD BREAKS
-// Containing the title with min-w-0 alone forces the h3 to shrink beside the
-// icon, and `overflow-wrap: break-word` then splits words that did not need to
-// split: 3 mid-word breaks at 320px on a min-w-0-only build. The wrap avoids that
-// by giving the title a full-width line instead of a squeezed one. One break
+// Containing the title with min-w-0 alone (no wrap) forces the h3 to shrink beside
+// the icon, and `overflow-wrap: break-word` then splits words that did not need to
+// split: 2 mid-word breaks at 320px on a min-w-0-only build («felleskomponenter»,
+// «Datamigrering»), and the drift word below splits at 385 and 386. The wrap
+// avoids that by giving the title a full-width line instead of a squeezed one. One break
 // pre-exists on main at 375px — the «SSA-S eller SSA-L» row splits «SSA-L» — and
 // the fix resolves it rather than tolerating it: that row wraps instead of
 // splitting, so the strict zero-break assertion holds everywhere. The word is
@@ -564,19 +573,60 @@ test('/produkter keeps a long compound inside the card at 320px', async ({ page 
 // 2dp precision). The CI runner uses BUNDLED Chromium, which hyphenates Norwegian
 // and reads whole pixels; it is forced to `hyphens: none` below so the defect
 // still shows, and its readings sit about a pixel right of system Chrome's. The
-// assertions hold in both: in-band cases fail on main by tens of pixels, and
+// assertions hold in both: in-band cases fail on main on ink or on a mid-word
+// break before any class is checked (see the in-band case), and
 // out-of-band cases assert COMPUTED STYLE rather than ink — deliberately, because
 // bundled Chromium reads main at +2 at 388 and +6 at 768, so an out-of-band ink
 // assertion would fail on the fix as well as on main and prove nothing.
+//
+// FONT
+// Every number above is an Inter 600 measurement, and the result depends on it.
+// With the Inter woff2 files blocked, the fallback font makes «felleskomponenter»
+// 223.06px against a 222px content box at 320, so it splits mid-word on this fix
+// (1 of the /priser cases fails). `document.fonts.check('600 24px Inter')` still
+// returns true in that state, so it cannot be the guard; each /priser case below
+// instead requires an Inter weight-600 FontFace with status 'loaded' first.
 // ---------------------------------------------------------------------------
 
 // The cost driver headings, and only them: the row is the direct parent.
 const COST_ROW_HEADINGS = '.mb-5.flex.items-center > h3.card-heading';
 
-// A band change is a real change: these two strings are the whole fix, and the
-// cases below fail if either moves.
+// A band change is a real change: this string is the whole fix, and the cases
+// below fail if it moves.
 const ROW_FIX_CLASS = 'max-[386px]:flex-wrap';
-const HEADING_FIX_CLASS = 'max-[386px]:min-w-0';
+
+/**
+ * Every measurement here is of Inter 600. If the woff2 failed to load, the
+ * fallback font is measured instead and the numbers mean nothing, so fail first.
+ * `document.fonts.check()` is not enough: it returns true when the face errored.
+ */
+async function expectInter600Loaded(page: import('@playwright/test').Page) {
+  const faces = await page.evaluate(async () => {
+    await document.fonts.ready;
+    return Array.from(document.fonts).map((f) => ({
+      family: f.family,
+      weight: f.weight,
+      style: f.style,
+      status: f.status,
+    }));
+  });
+  // A weight is either one value ('600') or a variable range ('100 900').
+  const covers600 = (weight: string) => {
+    const parts = weight
+      .trim()
+      .split(/\s+/)
+      .map((w) => (w === 'normal' ? 400 : w === 'bold' ? 700 : Number(w)));
+    return parts.length === 1 ? parts[0] === 600 : parts[0] <= 600 && 600 <= parts[1];
+  };
+  const inter = faces.filter((f) => /^["']?inter["']?$/i.test(f.family.trim()));
+  const loaded = inter.filter((f) => f.style === 'normal' && covers600(f.weight) && f.status === 'loaded');
+  expect(
+    loaded.length,
+    `Inter 600 is not loaded, so this measures the fallback font (Inter faces: ${inter
+      .map((f) => `${f.weight}/${f.style}/${f.status}`)
+      .join(', ')})`,
+  ).toBeGreaterThan(0);
+}
 
 /** Ink of each CostDriver heading against its card, in px, plus broken words. */
 async function measureCostRow(page: import('@playwright/test').Page) {
@@ -632,8 +682,8 @@ async function measureCostRow(page: import('@playwright/test').Page) {
         const contentRight = cardRect.right - borderRight - paddingRight;
         maxCardHeight = Math.max(maxCardHeight, cardRect.height);
 
-        // A rect-based read goes blind once min-w-0 squeezes the box, so ink
-        // comes from the text range, never from the h3's own rect.
+        // The h3's own rect is not where the ink is (a squeezed box overflows
+        // it), so ink comes from the text range, never from the h3's rect.
         const range = document.createRange();
         range.selectNodeContents(heading);
         const rects = Array.from(range.getClientRects());
@@ -694,9 +744,8 @@ async function measureCostRow(page: import('@playwright/test').Page) {
         hyphensForced,
         viewport: window.innerWidth,
         hashes: Array.from(document.querySelectorAll(selector)).map((h) => {
-          const cs = getComputedStyle(h);
           const parent = getComputedStyle(h.parentElement as Element);
-          return { minWidth: cs.minWidth, flexWrap: parent.flexWrap };
+          return { flexWrap: parent.flexWrap };
         }),
       };
     },
@@ -706,8 +755,7 @@ async function measureCostRow(page: import('@playwright/test').Page) {
 
 /**
  * Non-row `h3.card-heading` nodes — the two scope cards. They must be untouched:
- * min-w-0 there would change their layout for nothing (and they already compute
- * `min-width: 0px` on main, so it would not even be the load-bearing line).
+ * a wrap there would restack them for nothing.
  */
 async function measureScopeCards(page: import('@playwright/test').Page) {
   return page.evaluate((selector) => {
@@ -721,17 +769,16 @@ async function measureScopeCards(page: import('@playwright/test').Page) {
       othersWrap: others.map((h) =>
         h.parentElement ? getComputedStyle(h.parentElement).flexWrap : 'none',
       ),
-      // The two scope-card h3s compute min-width:0px on main already, so the only
-      // thing this change could do to them is wrap their row. Recorded so nobody
-      // later credits min-w-0 with doing work it does not do here.
+      // The two scope-card h3s compute min-width:0px on main already (main's own
+      // value); recorded so a later edit cannot change it unnoticed.
       othersMinWidth: others.map((h) => getComputedStyle(h).minWidth),
       labels: others.map((h) => (h.textContent || '').trim().slice(0, 30)),
     };
   }, COST_ROW_HEADINGS);
 }
 
-// Widths inside the band: both edges must hold, both utilities must be on, and no
-// word may break. 353/354 and 384/385/386 are here because main's content escape
+// Widths inside the band: both edges must hold, no word may break, and the wrap
+// must be on. 353/354 and 384/385/386 are here because main's content escape
 // crosses the 1px tolerance between them, so the band may not drift off the edge.
 const IN_BAND = [320, 340, 350, 353, 354, 360, 375, 380, 384, 385, 386];
 // Widths at or above the band end: the fix must be completely inert. 387 is the
@@ -754,6 +801,7 @@ for (const width of IN_BAND) {
     });
     await page.evaluate(() => document.fonts.ready);
     await page.waitForTimeout(150);
+    await expectInter600Loaded(page);
 
     const m = await measureCostRow(page);
 
@@ -765,14 +813,8 @@ for (const width of IN_BAND) {
     expect(m.measured, 'no cost-driver heading was measured').toBeGreaterThan(0);
     expect(m.viewport).toBe(width);
 
-    // The fix has to actually be on here. At the top of the band main escapes by
-    // only 1.34px, which squeaks under the 1px ink tolerance, so the ink
-    // assertion alone cannot catch a regressed band at the edge — these can.
-    for (const h of m.hashes) {
-      expect(h.minWidth, `${HEADING_FIX_CLASS} is not active at ${width}px`).toBe('0px');
-      expect(h.flexWrap, `${ROW_FIX_CLASS} is not active at ${width}px`).toBe('wrap');
-    }
-
+    // Rendering first: on main these fail on ink or on a mid-word break, so the
+    // case is red for a reason a reader can see, not because a class is absent.
     expect(
       m.worstBorder,
       `«${m.whoBorder}» paints ${m.worstBorder}px past the card border at ${width}px`,
@@ -785,6 +827,13 @@ for (const width of IN_BAND) {
       m.breaks,
       `mid-word break(s) at ${width}px: ${m.breaks.join(', ')} (the wrap should make these unnecessary)`,
     ).toHaveLength(0);
+
+    // Then the band edge. At the top of the band main's escape is close to the 1px
+    // ink tolerance, so ink alone may not catch a band that regressed to stop short
+    // of this width; the computed wrap does.
+    for (const h of m.hashes) {
+      expect(h.flexWrap, `${ROW_FIX_CLASS} is not active at ${width}px`).toBe('wrap');
+    }
   });
 }
 
@@ -799,6 +848,7 @@ for (const width of OUT_OF_BAND) {
     });
     await page.evaluate(() => document.fonts.ready);
     await page.waitForTimeout(150);
+    await expectInter600Loaded(page);
 
     const m = await measureCostRow(page);
 
@@ -806,12 +856,11 @@ for (const width of OUT_OF_BAND) {
     expect(m.noInk, `no painted text found for ${m.noInk.length} heading(s)`).toHaveLength(0);
     expect(m.measured, 'no cost-driver heading was measured').toBeGreaterThan(0);
     expect(m.hyphensForced, 'hyphens were not forced to none').toBe(true);
-    // Both utilities computing off is what makes this width byte-identical to
-    // main: they are the entire diff, so nothing else can move the layout. The
-    // per-width rect comparison against main is in the PR body; these are the two
-    // lines CI can see, and they are what the 387px case is really asserting.
+    // The wrap computing off is what makes this width byte-identical to main: it
+    // is the entire diff, so nothing else can move the layout. The per-width rect
+    // comparison against main is in the PR body; this is the line CI can see, and
+    // it is what the 387px case is really asserting.
     for (const h of m.hashes) {
-      expect(h.minWidth, `${HEADING_FIX_CLASS} is leaking past the band at ${width}px`).toBe('auto');
       expect(h.flexWrap, `${ROW_FIX_CLASS} is leaking past the band at ${width}px`).toBe('nowrap');
     }
     // Ink is deliberately NOT asserted here. Main paints into the card's own right
@@ -819,20 +868,21 @@ for (const width of OUT_OF_BAND) {
     // Chrome +3.34 at 768; bundled Chromium +2 at 388 and +6 at 768), so an
     // out-of-band ink assertion would fail on the fix as well as on main and prove
     // nothing. Byte-identity is the claim at these widths and it rests on the two
-    // utility assertions above.
+    // assertion above.
     expect(m.breaks, `mid-word break(s) at ${width}px: ${m.breaks.join(', ')}`).toHaveLength(0);
   });
 }
 
-test('/priser cost-driver rows wrap and shrink only inside the band, scope cards untouched', async ({ page }) => {
-  // The fix is two utilities on one row shape. If they were applied to every
-  // `.card-heading`, the two scope cards would restack for no reason; this case
-  // pins the scope so a later edit cannot quietly widen it.
+test('/priser cost-driver rows wrap only inside the band, scope cards untouched', async ({ page }) => {
+  // The fix is one utility on one row shape. If it were applied to every
+  // `.card-heading` row, the two scope cards would restack for no reason; this
+  // case pins the scope so a later edit cannot quietly widen it.
   await page.setViewportSize({ width: 320, height: 900 });
   await page.goto('/priser');
   await expect(page.locator(COST_ROW_HEADINGS).first()).toBeVisible();
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(150);
+  await expectInter600Loaded(page);
 
   const scope = await measureScopeCards(page);
   expect(scope.row, 'the cost-driver row count changed').toBe(8);
@@ -841,8 +891,7 @@ test('/priser cost-driver rows wrap and shrink only inside the band, scope cards
     'nowrap',
     'nowrap',
   ]);
-  // These read 0px on main as well; asserting it keeps the body honest about what
-  // min-w-0 is and is not doing on the scope cards.
+  // These read 0px on main as well (main's own value); the fix does not touch them.
   expect(scope.othersMinWidth, 'scope-card min-width changed, which the fix does not need').toEqual([
     '0px',
     '0px',
@@ -851,7 +900,6 @@ test('/priser cost-driver rows wrap and shrink only inside the band, scope cards
   const m = await measureCostRow(page);
   expect(m.measured).toBe(8);
   for (const h of m.hashes) {
-    expect(h.minWidth, 'the cost-driver heading is not shrinking').toBe('0px');
     expect(h.flexWrap, 'the cost-driver row cannot wrap').toBe('wrap');
   }
 });
@@ -912,6 +960,7 @@ for (const width of [385, 386]) {
     );
     await page.evaluate(() => document.fonts.ready);
     await page.waitForTimeout(150);
+    await expectInter600Loaded(page);
 
     const m = await measureCostRow(page);
     expect(m.measured).toBeGreaterThan(0);
