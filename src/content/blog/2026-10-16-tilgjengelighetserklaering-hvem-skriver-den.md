@@ -7,8 +7,8 @@ date: 2026-10-16
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"
 tag: "Kommune"
-cover: "/images/blog/tilgjengelighetserklaering-hvem-skriver-den.webp"
-coverAlt: "Infografikk på kremfarget bakgrunn: et hengemerke festet med tråd til et portalvindu, med feltene krav: WCAG 2.1, oppfylt, avvik og plan. Feltet avvik er oransje med et blyantikon. Overskrift «ETIKETTEN PÅ PORTALEN»."
+cover: "/images/blog/tilgjengelighetserklaering-hvem-skriver-den-v2.webp"
+coverAlt: "Illustrasjon i sort og gull: et hengemerke festet med tråd til en tom ramme."
 keywords:
   - tilgjengelighetserklæring
   - universell utforming
@@ -34,7 +34,7 @@ faq:
   - question: "Hva bør vi spørre om i anskaffelsen?"
     answer: "Hvilket nivå løsningen er testet mot, hvilke avvik som er kjent, og hvordan dere får oppdatert grunnlag etter endringer."
   - question: "Når må teksten oppdateres?"
-    answer: "[Minst én gang i året](https://www.uutilsynet.no/veiledning/tilgjengelighetserklaering/1127), og ved [større endringer i løsningen](https://www.uutilsynet.no/tilgjengelighetserklaering/ofte-stilte-sporsmal-om-tilgjengelighetserklaeringen/894). En ny skjemaside, en ny innloggingsflyt eller en rettet feil kan endre hva som er oppfylt, og da stemmer ikke erklæringen lenger."
+    answer: "Minst én gang i året, og ved større endringer i løsningen. En ny skjemaside, en ny innloggingsflyt eller en rettet feil kan endre hva som er oppfylt, og da stemmer ikke erklæringen lenger."
 ---
 
 Tenk deg at kommunen skal kjøpe en ny søknadsportal. I møtet spør noen hvem som skriver tilgjengelighetserklæringen. Ingen svarer.
