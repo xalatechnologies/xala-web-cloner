@@ -17,12 +17,12 @@
         "overall": null
       },
       "lab": {
-        "performance": 83,
+        "performance": 84,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
         "lcp": 4051,
-        "cls": 0,
+        "cls": 0.0001880243853903182,
         "tbt": 0
       }
     },
@@ -37,17 +37,37 @@
         "overall": null
       },
       "lab": {
-        "performance": 97,
+        "performance": 98,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 1805,
+        "lcp": 1808,
         "cls": 0,
-        "tbt": 2
+        "tbt": 0
       }
     },
     {
       "url": "https://xala.no/tjenester/saksbehandlingssystem",
+      "strategy": "mobile",
+      "hasFieldData": false,
+      "field": {
+        "lcp": null,
+        "inp": null,
+        "cls": null,
+        "overall": null
+      },
+      "lab": {
+        "performance": 86,
+        "accessibility": 100,
+        "seo": 100,
+        "bestPractices": 100,
+        "lcp": 3901,
+        "cls": 0,
+        "tbt": 22
+      }
+    },
+    {
+      "url": "https://xala.no/produkter",
       "strategy": "mobile",
       "hasFieldData": false,
       "field": {
@@ -67,26 +87,6 @@
       }
     },
     {
-      "url": "https://xala.no/produkter",
-      "strategy": "mobile",
-      "hasFieldData": false,
-      "field": {
-        "lcp": null,
-        "inp": null,
-        "cls": null,
-        "overall": null
-      },
-      "lab": {
-        "performance": 96,
-        "accessibility": 100,
-        "seo": 100,
-        "bestPractices": 100,
-        "lcp": 1807,
-        "cls": 0,
-        "tbt": 2
-      }
-    },
-    {
       "url": "https://xala.no/caser",
       "strategy": "mobile",
       "hasFieldData": false,
@@ -97,13 +97,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 95,
+        "performance": 90,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 2022,
-        "cls": 0,
-        "tbt": 0
+        "lcp": 3018.5,
+        "cls": 0.0001880243853903182,
+        "tbt": 34
       }
     },
     {
@@ -117,13 +117,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 82,
+        "performance": 86,
         "accessibility": 95,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 4354,
+        "lcp": 3751.5,
         "cls": 0.0008308005017624411,
-        "tbt": 12
+        "tbt": 2
       }
     },
     {
@@ -142,8 +142,8 @@
         "seo": 100,
         "bestPractices": 100,
         "lcp": 4201,
-        "cls": 0.0002308535058617668,
-        "tbt": 8
+        "cls": 0,
+        "tbt": 0
       }
     },
     {
@@ -163,7 +163,7 @@
         "bestPractices": 100,
         "lcp": 3001,
         "cls": 0,
-        "tbt": 0
+        "tbt": 6
       }
     }
   ]
