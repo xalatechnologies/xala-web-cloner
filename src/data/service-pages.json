@@ -1178,8 +1178,8 @@
     ],
     "no": {
       "title": "Systemintegrasjon for fagsystemer i offentlig sektor",
-      "metaTitle": "Systemintegrasjon for kommunen: fagsystem og arkiv | Xala",
-      "metaDescription": "Vi kobler fagsystemet til Noark-arkiv, Folkeregisteret og Altinn, også når det gamle systemet mangler API. Saken går videre når andre er nede.",
+      "metaTitle": "Systemintegrasjon for kommunen, også uten API | Xala",
+      "metaDescription": "Vi har levert koblinger mot Altinn, Folkeregisteret og Noark i produksjon. Mangler fagsystemet API, bygger vi en fasade foran det.",
       "intro": "Et system som ikke snakker med noe annet, finnes knapt i offentlig sektor. Integrasjonene er derfor sjelden en detalj i prosjektet. De er ofte det prosjektet faktisk handler om, og de er der de fleste forsinkelsene oppstår.",
       "problemHeading": "Der prosjekter sporer av",
       "problem": "Tilgang til felleskomponentene er en prosess med avtaler, roller og godkjenninger, ikke en konfigurasjon. Starter søknadene i sprint to, blir tilgangen den kritiske stien. Og testmiljøene ligner produksjon uten å være det, så noe oppfører seg alltid annerledes første gang det møter ekte data.",

@@ -133,9 +133,9 @@ describe('search result metadata', () => {
     const copy = (
       servicePages as Record<string, { no: { title: string; metaTitle: string; metaDescription: string } }>
     ).systemintegrasjon.no;
-    const title = 'Systemintegrasjon for kommunen: fagsystem og arkiv | Xala';
+    const title = 'Systemintegrasjon for kommunen, også uten API | Xala';
     const description =
-      'Vi kobler fagsystemet til Noark-arkiv, Folkeregisteret og Altinn, også når det gamle systemet mangler API. Saken går videre når andre er nede.';
+      'Vi har levert koblinger mot Altinn, Folkeregisteret og Noark i produksjon. Mangler fagsystemet API, bygger vi en fasade foran det.';
 
     expect(copy.metaTitle).toBe(title);
     expect(copy.metaTitle.length).toBeLessThanOrEqual(TITLE_MAX);
