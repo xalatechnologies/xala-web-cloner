@@ -135,7 +135,7 @@ describe('search result metadata', () => {
     ).systemintegrasjon.no;
     const title = 'Systemintegrasjon for kommunen, også uten API | Xala';
     const description =
-      'Vi har levert koblinger mot Altinn, Folkeregisteret og Noark i produksjon. Mangler fagsystemet API, bygger vi en fasade foran det.';
+      'Vi har levert koblinger mot Altinn, ID-porten, Folkeregisteret og Noark i produksjon. Mangler fagsystemet API, bygger vi en fasade foran det.';
 
     expect(copy.metaTitle).toBe(title);
     expect(copy.metaTitle.length).toBeLessThanOrEqual(TITLE_MAX);
