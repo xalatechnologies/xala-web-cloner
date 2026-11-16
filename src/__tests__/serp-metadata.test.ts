@@ -147,6 +147,30 @@ describe('search result metadata', () => {
     expect(copy.title).toBe('Systemintegrasjon for fagsystemer i offentlig sektor');
   });
 
+  it('renders the datamigrering document title once, inside 60 characters', () => {
+    // postMeta appends " | Xala" to seoTitle. The suffix stays out of frontmatter.
+    const post = posts.find((p) => p.slug === 'datamigrering-i-kommunen-sjekk-dette-forst');
+    expect(post, 'datamigrering post missing from the published set').toBeDefined();
+    const topic = 'Datamigrering er ikke ferdig før dere har avstemt';
+    const description =
+      'Datamigrering betyr å flytte data fra et gammelt fagsystem til et nytt. Den er ikke ferdig før antall, summer og utvalgte saker er avstemt.';
+
+    // The H1 stays as it was; only the search title and description change.
+    expect(post!.title).toBe('Datamigrering i kommunen: sjekk dette først');
+    expect(post!.seoTitle).toBe(topic);
+    expect(post!.seoTitle).not.toMatch(/\| Xala/);
+    expect(postMeta(post!).title).toBe(`${topic} | Xala`);
+    expect(postMeta(post!).title).toHaveLength(56);
+    expect(postMeta(post!).title.length).toBeLessThanOrEqual(TITLE_MAX);
+    expect(postMeta(post!).title.match(/ \| Xala/g)).toEqual([' | Xala']);
+    expect(postMeta(post!).title).not.toMatch(/—/);
+    expect(post!.description).toBe(description);
+    expect(post!.description).toHaveLength(139);
+    expect(post!.description.length).toBeLessThanOrEqual(DESC_MAX);
+    expect(post!.description).not.toMatch(/—/);
+    expect(post!.slug).toBe('datamigrering-i-kommunen-sjekk-dette-forst');
+  });
+
   it('keeps the em-dash out of metadata', () => {
     // A standing instruction on this site: em-dashes read as machine-written
     // Norwegian. They had survived in the blog index description.
