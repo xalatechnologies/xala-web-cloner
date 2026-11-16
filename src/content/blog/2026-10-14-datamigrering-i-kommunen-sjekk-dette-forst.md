@@ -2,7 +2,7 @@
 slug: datamigrering-i-kommunen-sjekk-dette-forst
 title: "Datamigrering i kommunen: sjekk dette først"
 seoTitle: "Datamigrering er ikke ferdig før dere har avstemt"
-description: "Datamigrering betyr å flytte data fra et gammelt fagsystem til et nytt. Den er ikke ferdig før antall, summer og utvalgte saker er avstemt."
+description: "Skal kommunen flytte data fra et gammelt fagsystem? Sjekk dette først: hvilke data, hvem eier dem, hva som skal arkiveres og hvordan dere avstemmer."
 date: 2026-10-14
 author: "Ibrahim Rahmani"
 role: "Grunnlegger, Xala Technologies"

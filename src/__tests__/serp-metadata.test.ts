@@ -147,15 +147,18 @@ describe('search result metadata', () => {
     expect(copy.title).toBe('Systemintegrasjon for fagsystemer i offentlig sektor');
   });
 
-  it('renders the datamigrering document title once, inside 60 characters', () => {
+  it('renders the datamigrering document title once, inside 60 characters, and keeps the published description', () => {
     // postMeta appends " | Xala" to seoTitle. The suffix stays out of frontmatter.
     const post = posts.find((p) => p.slug === 'datamigrering-i-kommunen-sjekk-dette-forst');
     expect(post, 'datamigrering post missing from the published set').toBeDefined();
     const topic = 'Datamigrering er ikke ferdig før dere har avstemt';
+    // The description is the visible lead under the H1, the /blogg card, the RSS
+    // item, the llms.txt line and the /blogg/q/* token listings, so it stays as
+    // published. Only the search title changes.
     const description =
-      'Datamigrering betyr å flytte data fra et gammelt fagsystem til et nytt. Den er ikke ferdig før antall, summer og utvalgte saker er avstemt.';
+      'Skal kommunen flytte data fra et gammelt fagsystem? Sjekk dette først: hvilke data, hvem eier dem, hva som skal arkiveres og hvordan dere avstemmer.';
 
-    // The H1 stays as it was; only the search title and description change.
+    // The H1 stays as it was; only the search title changes.
     expect(post!.title).toBe('Datamigrering i kommunen: sjekk dette først');
     expect(post!.seoTitle).toBe(topic);
     expect(post!.seoTitle).not.toMatch(/\| Xala/);
@@ -165,9 +168,7 @@ describe('search result metadata', () => {
     expect(postMeta(post!).title.match(/ \| Xala/g)).toEqual([' | Xala']);
     expect(postMeta(post!).title).not.toMatch(/—/);
     expect(post!.description).toBe(description);
-    expect(post!.description).toHaveLength(139);
-    expect(post!.description.length).toBeLessThanOrEqual(DESC_MAX);
-    expect(post!.description).not.toMatch(/—/);
+    expect(postMeta(post!).description).toBe(description);
     expect(post!.slug).toBe('datamigrering-i-kommunen-sjekk-dette-forst');
   });
 
