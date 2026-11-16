@@ -1,7 +1,7 @@
 ---
 slug: datamigrering-i-kommunen-sjekk-dette-forst
 title: "Datamigrering i kommunen: sjekk dette først"
-seoTitle: "Datamigrering er ikke ferdig før dere har avstemt"
+seoTitle: "Datamigrering er ikke ferdig før dataene er avstemt"
 description: "Skal kommunen flytte data fra et gammelt fagsystem? Sjekk dette først: hvilke data, hvem eier dem, hva som skal arkiveres og hvordan dere avstemmer."
 date: 2026-10-14
 author: "Ibrahim Rahmani"

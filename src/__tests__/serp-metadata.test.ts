@@ -2,7 +2,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { isPostFile, parsePost } from '@/lib/blog/posts';
-import { BRAND, postMeta } from '@/lib/blog/seo';
+import { BRAND, articleJsonLd, postMeta } from '@/lib/blog/seo';
 import type { BlogPost } from '@/lib/blog/types';
 import servicePages from '@/data/service-pages.json';
 
@@ -151,7 +151,7 @@ describe('search result metadata', () => {
     // postMeta appends " | Xala" to seoTitle. The suffix stays out of frontmatter.
     const post = posts.find((p) => p.slug === 'datamigrering-i-kommunen-sjekk-dette-forst');
     expect(post, 'datamigrering post missing from the published set').toBeDefined();
-    const topic = 'Datamigrering er ikke ferdig før dere har avstemt';
+    const topic = 'Datamigrering er ikke ferdig før dataene er avstemt';
     // The description is the visible lead under the H1, the /blogg card, the RSS
     // item, the llms.txt line and the /blogg/q/* token listings, so it stays as
     // published. Only the search title changes.
@@ -163,12 +163,18 @@ describe('search result metadata', () => {
     expect(post!.seoTitle).toBe(topic);
     expect(post!.seoTitle).not.toMatch(/\| Xala/);
     expect(postMeta(post!).title).toBe(`${topic} | Xala`);
-    expect(postMeta(post!).title).toHaveLength(56);
+    expect(postMeta(post!).title).toHaveLength(58);
     expect(postMeta(post!).title.length).toBeLessThanOrEqual(TITLE_MAX);
     expect(postMeta(post!).title.match(/ \| Xala/g)).toEqual([' | Xala']);
     expect(postMeta(post!).title).not.toMatch(/—/);
     expect(post!.description).toBe(description);
     expect(postMeta(post!).description).toBe(description);
+    // seoTitle is for the search result only. The Article headline is the H1.
+    const graph = articleJsonLd(post!)['@graph'] as Array<Record<string, unknown>>;
+    const article = graph.find((node) => node['@type'] === 'Article');
+    expect(article, 'Article node missing from articleJsonLd').toBeDefined();
+    expect(article!.headline).toBe(post!.title);
+    expect(article!.headline).not.toBe(post!.seoTitle);
     expect(post!.slug).toBe('datamigrering-i-kommunen-sjekk-dette-forst');
   });
 
