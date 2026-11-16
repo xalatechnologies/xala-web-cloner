@@ -22,7 +22,7 @@
         "seo": 100,
         "bestPractices": 100,
         "lcp": 4051,
-        "cls": 0,
+        "cls": 0.0001880243853903182,
         "tbt": 0
       }
     },
@@ -37,13 +37,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 94,
+        "performance": 96,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 2851,
+        "lcp": 1808,
         "cls": 0,
-        "tbt": 0
+        "tbt": 8
       }
     },
     {
@@ -57,13 +57,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 87,
+        "performance": 86,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
         "lcp": 3901,
-        "cls": 0.0001880243853903182,
-        "tbt": 17
+        "cls": 0,
+        "tbt": 39
       }
     },
     {
@@ -77,77 +77,17 @@
         "overall": null
       },
       "lab": {
-        "performance": 98,
+        "performance": 96,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
         "lcp": 1807,
         "cls": 0,
-        "tbt": 0
+        "tbt": 22
       }
     },
     {
       "url": "https://xala.no/caser",
-      "strategy": "mobile",
-      "hasFieldData": false,
-      "field": {
-        "lcp": null,
-        "inp": null,
-        "cls": null,
-        "overall": null
-      },
-      "lab": {
-        "performance": 95,
-        "accessibility": 100,
-        "seo": 100,
-        "bestPractices": 100,
-        "lcp": 2037,
-        "cls": 0,
-        "tbt": 0
-      }
-    },
-    {
-      "url": "https://xala.no/blogg",
-      "strategy": "mobile",
-      "hasFieldData": false,
-      "field": {
-        "lcp": null,
-        "inp": null,
-        "cls": null,
-        "overall": null
-      },
-      "lab": {
-        "performance": 83,
-        "accessibility": 95,
-        "seo": 100,
-        "bestPractices": 100,
-        "lcp": 4353.5,
-        "cls": 0.0007030374481220045,
-        "tbt": 0
-      }
-    },
-    {
-      "url": "https://xala.no/blogg/tilskuddsportal-som-faktisk-brukes",
-      "strategy": "mobile",
-      "hasFieldData": false,
-      "field": {
-        "lcp": null,
-        "inp": null,
-        "cls": null,
-        "overall": null
-      },
-      "lab": {
-        "performance": 89,
-        "accessibility": 100,
-        "seo": 100,
-        "bestPractices": 100,
-        "lcp": 3601,
-        "cls": 0.0002092653715614848,
-        "tbt": 0
-      }
-    },
-    {
-      "url": "https://xala.no/kontakt",
       "strategy": "mobile",
       "hasFieldData": false,
       "field": {
@@ -162,8 +102,68 @@
         "seo": 100,
         "bestPractices": 100,
         "lcp": 3001,
-        "cls": 0,
-        "tbt": 11
+        "cls": 0.0001880243853903182,
+        "tbt": 5.5
+      }
+    },
+    {
+      "url": "https://xala.no/blogg",
+      "strategy": "mobile",
+      "hasFieldData": false,
+      "field": {
+        "lcp": null,
+        "inp": null,
+        "cls": null,
+        "overall": null
+      },
+      "lab": {
+        "performance": 81,
+        "accessibility": 95,
+        "seo": 100,
+        "bestPractices": 100,
+        "lcp": 4356.5,
+        "cls": 0.0008308005017624411,
+        "tbt": 39
+      }
+    },
+    {
+      "url": "https://xala.no/blogg/tilskuddsportal-som-faktisk-brukes",
+      "strategy": "mobile",
+      "hasFieldData": false,
+      "field": {
+        "lcp": null,
+        "inp": null,
+        "cls": null,
+        "overall": null
+      },
+      "lab": {
+        "performance": 88,
+        "accessibility": 100,
+        "seo": 100,
+        "bestPractices": 100,
+        "lcp": 3602,
+        "cls": 0.0002308535058617668,
+        "tbt": 51
+      }
+    },
+    {
+      "url": "https://xala.no/kontakt",
+      "strategy": "mobile",
+      "hasFieldData": false,
+      "field": {
+        "lcp": null,
+        "inp": null,
+        "cls": null,
+        "overall": null
+      },
+      "lab": {
+        "performance": 98,
+        "accessibility": 100,
+        "seo": 100,
+        "bestPractices": 100,
+        "lcp": 901,
+        "cls": 0.0001880243853903182,
+        "tbt": 0
       }
     }
   ]
