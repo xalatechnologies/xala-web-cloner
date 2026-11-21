@@ -17,13 +17,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 83,
+        "performance": 84,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
         "lcp": 4051,
-        "cls": 0.0001880243853903182,
-        "tbt": 12
+        "cls": 0.0019243453282594722,
+        "tbt": 21
       }
     },
     {
@@ -41,9 +41,9 @@
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 2402,
-        "cls": 0.03656811616691216,
-        "tbt": 46
+        "lcp": 2401,
+        "cls": 0.0001880243853903182,
+        "tbt": 0
       }
     },
     {
@@ -57,7 +57,7 @@
         "overall": null
       },
       "lab": {
-        "performance": 96,
+        "performance": 98,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
@@ -81,9 +81,9 @@
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 1809,
+        "lcp": 1812,
         "cls": 0,
-        "tbt": 5.5
+        "tbt": 0.5
       }
     },
     {
@@ -97,13 +97,13 @@
         "overall": null
       },
       "lab": {
-        "performance": 86,
+        "performance": 95,
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3451,
+        "lcp": 2022.5,
         "cls": 0,
-        "tbt": 40
+        "tbt": 0
       }
     },
     {
@@ -117,12 +117,12 @@
         "overall": null
       },
       "lab": {
-        "performance": 83,
+        "performance": 88,
         "accessibility": 95,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 4352.5,
-        "cls": 0.0007041823650484807,
+        "lcp": 3904,
+        "cls": 0.000892206750438799,
         "tbt": 0
       }
     },
@@ -142,8 +142,8 @@
         "seo": 100,
         "bestPractices": 100,
         "lcp": 4201.5,
-        "cls": 0.0002308535058617668,
-        "tbt": 38
+        "cls": 0,
+        "tbt": 0
       }
     },
     {
@@ -161,9 +161,9 @@
         "accessibility": 100,
         "seo": 100,
         "bestPractices": 100,
-        "lcp": 3002,
+        "lcp": 3001,
         "cls": 0,
-        "tbt": 7
+        "tbt": 0
       }
     }
   ]
