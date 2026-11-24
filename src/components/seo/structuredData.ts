@@ -43,7 +43,9 @@ export const generateOrganizationSchema = (
   address: {
     '@type': 'PostalAddress',
     addressCountry: 'NO',
-    addressLocality: 'Nesbru'
+    streetAddress: 'Olav Brunborgs vei 6',
+    postalCode: '1396',
+    addressLocality: 'Billingstad'
   },
   sameAs: [
     'https://www.linkedin.com/company/xala-technologies',

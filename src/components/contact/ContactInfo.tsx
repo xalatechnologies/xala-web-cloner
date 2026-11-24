@@ -30,12 +30,12 @@ const contactData = {
   no: {
     phone: { label: 'Telefon', value: '+47 966 65 001' },
     email: { label: 'E-post', value: 'info@xala.no' },
-    address: { label: 'Adresse', value: 'Nesbru, Norge' }
+    address: { label: 'Adresse', value: 'Olav Brunborgs vei 6, 1396 Billingstad' }
   },
   en: {
     phone: { label: 'Phone', value: '+47 966 65 001' },
     email: { label: 'Email', value: 'info@xala.no' },
-    address: { label: 'Address', value: 'Nesbru, Norway' }
+    address: { label: 'Address', value: 'Olav Brunborgs vei 6, 1396 Billingstad' }
   },
   ar: {
     phone: { label: 'الهاتف', value: '+47 966 65 001' },

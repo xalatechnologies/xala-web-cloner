@@ -211,7 +211,7 @@ export function renderLlmsTxt(
     "> bevillingsportaler, integrasjoner mot nasjonale felleskomponenter og SaaS-plattformer",
     "> for offentlig sektor og næringsliv, og vi forvalter dem videre etter lansering.",
     "",
-    `Organisasjonsnummer: 920972454. Nesbruveien 75, 1394 Nesbru, Asker, Norge.`,
+    `Organisasjonsnummer: 920972454. Olav Brunborgs vei 6, 1396 Billingstad, Asker, Norge.`,
     "ISO 27001-sertifisert. Løsninger bygget mot ID-porten, Maskinporten, Altinn, Folkeregisteret,",
     "Enhetsregisteret og Noark 5, med universell utforming etter WCAG 2.2 AA.",
     "",

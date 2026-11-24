@@ -119,13 +119,13 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
       title: 'Om oss: systemutviklere for offentlig sektor | Xala',
       description:
         'Xala Technologies AS er et systemutviklingshus i Asker. Møt teamet, og les om hvorfor kunder i offentlig sektor velger oss.',
-      keywords: 'om Xala Technologies, systemutviklingshus, team, teknologieksperter, Asker, Nesbru, Norge'
+      keywords: 'om Xala Technologies, systemutviklingshus, team, teknologieksperter, Asker, Billingstad, Norge'
     },
     contact: {
       title: 'Kontakt Xala Technologies',
       description:
         'Ta kontakt med Xala Technologies AS i Asker. Fortell oss om prosjektet, så svarer vi med hvordan vi kan hjelpe.',
-      keywords: 'kontakt, teknologikonsultasjon, IT-rådgivning, tilbud, Asker, Nesbru, Norge'
+      keywords: 'kontakt, teknologikonsultasjon, IT-rådgivning, tilbud, Asker, Billingstad, Norge'
     },
     bookDemo: {
       title: 'Book en demo | Xala Technologies',
@@ -250,13 +250,13 @@ const seoContent: Record<Language, Record<PageId, SEOContent>> = {
       title: 'About Us | Xala Technologies',
       description:
         'Xala Technologies AS is a software house in Asker, Norway. Meet the team and read why public sector clients choose us.',
-      keywords: 'about Xala Technologies, software house, team, technology experts, Asker, Nesbru, Norway'
+      keywords: 'about Xala Technologies, software house, team, technology experts, Asker, Billingstad, Norway'
     },
     contact: {
       title: 'Contact | Xala Technologies',
       description:
         'Get in touch with Xala Technologies AS in Asker, Norway. Tell us about your project and we will reply with how we can help.',
-      keywords: 'contact, technology consultation, IT consulting, request a quote, Asker, Nesbru, Norway'
+      keywords: 'contact, technology consultation, IT consulting, request a quote, Asker, Billingstad, Norway'
     },
     bookDemo: {
       title: 'Book a demo | Xala Technologies',
