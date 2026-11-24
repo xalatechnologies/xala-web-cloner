@@ -166,7 +166,7 @@ describe("renderLlmsTxt", () => {
   // left to be inferred from a React bundle.
   it("states the identifying facts", () => {
     expect(txt).toContain("920972454");
-    expect(txt).toContain("Nesbruveien 75, 1394 Nesbru, Asker");
+    expect(txt).toContain("Olav Brunborgs vei 6, 1396 Billingstad, Asker");
   });
 
   it("lists every real route as a markdown link", () => {

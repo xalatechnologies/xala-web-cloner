@@ -32,7 +32,7 @@ interface AboutProps {
 const FACTS = [
   { key: 'about.facts.founded', value: '2018', fallback: 'Etablert' },
   { key: 'about.facts.orgnr', value: '920 972 454', fallback: 'Organisasjonsnummer' },
-  { key: 'about.facts.location', value: 'Nesbru, Asker', fallback: 'Hovedkontor' },
+  { key: 'about.facts.location', value: 'Billingstad, Asker', fallback: 'Hovedkontor' },
   { key: 'about.facts.certification', value: 'ISO 27001', fallback: 'Sertifisering' },
 ] as const;
 
